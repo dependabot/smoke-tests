@@ -4,6 +4,10 @@ name: Cache all (SLOW!)
 on:
   workflow_dispatch:
 
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
 jobs:
   e2e:
     runs-on: ubuntu-latest

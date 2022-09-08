@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: ["main"]
 
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   smoke:
     runs-on: ubuntu-latest
@@ -43,8 +46,6 @@ jobs:
 
       # Download the Proxy cache. The job is ideally 100% cached so no real calls are made.
       - name: Download artifacts
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: script/download-cache.sh ${{ matrix.suite }}
 
       - name: ${{ matrix.suite }}

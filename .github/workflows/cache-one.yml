@@ -33,6 +33,9 @@ on:
           - submodules
           - terraform
 
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   e2e:
     runs-on: ubuntu-latest
