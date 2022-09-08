@@ -19,14 +19,14 @@ output:
             dependencies:
               - name: actions/checkout
                 requirements:
-                  - file: .github/workflows/body-moving.yml
+                  - file: .github/workflows/smoke.yml
                     groups: []
                     metadata:
-                        declaration_string: actions/checkout@01aecccf739ca6ff86c0539fbc67a7a5007bbc81
+                        declaration_string: actions/checkout@v3
                     requirement: null
                     source:
                         branch: null
-                        ref: 01aecccf739ca6ff86c0539fbc67a7a5007bbc81
+                        ref: v3
                         type: git
                         url: https://github.com/actions/checkout
                   - file: .github/workflows/cache-one.yml
@@ -39,14 +39,14 @@ output:
                         ref: v3
                         type: git
                         url: https://github.com/actions/checkout
-                  - file: .github/workflows/smoke.yml
+                  - file: .github/workflows/body-moving.yml
                     groups: []
                     metadata:
-                        declaration_string: actions/checkout@v3
+                        declaration_string: actions/checkout@01aecccf739ca6ff86c0539fbc67a7a5007bbc81
                     requirement: null
                     source:
                         branch: null
-                        ref: v3
+                        ref: 01aecccf739ca6ff86c0539fbc67a7a5007bbc81
                         type: git
                         url: https://github.com/actions/checkout
                   - file: .github/workflows/cache-all.yml
@@ -84,9 +84,9 @@ output:
                         url: https://github.com/actions/upload-artifact
                 version: "3"
             dependency_files:
-              - /.github/workflows/body-moving.yml
-              - /.github/workflows/cache-one.yml
               - /.github/workflows/smoke.yml
+              - /.github/workflows/cache-one.yml
+              - /.github/workflows/body-moving.yml
               - /.github/workflows/cache-all.yml
   - type: mark_as_processed
     expect:
