@@ -1,0 +1,265 @@
+input:
+    job:
+        package_manager: go_modules
+        allowed_updates:
+          - update-type: all
+        ignore_conditions:
+          - dependency-name: github.com/fatih/color
+            source: tests/smoke-go.yaml
+            version-requirement: '>1.13.0'
+          - dependency-name: rsc.io/quote
+            source: tests/smoke-go.yaml
+            version-requirement: '>1.5.2'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /
+            commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+output:
+  - type: update_dependency_list
+    expect:
+        data:
+            dependencies:
+              - name: github.com/fatih/color
+                requirements:
+                  - file: go.mod
+                    groups: []
+                    requirement: v1.7.0
+                    source:
+                        source: github.com/fatih/color
+                        type: default
+                version: 1.7.0
+              - name: rsc.io/qr
+                requirements: []
+                version: 0.1.0
+              - name: rsc.io/quote
+                requirements:
+                  - file: go.mod
+                    groups: []
+                    requirement: v1.4.0
+                    source:
+                        source: rsc.io/quote
+                        type: default
+                version: 1.4.0
+            dependency_files:
+              - /go.mod
+              - /go.sum
+  - type: create_pull_request
+    expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            dependencies:
+              - name: github.com/fatih/color
+                previous-requirements:
+                  - file: go.mod
+                    groups: []
+                    requirement: v1.7.0
+                    source:
+                        source: github.com/fatih/color
+                        type: default
+                previous-version: 1.7.0
+                requirements:
+                  - file: go.mod
+                    groups: []
+                    requirement: 1.13.0
+                    source:
+                        source: github.com/fatih/color
+                        type: default
+                version: 1.13.0
+            updated-dependency-files:
+              - content: |
+                    module github.com/dependabot/vgotest
+
+                    go 1.12
+
+                    require (
+                    	github.com/fatih/color v1.13.0
+                    	golang.org/x/sys v0.0.0-20220731174439-a90be440212d // indirect
+                    	rsc.io/qr v0.1.0
+                    	rsc.io/quote v1.4.0
+                    )
+
+                    replace rsc.io/qr => github.com/rsc/qr v0.2.0
+                content_encoding: utf-8
+                deleted: false
+                directory: /
+                name: go.mod
+                operation: update
+                support_file: false
+                type: file
+              - content: |
+                    github.com/fatih/color v1.13.0 h1:8LOYc1KYPPmyKMuN8QV2DNRWNbLo6LZ0iLs8+mlH53w=
+                    github.com/fatih/color v1.13.0/go.mod h1:kLAiJbzzSOZDVNGyDpeOxJ47H46qBXwg5ILebYFFOfk=
+                    github.com/mattn/go-colorable v0.1.9 h1:sqDoxXbdeALODt0DAeJCVp38ps9ZogZEAXjus69YV3U=
+                    github.com/mattn/go-colorable v0.1.9/go.mod h1:u6P/XSegPjTcexA+o6vUJrdnUu04hMope9wVRipJSqc=
+                    github.com/mattn/go-isatty v0.0.12/go.mod h1:cbi8OIDigv2wuxKPP5vlRcQ1OAZbq2CE4Kysco4FUpU=
+                    github.com/mattn/go-isatty v0.0.14 h1:yVuAays6BHfxijgZPzw+3Zlu5yQgKGP2/hcQbHb7S9Y=
+                    github.com/mattn/go-isatty v0.0.14/go.mod h1:7GGIvUiUoEMVVmxf/4nioHXj79iQHKdU27kJ6hsGG94=
+                    github.com/rsc/qr v0.2.0 h1:tH61+huiZvu+hXL1VUovAu2AnhdG4eJQk2+on3XsDBQ=
+                    github.com/rsc/qr v0.2.0/go.mod h1:IF+uZjkb9fqyeF/4tlBoynqmQxUoPfWEKh921coOuXs=
+                    golang.org/x/sys v0.0.0-20200116001909-b77594299b42/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+                    golang.org/x/sys v0.0.0-20200223170610-d5e6a3e2c0ae/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+                    golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+                    golang.org/x/sys v0.0.0-20220731174439-a90be440212d h1:Sv5ogFZatcgIMMtBSTTAgMYsicp25MXBubjXNDKwm80=
+                    golang.org/x/sys v0.0.0-20220731174439-a90be440212d/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+                    rsc.io/quote v1.4.0 h1:tYuJspOzwTRMUOX6qmSDRTEKFVV80GM0/l89OLZuVNg=
+                    rsc.io/quote v1.4.0/go.mod h1:S2vMDfxMfk+OGQ7xf1uNqJCSuSPCW5QC127LHYfOJmQ=
+                    rsc.io/sampler v1.0.0 h1:CZX0Ury6np11Lwls9Jja2rFf3YrNPeUPAWiEVrJ0u/4=
+                    rsc.io/sampler v1.0.0/go.mod h1:cqxpM3ZVz9VtirqxZPmrWzkQ+UkiNiGtkrN+B+i8kx8=
+                content_encoding: utf-8
+                deleted: false
+                directory: /
+                name: go.sum
+                operation: update
+                support_file: false
+                type: file
+            pr-title: Bump github.com/fatih/color from 1.7.0 to 1.13.0
+            pr-body: |
+                Bumps [github.com/fatih/color](https://github.com/fatih/color) from 1.7.0 to 1.13.0.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/fatih/color/releases">github.com/fatih/color's releases</a>.</em></p>
+                <blockquote>
+                <h2>v1.13.0</h2>
+                <p>This release updates the following dependencies:</p>
+                <pre><code>github.com/mattn/go-colorable v0.1.9
+                github.com/mattn/go-isatty v0.0.14
+                </code></pre>
+                <h2>v1.12.0</h2>
+                <p>This release adds support for the <code>NO_COLOR</code>. For more information check out: <a href="https://no-color.org">https://no-color.org</a> The pull request adding this change is: <a href="https://github-redirect.dependabot.com/fatih/color/pull/137">fatih/color#137</a></p>
+                <h2>v1.11.0</h2>
+                <p>This release removes the <code>vendor/</code> folder introduced by the PR: <a href="https://github-redirect.dependabot.com/fatih/color/pull/138">fatih/color#138</a></p>
+                <h2>v1.10.0</h2>
+                <p>This release includes the changes from: <a href="https://github-redirect.dependabot.com/fatih/color/issues/115">#115</a> which upgrades the go-colorable and go-isatty dependencies with various bug fixes and improvements</p>
+                <pre><code>github.com/mattn/go-colorable v0.1.8
+                github.com/mattn/go-isatty v0.0.12
+                </code></pre>
+                <h2>v1.9.0</h2>
+                <p>Includes the changes from: <a href="https://github-redirect.dependabot.com/fatih/color/pull/109">fatih/color#109</a> which upgrades the <code>go-colorable</code> and <code>go-isatty</code> dependencies to fix WASM compilation issues:</p>
+                <pre><code>github.com/mattn/go-colorable v0.1.4
+                github.com/mattn/go-isatty v0.0.11
+                </code></pre>
+                <h2>v1.8.0</h2>
+                <p>Includes changes from <a href="https://github-redirect.dependabot.com/fatih/color/pull/108">fatih/color#108</a>, most notable:</p>
+                <ul>
+                <li>Add Go module support</li>
+                <li>Update <code>/vendor</code> folder content according to the new Go modules rules.</li>
+                <li>Replace .travis.yml with GitHub Actions</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/fatih/color/commit/a05da93ebe62ca9fc6791d3376ec4dad01196448"><code>a05da93</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/fatih/color/issues/146">#146</a> from fatih/dependabot/go_modules/github.com/mattn/go-...</li>
+                <li><a href="https://github.com/fatih/color/commit/cef423d21f9a62a1f58bf90e0a8b76674942a64d"><code>cef423d</code></a> Bump github.com/mattn/go-colorable from 0.1.8 to 0.1.9</li>
+                <li><a href="https://github.com/fatih/color/commit/503f53695e59c9ece7e740a690cdf36a0620d948"><code>503f536</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/fatih/color/issues/145">#145</a> from DrKhyz/fix/typo-readme</li>
+                <li><a href="https://github.com/fatih/color/commit/65d7546db8df142ad95e7799cf250ef2913c8806"><code>65d7546</code></a> typo/ add 'color' in front FgBlue to be declared</li>
+                <li><a href="https://github.com/fatih/color/commit/063d6361a761c38029f5327ed605ae1d551595ce"><code>063d636</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/fatih/color/issues/144">#144</a> from fatih/dependabot/go_modules/github.com/mattn/go-...</li>
+                <li><a href="https://github.com/fatih/color/commit/ab503e9325a87c026ea6540824e17f9b37ee4f65"><code>ab503e9</code></a> Bump github.com/mattn/go-isatty from 0.0.13 to 0.0.14</li>
+                <li><a href="https://github.com/fatih/color/commit/30388e0cee19cb5904d644c24b83e69f54433314"><code>30388e0</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/fatih/color/issues/140">#140</a> from fatih/dependabot/go_modules/github.com/mattn/go-...</li>
+                <li><a href="https://github.com/fatih/color/commit/351c3d7bb134ef30224f2dba751b3a7f424027a1"><code>351c3d7</code></a> Bump github.com/mattn/go-isatty from 0.0.12 to 0.0.13</li>
+                <li><a href="https://github.com/fatih/color/commit/cf452350f542986d689fb53db88dbb0212f141db"><code>cf45235</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/fatih/color/issues/137">#137</a> from fatih/add-no-color-support</li>
+                <li><a href="https://github.com/fatih/color/commit/f4c431696a22e834b83444f720bd144b2dbbccff"><code>f4c4316</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/fatih/color/issues/139">#139</a> from fatih/improve-ci</li>
+                <li>Additional commits viewable in <a href="https://github.com/fatih/color/compare/v1.7.0...v1.13.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump github.com/fatih/color from 1.7.0 to 1.13.0
+
+                Bumps [github.com/fatih/color](https://github.com/fatih/color) from 1.7.0 to 1.13.0.
+                - [Release notes](https://github.com/fatih/color/releases)
+                - [Commits](https://github.com/fatih/color/compare/v1.7.0...v1.13.0)
+  - type: create_pull_request
+    expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            dependencies:
+              - name: rsc.io/quote
+                previous-requirements:
+                  - file: go.mod
+                    groups: []
+                    requirement: v1.4.0
+                    source:
+                        source: rsc.io/quote
+                        type: default
+                previous-version: 1.4.0
+                requirements:
+                  - file: go.mod
+                    groups: []
+                    requirement: 1.5.2
+                    source:
+                        source: rsc.io/quote
+                        type: default
+                version: 1.5.2
+            updated-dependency-files:
+              - content: |
+                    module github.com/dependabot/vgotest
+
+                    go 1.12
+
+                    require (
+                    	github.com/fatih/color v1.7.0
+                    	github.com/mattn/go-colorable v0.0.9 // indirect
+                    	github.com/mattn/go-isatty v0.0.4 // indirect
+                    	golang.org/x/sys v0.0.0-20220731174439-a90be440212d // indirect
+                    	rsc.io/qr v0.1.0
+                    	rsc.io/quote v1.5.2
+                    )
+
+                    replace rsc.io/qr => github.com/rsc/qr v0.2.0
+                content_encoding: utf-8
+                deleted: false
+                directory: /
+                name: go.mod
+                operation: update
+                support_file: false
+                type: file
+              - content: |
+                    github.com/fatih/color v1.7.0 h1:DkWD4oS2D8LGGgTQ6IvwJJXSL5Vp2ffcQg58nFV38Ys=
+                    github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
+                    github.com/mattn/go-colorable v0.0.9 h1:UVL0vNpWh04HeJXV0KLcaT7r06gOH2l4OW6ddYRUIY4=
+                    github.com/mattn/go-colorable v0.0.9/go.mod h1:9vuHe8Xs5qXnSaW/c/ABM9alt+Vo+STaOChaDxuIBZU=
+                    github.com/mattn/go-isatty v0.0.4 h1:bnP0vzxcAdeI1zdubAl5PjU6zsERjGZb7raWodagDYs=
+                    github.com/mattn/go-isatty v0.0.4/go.mod h1:M+lRXTBqGeGNdLjl/ufCoiOlB5xdOkqRJdNxMWT7Zi4=
+                    github.com/rsc/qr v0.2.0 h1:tH61+huiZvu+hXL1VUovAu2AnhdG4eJQk2+on3XsDBQ=
+                    github.com/rsc/qr v0.2.0/go.mod h1:IF+uZjkb9fqyeF/4tlBoynqmQxUoPfWEKh921coOuXs=
+                    golang.org/x/sys v0.0.0-20220731174439-a90be440212d h1:Sv5ogFZatcgIMMtBSTTAgMYsicp25MXBubjXNDKwm80=
+                    golang.org/x/sys v0.0.0-20220731174439-a90be440212d/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+                    golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c h1:qgOY6WgZOaTkIIMiVjBQcw93ERBE4m30iBm00nkL0i8=
+                    golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
+                    rsc.io/quote v1.5.2 h1:w5fcysjrx7yqtD/aO+QwRjYZOKnaM9Uh2b40tElTs3Y=
+                    rsc.io/quote v1.5.2/go.mod h1:LzX7hefJvL54yjefDEDHNONDjII0t9xZLPXsUe+TKr0=
+                    rsc.io/sampler v1.3.0 h1:7uVkIFmeBqHfdjD+gZwtXXI+RODJ2Wc4O7MPEh/QiW4=
+                    rsc.io/sampler v1.3.0/go.mod h1:T1hPZKmBbMNahiBKFy5HrXp6adAjACjK9JXDnKaTXpA=
+                content_encoding: utf-8
+                deleted: false
+                directory: /
+                name: go.sum
+                operation: update
+                support_file: false
+                type: file
+            pr-title: Bump rsc.io/quote from 1.4.0 to 1.5.2
+            pr-body: |
+                Bumps [rsc.io/quote](https://github.com/rsc/quote) from 1.4.0 to 1.5.2.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rsc/quote/commit/c4d4236f92427c64bfbcf1cc3f8142ab18f30b22"><code>c4d4236</code></a> buggy: add buggy test</li>
+                <li><a href="https://github.com/rsc/quote/commit/23179ee8a569bb05d896ae05c6503ec69a19f99f"><code>23179ee</code></a> quote: fix test for new rsc.io/sampler</li>
+                <li><a href="https://github.com/rsc/quote/commit/3ba1e30dc83bd52c990132b9dfb1688a9d22de13"><code>3ba1e30</code></a> quote: update rsc.io/sampler to v1.3.0</li>
+                <li>See full diff in <a href="https://github.com/rsc/quote/compare/v1.4.0...v1.5.2">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump rsc.io/quote from 1.4.0 to 1.5.2
+
+                Bumps [rsc.io/quote](https://github.com/rsc/quote) from 1.4.0 to 1.5.2.
+                - [Release notes](https://github.com/rsc/quote/releases)
+                - [Commits](https://github.com/rsc/quote/compare/v1.4.0...v1.5.2)
+  - type: mark_as_processed
+    expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994

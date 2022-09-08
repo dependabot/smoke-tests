@@ -1,0 +1,60 @@
+# Runs a single ecosystem and fills the cache.
+name: Cache One
+
+on:
+  workflow_dispatch:
+    inputs:
+      git-ref:
+        description: git ref
+        required: true
+        default: main
+      package_manager:
+        description: The package manager to use
+        required: true
+        type: choice
+        options:
+          - actions
+          - bundler
+          - cargo
+          - composer
+          - docker
+          - elm
+          - go
+          - gradle
+          - hex
+          - maven
+          - npm
+          - nuget
+          - pip
+          - pip-compile
+          - pipenv
+          - poetry
+          - pub
+          - submodules
+          - terraform
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.git-ref }}
+
+      - name: Download CLI
+        run: |
+          gh release download --repo dependabot/cli-releases -p "*linux-amd64.tar.gz"
+          tar xzvf *.tar.gz >/dev/null 2>&1
+          ./dependabot --version
+
+      # No download first to get a clean cache.
+
+      - name: Smoke ${{ github.event.inputs.package_manager }}
+        env:
+          LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./dependabot test -f=tests/smoke-${{ github.event.inputs.package_manager }}.yaml --cache=cache
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: cache-${{ github.event.inputs.package_manager }}
+          path: cache/

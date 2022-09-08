@@ -1,0 +1,459 @@
+input:
+    job:
+        package_manager: pip
+        allowed_updates:
+          - update-type: all
+        ignore_conditions:
+          - dependency-name: toml
+            source: tests/smoke-poetry.yaml
+            version-requirement: '>0.10.2'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /poetry
+            commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+output:
+  - type: update_dependency_list
+    expect:
+        data:
+            dependencies:
+              - name: toml
+                requirements:
+                  - file: pyproject.toml
+                    groups:
+                      - dependencies
+                    requirement: 0.10.0
+                    source: null
+                version: 0.10.0
+              - name: pyyaml
+                requirements:
+                  - file: pyproject.toml
+                    groups:
+                      - dependencies
+                    requirement: ^6.0
+                    source: null
+                version: "6.0"
+              - name: numpy
+                requirements:
+                  - file: pyproject.toml
+                    groups:
+                      - dependencies
+                    requirement: 1.23.0
+                    source: null
+                version: 1.23.0
+            dependency_files:
+              - /poetry/pyproject.toml
+              - /poetry/poetry.lock
+  - type: create_pull_request
+    expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            dependencies:
+              - name: toml
+                previous-requirements:
+                  - file: pyproject.toml
+                    groups:
+                      - dependencies
+                    requirement: 0.10.0
+                    source: null
+                previous-version: 0.10.0
+                requirements:
+                  - file: pyproject.toml
+                    groups:
+                      - dependencies
+                    requirement: 0.10.2
+                    source: null
+                version: 0.10.2
+            updated-dependency-files:
+              - content: |+
+                    [tool.poetry]
+                    name = "devproj"
+                    version = "0.1.0"
+                    description = ""
+                    authors = ["Your Name <you@example.com>"]
+
+                    [tool.poetry.dependencies]
+                    python = "~3.10"
+                    toml = "0.10.2"
+                    PyYAML = "^6.0"
+                    numpy = "1.23.0"
+
+                    [tool.poetry.dev-dependencies]
+
+                    [build-system]
+                    requires = ["poetry-core>=1.0.0"]
+                    build-backend = "poetry.core.masonry.api"
+
+                content_encoding: utf-8
+                deleted: false
+                directory: /poetry
+                name: pyproject.toml
+                operation: update
+                support_file: false
+                type: file
+              - content: |
+                    [[package]]
+                    name = "numpy"
+                    version = "1.23.0"
+                    description = "NumPy is the fundamental package for array computing with Python."
+                    category = "main"
+                    optional = false
+                    python-versions = ">=3.8"
+
+                    [[package]]
+                    name = "pyyaml"
+                    version = "6.0"
+                    description = "YAML parser and emitter for Python"
+                    category = "main"
+                    optional = false
+                    python-versions = ">=3.6"
+
+                    [[package]]
+                    name = "toml"
+                    version = "0.10.2"
+                    description = "Python Library for Tom's Obvious, Minimal Language"
+                    category = "main"
+                    optional = false
+                    python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+
+                    [metadata]
+                    lock-version = "1.1"
+                    python-versions = "~3.10"
+                    content-hash = "ed9ecee6e7c2e27d86e949e625a180dd0f140c6d1b2e8810186341a17c620024"
+
+                    [metadata.files]
+                    numpy = [
+                        {file = "numpy-1.23.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:58bfd40eb478f54ff7a5710dd61c8097e169bc36cc68333d00a9bcd8def53b38"},
+                        {file = "numpy-1.23.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:196cd074c3f97c4121601790955f915187736f9cf458d3ee1f1b46aff2b1ade0"},
+                        {file = "numpy-1.23.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:f1d88ef79e0a7fa631bb2c3dda1ea46b32b1fe614e10fedd611d3d5398447f2f"},
+                        {file = "numpy-1.23.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d54b3b828d618a19779a84c3ad952e96e2c2311b16384e973e671aa5be1f6187"},
+                        {file = "numpy-1.23.0-cp310-cp310-win32.whl", hash = "sha256:2b2da66582f3a69c8ce25ed7921dcd8010d05e59ac8d89d126a299be60421171"},
+                        {file = "numpy-1.23.0-cp310-cp310-win_amd64.whl", hash = "sha256:97a76604d9b0e79f59baeca16593c711fddb44936e40310f78bfef79ee9a835f"},
+                        {file = "numpy-1.23.0-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:d8cc87bed09de55477dba9da370c1679bd534df9baa171dd01accbb09687dac3"},
+                        {file = "numpy-1.23.0-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:f0f18804df7370571fb65db9b98bf1378172bd4e962482b857e612d1fec0f53e"},
+                        {file = "numpy-1.23.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:ac86f407873b952679f5f9e6c0612687e51547af0e14ddea1eedfcb22466babd"},
+                        {file = "numpy-1.23.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ae8adff4172692ce56233db04b7ce5792186f179c415c37d539c25de7298d25d"},
+                        {file = "numpy-1.23.0-cp38-cp38-win32.whl", hash = "sha256:fe8b9683eb26d2c4d5db32cd29b38fdcf8381324ab48313b5b69088e0e355379"},
+                        {file = "numpy-1.23.0-cp38-cp38-win_amd64.whl", hash = "sha256:5043bcd71fcc458dfb8a0fc5509bbc979da0131b9d08e3d5f50fb0bbb36f169a"},
+                        {file = "numpy-1.23.0-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:1c29b44905af288b3919803aceb6ec7fec77406d8b08aaa2e8b9e63d0fe2f160"},
+                        {file = "numpy-1.23.0-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:98e8e0d8d69ff4d3fa63e6c61e8cfe2d03c29b16b58dbef1f9baa175bbed7860"},
+                        {file = "numpy-1.23.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:79a506cacf2be3a74ead5467aee97b81fca00c9c4c8b3ba16dbab488cd99ba10"},
+                        {file = "numpy-1.23.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:092f5e6025813e64ad6d1b52b519165d08c730d099c114a9247c9bb635a2a450"},
+                        {file = "numpy-1.23.0-cp39-cp39-win32.whl", hash = "sha256:d6ca8dabe696c2785d0c8c9b0d8a9b6e5fdbe4f922bde70d57fa1a2848134f95"},
+                        {file = "numpy-1.23.0-cp39-cp39-win_amd64.whl", hash = "sha256:fc431493df245f3c627c0c05c2bd134535e7929dbe2e602b80e42bf52ff760bc"},
+                        {file = "numpy-1.23.0-pp38-pypy38_pp73-macosx_10_9_x86_64.whl", hash = "sha256:f9c3fc2adf67762c9fe1849c859942d23f8d3e0bee7b5ed3d4a9c3eeb50a2f07"},
+                        {file = "numpy-1.23.0-pp38-pypy38_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d0d2094e8f4d760500394d77b383a1b06d3663e8892cdf5df3c592f55f3bff66"},
+                        {file = "numpy-1.23.0-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:94b170b4fa0168cd6be4becf37cb5b127bd12a795123984385b8cd4aca9857e5"},
+                        {file = "numpy-1.23.0.tar.gz", hash = "sha256:bd3fa4fe2e38533d5336e1272fc4e765cabbbde144309ccee8675509d5cd7b05"},
+                    ]
+                    pyyaml = [
+                        {file = "PyYAML-6.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:d4db7c7aef085872ef65a8fd7d6d09a14ae91f691dec3e87ee5ee0539d516f53"},
+                        {file = "PyYAML-6.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:9df7ed3b3d2e0ecfe09e14741b857df43adb5a3ddadc919a2d94fbdf78fea53c"},
+                        {file = "PyYAML-6.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:77f396e6ef4c73fdc33a9157446466f1cff553d979bd00ecb64385760c6babdc"},
+                        {file = "PyYAML-6.0-cp310-cp310-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:a80a78046a72361de73f8f395f1f1e49f956c6be882eed58505a15f3e430962b"},
+                        {file = "PyYAML-6.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:f84fbc98b019fef2ee9a1cb3ce93e3187a6df0b2538a651bfb890254ba9f90b5"},
+                        {file = "PyYAML-6.0-cp310-cp310-win32.whl", hash = "sha256:2cd5df3de48857ed0544b34e2d40e9fac445930039f3cfe4bcc592a1f836d513"},
+                        {file = "PyYAML-6.0-cp310-cp310-win_amd64.whl", hash = "sha256:daf496c58a8c52083df09b80c860005194014c3698698d1a57cbcfa182142a3a"},
+                        {file = "PyYAML-6.0-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:897b80890765f037df3403d22bab41627ca8811ae55e9a722fd0392850ec4d86"},
+                        {file = "PyYAML-6.0-cp36-cp36m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:50602afada6d6cbfad699b0c7bb50d5ccffa7e46a3d738092afddc1f9758427f"},
+                        {file = "PyYAML-6.0-cp36-cp36m-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:48c346915c114f5fdb3ead70312bd042a953a8ce5c7106d5bfb1a5254e47da92"},
+                        {file = "PyYAML-6.0-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:98c4d36e99714e55cfbaaee6dd5badbc9a1ec339ebfc3b1f52e293aee6bb71a4"},
+                        {file = "PyYAML-6.0-cp36-cp36m-win32.whl", hash = "sha256:0283c35a6a9fbf047493e3a0ce8d79ef5030852c51e9d911a27badfde0605293"},
+                        {file = "PyYAML-6.0-cp36-cp36m-win_amd64.whl", hash = "sha256:07751360502caac1c067a8132d150cf3d61339af5691fe9e87803040dbc5db57"},
+                        {file = "PyYAML-6.0-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:819b3830a1543db06c4d4b865e70ded25be52a2e0631ccd2f6a47a2822f2fd7c"},
+                        {file = "PyYAML-6.0-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:473f9edb243cb1935ab5a084eb238d842fb8f404ed2193a915d1784b5a6b5fc0"},
+                        {file = "PyYAML-6.0-cp37-cp37m-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:0ce82d761c532fe4ec3f87fc45688bdd3a4c1dc5e0b4a19814b9009a29baefd4"},
+                        {file = "PyYAML-6.0-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:231710d57adfd809ef5d34183b8ed1eeae3f76459c18fb4a0b373ad56bedcdd9"},
+                        {file = "PyYAML-6.0-cp37-cp37m-win32.whl", hash = "sha256:c5687b8d43cf58545ade1fe3e055f70eac7a5a1a0bf42824308d868289a95737"},
+                        {file = "PyYAML-6.0-cp37-cp37m-win_amd64.whl", hash = "sha256:d15a181d1ecd0d4270dc32edb46f7cb7733c7c508857278d3d378d14d606db2d"},
+                        {file = "PyYAML-6.0-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:0b4624f379dab24d3725ffde76559cff63d9ec94e1736b556dacdfebe5ab6d4b"},
+                        {file = "PyYAML-6.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:213c60cd50106436cc818accf5baa1aba61c0189ff610f64f4a3e8c6726218ba"},
+                        {file = "PyYAML-6.0-cp38-cp38-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:9fa600030013c4de8165339db93d182b9431076eb98eb40ee068700c9c813e34"},
+                        {file = "PyYAML-6.0-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:277a0ef2981ca40581a47093e9e2d13b3f1fbbeffae064c1d21bfceba2030287"},
+                        {file = "PyYAML-6.0-cp38-cp38-win32.whl", hash = "sha256:d4eccecf9adf6fbcc6861a38015c2a64f38b9d94838ac1810a9023a0609e1b78"},
+                        {file = "PyYAML-6.0-cp38-cp38-win_amd64.whl", hash = "sha256:1e4747bc279b4f613a09eb64bba2ba602d8a6664c6ce6396a4d0cd413a50ce07"},
+                        {file = "PyYAML-6.0-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:055d937d65826939cb044fc8c9b08889e8c743fdc6a32b33e2390f66013e449b"},
+                        {file = "PyYAML-6.0-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:e61ceaab6f49fb8bdfaa0f92c4b57bcfbea54c09277b1b4f7ac376bfb7a7c174"},
+                        {file = "PyYAML-6.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d67d839ede4ed1b28a4e8909735fc992a923cdb84e618544973d7dfc71540803"},
+                        {file = "PyYAML-6.0-cp39-cp39-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:cba8c411ef271aa037d7357a2bc8f9ee8b58b9965831d9e51baf703280dc73d3"},
+                        {file = "PyYAML-6.0-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:40527857252b61eacd1d9af500c3337ba8deb8fc298940291486c465c8b46ec0"},
+                        {file = "PyYAML-6.0-cp39-cp39-win32.whl", hash = "sha256:b5b9eccad747aabaaffbc6064800670f0c297e52c12754eb1d976c57e4f74dcb"},
+                        {file = "PyYAML-6.0-cp39-cp39-win_amd64.whl", hash = "sha256:b3d267842bf12586ba6c734f89d1f5b871df0273157918b0ccefa29deb05c21c"},
+                        {file = "PyYAML-6.0.tar.gz", hash = "sha256:68fb519c14306fec9720a2a5b45bc9f0c8d1b9c72adf45c37baedfcd949c35a2"},
+                    ]
+                    toml = [
+                        {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
+                        {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
+                    ]
+                content_encoding: utf-8
+                deleted: false
+                directory: /poetry
+                name: poetry.lock
+                operation: update
+                support_file: false
+                type: file
+            pr-title: Bump toml from 0.10.0 to 0.10.2 in /poetry
+            pr-body: |
+                Bumps [toml](https://github.com/uiri/toml) from 0.10.0 to 0.10.2.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/uiri/toml/commit/3f637dba5f68db63d4b30967fedda51c82459471"><code>3f637db</code></a> Bump version to 0.10.2 (<a href="https://github-redirect.dependabot.com/uiri/toml/issues/333">#333</a>)</li>
+                <li><a href="https://github.com/uiri/toml/commit/9a85ffe981d659a43d321694ecbd42fe96caed7d"><code>9a85ffe</code></a> Update PYI files (<a href="https://github-redirect.dependabot.com/uiri/toml/issues/332">#332</a>)</li>
+                <li><a href="https://github.com/uiri/toml/commit/2846c42e85f56090da815455a1cb307ed6d6acb1"><code>2846c42</code></a> Update README.rst (<a href="https://github-redirect.dependabot.com/uiri/toml/issues/329">#329</a>)</li>
+                <li><a href="https://github.com/uiri/toml/commit/230f0c9cffd230354759949dd1dd89acd3dddb80"><code>230f0c9</code></a> Fix <a href="https://github-redirect.dependabot.com/uiri/toml/issues/287">#287</a>: Broken quoted section name starts with dot (<a href="https://github-redirect.dependabot.com/uiri/toml/issues/330">#330</a>)</li>
+                <li><a href="https://github.com/uiri/toml/commit/3a034ece79f04b0ab2091ba4d6475c4272969b6d"><code>3a034ec</code></a> feat: Add official support for Python 3.9. (<a href="https://github-redirect.dependabot.com/uiri/toml/issues/325">#325</a>)</li>
+                <li><a href="https://github.com/uiri/toml/commit/38a9685cce3b866aad0f1e6edac9888b3725c92d"><code>38a9685</code></a> show meaningful error message for wrong case booleans (<a href="https://github-redirect.dependabot.com/uiri/toml/issues/315">#315</a>)</li>
+                <li><a href="https://github.com/uiri/toml/commit/16a64414653979927e50a9ebb86deebfce7b0f95"><code>16a6441</code></a> Add <strong>deepcopy</strong> method to TomlTz class. Fix <a href="https://github-redirect.dependabot.com/uiri/toml/issues/308">#308</a> (<a href="https://github-redirect.dependabot.com/uiri/toml/issues/309">#309</a>)</li>
+                <li><a href="https://github.com/uiri/toml/commit/9be64582fff86b9c5bd94ce52a5fedcb3d4fac01"><code>9be6458</code></a> ids were based on the string, rather than the actual object which causes inco...</li>
+                <li><a href="https://github.com/uiri/toml/commit/a952ed805d5931c21df3f33a25733d4f0a37b95a"><code>a952ed8</code></a> Skip numpy tests when numpy is not available (<a href="https://github-redirect.dependabot.com/uiri/toml/issues/298">#298</a>)</li>
+                <li><a href="https://github.com/uiri/toml/commit/4c246bbf8ac56d1e87f2b8ad7280cbb2f9f07e68"><code>4c246bb</code></a> added toml.dump example to Quick Tutorial (<a href="https://github-redirect.dependabot.com/uiri/toml/issues/301">#301</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/uiri/toml/compare/0.10.0...0.10.2">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump toml from 0.10.0 to 0.10.2 in /poetry
+
+                Bumps [toml](https://github.com/uiri/toml) from 0.10.0 to 0.10.2.
+                - [Release notes](https://github.com/uiri/toml/releases)
+                - [Changelog](https://github.com/uiri/toml/blob/master/RELEASE.rst)
+                - [Commits](https://github.com/uiri/toml/compare/0.10.0...0.10.2)
+  - type: create_pull_request
+    expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            dependencies:
+              - name: numpy
+                previous-requirements:
+                  - file: pyproject.toml
+                    groups:
+                      - dependencies
+                    requirement: 1.23.0
+                    source: null
+                previous-version: 1.23.0
+                requirements:
+                  - file: pyproject.toml
+                    groups:
+                      - dependencies
+                    requirement: 1.23.2
+                    source: null
+                version: 1.23.2
+            updated-dependency-files:
+              - content: |+
+                    [tool.poetry]
+                    name = "devproj"
+                    version = "0.1.0"
+                    description = ""
+                    authors = ["Your Name <you@example.com>"]
+
+                    [tool.poetry.dependencies]
+                    python = "~3.10"
+                    toml = "0.10.0"
+                    PyYAML = "^6.0"
+                    numpy = "1.23.2"
+
+                    [tool.poetry.dev-dependencies]
+
+                    [build-system]
+                    requires = ["poetry-core>=1.0.0"]
+                    build-backend = "poetry.core.masonry.api"
+
+                content_encoding: utf-8
+                deleted: false
+                directory: /poetry
+                name: pyproject.toml
+                operation: update
+                support_file: false
+                type: file
+              - content: |
+                    [[package]]
+                    name = "numpy"
+                    version = "1.23.2"
+                    description = "NumPy is the fundamental package for array computing with Python."
+                    category = "main"
+                    optional = false
+                    python-versions = ">=3.8"
+
+                    [[package]]
+                    name = "pyyaml"
+                    version = "6.0"
+                    description = "YAML parser and emitter for Python"
+                    category = "main"
+                    optional = false
+                    python-versions = ">=3.6"
+
+                    [[package]]
+                    name = "toml"
+                    version = "0.10.0"
+                    description = "Python Library for Tom's Obvious, Minimal Language"
+                    category = "main"
+                    optional = false
+                    python-versions = "*"
+
+                    [metadata]
+                    lock-version = "1.1"
+                    python-versions = "~3.10"
+                    content-hash = "c2303328f4b0dd0b8f31035c73f8186bd93cd9c7c24976cd7907dd191402f305"
+
+                    [metadata.files]
+                    numpy = [
+                        {file = "numpy-1.23.2-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:e603ca1fb47b913942f3e660a15e55a9ebca906857edfea476ae5f0fe9b457d5"},
+                        {file = "numpy-1.23.2-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:633679a472934b1c20a12ed0c9a6c9eb167fbb4cb89031939bfd03dd9dbc62b8"},
+                        {file = "numpy-1.23.2-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:17e5226674f6ea79e14e3b91bfbc153fdf3ac13f5cc54ee7bc8fdbe820a32da0"},
+                        {file = "numpy-1.23.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:bdc02c0235b261925102b1bd586579b7158e9d0d07ecb61148a1799214a4afd5"},
+                        {file = "numpy-1.23.2-cp310-cp310-win32.whl", hash = "sha256:df28dda02c9328e122661f399f7655cdcbcf22ea42daa3650a26bce08a187450"},
+                        {file = "numpy-1.23.2-cp310-cp310-win_amd64.whl", hash = "sha256:8ebf7e194b89bc66b78475bd3624d92980fca4e5bb86dda08d677d786fefc414"},
+                        {file = "numpy-1.23.2-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:dc76bca1ca98f4b122114435f83f1fcf3c0fe48e4e6f660e07996abf2f53903c"},
+                        {file = "numpy-1.23.2-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:ecfdd68d334a6b97472ed032b5b37a30d8217c097acfff15e8452c710e775524"},
+                        {file = "numpy-1.23.2-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:5593f67e66dea4e237f5af998d31a43e447786b2154ba1ad833676c788f37cde"},
+                        {file = "numpy-1.23.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ac987b35df8c2a2eab495ee206658117e9ce867acf3ccb376a19e83070e69418"},
+                        {file = "numpy-1.23.2-cp311-cp311-win32.whl", hash = "sha256:d98addfd3c8728ee8b2c49126f3c44c703e2b005d4a95998e2167af176a9e722"},
+                        {file = "numpy-1.23.2-cp311-cp311-win_amd64.whl", hash = "sha256:8ecb818231afe5f0f568c81f12ce50f2b828ff2b27487520d85eb44c71313b9e"},
+                        {file = "numpy-1.23.2-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:909c56c4d4341ec8315291a105169d8aae732cfb4c250fbc375a1efb7a844f8f"},
+                        {file = "numpy-1.23.2-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:8247f01c4721479e482cc2f9f7d973f3f47810cbc8c65e38fd1bbd3141cc9842"},
+                        {file = "numpy-1.23.2-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:b8b97a8a87cadcd3f94659b4ef6ec056261fa1e1c3317f4193ac231d4df70215"},
+                        {file = "numpy-1.23.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:bd5b7ccae24e3d8501ee5563e82febc1771e73bd268eef82a1e8d2b4d556ae66"},
+                        {file = "numpy-1.23.2-cp38-cp38-win32.whl", hash = "sha256:9b83d48e464f393d46e8dd8171687394d39bc5abfe2978896b77dc2604e8635d"},
+                        {file = "numpy-1.23.2-cp38-cp38-win_amd64.whl", hash = "sha256:dec198619b7dbd6db58603cd256e092bcadef22a796f778bf87f8592b468441d"},
+                        {file = "numpy-1.23.2-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:4f41f5bf20d9a521f8cab3a34557cd77b6f205ab2116651f12959714494268b0"},
+                        {file = "numpy-1.23.2-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:806cc25d5c43e240db709875e947076b2826f47c2c340a5a2f36da5bb10c58d6"},
+                        {file = "numpy-1.23.2-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:8f9d84a24889ebb4c641a9b99e54adb8cab50972f0166a3abc14c3b93163f074"},
+                        {file = "numpy-1.23.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c403c81bb8ffb1c993d0165a11493fd4bf1353d258f6997b3ee288b0a48fce77"},
+                        {file = "numpy-1.23.2-cp39-cp39-win32.whl", hash = "sha256:cf8c6aed12a935abf2e290860af8e77b26a042eb7f2582ff83dc7ed5f963340c"},
+                        {file = "numpy-1.23.2-cp39-cp39-win_amd64.whl", hash = "sha256:5e28cd64624dc2354a349152599e55308eb6ca95a13ce6a7d5679ebff2962913"},
+                        {file = "numpy-1.23.2-pp38-pypy38_pp73-macosx_10_9_x86_64.whl", hash = "sha256:806970e69106556d1dd200e26647e9bee5e2b3f1814f9da104a943e8d548ca38"},
+                        {file = "numpy-1.23.2-pp38-pypy38_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:2bd879d3ca4b6f39b7770829f73278b7c5e248c91d538aab1e506c628353e47f"},
+                        {file = "numpy-1.23.2-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:be6b350dfbc7f708d9d853663772a9310783ea58f6035eec649fb9c4371b5389"},
+                        {file = "numpy-1.23.2.tar.gz", hash = "sha256:b78d00e48261fbbd04aa0d7427cf78d18401ee0abd89c7559bbf422e5b1c7d01"},
+                    ]
+                    pyyaml = [
+                        {file = "PyYAML-6.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:d4db7c7aef085872ef65a8fd7d6d09a14ae91f691dec3e87ee5ee0539d516f53"},
+                        {file = "PyYAML-6.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:9df7ed3b3d2e0ecfe09e14741b857df43adb5a3ddadc919a2d94fbdf78fea53c"},
+                        {file = "PyYAML-6.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:77f396e6ef4c73fdc33a9157446466f1cff553d979bd00ecb64385760c6babdc"},
+                        {file = "PyYAML-6.0-cp310-cp310-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:a80a78046a72361de73f8f395f1f1e49f956c6be882eed58505a15f3e430962b"},
+                        {file = "PyYAML-6.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:f84fbc98b019fef2ee9a1cb3ce93e3187a6df0b2538a651bfb890254ba9f90b5"},
+                        {file = "PyYAML-6.0-cp310-cp310-win32.whl", hash = "sha256:2cd5df3de48857ed0544b34e2d40e9fac445930039f3cfe4bcc592a1f836d513"},
+                        {file = "PyYAML-6.0-cp310-cp310-win_amd64.whl", hash = "sha256:daf496c58a8c52083df09b80c860005194014c3698698d1a57cbcfa182142a3a"},
+                        {file = "PyYAML-6.0-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:897b80890765f037df3403d22bab41627ca8811ae55e9a722fd0392850ec4d86"},
+                        {file = "PyYAML-6.0-cp36-cp36m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:50602afada6d6cbfad699b0c7bb50d5ccffa7e46a3d738092afddc1f9758427f"},
+                        {file = "PyYAML-6.0-cp36-cp36m-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:48c346915c114f5fdb3ead70312bd042a953a8ce5c7106d5bfb1a5254e47da92"},
+                        {file = "PyYAML-6.0-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:98c4d36e99714e55cfbaaee6dd5badbc9a1ec339ebfc3b1f52e293aee6bb71a4"},
+                        {file = "PyYAML-6.0-cp36-cp36m-win32.whl", hash = "sha256:0283c35a6a9fbf047493e3a0ce8d79ef5030852c51e9d911a27badfde0605293"},
+                        {file = "PyYAML-6.0-cp36-cp36m-win_amd64.whl", hash = "sha256:07751360502caac1c067a8132d150cf3d61339af5691fe9e87803040dbc5db57"},
+                        {file = "PyYAML-6.0-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:819b3830a1543db06c4d4b865e70ded25be52a2e0631ccd2f6a47a2822f2fd7c"},
+                        {file = "PyYAML-6.0-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:473f9edb243cb1935ab5a084eb238d842fb8f404ed2193a915d1784b5a6b5fc0"},
+                        {file = "PyYAML-6.0-cp37-cp37m-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:0ce82d761c532fe4ec3f87fc45688bdd3a4c1dc5e0b4a19814b9009a29baefd4"},
+                        {file = "PyYAML-6.0-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:231710d57adfd809ef5d34183b8ed1eeae3f76459c18fb4a0b373ad56bedcdd9"},
+                        {file = "PyYAML-6.0-cp37-cp37m-win32.whl", hash = "sha256:c5687b8d43cf58545ade1fe3e055f70eac7a5a1a0bf42824308d868289a95737"},
+                        {file = "PyYAML-6.0-cp37-cp37m-win_amd64.whl", hash = "sha256:d15a181d1ecd0d4270dc32edb46f7cb7733c7c508857278d3d378d14d606db2d"},
+                        {file = "PyYAML-6.0-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:0b4624f379dab24d3725ffde76559cff63d9ec94e1736b556dacdfebe5ab6d4b"},
+                        {file = "PyYAML-6.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:213c60cd50106436cc818accf5baa1aba61c0189ff610f64f4a3e8c6726218ba"},
+                        {file = "PyYAML-6.0-cp38-cp38-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:9fa600030013c4de8165339db93d182b9431076eb98eb40ee068700c9c813e34"},
+                        {file = "PyYAML-6.0-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:277a0ef2981ca40581a47093e9e2d13b3f1fbbeffae064c1d21bfceba2030287"},
+                        {file = "PyYAML-6.0-cp38-cp38-win32.whl", hash = "sha256:d4eccecf9adf6fbcc6861a38015c2a64f38b9d94838ac1810a9023a0609e1b78"},
+                        {file = "PyYAML-6.0-cp38-cp38-win_amd64.whl", hash = "sha256:1e4747bc279b4f613a09eb64bba2ba602d8a6664c6ce6396a4d0cd413a50ce07"},
+                        {file = "PyYAML-6.0-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:055d937d65826939cb044fc8c9b08889e8c743fdc6a32b33e2390f66013e449b"},
+                        {file = "PyYAML-6.0-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:e61ceaab6f49fb8bdfaa0f92c4b57bcfbea54c09277b1b4f7ac376bfb7a7c174"},
+                        {file = "PyYAML-6.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d67d839ede4ed1b28a4e8909735fc992a923cdb84e618544973d7dfc71540803"},
+                        {file = "PyYAML-6.0-cp39-cp39-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:cba8c411ef271aa037d7357a2bc8f9ee8b58b9965831d9e51baf703280dc73d3"},
+                        {file = "PyYAML-6.0-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:40527857252b61eacd1d9af500c3337ba8deb8fc298940291486c465c8b46ec0"},
+                        {file = "PyYAML-6.0-cp39-cp39-win32.whl", hash = "sha256:b5b9eccad747aabaaffbc6064800670f0c297e52c12754eb1d976c57e4f74dcb"},
+                        {file = "PyYAML-6.0-cp39-cp39-win_amd64.whl", hash = "sha256:b3d267842bf12586ba6c734f89d1f5b871df0273157918b0ccefa29deb05c21c"},
+                        {file = "PyYAML-6.0.tar.gz", hash = "sha256:68fb519c14306fec9720a2a5b45bc9f0c8d1b9c72adf45c37baedfcd949c35a2"},
+                    ]
+                    toml = [
+                        {file = "toml-0.10.0-py2.7.egg", hash = "sha256:f1db651f9657708513243e61e6cc67d101a39bad662eaa9b5546f789338e07a3"},
+                        {file = "toml-0.10.0-py2.py3-none-any.whl", hash = "sha256:235682dd292d5899d361a811df37e04a8828a5b1da3115886b73cf81ebc9100e"},
+                        {file = "toml-0.10.0.tar.gz", hash = "sha256:229f81c57791a41d65e399fc06bf0848bab550a9dfd5ed66df18ce5f05e73d5c"},
+                    ]
+                content_encoding: utf-8
+                deleted: false
+                directory: /poetry
+                name: poetry.lock
+                operation: update
+                support_file: false
+                type: file
+            pr-title: Bump numpy from 1.23.0 to 1.23.2 in /poetry
+            pr-body: |
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.23.2.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/numpy/numpy/releases">numpy's releases</a>.</em></p>
+                <blockquote>
+                <h2>v1.23.2</h2>
+                <h1>NumPy 1.23.2 Release Notes</h1>
+                <p>NumPy 1.23.2 is a maintenance release that fixes bugs discovered after
+                the 1.23.1 release. Notable features are:</p>
+                <ul>
+                <li>Typing changes needed for Python 3.11</li>
+                <li>Wheels for Python 3.11.0rc1</li>
+                </ul>
+                <p>The Python versions supported for this release are 3.8-3.11.</p>
+                <h2>Contributors</h2>
+                <p>A total of 9 people contributed to this release. People with a &quot;+&quot; by
+                their names contributed a patch for the first time.</p>
+                <ul>
+                <li>Alexander Grund +</li>
+                <li>Bas van Beek</li>
+                <li>Charles Harris</li>
+                <li>Jon Cusick +</li>
+                <li>Matti Picus</li>
+                <li>Michael Osthege +</li>
+                <li>Pal Barta +</li>
+                <li>Ross Barnowski</li>
+                <li>Sebastian Berg</li>
+                </ul>
+                <h2>Pull requests merged</h2>
+                <p>A total of 15 pull requests were merged for this release.</p>
+                <ul>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22030">#22030</a>: ENH: Add <code>__array_ufunc__</code> typing support to the <code>nin=1</code> ufuncs</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22031">#22031</a>: MAINT, TYP: Fix <code>np.angle</code> dtype-overloads</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22032">#22032</a>: MAINT: Do not let <code>_GenericAlias</code> wrap the underlying classes'...</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22033">#22033</a>: TYP,MAINT: Allow <code>einsum</code> subscripts to be passed via integer...</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22034">#22034</a>: MAINT,TYP: Add object-overloads for the <code>np.generic</code> rich comparisons</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22035">#22035</a>: MAINT,TYP: Allow the <code>squeeze</code> and <code>transpose</code> method to...</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22036">#22036</a>: BUG: Fix subarray to object cast ownership details</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22037">#22037</a>: BUG: Use <code>Popen</code> to silently invoke f77 -v</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22038">#22038</a>: BUG: Avoid errors on NULL during deepcopy</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22039">#22039</a>: DOC: Add versionchanged for converter callable behavior.</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22057">#22057</a>: MAINT: Quiet the anaconda uploads.</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22078">#22078</a>: ENH: reorder includes for testing on top of system installations...</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22106">#22106</a>: TST: fix test_linear_interpolation_formula_symmetric</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22107">#22107</a>: BUG: Fix skip condition for test_loss_of_precision[complex256]</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22115">#22115</a>: BLD: Build python3.11.0rc1 wheels.</li>
+                </ul>
+                <h2>Checksums</h2>
+                <h3>MD5</h3>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/numpy/numpy/commit/21cacafbeeff812cf49ca0102d1dd582b6d77e2b"><code>21cacaf</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22121">#22121</a> from charris/prepare-for-1.23.2</li>
+                <li><a href="https://github.com/numpy/numpy/commit/97cc2c0ec44753ba0d6fde2bdf25784ffaf9a11f"><code>97cc2c0</code></a> REL: Prepare for the NumPy 1.23.2 release.</li>
+                <li><a href="https://github.com/numpy/numpy/commit/4bdf678453c96ec6a4739ea47bc18e2fab481b78"><code>4bdf678</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22115">#22115</a> from charris/backport-22102</li>
+                <li><a href="https://github.com/numpy/numpy/commit/cb6344575938c1babe1439952f58952a72709395"><code>cb63445</code></a> BLD: Build python3.11.0rc1 wheels.</li>
+                <li><a href="https://github.com/numpy/numpy/commit/a5c9fb16cbd9e06f55f537e9d1666b877b581822"><code>a5c9fb1</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22106">#22106</a> from charris/backport-22105</li>
+                <li><a href="https://github.com/numpy/numpy/commit/283f02508d260083b5542af063c82b80bee016c3"><code>283f025</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22107">#22107</a> from charris/backport-22083</li>
+                <li><a href="https://github.com/numpy/numpy/commit/3fdeae210e0146846c552e5069f6dadddedd7e83"><code>3fdeae2</code></a> BUG: Fix skip condition for test_loss_of_precision[complex256]</li>
+                <li><a href="https://github.com/numpy/numpy/commit/f41020bf8c8171da4472b92959e91b4029dc8cff"><code>f41020b</code></a> TST: fix test_linear_interpolation_formula_symmetric</li>
+                <li><a href="https://github.com/numpy/numpy/commit/72b98a0d42c9e52cd2650cf357bc0ccb20264b27"><code>72b98a0</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22078">#22078</a> from charris/backport-22017</li>
+                <li><a href="https://github.com/numpy/numpy/commit/9d1d01af280be6f80e4cf5a210f174cd98471ed4"><code>9d1d01a</code></a> ENH: reorder includes for system installations</li>
+                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.23.0...v1.23.2">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump numpy from 1.23.0 to 1.23.2 in /poetry
+
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.23.2.
+                - [Release notes](https://github.com/numpy/numpy/releases)
+                - [Changelog](https://github.com/numpy/numpy/blob/main/doc/RELEASE_WALKTHROUGH.rst)
+                - [Commits](https://github.com/numpy/numpy/compare/v1.23.0...v1.23.2)
+  - type: mark_as_processed
+    expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994

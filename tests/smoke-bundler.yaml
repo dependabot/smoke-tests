@@ -1,0 +1,436 @@
+input:
+    job:
+        package_manager: bundler
+        allowed_updates:
+          - dependency-name: rubocop
+          - dependency-name: netaddr
+        ignore_conditions:
+          - dependency-name: rubocop
+            source: tests/smoke-bundler.yaml
+            version-requirement: '>1.32.0'
+          - dependency-name: netaddr
+            source: tests/smoke-bundler.yaml
+            version-requirement: '>2.0.6'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /
+            commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+output:
+  - type: record_package_manager_version
+    expect:
+        data:
+            ecosystem: bundler
+            package-managers:
+                bundler: "2"
+  - type: update_dependency_list
+    expect:
+        data:
+            dependencies:
+              - name: rubocop
+                requirements:
+                  - file: Gemfile
+                    groups:
+                      - default
+                    requirement: 0.76.0
+                    source: null
+                version: 0.76.0
+              - name: toml-rb
+                requirements:
+                  - file: Gemfile
+                    groups:
+                      - default
+                    requirement: 2.2.0
+                    source: null
+                version: 2.2.0
+              - name: rack
+                requirements:
+                  - file: Gemfile
+                    groups:
+                      - default
+                    requirement: '>= 0'
+                    source:
+                        branch: master
+                        ref: 2.1.4
+                        type: git
+                        url: git@github.com:rack/rack.git
+                version: f3cf79d6460dc592767941806d1b2b7008f73e01
+              - name: netaddr
+                requirements:
+                  - file: dependabot-all-updates-test-staging.gemspec
+                    groups:
+                      - runtime
+                    requirement: = 2.0.1
+                    source: null
+                version: 2.0.1
+              - name: ast
+                requirements: []
+                version: 2.4.2
+              - name: citrus
+                requirements: []
+                version: 3.0.2
+              - name: jaro_winkler
+                requirements: []
+                version: 1.5.4
+              - name: parallel
+                requirements: []
+                version: 1.22.1
+              - name: parser
+                requirements: []
+                version: 3.1.2.0
+              - name: rainbow
+                requirements: []
+                version: 3.1.1
+              - name: ruby-progressbar
+                requirements: []
+                version: 1.11.0
+              - name: unicode-display_width
+                requirements: []
+                version: 1.6.1
+            dependency_files:
+              - /Gemfile
+              - /Gemfile.lock
+              - /dependabot-all-updates-test-staging.gemspec
+  - type: create_pull_request
+    expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            dependencies:
+              - name: rubocop
+                previous-requirements:
+                  - file: Gemfile
+                    groups:
+                      - default
+                    requirement: 0.76.0
+                    source: null
+                previous-version: 0.76.0
+                requirements:
+                  - file: Gemfile
+                    groups:
+                      - default
+                    requirement: 1.32.0
+                    source: null
+                version: 1.32.0
+            updated-dependency-files:
+              - content: |
+                    # frozen_string_literal: true
+
+                    source "https://rubygems.org"
+
+                    gemspec
+
+                    gem "rubocop", "1.32.0"
+                    gem "toml-rb", "2.2.0"
+                    gem 'rack', git: 'git@github.com:rack/rack.git', tag: '2.1.4'
+                content_encoding: utf-8
+                deleted: false
+                directory: /
+                name: Gemfile
+                operation: update
+                support_file: false
+                type: file
+              - content: |
+                    GIT
+                      remote: git@github.com:rack/rack.git
+                      revision: f3cf79d6460dc592767941806d1b2b7008f73e01
+                      tag: 2.1.4
+                      specs:
+                        rack (2.1.4)
+
+                    PATH
+                      remote: .
+                      specs:
+                        dependabot-all-updates-test-staging (0.0.0)
+                          netaddr (= 2.0.1)
+
+                    GEM
+                      remote: https://rubygems.org/
+                      specs:
+                        ast (2.4.2)
+                        citrus (3.0.2)
+                        json (2.6.2)
+                        netaddr (2.0.1)
+                        parallel (1.22.1)
+                        parser (3.1.2.1)
+                          ast (~> 2.4.1)
+                        rainbow (3.1.1)
+                        regexp_parser (2.5.0)
+                        rexml (3.2.5)
+                        rubocop (1.32.0)
+                          json (~> 2.3)
+                          parallel (~> 1.10)
+                          parser (>= 3.1.0.0)
+                          rainbow (>= 2.2.2, < 4.0)
+                          regexp_parser (>= 1.8, < 3.0)
+                          rexml (>= 3.2.5, < 4.0)
+                          rubocop-ast (>= 1.19.1, < 2.0)
+                          ruby-progressbar (~> 1.7)
+                          unicode-display_width (>= 1.4.0, < 3.0)
+                        rubocop-ast (1.21.0)
+                          parser (>= 3.1.1.0)
+                        ruby-progressbar (1.11.0)
+                        toml-rb (2.2.0)
+                          citrus (~> 3.0, > 3.0)
+                        unicode-display_width (2.2.0)
+
+                    PLATFORMS
+                      ruby
+
+                    DEPENDENCIES
+                      dependabot-all-updates-test-staging!
+                      rack!
+                      rubocop (= 1.32.0)
+                      toml-rb (= 2.2.0)
+
+                    BUNDLED WITH
+                       2.1.4
+                content_encoding: utf-8
+                deleted: false
+                directory: /
+                name: Gemfile.lock
+                operation: update
+                support_file: false
+                type: file
+            pr-title: Bump rubocop from 0.76.0 to 1.32.0
+            pr-body: |
+                Bumps [rubocop](https://github.com/rubocop/rubocop) from 0.76.0 to 1.32.0.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/rubocop/rubocop/releases">rubocop's releases</a>.</em></p>
+                <blockquote>
+                <h2>RuboCop 1.32</h2>
+                <h3>New features</h3>
+                <ul>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10820">#10820</a>: Add new <code>Style/EmptyHeredoc</code> cop. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10691">#10691</a>: Add new <code>Layout/MultilineMethodParameterLineBreaks</code> cop. (<a href="https://github.com/Korri"><code>@​Korri</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10790">#10790</a>: Support <code>AllowComments</code> option for <code>Style/EmptyElse</code>. (<a href="https://github.com/ydah"><code>@​ydah</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10792">#10792</a>: Add new <code>Lint/RequireRangeParentheses</code> cop. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10692">#10692</a>: Break long method definitions when auto-correcting. (<a href="https://github.com/Korri"><code>@​Korri</code></a>)</li>
+                </ul>
+                <h3>Bug fixes</h3>
+                <ul>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10824">#10824</a>: Make <code>Lint/DeprecatedClassMethods</code> aware of <code>ENV.clone</code> and <code>ENV.dup</code>. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10788">#10788</a>: Relax <code>Style/FetchEnvVar</code> to allow <code>ENV[]</code> in LHS of <code>||</code>. (<a href="https://github.com/j-miyake"><code>@​j-miyake</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10813">#10813</a>: Fix recursive deletion to suppression in <code>Lint/NonAtomicFileOperation</code>. (<a href="https://github.com/ydah"><code>@​ydah</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10791">#10791</a>: Fix an incorrect autocorrect for <code>Style/Semicolon</code> when using endless range before semicolon. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10781">#10781</a>: Fix a suggestions for safer conversions for <code>Lint/NonAtomicFileOperation</code>. (<a href="https://github.com/ydah"><code>@​ydah</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10263">#10263</a>: Fix the value of <code>Enabled</code> leaking between configurations. (<a href="https://github.com/jonas054"><code>@​jonas054</code></a>)</li>
+                </ul>
+                <h3>Changes</h3>
+                <ul>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10613">#10613</a>: Allow autocorrecting with -P/--parallel and make it the default. (<a href="https://github.com/jonas054"><code>@​jonas054</code></a>)</li>
+                <li>Add EnforcedStyle (leading/trailing) configuration to <code>Layout::LineContinuationLeadingSpace</code>. (<a href="https://github.com/bquorning"><code>@​bquorning</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10784">#10784</a>: Preserve multiline semantics on <code>Style/SymbolArray</code> and <code>Style/WordArray</code>. (<a href="https://github.com/r7kamura"><code>@​r7kamura</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10814">#10814</a>: Avoid buffering stdout when running in server mode. (<a href="https://github.com/ccutrer"><code>@​ccutrer</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10817">#10817</a>: Add autocorrect support for <code>Style/SafeNavigationChain</code>. (<a href="https://github.com/r7kamura"><code>@​r7kamura</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10810">#10810</a>: Support safe navigation operator on <code>Style/SymbolProc</code>. (<a href="https://github.com/r7kamura"><code>@​r7kamura</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10803">#10803</a>: Require RuboCop AST 1.9.1 or higher. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                </ul>
+                <h2>RuboCop 1.31.2</h2>
+                <h3>Bug fixes</h3>
+                <ul>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10774">#10774</a>: Fix false negatives in <code>Style/DocumentationMethod</code> when a public method is defined after a private one. (<a href="https://github.com/Darhazer"><code>@​Darhazer</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10764">#10764</a>: Fix performance issue for Layout/FirstHashElementIndentation and Layout/FirstArrayElementIndentation. (<a href="https://github.com/j-miyake"><code>@​j-miyake</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10780">#10780</a>: Fix an error when using <code>rubocop:auto_correct</code> deprecated custom rake task. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10786">#10786</a>: Fix a false positive for <code>Lint/NonAtomicFileOperation</code> when using complex conditional. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10785">#10785</a>: Fix a false negative for <code>Style/RedundantParentheses</code> when parens around a receiver of a method call with an argument. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10026">#10026</a>: Fix merging of array parameters in either parent of default config. (<a href="https://github.com/jonas054"><code>@​jonas054</code></a>)</li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md">rubocop's changelog</a>.</em></p>
+                <blockquote>
+                <h2>1.32.0 (2022-07-21)</h2>
+                <h3>New features</h3>
+                <ul>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10820">#10820</a>: Add new <code>Style/EmptyHeredoc</code> cop. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10691">#10691</a>: Add new <code>Layout/MultilineMethodParameterLineBreaks</code> cop. ([<a href="https://github.com/Korri"><code>@​Korri</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10790">#10790</a>: Support <code>AllowComments</code> option for <code>Style/EmptyElse</code>. ([<a href="https://github.com/ydah"><code>@​ydah</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10792">#10792</a>: Add new <code>Lint/RequireRangeParentheses</code> cop. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10692">#10692</a>: Break long method definitions when auto-correcting. ([<a href="https://github.com/Korri"><code>@​Korri</code></a>][])</li>
+                </ul>
+                <h3>Bug fixes</h3>
+                <ul>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10824">#10824</a>: Make <code>Lint/DeprecatedClassMethods</code> aware of <code>ENV.clone</code> and <code>ENV.dup</code>. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10788">#10788</a>: Relax <code>Style/FetchEnvVar</code> to allow <code>ENV[]</code> in LHS of <code>||</code>. ([<a href="https://github.com/j-miyake"><code>@​j-miyake</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10813">#10813</a>: Fix recursive deletion to suppression in <code>Lint/NonAtomicFileOperation</code>. ([<a href="https://github.com/ydah"><code>@​ydah</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10791">#10791</a>: Fix an incorrect autocorrect for <code>Style/Semicolon</code> when using endless range before semicolon. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10781">#10781</a>: Fix a suggestions for safer conversions for <code>Lint/NonAtomicFileOperation</code>. ([<a href="https://github.com/ydah"><code>@​ydah</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10263">#10263</a>: Fix the value of <code>Enabled</code> leaking between configurations. ([<a href="https://github.com/jonas054"><code>@​jonas054</code></a>][])</li>
+                </ul>
+                <h3>Changes</h3>
+                <ul>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10613">#10613</a>: Allow autocorrecting with -P/--parallel and make it the default. ([<a href="https://github.com/jonas054"><code>@​jonas054</code></a>][])</li>
+                <li>Add EnforcedStyle (leading/trailing) configuration to <code>Layout::LineContinuationLeadingSpace</code>. ([<a href="https://github.com/bquorning"><code>@​bquorning</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10784">#10784</a>: Preserve multiline semantics on <code>Style/SymbolArray</code> and <code>Style/WordArray</code>. ([<a href="https://github.com/r7kamura"><code>@​r7kamura</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10814">#10814</a>: Avoid buffering stdout when running in server mode. ([<a href="https://github.com/ccutrer"><code>@​ccutrer</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10817">#10817</a>: Add autocorrect support for <code>Style/SafeNavigationChain</code>. ([<a href="https://github.com/r7kamura"><code>@​r7kamura</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10810">#10810</a>: Support safe navigation operator on <code>Style/SymbolProc</code>. ([<a href="https://github.com/r7kamura"><code>@​r7kamura</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10803">#10803</a>: Require RuboCop AST 1.9.1 or higher. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                </ul>
+                <h2>1.31.2 (2022-07-07)</h2>
+                <h3>Bug fixes</h3>
+                <ul>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10774">#10774</a>: Fix false negatives in <code>Style/DocumentationMethod</code> when a public method is defined after a private one. ([<a href="https://github.com/Darhazer"><code>@​Darhazer</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10764">#10764</a>: Fix performance issue for Layout/FirstHashElementIndentation and Layout/FirstArrayElementIndentation. ([<a href="https://github.com/j-miyake"><code>@​j-miyake</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10780">#10780</a>: Fix an error when using <code>rubocop:auto_correct</code> deprecated custom rake task. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10786">#10786</a>: Fix a false positive for <code>Lint/NonAtomicFileOperation</code> when using complex conditional. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/pull/10785">#10785</a>: Fix a false negative for <code>Style/RedundantParentheses</code> when parens around a receiver of a method call with an argument. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10026">#10026</a>: Fix merging of array parameters in either parent of default config. ([<a href="https://github.com/jonas054"><code>@​jonas054</code></a>][])</li>
+                </ul>
+                <h2>1.31.1 (2022-06-29)</h2>
+                <h3>Bug fixes</h3>
+                <ul>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10763">#10763</a>: Fix a false positive for <code>Layout/LineContinuationSpacing</code> when using continuation keyword <code>\</code> after <code>__END__</code>. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10755">#10755</a>: Fix a false positive for <code>Lint/LiteralAsCondition</code> when using a literal in <code>case-in</code> condition where the match variable is used in <code>in</code> are accepted as a pattern matching. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10760">#10760</a>: Fix a false positive for <code>Lint/NonAtomicFileOperation</code> when using <code>FileTest.exist?</code> with <code>if</code> condition that has <code>else</code> branch. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10745">#10745</a>: Require JSON 2.3 or higher to fix an incompatible JSON API error. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10754">#10754</a>: Fix an incorrect autocorrect for <code>Style/HashExcept</code> when using a non-literal collection receiver for <code>include?</code>. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10751">#10751</a>: Fix autocorrect for Layout/FirstHashElementIndentation. ([<a href="https://github.com/j-miyake"><code>@​j-miyake</code></a>][])</li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rubocop/rubocop/commit/08fd23a2856422210564f1d7915e2cfdf2b4854b"><code>08fd23a</code></a> Cut 1.32</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/2f9a4d09d06d5e74fb32e28d9a64d5200c23ab02"><code>2f9a4d0</code></a> Update Changelog</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/dd11b7b8c71752036b2d5ee180ffc66ba5262bd1"><code>dd11b7b</code></a> [Fix <a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10788">#10788</a>] Relax <code>Style/FetchEnvVar</code> to allow <code>ENV[]</code> in LHS of <code>||</code></li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/0124f73c4f6f72d7407628013ac19b374ea81ba6"><code>0124f73</code></a> [Fix rubocop#10813] Fix recursive deletion to suppression in `Lint/NonAtomicF...</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/2f8d8c7d9fe62b32260959a73a9a231cd05f3958"><code>2f8d8c7</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10824">#10824</a> from koic/make_lint_deprecated_class_methods_aware_...</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/a6bc6074d6a4ad0ee50c58aeff2b2ec3b3479e97"><code>a6bc607</code></a> Make <code>Lint/DeprecatedClassMethods</code> aware of <code>ENV.clone</code> and <code>ENV.dup</code></li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/2c4215fa5fc42f4e92184daa52eaa22b56de60b1"><code>2c4215f</code></a> Add new <code>Style/EmptyHeredoc</code> cop</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/992019e1ffd55a99de16d695044ef296f042117b"><code>992019e</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/rubocop/rubocop/issues/10814">#10814</a> from ccutrer/server-fast-stdout</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/997d66f295ecf32069b16640a78da4567d07b557"><code>997d66f</code></a> [Doc] Syntax highlight for CONTRIBUTING.md</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/83893cee96b3aafc886e4bc84d9b75cadf4366ef"><code>83893ce</code></a> Add autocorrect support for <code>Style/SafeNavigationChain</code></li>
+                <li>Additional commits viewable in <a href="https://github.com/rubocop/rubocop/compare/v0.76.0...v1.32.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump rubocop from 0.76.0 to 1.32.0
+
+                Bumps [rubocop](https://github.com/rubocop/rubocop) from 0.76.0 to 1.32.0.
+                - [Release notes](https://github.com/rubocop/rubocop/releases)
+                - [Changelog](https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/rubocop/rubocop/compare/v0.76.0...v1.32.0)
+  - type: create_pull_request
+    expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            dependencies:
+              - name: netaddr
+                previous-requirements:
+                  - file: dependabot-all-updates-test-staging.gemspec
+                    groups:
+                      - runtime
+                    requirement: = 2.0.1
+                    source: null
+                previous-version: 2.0.1
+                requirements:
+                  - file: dependabot-all-updates-test-staging.gemspec
+                    groups:
+                      - runtime
+                    requirement: = 2.0.6
+                    source: null
+                version: 2.0.6
+            updated-dependency-files:
+              - content: |
+                    GIT
+                      remote: git@github.com:rack/rack.git
+                      revision: f3cf79d6460dc592767941806d1b2b7008f73e01
+                      tag: 2.1.4
+                      specs:
+                        rack (2.1.4)
+
+                    PATH
+                      remote: .
+                      specs:
+                        dependabot-all-updates-test-staging (0.0.0)
+                          netaddr (= 2.0.6)
+
+                    GEM
+                      remote: https://rubygems.org/
+                      specs:
+                        ast (2.4.2)
+                        citrus (3.0.2)
+                        jaro_winkler (1.5.4)
+                        netaddr (2.0.6)
+                        parallel (1.22.1)
+                        parser (3.1.2.0)
+                          ast (~> 2.4.1)
+                        rainbow (3.1.1)
+                        rubocop (0.76.0)
+                          jaro_winkler (~> 1.5.1)
+                          parallel (~> 1.10)
+                          parser (>= 2.6)
+                          rainbow (>= 2.2.2, < 4.0)
+                          ruby-progressbar (~> 1.7)
+                          unicode-display_width (>= 1.4.0, < 1.7)
+                        ruby-progressbar (1.11.0)
+                        toml-rb (2.2.0)
+                          citrus (~> 3.0, > 3.0)
+                        unicode-display_width (1.6.1)
+
+                    PLATFORMS
+                      ruby
+
+                    DEPENDENCIES
+                      dependabot-all-updates-test-staging!
+                      rack!
+                      rubocop (= 0.76.0)
+                      toml-rb (= 2.2.0)
+
+                    BUNDLED WITH
+                       2.1.4
+                content_encoding: utf-8
+                deleted: false
+                directory: /
+                name: Gemfile.lock
+                operation: update
+                support_file: false
+                type: file
+              - content: |
+                    Gem::Specification.new do |s|
+                      s.name        = 'dependabot-all-updates-test-staging'
+                      s.version     = '0.0.0'
+                      s.description = "Dependabot test ruby"
+                      s.summary     = "dependabot test"
+                      s.authors     = ["No Reply"]
+                      s.email       = 'noreply@github.com'
+                      s.license     = 'MIT'
+                      s.add_runtime_dependency 'netaddr', '= 2.0.6'
+                    end
+                content_encoding: utf-8
+                deleted: false
+                directory: /
+                name: dependabot-all-updates-test-staging.gemspec
+                operation: update
+                support_file: false
+                type: file
+            pr-title: Update netaddr requirement from = 2.0.1 to = 2.0.6
+            pr-body: |
+                Updates the requirements on [netaddr](https://github.com/dspinhirne/netaddr-rb) to permit the latest version.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/dspinhirne/netaddr-rb/commits/2.0.6">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Update netaddr requirement from = 2.0.1 to = 2.0.6
+
+                Updates the requirements on [netaddr](https://github.com/dspinhirne/netaddr-rb) to permit the latest version.
+                - [Release notes](https://github.com/dspinhirne/netaddr-rb/releases)
+                - [Commits](https://github.com/dspinhirne/netaddr-rb/commits/2.0.6)
+  - type: mark_as_processed
+    expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994

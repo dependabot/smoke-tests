@@ -1,0 +1,278 @@
+input:
+    job:
+        package_manager: composer
+        allowed_updates:
+          - update-type: all
+        ignore_conditions:
+          - dependency-name: phpmailer/phpmailer
+            source: tests/smoke-composer.yaml
+            version-requirement: '>6.6.3'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /
+            commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+output:
+  - type: update_dependency_list
+    expect:
+        data:
+            dependencies:
+              - name: phpmailer/phpmailer
+                requirements:
+                  - file: composer.json
+                    groups:
+                      - runtime
+                    requirement: 5.2.2
+                    source:
+                        type: git
+                        url: https://github.com/PHPMailer/PHPMailer.git
+                version: 5.2.2
+            dependency_files:
+              - /composer.json
+              - /composer.lock
+  - type: create_pull_request
+    expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            dependencies:
+              - name: phpmailer/phpmailer
+                previous-requirements:
+                  - file: composer.json
+                    groups:
+                      - runtime
+                    requirement: 5.2.2
+                    source:
+                        type: git
+                        url: https://github.com/PHPMailer/PHPMailer.git
+                previous-version: 5.2.2
+                requirements:
+                  - file: composer.json
+                    groups:
+                      - runtime
+                    requirement: 6.6.3
+                    source:
+                        type: git
+                        url: https://github.com/PHPMailer/PHPMailer.git
+                version: 6.6.3
+            updated-dependency-files:
+              - content: |
+                    {
+                        "require": {
+                            "phpmailer/phpmailer": "6.6.3"
+                        }
+                    }
+                content_encoding: utf-8
+                deleted: false
+                directory: /
+                name: composer.json
+                operation: update
+                support_file: false
+                type: file
+              - content: |
+                    {
+                        "_readme": [
+                            "This file locks the dependencies of your project to a known state",
+                            "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+                            "This file is @generated automatically"
+                        ],
+                        "content-hash": "1e6a93901a76874faba19cae4283cab4",
+                        "packages": [
+                            {
+                                "name": "phpmailer/phpmailer",
+                                "version": "v6.6.3",
+                                "source": {
+                                    "type": "git",
+                                    "url": "https://github.com/PHPMailer/PHPMailer.git",
+                                    "reference": "9400f305a898f194caff5521f64e5dfa926626f3"
+                                },
+                                "dist": {
+                                    "type": "zip",
+                                    "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/9400f305a898f194caff5521f64e5dfa926626f3",
+                                    "reference": "9400f305a898f194caff5521f64e5dfa926626f3",
+                                    "shasum": ""
+                                },
+                                "require": {
+                                    "ext-ctype": "*",
+                                    "ext-filter": "*",
+                                    "ext-hash": "*",
+                                    "php": ">=5.5.0"
+                                },
+                                "require-dev": {
+                                    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                                    "doctrine/annotations": "^1.2",
+                                    "php-parallel-lint/php-console-highlighter": "^1.0.0",
+                                    "php-parallel-lint/php-parallel-lint": "^1.3.2",
+                                    "phpcompatibility/php-compatibility": "^9.3.5",
+                                    "roave/security-advisories": "dev-latest",
+                                    "squizlabs/php_codesniffer": "^3.6.2",
+                                    "yoast/phpunit-polyfills": "^1.0.0"
+                                },
+                                "suggest": {
+                                    "ext-mbstring": "Needed to send email in multibyte encoding charset or decode encoded addresses",
+                                    "hayageek/oauth2-yahoo": "Needed for Yahoo XOAUTH2 authentication",
+                                    "league/oauth2-google": "Needed for Google XOAUTH2 authentication",
+                                    "psr/log": "For optional PSR-3 debug logging",
+                                    "stevenmaguire/oauth2-microsoft": "Needed for Microsoft XOAUTH2 authentication",
+                                    "symfony/polyfill-mbstring": "To support UTF-8 if the Mbstring PHP extension is not enabled (^1.2)"
+                                },
+                                "type": "library",
+                                "autoload": {
+                                    "psr-4": {
+                                        "PHPMailer\\PHPMailer\\": "src/"
+                                    }
+                                },
+                                "notification-url": "https://packagist.org/downloads/",
+                                "license": [
+                                    "LGPL-2.1-only"
+                                ],
+                                "authors": [
+                                    {
+                                        "name": "Marcus Bointon",
+                                        "email": "phpmailer@synchromedia.co.uk"
+                                    },
+                                    {
+                                        "name": "Jim Jagielski",
+                                        "email": "jimjag@gmail.com"
+                                    },
+                                    {
+                                        "name": "Andy Prevost",
+                                        "email": "codeworxtech@users.sourceforge.net"
+                                    },
+                                    {
+                                        "name": "Brent R. Matzelle"
+                                    }
+                                ],
+                                "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
+                                "funding": [
+                                    {
+                                        "url": "https://github.com/Synchro",
+                                        "type": "github"
+                                    }
+                                ],
+                                "time": "2022-06-20T09:21:02+00:00"
+                            }
+                        ],
+                        "packages-dev": [],
+                        "aliases": [],
+                        "minimum-stability": "stable",
+                        "stability-flags": [],
+                        "prefer-stable": false,
+                        "prefer-lowest": false,
+                        "platform": [],
+                        "platform-dev": [],
+                        "plugin-api-version": "1.1.0"
+                    }
+                content_encoding: utf-8
+                deleted: false
+                directory: /
+                name: composer.lock
+                operation: update
+                support_file: false
+                type: file
+            pr-title: Bump phpmailer/phpmailer from 5.2.2 to 6.6.3
+            pr-body: "Bumps [phpmailer/phpmailer](https://github.com/PHPMailer/PHPMailer)
+                from 5.2.2 to 6.6.3.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced
+                from <a href=\"https://github.com/PHPMailer/PHPMailer/releases\">phpmailer/phpmailer's
+                releases</a>.</em></p>\n<blockquote>\n<h2>PHPMailer 6.6.3</h2>\n<p>This
+                is a maintenance release.</p>\n<ul>\n<li>Add an HTML form to the OAuth
+                setup script</li>\n<li>Minor CS improvements</li>\n<li>Add Mongolian
+                translation</li>\n<li>Remove bogus &quot;ch&quot; translation</li>\n</ul>\n<p>The
+                removal of the translation file is effectively a BC break, however,
+                I don't expect it to affect anyone except that small group of users
+                that request error messages in the Chamorro language, but are happy
+                getting them in Chinese instead \U0001F606.</p>\n<h2>PHPMailer 6.6.2</h2>\n<p>This
+                is a maintenance release.</p>\n<ul>\n<li>Don't clear errors on RSET,
+                so they can still be obtained when using keepalive</li>\n<li>Bump
+                some GitHub action versions</li>\n<li>Fix some tests</li>\n<li>Fix
+                docs deployment GitHub action</li>\n<li>Updates to parallel-lint and
+                console highlighter, thanks to <a href=\"https://github.com/jrfnl\"><code>@​jrfnl</code></a></li>\n<li>\U0001F1FA\U0001F1E6
+                Slava Ukraini!</li>\n</ul>\n<p>Note that 6.6.1 was not released.</p>\n<h2>PHPMailer
+                6.6.0</h2>\n<p>This is a minor feature release.</p>\n<p>Prior to this
+                version, any OAuth provider needed to extend the provided <code>OAuth</code>
+                base class, and this made it difficult to use with libraries other
+                than ones based on the default <a href=\"https://github.com/thephpleague/oauth2-client\">league</a>
+                client packages. The OAuth property now accepts anything that implements
+                the <code>OAuthProviderInterface</code>, making it much easier to
+                use things like <a href=\"https://github.com/googleapis/google-api-php-client\">Google's
+                own OAuth classes</a>. Existing implementations that extend the provided
+                <code>OAuth</code> base class will still work, as that base class
+                now implements this interface too. Thanks to <a href=\"https://github.com/pdscopes\"><code>@​pdscopes</code></a>.</p>\n<p>When
+                TLS errors occurred in PHPMailer, the error messages were often missing
+                important info that might help diagnose/solve the problem. These error
+                messages should now be more informative. A minor change is that a
+                TLS error on SMTP connect will now throw an exception if exceptions
+                are enabled. Thanks to <a href=\"https://github.com/miken32\"><code>@​miken32</code></a>.</p>\n<h2>PHPMailer
+                6.5.4</h2>\n<p>This is a maintenance release.</p>\n<p>The change in
+                how shell escaping is handled should not create any BC issues. What
+                used to fail accidentally in potentially unsafe shell situations will
+                now fail deliberately! Note to hosting providers: don't disable <code>escapeshellarg</code>
+                and <code>escapeshellcmd</code>; it's not safe!</p>\n<ul>\n<li>If
+                we can't use escaping functions, refuse to do unsafe things</li>\n<li>Avoid
+                PHP 8.1 trim issue</li>\n<li>Add tests for XMailer</li>\n<li>Fix bug
+                in use of CharSet property</li>\n<li>Fix bug in file upload example</li>\n<li>Update
+                dev dependencies</li>\n</ul>\n<h2>PHPMailer 6.5.3</h2>\n<p>This is
+                a maintenance release.</p>\n<ul>\n<li>Wrong commit tagged for the
+                6.5.2 release!</li>\n<li>Version file updated</li>\n</ul>\n<h2>PHPMailer
+                6.5.2</h2>\n<p>This is a maintenance release.</p>\n<!-- raw HTML omitted
+                -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced
+                from <a href=\"https://github.com/PHPMailer/PHPMailer/blob/master/changelog.md\">phpmailer/phpmailer's
+                changelog</a>.</em></p>\n<blockquote>\n<h2>Version 6.6.3 (June 20th,
+                2022)</h2>\n<ul>\n<li>Add an HTML form to the OAuth setup script</li>\n<li>Minor
+                CS improvements</li>\n<li>Add Mongolian translation</li>\n<li>Remove
+                bogus &quot;ch&quot; translation</li>\n</ul>\n<h2>Version 6.6.2 (June
+                14th, 2022)</h2>\n<ul>\n<li>Fix docs deployment GitHub action</li>\n<li>Updates
+                to parallel-lint and console highlighter, thanks to <a href=\"https://github.com/jrfnl\"><code>@​jrfnl</code></a></li>\n</ul>\n<h2>Version
+                6.6.1 (June 14th, 2022) (unreleased)</h2>\n<ul>\n<li>Don't clear errors
+                on RSET, so they can still be obtained when using keepalive</li>\n<li>Bump
+                some GitHub action versions</li>\n<li>Fix some tests</li>\n<li>\U0001F1FA\U0001F1E6
+                Slava Ukraini!</li>\n</ul>\n<h2>Version 6.6 (February 28th, 2022)</h2>\n<ul>\n<li>Introduce
+                interface for OAuth providers, making it easier to use OAuth libraries
+                other than the League one, thanks to <a href=\"https://github.com/pdscopes\"><code>@​pdscopes</code></a>.</li>\n<li>Add
+                more contextual information to TLS connection failure error messages,
+                and throw exceptions on TLS connection errors, thanks to <a href=\"https://github.com/miken32\"><code>@​miken32</code></a></li>\n</ul>\n<h2>Version
+                6.5.4 (February 17th, 2022)</h2>\n<ul>\n<li>If we can't use escaping
+                functions, refuse to do unsafe things</li>\n<li>Avoid PHP 8.1 trim
+                issue</li>\n<li>Add tests for XMailer</li>\n<li>Fix bug in use of
+                CharSet property</li>\n<li>Fix bug in file upload example</li>\n<li>Update
+                dev dependencies</li>\n</ul>\n<h2>Version 6.5.3 (November 25th, 2021)</h2>\n<ul>\n<li>Wrong
+                commit tagged for the 6.5.2 release!</li>\n<li>Version file updated</li>\n</ul>\n<h2>Version
+                6.5.2 (November 25th, 2021)</h2>\n<ul>\n<li>Enable official support
+                for PHP 8.1</li>\n<li>Enable experimental support for PHP 8.2</li>\n<li>Fix
+                for PHP 5.6</li>\n<li>Fix for incorrect options for punyencoding IDNs</li>\n</ul>\n<h2>Version
+                6.5.1 (August 18th, 2021)</h2>\n<ul>\n<li>Provisional support for
+                PHP 8.1</li>\n<li>Major overhaul of test suite</li>\n<li>Add codecov.io
+                coverage reporting</li>\n<li>Prefer implicit TLS on port 465 as default
+                encryption scheme in examples, as per RFC8314</li>\n<li>Fix potential
+                noisy output from IMAP address parser</li>\n<li>Stricter checking
+                of custom MessageID validity</li>\n<li>Replace invalid default From
+                address</li>\n<li>Support fallback for languages, so a request for
+                <code>pt_xx</code> will fall back to <code>pt</code> rather than the
+                default <code>en</code>.</li>\n<li>Support multi-line RFC2047 addresses
+                in parseAddresses</li>\n<li>Improved Japanese translation</li>\n</ul>\n<!--
+                raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a
+                href=\"https://github.com/PHPMailer/PHPMailer/commit/9400f305a898f194caff5521f64e5dfa926626f3\"><code>9400f30</code></a>
+                6.6.3</li>\n<li><a href=\"https://github.com/PHPMailer/PHPMailer/commit/e6fbc528c55a418a8326791cc6d805e69e3c84b0\"><code>e6fbc52</code></a>
+                Merge pull request <a href=\"https://github-redirect.dependabot.com/PHPMailer/PHPMailer/issues/2714\">#2714</a>
+                from ZhangChengLin/master-zcl</li>\n<li><a href=\"https://github.com/PHPMailer/PHPMailer/commit/e39958ed892d56f05ce5e896ea26a9f1a902a45e\"><code>e39958e</code></a>
+                Don't put this in .gitignore</li>\n<li><a href=\"https://github.com/PHPMailer/PHPMailer/commit/ef60bd95dc52be303c4687d6e6cf30ed42aaff83\"><code>ef60bd9</code></a>
+                Update changelog.md</li>\n<li><a href=\"https://github.com/PHPMailer/PHPMailer/commit/f06453cbede1121baec563a03c5bbb3aa2268d8c\"><code>f06453c</code></a>
+                Merge pull request <a href=\"https://github-redirect.dependabot.com/PHPMailer/PHPMailer/issues/2306\">#2306</a>
+                from wispas/patch-1</li>\n<li><a href=\"https://github.com/PHPMailer/PHPMailer/commit/090e168fa914e731dd343ae35a8000eaaa00ee54\"><code>090e168</code></a>
+                Cleanup</li>\n<li><a href=\"https://github.com/PHPMailer/PHPMailer/commit/2f7852929dfdabf416cfe774c402559508ec8029\"><code>2f78529</code></a>
+                Add IDE configuration directory &quot;.idea&quot;</li>\n<li><a href=\"https://github.com/PHPMailer/PHPMailer/commit/1023717ed780ca72d511ee064aa35488a541b54a\"><code>1023717</code></a>
+                ISO 639-1 Language code and content do not match</li>\n<li><a href=\"https://github.com/PHPMailer/PHPMailer/commit/52d82dbdefb06d49c9d1e6296f6eb3a732c0979b\"><code>52d82db</code></a>
+                Merge pull request <a href=\"https://github-redirect.dependabot.com/PHPMailer/PHPMailer/issues/2459\">#2459</a>
+                from rx80/patch-1</li>\n<li><a href=\"https://github.com/PHPMailer/PHPMailer/commit/7599b516d445731b0f06360971a575486c25b903\"><code>7599b51</code></a>
+                Changelog</li>\n<li>Additional commits viewable in <a href=\"https://github.com/PHPMailer/PHPMailer/compare/v5.2.2...v6.6.3\">compare
+                view</a></li>\n</ul>\n</details>\n<br />\n"
+            commit-message: |-
+                Bump phpmailer/phpmailer from 5.2.2 to 6.6.3
+
+                Bumps [phpmailer/phpmailer](https://github.com/PHPMailer/PHPMailer) from 5.2.2 to 6.6.3.
+                - [Release notes](https://github.com/PHPMailer/PHPMailer/releases)
+                - [Changelog](https://github.com/PHPMailer/PHPMailer/blob/master/changelog.md)
+                - [Commits](https://github.com/PHPMailer/PHPMailer/compare/v5.2.2...v6.6.3)
+  - type: mark_as_processed
+    expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
