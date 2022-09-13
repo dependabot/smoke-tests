@@ -19,8 +19,8 @@ input:
         source:
             provider: github
             repo: dependabot/smoke-tests
-            directory: /
-            commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            directory: /cargo
+            commit: 94c728c768e77f350df9ceb59ca74f554891fdc8
 output:
   - type: update_dependency_list
     expect:
@@ -72,7 +72,7 @@ output:
   - type: create_pull_request
     expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 94c728c768e77f350df9ceb59ca74f554891fdc8
             dependencies:
               - name: time
                 previous-requirements:
@@ -438,7 +438,7 @@ output:
   - type: create_pull_request
     expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 94c728c768e77f350df9ceb59ca74f554891fdc8
             dependencies:
               - name: regex
                 previous-requirements:
@@ -695,7 +695,7 @@ output:
   - type: create_pull_request
     expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 94c728c768e77f350df9ceb59ca74f554891fdc8
             dependencies:
               - name: libc
                 previous-requirements: []
@@ -891,7 +891,7 @@ output:
   - type: create_pull_request
     expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 94c728c768e77f350df9ceb59ca74f554891fdc8
             dependencies:
               - name: redox_syscall
                 previous-requirements: []
@@ -1009,4 +1009,4 @@ output:
   - type: mark_as_processed
     expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 94c728c768e77f350df9ceb59ca74f554891fdc8

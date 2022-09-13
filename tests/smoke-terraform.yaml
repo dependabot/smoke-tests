@@ -19,8 +19,8 @@ input:
         source:
             provider: github
             repo: dependabot/smoke-tests
-            directory: /
-            commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            directory: /terraform
+            commit: 94c728c768e77f350df9ceb59ca74f554891fdc8
 output:
   - type: update_dependency_list
     expect:
@@ -97,7 +97,7 @@ output:
   - type: create_pull_request
     expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 94c728c768e77f350df9ceb59ca74f554891fdc8
             dependencies:
               - name: duplicate_label::github::cloudposse/terraform-null-label::tags/0.3.7
                 previous-requirements:
@@ -356,7 +356,7 @@ output:
   - type: create_pull_request
     expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 94c728c768e77f350df9ceb59ca74f554891fdc8
             dependencies:
               - name: github_ssh_without_protocol::github::cloudposse/terraform-aws-jenkins::tags/0.4.0
                 previous-requirements:
@@ -588,7 +588,7 @@ output:
   - type: create_pull_request
     expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 94c728c768e77f350df9ceb59ca74f554891fdc8
             dependencies:
               - name: logs::github::cloudposse/terraform-aws-s3-log-storage::tags/0.2.2
                 previous-requirements:
@@ -837,7 +837,7 @@ output:
   - type: create_pull_request
     expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 94c728c768e77f350df9ceb59ca74f554891fdc8
             dependencies:
               - name: origin_label::github::cloudposse/terraform-null-label::tags/0.3.7
                 previous-requirements:
@@ -1096,4 +1096,4 @@ output:
   - type: mark_as_processed
     expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 94c728c768e77f350df9ceb59ca74f554891fdc8

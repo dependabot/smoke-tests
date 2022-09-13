@@ -14,8 +14,8 @@ input:
         source:
             provider: github
             repo: dependabot/smoke-tests
-            directory: /
-            commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            directory: /bundler
+            commit: 94c728c768e77f350df9ceb59ca74f554891fdc8
 output:
   - type: record_package_manager_version
     expect:
@@ -94,7 +94,7 @@ output:
   - type: create_pull_request
     expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 94c728c768e77f350df9ceb59ca74f554891fdc8
             dependencies:
               - name: rubocop
                 previous-requirements:
@@ -323,7 +323,7 @@ output:
   - type: create_pull_request
     expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 94c728c768e77f350df9ceb59ca74f554891fdc8
             dependencies:
               - name: netaddr
                 previous-requirements:
@@ -433,4 +433,4 @@ output:
   - type: mark_as_processed
     expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 94c728c768e77f350df9ceb59ca74f554891fdc8
