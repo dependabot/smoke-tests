@@ -5,6 +5,8 @@ on:
   workflow_dispatch:
   pull_request:
     branches: ["main"]
+  schedule:
+    - cron: "0 */12 * * *"
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -58,7 +60,7 @@ jobs:
       - name: Diff
         if: always()
         continue-on-error: true
-        run: diff --ignore-space-change tests/smoke-${{ matrix.suite}}.yaml result.yaml && echo "Contents are identical"
+        run: diff --ignore-space-change tests/smoke-${{ matrix.suite}}.yaml result.yaml && echo "Contents are identical" || exit 0
 
       - name: Create summary
         run: tail -n100 log.txt | grep -P '\d+/\d+ calls cached \(\d+%\)' >> $GITHUB_STEP_SUMMARY
