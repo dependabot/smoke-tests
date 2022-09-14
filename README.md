@@ -68,3 +68,7 @@ credentials:
     registry: https://npm.pkg.github.com
     token: $MY_TOKEN
 ```
+
+### ARM64 machines
+
+Since we currently don't produce ARM images, it is recommended you use Codespaces to run and regenerate tests. It runs much faster than emulation!
