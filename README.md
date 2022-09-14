@@ -57,3 +57,14 @@ To see the percentage of caching on each test, go to the [Smoke tests](https://g
 Sometimes after a test has been uncached for a while, it will break, and recaching won't fix it. In this case we will need to regenerate the test locally with `dependabot test -f tests/smoke-bundler.yaml -o tests/smoke-bundler.yaml` for example, then push it up, and recache that test.
 
 Where possible try to add additional ignore_conditions and allowed_updates so even when uncached the tests will not fail.
+
+### Secrets
+
+To keep secrets out of test files, the CLI can use environment variables instead:
+
+```yaml
+credentials:
+  - type: npm_registry
+    registry: https://npm.pkg.github.com
+    token: $MY_TOKEN
+```
