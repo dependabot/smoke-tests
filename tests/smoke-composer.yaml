@@ -1,9 +1,16 @@
 input:
     job:
         package_manager: composer
+        package-manager: composer
         allowed_updates:
           - update-type: all
+        allowed-updates:
+          - update-type: all
         ignore_conditions:
+          - dependency-name: phpmailer/phpmailer
+            source: tests/smoke-composer.yaml
+            version-requirement: '>6.6.3'
+        ignore-conditions:
           - dependency-name: phpmailer/phpmailer
             source: tests/smoke-composer.yaml
             version-requirement: '>6.6.3'

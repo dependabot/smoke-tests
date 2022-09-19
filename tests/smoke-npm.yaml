@@ -1,9 +1,16 @@
 input:
     job:
         package_manager: npm_and_yarn
+        package-manager: npm_and_yarn
         allowed_updates:
           - update-type: all
+        allowed-updates:
+          - update-type: all
         ignore_conditions:
+          - dependency-name: fetch-factory
+            source: tests/smoke-npm.yaml
+            version-requirement: '>0.2.1'
+        ignore-conditions:
           - dependency-name: fetch-factory
             source: tests/smoke-npm.yaml
             version-requirement: '>0.2.1'

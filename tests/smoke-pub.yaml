@@ -1,9 +1,28 @@
 input:
     job:
         package_manager: pub
+        package-manager: pub
         allowed_updates:
           - update-type: all
+        allowed-updates:
+          - update-type: all
         ignore_conditions:
+          - dependency-name: collection
+            source: tests/smoke-pub.yaml
+            version-requirement: '>1.16.0'
+          - dependency-name: fixnum
+            source: tests/smoke-pub.yaml
+            version-requirement: '>1.0.1'
+          - dependency-name: protobuf
+            source: tests/smoke-pub.yaml
+            version-requirement: '>2.0.0'
+          - dependency-name: path
+            source: tests/smoke-pub.yaml
+            version-requirement: '>1.8.2'
+          - dependency-name: retry
+            source: tests/smoke-pub.yaml
+            version-requirement: '>3.1.0'
+        ignore-conditions:
           - dependency-name: collection
             source: tests/smoke-pub.yaml
             version-requirement: '>1.16.0'
