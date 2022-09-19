@@ -1,15 +1,8 @@
 input:
     job:
-        package_manager: github_actions
         package-manager: github_actions
-        allowed_updates:
-          - update-type: all
         allowed-updates:
           - update-type: all
-        ignore_conditions:
-          - dependency-name: actions/checkout
-            source: tests/smoke-actions.yaml
-            version-requirement: '>3.0.2'
         ignore-conditions:
           - dependency-name: actions/checkout
             source: tests/smoke-actions.yaml

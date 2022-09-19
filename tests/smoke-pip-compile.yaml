@@ -1,14 +1,8 @@
 input:
     job:
-        package_manager: pip
         package-manager: pip
-        allowed_updates:
-          - update-type: all
         allowed-updates:
           - update-type: all
-        ignore_conditions:
-          - dependency-name: django
-            version-requirement: '>4.0.6'
         ignore-conditions:
           - dependency-name: django
             version-requirement: '>4.0.6'

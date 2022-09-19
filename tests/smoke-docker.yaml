@@ -1,15 +1,8 @@
 input:
     job:
-        package_manager: docker
         package-manager: docker
-        allowed_updates:
-          - update-type: all
         allowed-updates:
           - update-type: all
-        ignore_conditions:
-          - dependency-name: ubuntu
-            source: tests/smoke-docker.yaml
-            version-requirement: '>22.04'
         ignore-conditions:
           - dependency-name: ubuntu
             source: tests/smoke-docker.yaml

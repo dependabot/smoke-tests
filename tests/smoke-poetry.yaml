@@ -1,15 +1,8 @@
 input:
     job:
-        package_manager: pip
         package-manager: pip
-        allowed_updates:
-          - update-type: all
         allowed-updates:
           - update-type: all
-        ignore_conditions:
-          - dependency-name: toml
-            source: tests/smoke-poetry.yaml
-            version-requirement: '>0.10.2'
         ignore-conditions:
           - dependency-name: toml
             source: tests/smoke-poetry.yaml
