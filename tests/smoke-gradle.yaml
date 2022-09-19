@@ -1,9 +1,43 @@
 input:
     job:
         package_manager: gradle
+        package-manager: gradle
         allowed_updates:
           - update-type: all
+        allowed-updates:
+          - update-type: all
         ignore_conditions:
+          - dependency-name: com.google.inject:guice
+            source: tests/smoke-gradle.yaml
+            version-requirement: '>5.1.0'
+          - dependency-name: net.lingala.zip4j:zip4j
+            source: tests/smoke-gradle.yaml
+            version-requirement: '>2.11.1'
+          - dependency-name: net.kyori:text
+            source: tests/smoke-gradle.yaml
+            version-requirement: '>1.12-1.6.5'
+          - dependency-name: org.bstats:bstats-bukkit
+            source: tests/smoke-gradle.yaml
+            version-requirement: '>3.0.0'
+          - dependency-name: com.bugsnag:bugsnag
+            source: tests/smoke-gradle.yaml
+            version-requirement: '>3.6.4'
+          - dependency-name: com.zaxxer:HikariCP
+            source: tests/smoke-gradle.yaml
+            version-requirement: '>5.0.1'
+          - dependency-name: org.eclipse.jgit:org.eclipse.jgit
+            source: tests/smoke-gradle.yaml
+            version-requirement: '>6.2.0.202206071550-r'
+          - dependency-name: org.hibernate:hibernate-core
+            source: tests/smoke-gradle.yaml
+            version-requirement: '>6.1.1.Final'
+          - dependency-name: io.github.lukehutch:fast-classpath-scanner
+            source: tests/smoke-gradle.yaml
+            version-requirement: '>3.1.15'
+          - dependency-name: org.objenesis:objenesis
+            source: tests/smoke-gradle.yaml
+            version-requirement: '>3.3'
+        ignore-conditions:
           - dependency-name: com.google.inject:guice
             source: tests/smoke-gradle.yaml
             version-requirement: '>5.1.0'

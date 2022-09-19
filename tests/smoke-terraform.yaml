@@ -1,9 +1,25 @@
 input:
     job:
         package_manager: terraform
+        package-manager: terraform
         allowed_updates:
           - update-type: all
+        allowed-updates:
+          - update-type: all
         ignore_conditions:
+          - dependency-name: duplicate_label::github::cloudposse/terraform-null-label::tags/0.3.7
+            source: tests/smoke-terraform.yaml
+            version-requirement: '>0.25.0'
+          - dependency-name: github_ssh_without_protocol::github::cloudposse/terraform-aws-jenkins::tags/0.4.0
+            source: tests/smoke-terraform.yaml
+            version-requirement: '>0.10.6'
+          - dependency-name: logs::github::cloudposse/terraform-aws-s3-log-storage::tags/0.2.2
+            source: tests/smoke-terraform.yaml
+            version-requirement: '>0.28.0'
+          - dependency-name: origin_label::github::cloudposse/terraform-null-label::tags/0.3.7
+            source: tests/smoke-terraform.yaml
+            version-requirement: '>0.25.0'
+        ignore-conditions:
           - dependency-name: duplicate_label::github::cloudposse/terraform-null-label::tags/0.3.7
             source: tests/smoke-terraform.yaml
             version-requirement: '>0.25.0'

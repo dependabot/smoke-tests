@@ -1,9 +1,19 @@
 input:
     job:
         package_manager: go_modules
+        package-manager: go_modules
         allowed_updates:
           - update-type: all
+        allowed-updates:
+          - update-type: all
         ignore_conditions:
+          - dependency-name: github.com/fatih/color
+            source: tests/smoke-go.yaml
+            version-requirement: '>1.13.0'
+          - dependency-name: rsc.io/quote
+            source: tests/smoke-go.yaml
+            version-requirement: '>1.5.2'
+        ignore-conditions:
           - dependency-name: github.com/fatih/color
             source: tests/smoke-go.yaml
             version-requirement: '>1.13.0'

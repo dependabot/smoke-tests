@@ -1,9 +1,25 @@
 input:
     job:
         package_manager: cargo
+        package-manager: cargo
         allowed_updates:
           - update-type: all
+        allowed-updates:
+          - update-type: all
         ignore_conditions:
+          - dependency-name: time
+            source: tests/smoke-cargo.yaml
+            version-requirement: '>0.3.12'
+          - dependency-name: regex
+            source: tests/smoke-cargo.yaml
+            version-requirement: '>1.6.0'
+          - dependency-name: libc
+            source: tests/smoke-cargo.yaml
+            version-requirement: '>0.2.127'
+          - dependency-name: redox_syscall
+            source: tests/smoke-cargo.yaml
+            version-requirement: '>0.1.57'
+        ignore-conditions:
           - dependency-name: time
             source: tests/smoke-cargo.yaml
             version-requirement: '>0.3.12'

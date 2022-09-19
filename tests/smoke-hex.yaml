@@ -1,9 +1,19 @@
 input:
     job:
         package_manager: hex
+        package-manager: hex
         allowed_updates:
           - update-type: all
+        allowed-updates:
+          - update-type: all
         ignore_conditions:
+          - dependency-name: phoenix
+            source: tests/smoke-hex.yaml
+            version-requirement: '>1.2.2'
+          - dependency-name: plug
+            source: tests/smoke-hex.yaml
+            version-requirement: '>1.13.6'
+        ignore-conditions:
           - dependency-name: phoenix
             source: tests/smoke-hex.yaml
             version-requirement: '>1.2.2'

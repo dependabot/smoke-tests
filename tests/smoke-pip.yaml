@@ -1,10 +1,18 @@
 input:
     job:
         package_manager: pip
+        package-manager: pip
         allowed_updates:
           - dependency-type: direct
             update-type: all
+        allowed-updates:
+          - dependency-type: direct
+            update-type: all
         ignore_conditions:
+          - dependency-name: django
+            source: tests/smoke-pip.yaml
+            version-requirement: '>4.0.6'
+        ignore-conditions:
           - dependency-name: django
             source: tests/smoke-pip.yaml
             version-requirement: '>4.0.6'

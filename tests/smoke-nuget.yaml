@@ -1,9 +1,16 @@
 input:
     job:
         package_manager: nuget
+        package-manager: nuget
         allowed_updates:
           - update-type: all
+        allowed-updates:
+          - update-type: all
         ignore_conditions:
+          - dependency-name: NuGet.Versioning
+            source: tests/smoke-nuget.yaml
+            version-requirement: '>6.2.1'
+        ignore-conditions:
           - dependency-name: NuGet.Versioning
             source: tests/smoke-nuget.yaml
             version-requirement: '>6.2.1'

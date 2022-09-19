@@ -1,9 +1,16 @@
 input:
     job:
         package_manager: maven
+        package-manager: maven
         allowed_updates:
           - update-type: all
+        allowed-updates:
+          - update-type: all
         ignore_conditions:
+          - dependency-name: org.springframework.boot:spring-boot-starter-parent
+            source: tests/smoke-maven.yaml
+            version-requirement: '>2.7.2'
+        ignore-conditions:
           - dependency-name: org.springframework.boot:spring-boot-starter-parent
             source: tests/smoke-maven.yaml
             version-requirement: '>2.7.2'
