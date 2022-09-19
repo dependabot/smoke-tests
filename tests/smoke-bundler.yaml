@@ -1,21 +1,10 @@
 input:
     job:
-        package_manager: bundler
         package-manager: bundler
         allowed-updates:
             - dependency-name: rubocop
             - dependency-name: netaddr
-        allowed_updates:
-            - dependency-name: rubocop
-            - dependency-name: netaddr
         ignore-conditions:
-            - dependency-name: rubocop
-              source: tests/smoke-bundler.yaml
-              version-requirement: '>1.32.0'
-            - dependency-name: netaddr
-              source: tests/smoke-bundler.yaml
-              version-requirement: '>2.0.6'
-        ignore_conditions:
             - dependency-name: rubocop
               source: tests/smoke-bundler.yaml
               version-requirement: '>1.32.0'
