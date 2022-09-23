@@ -2,70 +2,70 @@ input:
     job:
         package-manager: pip
         allowed-updates:
-          - dependency-name: django
+            - dependency-name: django
         ignore-conditions:
-          - dependency-name: django
-            version-requirement: '>4.0.6'
+            - dependency-name: django
+              version-requirement: '>4.0.6'
         source:
             provider: github
             repo: dependabot/smoke-tests
             directory: /pipenv/
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
 output:
-  - type: update_dependency_list
-    expect:
+    - type: update_dependency_list
+      expect:
         data:
             dependencies:
-              - name: django
-                requirements:
-                  - file: Pipfile
-                    groups:
-                      - default
-                    requirement: ==3.2.10
-                    source: null
-                version: 3.2.10
-              - name: numpy
-                requirements:
-                  - file: Pipfile
-                    groups:
-                      - default
-                    requirement: 1.23.0
-                    source: null
-                version: 1.23.2
-              - name: asgiref
-                requirements: []
-                version: 3.5.2
-              - name: pytz
-                requirements: []
-                version: 2022.2.1
-              - name: sqlparse
-                requirements: []
-                version: 0.4.2
+                - name: django
+                  requirements:
+                    - file: Pipfile
+                      groups:
+                        - default
+                      requirement: ==3.2.10
+                      source: null
+                  version: 3.2.10
+                - name: numpy
+                  requirements:
+                    - file: Pipfile
+                      groups:
+                        - default
+                      requirement: 1.23.0
+                      source: null
+                  version: 1.23.2
+                - name: asgiref
+                  requirements: []
+                  version: 3.5.2
+                - name: pytz
+                  requirements: []
+                  version: 2022.2.1
+                - name: sqlparse
+                  requirements: []
+                  version: 0.4.2
             dependency_files:
-              - /pipenv/Pipfile
-              - /pipenv/Pipfile.lock
-  - type: create_pull_request
-    expect:
+                - /pipenv/Pipfile
+                - /pipenv/Pipfile.lock
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: django
-                previous-requirements:
-                  - file: Pipfile
-                    groups:
-                      - default
-                    requirement: ==3.2.10
-                    source: null
-                previous-version: 3.2.10
-                requirements:
-                  - file: Pipfile
-                    groups:
-                      - default
-                    requirement: ==4.0.6
-                    source: null
-                version: 4.0.6
+                - name: django
+                  previous-requirements:
+                    - file: Pipfile
+                      groups:
+                        - default
+                      requirement: ==3.2.10
+                      source: null
+                  previous-version: 3.2.10
+                  requirements:
+                    - file: Pipfile
+                      groups:
+                        - default
+                      requirement: ==4.0.6
+                      source: null
+                  version: 4.0.6
             updated-dependency-files:
-              - content: |
+                - content: |
                     [[source]]
                     url = "https://pypi.python.org/simple"
                     verify_ssl = true
@@ -79,14 +79,14 @@ output:
 
                     [requires]
                     python_version = "3.8"
-                content_encoding: utf-8
-                deleted: false
-                directory: /pipenv
-                name: Pipfile
-                operation: update
-                support_file: false
-                type: file
-              - content: |
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /pipenv
+                  name: Pipfile
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
                     {
                         "_meta": {
                             "hash": {
@@ -179,22 +179,22 @@ output:
                             },
                             "sqlparse": {
                                 "hashes": [
-                                    "sha256:0c00730c74263a94e5a9919ade150dfc3b19c574389985446148402998287dae",
-                                    "sha256:48719e356bb8b42991bdbb1e8b83223757b93789c00910a616a071910ca4a64d"
+                                    "sha256:0323c0ec29cd52bceabc1b4d9d579e311f3e4961b98d174201d5622a23b85e34",
+                                    "sha256:69ca804846bb114d2ec380e4360a8a340db83f0ccf3afceeb1404df028f57268"
                                 ],
                                 "markers": "python_version >= '3.5'",
-                                "version": "==0.4.2"
+                                "version": "==0.4.3"
                             }
                         },
                         "develop": {}
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /pipenv
-                name: Pipfile.lock
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /pipenv
+                  name: Pipfile.lock
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump django from 3.2.10 to 4.0.6 in /pipenv
             pr-body: |
                 Bumps [django](https://github.com/django/django) from 3.2.10 to 4.0.6.
@@ -221,7 +221,7 @@ output:
                 Bumps [django](https://github.com/django/django) from 3.2.10 to 4.0.6.
                 - [Release notes](https://github.com/django/django/releases)
                 - [Commits](https://github.com/django/django/compare/3.2.10...4.0.6)
-  - type: mark_as_processed
-    expect:
+    - type: mark_as_processed
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
