@@ -2,97 +2,97 @@ input:
     job:
         package-manager: pip
         allowed-updates:
-          - dependency-type: direct
-            update-type: all
+            - dependency-type: direct
+              update-type: all
         ignore-conditions:
-          - dependency-name: django
-            source: tests/smoke-pip.yaml
-            version-requirement: '>4.0.6'
+            - dependency-name: django
+              source: tests/smoke-pip.yaml
+              version-requirement: '>4.0.6'
         source:
             provider: github
             repo: dependabot/smoke-tests
             directory: /pip/
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
 output:
-  - type: update_dependency_list
-    expect:
+    - type: update_dependency_list
+      expect:
         data:
             dependencies:
-              - name: django
-                requirements:
-                  - file: requirements.txt
-                    groups:
-                      - dependencies
-                    requirement: <4.0,>=3.1
-                    source: null
-                version: null
-              - name: requests
-                requirements:
-                  - file: requirements.txt
-                    groups:
-                      - dependencies
-                    requirement: null
-                    source: null
-                version: null
-              - name: pyyaml
-                requirements:
-                  - file: requirements.txt
-                    groups:
-                      - dependencies
-                    requirement: null
-                    source: null
-                version: null
-              - name: pytest
-                requirements:
-                  - file: requirements.txt
-                    groups:
-                      - dependencies
-                    requirement: null
-                    source: null
-                version: null
-              - name: numpy
-                requirements:
-                  - file: requirements.txt
-                    groups:
-                      - dependencies
-                    requirement: ==1.23.0
-                    source: null
-                version: 1.23.0
+                - name: django
+                  requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: <4.0,>=3.1
+                      source: null
+                  version: null
+                - name: requests
+                  requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source: null
+                  version: null
+                - name: pyyaml
+                  requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source: null
+                  version: null
+                - name: pytest
+                  requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source: null
+                  version: null
+                - name: numpy
+                  requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==1.23.0
+                      source: null
+                  version: 1.23.0
             dependency_files:
-              - /pip/requirements.txt
-  - type: create_pull_request
-    expect:
+                - /pip/requirements.txt
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: django
-                previous-requirements:
-                  - file: requirements.txt
-                    groups:
-                      - dependencies
-                    requirement: <4.0,>=3.1
-                    source: null
-                requirements:
-                  - file: requirements.txt
-                    groups:
-                      - dependencies
-                    requirement: '>=3.1,<5.0'
-                    source: null
-                version: 4.0.6
+                - name: django
+                  previous-requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: <4.0,>=3.1
+                      source: null
+                  requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: '>=3.1,<5.0'
+                      source: null
+                  version: 4.0.6
             updated-dependency-files:
-              - content: |
+                - content: |
                     Django>=3.1,<5.0
                     requests
                     pyyaml
                     pytest
                     numpy==1.23.0
-                content_encoding: utf-8
-                deleted: false
-                directory: /pip
-                name: requirements.txt
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /pip
+                  name: requirements.txt
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Update django requirement from <4.0,>=3.1 to >=3.1,<5.0 in /pip
             pr-body: |
                 Updates the requirements on [django](https://github.com/django/django) to permit the latest version.
@@ -119,91 +119,92 @@ output:
                 Updates the requirements on [django](https://github.com/django/django) to permit the latest version.
                 - [Release notes](https://github.com/django/django/releases)
                 - [Commits](https://github.com/django/django/compare/3.1...4.0.6)
-  - type: create_pull_request
-    expect:
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: numpy
-                previous-requirements:
-                  - file: requirements.txt
-                    groups:
-                      - dependencies
-                    requirement: ==1.23.0
-                    source: null
-                previous-version: 1.23.0
-                requirements:
-                  - file: requirements.txt
-                    groups:
-                      - dependencies
-                    requirement: ==1.23.2
-                    source: null
-                version: 1.23.2
+                - name: numpy
+                  previous-requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==1.23.0
+                      source: null
+                  previous-version: 1.23.0
+                  requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==1.23.3
+                      source: null
+                  version: 1.23.3
             updated-dependency-files:
-              - content: |
+                - content: |
                     Django>=3.1,<4.0
                     requests
                     pyyaml
                     pytest
-                    numpy==1.23.2
-                content_encoding: utf-8
-                deleted: false
-                directory: /pip
-                name: requirements.txt
-                operation: update
-                support_file: false
-                type: file
-            pr-title: Bump numpy from 1.23.0 to 1.23.2 in /pip
+                    numpy==1.23.3
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /pip
+                  name: requirements.txt
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump numpy from 1.23.0 to 1.23.3 in /pip
             pr-body: |
-                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.23.2.
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.23.3.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/numpy/numpy/releases">numpy's releases</a>.</em></p>
                 <blockquote>
-                <h2>v1.23.2</h2>
-                <h1>NumPy 1.23.2 Release Notes</h1>
-                <p>NumPy 1.23.2 is a maintenance release that fixes bugs discovered after
-                the 1.23.1 release. Notable features are:</p>
-                <ul>
-                <li>Typing changes needed for Python 3.11</li>
-                <li>Wheels for Python 3.11.0rc1</li>
-                </ul>
-                <p>The Python versions supported for this release are 3.8-3.11.</p>
+                <h2>v1.23.3</h2>
+                <h1>NumPy 1.23.3 Release Notes</h1>
+                <p>NumPy 1.23.3 is a maintenance release that fixes bugs discovered after
+                the 1.23.2 release. There is no major theme for this release, the main
+                improvements are for some downstream builds and some annotation corner
+                cases. The Python versions supported for this release are 3.8-3.11.</p>
+                <p>Note that we will move to MacOS 11 for the NumPy 1.23.4 release, the
+                10.15 version currently used will no longer be supported by our build
+                infrastructure at that point.</p>
                 <h2>Contributors</h2>
-                <p>A total of 9 people contributed to this release. People with a &quot;+&quot; by
+                <p>A total of 16 people contributed to this release. People with a &quot;+&quot; by
                 their names contributed a patch for the first time.</p>
                 <ul>
-                <li>Alexander Grund +</li>
+                <li>Aaron Meurer</li>
                 <li>Bas van Beek</li>
                 <li>Charles Harris</li>
-                <li>Jon Cusick +</li>
+                <li>Ganesh Kathiresan</li>
+                <li>Gavin Zhang +</li>
+                <li>Iantra Solari+</li>
+                <li>Jyn Spring 琴春 +</li>
                 <li>Matti Picus</li>
-                <li>Michael Osthege +</li>
-                <li>Pal Barta +</li>
-                <li>Ross Barnowski</li>
+                <li>Rafael Cardoso Fernandes Sousa</li>
+                <li>Rafael Sousa +</li>
+                <li>Ralf Gommers</li>
+                <li>Rin Cat (鈴猫) +</li>
+                <li>Saransh Chopra +</li>
+                <li>Sayed Adel</li>
                 <li>Sebastian Berg</li>
+                <li>Serge Guelton</li>
                 </ul>
                 <h2>Pull requests merged</h2>
-                <p>A total of 15 pull requests were merged for this release.</p>
+                <p>A total of 14 pull requests were merged for this release.</p>
                 <ul>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22030">#22030</a>: ENH: Add <code>__array_ufunc__</code> typing support to the <code>nin=1</code> ufuncs</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22031">#22031</a>: MAINT, TYP: Fix <code>np.angle</code> dtype-overloads</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22032">#22032</a>: MAINT: Do not let <code>_GenericAlias</code> wrap the underlying classes'...</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22033">#22033</a>: TYP,MAINT: Allow <code>einsum</code> subscripts to be passed via integer...</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22034">#22034</a>: MAINT,TYP: Add object-overloads for the <code>np.generic</code> rich comparisons</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22035">#22035</a>: MAINT,TYP: Allow the <code>squeeze</code> and <code>transpose</code> method to...</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22036">#22036</a>: BUG: Fix subarray to object cast ownership details</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22037">#22037</a>: BUG: Use <code>Popen</code> to silently invoke f77 -v</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22038">#22038</a>: BUG: Avoid errors on NULL during deepcopy</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22039">#22039</a>: DOC: Add versionchanged for converter callable behavior.</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22057">#22057</a>: MAINT: Quiet the anaconda uploads.</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22078">#22078</a>: ENH: reorder includes for testing on top of system installations...</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22106">#22106</a>: TST: fix test_linear_interpolation_formula_symmetric</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22107">#22107</a>: BUG: Fix skip condition for test_loss_of_precision[complex256]</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22115">#22115</a>: BLD: Build python3.11.0rc1 wheels.</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22136">#22136</a>: BLD: Add Python 3.11 wheels to aarch64 build</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22148">#22148</a>: MAINT: Update setup.py for Python 3.11.</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22155">#22155</a>: CI: Test NumPy build against old versions of GCC(6, 7, 8)</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22156">#22156</a>: MAINT: support IBM i system</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22195">#22195</a>: BUG: Fix circleci build</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22214">#22214</a>: BUG: Expose heapsort algorithms in a shared header</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22215">#22215</a>: BUG: Support using libunwind for backtrack</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22216">#22216</a>: MAINT: fix an incorrect pointer type usage in f2py</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22220">#22220</a>: BUG: change overloads to play nice with pyright.</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22221">#22221</a>: TST,BUG: Use fork context to fix MacOS savez test</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22222">#22222</a>: TYP,BUG: Reduce argument validation in C-based <code>__class_getitem__</code></li>
                 </ul>
-                <h2>Checksums</h2>
-                <h3>MD5</h3>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -211,28 +212,28 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/numpy/numpy/commit/21cacafbeeff812cf49ca0102d1dd582b6d77e2b"><code>21cacaf</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22121">#22121</a> from charris/prepare-for-1.23.2</li>
-                <li><a href="https://github.com/numpy/numpy/commit/97cc2c0ec44753ba0d6fde2bdf25784ffaf9a11f"><code>97cc2c0</code></a> REL: Prepare for the NumPy 1.23.2 release.</li>
-                <li><a href="https://github.com/numpy/numpy/commit/4bdf678453c96ec6a4739ea47bc18e2fab481b78"><code>4bdf678</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22115">#22115</a> from charris/backport-22102</li>
-                <li><a href="https://github.com/numpy/numpy/commit/cb6344575938c1babe1439952f58952a72709395"><code>cb63445</code></a> BLD: Build python3.11.0rc1 wheels.</li>
-                <li><a href="https://github.com/numpy/numpy/commit/a5c9fb16cbd9e06f55f537e9d1666b877b581822"><code>a5c9fb1</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22106">#22106</a> from charris/backport-22105</li>
-                <li><a href="https://github.com/numpy/numpy/commit/283f02508d260083b5542af063c82b80bee016c3"><code>283f025</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22107">#22107</a> from charris/backport-22083</li>
-                <li><a href="https://github.com/numpy/numpy/commit/3fdeae210e0146846c552e5069f6dadddedd7e83"><code>3fdeae2</code></a> BUG: Fix skip condition for test_loss_of_precision[complex256]</li>
-                <li><a href="https://github.com/numpy/numpy/commit/f41020bf8c8171da4472b92959e91b4029dc8cff"><code>f41020b</code></a> TST: fix test_linear_interpolation_formula_symmetric</li>
-                <li><a href="https://github.com/numpy/numpy/commit/72b98a0d42c9e52cd2650cf357bc0ccb20264b27"><code>72b98a0</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22078">#22078</a> from charris/backport-22017</li>
-                <li><a href="https://github.com/numpy/numpy/commit/9d1d01af280be6f80e4cf5a210f174cd98471ed4"><code>9d1d01a</code></a> ENH: reorder includes for system installations</li>
-                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.23.0...v1.23.2">compare view</a></li>
+                <li><a href="https://github.com/numpy/numpy/commit/e47cbb69bebf36007c3ea009aee03e4bfe3b3f3d"><code>e47cbb6</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22234">#22234</a> from charris/prepare-1.23.3-release</li>
+                <li><a href="https://github.com/numpy/numpy/commit/e0e8991301dfe9148eab058477505a4ca8238af6"><code>e0e8991</code></a> REL: Prepare for the NumPy 1.23.3 release.</li>
+                <li><a href="https://github.com/numpy/numpy/commit/9bf22bb443582474913696139249e2b6331e53d7"><code>9bf22bb</code></a> BUG: Better report integer division overflow (backport) (<a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22230">#22230</a>)</li>
+                <li><a href="https://github.com/numpy/numpy/commit/0f0d355c20522366157631800ed4a0922b40d21c"><code>0f0d355</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22224">#22224</a> from charris/backport-21928</li>
+                <li><a href="https://github.com/numpy/numpy/commit/55a5ca743c19602cb28083fbcf3138b34a2f29fd"><code>55a5ca7</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22223">#22223</a> from charris/backport-21981</li>
+                <li><a href="https://github.com/numpy/numpy/commit/6cc41836e1d2d12eea8591fe5252ca484f54d6af"><code>6cc4183</code></a> BUG: Fix the implementation of numpy.array_api.vecdot (<a href="https://github-redirect.dependabot.com/numpy/numpy/issues/21928">#21928</a>)</li>
+                <li><a href="https://github.com/numpy/numpy/commit/fb9666ff84dbbd1c0f802795399c57db54eeab83"><code>fb9666f</code></a> BUG: Replace assert with correct error</li>
+                <li><a href="https://github.com/numpy/numpy/commit/fc0d62795a2228afd442703324e29ed10898061a"><code>fc0d627</code></a> TST: ensure <code>np.equal.reduce</code> raises a <code>TypeError</code></li>
+                <li><a href="https://github.com/numpy/numpy/commit/754ec89857a37fc8def3b5ca99bd7bb6211a739e"><code>754ec89</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22222">#22222</a> from charris/backport-22212</li>
+                <li><a href="https://github.com/numpy/numpy/commit/63ab75d00c4378115dc3e3542e12be7d1a360747"><code>63ab75d</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22221">#22221</a> from charris/backport-22204</li>
+                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.23.0...v1.23.3">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump numpy from 1.23.0 to 1.23.2 in /pip
+                Bump numpy from 1.23.0 to 1.23.3 in /pip
 
-                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.23.2.
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.23.3.
                 - [Release notes](https://github.com/numpy/numpy/releases)
                 - [Changelog](https://github.com/numpy/numpy/blob/main/doc/RELEASE_WALKTHROUGH.rst)
-                - [Commits](https://github.com/numpy/numpy/compare/v1.23.0...v1.23.2)
-  - type: mark_as_processed
-    expect:
+                - [Commits](https://github.com/numpy/numpy/compare/v1.23.0...v1.23.3)
+    - type: mark_as_processed
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
