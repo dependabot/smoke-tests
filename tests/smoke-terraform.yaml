@@ -2,126 +2,126 @@ input:
     job:
         package-manager: terraform
         allowed-updates:
-          - update-type: all
+            - update-type: all
         ignore-conditions:
-          - dependency-name: duplicate_label::github::cloudposse/terraform-null-label::tags/0.3.7
-            source: tests/smoke-terraform.yaml
-            version-requirement: '>0.25.0'
-          - dependency-name: github_ssh_without_protocol::github::cloudposse/terraform-aws-jenkins::tags/0.4.0
-            source: tests/smoke-terraform.yaml
-            version-requirement: '>0.10.6'
-          - dependency-name: logs::github::cloudposse/terraform-aws-s3-log-storage::tags/0.2.2
-            source: tests/smoke-terraform.yaml
-            version-requirement: '>0.28.0'
-          - dependency-name: origin_label::github::cloudposse/terraform-null-label::tags/0.3.7
-            source: tests/smoke-terraform.yaml
-            version-requirement: '>0.25.0'
+            - dependency-name: duplicate_label::github::cloudposse/terraform-null-label::tags/0.3.7
+              source: tests/smoke-terraform.yaml
+              version-requirement: '>0.25.0'
+            - dependency-name: github_ssh_without_protocol::github::cloudposse/terraform-aws-jenkins::tags/0.4.0
+              source: tests/smoke-terraform.yaml
+              version-requirement: '>0.10.6'
+            - dependency-name: logs::github::cloudposse/terraform-aws-s3-log-storage::tags/0.2.2
+              source: tests/smoke-terraform.yaml
+              version-requirement: '>0.28.0'
+            - dependency-name: origin_label::github::cloudposse/terraform-null-label::tags/0.3.7
+              source: tests/smoke-terraform.yaml
+              version-requirement: '>0.25.0'
         source:
             provider: github
             repo: dependabot/smoke-tests
-            directory: /
+            directory: /terraform
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
 output:
-  - type: update_dependency_list
-    expect:
+    - type: update_dependency_list
+      expect:
         data:
             dependencies:
-              - name: distribution_label::github::cloudposse/terraform-null-label
-                requirements:
-                  - file: main.tf
-                    groups: []
-                    requirement: null
-                    source:
+                - name: distribution_label::github::cloudposse/terraform-null-label
+                  requirements:
+                    - file: main.tf
+                      groups: []
+                      requirement: null
+                      source:
                         branch: null
                         ref: null
                         type: git
                         url: https://github.com/cloudposse/terraform-null-label.git
-                version: null
-              - name: dns::github::cloudposse/terraform-cloudflare-zone::tags/0.2.5
-                requirements:
-                  - file: main.tf
-                    groups: []
-                    requirement: null
-                    source:
+                  version: null
+                - name: dns::github::cloudposse/terraform-cloudflare-zone::tags/0.2.5
+                  requirements:
+                    - file: main.tf
+                      groups: []
+                      requirement: null
+                      source:
                         branch: null
                         ref: tags/0.2.5
                         type: git
                         url: https://github.com/cloudposse/terraform-cloudflare-zone.git
-                version: 0.2.5
-              - name: duplicate_label::github::cloudposse/terraform-null-label::tags/0.3.7
-                requirements:
-                  - file: main.tf
-                    groups: []
-                    requirement: null
-                    source:
+                  version: 0.2.5
+                - name: duplicate_label::github::cloudposse/terraform-null-label::tags/0.3.7
+                  requirements:
+                    - file: main.tf
+                      groups: []
+                      requirement: null
+                      source:
                         branch: null
                         ref: tags/0.3.7
                         type: git
                         url: https://github.com/cloudposse/terraform-null-label.git
-                version: 0.3.7
-              - name: github_ssh_without_protocol::github::cloudposse/terraform-aws-jenkins::tags/0.4.0
-                requirements:
-                  - file: main.tf
-                    groups: []
-                    requirement: null
-                    source:
+                  version: 0.3.7
+                - name: github_ssh_without_protocol::github::cloudposse/terraform-aws-jenkins::tags/0.4.0
+                  requirements:
+                    - file: main.tf
+                      groups: []
+                      requirement: null
+                      source:
                         branch: null
                         ref: tags/0.4.0
                         type: git
                         url: git@github.com:cloudposse/terraform-aws-jenkins.git
-                version: 0.4.0
-              - name: logs::github::cloudposse/terraform-aws-s3-log-storage::tags/0.2.2
-                requirements:
-                  - file: main.tf
-                    groups: []
-                    requirement: null
-                    source:
+                  version: 0.4.0
+                - name: logs::github::cloudposse/terraform-aws-s3-log-storage::tags/0.2.2
+                  requirements:
+                    - file: main.tf
+                      groups: []
+                      requirement: null
+                      source:
                         branch: null
                         ref: tags/0.2.2
                         type: git
                         url: https://github.com/cloudposse/terraform-aws-s3-log-storage.git
-                version: 0.2.2
-              - name: origin_label::github::cloudposse/terraform-null-label::tags/0.3.7
-                requirements:
-                  - file: main.tf
-                    groups: []
-                    requirement: null
-                    source:
+                  version: 0.2.2
+                - name: origin_label::github::cloudposse/terraform-null-label::tags/0.3.7
+                  requirements:
+                    - file: main.tf
+                      groups: []
+                      requirement: null
+                      source:
                         branch: null
                         ref: tags/0.3.7
                         type: git
                         url: https://github.com/cloudposse/terraform-null-label.git
-                version: 0.3.7
+                  version: 0.3.7
             dependency_files:
-              - /main.tf
-  - type: create_pull_request
-    expect:
+                - /terraform/main.tf
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: duplicate_label::github::cloudposse/terraform-null-label::tags/0.3.7
-                previous-requirements:
-                  - file: main.tf
-                    groups: []
-                    requirement: null
-                    source:
+                - name: duplicate_label::github::cloudposse/terraform-null-label::tags/0.3.7
+                  previous-requirements:
+                    - file: main.tf
+                      groups: []
+                      requirement: null
+                      source:
                         branch: null
                         ref: tags/0.3.7
                         type: git
                         url: https://github.com/cloudposse/terraform-null-label.git
-                previous-version: 0.3.7
-                requirements:
-                  - file: main.tf
-                    groups: []
-                    requirement: null
-                    source:
+                  previous-version: 0.3.7
+                  requirements:
+                    - file: main.tf
+                      groups: []
+                      requirement: null
+                      source:
                         branch: null
                         ref: tags/0.25.0
                         type: git
                         url: https://github.com/cloudposse/terraform-null-label.git
-                version: 0.25.0
+                  version: 0.25.0
             updated-dependency-files:
-              - content: |
+                - content: |
                     module "origin_label" {
                       source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.3.7"
                       namespace  = "${var.namespace}"
@@ -265,14 +265,14 @@ output:
                       attributes = ["${compact(concat(var.attributes, list("origin")))}"]
                       tags       = "${var.tags}"
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: main.tf
-                operation: update
-                support_file: false
-                type: file
-            pr-title: Bump duplicate_label::terraform-null-label from 0.3.7 to 0.25.0
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /terraform
+                  name: main.tf
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump duplicate_label::terraform-null-label from 0.3.7 to 0.25.0 in /terraform
             pr-body: |
                 Bumps [duplicate_label::terraform-null-label](https://github.com/cloudposse/terraform-null-label) from 0.3.7 to 0.25.0.
                 <details>
@@ -348,39 +348,39 @@ output:
                 </details>
                 <br />
             commit-message: |-
-                Bump duplicate_label::terraform-null-label from 0.3.7 to 0.25.0
+                Bump duplicate_label::terraform-null-label in /terraform
 
                 Bumps [duplicate_label::terraform-null-label](https://github.com/cloudposse/terraform-null-label) from 0.3.7 to 0.25.0.
                 - [Release notes](https://github.com/cloudposse/terraform-null-label/releases)
                 - [Commits](https://github.com/cloudposse/terraform-null-label/compare/tags/0.3.7...tags/0.25.0)
-  - type: create_pull_request
-    expect:
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: github_ssh_without_protocol::github::cloudposse/terraform-aws-jenkins::tags/0.4.0
-                previous-requirements:
-                  - file: main.tf
-                    groups: []
-                    requirement: null
-                    source:
+                - name: github_ssh_without_protocol::github::cloudposse/terraform-aws-jenkins::tags/0.4.0
+                  previous-requirements:
+                    - file: main.tf
+                      groups: []
+                      requirement: null
+                      source:
                         branch: null
                         ref: tags/0.4.0
                         type: git
                         url: git@github.com:cloudposse/terraform-aws-jenkins.git
-                previous-version: 0.4.0
-                requirements:
-                  - file: main.tf
-                    groups: []
-                    requirement: null
-                    source:
+                  previous-version: 0.4.0
+                  requirements:
+                    - file: main.tf
+                      groups: []
+                      requirement: null
+                      source:
                         branch: null
                         ref: tags/0.10.6
                         type: git
                         url: git@github.com:cloudposse/terraform-aws-jenkins.git
-                version: 0.10.6
+                  version: 0.10.6
             updated-dependency-files:
-              - content: |
+                - content: |
                     module "origin_label" {
                       source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.3.7"
                       namespace  = "${var.namespace}"
@@ -524,95 +524,49 @@ output:
                       attributes = ["${compact(concat(var.attributes, list("origin")))}"]
                       tags       = "${var.tags}"
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: main.tf
-                operation: update
-                support_file: false
-                type: file
-            pr-title: Bump github_ssh_without_protocol::terraform-aws-jenkins from
-                0.4.0 to 0.10.6
-            pr-body: "Bumps [github_ssh_without_protocol::terraform-aws-jenkins](https://github.com/cloudposse/terraform-aws-jenkins)
-                from 0.4.0 to 0.10.6.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced
-                from <a href=\"https://github.com/cloudposse/terraform-aws-jenkins/releases\">github_ssh_without_protocol::terraform-aws-jenkins's
-                releases</a>.</em></p>\n<blockquote>\n<h2>v0.10.6</h2>\n<h2>\U0001F916
-                Automatic Updates</h2>\n<!-- raw HTML omitted -->\n<p>This PR contains
-                the following updates:</p>\n<table>\n<thead>\n<tr>\n<th>Package</th>\n<th>Type</th>\n<th>Update</th>\n<th>Change</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a
-                href=\"https://registry.terraform.io/modules/cloudposse/cicd/aws\">cloudposse/cicd/aws</a>
-                (<a href=\"https://togithub.com/cloudposse/terraform-aws-cicd\">source</a>)</td>\n<td>module</td>\n<td>patch</td>\n<td><code>0.19.4</code>
-                -&gt; <code>0.19.5</code></td>\n</tr>\n</tbody>\n</table>\n<hr />\n<!--
-                raw HTML omitted -->\n<h2>v0.10.5</h2>\n<h2>\U0001F916 Automatic Updates</h2>\n<!--
-                raw HTML omitted -->\n<p>This PR contains the following updates:</p>\n<table>\n<thead>\n<tr>\n<th>Package</th>\n<th>Type</th>\n<th>Update</th>\n<th>Change</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a
-                href=\"https://registry.terraform.io/modules/cloudposse/backup/aws\">cloudposse/backup/aws</a>
-                (<a href=\"https://togithub.com/cloudposse/terraform-aws-backup\">source</a>)</td>\n<td>module</td>\n<td>minor</td>\n<td><code>0.13.1</code>
-                -&gt; <code>0.14.0</code></td>\n</tr>\n</tbody>\n</table>\n<hr />\n<!--
-                raw HTML omitted -->\n<h2>v0.10.4</h2>\n<h2>\U0001F916 Automatic Updates</h2>\n<!--
-                raw HTML omitted -->\n<p>This PR contains the following updates:</p>\n<table>\n<thead>\n<tr>\n<th>Package</th>\n<th>Type</th>\n<th>Update</th>\n<th>Change</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a
-                href=\"https://registry.terraform.io/modules/cloudposse/cicd/aws\">cloudposse/cicd/aws</a>
-                (<a href=\"https://togithub.com/cloudposse/terraform-aws-cicd\">source</a>)</td>\n<td>module</td>\n<td>patch</td>\n<td><code>0.19.1</code>
-                -&gt; <code>0.19.4</code></td>\n</tr>\n</tbody>\n</table>\n<hr />\n<!--
-                raw HTML omitted -->\n<h2>v0.10.3</h2>\n<h2>\U0001F916 Automatic Updates</h2>\n<!--
-                raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/07899c811e348f0c426e6858c96c49cb545b39cc\"><code>07899c8</code></a>
-                chore(deps): update terraform cloudposse/cicd/aws to v0.19.5 (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/92\">#92</a>)</li>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/78ba2bc5a0d84d27d295055e3fbbaf2163ce88bb\"><code>78ba2bc</code></a>
-                chore(deps): update terraform cloudposse/backup/aws to v0.14.0 (<a
-                href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/90\">#90</a>)</li>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/3966f67ae68ed1e97e1f3cc4c611a1c3b9cd19da\"><code>3966f67</code></a>
-                chore(deps): update terraform cloudposse/cicd/aws to v0.19.4 (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/89\">#89</a>)</li>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/1dbfe5b194288266096abb699fc823d6553fba96\"><code>1dbfe5b</code></a>
-                chore(deps): update terraform cloudposse/cicd/aws to v0.19.1 (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/65\">#65</a>)</li>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/774a1b81b4eda41e13a15a1138256e3885f7e790\"><code>774a1b8</code></a>
-                chore(deps): update terraform cloudposse/elastic-beanstalk-environment/aws
-                to...</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/53f84372307d3712eb3b2334f5e079d2a7696876\"><code>53f8437</code></a>
-                chore(deps): update terraform cloudposse/efs/aws to v0.32.7 (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/86\">#86</a>)</li>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/4ae2c938c8aae325a69a53b0bbb4c65ec2ea579a\"><code>4ae2c93</code></a>
-                Provide SSL security policy (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/45\">#45</a>)</li>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/fc65422a5d3f60588cae1aae1a91bd2676c1103a\"><code>fc65422</code></a>
-                chore(deps): update terraform cloudposse/backup/aws to v0.13.1 (<a
-                href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/77\">#77</a>)</li>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/27bdb559d7b6985de7a4bd5a80eca61d17122dd0\"><code>27bdb55</code></a>
-                chore(deps): update terraform cloudposse/ecr/aws to v0.34.0 (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/79\">#79</a>)</li>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/a25c91b035a00718d123c8e4239ab44e25826de7\"><code>a25c91b</code></a>
-                chore(deps): update terraform cloudposse/label/null to v0.25.0 (<a
-                href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/80\">#80</a>)</li>\n<li>Additional
-                commits viewable in <a href=\"https://github.com/cloudposse/terraform-aws-jenkins/compare/tags/0.4.0...tags/0.10.6\">compare
-                view</a></li>\n</ul>\n</details>\n<br />\n"
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /terraform
+                  name: main.tf
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump github_ssh_without_protocol::terraform-aws-jenkins from 0.4.0 to 0.10.6 in /terraform
+            pr-body: "Bumps [github_ssh_without_protocol::terraform-aws-jenkins](https://github.com/cloudposse/terraform-aws-jenkins) from 0.4.0 to 0.10.6.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/cloudposse/terraform-aws-jenkins/releases\">github_ssh_without_protocol::terraform-aws-jenkins's releases</a>.</em></p>\n<blockquote>\n<h2>v0.10.6</h2>\n<h2>\U0001F916 Automatic Updates</h2>\n<!-- raw HTML omitted -->\n<p>This PR contains the following updates:</p>\n<table>\n<thead>\n<tr>\n<th>Package</th>\n<th>Type</th>\n<th>Update</th>\n<th>Change</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a href=\"https://registry.terraform.io/modules/cloudposse/cicd/aws\">cloudposse/cicd/aws</a> (<a href=\"https://togithub.com/cloudposse/terraform-aws-cicd\">source</a>)</td>\n<td>module</td>\n<td>patch</td>\n<td><code>0.19.4</code> -&gt; <code>0.19.5</code></td>\n</tr>\n</tbody>\n</table>\n<hr />\n<!-- raw HTML omitted -->\n<h2>v0.10.5</h2>\n<h2>\U0001F916 Automatic Updates</h2>\n<!-- raw HTML omitted -->\n<p>This PR contains the following updates:</p>\n<table>\n<thead>\n<tr>\n<th>Package</th>\n<th>Type</th>\n<th>Update</th>\n<th>Change</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a href=\"https://registry.terraform.io/modules/cloudposse/backup/aws\">cloudposse/backup/aws</a> (<a href=\"https://togithub.com/cloudposse/terraform-aws-backup\">source</a>)</td>\n<td>module</td>\n<td>minor</td>\n<td><code>0.13.1</code> -&gt; <code>0.14.0</code></td>\n</tr>\n</tbody>\n</table>\n<hr />\n<!-- raw HTML omitted -->\n<h2>v0.10.4</h2>\n<h2>\U0001F916 Automatic Updates</h2>\n<!-- raw HTML omitted -->\n<p>This PR contains the following updates:</p>\n<table>\n<thead>\n<tr>\n<th>Package</th>\n<th>Type</th>\n<th>Update</th>\n<th>Change</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a href=\"https://registry.terraform.io/modules/cloudposse/cicd/aws\">cloudposse/cicd/aws</a> (<a href=\"https://togithub.com/cloudposse/terraform-aws-cicd\">source</a>)</td>\n<td>module</td>\n<td>patch</td>\n<td><code>0.19.1</code> -&gt; <code>0.19.4</code></td>\n</tr>\n</tbody>\n</table>\n<hr />\n<!-- raw HTML omitted -->\n<h2>v0.10.3</h2>\n<h2>\U0001F916 Automatic Updates</h2>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/07899c811e348f0c426e6858c96c49cb545b39cc\"><code>07899c8</code></a> chore(deps): update terraform cloudposse/cicd/aws to v0.19.5 (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/92\">#92</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/78ba2bc5a0d84d27d295055e3fbbaf2163ce88bb\"><code>78ba2bc</code></a> chore(deps): update terraform cloudposse/backup/aws to v0.14.0 (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/90\">#90</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/3966f67ae68ed1e97e1f3cc4c611a1c3b9cd19da\"><code>3966f67</code></a> chore(deps): update terraform cloudposse/cicd/aws to v0.19.4 (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/89\">#89</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/1dbfe5b194288266096abb699fc823d6553fba96\"><code>1dbfe5b</code></a> chore(deps): update terraform cloudposse/cicd/aws to v0.19.1 (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/65\">#65</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/774a1b81b4eda41e13a15a1138256e3885f7e790\"><code>774a1b8</code></a> chore(deps): update terraform cloudposse/elastic-beanstalk-environment/aws to...</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/53f84372307d3712eb3b2334f5e079d2a7696876\"><code>53f8437</code></a> chore(deps): update terraform cloudposse/efs/aws to v0.32.7 (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/86\">#86</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/4ae2c938c8aae325a69a53b0bbb4c65ec2ea579a\"><code>4ae2c93</code></a> Provide SSL security policy (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/45\">#45</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/fc65422a5d3f60588cae1aae1a91bd2676c1103a\"><code>fc65422</code></a> chore(deps): update terraform cloudposse/backup/aws to v0.13.1 (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/77\">#77</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/27bdb559d7b6985de7a4bd5a80eca61d17122dd0\"><code>27bdb55</code></a> chore(deps): update terraform cloudposse/ecr/aws to v0.34.0 (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/79\">#79</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/a25c91b035a00718d123c8e4239ab44e25826de7\"><code>a25c91b</code></a> chore(deps): update terraform cloudposse/label/null to v0.25.0 (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-jenkins/issues/80\">#80</a>)</li>\n<li>Additional commits viewable in <a href=\"https://github.com/cloudposse/terraform-aws-jenkins/compare/tags/0.4.0...tags/0.10.6\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
             commit-message: |-
-                Bump github_ssh_without_protocol::terraform-aws-jenkins
+                Bump github_ssh_without_protocol::terraform-aws-jenkins in /terraform
 
                 Bumps [github_ssh_without_protocol::terraform-aws-jenkins](https://github.com/cloudposse/terraform-aws-jenkins) from 0.4.0 to 0.10.6.
                 - [Release notes](https://github.com/cloudposse/terraform-aws-jenkins/releases)
                 - [Commits](https://github.com/cloudposse/terraform-aws-jenkins/compare/tags/0.4.0...tags/0.10.6)
-  - type: create_pull_request
-    expect:
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: logs::github::cloudposse/terraform-aws-s3-log-storage::tags/0.2.2
-                previous-requirements:
-                  - file: main.tf
-                    groups: []
-                    requirement: null
-                    source:
+                - name: logs::github::cloudposse/terraform-aws-s3-log-storage::tags/0.2.2
+                  previous-requirements:
+                    - file: main.tf
+                      groups: []
+                      requirement: null
+                      source:
                         branch: null
                         ref: tags/0.2.2
                         type: git
                         url: https://github.com/cloudposse/terraform-aws-s3-log-storage.git
-                previous-version: 0.2.2
-                requirements:
-                  - file: main.tf
-                    groups: []
-                    requirement: null
-                    source:
+                  previous-version: 0.2.2
+                  requirements:
+                    - file: main.tf
+                      groups: []
+                      requirement: null
+                      source:
                         branch: null
                         ref: tags/0.28.0
                         type: git
                         url: https://github.com/cloudposse/terraform-aws-s3-log-storage.git
-                version: 0.28.0
+                  version: 0.28.0
             updated-dependency-files:
-              - content: |
+                - content: |
                     module "origin_label" {
                       source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.3.7"
                       namespace  = "${var.namespace}"
@@ -756,112 +710,49 @@ output:
                       attributes = ["${compact(concat(var.attributes, list("origin")))}"]
                       tags       = "${var.tags}"
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: main.tf
-                operation: update
-                support_file: false
-                type: file
-            pr-title: Bump logs::terraform-aws-s3-log-storage from 0.2.2 to 0.28.0
-            pr-body: "Bumps [logs::terraform-aws-s3-log-storage](https://github.com/cloudposse/terraform-aws-s3-log-storage)
-                from 0.2.2 to 0.28.0.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced
-                from <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/releases\">logs::terraform-aws-s3-log-storage's
-                releases</a>.</em></p>\n<blockquote>\n<h2>v0.28.0 (Action Needed)
-                Support AWS v4 provider</h2>\n<h1>WARNING, DATA LOSS LIKELY if you
-                do not follow upgrade instructions:</h1>\n<ul>\n<li>Upgrade instructions:
-                <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.28.0-and-AWS-provider-v4-(POTENTIAL-DATA-LOSS)\">v0.27.0
-                to v0.28.0</a></li>\n<li>Upgrade instructions: <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.27.0-(POTENTIAL-DATA-LOSS)\">versions
-                prior to v0.27.0 to v0.27.0\n</a></li>\n</ul>\n<h2>\U0001F680 Enhancements</h2>\n<!--
-                raw HTML omitted -->\n<h2>what</h2>\n<ul>\n<li>Migrate to AWS v4 Terraform
-                provider</li>\n<li>Add features\n<ul>\n<li>Allow full S3 storage lifecycle
-                configuration</li>\n<li>Allow multiple bucket policy documents</li>\n<li>Allow
-                specifying the bucket name directly, rather than requiring it to be
-                generated by <code>null-label</code></li>\n<li>Allow specifying S3
-                object ownership</li>\n<li>Allow enabling S3 bucket keys for encryption</li>\n</ul>\n</li>\n<li>Deprecate
-                variable by variable specification of a single storage lifecycle rule</li>\n<li>Add
-                extra safety measure <code>force_destroy_enabled</code></li>\n</ul>\n<h2>why</h2>\n<ul>\n<li>AWS
-                v4 broke this module</li>\n<li>Feature parity</li>\n<li>Replaced with
-                more power and more flexible input</li>\n<li>Reduce the chance that
-                automated upgrades will cause data loss</li>\n</ul>\n<h2>references</h2>\n<ul>\n<li>Upgrade
-                instructions: <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.28.0-and-AWS-provider-v4-(POTENTIAL-DATA-LOSS)\">v0.27.0
-                to v0.28.0</a></li>\n<li>Upgrade instructions: <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.27.0-(POTENTIAL-DATA-LOSS)\">versions
-                prior to v0.27.0 to v0.27.0\n</a></li>\n</ul>\n<!-- raw HTML omitted
-                -->\n<h2>v0.27.0 (WARNING: Potential Data Loss) Prepare for AWS provider
-                v4</h2>\n<h1>Warning: Potential total data loss</h1>\n<p>This release
-                is a refactoring in preparation for supporting Terraform AWS Provider
-                v4. One feature was removed, but otherwise there are no changes to
-                inputs or behavior. However, the Terraform &quot;addresses&quot; of
-                resources have changed, so you are need to run several <code>terraform
-                state mv</code> commands.</p>\n<p><strong>Warning:</strong> failure
-                to run the required <code>terraform state mv</code> commands will
-                cause Terraform to delete your existing S3 bucket and create a new
-                one, <strong>deleting all the data stored in the bucket in the process.</strong></p>\n<p>Details
-                on how to safely upgrade are in this repository's Wiki <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.27.0-(POTENTIAL-DATA-LOSS)\">here</a></p>\n<h2>Support
-                for &quot;MFA delete&quot; removed</h2>\n<p>In <a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/54\">#54</a>
-                a contributor added support for <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiFactorAuthenticationDelete.html\">MFA
-                delete</a> via the <code>versioning_mfa_delete_enabled</code>. In
-                AWS provider version 3.x this argument was <a href=\"https://registry.terraform.io/providers/hashicorp/aws/3.74.3/docs/resources/s3_bucket#mfa_delete\">documented</a>
-                with the caveat</p>\n<blockquote>\n<p>This cannot be used to toggle
-                this setting but is available to allow managed buckets to reflect
-                the state in AWS.</p>\n</blockquote>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>...
-                (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/112c75d1f1ad2b8b2a1f9722e3172eae03149ca0\"><code>112c75d</code></a>
-                Support AWS v4 provider (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/71\">#71</a>)</li>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/2c17ca6f11ae11139743e09a0ad5cdb8bb7b2f04\"><code>2c17ca6</code></a>
-                Cleanups and safety checks for upgrade (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/70\">#70</a>)</li>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/048ae6a1069a98dc9a2c8e882c946f7c231f5599\"><code>048ae6a</code></a>
-                Refactor to use s3-bucket module, update in general (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/66\">#66</a>)</li>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/f1b6ec3059a857bced06cc212d78ffc9bf948900\"><code>f1b6ec3</code></a>
-                Add S3 bucket ownership controls (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/61\">#61</a>)</li>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/2c2fac814eaa0617dafab34d6b0aba29600632e5\"><code>2c2fac8</code></a>
-                Add support for bucket notifications (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/60\">#60</a>)</li>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/ad6a2fbb2447ff02d36288802e6809f946c380fe\"><code>ad6a2fb</code></a>
-                Update context.tf from origin source (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/59\">#59</a>)</li>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/c1a2a8faba43c9b3a824184faa4be0d6dfea09e4\"><code>c1a2a8f</code></a>
-                Add variable access_log_bucket_prefix to customize S3 access log configuratio...</li>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/ad40cf204650fef1645d9d90eee4312b08088994\"><code>ad40cf2</code></a>
-                add allow_ssl_requests_only flag (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/56\">#56</a>)</li>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/f6a32f00ab35ae1dddde1988fb227cf710da62c7\"><code>f6a32f0</code></a>
-                add allow_ssl_requests_only flag (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/55\">#55</a>)</li>\n<li><a
-                href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/7a05bb81ac0cf8126d4fcde86d66798d556bb5ef\"><code>7a05bb8</code></a>
-                added versioning mfa delete enabled option (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/54\">#54</a>)</li>\n<li>Additional
-                commits viewable in <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/compare/tags/0.2.2...tags/0.28.0\">compare
-                view</a></li>\n</ul>\n</details>\n<br />\n"
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /terraform
+                  name: main.tf
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump logs::terraform-aws-s3-log-storage from 0.2.2 to 0.28.0 in /terraform
+            pr-body: "Bumps [logs::terraform-aws-s3-log-storage](https://github.com/cloudposse/terraform-aws-s3-log-storage) from 0.2.2 to 0.28.0.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/releases\">logs::terraform-aws-s3-log-storage's releases</a>.</em></p>\n<blockquote>\n<h2>v0.28.0 (Action Needed) Support AWS v4 provider</h2>\n<h1>WARNING, DATA LOSS LIKELY if you do not follow upgrade instructions:</h1>\n<ul>\n<li>Upgrade instructions: <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.28.0-and-AWS-provider-v4-(POTENTIAL-DATA-LOSS)\">v0.27.0 to v0.28.0</a></li>\n<li>Upgrade instructions: <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.27.0-(POTENTIAL-DATA-LOSS)\">versions prior to v0.27.0 to v0.27.0\n</a></li>\n</ul>\n<h2>\U0001F680 Enhancements</h2>\n<!-- raw HTML omitted -->\n<h2>what</h2>\n<ul>\n<li>Migrate to AWS v4 Terraform provider</li>\n<li>Add features\n<ul>\n<li>Allow full S3 storage lifecycle configuration</li>\n<li>Allow multiple bucket policy documents</li>\n<li>Allow specifying the bucket name directly, rather than requiring it to be generated by <code>null-label</code></li>\n<li>Allow specifying S3 object ownership</li>\n<li>Allow enabling S3 bucket keys for encryption</li>\n</ul>\n</li>\n<li>Deprecate variable by variable specification of a single storage lifecycle rule</li>\n<li>Add extra safety measure <code>force_destroy_enabled</code></li>\n</ul>\n<h2>why</h2>\n<ul>\n<li>AWS v4 broke this module</li>\n<li>Feature parity</li>\n<li>Replaced with more power and more flexible input</li>\n<li>Reduce the chance that automated upgrades will cause data loss</li>\n</ul>\n<h2>references</h2>\n<ul>\n<li>Upgrade instructions: <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.28.0-and-AWS-provider-v4-(POTENTIAL-DATA-LOSS)\">v0.27.0 to v0.28.0</a></li>\n<li>Upgrade instructions: <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.27.0-(POTENTIAL-DATA-LOSS)\">versions prior to v0.27.0 to v0.27.0\n</a></li>\n</ul>\n<!-- raw HTML omitted -->\n<h2>v0.27.0 (WARNING: Potential Data Loss) Prepare for AWS provider v4</h2>\n<h1>Warning: Potential total data loss</h1>\n<p>This release is a refactoring in preparation for supporting Terraform AWS Provider v4. One feature was removed, but otherwise there are no changes to inputs or behavior. However, the Terraform &quot;addresses&quot; of resources have changed, so you are need to run several <code>terraform state mv</code> commands.</p>\n<p><strong>Warning:</strong> failure to run the required <code>terraform state mv</code> commands will cause Terraform to delete your existing S3 bucket and create a new one, <strong>deleting all the data stored in the bucket in the process.</strong></p>\n<p>Details on how to safely upgrade are in this repository's Wiki <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.27.0-(POTENTIAL-DATA-LOSS)\">here</a></p>\n<h2>Support for &quot;MFA delete&quot; removed</h2>\n<p>In <a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/54\">#54</a> a contributor added support for <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiFactorAuthenticationDelete.html\">MFA delete</a> via the <code>versioning_mfa_delete_enabled</code>. In AWS provider version 3.x this argument was <a href=\"https://registry.terraform.io/providers/hashicorp/aws/3.74.3/docs/resources/s3_bucket#mfa_delete\">documented</a> with the caveat</p>\n<blockquote>\n<p>This cannot be used to toggle this setting but is available to allow managed buckets to reflect the state in AWS.</p>\n</blockquote>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/112c75d1f1ad2b8b2a1f9722e3172eae03149ca0\"><code>112c75d</code></a> Support AWS v4 provider (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/71\">#71</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/2c17ca6f11ae11139743e09a0ad5cdb8bb7b2f04\"><code>2c17ca6</code></a> Cleanups and safety checks for upgrade (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/70\">#70</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/048ae6a1069a98dc9a2c8e882c946f7c231f5599\"><code>048ae6a</code></a> Refactor to use s3-bucket module, update in general (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/66\">#66</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/f1b6ec3059a857bced06cc212d78ffc9bf948900\"><code>f1b6ec3</code></a> Add S3 bucket ownership controls (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/61\">#61</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/2c2fac814eaa0617dafab34d6b0aba29600632e5\"><code>2c2fac8</code></a> Add support for bucket notifications (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/60\">#60</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/ad6a2fbb2447ff02d36288802e6809f946c380fe\"><code>ad6a2fb</code></a> Update context.tf from origin source (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/59\">#59</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/c1a2a8faba43c9b3a824184faa4be0d6dfea09e4\"><code>c1a2a8f</code></a> Add variable access_log_bucket_prefix to customize S3 access log configuratio...</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/ad40cf204650fef1645d9d90eee4312b08088994\"><code>ad40cf2</code></a> add allow_ssl_requests_only flag (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/56\">#56</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/f6a32f00ab35ae1dddde1988fb227cf710da62c7\"><code>f6a32f0</code></a> add allow_ssl_requests_only flag (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/55\">#55</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/7a05bb81ac0cf8126d4fcde86d66798d556bb5ef\"><code>7a05bb8</code></a> added versioning mfa delete enabled option (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/54\">#54</a>)</li>\n<li>Additional commits viewable in <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/compare/tags/0.2.2...tags/0.28.0\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
             commit-message: |-
-                Bump logs::terraform-aws-s3-log-storage from 0.2.2 to 0.28.0
+                Bump logs::terraform-aws-s3-log-storage in /terraform
 
                 Bumps [logs::terraform-aws-s3-log-storage](https://github.com/cloudposse/terraform-aws-s3-log-storage) from 0.2.2 to 0.28.0.
                 - [Release notes](https://github.com/cloudposse/terraform-aws-s3-log-storage/releases)
                 - [Commits](https://github.com/cloudposse/terraform-aws-s3-log-storage/compare/tags/0.2.2...tags/0.28.0)
-  - type: create_pull_request
-    expect:
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: origin_label::github::cloudposse/terraform-null-label::tags/0.3.7
-                previous-requirements:
-                  - file: main.tf
-                    groups: []
-                    requirement: null
-                    source:
+                - name: origin_label::github::cloudposse/terraform-null-label::tags/0.3.7
+                  previous-requirements:
+                    - file: main.tf
+                      groups: []
+                      requirement: null
+                      source:
                         branch: null
                         ref: tags/0.3.7
                         type: git
                         url: https://github.com/cloudposse/terraform-null-label.git
-                previous-version: 0.3.7
-                requirements:
-                  - file: main.tf
-                    groups: []
-                    requirement: null
-                    source:
+                  previous-version: 0.3.7
+                  requirements:
+                    - file: main.tf
+                      groups: []
+                      requirement: null
+                      source:
                         branch: null
                         ref: tags/0.25.0
                         type: git
                         url: https://github.com/cloudposse/terraform-null-label.git
-                version: 0.25.0
+                  version: 0.25.0
             updated-dependency-files:
-              - content: |
+                - content: |
                     module "origin_label" {
                       source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.25.0"
                       namespace  = "${var.namespace}"
@@ -1005,14 +896,14 @@ output:
                       attributes = ["${compact(concat(var.attributes, list("origin")))}"]
                       tags       = "${var.tags}"
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: main.tf
-                operation: update
-                support_file: false
-                type: file
-            pr-title: Bump origin_label::terraform-null-label from 0.3.7 to 0.25.0
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /terraform
+                  name: main.tf
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump origin_label::terraform-null-label from 0.3.7 to 0.25.0 in /terraform
             pr-body: |
                 Bumps [origin_label::terraform-null-label](https://github.com/cloudposse/terraform-null-label) from 0.3.7 to 0.25.0.
                 <details>
@@ -1088,12 +979,12 @@ output:
                 </details>
                 <br />
             commit-message: |-
-                Bump origin_label::terraform-null-label from 0.3.7 to 0.25.0
+                Bump origin_label::terraform-null-label in /terraform
 
                 Bumps [origin_label::terraform-null-label](https://github.com/cloudposse/terraform-null-label) from 0.3.7 to 0.25.0.
                 - [Release notes](https://github.com/cloudposse/terraform-null-label/releases)
                 - [Commits](https://github.com/cloudposse/terraform-null-label/compare/tags/0.3.7...tags/0.25.0)
-  - type: mark_as_processed
-    expect:
+    - type: mark_as_processed
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
