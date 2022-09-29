@@ -12,6 +12,9 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
+	// This pull takes a while so adding it to the prebuild
+	"onCreateCommand": "docker pull ghcr.io/github/dependabot-update-job-proxy/dependabot-update-job-proxy:latest",
+
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "bash .devcontainer/post-create.sh",
 
