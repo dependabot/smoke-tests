@@ -6,6 +6,7 @@ package main
 import (
 	_ "github.com/fatih/color"
 	_ "github.com/inconshreveable/mousetrap"
+	_ "golang.org/x/crypto/cryptobyte"
 	_ "rsc.io/qr"
 	_ "rsc.io/quote"
 )
