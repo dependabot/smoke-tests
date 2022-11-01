@@ -5,6 +5,7 @@ package main
 // have a main that imports the direct dependencies.
 import (
 	_ "github.com/fatih/color"
+	_ "github.com/inconshreveable/mousetrap"
 	_ "rsc.io/qr"
 	_ "rsc.io/quote"
 )
