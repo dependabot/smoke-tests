@@ -10,7 +10,7 @@ input:
             provider: github
             repo: dependabot/smoke-tests
             directory: /yarn-berry/
-            commit: 38ca8e356b5c9635ab93ccf0d1ec70ffc2b0a3b6
+            commit: 6cf39d141962f97109e53c210db1a77639155e77
 output:
     - type: record_package_manager_version
       expect:
@@ -1002,7 +1002,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 38ca8e356b5c9635ab93ccf0d1ec70ffc2b0a3b6
+            base-commit-sha: 6cf39d141962f97109e53c210db1a77639155e77 
             dependencies:
                 - name: jquery
                   previous-requirements:
@@ -30147,4 +30147,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 38ca8e356b5c9635ab93ccf0d1ec70ffc2b0a3b6
+            base-commit-sha: 6cf39d141962f97109e53c210db1a77639155e77 
