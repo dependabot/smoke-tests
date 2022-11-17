@@ -11,6 +11,14 @@ input:
             repo: dependabot/smoke-tests
             directory: /yarn-berry/
             commit: 6cf39d141962f97109e53c210db1a77639155e77
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
 output:
     - type: record_package_manager_version
       expect:
@@ -997,12 +1005,12 @@ output:
                   requirements: []
                   version: 0.1.0
             dependency_files:
-                - /yarn/package.json
-                - /yarn/yarn.lock
+                - /yarn-berry/package.json
+                - /yarn-berry/yarn.lock
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 6cf39d141962f97109e53c210db1a77639155e77 
+            base-commit-sha: 6cf39d141962f97109e53c210db1a77639155e77
             dependencies:
                 - name: jquery
                   previous-requirements:
@@ -1033,7 +1041,7 @@ output:
                     }
                   content_encoding: utf-8
                   deleted: false
-                  directory: /yarn
+                  directory: /yarn-berry
                   name: package.json
                   operation: update
                   support_file: false
@@ -4593,7 +4601,7 @@ output:
                       linkType: hard
                   content_encoding: utf-8
                   deleted: false
-                  directory: /yarn
+                  directory: /yarn-berry
                   name: yarn.lock
                   operation: update
                   support_file: false
@@ -19545,7 +19553,7 @@ output:
                     module.exports = defaultApi;
                   content_encoding: ""
                   deleted: false
-                  directory: /yarn
+                  directory: /yarn-berry
                   name: .pnp.cjs
                   operation: update
                   support_file: false
@@ -19553,7 +19561,7 @@ output:
                 - content: ""
                   content_encoding: ""
                   deleted: true
-                  directory: /yarn
+                  directory: /yarn-berry
                   name: .yarn/cache/jquery-npm-3.5.0-6db13a3f79-5085f2f2e2.zip
                   operation: delete
                   support_file: false
@@ -30103,12 +30111,12 @@ output:
                     AAAAmQCZAOwyAAD4CQcAAAA=
                   content_encoding: base64
                   deleted: false
-                  directory: /yarn
+                  directory: /yarn-berry
                   name: .yarn/cache/jquery-npm-3.6.1-6f29087f48-6177d866a7.zip
                   operation: create
                   support_file: false
                   type: file
-            pr-title: Bump jquery from 3.5.0 to 3.6.1 in /yarn
+            pr-title: Bump jquery from 3.5.0 to 3.6.1 in /yarn-berry
             pr-body: |
                 Bumps [jquery](https://github.com/jquery/jquery) from 3.5.0 to 3.6.1.
                 <details>
@@ -30139,7 +30147,7 @@ output:
                 </details>
                 <br />
             commit-message: |-
-                Bump jquery from 3.5.0 to 3.6.1 in /yarn
+                Bump jquery from 3.5.0 to 3.6.1 in /yarn-berry
 
                 Bumps [jquery](https://github.com/jquery/jquery) from 3.5.0 to 3.6.1.
                 - [Release notes](https://github.com/jquery/jquery/releases)
@@ -30147,4 +30155,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 6cf39d141962f97109e53c210db1a77639155e77 
+            base-commit-sha: 6cf39d141962f97109e53c210db1a77639155e77
