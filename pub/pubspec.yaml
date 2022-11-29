@@ -7,4 +7,7 @@ dependencies:
   protobuf: 1.1.4 # Can update with updated constraint, only together with fixnum.
   fixnum: 0.10.11
   path: 1.8.1 # Already at latest
-  
+  http: "0.13.2" # < 0.13.3 has a security vulnerability: https://github.com/advisories/GHSA-4rgh-jx4f-qfcq
+
+dev_dependencies:
+  test: ^1.16.5
