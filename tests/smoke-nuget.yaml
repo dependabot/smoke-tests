@@ -12,13 +12,29 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
 output:
-    - type: record_update_job_error
+    - type: update_dependency_list
       expect:
         data:
-            error-type: octokit_rate_limited
-            error-details:
-                rate-limit-reset: "1672716511"
+            dependencies:
+                - name: NuGet.Versioning
+                  requirements:
+                    - file: project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.1.0
+                      source: null
+                  version: 6.1.0
+            dependency_files:
+                - /nuget/project.csproj
     - type: mark_as_processed
       expect:
         data:
