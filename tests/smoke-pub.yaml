@@ -29,6 +29,21 @@ output:
       expect:
         data:
             dependencies:
+                - name: _fe_analyzer_shared
+                  requirements: []
+                  version: 50.0.0
+                - name: analyzer
+                  requirements: []
+                  version: 5.2.0
+                - name: args
+                  requirements: []
+                  version: 2.3.1
+                - name: async
+                  requirements: []
+                  version: 2.10.0
+                - name: boolean_selector
+                  requirements: []
+                  version: 2.1.1
                 - name: collection
                   requirements:
                     - file: pubspec.yaml
@@ -40,7 +55,19 @@ output:
                             name: collection
                             url: https://pub.dartlang.org
                         type: hosted
-                  version: 1.14.13
+                  version: 1.17.0
+                - name: convert
+                  requirements: []
+                  version: 3.1.1
+                - name: coverage
+                  requirements: []
+                  version: 1.6.1
+                - name: crypto
+                  requirements: []
+                  version: 3.0.2
+                - name: file
+                  requirements: []
+                  version: 6.1.4
                 - name: fixnum
                   requirements:
                     - file: pubspec.yaml
@@ -53,6 +80,54 @@ output:
                             url: https://pub.dartlang.org
                         type: hosted
                   version: 0.10.11
+                - name: frontend_server_client
+                  requirements: []
+                  version: 3.2.0
+                - name: glob
+                  requirements: []
+                  version: 2.1.1
+                - name: http
+                  requirements:
+                    - file: pubspec.yaml
+                      groups:
+                        - direct
+                      requirement: 0.13.2
+                      source:
+                        description:
+                            name: http
+                            url: https://pub.dartlang.org
+                        type: hosted
+                  version: 0.13.2
+                - name: http_multi_server
+                  requirements: []
+                  version: 3.2.1
+                - name: http_parser
+                  requirements: []
+                  version: 4.0.2
+                - name: io
+                  requirements: []
+                  version: 1.0.3
+                - name: js
+                  requirements: []
+                  version: 0.6.5
+                - name: logging
+                  requirements: []
+                  version: 1.1.0
+                - name: matcher
+                  requirements: []
+                  version: 0.12.13
+                - name: meta
+                  requirements: []
+                  version: 1.8.0
+                - name: mime
+                  requirements: []
+                  version: 1.0.2
+                - name: node_preamble
+                  requirements: []
+                  version: 2.0.1
+                - name: package_config
+                  requirements: []
+                  version: 2.1.0
                 - name: path
                   requirements:
                     - file: pubspec.yaml
@@ -65,6 +140,12 @@ output:
                             url: https://pub.dartlang.org
                         type: hosted
                   version: 1.8.1
+                - name: pedantic
+                  requirements: []
+                  version: 1.11.1
+                - name: pool
+                  requirements: []
+                  version: 1.5.1
                 - name: protobuf
                   requirements:
                     - file: pubspec.yaml
@@ -77,6 +158,9 @@ output:
                             url: https://pub.dartlang.org
                         type: hosted
                   version: 1.1.4
+                - name: pub_semver
+                  requirements: []
+                  version: 2.1.3
                 - name: retry
                   requirements:
                     - file: pubspec.yaml
@@ -89,627 +173,102 @@ output:
                             url: https://pub.dartlang.org
                         type: hosted
                   version: 2.0.0
+                - name: shelf
+                  requirements: []
+                  version: 1.4.0
+                - name: shelf_packages_handler
+                  requirements: []
+                  version: 3.0.1
+                - name: shelf_static
+                  requirements: []
+                  version: 1.1.1
+                - name: shelf_web_socket
+                  requirements: []
+                  version: 1.0.3
+                - name: source_map_stack_trace
+                  requirements: []
+                  version: 2.1.1
+                - name: source_maps
+                  requirements: []
+                  version: 0.10.11
+                - name: source_span
+                  requirements: []
+                  version: 1.9.1
+                - name: stack_trace
+                  requirements: []
+                  version: 1.11.0
+                - name: stream_channel
+                  requirements: []
+                  version: 2.1.1
+                - name: string_scanner
+                  requirements: []
+                  version: 1.2.0
+                - name: term_glyph
+                  requirements: []
+                  version: 1.2.1
+                - name: test
+                  requirements:
+                    - file: pubspec.yaml
+                      groups:
+                        - dev
+                      requirement: ^1.16.5
+                      source:
+                        description:
+                            name: test
+                            url: https://pub.dartlang.org
+                        type: hosted
+                  version: 1.22.0
+                - name: test_api
+                  requirements: []
+                  version: 0.4.16
+                - name: test_core
+                  requirements: []
+                  version: 0.4.20
+                - name: typed_data
+                  requirements: []
+                  version: 1.3.1
+                - name: vm_service
+                  requirements: []
+                  version: 9.4.0
+                - name: watcher
+                  requirements: []
+                  version: 1.0.2
+                - name: web_socket_channel
+                  requirements: []
+                  version: 2.2.0
+                - name: webkit_inspection_protocol
+                  requirements: []
+                  version: 1.2.0
+                - name: yaml
+                  requirements: []
+                  version: 3.1.1
             dependency_files:
                 - /pub/pubspec.yaml
                 - /pub/pubspec.lock
-    - type: create_pull_request
+    - type: record_update_job_error
       expect:
         data:
-            base-commit-sha: 8b2c0d821028c531826db20ca22cffdd2cc05abf
-            dependencies:
-                - name: collection
-                  previous-requirements:
-                    - file: pubspec.yaml
-                      groups:
-                        - direct
-                      requirement: ^1.14.13
-                      source:
-                        description:
-                            name: collection
-                            url: https://pub.dartlang.org
-                        type: hosted
-                  previous-version: 1.14.13
-                  requirements:
-                    - file: pubspec.yaml
-                      groups:
-                        - direct
-                      requirement: ^1.16.0
-                      source: null
-                  version: 1.16.0
-            updated-dependency-files:
-                - content: "name: dependabot_testcase\nenvironment:\n  sdk: '>=2.12.0 <3.0.0'\ndependencies:\n  collection: ^1.16.0 # Locked to 1.14.13, can update with no unlock.\n  retry: ^2.0.0 # Can update with updated constraint, no further constraints.\n  protobuf: 1.1.4 # Can update with updated constraint, only together with fixnum.\n  fixnum: 0.10.11\n  path: 1.8.1 # Already at latest\n  \n"
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /pub
-                  name: pubspec.yaml
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    # Generated by pub
-                    # See https://dart.dev/tools/pub/glossary#lockfile
-                    packages:
-                      collection:
-                        dependency: "direct main"
-                        description:
-                          name: collection
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "1.16.0"
-                      fixnum:
-                        dependency: "direct main"
-                        description:
-                          name: fixnum
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "0.10.11"
-                      path:
-                        dependency: "direct main"
-                        description:
-                          name: path
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "1.8.1"
-                      protobuf:
-                        dependency: "direct main"
-                        description:
-                          name: protobuf
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "1.1.4"
-                      retry:
-                        dependency: "direct main"
-                        description:
-                          name: retry
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "2.0.0"
-                    sdks:
-                      dart: ">=2.12.0 <3.0.0"
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /pub
-                  name: pubspec.lock
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump collection from 1.14.13 to 1.16.0 in /pub
-            pr-body: |
-                Bumps [collection](https://github.com/dart-lang/collection) from 1.14.13 to 1.16.0.
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/dart-lang/collection/blob/master/CHANGELOG.md">collection's changelog</a>.</em></p>
-                <blockquote>
-                <h2>1.16.0</h2>
-                <ul>
-                <li>Add an <code>Iterable.slices</code> extension method.</li>
-                <li>Add <code>BoolList</code> class for space-efficient lists of boolean values.</li>
-                <li>Use a stable sort algorithm in the <code>IterableExtension.sortedBy</code> method.</li>
-                <li>Add <code>min</code>, <code>max</code>, <code>minOrNull</code> and <code>maxOrNull</code> getters to
-                <code>IterableDoubleExtension</code>, <code>IterableNumberExtension</code> and
-                <code>IterableIntegerExtension</code></li>
-                <li>Change <code>UnorderedIterableEquality</code> and <code>SetEquality</code> to implement <code>Equality</code>
-                with a non-nullable generic to allows assignment to variables with that type.
-                Assignment to <code>Equality</code> with a nullable type is still allowed because of
-                covariance. The <code>equals</code> and <code>hash</code> methods continue to accept nullable
-                arguments.</li>
-                <li>Enable the <code>avoid_dynamic_calls</code> lint.</li>
-                </ul>
-                <h2>1.15.0</h2>
-                <ul>
-                <li>Stable release for null safety.</li>
-                </ul>
-                <h2>1.15.0-nullsafety.5</h2>
-                <ul>
-                <li>Fix typo in extension method <code>expandIndexed</code>.</li>
-                <li>Update sdk constraints to <code>&gt;=2.12.0-0 &lt;3.0.0</code> based on beta release
-                guidelines.</li>
-                </ul>
-                <h2>1.15.0-nullsafety.4</h2>
-                <ul>
-                <li>
-                <p>Allow prerelease versions of the <code>2.12.x</code> sdk.</p>
-                </li>
-                <li>
-                <p>Remove the unusable setter <code>UnionSetController.set=</code>. This was mistakenly
-                added to the public API but could never be called.</p>
-                </li>
-                <li>
-                <p>Add extra optional <code>Random</code> argument to <code>shuffle</code>.</p>
-                </li>
-                <li>
-                <p>Add a large number of extension methods on <code>Iterable</code> and <code>List</code> types,
-                and on a few other types.
-                These either provide easy access to the operations from <code>algorithms.dart</code>,
-                or provide convenience variants of existing <code>Iterable</code> and <code>List</code> methods
-                like <code>singleWhereOrNull</code> or <code>forEachIndexed</code>.</p>
-                </li>
-                </ul>
-                <h2>1.15.0-nullsafety.3</h2>
-                <ul>
-                <li>Allow 2.10 stable and 2.11.0 dev SDK versions.</li>
-                <li>Add <code>toUnorderedList</code> method on <code>PriorityQueue</code>.</li>
-                <li>Make <code>HeapPriorityQueue</code>'s <code>remove</code> and <code>contains</code> methods
-                use <code>==</code> for equality checks.
-                Previously used <code>comparison(a, b) == 0</code> as criteria, but it's possible
-                to have multiple elements with the same priority in a queue, so that
-                could remove the wrong element.
-                Still requires that objects that are <code>==</code> also have the same priority.</li>
-                </ul>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/dart-lang/collection/commit/2bbb27bff8c4e48c27160160c3a2fdb9070ae303"><code>2bbb27b</code></a> Prepare to publish (<a href="https://github-redirect.dependabot.com/dart-lang/collection/issues/233">#233</a>)</li>
-                <li><a href="https://github.com/dart-lang/collection/commit/e1407da23b9f17400b3a905aafe2b8fa10db3d86"><code>e1407da</code></a> enable the avoid_dynamic_calls lint (<a href="https://github-redirect.dependabot.com/dart-lang/collection/issues/232">#232</a>)</li>
-                <li><a href="https://github.com/dart-lang/collection/commit/c8b249a8dfa7082719207970c8a7a1e7abf8e823"><code>c8b249a</code></a> Add an Iterable.slice() extension (<a href="https://github-redirect.dependabot.com/dart-lang/collection/issues/191">#191</a>)</li>
-                <li><a href="https://github.com/dart-lang/collection/commit/a0d281589da10c176885c40dfa93bc896124c75e"><code>a0d2815</code></a> docs: fix documentation typos (<a href="https://github-redirect.dependabot.com/dart-lang/collection/issues/225">#225</a>)</li>
-                <li><a href="https://github.com/dart-lang/collection/commit/71fb2168f8557e77777d3c880083909a46daba8c"><code>71fb216</code></a> Remove unnecessary severity changes (<a href="https://github-redirect.dependabot.com/dart-lang/collection/issues/221">#221</a>)</li>
-                <li><a href="https://github.com/dart-lang/collection/commit/f8493d1e7bf9e0eae5480e8a6841203ea7499b4b"><code>f8493d1</code></a> Fix typo in dart analyze command (<a href="https://github-redirect.dependabot.com/dart-lang/collection/issues/222">#222</a>)</li>
-                <li><a href="https://github.com/dart-lang/collection/commit/13c076f7e24798efbe8458878823d08e10198379"><code>13c076f</code></a> Change &quot;dartfmt&quot; -&gt; &quot;dart format&quot;. (<a href="https://github-redirect.dependabot.com/dart-lang/collection/issues/220">#220</a>)</li>
-                <li><a href="https://github.com/dart-lang/collection/commit/66d66c4bf00d1a3337f93b1db62f3b73fe4576c5"><code>66d66c4</code></a> Restore an explicit null return (<a href="https://github-redirect.dependabot.com/dart-lang/collection/issues/219">#219</a>)</li>
-                <li><a href="https://github.com/dart-lang/collection/commit/603f9e0b4233ece2ca4ca00b64b763d9a05dee76"><code>603f9e0</code></a> Drop nullability from _UnorderedEquality generic (<a href="https://github-redirect.dependabot.com/dart-lang/collection/issues/215">#215</a>)</li>
-                <li><a href="https://github.com/dart-lang/collection/commit/cd46e1959d1051aeba9c372de4f59cc20cb358e6"><code>cd46e19</code></a> Removed unnecessary nullable type in maxBy (<a href="https://github-redirect.dependabot.com/dart-lang/collection/issues/181">#181</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/dart-lang/collection/compare/1.14.13...1.16.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump collection from 1.14.13 to 1.16.0 in /pub
-
-                Bumps [collection](https://github.com/dart-lang/collection) from 1.14.13 to 1.16.0.
-                - [Release notes](https://github.com/dart-lang/collection/releases)
-                - [Changelog](https://github.com/dart-lang/collection/blob/master/CHANGELOG.md)
-                - [Commits](https://github.com/dart-lang/collection/compare/1.14.13...1.16.0)
-    - type: create_pull_request
+            error-type: octokit_rate_limited
+            error-details:
+                rate-limit-reset: "1672716510"
+    - type: record_update_job_error
       expect:
         data:
-            base-commit-sha: 8b2c0d821028c531826db20ca22cffdd2cc05abf
-            dependencies:
-                - name: fixnum
-                  previous-requirements:
-                    - file: pubspec.yaml
-                      groups:
-                        - direct
-                      requirement: 0.10.11
-                      source: null
-                  previous-version: 0.10.11
-                  requirements:
-                    - file: pubspec.yaml
-                      groups:
-                        - direct
-                      requirement: ^1.0.1
-                      source: null
-                  version: 1.0.1
-                - name: protobuf
-                  previous-requirements:
-                    - file: pubspec.yaml
-                      groups:
-                        - direct
-                      requirement: 1.1.4
-                      source: null
-                  previous-version: 1.1.4
-                  requirements:
-                    - file: pubspec.yaml
-                      groups:
-                        - direct
-                      requirement: ^2.0.0
-                      source: null
-                  version: 2.0.0
-            updated-dependency-files:
-                - content: "name: dependabot_testcase\nenvironment:\n  sdk: '>=2.12.0 <3.0.0'\ndependencies:\n  collection: ^1.14.13 # Locked to 1.14.13, can update with no unlock.\n  retry: ^2.0.0 # Can update with updated constraint, no further constraints.\n  protobuf: ^2.0.0 # Can update with updated constraint, only together with fixnum.\n  fixnum: ^1.0.1\n  path: 1.8.1 # Already at latest\n  \n"
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /pub
-                  name: pubspec.yaml
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    # Generated by pub
-                    # See https://dart.dev/tools/pub/glossary#lockfile
-                    packages:
-                      collection:
-                        dependency: "direct main"
-                        description:
-                          name: collection
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "1.14.13"
-                      fixnum:
-                        dependency: "direct main"
-                        description:
-                          name: fixnum
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "1.0.1"
-                      path:
-                        dependency: "direct main"
-                        description:
-                          name: path
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "1.8.1"
-                      protobuf:
-                        dependency: "direct main"
-                        description:
-                          name: protobuf
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "2.0.0"
-                      retry:
-                        dependency: "direct main"
-                        description:
-                          name: retry
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "2.0.0"
-                    sdks:
-                      dart: ">=2.12.0 <3.0.0"
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /pub
-                  name: pubspec.lock
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump fixnum and protobuf in /pub
-            pr-body: |
-                Bumps [fixnum](https://github.com/dart-lang/fixnum) and [protobuf](https://github.com/google/protobuf.dart). These dependencies needed to be updated together.
-                Updates `fixnum` from 0.10.11 to 1.0.1
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/dart-lang/fixnum/blob/master/CHANGELOG.md">fixnum's changelog</a>.</em></p>
-                <blockquote>
-                <h2>1.0.1</h2>
-                <ul>
-                <li>Switch to using <code>package:lints</code>.</li>
-                <li>Populate the pubspec <code>repository</code> field.</li>
-                </ul>
-                <h2>1.0.0</h2>
-                <ul>
-                <li>Stable null safety release.</li>
-                </ul>
-                <h2>1.0.0-nullsafety.0</h2>
-                <ul>
-                <li>Migrate to null safety.
-                <ul>
-                <li>This is meant to be mostly non-breaking, for opted in users runtime errors
-                will be promoted to static errors. For non-opted in users the runtime
-                errors are still present in their original form.</li>
-                </ul>
-                </li>
-                </ul>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/dart-lang/fixnum/commit/bd68553ca8deac47cd1fcefb9413609e93401115"><code>bd68553</code></a> prep for publishing 1.0.1 (<a href="https://github-redirect.dependabot.com/dart-lang/fixnum/issues/89">#89</a>)</li>
-                <li><a href="https://github.com/dart-lang/fixnum/commit/3bfc2ed1eea7e7acb79ad4f17392f92c816fc5ce"><code>3bfc2ed</code></a> Switch from homepage to repository in pubspec  (<a href="https://github-redirect.dependabot.com/dart-lang/fixnum/issues/86">#86</a>)</li>
-                <li><a href="https://github.com/dart-lang/fixnum/commit/848341f061359ef7ddc0cad472c2ecbb036b28ac"><code>848341f</code></a> Enable and fix some lints</li>
-                <li><a href="https://github.com/dart-lang/fixnum/commit/02ef22f7422df5e65cc44b8baffdd768f7d0fd94"><code>02ef22f</code></a> Ignore deprecations for IntegerDivisionByZeroException</li>
-                <li><a href="https://github.com/dart-lang/fixnum/commit/9d90a12c0554554c9f3438d610014c713f8be0d0"><code>9d90a12</code></a> Move from pedantic to lints package (<a href="https://github-redirect.dependabot.com/dart-lang/fixnum/issues/82">#82</a>)</li>
-                <li><a href="https://github.com/dart-lang/fixnum/commit/e381b306f5842dd97d0732cba92671f786083bef"><code>e381b30</code></a> Update test-package.yml (<a href="https://github-redirect.dependabot.com/dart-lang/fixnum/issues/77">#77</a>)</li>
-                <li><a href="https://github.com/dart-lang/fixnum/commit/44508def2f9797e642e5f368cbabb622da68c856"><code>44508de</code></a> Update LICENSE (<a href="https://github-redirect.dependabot.com/dart-lang/fixnum/issues/76">#76</a>)</li>
-                <li><a href="https://github.com/dart-lang/fixnum/commit/762b74f61696d414d0090c5dfc430572f5b4be0f"><code>762b74f</code></a> stable null safety release (<a href="https://github-redirect.dependabot.com/dart-lang/fixnum/issues/73">#73</a>)</li>
-                <li><a href="https://github.com/dart-lang/fixnum/commit/9dfcbba1a0ccd7166872d26da4fed0d40c746acd"><code>9dfcbba</code></a> Migrate to GitHub Actions (<a href="https://github-redirect.dependabot.com/dart-lang/fixnum/issues/72">#72</a>)</li>
-                <li><a href="https://github.com/dart-lang/fixnum/commit/44e467e40e9430adffd8ec8c74027e9464ff2105"><code>44e467e</code></a> remove redundant experiment (<a href="https://github-redirect.dependabot.com/dart-lang/fixnum/issues/71">#71</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/dart-lang/fixnum/compare/0.10.11...1.0.1">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-
-                Updates `protobuf` from 1.1.4 to 2.0.0
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/google/protobuf.dart/releases">protobuf's releases</a>.</em></p>
-                <blockquote>
-                <h2>protobuf-2.0.1, protoc_plugin-20.0.1</h2>
-                <h2>protobuf-2.0.1</h2>
-                <ul>
-                <li>Update READMEs of <code>protobuf</code> and <code>protoc_plugin</code>:
-                <ul>
-                <li>Use <code>dart pub</code> instead of <code>pub</code> in command examples (<a href="https://github.com/google/protobuf.dart/commit/a7e75cb">a7e75cb</a>)</li>
-                <li>Fix typos, clarify installation instructions, mention native compilation, fix proto syntax for <code>protoc_plugin</code> (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/610">#610</a>, <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/617">#617</a>, <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/641">#641</a>)</li>
-                </ul>
-                </li>
-                <li>Update some of the documentation according to Effective Dart documentation guide (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/664">#664</a>, <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/674">#674</a>)</li>
-                <li>Improve runtime perf by removing some of the runtime type checks (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/574">#574</a>, <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/573">#573</a>)</li>
-                <li>Fix a bug when converting negative <code>Timestamp</code> to Dart <code>DateTime</code> (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/580">#580</a>, <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/577">#577</a>)</li>
-                <li>Document <code>BuilderInfo</code> and <code>FieldInfo</code> properties (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/597">#597</a>)</li>
-                <li>Improve <code>BuilderInfo</code> initialization by doing some of the work lazily (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/606">#606</a>)</li>
-                <li>Improve enum hash code generation (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/556">#556</a>)</li>
-                <li>Fix parsing nested <code>Any</code> messages from JSON (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/568">#568</a>)</li>
-                <li>Improve message hash code generation performance (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/554">#554</a>, <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/633">#633</a>)</li>
-                <li>Fix reading uninitialized map fields changing equality and hash code of messages. (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/638">#638</a>)</li>
-                <li>Fix setting an extension field when there's an unknown field with the same tag. (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/639">#639</a>)</li>
-                <li>Fix sharing backing memory for <code>repeated bytes</code> and <code>optional bytes</code> fields. (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/640">#640</a>)</li>
-                <li><code>GeneratedMessage.rebuild</code> now generates a warning when the return value is not used. (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/631">#631</a>)</li>
-                <li>Fix hash code of messages with empty unknown field set (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/648">#648</a>)</li>
-                <li>Show field tags with <code>protobuf.omit_field_names</code>, enum value tags with <code>protobuf.omit_enum_names</code> in debug strings (<code>toString</code> methods) (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/649">#649</a>)</li>
-                <li><code>TimestampMixin.toDateTime</code> now takes an optional named <code>bool</code> argument <code>toLocal</code> (defaults to <code>false</code>) for generating a <code>DateTime</code> in the local time zone (instead of UTC). (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/653">#653</a>)</li>
-                <li>Fix serialization of <code>infinity</code> and <code>nan</code> doubles in JSON serializers (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/652">#652</a>)</li>
-                <li>Fix Dart generation for fields starting with underscore (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/651">#651</a>)</li>
-                <li>Fix proto3 JSON deserialization of fixed32 fields (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/655">#655</a>)</li>
-                <li>Fix uninitialized repeated field values runtime types for frozen messages (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/654">#654</a>)</li>
-                </ul>
-                <p><a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/610">#610</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/610">google/protobuf.dart#610</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/617">#617</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/617">google/protobuf.dart#617</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/574">#574</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/574">google/protobuf.dart#574</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/573">#573</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/573">google/protobuf.dart#573</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/580">#580</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/580">google/protobuf.dart#580</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/577">#577</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/577">google/protobuf.dart#577</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/597">#597</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/597">google/protobuf.dart#597</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/606">#606</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/606">google/protobuf.dart#606</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/556">#556</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/556">google/protobuf.dart#556</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/568">#568</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/568">google/protobuf.dart#568</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/554">#554</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/554">google/protobuf.dart#554</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/633">#633</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/633">google/protobuf.dart#633</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/638">#638</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/638">google/protobuf.dart#638</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/639">#639</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/639">google/protobuf.dart#639</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/640">#640</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/640">google/protobuf.dart#640</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/641">#641</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/641">google/protobuf.dart#641</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/631">#631</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/631">google/protobuf.dart#631</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/648">#648</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/648">google/protobuf.dart#648</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/649">#649</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/649">google/protobuf.dart#649</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/653">#653</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/653">google/protobuf.dart#653</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/652">#652</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/652">google/protobuf.dart#652</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/651">#651</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/651">google/protobuf.dart#651</a>
-                <a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/655">#655</a>: <a href="https://github-redirect.dependabot.com/google/protobuf.dart/pull/655">google/protobuf.dart#655</a></p>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/google/protobuf.dart/commit/94f52666aab95fdf557be46f79b436758c372853"><code>94f5266</code></a> Stable null safety release of protobuf (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/473">#473</a>)</li>
-                <li><a href="https://github.com/google/protobuf.dart/commit/d2620dd915323555bea587b8bf24ca6bd4e05f8a"><code>d2620dd</code></a> Generate null-safe .pbgrpc files (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/466">#466</a>)</li>
-                <li><a href="https://github.com/google/protobuf.dart/commit/1144e403fc41699c2e074b5fb518d55314ee7a6d"><code>1144e40</code></a> Use null-safe bootstrap protos (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/464">#464</a>)</li>
-                <li><a href="https://github.com/google/protobuf.dart/commit/fe93fb8d19bf695ff58bc680a9b8c8d5c8865bca"><code>fe93fb8</code></a> Merge master into null safety (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/463">#463</a>)</li>
-                <li><a href="https://github.com/google/protobuf.dart/commit/9f1969572694d7ace381119e94fcda70ace5b0b3"><code>9f19695</code></a> named optional arguments in constructors for messages (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/441">#441</a>)</li>
-                <li><a href="https://github.com/google/protobuf.dart/commit/ead5550860320d8dce8c3c81f6fd5b3a17db12f7"><code>ead5550</code></a> Let protoc_plugin depend on protobuf from null-safety and fix changelog. (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/456">#456</a>)</li>
-                <li><a href="https://github.com/google/protobuf.dart/commit/f611f237e3699caf7c2adab60560bb6f51b969e7"><code>f611f23</code></a> Prepare query_benchmark/ for NNBD (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/451">#451</a>)</li>
-                <li><a href="https://github.com/google/protobuf.dart/commit/d30a4c8b4f4ead77653e1523b44aa1325dc8d0d0"><code>d30a4c8</code></a> Restore possibility to use reflective API to create default field values usin...</li>
-                <li><a href="https://github.com/google/protobuf.dart/commit/75389dd16f46ca2a4694f4d015240514c7e34077"><code>75389dd</code></a> Allow dart protos to be sent through sendports (and therefore to other isolat...</li>
-                <li><a href="https://github.com/google/protobuf.dart/commit/0d03fd588df69e9863e2a2efc0059dee8f18d5b2"><code>0d03fd5</code></a> Regenerate bootstrap protos with previous version of protoc_plugin (<a href="https://github-redirect.dependabot.com/google/protobuf.dart/issues/440">#440</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/google/protobuf.dart/compare/protobuf-v1.1.4...protobuf-v2.0.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump fixnum and protobuf in /pub
-
-                Bumps [fixnum](https://github.com/dart-lang/fixnum) and [protobuf](https://github.com/google/protobuf.dart). These dependencies needed to be updated together.
-
-                Updates `fixnum` from 0.10.11 to 1.0.1
-                - [Release notes](https://github.com/dart-lang/fixnum/releases)
-                - [Changelog](https://github.com/dart-lang/fixnum/blob/master/CHANGELOG.md)
-                - [Commits](https://github.com/dart-lang/fixnum/compare/0.10.11...1.0.1)
-
-                Updates `protobuf` from 1.1.4 to 2.0.0
-                - [Release notes](https://github.com/google/protobuf.dart/releases)
-                - [Commits](https://github.com/google/protobuf.dart/compare/protobuf-v1.1.4...protobuf-v2.0.0)
-    - type: create_pull_request
+            error-type: octokit_rate_limited
+            error-details:
+                rate-limit-reset: "1672716510"
+    - type: record_update_job_error
       expect:
         data:
-            base-commit-sha: 8b2c0d821028c531826db20ca22cffdd2cc05abf
-            dependencies:
-                - name: path
-                  previous-requirements:
-                    - file: pubspec.yaml
-                      groups:
-                        - direct
-                      requirement: 1.8.1
-                      source:
-                        description:
-                            name: path
-                            url: https://pub.dartlang.org
-                        type: hosted
-                  previous-version: 1.8.1
-                  requirements:
-                    - file: pubspec.yaml
-                      groups:
-                        - direct
-                      requirement: ^1.8.2
-                      source: null
-                  version: 1.8.2
-            updated-dependency-files:
-                - content: "name: dependabot_testcase\nenvironment:\n  sdk: '>=2.12.0 <3.0.0'\ndependencies:\n  collection: ^1.14.13 # Locked to 1.14.13, can update with no unlock.\n  retry: ^2.0.0 # Can update with updated constraint, no further constraints.\n  protobuf: 1.1.4 # Can update with updated constraint, only together with fixnum.\n  fixnum: 0.10.11\n  path: ^1.8.2 # Already at latest\n  \n"
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /pub
-                  name: pubspec.yaml
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    # Generated by pub
-                    # See https://dart.dev/tools/pub/glossary#lockfile
-                    packages:
-                      collection:
-                        dependency: "direct main"
-                        description:
-                          name: collection
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "1.14.13"
-                      fixnum:
-                        dependency: "direct main"
-                        description:
-                          name: fixnum
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "0.10.11"
-                      path:
-                        dependency: "direct main"
-                        description:
-                          name: path
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "1.8.2"
-                      protobuf:
-                        dependency: "direct main"
-                        description:
-                          name: protobuf
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "1.1.4"
-                      retry:
-                        dependency: "direct main"
-                        description:
-                          name: retry
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "2.0.0"
-                    sdks:
-                      dart: ">=2.12.0 <3.0.0"
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /pub
-                  name: pubspec.lock
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump path from 1.8.1 to 1.8.2 in /pub
-            pr-body: |
-                Bumps [path](https://github.com/dart-lang/path) from 1.8.1 to 1.8.2.
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/dart-lang/path/blob/master/CHANGELOG.md">path's changelog</a>.</em></p>
-                <blockquote>
-                <h2>1.8.2</h2>
-                <ul>
-                <li>Enable the <code>avoid_dynamic_calls</code> lint.</li>
-                <li>Popuate the pubspec <code>repository</code> field.</li>
-                </ul>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li>See full diff in <a href="https://github.com/dart-lang/path/commits/1.8.2">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump path from 1.8.1 to 1.8.2 in /pub
-
-                Bumps [path](https://github.com/dart-lang/path) from 1.8.1 to 1.8.2.
-                - [Release notes](https://github.com/dart-lang/path/releases)
-                - [Changelog](https://github.com/dart-lang/path/blob/master/CHANGELOG.md)
-                - [Commits](https://github.com/dart-lang/path/commits/1.8.2)
-    - type: create_pull_request
+            error-type: octokit_rate_limited
+            error-details:
+                rate-limit-reset: "1672716510"
+    - type: record_update_job_error
       expect:
         data:
-            base-commit-sha: 8b2c0d821028c531826db20ca22cffdd2cc05abf
-            dependencies:
-                - name: retry
-                  previous-requirements:
-                    - file: pubspec.yaml
-                      groups:
-                        - direct
-                      requirement: ^2.0.0
-                      source:
-                        description:
-                            name: retry
-                            url: https://pub.dartlang.org
-                        type: hosted
-                  previous-version: 2.0.0
-                  requirements:
-                    - file: pubspec.yaml
-                      groups:
-                        - direct
-                      requirement: ^3.1.0
-                      source: null
-                  version: 3.1.0
-            updated-dependency-files:
-                - content: "name: dependabot_testcase\nenvironment:\n  sdk: '>=2.12.0 <3.0.0'\ndependencies:\n  collection: ^1.14.13 # Locked to 1.14.13, can update with no unlock.\n  retry: ^3.1.0 # Can update with updated constraint, no further constraints.\n  protobuf: 1.1.4 # Can update with updated constraint, only together with fixnum.\n  fixnum: 0.10.11\n  path: 1.8.1 # Already at latest\n  \n"
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /pub
-                  name: pubspec.yaml
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    # Generated by pub
-                    # See https://dart.dev/tools/pub/glossary#lockfile
-                    packages:
-                      collection:
-                        dependency: "direct main"
-                        description:
-                          name: collection
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "1.14.13"
-                      fixnum:
-                        dependency: "direct main"
-                        description:
-                          name: fixnum
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "0.10.11"
-                      path:
-                        dependency: "direct main"
-                        description:
-                          name: path
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "1.8.1"
-                      protobuf:
-                        dependency: "direct main"
-                        description:
-                          name: protobuf
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "1.1.4"
-                      retry:
-                        dependency: "direct main"
-                        description:
-                          name: retry
-                          url: "https://pub.dartlang.org"
-                        source: hosted
-                        version: "3.1.0"
-                    sdks:
-                      dart: ">=2.12.0 <3.0.0"
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /pub
-                  name: pubspec.lock
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump retry from 2.0.0 to 3.1.0 in /pub
-            pr-body: |
-                Bumps [retry](https://github.com/google/dart-neats) from 2.0.0 to 3.1.0.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/google/dart-neats/commit/a159c67b195255607bcd77366f77f9fc4b692667"><code>a159c67</code></a> Prepare stable release of retry 3.1.0</li>
-                <li><a href="https://github.com/google/dart-neats/commit/a74a84aef9c15335c059d7727bf53b5102427f74"><code>a74a84a</code></a> Publishing chunked_stream 1.4.0</li>
-                <li><a href="https://github.com/google/dart-neats/commit/69d28af7ee4684172d28173ac1d4a413e079bf89"><code>69d28af</code></a> Prepare stable chunked_stream release (<a href="https://github-redirect.dependabot.com/google/dart-neats/issues/100">#100</a>)</li>
-                <li><a href="https://github.com/google/dart-neats/commit/dddf730e4d354946039ed0e25b32ac362f089123"><code>dddf730</code></a> Added readByteStream and prepare 1.4.0-null-safe.0 release (<a href="https://github-redirect.dependabot.com/google/dart-neats/issues/96">#96</a>)</li>
-                <li><a href="https://github.com/google/dart-neats/commit/911db008ebbc86279d748b7b84d5cb9e2d911cd5"><code>911db00</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/google/dart-neats/issues/89">#89</a> from isoos/upgrade-analyzer</li>
-                <li><a href="https://github.com/google/dart-neats/commit/5486fbce71fb0ce1f47882f3e32c2663d21fe1e6"><code>5486fbc</code></a> Migrated slugid to null-safety (<a href="https://github-redirect.dependabot.com/google/dart-neats/issues/87">#87</a>)</li>
-                <li><a href="https://github.com/google/dart-neats/commit/1731539606d55e581d7c4e902ade515d01963652"><code>1731539</code></a> Update github actions</li>
-                <li><a href="https://github.com/google/dart-neats/commit/be036352a786c8bbf9027b6739b286b63d5707b9"><code>be03635</code></a> Typo</li>
-                <li><a href="https://github.com/google/dart-neats/commit/0a511432180b773464d837b18c6e5aab1fbd851f"><code>0a51143</code></a> Migrate chunked_stream to null safety</li>
-                <li><a href="https://github.com/google/dart-neats/commit/89ac2cbd773e327cfa3e1d561a52f6db85eb192b"><code>89ac2cb</code></a> Updated config (<a href="https://github-redirect.dependabot.com/google/dart-neats/issues/94">#94</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/google/dart-neats/compare/retry-v2.0.0...retry-v3.1.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump retry from 2.0.0 to 3.1.0 in /pub
-
-                Bumps [retry](https://github.com/google/dart-neats) from 2.0.0 to 3.1.0.
-                - [Release notes](https://github.com/google/dart-neats/releases)
-                - [Commits](https://github.com/google/dart-neats/compare/retry-v2.0.0...retry-v3.1.0)
+            error-type: octokit_rate_limited
+            error-details:
+                rate-limit-reset: "1672716510"
     - type: mark_as_processed
       expect:
         data:
