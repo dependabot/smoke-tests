@@ -58,7 +58,7 @@ output:
                         - default
                       requirement: '>= 0'
                       source:
-                        branch: master
+                        branch: null
                         ref: 2.1.4
                         type: git
                         url: git@github.com:rack/rack.git
@@ -137,6 +137,7 @@ output:
                   operation: update
                   support_file: false
                   type: file
+                  mode: "100644"
                 - content: |
                     GIT
                       remote: git@github.com:rack/rack.git
@@ -159,7 +160,7 @@ output:
                         json (2.6.3)
                         netaddr (2.0.1)
                         parallel (1.22.1)
-                        parser (3.1.3.0)
+                        parser (3.2.0.0)
                           ast (~> 2.4.1)
                         rainbow (3.1.1)
                         regexp_parser (2.6.1)
@@ -179,7 +180,7 @@ output:
                         ruby-progressbar (1.11.0)
                         toml-rb (2.2.0)
                           citrus (~> 3.0, > 3.0)
-                        unicode-display_width (2.3.0)
+                        unicode-display_width (2.4.0)
 
                     PLATFORMS
                       ruby
@@ -199,6 +200,7 @@ output:
                   operation: update
                   support_file: false
                   type: file
+                  mode: "100644"
             pr-title: Bump rubocop from 0.76.0 to 1.32.0
             pr-body: |
                 Bumps [rubocop](https://github.com/rubocop/rubocop) from 0.76.0 to 1.32.0.
@@ -404,6 +406,7 @@ output:
                   operation: update
                   support_file: false
                   type: file
+                  mode: "100644"
                 - content: |
                     Gem::Specification.new do |s|
                       s.name        = 'dependabot-all-updates-test-staging'
