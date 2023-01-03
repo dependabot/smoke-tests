@@ -54,7 +54,7 @@ This repo has several workflows used to manage the caches that are stored as bui
   
 To see the percentage of caching on each test, go to the [Smoke tests](https://github.com/dependabot/smoke-tests/actions/workflows/smoke.yml) summary view. If the test has low cache coverage then it is more likely to fail in the future. Rerun the Cache one workflow to recache it, or debug why it is uncachable. 
 
-## Regenerating tests
+### Regenerating tests
 
 Sometimes after a test has been uncached for a while, it will break because the dependencies have changed, and recaching won't fix it. Also some package-managers seem to get around the caching after a while.
 
