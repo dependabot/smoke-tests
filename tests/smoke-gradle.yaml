@@ -2,205 +2,213 @@ input:
     job:
         package-manager: gradle
         allowed-updates:
-          - update-type: all
+            - update-type: all
         ignore-conditions:
-          - dependency-name: com.google.inject:guice
-            source: tests/smoke-gradle.yaml
-            version-requirement: '>5.1.0'
-          - dependency-name: net.lingala.zip4j:zip4j
-            source: tests/smoke-gradle.yaml
-            version-requirement: '>2.11.1'
-          - dependency-name: net.kyori:text
-            source: tests/smoke-gradle.yaml
-            version-requirement: '>1.12-1.6.5'
-          - dependency-name: org.bstats:bstats-bukkit
-            source: tests/smoke-gradle.yaml
-            version-requirement: '>3.0.0'
-          - dependency-name: com.bugsnag:bugsnag
-            source: tests/smoke-gradle.yaml
-            version-requirement: '>3.6.4'
-          - dependency-name: com.zaxxer:HikariCP
-            source: tests/smoke-gradle.yaml
-            version-requirement: '>5.0.1'
-          - dependency-name: org.eclipse.jgit:org.eclipse.jgit
-            source: tests/smoke-gradle.yaml
-            version-requirement: '>6.2.0.202206071550-r'
-          - dependency-name: org.hibernate:hibernate-core
-            source: tests/smoke-gradle.yaml
-            version-requirement: '>6.1.1.Final'
-          - dependency-name: io.github.lukehutch:fast-classpath-scanner
-            source: tests/smoke-gradle.yaml
-            version-requirement: '>3.1.15'
-          - dependency-name: org.objenesis:objenesis
-            source: tests/smoke-gradle.yaml
-            version-requirement: '>3.3'
+            - dependency-name: com.google.inject:guice
+              source: tests/smoke-gradle.yaml
+              version-requirement: '>5.1.0'
+            - dependency-name: net.lingala.zip4j:zip4j
+              source: tests/smoke-gradle.yaml
+              version-requirement: '>2.11.1'
+            - dependency-name: net.kyori:text
+              source: tests/smoke-gradle.yaml
+              version-requirement: '>1.12-1.6.5'
+            - dependency-name: org.bstats:bstats-bukkit
+              source: tests/smoke-gradle.yaml
+              version-requirement: '>3.0.0'
+            - dependency-name: com.bugsnag:bugsnag
+              source: tests/smoke-gradle.yaml
+              version-requirement: '>3.6.4'
+            - dependency-name: com.zaxxer:HikariCP
+              source: tests/smoke-gradle.yaml
+              version-requirement: '>5.0.1'
+            - dependency-name: org.eclipse.jgit:org.eclipse.jgit
+              source: tests/smoke-gradle.yaml
+              version-requirement: '>6.2.0.202206071550-r'
+            - dependency-name: org.hibernate:hibernate-core
+              source: tests/smoke-gradle.yaml
+              version-requirement: '>6.1.1.Final'
+            - dependency-name: io.github.lukehutch:fast-classpath-scanner
+              source: tests/smoke-gradle.yaml
+              version-requirement: '>3.1.15'
+            - dependency-name: org.objenesis:objenesis
+              source: tests/smoke-gradle.yaml
+              version-requirement: '>3.3'
         source:
             provider: github
             repo: dependabot/smoke-tests
             directory: /
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
 output:
-  - type: update_dependency_list
-    expect:
+    - type: update_dependency_list
+      expect:
         data:
             dependencies:
-              - name: co.aikar:acf-paper
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 0.5.0-SNAPSHOT
-                    source: null
-                version: 0.5.0-SNAPSHOT
-              - name: com.google.inject:guice
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 4.2.0
-                    source: null
-                version: 4.2.0
-              - name: com.google.code.findbugs:jsr305
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 3.0.2
-                    source: null
-                version: 3.0.2
-              - name: de.davidbilge:jskill
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 1.1-SNAPSHOT
-                    source: null
-                version: 1.1-SNAPSHOT
-              - name: net.lingala.zip4j:zip4j
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 1.3.2
-                    source: null
-                version: 1.3.2
-              - name: co.aikar:taskchain-bukkit
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 3.6.0
-                    source: null
-                version: 3.6.0
-              - name: net.kyori:text
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 1.12-1.4.0
-                    source: null
-                version: 1.12-1.4.0
-              - name: org.bstats:bstats-bukkit
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: "1.2"
-                    source: null
-                version: "1.2"
-              - name: com.bugsnag:bugsnag
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 3.1.5
-                    source: null
-                version: 3.1.5
-              - name: com.zaxxer:HikariCP
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 2.7.8
-                    source: null
-                version: 2.7.8
-              - name: org.eclipse.jgit:org.eclipse.jgit
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 4.11.0.201803080745-r
-                    source: null
-                version: 4.11.0.201803080745-r
-              - name: org.hibernate:hibernate-core
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 5.3.0.CR1
-                    source: null
-                version: 5.3.0.CR1
-              - name: com.dumptruckman.minecraft:JsonConfiguration
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: "1.1"
-                    source: null
-                version: "1.1"
-              - name: org.inventivetalent:mc-wrappers
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 1.0.3-SNAPSHOT
-                    source: null
-                version: 1.0.3-SNAPSHOT
-              - name: io.github.lukehutch:fast-classpath-scanner
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 2.18.1
-                    source: null
-                version: 2.18.1
-              - name: org.objenesis:objenesis
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: "2.6"
-                    source: null
-                version: "2.6"
-              - name: org.inventivetalent:menubuilder
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 1.0.2
-                    source: null
-                version: 1.0.2
-              - name: org.mineskin:java-client
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 1.0.1-SNAPSHOT
-                    source: null
-                version: 1.0.1-SNAPSHOT
-              - name: org.inventivetalent:reflectionhelper
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 1.13.0-SNAPSHOT
-                    source: null
-                version: 1.13.0-SNAPSHOT
+                - name: co.aikar:acf-paper
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 0.5.0-SNAPSHOT
+                      source: null
+                  version: 0.5.0-SNAPSHOT
+                - name: com.google.inject:guice
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 4.2.0
+                      source: null
+                  version: 4.2.0
+                - name: com.google.code.findbugs:jsr305
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 3.0.2
+                      source: null
+                  version: 3.0.2
+                - name: de.davidbilge:jskill
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.1-SNAPSHOT
+                      source: null
+                  version: 1.1-SNAPSHOT
+                - name: net.lingala.zip4j:zip4j
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.3.2
+                      source: null
+                  version: 1.3.2
+                - name: co.aikar:taskchain-bukkit
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 3.6.0
+                      source: null
+                  version: 3.6.0
+                - name: net.kyori:text
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.12-1.4.0
+                      source: null
+                  version: 1.12-1.4.0
+                - name: org.bstats:bstats-bukkit
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: "1.2"
+                      source: null
+                  version: "1.2"
+                - name: com.bugsnag:bugsnag
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 3.1.5
+                      source: null
+                  version: 3.1.5
+                - name: com.zaxxer:HikariCP
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 2.7.8
+                      source: null
+                  version: 2.7.8
+                - name: org.eclipse.jgit:org.eclipse.jgit
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 4.11.0.201803080745-r
+                      source: null
+                  version: 4.11.0.201803080745-r
+                - name: org.hibernate:hibernate-core
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 5.3.0.CR1
+                      source: null
+                  version: 5.3.0.CR1
+                - name: com.dumptruckman.minecraft:JsonConfiguration
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: "1.1"
+                      source: null
+                  version: "1.1"
+                - name: org.inventivetalent:mc-wrappers
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.0.3-SNAPSHOT
+                      source: null
+                  version: 1.0.3-SNAPSHOT
+                - name: io.github.lukehutch:fast-classpath-scanner
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 2.18.1
+                      source: null
+                  version: 2.18.1
+                - name: org.objenesis:objenesis
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: "2.6"
+                      source: null
+                  version: "2.6"
+                - name: org.inventivetalent:menubuilder
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.0.2
+                      source: null
+                  version: 1.0.2
+                - name: org.mineskin:java-client
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.0.1-SNAPSHOT
+                      source: null
+                  version: 1.0.1-SNAPSHOT
+                - name: org.inventivetalent:reflectionhelper
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.13.0-SNAPSHOT
+                      source: null
+                  version: 1.13.0-SNAPSHOT
             dependency_files:
-              - /build.gradle
-  - type: create_pull_request
-    expect:
+                - /build.gradle
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: com.google.inject:guice
-                previous-requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 4.2.0
-                    source: null
-                previous-version: 4.2.0
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 5.1.0
-                    source:
+                - name: com.google.inject:guice
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 4.2.0
+                      source: null
+                  previous-version: 4.2.0
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 5.1.0
+                      source:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
-                version: 5.1.0
+                  version: 5.1.0
             updated-dependency-files:
-              - content: |
+                - content: |
                     group 'me.minidigger'
 
                     apply plugin: 'com.github.johnrengelman.shadow'
@@ -278,13 +286,13 @@ output:
                       args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
                       jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: build.gradle
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump guice from 4.2.0 to 5.1.0
             pr-body: |
                 Bumps [guice](https://github.com/google/guice) from 4.2.0 to 5.1.0.
@@ -329,28 +337,28 @@ output:
                 Bumps [guice](https://github.com/google/guice) from 4.2.0 to 5.1.0.
                 - [Release notes](https://github.com/google/guice/releases)
                 - [Commits](https://github.com/google/guice/compare/4.2...5.1.0)
-  - type: create_pull_request
-    expect:
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: net.lingala.zip4j:zip4j
-                previous-requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 1.3.2
-                    source: null
-                previous-version: 1.3.2
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 2.11.1
-                    source:
+                - name: net.lingala.zip4j:zip4j
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.3.2
+                      source: null
+                  previous-version: 1.3.2
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 2.11.1
+                      source:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
-                version: 2.11.1
+                  version: 2.11.1
             updated-dependency-files:
-              - content: |
+                - content: |
                     group 'me.minidigger'
 
                     apply plugin: 'com.github.johnrengelman.shadow'
@@ -428,13 +436,13 @@ output:
                       args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
                       jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: build.gradle
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump zip4j from 1.3.2 to 2.11.1
             pr-body: |
                 Bumps [zip4j](https://github.com/srikanth-lingala/zip4j) from 1.3.2 to 2.11.1.
@@ -502,28 +510,28 @@ output:
                 Bumps [zip4j](https://github.com/srikanth-lingala/zip4j) from 1.3.2 to 2.11.1.
                 - [Release notes](https://github.com/srikanth-lingala/zip4j/releases)
                 - [Commits](https://github.com/srikanth-lingala/zip4j/commits/v2.11.1)
-  - type: create_pull_request
-    expect:
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: net.kyori:text
-                previous-requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 1.12-1.4.0
-                    source: null
-                previous-version: 1.12-1.4.0
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 1.12-1.6.5
-                    source:
+                - name: net.kyori:text
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.12-1.4.0
+                      source: null
+                  previous-version: 1.12-1.4.0
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.12-1.6.5
+                      source:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
-                version: 1.12-1.6.5
+                  version: 1.12-1.6.5
             updated-dependency-files:
-              - content: |
+                - content: |
                     group 'me.minidigger'
 
                     apply plugin: 'com.github.johnrengelman.shadow'
@@ -601,13 +609,13 @@ output:
                       args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
                       jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: build.gradle
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump text from 1.12-1.4.0 to 1.12-1.6.5
             pr-body: |
                 Bumps [text](https://github.com/KyoriPowered/text) from 1.12-1.4.0 to 1.12-1.6.5.
@@ -624,28 +632,28 @@ output:
                 Bumps [text](https://github.com/KyoriPowered/text) from 1.12-1.4.0 to 1.12-1.6.5.
                 - [Release notes](https://github.com/KyoriPowered/text/releases)
                 - [Commits](https://github.com/KyoriPowered/text/commits)
-  - type: create_pull_request
-    expect:
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: org.bstats:bstats-bukkit
-                previous-requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: "1.2"
-                    source: null
-                previous-version: "1.2"
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 3.0.0
-                    source:
+                - name: org.bstats:bstats-bukkit
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: "1.2"
+                      source: null
+                  previous-version: "1.2"
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 3.0.0
+                      source:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
-                version: 3.0.0
+                  version: 3.0.0
             updated-dependency-files:
-              - content: |
+                - content: |
                     group 'me.minidigger'
 
                     apply plugin: 'com.github.johnrengelman.shadow'
@@ -723,13 +731,13 @@ output:
                       args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
                       jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: build.gradle
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump bstats-bukkit from 1.2 to 3.0.0
             pr-body: |
                 Bumps [bstats-bukkit](https://github.com/Bastian/bStats-Metrics) from 1.2 to 3.0.0.
@@ -781,28 +789,28 @@ output:
                 Bumps [bstats-bukkit](https://github.com/Bastian/bStats-Metrics) from 1.2 to 3.0.0.
                 - [Release notes](https://github.com/Bastian/bStats-Metrics/releases)
                 - [Commits](https://github.com/Bastian/bStats-Metrics/compare/1.2...v3.0.0)
-  - type: create_pull_request
-    expect:
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: com.bugsnag:bugsnag
-                previous-requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 3.1.5
-                    source: null
-                previous-version: 3.1.5
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 3.6.4
-                    source:
+                - name: com.bugsnag:bugsnag
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 3.1.5
+                      source: null
+                  previous-version: 3.1.5
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 3.6.4
+                      source:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
-                version: 3.6.4
+                  version: 3.6.4
             updated-dependency-files:
-              - content: |
+                - content: |
                     group 'me.minidigger'
 
                     apply plugin: 'com.github.johnrengelman.shadow'
@@ -880,13 +888,13 @@ output:
                       args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
                       jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: build.gradle
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump bugsnag from 3.1.5 to 3.6.4
             pr-body: |
                 Bumps [bugsnag](https://github.com/bugsnag/bugsnag-java) from 3.1.5 to 3.6.4.
@@ -1054,28 +1062,28 @@ output:
                 - [Release notes](https://github.com/bugsnag/bugsnag-java/releases)
                 - [Changelog](https://github.com/bugsnag/bugsnag-java/blob/master/CHANGELOG.md)
                 - [Commits](https://github.com/bugsnag/bugsnag-java/compare/v3.1.5...v3.6.4)
-  - type: create_pull_request
-    expect:
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: com.zaxxer:HikariCP
-                previous-requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 2.7.8
-                    source: null
-                previous-version: 2.7.8
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 5.0.1
-                    source:
+                - name: com.zaxxer:HikariCP
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 2.7.8
+                      source: null
+                  previous-version: 2.7.8
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 5.0.1
+                      source:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
-                version: 5.0.1
+                  version: 5.0.1
             updated-dependency-files:
-              - content: |
+                - content: |
                     group 'me.minidigger'
 
                     apply plugin: 'com.github.johnrengelman.shadow'
@@ -1153,13 +1161,13 @@ output:
                       args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
                       jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: build.gradle
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump HikariCP from 2.7.8 to 5.0.1
             pr-body: |
                 Bumps [HikariCP](https://github.com/brettwooldridge/HikariCP) from 2.7.8 to 5.0.1.
@@ -1187,28 +1195,28 @@ output:
                 - [Release notes](https://github.com/brettwooldridge/HikariCP/releases)
                 - [Changelog](https://github.com/brettwooldridge/HikariCP/blob/dev/CHANGES)
                 - [Commits](https://github.com/brettwooldridge/HikariCP/compare/HikariCP-2.7.8...HikariCP-5.0.1)
-  - type: create_pull_request
-    expect:
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: org.eclipse.jgit:org.eclipse.jgit
-                previous-requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 4.11.0.201803080745-r
-                    source: null
-                previous-version: 4.11.0.201803080745-r
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 6.2.0.202206071550-r
-                    source:
+                - name: org.eclipse.jgit:org.eclipse.jgit
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 4.11.0.201803080745-r
+                      source: null
+                  previous-version: 4.11.0.201803080745-r
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 6.2.0.202206071550-r
+                      source:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
-                version: 6.2.0.202206071550-r
+                  version: 6.2.0.202206071550-r
             updated-dependency-files:
-              - content: |
+                - content: |
                     group 'me.minidigger'
 
                     apply plugin: 'com.github.johnrengelman.shadow'
@@ -1286,13 +1294,13 @@ output:
                       args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
                       jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: build.gradle
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump org.eclipse.jgit from 4.11.0.201803080745-r to 6.2.0.202206071550-r
             pr-body: |
                 Bumps org.eclipse.jgit from 4.11.0.201803080745-r to 6.2.0.202206071550-r.
@@ -1300,28 +1308,28 @@ output:
                 Bump org.eclipse.jgit from 4.11.0.201803080745-r to 6.2.0.202206071550-r
 
                 Bumps org.eclipse.jgit from 4.11.0.201803080745-r to 6.2.0.202206071550-r.
-  - type: create_pull_request
-    expect:
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: org.hibernate:hibernate-core
-                previous-requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 5.3.0.CR1
-                    source: null
-                previous-version: 5.3.0.CR1
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 6.1.1.Final
-                    source:
+                - name: org.hibernate:hibernate-core
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 5.3.0.CR1
+                      source: null
+                  previous-version: 5.3.0.CR1
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 6.1.1.Final
+                      source:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
-                version: 6.1.1.Final
+                  version: 6.1.1.Final
             updated-dependency-files:
-              - content: |
+                - content: |
                     group 'me.minidigger'
 
                     apply plugin: 'com.github.johnrengelman.shadow'
@@ -1399,13 +1407,13 @@ output:
                       args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
                       jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: build.gradle
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump hibernate-core from 5.3.0.CR1 to 6.1.1.Final
             pr-body: |
                 Bumps [hibernate-core](https://github.com/hibernate/hibernate-orm) from 5.3.0.CR1 to 6.1.1.Final.
@@ -1472,28 +1480,28 @@ output:
                 - [Release notes](https://github.com/hibernate/hibernate-orm/releases)
                 - [Changelog](https://github.com/hibernate/hibernate-orm/blob/main/changelog.txt)
                 - [Commits](https://github.com/hibernate/hibernate-orm/commits/6.1.1)
-  - type: create_pull_request
-    expect:
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: io.github.lukehutch:fast-classpath-scanner
-                previous-requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 2.18.1
-                    source: null
-                previous-version: 2.18.1
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: 3.1.15
-                    source:
+                - name: io.github.lukehutch:fast-classpath-scanner
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 2.18.1
+                      source: null
+                  previous-version: 2.18.1
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 3.1.15
+                      source:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
-                version: 3.1.15
+                  version: 3.1.15
             updated-dependency-files:
-              - content: |
+                - content: |
                     group 'me.minidigger'
 
                     apply plugin: 'com.github.johnrengelman.shadow'
@@ -1571,13 +1579,13 @@ output:
                       args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
                       jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: build.gradle
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump fast-classpath-scanner from 2.18.1 to 3.1.15
             pr-body: |
                 Bumps [fast-classpath-scanner](https://github.com/lukehutch/fast-classpath-scanner) from 2.18.1 to 3.1.15.
@@ -1604,28 +1612,28 @@ output:
                 Bumps [fast-classpath-scanner](https://github.com/lukehutch/fast-classpath-scanner) from 2.18.1 to 3.1.15.
                 - [Release notes](https://github.com/lukehutch/fast-classpath-scanner/releases)
                 - [Commits](https://github.com/lukehutch/fast-classpath-scanner/compare/fast-classpath-scanner-2.18.1...fast-classpath-scanner-3.1.15)
-  - type: create_pull_request
-    expect:
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: org.objenesis:objenesis
-                previous-requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: "2.6"
-                    source: null
-                previous-version: "2.6"
-                requirements:
-                  - file: build.gradle
-                    groups: []
-                    requirement: "3.3"
-                    source:
+                - name: org.objenesis:objenesis
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: "2.6"
+                      source: null
+                  previous-version: "2.6"
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: "3.3"
+                      source:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
-                version: "3.3"
+                  version: "3.3"
             updated-dependency-files:
-              - content: |
+                - content: |
                     group 'me.minidigger'
 
                     apply plugin: 'com.github.johnrengelman.shadow'
@@ -1703,13 +1711,13 @@ output:
                       args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
                       jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: build.gradle
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump objenesis from 2.6 to 3.3
             pr-body: |
                 Bumps [objenesis](https://github.com/easymock/objenesis) from 2.6 to 3.3.
@@ -1778,7 +1786,7 @@ output:
                 Bumps [objenesis](https://github.com/easymock/objenesis) from 2.6 to 3.3.
                 - [Release notes](https://github.com/easymock/objenesis/releases)
                 - [Commits](https://github.com/easymock/objenesis/compare/2.6...3.3)
-  - type: mark_as_processed
-    expect:
+    - type: mark_as_processed
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994

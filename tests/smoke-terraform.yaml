@@ -21,6 +21,14 @@ input:
             repo: dependabot/smoke-tests
             directory: /terraform
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
 output:
     - type: update_dependency_list
       expect:
@@ -94,6 +102,223 @@ output:
                   version: 0.3.7
             dependency_files:
                 - /terraform/main.tf
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            dependencies:
+                - name: dns::github::cloudposse/terraform-cloudflare-zone::tags/0.2.5
+                  previous-requirements:
+                    - file: main.tf
+                      groups: []
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: tags/0.2.5
+                        type: git
+                        url: https://github.com/cloudposse/terraform-cloudflare-zone.git
+                  previous-version: 0.2.5
+                  requirements:
+                    - file: main.tf
+                      groups: []
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: tags/0.3.0
+                        type: git
+                        url: https://github.com/cloudposse/terraform-cloudflare-zone.git
+                  version: 0.3.0
+            updated-dependency-files:
+                - content: |
+                    module "origin_label" {
+                      source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.3.7"
+                      namespace  = "${var.namespace}"
+                      stage      = "${var.stage}"
+                      name       = "${var.name}"
+                      delimiter  = "${var.delimiter}"
+                      attributes = ["${compact(concat(var.attributes, list("origin")))}"]
+                      tags       = "${var.tags}"
+                    }
+
+                    resource "aws_cloudfront_origin_access_identity" "default" {
+                      comment = "${module.distribution_label.id}"
+                    }
+
+                    module "logs" {
+                      source                   = "github.com/cloudposse/terraform-aws-s3-log-storage.git?ref=tags/0.2.2"
+                      namespace                = "${var.namespace}"
+                      stage                    = "${var.stage}"
+                      name                     = "${var.name}"
+                      delimiter                = "${var.delimiter}"
+                      attributes               = ["${compact(concat(var.attributes, list("origin", "logs")))}"]
+                      tags                     = "${var.tags}"
+                      prefix                   = "${var.log_prefix}"
+                      standard_transition_days = "${var.log_standard_transition_days}"
+                      glacier_transition_days  = "${var.log_glacier_transition_days}"
+                      expiration_days          = "${var.log_expiration_days}"
+                    }
+
+                    module "distribution_label" {
+                      source     = "github.com/cloudposse/terraform-null-label.git"
+                      namespace  = "${var.namespace}"
+                      stage      = "${var.stage}"
+                      name       = "${var.name}"
+                      attributes = "${var.attributes}"
+                      delimiter  = "${var.delimiter}"
+                      tags       = "${var.tags}"
+                    }
+
+                    resource "aws_cloudfront_distribution" "default" {
+                      enabled             = "${var.enabled}"
+                      is_ipv6_enabled     = "${var.is_ipv6_enabled}"
+                      comment             = "${var.comment}"
+                      default_root_object = "${var.default_root_object}"
+                      price_class         = "${var.price_class}"
+
+                      logging_config = {
+                        include_cookies = "${var.log_include_cookies}"
+                        bucket          = "${module.logs.bucket_domain_name}"
+                        prefix          = "${var.log_prefix}"
+                      }
+
+                      aliases = ["${var.aliases}"]
+
+                      custom_error_response = ["${var.custom_error_response}"]
+
+                      origin {
+                        domain_name = "${var.origin_domain_name}"
+                        origin_id   = "${module.distribution_label.id}"
+                        origin_path = "${var.origin_path}"
+
+                        custom_origin_config {
+                          http_port                = "${var.origin_http_port}"
+                          https_port               = "${var.origin_https_port}"
+                          origin_protocol_policy   = "${var.origin_protocol_policy}"
+                          origin_ssl_protocols     = "${var.origin_ssl_protocols}"
+                          origin_keepalive_timeout = "${var.origin_keepalive_timeout}"
+                          origin_read_timeout      = "${var.origin_read_timeout}"
+                        }
+                      }
+
+                      viewer_certificate {
+                        acm_certificate_arn            = "${var.acm_certificate_arn}"
+                        ssl_support_method             = "sni-only"
+                        minimum_protocol_version       = "${var.viewer_minimum_protocol_version}"
+                        cloudfront_default_certificate = "${var.acm_certificate_arn == "" ? true : false}"
+                      }
+
+                      default_cache_behavior {
+                        allowed_methods  = "${var.allowed_methods}"
+                        cached_methods   = "${var.cached_methods}"
+                        target_origin_id = "${module.distribution_label.id}"
+                        compress         = "${var.compress}"
+
+                        forwarded_values {
+                          headers = ["${var.forward_headers}"]
+
+                          query_string = "${var.forward_query_string}"
+
+                          cookies {
+                            forward           = "${var.forward_cookies}"
+                            whitelisted_names = ["${var.forward_cookies_whitelisted_names}"]
+                          }
+                        }
+
+                        viewer_protocol_policy = "${var.viewer_protocol_policy}"
+                        default_ttl            = "${var.default_ttl}"
+                        min_ttl                = "${var.min_ttl}"
+                        max_ttl                = "${var.max_ttl}"
+                      }
+
+                      cache_behavior = "${var.cache_behavior}"
+
+                      web_acl_id = "${var.web_acl_id}"
+
+                      restrictions {
+                        geo_restriction {
+                          restriction_type = "${var.geo_restriction_type}"
+                          locations        = "${var.geo_restriction_locations}"
+                        }
+                      }
+
+                      tags = "${module.distribution_label.tags}"
+                    }
+
+                    module "dns" {
+                      source           = "git::https://github.com/cloudposse/terraform-cloudflare-zone.git//some/dir?ref=tags/0.3.0"
+                      enabled          = "${var.dns_aliases_enabled}"
+                      aliases          = "${var.aliases}"
+                      parent_zone_id   = "${var.parent_zone_id}"
+                      parent_zone_name = "${var.parent_zone_name}"
+                      target_dns_name  = "${aws_cloudfront_distribution.default.domain_name}"
+                      target_zone_id   = "${aws_cloudfront_distribution.default.hosted_zone_id}"
+                    }
+
+                    module "duplicate_label" {
+                      source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.3.7"
+                      namespace  = "${var.namespace}"
+                      stage      = "${var.stage}"
+                      name       = "${var.name}"
+                      delimiter  = "${var.delimiter}"
+                      attributes = ["${compact(concat(var.attributes, list("origin")))}"]
+                      tags       = "${var.tags}"
+                    }
+
+                    module "github_ssh_without_protocol" {
+                      source     = "git@github.com:cloudposse/terraform-aws-jenkins.git?ref=tags/0.4.0//some/dir"
+                      namespace  = "${var.namespace}"
+                      stage      = "${var.stage}"
+                      name       = "${var.name}"
+                      delimiter  = "${var.delimiter}"
+                      attributes = ["${compact(concat(var.attributes, list("origin")))}"]
+                      tags       = "${var.tags}"
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /terraform
+                  name: main.tf
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump dns::terraform-cloudflare-zone from 0.2.5 to 0.3.0 in /terraform
+            pr-body: |
+                Bumps [dns::terraform-cloudflare-zone](https://github.com/cloudposse/terraform-cloudflare-zone) from 0.2.5 to 0.3.0.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/cloudposse/terraform-cloudflare-zone/releases">dns::terraform-cloudflare-zone's releases</a>.</em></p>
+                <blockquote>
+                <h2>v0.3.0</h2>
+                <!-- raw HTML omitted -->
+                <h2>what</h2>
+                <ul>
+                <li>updated default records</li>
+                <li>removed flatten</li>
+                </ul>
+                <h2>why</h2>
+                <ul>
+                <li>Fix edge case in <a href="https://github-redirect.dependabot.com/cloudposse/terraform-cloudflare-zone/issues/14">#14</a></li>
+                <li>Remove flatten() as it's confusing and unnecessary</li>
+                </ul>
+                <h2>references</h2>
+                <ul>
+                <li>Closes <a href="https://github-redirect.dependabot.com/cloudposse/terraform-cloudflare-zone/issues/14">#14</a></li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/cloudposse/terraform-cloudflare-zone/compare/tags/0.2.5...tags/0.3.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump dns::terraform-cloudflare-zone from 0.2.5 to 0.3.0 in /terraform
+
+                Bumps [dns::terraform-cloudflare-zone](https://github.com/cloudposse/terraform-cloudflare-zone) from 0.2.5 to 0.3.0.
+                - [Release notes](https://github.com/cloudposse/terraform-cloudflare-zone/releases)
+                - [Commits](https://github.com/cloudposse/terraform-cloudflare-zone/compare/tags/0.2.5...tags/0.3.0)
     - type: create_pull_request
       expect:
         data:
@@ -718,7 +943,7 @@ output:
                   support_file: false
                   type: file
             pr-title: Bump logs::terraform-aws-s3-log-storage from 0.2.2 to 0.28.0 in /terraform
-            pr-body: "Bumps [logs::terraform-aws-s3-log-storage](https://github.com/cloudposse/terraform-aws-s3-log-storage) from 0.2.2 to 0.28.0.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/releases\">logs::terraform-aws-s3-log-storage's releases</a>.</em></p>\n<blockquote>\n<h2>v0.28.0 (Action Needed) Support AWS v4 provider</h2>\n<h1>WARNING, DATA LOSS LIKELY if you do not follow upgrade instructions:</h1>\n<ul>\n<li>Upgrade instructions: <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.28.0-and-AWS-provider-v4-(POTENTIAL-DATA-LOSS)\">v0.27.0 to v0.28.0</a></li>\n<li>Upgrade instructions: <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.27.0-(POTENTIAL-DATA-LOSS)\">versions prior to v0.27.0 to v0.27.0\n</a></li>\n</ul>\n<h2>\U0001F680 Enhancements</h2>\n<!-- raw HTML omitted -->\n<h2>what</h2>\n<ul>\n<li>Migrate to AWS v4 Terraform provider</li>\n<li>Add features\n<ul>\n<li>Allow full S3 storage lifecycle configuration</li>\n<li>Allow multiple bucket policy documents</li>\n<li>Allow specifying the bucket name directly, rather than requiring it to be generated by <code>null-label</code></li>\n<li>Allow specifying S3 object ownership</li>\n<li>Allow enabling S3 bucket keys for encryption</li>\n</ul>\n</li>\n<li>Deprecate variable by variable specification of a single storage lifecycle rule</li>\n<li>Add extra safety measure <code>force_destroy_enabled</code></li>\n</ul>\n<h2>why</h2>\n<ul>\n<li>AWS v4 broke this module</li>\n<li>Feature parity</li>\n<li>Replaced with more power and more flexible input</li>\n<li>Reduce the chance that automated upgrades will cause data loss</li>\n</ul>\n<h2>references</h2>\n<ul>\n<li>Upgrade instructions: <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.28.0-and-AWS-provider-v4-(POTENTIAL-DATA-LOSS)\">v0.27.0 to v0.28.0</a></li>\n<li>Upgrade instructions: <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.27.0-(POTENTIAL-DATA-LOSS)\">versions prior to v0.27.0 to v0.27.0\n</a></li>\n</ul>\n<!-- raw HTML omitted -->\n<h2>v0.27.0 (WARNING: Potential Data Loss) Prepare for AWS provider v4</h2>\n<h1>Warning: Potential total data loss</h1>\n<p>This release is a refactoring in preparation for supporting Terraform AWS Provider v4. One feature was removed, but otherwise there are no changes to inputs or behavior. However, the Terraform &quot;addresses&quot; of resources have changed, so you are need to run several <code>terraform state mv</code> commands.</p>\n<p><strong>Warning:</strong> failure to run the required <code>terraform state mv</code> commands will cause Terraform to delete your existing S3 bucket and create a new one, <strong>deleting all the data stored in the bucket in the process.</strong></p>\n<p>Details on how to safely upgrade are in this repository's Wiki <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.27.0-(POTENTIAL-DATA-LOSS)\">here</a></p>\n<h2>Support for &quot;MFA delete&quot; removed</h2>\n<p>In <a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/54\">#54</a> a contributor added support for <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiFactorAuthenticationDelete.html\">MFA delete</a> via the <code>versioning_mfa_delete_enabled</code>. In AWS provider version 3.x this argument was <a href=\"https://registry.terraform.io/providers/hashicorp/aws/3.74.3/docs/resources/s3_bucket#mfa_delete\">documented</a> with the caveat</p>\n<blockquote>\n<p>This cannot be used to toggle this setting but is available to allow managed buckets to reflect the state in AWS.</p>\n</blockquote>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/112c75d1f1ad2b8b2a1f9722e3172eae03149ca0\"><code>112c75d</code></a> Support AWS v4 provider (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/71\">#71</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/2c17ca6f11ae11139743e09a0ad5cdb8bb7b2f04\"><code>2c17ca6</code></a> Cleanups and safety checks for upgrade (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/70\">#70</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/048ae6a1069a98dc9a2c8e882c946f7c231f5599\"><code>048ae6a</code></a> Refactor to use s3-bucket module, update in general (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/66\">#66</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/f1b6ec3059a857bced06cc212d78ffc9bf948900\"><code>f1b6ec3</code></a> Add S3 bucket ownership controls (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/61\">#61</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/2c2fac814eaa0617dafab34d6b0aba29600632e5\"><code>2c2fac8</code></a> Add support for bucket notifications (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/60\">#60</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/ad6a2fbb2447ff02d36288802e6809f946c380fe\"><code>ad6a2fb</code></a> Update context.tf from origin source (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/59\">#59</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/c1a2a8faba43c9b3a824184faa4be0d6dfea09e4\"><code>c1a2a8f</code></a> Add variable access_log_bucket_prefix to customize S3 access log configuratio...</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/ad40cf204650fef1645d9d90eee4312b08088994\"><code>ad40cf2</code></a> add allow_ssl_requests_only flag (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/56\">#56</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/f6a32f00ab35ae1dddde1988fb227cf710da62c7\"><code>f6a32f0</code></a> add allow_ssl_requests_only flag (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/55\">#55</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/7a05bb81ac0cf8126d4fcde86d66798d556bb5ef\"><code>7a05bb8</code></a> added versioning mfa delete enabled option (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/54\">#54</a>)</li>\n<li>Additional commits viewable in <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/compare/tags/0.2.2...tags/0.28.0\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
+            pr-body: "Bumps [logs::terraform-aws-s3-log-storage](https://github.com/cloudposse/terraform-aws-s3-log-storage) from 0.2.2 to 0.28.0.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/releases\">logs::terraform-aws-s3-log-storage's releases</a>.</em></p>\n<blockquote>\n<h2>v0.28.0 (Action Needed) Support AWS v4 provider</h2>\n<h1>WARNING, DATA LOSS LIKELY if you do not follow upgrade instructions:</h1>\n<ul>\n<li>Upgrade instructions: <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.28.0-and-AWS-provider-v4-(POTENTIAL-DATA-LOSS)\">v0.27.0 to v0.28.0</a></li>\n<li>Upgrade instructions: <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.27.0-(POTENTIAL-DATA-LOSS)\">versions prior to v0.27.0 to v0.27.0\n</a></li>\n</ul>\n<h2>\U0001F680 Enhancements</h2>\n<!-- raw HTML omitted -->\n<h2>what</h2>\n<ul>\n<li>Migrate to AWS v4 Terraform provider</li>\n<li>Add features\n<ul>\n<li>Allow full S3 storage lifecycle configuration</li>\n<li>Allow multiple bucket policy documents</li>\n<li>Allow specifying the bucket name directly, rather than requiring it to be generated by <code>null-label</code></li>\n<li>Allow specifying S3 object ownership</li>\n<li>Allow enabling S3 bucket keys for encryption</li>\n</ul>\n</li>\n<li>Deprecate variable by variable specification of a single storage lifecycle rule</li>\n<li>Add extra safety measure <code>force_destroy_enabled</code></li>\n</ul>\n<h2>why</h2>\n<ul>\n<li>AWS v4 broke this module</li>\n<li>Feature parity</li>\n<li>Replaced with more power and more flexible input</li>\n<li>Reduce the chance that automated upgrades will cause data loss</li>\n</ul>\n<h2>references</h2>\n<ul>\n<li>Upgrade instructions: <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.28.0-and-AWS-provider-v4-(POTENTIAL-DATA-LOSS)\">v0.27.0 to v0.28.0</a></li>\n<li>Upgrade instructions: <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.27.0-(POTENTIAL-DATA-LOSS)\">versions prior to v0.27.0 to v0.27.0\n</a></li>\n</ul>\n<!-- raw HTML omitted -->\n<h2>v0.27.0 (WARNING: Potential Data Loss) Prepare for AWS provider v4</h2>\n<h1>Update: This version no longer recommended</h1>\n<p>With the release of version 1.0.0 of this module, use of this version is no longer recommended. When you are able to use Terraform v1.3.0 or later and Terraform AWS provider v4.9.0 or later, upgrade directly to v1.0.0 or later of this module.</p>\n<h1>Warning: Potential total data loss</h1>\n<p>This release is a refactoring in preparation for supporting Terraform AWS Provider v4. One feature was removed, but otherwise there are no changes to inputs or behavior. However, the Terraform &quot;addresses&quot; of resources have changed, so you are need to run several <code>terraform state mv</code> commands.</p>\n<p><strong>Warning:</strong> failure to run the required <code>terraform state mv</code> commands will cause Terraform to delete your existing S3 bucket and create a new one, <strong>deleting all the data stored in the bucket in the process.</strong></p>\n<p>Details on how to safely upgrade are in this repository's Wiki <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/wiki/Upgrading-to-v0.27.0-(POTENTIAL-DATA-LOSS)\">here</a></p>\n<h2>Support for &quot;MFA delete&quot; removed</h2>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/112c75d1f1ad2b8b2a1f9722e3172eae03149ca0\"><code>112c75d</code></a> Support AWS v4 provider (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/71\">#71</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/2c17ca6f11ae11139743e09a0ad5cdb8bb7b2f04\"><code>2c17ca6</code></a> Cleanups and safety checks for upgrade (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/70\">#70</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/048ae6a1069a98dc9a2c8e882c946f7c231f5599\"><code>048ae6a</code></a> Refactor to use s3-bucket module, update in general (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/66\">#66</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/f1b6ec3059a857bced06cc212d78ffc9bf948900\"><code>f1b6ec3</code></a> Add S3 bucket ownership controls (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/61\">#61</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/2c2fac814eaa0617dafab34d6b0aba29600632e5\"><code>2c2fac8</code></a> Add support for bucket notifications (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/60\">#60</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/ad6a2fbb2447ff02d36288802e6809f946c380fe\"><code>ad6a2fb</code></a> Update context.tf from origin source (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/59\">#59</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/c1a2a8faba43c9b3a824184faa4be0d6dfea09e4\"><code>c1a2a8f</code></a> Add variable access_log_bucket_prefix to customize S3 access log configuratio...</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/ad40cf204650fef1645d9d90eee4312b08088994\"><code>ad40cf2</code></a> add allow_ssl_requests_only flag (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/56\">#56</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/f6a32f00ab35ae1dddde1988fb227cf710da62c7\"><code>f6a32f0</code></a> add allow_ssl_requests_only flag (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/55\">#55</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/commit/7a05bb81ac0cf8126d4fcde86d66798d556bb5ef\"><code>7a05bb8</code></a> added versioning mfa delete enabled option (<a href=\"https://github-redirect.dependabot.com/cloudposse/terraform-aws-s3-log-storage/issues/54\">#54</a>)</li>\n<li>Additional commits viewable in <a href=\"https://github.com/cloudposse/terraform-aws-s3-log-storage/compare/tags/0.2.2...tags/0.28.0\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
             commit-message: |-
                 Bump logs::terraform-aws-s3-log-storage in /terraform
 

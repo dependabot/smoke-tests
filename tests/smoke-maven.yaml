@@ -2,122 +2,130 @@ input:
     job:
         package-manager: maven
         allowed-updates:
-          - update-type: all
+            - update-type: all
         ignore-conditions:
-          - dependency-name: org.springframework.boot:spring-boot-starter-parent
-            source: tests/smoke-maven.yaml
-            version-requirement: '>2.7.2'
+            - dependency-name: org.springframework.boot:spring-boot-starter-parent
+              source: tests/smoke-maven.yaml
+              version-requirement: '>2.7.2'
         source:
             provider: github
             repo: dependabot/smoke-tests
             directory: /
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
 output:
-  - type: update_dependency_list
-    expect:
+    - type: update_dependency_list
+      expect:
         data:
             dependencies:
-              - name: org.springframework.boot:spring-boot-starter-parent
-                requirements:
-                  - file: pom.xml
-                    groups: []
-                    metadata:
+                - name: org.springframework.boot:spring-boot-starter-parent
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
                         packaging_type: pom
-                    requirement: 1.5.9.RELEASE
-                    source: null
-                version: 1.5.9.RELEASE
-              - name: org.springframework.boot:spring-boot-starter-web
-                requirements:
-                  - file: pom.xml
-                    groups: []
-                    metadata:
+                      requirement: 1.5.9.RELEASE
+                      source: null
+                  version: 1.5.9.RELEASE
+                - name: org.springframework.boot:spring-boot-starter-web
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
                         packaging_type: jar
-                    requirement: null
-                    source: null
-                version: null
-              - name: mysql:mysql-connector-java
-                requirements:
-                  - file: pom.xml
-                    groups: []
-                    metadata:
+                      requirement: null
+                      source: null
+                  version: null
+                - name: mysql:mysql-connector-java
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
                         packaging_type: jar
-                    requirement: null
-                    source: null
-                version: null
-              - name: org.hibernate:hibernate-java8
-                requirements:
-                  - file: pom.xml
-                    groups: []
-                    metadata:
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.hibernate:hibernate-java8
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
                         packaging_type: jar
-                    requirement: null
-                    source: null
-                version: null
-              - name: org.springframework.boot:spring-boot-starter-data-jpa
-                requirements:
-                  - file: pom.xml
-                    groups: []
-                    metadata:
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-starter-data-jpa
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
                         packaging_type: jar
-                    requirement: null
-                    source: null
-                version: null
-              - name: org.springframework.boot:spring-boot-starter-test
-                requirements:
-                  - file: pom.xml
-                    groups:
-                      - test
-                    metadata:
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-starter-test
+                  requirements:
+                    - file: pom.xml
+                      groups:
+                        - test
+                      metadata:
                         packaging_type: jar
-                    requirement: null
-                    source: null
-                version: null
-              - name: org.springframework.boot:spring-boot-starter-actuator
-                requirements:
-                  - file: pom.xml
-                    groups: []
-                    metadata:
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-starter-actuator
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
                         packaging_type: jar
-                    requirement: null
-                    source: null
-                version: null
-              - name: org.springframework.boot:spring-boot-configuration-processor
-                requirements:
-                  - file: pom.xml
-                    groups: []
-                    metadata:
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-configuration-processor
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
                         packaging_type: jar
-                    requirement: null
-                    source: null
-                version: null
+                      requirement: null
+                      source: null
+                  version: null
             dependency_files:
-              - /pom.xml
-  - type: create_pull_request
-    expect:
+                - /pom.xml
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: org.springframework.boot:spring-boot-starter-parent
-                previous-requirements:
-                  - file: pom.xml
-                    groups: []
-                    metadata:
+                - name: org.springframework.boot:spring-boot-starter-parent
+                  previous-requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
                         packaging_type: pom
-                    requirement: 1.5.9.RELEASE
-                    source: null
-                previous-version: 1.5.9.RELEASE
-                requirements:
-                  - file: pom.xml
-                    groups: []
-                    metadata:
+                      requirement: 1.5.9.RELEASE
+                      source: null
+                  previous-version: 1.5.9.RELEASE
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
                         packaging_type: pom
-                    requirement: 2.7.2
-                    source:
+                      requirement: 2.7.2
+                      source:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
-                version: 2.7.2
+                  version: 2.7.2
             updated-dependency-files:
-              - content: |
+                - content: |
                     <?xml version="1.0" encoding="UTF-8"?>
                     <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                              xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -183,13 +191,13 @@ output:
                         </dependency>
                       </dependencies>
                     </project>
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: pom.xml
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: pom.xml
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump spring-boot-starter-parent from 1.5.9.RELEASE to 2.7.2
             pr-body: |
                 Bumps [spring-boot-starter-parent](https://github.com/spring-projects/spring-boot) from 1.5.9.RELEASE to 2.7.2.
@@ -274,7 +282,7 @@ output:
                 Bumps [spring-boot-starter-parent](https://github.com/spring-projects/spring-boot) from 1.5.9.RELEASE to 2.7.2.
                 - [Release notes](https://github.com/spring-projects/spring-boot/releases)
                 - [Commits](https://github.com/spring-projects/spring-boot/compare/v1.5.9.RELEASE...v2.7.2)
-  - type: mark_as_processed
-    expect:
+    - type: mark_as_processed
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994

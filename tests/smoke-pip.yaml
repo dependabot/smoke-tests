@@ -13,6 +13,14 @@ input:
             repo: dependabot/smoke-tests
             directory: /pip/
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
 output:
     - type: update_dependency_list
       expect:
@@ -136,16 +144,16 @@ output:
                     - file: requirements.txt
                       groups:
                         - dependencies
-                      requirement: ==1.23.3
+                      requirement: ==1.24.1
                       source: null
-                  version: 1.23.3
+                  version: 1.24.1
             updated-dependency-files:
                 - content: |
                     Django>=3.1,<4.0
                     requests
                     pyyaml
                     pytest
-                    numpy==1.23.3
+                    numpy==1.24.1
                   content_encoding: utf-8
                   deleted: false
                   directory: /pip
@@ -153,58 +161,58 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump numpy from 1.23.0 to 1.23.3 in /pip
+            pr-title: Bump numpy from 1.23.0 to 1.24.1 in /pip
             pr-body: |
-                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.23.3.
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.24.1.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/numpy/numpy/releases">numpy's releases</a>.</em></p>
                 <blockquote>
-                <h2>v1.23.3</h2>
-                <h1>NumPy 1.23.3 Release Notes</h1>
-                <p>NumPy 1.23.3 is a maintenance release that fixes bugs discovered after
-                the 1.23.2 release. There is no major theme for this release, the main
-                improvements are for some downstream builds and some annotation corner
-                cases. The Python versions supported for this release are 3.8-3.11.</p>
-                <p>Note that we will move to MacOS 11 for the NumPy 1.23.4 release, the
-                10.15 version currently used will no longer be supported by our build
-                infrastructure at that point.</p>
+                <h2>v1.24.1</h2>
+                <h1>NumPy 1.24.1 Release Notes</h1>
+                <p>NumPy 1.24.1 is a maintenance release that fixes bugs and regressions
+                discovered after the 1.24.0 release. The Python versions supported by
+                this release are 3.8-3.11.</p>
                 <h2>Contributors</h2>
-                <p>A total of 16 people contributed to this release. People with a &quot;+&quot; by
+                <p>A total of 12 people contributed to this release. People with a &quot;+&quot; by
                 their names contributed a patch for the first time.</p>
                 <ul>
-                <li>Aaron Meurer</li>
-                <li>Bas van Beek</li>
+                <li>Andrew Nelson</li>
+                <li>Ben Greiner +</li>
                 <li>Charles Harris</li>
-                <li>Ganesh Kathiresan</li>
-                <li>Gavin Zhang +</li>
-                <li>Iantra Solari+</li>
-                <li>Jyn Spring 琴春 +</li>
+                <li>Clément Robert</li>
+                <li>Matteo Raso</li>
                 <li>Matti Picus</li>
-                <li>Rafael Cardoso Fernandes Sousa</li>
-                <li>Rafael Sousa +</li>
+                <li>Melissa Weber Mendonça</li>
+                <li>Miles Cranmer</li>
                 <li>Ralf Gommers</li>
-                <li>Rin Cat (鈴猫) +</li>
-                <li>Saransh Chopra +</li>
+                <li>Rohit Goswami</li>
                 <li>Sayed Adel</li>
                 <li>Sebastian Berg</li>
-                <li>Serge Guelton</li>
                 </ul>
                 <h2>Pull requests merged</h2>
-                <p>A total of 14 pull requests were merged for this release.</p>
+                <p>A total of 18 pull requests were merged for this release.</p>
                 <ul>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22136">#22136</a>: BLD: Add Python 3.11 wheels to aarch64 build</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22148">#22148</a>: MAINT: Update setup.py for Python 3.11.</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22155">#22155</a>: CI: Test NumPy build against old versions of GCC(6, 7, 8)</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22156">#22156</a>: MAINT: support IBM i system</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22195">#22195</a>: BUG: Fix circleci build</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22214">#22214</a>: BUG: Expose heapsort algorithms in a shared header</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22215">#22215</a>: BUG: Support using libunwind for backtrack</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22216">#22216</a>: MAINT: fix an incorrect pointer type usage in f2py</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22220">#22220</a>: BUG: change overloads to play nice with pyright.</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22221">#22221</a>: TST,BUG: Use fork context to fix MacOS savez test</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22222">#22222</a>: TYP,BUG: Reduce argument validation in C-based <code>__class_getitem__</code></li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22820">#22820</a>: BLD: add workaround in setup.py for newer setuptools</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22830">#22830</a>: BLD: CIRRUS_TAG redux</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22831">#22831</a>: DOC: fix a couple typos in 1.23 notes</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22832">#22832</a>: BUG: Fix refcounting errors found using pytest-leaks</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22834">#22834</a>: BUG, SIMD: Fix invalid value encountered in several ufuncs</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22837">#22837</a>: TST: ignore more np.distutils.log imports</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22839">#22839</a>: BUG: Do not use getdata() in np.ma.masked_invalid</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22847">#22847</a>: BUG: Ensure correct behavior for rows ending in delimiter in...</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22848">#22848</a>: BUG, SIMD: Fix the bitmask of the boolean comparison</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22857">#22857</a>: BLD: Help raspian arm + clang 13 about __builtin_mul_overflow</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22858">#22858</a>: API: Ensure a full mask is returned for masked_invalid</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22866">#22866</a>: BUG: Polynomials now copy properly (<a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22669">#22669</a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22867">#22867</a>: BUG, SIMD: Fix memory overlap in ufunc comparison loops</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22868">#22868</a>: BUG: Fortify string casts against floating point warnings</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22875">#22875</a>: TST: Ignore nan-warnings in randomized out tests</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22883">#22883</a>: MAINT: restore npymath implementations needed for freebsd</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22884">#22884</a>: BUG: Fix integer overflow in in1d for mixed integer dtypes <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22877">#22877</a></li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22887">#22887</a>: BUG: Use whole file for encoding checks with <code>charset_normalizer</code>.</li>
                 </ul>
+                <h2>Checksums</h2>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -212,27 +220,27 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/numpy/numpy/commit/e47cbb69bebf36007c3ea009aee03e4bfe3b3f3d"><code>e47cbb6</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22234">#22234</a> from charris/prepare-1.23.3-release</li>
-                <li><a href="https://github.com/numpy/numpy/commit/e0e8991301dfe9148eab058477505a4ca8238af6"><code>e0e8991</code></a> REL: Prepare for the NumPy 1.23.3 release.</li>
-                <li><a href="https://github.com/numpy/numpy/commit/9bf22bb443582474913696139249e2b6331e53d7"><code>9bf22bb</code></a> BUG: Better report integer division overflow (backport) (<a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22230">#22230</a>)</li>
-                <li><a href="https://github.com/numpy/numpy/commit/0f0d355c20522366157631800ed4a0922b40d21c"><code>0f0d355</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22224">#22224</a> from charris/backport-21928</li>
-                <li><a href="https://github.com/numpy/numpy/commit/55a5ca743c19602cb28083fbcf3138b34a2f29fd"><code>55a5ca7</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22223">#22223</a> from charris/backport-21981</li>
-                <li><a href="https://github.com/numpy/numpy/commit/6cc41836e1d2d12eea8591fe5252ca484f54d6af"><code>6cc4183</code></a> BUG: Fix the implementation of numpy.array_api.vecdot (<a href="https://github-redirect.dependabot.com/numpy/numpy/issues/21928">#21928</a>)</li>
-                <li><a href="https://github.com/numpy/numpy/commit/fb9666ff84dbbd1c0f802795399c57db54eeab83"><code>fb9666f</code></a> BUG: Replace assert with correct error</li>
-                <li><a href="https://github.com/numpy/numpy/commit/fc0d62795a2228afd442703324e29ed10898061a"><code>fc0d627</code></a> TST: ensure <code>np.equal.reduce</code> raises a <code>TypeError</code></li>
-                <li><a href="https://github.com/numpy/numpy/commit/754ec89857a37fc8def3b5ca99bd7bb6211a739e"><code>754ec89</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22222">#22222</a> from charris/backport-22212</li>
-                <li><a href="https://github.com/numpy/numpy/commit/63ab75d00c4378115dc3e3542e12be7d1a360747"><code>63ab75d</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22221">#22221</a> from charris/backport-22204</li>
-                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.23.0...v1.23.3">compare view</a></li>
+                <li><a href="https://github.com/numpy/numpy/commit/a28f4f2a472dc826d043abf4442ba258bbd6ade5"><code>a28f4f2</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22888">#22888</a> from charris/prepare-1.24.1-release</li>
+                <li><a href="https://github.com/numpy/numpy/commit/f8fea39ad76e7a24895af6a59ddd5fbdee466eb3"><code>f8fea39</code></a> REL: Prepare for the NumPY 1.24.1 release.</li>
+                <li><a href="https://github.com/numpy/numpy/commit/6f491e08e8fa84d939f91f1404ea4cc8ccbf9bc1"><code>6f491e0</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22887">#22887</a> from charris/backport-22872</li>
+                <li><a href="https://github.com/numpy/numpy/commit/48f5fe454fedeea0128857909f2d2fe4aec3d5df"><code>48f5fe4</code></a> BUG: Use whole file for encoding checks with <code>charset_normalizer</code> [f2py] (<a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22">#22</a>...</li>
+                <li><a href="https://github.com/numpy/numpy/commit/0f3484ac2e4e2113ad33a29372538e48ac78e184"><code>0f3484a</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22883">#22883</a> from charris/backport-22882</li>
+                <li><a href="https://github.com/numpy/numpy/commit/002c60d1a667357ffdfe35290b1595cc18d5ee4f"><code>002c60d</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22884">#22884</a> from charris/backport-22878</li>
+                <li><a href="https://github.com/numpy/numpy/commit/38ef9ce08e1cd4e562fbb4578911a1df55e05687"><code>38ef9ce</code></a> BUG: Fix integer overflow in in1d for mixed integer dtypes <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22877">#22877</a> (<a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22878">#22878</a>)</li>
+                <li><a href="https://github.com/numpy/numpy/commit/bb00c689afb052b0556f06bf8e55f79c99901cde"><code>bb00c68</code></a> MAINT: restore npymath implementations needed for freebsd</li>
+                <li><a href="https://github.com/numpy/numpy/commit/64e09c34237a837975cf42e074d3bb55dc955146"><code>64e09c3</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22875">#22875</a> from charris/backport-22869</li>
+                <li><a href="https://github.com/numpy/numpy/commit/dc7bac6b42b7c695e6d0ef7fdbc534e3f98a90b9"><code>dc7bac6</code></a> TST: Ignore nan-warnings in randomized out tests</li>
+                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.23.0...v1.24.1">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump numpy from 1.23.0 to 1.23.3 in /pip
+                Bump numpy from 1.23.0 to 1.24.1 in /pip
 
-                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.23.3.
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.24.1.
                 - [Release notes](https://github.com/numpy/numpy/releases)
                 - [Changelog](https://github.com/numpy/numpy/blob/main/doc/RELEASE_WALKTHROUGH.rst)
-                - [Commits](https://github.com/numpy/numpy/compare/v1.23.0...v1.23.3)
+                - [Commits](https://github.com/numpy/numpy/compare/v1.23.0...v1.24.1)
     - type: mark_as_processed
       expect:
         data:

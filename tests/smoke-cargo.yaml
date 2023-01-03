@@ -21,6 +21,14 @@ input:
             repo: dependabot/smoke-tests
             directory: /
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
 output:
     - type: update_dependency_list
       expect:
@@ -122,9 +130,9 @@ output:
 
                     [[package]]
                     name = "bumpalo"
-                    version = "3.11.0"
+                    version = "3.11.1"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "c1ad822118d20d2c234f427000d5acc36eabe1e29a348c89b63dd60b13f28e5d"
+                    checksum = "572f695136211188308f16ad2ca5c851a712c464060ae6974944458eb83880ba"
 
                     [[package]]
                     name = "cfg-if"
@@ -151,9 +159,9 @@ output:
 
                     [[package]]
                     name = "libc"
-                    version = "0.2.133"
+                    version = "0.2.139"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "c0f80d65747a3e43d1596c7c5492d95d5edddaabd45a7fcdb02b95f644164966"
+                    checksum = "201de327520df007757c1f0adce6e827fe8562fbc28bfd9c15571c66ca1f5f79"
 
                     [[package]]
                     name = "log"
@@ -184,24 +192,24 @@ output:
 
                     [[package]]
                     name = "once_cell"
-                    version = "1.15.0"
+                    version = "1.17.0"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "e82dad04139b71a90c080c8463fe0dc7902db5192d939bd0950f074d014339e1"
+                    checksum = "6f61fba1741ea2b3d6a1e3178721804bb716a68a6aeba1149b5d52e3d464ea66"
 
                     [[package]]
                     name = "proc-macro2"
-                    version = "1.0.44"
+                    version = "1.0.49"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "7bd7356a8122b6c4a24a82b278680c73357984ca2fc79a0f9fa6dea7dced7c58"
+                    checksum = "57a8eca9f9c4ffde41714334dee777596264c7825420f521abc92b5b5deb63a5"
                     dependencies = [
                      "unicode-ident",
                     ]
 
                     [[package]]
                     name = "quote"
-                    version = "1.0.21"
+                    version = "1.0.23"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "bbe448f377a7d6961e30f5955f9b8d106c3f5e449d493ee1b125c1d43c2b5179"
+                    checksum = "8856d8364d252a14d474036ea1358d63c9e6965c8e5c1885c18f73d70bff9c7b"
                     dependencies = [
                      "proc-macro2",
                     ]
@@ -225,9 +233,9 @@ output:
 
                     [[package]]
                     name = "syn"
-                    version = "1.0.101"
+                    version = "1.0.107"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "e90cde112c4b9690b8cbe810cba9ddd8bc1d7472e2cae317b69e9438c1cba7d2"
+                    checksum = "1f4064b5b16e03ae50984a5a8ed5d4f8803e6bc1fd170a3cda91a1be4b18e3f5"
                     dependencies = [
                      "proc-macro2",
                      "quote",
@@ -247,9 +255,9 @@ output:
 
                     [[package]]
                     name = "unicode-ident"
-                    version = "1.0.4"
+                    version = "1.0.6"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "dcc811dc4066ac62f84f11307873c4850cb653bfa9b1719cee2bd2204a4bc5dd"
+                    checksum = "84a22b9f218b40614adcb3f4ff08b703773ad44fa9423e4e0d346d5db86e4ebc"
 
                     [[package]]
                     name = "wasm-bindgen"
@@ -384,8 +392,6 @@ output:
                 <li><a href="https://github-redirect.dependabot.com/time-rs/time/issues/481">#481</a>: <code>Time</code> subtracted from <code>Time</code> can panic. This was caused by a bug that has always existed,
                 in that an internal invariant was not upheld. Memory safety was not violated.</li>
                 </ul>
-                <p><a href="https://github-redirect.dependabot.com/time-rs/time/issues/479">#479</a>: <a href="https://github-redirect.dependabot.com/time-rs/time/issues/479">time-rs/time#479</a>
-                <a href="https://github-redirect.dependabot.com/time-rs/time/issues/481">#481</a>: <a href="https://github-redirect.dependabot.com/time-rs/time/issues/481">time-rs/time#481</a></p>
                 <h2>0.3.10 [2022-06-19]</h2>
                 <h3>Added</h3>
                 <ul>
@@ -407,6 +413,7 @@ output:
                 <li>Debug assertions have been added in a few places. This should have no user facing impact, as it
                 only serves to catch bugs and is disabled in release mode.</li>
                 </ul>
+                <h2>0.3.9 [2022-03-22]</h2>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -479,9 +486,9 @@ output:
 
                     [[package]]
                     name = "aho-corasick"
-                    version = "0.7.19"
+                    version = "0.7.20"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "b4f55bd91a0978cbfd91c457a164bab8b4001c833b7f323132c0a4e1922dd44e"
+                    checksum = "cc936419f96fa211c1b9166887b38e5e40b19958e5b895be7c1f93adec7071ac"
                     dependencies = [
                      "memchr",
                     ]
@@ -535,9 +542,9 @@ output:
 
                     [[package]]
                     name = "regex-syntax"
-                    version = "0.6.27"
+                    version = "0.6.28"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "a3f87b73ce11b1619a3c6332f45341e0047173771e8b8b73f87bfeefb7b56244"
+                    checksum = "456c603be3e8d448b072f410900c09faf164fbce2d480456f50eea6e25f9c848"
 
                     [[package]]
                     name = "time"
@@ -701,7 +708,7 @@ output:
                   previous-requirements: []
                   previous-version: 0.2.40
                   requirements: []
-                  version: 0.2.133
+                  version: 0.2.139
             updated-dependency-files:
                 - content: |
                     # This file is automatically @generated by Cargo.
@@ -737,9 +744,9 @@ output:
 
                     [[package]]
                     name = "libc"
-                    version = "0.2.133"
+                    version = "0.2.139"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "c0f80d65747a3e43d1596c7c5492d95d5edddaabd45a7fcdb02b95f644164966"
+                    checksum = "201de327520df007757c1f0adce6e827fe8562fbc28bfd9c15571c66ca1f5f79"
 
                     [[package]]
                     name = "memchr"
@@ -803,65 +810,65 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump libc from 0.2.40 to 0.2.133
+            pr-title: Bump libc from 0.2.40 to 0.2.139
             pr-body: |
-                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.40 to 0.2.133.
+                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.40 to 0.2.139.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/rust-lang/libc/releases">libc's releases</a>.</em></p>
                 <blockquote>
-                <h2>0.2.133</h2>
+                <h2>0.2.139</h2>
                 <h2>What's Changed</h2>
                 <ul>
-                <li>freebsd adding ptsname_r by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2878">rust-lang/libc#2878</a></li>
-                <li>openbsd: ignore ci error about unexistent KERN_NSELCOLL constant by <a href="https://github.com/semarie"><code>@​semarie</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2879">rust-lang/libc#2879</a></li>
-                <li>Add ENOTSUP constant for riscv32/musl by <a href="https://github.com/kraj"><code>@​kraj</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2884">rust-lang/libc#2884</a></li>
-                <li>freebsd cpuset affinity flags. by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2885">rust-lang/libc#2885</a></li>
-                <li>IEEE EUI-64 callss for freebsd/dragonflybsd. by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2882">rust-lang/libc#2882</a></li>
-                <li>apple SEEK_{DATA,HOLE} O_{EVTONLY,NOFOLLOW_ANY} by <a href="https://github.com/youknowone"><code>@​youknowone</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2886">rust-lang/libc#2886</a></li>
-                <li>Add <code>confstr</code> and guaranteed <code>_CS_*</code> constants on apple by <a href="https://github.com/thomcc"><code>@​thomcc</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2883">rust-lang/libc#2883</a></li>
-                <li>add freebsd's cpusetid_t api by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2887">rust-lang/libc#2887</a></li>
-                <li>Add CPU_SETSIZE const for FreeBSD by <a href="https://github.com/lwhsu"><code>@​lwhsu</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2888">rust-lang/libc#2888</a></li>
-                <li>linux: add missing netfilter definitions by <a href="https://github.com/phi-gamma"><code>@​phi-gamma</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2876">rust-lang/libc#2876</a></li>
-                <li>Upgrade Ubuntu image on GHA to 22.04 by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2890">rust-lang/libc#2890</a></li>
-                <li>add missing SOF_TIMESTAMPING flags by <a href="https://github.com/folkertdev"><code>@​folkertdev</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2881">rust-lang/libc#2881</a></li>
-                <li>freebsd add shm_largepage_conf data and its ioctl request. by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2892">rust-lang/libc#2892</a></li>
-                <li>Add musl's lib folder to library search path by <a href="https://github.com/wesleywiser"><code>@​wesleywiser</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2893">rust-lang/libc#2893</a></li>
-                <li>linux: add rtnetlink mcast group definitions by <a href="https://github.com/phi-gamma"><code>@​phi-gamma</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2889">rust-lang/libc#2889</a></li>
-                <li>apple add pthread_jit_write_callback_t api related. by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2896">rust-lang/libc#2896</a></li>
-                <li>Fix the tests on the latest FreeBSD 14.0-CURRENT by <a href="https://github.com/asomers"><code>@​asomers</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2898">rust-lang/libc#2898</a></li>
-                <li>Added missing constants from elf.h by <a href="https://github.com/paandahl"><code>@​paandahl</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2897">rust-lang/libc#2897</a></li>
-                <li>apple: Add the attrlist set of functions by <a href="https://github.com/beetrees"><code>@​beetrees</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2902">rust-lang/libc#2902</a></li>
-                <li>Add makedev for the BSDs by <a href="https://github.com/asomers"><code>@​asomers</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2891">rust-lang/libc#2891</a></li>
-                <li>solarish SHM* flags by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2905">rust-lang/libc#2905</a></li>
-                <li>fcntl F_DUPFD_CLOEXEC has different values on Solaris and Illumos by <a href="https://github.com/gco"><code>@​gco</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2900">rust-lang/libc#2900</a></li>
-                <li>Solaris TCP_KEEPINTVL and TCP_KEEPCNT have wrong values by <a href="https://github.com/gco"><code>@​gco</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2901">rust-lang/libc#2901</a></li>
-                <li>Add new Linux system call constants by <a href="https://github.com/cd-work"><code>@​cd-work</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2904">rust-lang/libc#2904</a></li>
-                <li>openbsd: add getmntinfo(3) and getfsstat(2) support by <a href="https://github.com/semarie"><code>@​semarie</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2907">rust-lang/libc#2907</a></li>
-                <li>Update s390x installer to 20220914 by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2912">rust-lang/libc#2912</a></li>
-                <li>expose setgrent/getgrent/endgrent on fuchsia by <a href="https://github.com/SteveLauC"><code>@​SteveLauC</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2910">rust-lang/libc#2910</a></li>
-                <li>netbsd mcontext x86_64 constants. by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2911">rust-lang/libc#2911</a></li>
-                <li>Compatibility with ESP-IDF V5 by <a href="https://github.com/ivmarkov"><code>@​ivmarkov</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2913">rust-lang/libc#2913</a></li>
-                <li>linux add FICLONE* ioctl. by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2899">rust-lang/libc#2899</a></li>
-                <li>Bump version to 0.2.133 by <a href="https://github.com/beetrees"><code>@​beetrees</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2906">rust-lang/libc#2906</a></li>
+                <li>Update FreeBSD 12 CI environment to 12.4 by <a href="https://github.com/asomers"><code>@​asomers</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3028">rust-lang/libc#3028</a></li>
+                <li>Try readding all inotify flags by <a href="https://github.com/carbotaniuman"><code>@​carbotaniuman</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3030">rust-lang/libc#3030</a></li>
+                <li>linux: Add AT_SYSINFO_EHDR constant by <a href="https://github.com/Phantomical"><code>@​Phantomical</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3027">rust-lang/libc#3027</a></li>
+                <li>Add missing string-to-number functions from ISO C by <a href="https://github.com/LegionMammal978"><code>@​LegionMammal978</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3036">rust-lang/libc#3036</a></li>
+                <li>Add support for QNX/Neutrino 7.1 by <a href="https://github.com/gh-tr"><code>@​gh-tr</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3038">rust-lang/libc#3038</a></li>
+                <li>Add misc constants and functions for android by <a href="https://github.com/fkm3"><code>@​fkm3</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2758">rust-lang/libc#2758</a></li>
+                <li>adding KERNEL_VERSION macro for linux. by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3041">rust-lang/libc#3041</a></li>
+                <li>Prepare 0.2.139 release by <a href="https://github.com/flba-eb"><code>@​flba-eb</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3042">rust-lang/libc#3042</a></li>
                 </ul>
                 <h2>New Contributors</h2>
                 <ul>
-                <li><a href="https://github.com/thomcc"><code>@​thomcc</code></a> made their first contribution in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2883">rust-lang/libc#2883</a></li>
-                <li><a href="https://github.com/lwhsu"><code>@​lwhsu</code></a> made their first contribution in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2888">rust-lang/libc#2888</a></li>
-                <li><a href="https://github.com/folkertdev"><code>@​folkertdev</code></a> made their first contribution in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2881">rust-lang/libc#2881</a></li>
-                <li><a href="https://github.com/wesleywiser"><code>@​wesleywiser</code></a> made their first contribution in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2893">rust-lang/libc#2893</a></li>
-                <li><a href="https://github.com/paandahl"><code>@​paandahl</code></a> made their first contribution in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2897">rust-lang/libc#2897</a></li>
-                <li><a href="https://github.com/beetrees"><code>@​beetrees</code></a> made their first contribution in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2902">rust-lang/libc#2902</a></li>
-                <li><a href="https://github.com/gco"><code>@​gco</code></a> made their first contribution in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2900">rust-lang/libc#2900</a></li>
-                <li><a href="https://github.com/cd-work"><code>@​cd-work</code></a> made their first contribution in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2904">rust-lang/libc#2904</a></li>
-                <li><a href="https://github.com/SteveLauC"><code>@​SteveLauC</code></a> made their first contribution in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2910">rust-lang/libc#2910</a></li>
+                <li><a href="https://github.com/Phantomical"><code>@​Phantomical</code></a> made their first contribution in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3027">rust-lang/libc#3027</a></li>
+                <li><a href="https://github.com/LegionMammal978"><code>@​LegionMammal978</code></a> made their first contribution in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3036">rust-lang/libc#3036</a></li>
+                <li><a href="https://github.com/gh-tr"><code>@​gh-tr</code></a> made their first contribution in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3038">rust-lang/libc#3038</a></li>
+                <li><a href="https://github.com/fkm3"><code>@​fkm3</code></a> made their first contribution in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2758">rust-lang/libc#2758</a></li>
                 </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rust-lang/libc/compare/0.2.132...0.2.133">https://github.com/rust-lang/libc/compare/0.2.132...0.2.133</a></p>
-                <h2>0.2.132</h2>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/rust-lang/libc/compare/0.2.138...0.2.139">https://github.com/rust-lang/libc/compare/0.2.138...0.2.139</a></p>
+                <h2>0.2.138</h2>
                 <h2>What's Changed</h2>
                 <ul>
-                <li>Add FUTEX_LOCK_PI2 on Linux by <a href="https://github.com/rtzoeller"><code>@​rtzoeller</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2874">rust-lang/libc#2874</a></li>
+                <li>Fix typo: <code>readfs</code> -&gt; <code>readfds</code> by <a href="https://github.com/giraffate"><code>@​giraffate</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2981">rust-lang/libc#2981</a></li>
+                <li>linux: Add POSIX_SPAWN_SETSID flag by <a href="https://github.com/HarveyHunt"><code>@​HarveyHunt</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2983">rust-lang/libc#2983</a></li>
+                <li>Enforce order of any <code>s_*!</code> macro calls by <a href="https://github.com/flba-eb"><code>@​flba-eb</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2985">rust-lang/libc#2985</a></li>
+                <li>Add FICLONE ioctl for linux aarch64 by <a href="https://github.com/dtolnay"><code>@​dtolnay</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2986">rust-lang/libc#2986</a></li>
+                <li>Revive <code>x86_64-linux-android</code> CI with an old nightly by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2990">rust-lang/libc#2990</a></li>
+                <li>fix wrong definitions of getpwent_r and getgrent_r on solarish os by <a href="https://github.com/SteveLauC"><code>@​SteveLauC</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2914">rust-lang/libc#2914</a></li>
+                <li>add extended attributes constants on NetBSD by <a href="https://github.com/SteveLauC"><code>@​SteveLauC</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2988">rust-lang/libc#2988</a></li>
+                <li>Use an old emulator to fix Android CI by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2989">rust-lang/libc#2989</a></li>
+                <li>Add ucontext and clone_args for loongarch64 by <a href="https://github.com/zhaixiaojuan"><code>@​zhaixiaojuan</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2993">rust-lang/libc#2993</a></li>
+                <li>Add Android uinput bindings by <a href="https://github.com/spencercw"><code>@​spencercw</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2984">rust-lang/libc#2984</a></li>
+                <li>add extattr_list_xxx() on NetBSD by <a href="https://github.com/SteveLauC"><code>@​SteveLauC</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2991">rust-lang/libc#2991</a></li>
+                <li>freebsd procctl flags update by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2992">rust-lang/libc#2992</a></li>
+                <li>Report the actual error when failing to get the rustc version by <a href="https://github.com/bjorn3"><code>@​bjorn3</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3000">rust-lang/libc#3000</a></li>
+                <li>ci: Read test output from stderr by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3005">rust-lang/libc#3005</a></li>
+                <li>freebsd subset of memstat api addition by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2998">rust-lang/libc#2998</a></li>
+                <li>Add rand48 functions by <a href="https://github.com/carbotaniuman"><code>@​carbotaniuman</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/2995">rust-lang/libc#2995</a></li>
+                <li>Add sys/ucontext.h signatures for linux aarch64 glibc by <a href="https://github.com/dtolnay"><code>@​dtolnay</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3001">rust-lang/libc#3001</a></li>
+                <li>Add pull request template by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3006">rust-lang/libc#3006</a></li>
+                <li>Add kexec_file_load system call for arm64 linux by <a href="https://github.com/dtolnay"><code>@​dtolnay</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3009">rust-lang/libc#3009</a></li>
+                <li>Migrate from highfive to triagebot by <a href="https://github.com/ehuss"><code>@​ehuss</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3018">rust-lang/libc#3018</a></li>
+                <li>mips32: fix missing __s64 type definition by <a href="https://github.com/cppcoffee"><code>@​cppcoffee</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3016">rust-lang/libc#3016</a></li>
+                <li>Revert &quot;Auto merge of <a href="https://github-redirect.dependabot.com/rust-lang/libc/issues/3018">#3018</a> - ehuss:highfive-triagebot, r=JohnTitor&quot; by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3019">rust-lang/libc#3019</a></li>
+                <li>Fix the loongarch64 kernel ABI by <a href="https://github.com/xen0n"><code>@​xen0n</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3007">rust-lang/libc#3007</a></li>
+                <li>adding SYS_pidfd_send_signal/SYS_pidfd_getfd constants to linux uclib… by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3012">rust-lang/libc#3012</a></li>
+                <li>handle c circular dependence (linux gnu) by <a href="https://github.com/BelovDV"><code>@​BelovDV</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3013">rust-lang/libc#3013</a></li>
+                <li>Migrate from highfive to triagebot by <a href="https://github.com/ehuss"><code>@​ehuss</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3020">rust-lang/libc#3020</a></li>
+                <li>Rearrange <code>sockaddr_storage</code> padding/alignment fields on Linux and Fuchsia by <a href="https://github.com/stevenengler"><code>@​stevenengler</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3010">rust-lang/libc#3010</a></li>
+                <li>linux musl adding <code>PIDFD_NONBLOCK</code> constant. by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3003">rust-lang/libc#3003</a></li>
+                <li>Add more capsicum functions for FreeBSD by <a href="https://github.com/asomers"><code>@​asomers</code></a> in <a href="https://github-redirect.dependabot.com/rust-lang/libc/pull/3022">rust-lang/libc#3022</a></li>
                 </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
@@ -870,26 +877,26 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/rust-lang/libc/commit/d4c4e9214b9e86cdbf68b7f6ca3f064ec148f2e5"><code>d4c4e92</code></a> Auto merge of <a href="https://github-redirect.dependabot.com/rust-lang/libc/issues/2906">#2906</a> - beetrees:bump-to-133, r=JohnTitor</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/a88aec36393e8e338cf98cff5ec2cd455ea2a763"><code>a88aec3</code></a> Auto merge of <a href="https://github-redirect.dependabot.com/rust-lang/libc/issues/2899">#2899</a> - devnexen:linux_fileclone, r=JohnTitor</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/152bb49b118bc9e3ddb33c6263d8ecadb71c24d2"><code>152bb49</code></a> linux add FICLONE* ioctl.</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/8531d0134cbe70e29037bd16b0e4e60fca5c9253"><code>8531d01</code></a> Auto merge of <a href="https://github-redirect.dependabot.com/rust-lang/libc/issues/2913">#2913</a> - ivmarkov:master, r=JohnTitor</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/ba7ff452d5dcac7bc51f295f90265a0359ef60f2"><code>ba7ff45</code></a> Compatibility with ESP-IDF V5</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/9cdd42e8a64cc95f59374ef5217195a979d25b21"><code>9cdd42e</code></a> Auto merge of <a href="https://github-redirect.dependabot.com/rust-lang/libc/issues/2911">#2911</a> - devnexen:netbsd_reg_constants, r=JohnTitor</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/1afccf75b3b10086c85b7b4f49f22aacdefc6c81"><code>1afccf7</code></a> Auto merge of <a href="https://github-redirect.dependabot.com/rust-lang/libc/issues/2910">#2910</a> - SteveLauC:expose-setgrent-getgrent-endgrent-on-fuchsia,...</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/e58fb5d71a8a2214eb4f6bbbf050d422887e4390"><code>e58fb5d</code></a> Auto merge of <a href="https://github-redirect.dependabot.com/rust-lang/libc/issues/2912">#2912</a> - JohnTitor:s390x-image-bump, r=JohnTitor</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/128b9c0f2330927ba8c1844fcc8ede70c4b5dbe5"><code>128b9c0</code></a> Update s390x installer to 20220914</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/ffad7fd181a62f49b9335a1c50c7eded826ccf61"><code>ffad7fd</code></a> netbsd mcontext x86_64 constants.</li>
-                <li>Additional commits viewable in <a href="https://github.com/rust-lang/libc/compare/0.2.40...0.2.133">compare view</a></li>
+                <li><a href="https://github.com/rust-lang/libc/commit/f4bc85111b2403a9c9cb49890305cb6b32c5af41"><code>f4bc851</code></a> Auto merge of <a href="https://github-redirect.dependabot.com/rust-lang/libc/issues/3042">#3042</a> - flba-eb:release_0.2.139, r=JohnTitor</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/dc3d43cae02e591c22e618af4eb98c68064e1a3a"><code>dc3d43c</code></a> Prepare 0.2.139 release</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/c59ca735304319dd4face349f49fb77f2164b544"><code>c59ca73</code></a> Auto merge of <a href="https://github-redirect.dependabot.com/rust-lang/libc/issues/3041">#3041</a> - devnexen:linux_kernel_version, r=JohnTitor</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/88d6a1fd9b4b62729bd55a76e727f5f1d0aeef20"><code>88d6a1f</code></a> adding KERNEL_VERSION macro for linux.</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/45b431a79ec7f72c245fb0631f2d05a9f16ca5a8"><code>45b431a</code></a> Auto merge of <a href="https://github-redirect.dependabot.com/rust-lang/libc/issues/2758">#2758</a> - fkm3:master, r=JohnTitor</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/572e11b963e85b7a5bcd94bc5f98d980baa21c92"><code>572e11b</code></a> Add misc constants and functions for android</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/318dccc93a46344afabff64001d929fc37432f41"><code>318dccc</code></a> Auto merge of <a href="https://github-redirect.dependabot.com/rust-lang/libc/issues/3038">#3038</a> - gh-tr:rebased/20221216, r=JohnTitor</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/07636f636d6c0aeb65dfd1c4b0565c1cb4bad6e5"><code>07636f6</code></a> Auto merge of <a href="https://github-redirect.dependabot.com/rust-lang/libc/issues/3036">#3036</a> - LegionMammal978:iso-c-funcs, r=JohnTitor</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/720151f84493d3a4ca7081ee7b85f3c115a33860"><code>720151f</code></a> Add support for QNX/Neutrino 7.1</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/6a58758d5f4198305191747c5c8b6af3c5057898"><code>6a58758</code></a> Add ISO C functions atof, atol, atoll, strtoll, strtoull</li>
+                <li>Additional commits viewable in <a href="https://github.com/rust-lang/libc/compare/0.2.40...0.2.139">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump libc from 0.2.40 to 0.2.133
+                Bump libc from 0.2.40 to 0.2.139
 
-                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.40 to 0.2.133.
+                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.40 to 0.2.139.
                 - [Release notes](https://github.com/rust-lang/libc/releases)
-                - [Commits](https://github.com/rust-lang/libc/compare/0.2.40...0.2.133)
+                - [Commits](https://github.com/rust-lang/libc/compare/0.2.40...0.2.139)
     - type: create_pull_request
       expect:
         data:
