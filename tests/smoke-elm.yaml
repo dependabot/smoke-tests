@@ -2,146 +2,154 @@ input:
     job:
         package-manager: elm
         allowed-updates:
-          - update-type: all
+            - update-type: all
         ignore-conditions:
-          - dependency-name: elm/browser
-            source: tests/smoke-elm.yaml
-            version-requirement: '>1.0.1'
-          - dependency-name: elm/core
-            source: tests/smoke-elm.yaml
-            version-requirement: '>1.0.5'
-          - dependency-name: elm/json
-            source: tests/smoke-elm.yaml
-            version-requirement: '>1.1.3'
-          - dependency-name: elm/project-metadata-utils
-            source: tests/smoke-elm.yaml
-            version-requirement: '>1.0.2'
-          - dependency-name: elm/svg
-            source: tests/smoke-elm.yaml
-            version-requirement: '>1.0.1'
+            - dependency-name: elm/browser
+              source: tests/smoke-elm.yaml
+              version-requirement: '>1.0.1'
+            - dependency-name: elm/core
+              source: tests/smoke-elm.yaml
+              version-requirement: '>1.0.5'
+            - dependency-name: elm/json
+              source: tests/smoke-elm.yaml
+              version-requirement: '>1.1.3'
+            - dependency-name: elm/project-metadata-utils
+              source: tests/smoke-elm.yaml
+              version-requirement: '>1.0.2'
+            - dependency-name: elm/svg
+              source: tests/smoke-elm.yaml
+              version-requirement: '>1.0.1'
         source:
             provider: github
             repo: dependabot/smoke-tests
             directory: /
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
 output:
-  - type: update_dependency_list
-    expect:
+    - type: update_dependency_list
+      expect:
         data:
             dependencies:
-              - name: elm-explorations/markdown
-                requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.0
-                    source: null
-                version: 1.0.0
-              - name: elm/browser
-                requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.0
-                    source: null
-                version: 1.0.0
-              - name: elm/core
-                requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.0
-                    source: null
-                version: 1.0.0
-              - name: elm/html
-                requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.0
-                    source: null
-                version: 1.0.0
-              - name: elm/http
-                requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.0
-                    source: null
-                version: 1.0.0
-              - name: elm/json
-                requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.0
-                    source: null
-                version: 1.0.0
-              - name: elm/parser
-                requirements: []
-                version: 1.0.0
-              - name: elm/project-metadata-utils
-                requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.0
-                    source: null
-                version: 1.0.0
-              - name: elm/regex
-                requirements:
-                  - file: elm.json
-                    groups:
-                      - test-dependencies
-                    requirement: 1.0.0
-                    source: null
-                version: 1.0.0
-              - name: elm/svg
-                requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.0
-                    source: null
-                version: 1.0.0
-              - name: elm/time
-                requirements: []
-                version: 1.0.0
-              - name: elm/url
-                requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.0
-                    source: null
-                version: 1.0.0
-              - name: elm/virtual-dom
-                requirements: []
-                version: 1.0.0
+                - name: elm-explorations/markdown
+                  requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.0
+                      source: null
+                  version: 1.0.0
+                - name: elm/browser
+                  requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.0
+                      source: null
+                  version: 1.0.0
+                - name: elm/core
+                  requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.0
+                      source: null
+                  version: 1.0.0
+                - name: elm/html
+                  requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.0
+                      source: null
+                  version: 1.0.0
+                - name: elm/http
+                  requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.0
+                      source: null
+                  version: 1.0.0
+                - name: elm/json
+                  requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.0
+                      source: null
+                  version: 1.0.0
+                - name: elm/parser
+                  requirements: []
+                  version: 1.0.0
+                - name: elm/project-metadata-utils
+                  requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.0
+                      source: null
+                  version: 1.0.0
+                - name: elm/regex
+                  requirements:
+                    - file: elm.json
+                      groups:
+                        - test-dependencies
+                      requirement: 1.0.0
+                      source: null
+                  version: 1.0.0
+                - name: elm/svg
+                  requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.0
+                      source: null
+                  version: 1.0.0
+                - name: elm/time
+                  requirements: []
+                  version: 1.0.0
+                - name: elm/url
+                  requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.0
+                      source: null
+                  version: 1.0.0
+                - name: elm/virtual-dom
+                  requirements: []
+                  version: 1.0.0
             dependency_files:
-              - /elm.json
-  - type: create_pull_request
-    expect:
+                - /elm.json
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: elm/browser
-                previous-requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.0
-                    source: null
-                previous-version: 1.0.0
-                requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.1
-                    source: null
-                version: 1.0.1
+                - name: elm/browser
+                  previous-requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.0
+                      source: null
+                  previous-version: 1.0.0
+                  requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.1
+                      source: null
+                  version: 1.0.1
             updated-dependency-files:
-              - content: |
+                - content: |
                     {
                       "type": "application",
                       "source-directories": [
@@ -173,13 +181,13 @@ output:
                           "indirect": {}
                       }
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: elm.json
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: elm.json
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump elm/browser from 1.0.0 to 1.0.1
             pr-body: |
                 Bumps [elm/browser](https://github.com/elm/browser) from 1.0.0 to 1.0.1.
@@ -206,28 +214,28 @@ output:
                 Bumps [elm/browser](https://github.com/elm/browser) from 1.0.0 to 1.0.1.
                 - [Release notes](https://github.com/elm/browser/releases)
                 - [Commits](https://github.com/elm/browser/compare/1.0.0...1.0.1)
-  - type: create_pull_request
-    expect:
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: elm/core
-                previous-requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.0
-                    source: null
-                previous-version: 1.0.0
-                requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.5
-                    source: null
-                version: 1.0.5
+                - name: elm/core
+                  previous-requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.0
+                      source: null
+                  previous-version: 1.0.0
+                  requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.5
+                      source: null
+                  version: 1.0.5
             updated-dependency-files:
-              - content: |
+                - content: |
                     {
                       "type": "application",
                       "source-directories": [
@@ -259,13 +267,13 @@ output:
                           "indirect": {}
                       }
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: elm.json
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: elm.json
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump elm/core from 1.0.0 to 1.0.5
             pr-body: |
                 Bumps [elm/core](https://github.com/elm/core) from 1.0.0 to 1.0.5.
@@ -292,28 +300,28 @@ output:
                 Bumps [elm/core](https://github.com/elm/core) from 1.0.0 to 1.0.5.
                 - [Release notes](https://github.com/elm/core/releases)
                 - [Commits](https://github.com/elm/core/compare/1.0.0...1.0.5)
-  - type: create_pull_request
-    expect:
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: elm/json
-                previous-requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.0
-                    source: null
-                previous-version: 1.0.0
-                requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.1.3
-                    source: null
-                version: 1.1.3
+                - name: elm/json
+                  previous-requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.0
+                      source: null
+                  previous-version: 1.0.0
+                  requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.1.3
+                      source: null
+                  version: 1.1.3
             updated-dependency-files:
-              - content: |
+                - content: |
                     {
                       "type": "application",
                       "source-directories": [
@@ -345,13 +353,13 @@ output:
                           "indirect": {}
                       }
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: elm.json
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: elm.json
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump elm/json from 1.0.0 to 1.1.3
             pr-body: |
                 Bumps [elm/json](https://github.com/elm/json) from 1.0.0 to 1.1.3.
@@ -378,34 +386,34 @@ output:
                 Bumps [elm/json](https://github.com/elm/json) from 1.0.0 to 1.1.3.
                 - [Release notes](https://github.com/elm/json/releases)
                 - [Commits](https://github.com/elm/json/compare/1.0.0...1.1.3)
-  - type: record_update_job_error
-    expect:
+    - type: record_update_job_error
+      expect:
         data:
+            error-type: dependency_file_not_resolvable
             error-details:
                 message: No elm.json found
-            error-type: dependency_file_not_resolvable
-  - type: create_pull_request
-    expect:
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: elm/project-metadata-utils
-                previous-requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.0
-                    source: null
-                previous-version: 1.0.0
-                requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.2
-                    source: null
-                version: 1.0.2
+                - name: elm/project-metadata-utils
+                  previous-requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.0
+                      source: null
+                  previous-version: 1.0.0
+                  requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.2
+                      source: null
+                  version: 1.0.2
             updated-dependency-files:
-              - content: |
+                - content: |
                     {
                       "type": "application",
                       "source-directories": [
@@ -437,13 +445,13 @@ output:
                           "indirect": {}
                       }
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: elm.json
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: elm.json
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump elm/project-metadata-utils from 1.0.0 to 1.0.2
             pr-body: |
                 Bumps [elm/project-metadata-utils](https://github.com/elm/project-metadata-utils) from 1.0.0 to 1.0.2.
@@ -470,28 +478,28 @@ output:
                 Bumps [elm/project-metadata-utils](https://github.com/elm/project-metadata-utils) from 1.0.0 to 1.0.2.
                 - [Release notes](https://github.com/elm/project-metadata-utils/releases)
                 - [Commits](https://github.com/elm/project-metadata-utils/compare/1.0.0...1.0.2)
-  - type: create_pull_request
-    expect:
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-              - name: elm/svg
-                previous-requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.0
-                    source: null
-                previous-version: 1.0.0
-                requirements:
-                  - file: elm.json
-                    groups:
-                      - dependencies
-                    requirement: 1.0.1
-                    source: null
-                version: 1.0.1
+                - name: elm/svg
+                  previous-requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.0
+                      source: null
+                  previous-version: 1.0.0
+                  requirements:
+                    - file: elm.json
+                      groups:
+                        - dependencies
+                      requirement: 1.0.1
+                      source: null
+                  version: 1.0.1
             updated-dependency-files:
-              - content: |
+                - content: |
                     {
                       "type": "application",
                       "source-directories": [
@@ -523,13 +531,13 @@ output:
                           "indirect": {}
                       }
                     }
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: elm.json
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: elm.json
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump elm/svg from 1.0.0 to 1.0.1
             pr-body: |
                 Bumps [elm/svg](https://github.com/elm/svg) from 1.0.0 to 1.0.1.
@@ -548,13 +556,13 @@ output:
                 Bumps [elm/svg](https://github.com/elm/svg) from 1.0.0 to 1.0.1.
                 - [Release notes](https://github.com/elm/svg/releases)
                 - [Commits](https://github.com/elm/svg/compare/1.0.0...1.0.1)
-  - type: record_update_job_error
-    expect:
+    - type: record_update_job_error
+      expect:
         data:
+            error-type: dependency_file_not_resolvable
             error-details:
                 message: No elm.json found
-            error-type: dependency_file_not_resolvable
-  - type: mark_as_processed
-    expect:
+    - type: mark_as_processed
+      expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994

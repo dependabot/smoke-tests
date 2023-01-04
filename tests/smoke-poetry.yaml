@@ -12,6 +12,14 @@ input:
             repo: dependabot/smoke-tests
             directory: /poetry
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
 output:
     - type: update_dependency_list
       expect:
@@ -243,9 +251,9 @@ output:
                     - file: pyproject.toml
                       groups:
                         - dependencies
-                      requirement: 1.23.3
+                      requirement: 1.24.1
                       source: null
-                  version: 1.23.3
+                  version: 1.24.1
             updated-dependency-files:
                 - content: |+
                     [tool.poetry]
@@ -258,7 +266,7 @@ output:
                     python = "~3.10"
                     toml = "0.10.0"
                     PyYAML = "^6.0"
-                    numpy = "1.23.3"
+                    numpy = "1.24.1"
 
                     [tool.poetry.dev-dependencies]
 
@@ -276,8 +284,8 @@ output:
                 - content: |
                     [[package]]
                     name = "numpy"
-                    version = "1.23.3"
-                    description = "NumPy is the fundamental package for array computing with Python."
+                    version = "1.24.1"
+                    description = "Fundamental package for array computing in Python"
                     category = "main"
                     optional = false
                     python-versions = ">=3.8"
@@ -301,38 +309,38 @@ output:
                     [metadata]
                     lock-version = "1.1"
                     python-versions = "~3.10"
-                    content-hash = "cb932edad5b4be0d981038f1e70a69fbd3e1fb42ae74a631e6da1aba82801efb"
+                    content-hash = "e7a240278f1da9b6e4e4a17f7a6449ac12ec9f0175cf863ef7363e86bbbea69b"
 
                     [metadata.files]
                     numpy = [
-                        {file = "numpy-1.23.3-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:c9f707b5bb73bf277d812ded9896f9512a43edff72712f31667d0a8c2f8e71ee"},
-                        {file = "numpy-1.23.3-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:ffcf105ecdd9396e05a8e58e81faaaf34d3f9875f137c7372450baa5d77c9a54"},
-                        {file = "numpy-1.23.3-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:0ea3f98a0ffce3f8f57675eb9119f3f4edb81888b6874bc1953f91e0b1d4f440"},
-                        {file = "numpy-1.23.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:004f0efcb2fe1c0bd6ae1fcfc69cc8b6bf2407e0f18be308612007a0762b4089"},
-                        {file = "numpy-1.23.3-cp310-cp310-win32.whl", hash = "sha256:98dcbc02e39b1658dc4b4508442a560fe3ca5ca0d989f0df062534e5ca3a5c1a"},
-                        {file = "numpy-1.23.3-cp310-cp310-win_amd64.whl", hash = "sha256:39a664e3d26ea854211867d20ebcc8023257c1800ae89773cbba9f9e97bae036"},
-                        {file = "numpy-1.23.3-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:1f27b5322ac4067e67c8f9378b41c746d8feac8bdd0e0ffede5324667b8a075c"},
-                        {file = "numpy-1.23.3-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:2ad3ec9a748a8943e6eb4358201f7e1c12ede35f510b1a2221b70af4bb64295c"},
-                        {file = "numpy-1.23.3-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:bdc9febce3e68b697d931941b263c59e0c74e8f18861f4064c1f712562903411"},
-                        {file = "numpy-1.23.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:301c00cf5e60e08e04d842fc47df641d4a181e651c7135c50dc2762ffe293dbd"},
-                        {file = "numpy-1.23.3-cp311-cp311-win32.whl", hash = "sha256:7cd1328e5bdf0dee621912f5833648e2daca72e3839ec1d6695e91089625f0b4"},
-                        {file = "numpy-1.23.3-cp311-cp311-win_amd64.whl", hash = "sha256:8355fc10fd33a5a70981a5b8a0de51d10af3688d7a9e4a34fcc8fa0d7467bb7f"},
-                        {file = "numpy-1.23.3-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:bc6e8da415f359b578b00bcfb1d08411c96e9a97f9e6c7adada554a0812a6cc6"},
-                        {file = "numpy-1.23.3-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:22d43376ee0acd547f3149b9ec12eec2f0ca4a6ab2f61753c5b29bb3e795ac4d"},
-                        {file = "numpy-1.23.3-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a64403f634e5ffdcd85e0b12c08f04b3080d3e840aef118721021f9b48fc1460"},
-                        {file = "numpy-1.23.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:efd9d3abe5774404becdb0748178b48a218f1d8c44e0375475732211ea47c67e"},
-                        {file = "numpy-1.23.3-cp38-cp38-win32.whl", hash = "sha256:f8c02ec3c4c4fcb718fdf89a6c6f709b14949408e8cf2a2be5bfa9c49548fd85"},
-                        {file = "numpy-1.23.3-cp38-cp38-win_amd64.whl", hash = "sha256:e868b0389c5ccfc092031a861d4e158ea164d8b7fdbb10e3b5689b4fc6498df6"},
-                        {file = "numpy-1.23.3-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:09f6b7bdffe57fc61d869a22f506049825d707b288039d30f26a0d0d8ea05164"},
-                        {file = "numpy-1.23.3-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:8c79d7cf86d049d0c5089231a5bcd31edb03555bd93d81a16870aa98c6cfb79d"},
-                        {file = "numpy-1.23.3-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:e5d5420053bbb3dd64c30e58f9363d7a9c27444c3648e61460c1237f9ec3fa14"},
-                        {file = "numpy-1.23.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d5422d6a1ea9b15577a9432e26608c73a78faf0b9039437b075cf322c92e98e7"},
-                        {file = "numpy-1.23.3-cp39-cp39-win32.whl", hash = "sha256:c1ba66c48b19cc9c2975c0d354f24058888cdc674bebadceb3cdc9ec403fb5d1"},
-                        {file = "numpy-1.23.3-cp39-cp39-win_amd64.whl", hash = "sha256:78a63d2df1d947bd9d1b11d35564c2f9e4b57898aae4626638056ec1a231c40c"},
-                        {file = "numpy-1.23.3-pp38-pypy38_pp73-macosx_10_9_x86_64.whl", hash = "sha256:17c0e467ade9bda685d5ac7f5fa729d8d3e76b23195471adae2d6a6941bd2c18"},
-                        {file = "numpy-1.23.3-pp38-pypy38_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:91b8d6768a75247026e951dce3b2aac79dc7e78622fc148329135ba189813584"},
-                        {file = "numpy-1.23.3-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:94c15ca4e52671a59219146ff584488907b1f9b3fc232622b47e2cf832e94fb8"},
-                        {file = "numpy-1.23.3.tar.gz", hash = "sha256:51bf49c0cd1d52be0a240aa66f3458afc4b95d8993d2d04f0d91fa60c10af6cd"},
+                        {file = "numpy-1.24.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:179a7ef0889ab769cc03573b6217f54c8bd8e16cef80aad369e1e8185f994cd7"},
+                        {file = "numpy-1.24.1-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:b09804ff570b907da323b3d762e74432fb07955701b17b08ff1b5ebaa8cfe6a9"},
+                        {file = "numpy-1.24.1-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:f1b739841821968798947d3afcefd386fa56da0caf97722a5de53e07c4ccedc7"},
+                        {file = "numpy-1.24.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0e3463e6ac25313462e04aea3fb8a0a30fb906d5d300f58b3bc2c23da6a15398"},
+                        {file = "numpy-1.24.1-cp310-cp310-win32.whl", hash = "sha256:b31da69ed0c18be8b77bfce48d234e55d040793cebb25398e2a7d84199fbc7e2"},
+                        {file = "numpy-1.24.1-cp310-cp310-win_amd64.whl", hash = "sha256:b07b40f5fb4fa034120a5796288f24c1fe0e0580bbfff99897ba6267af42def2"},
+                        {file = "numpy-1.24.1-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:7094891dcf79ccc6bc2a1f30428fa5edb1e6fb955411ffff3401fb4ea93780a8"},
+                        {file = "numpy-1.24.1-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:28e418681372520c992805bb723e29d69d6b7aa411065f48216d8329d02ba032"},
+                        {file = "numpy-1.24.1-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:e274f0f6c7efd0d577744f52032fdd24344f11c5ae668fe8d01aac0422611df1"},
+                        {file = "numpy-1.24.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0044f7d944ee882400890f9ae955220d29b33d809a038923d88e4e01d652acd9"},
+                        {file = "numpy-1.24.1-cp311-cp311-win32.whl", hash = "sha256:442feb5e5bada8408e8fcd43f3360b78683ff12a4444670a7d9e9824c1817d36"},
+                        {file = "numpy-1.24.1-cp311-cp311-win_amd64.whl", hash = "sha256:de92efa737875329b052982e37bd4371d52cabf469f83e7b8be9bb7752d67e51"},
+                        {file = "numpy-1.24.1-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:b162ac10ca38850510caf8ea33f89edcb7b0bb0dfa5592d59909419986b72407"},
+                        {file = "numpy-1.24.1-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:26089487086f2648944f17adaa1a97ca6aee57f513ba5f1c0b7ebdabbe2b9954"},
+                        {file = "numpy-1.24.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:caf65a396c0d1f9809596be2e444e3bd4190d86d5c1ce21f5fc4be60a3bc5b36"},
+                        {file = "numpy-1.24.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:b0677a52f5d896e84414761531947c7a330d1adc07c3a4372262f25d84af7bf7"},
+                        {file = "numpy-1.24.1-cp38-cp38-win32.whl", hash = "sha256:dae46bed2cb79a58d6496ff6d8da1e3b95ba09afeca2e277628171ca99b99db1"},
+                        {file = "numpy-1.24.1-cp38-cp38-win_amd64.whl", hash = "sha256:6ec0c021cd9fe732e5bab6401adea5a409214ca5592cd92a114f7067febcba0c"},
+                        {file = "numpy-1.24.1-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:28bc9750ae1f75264ee0f10561709b1462d450a4808cd97c013046073ae64ab6"},
+                        {file = "numpy-1.24.1-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:84e789a085aabef2f36c0515f45e459f02f570c4b4c4c108ac1179c34d475ed7"},
+                        {file = "numpy-1.24.1-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:8e669fbdcdd1e945691079c2cae335f3e3a56554e06bbd45d7609a6cf568c700"},
+                        {file = "numpy-1.24.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ef85cf1f693c88c1fd229ccd1055570cb41cdf4875873b7728b6301f12cd05bf"},
+                        {file = "numpy-1.24.1-cp39-cp39-win32.whl", hash = "sha256:87a118968fba001b248aac90e502c0b13606721b1343cdaddbc6e552e8dfb56f"},
+                        {file = "numpy-1.24.1-cp39-cp39-win_amd64.whl", hash = "sha256:ddc7ab52b322eb1e40521eb422c4e0a20716c271a306860979d450decbb51b8e"},
+                        {file = "numpy-1.24.1-pp38-pypy38_pp73-macosx_10_9_x86_64.whl", hash = "sha256:ed5fb71d79e771ec930566fae9c02626b939e37271ec285e9efaf1b5d4370e7d"},
+                        {file = "numpy-1.24.1-pp38-pypy38_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ad2925567f43643f51255220424c23d204024ed428afc5aad0f86f3ffc080086"},
+                        {file = "numpy-1.24.1-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:cfa1161c6ac8f92dea03d625c2d0c05e084668f4a06568b77a25a89111621566"},
+                        {file = "numpy-1.24.1.tar.gz", hash = "sha256:2386da9a471cc00a1f47845e27d916d5ec5346ae9696e01a8a34760858fe9dd2"},
                     ]
                     pyyaml = [
                         {file = "PyYAML-6.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:d4db7c7aef085872ef65a8fd7d6d09a14ae91f691dec3e87ee5ee0539d516f53"},
@@ -387,58 +395,58 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump numpy from 1.23.0 to 1.23.3 in /poetry
+            pr-title: Bump numpy from 1.23.0 to 1.24.1 in /poetry
             pr-body: |
-                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.23.3.
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.24.1.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/numpy/numpy/releases">numpy's releases</a>.</em></p>
                 <blockquote>
-                <h2>v1.23.3</h2>
-                <h1>NumPy 1.23.3 Release Notes</h1>
-                <p>NumPy 1.23.3 is a maintenance release that fixes bugs discovered after
-                the 1.23.2 release. There is no major theme for this release, the main
-                improvements are for some downstream builds and some annotation corner
-                cases. The Python versions supported for this release are 3.8-3.11.</p>
-                <p>Note that we will move to MacOS 11 for the NumPy 1.23.4 release, the
-                10.15 version currently used will no longer be supported by our build
-                infrastructure at that point.</p>
+                <h2>v1.24.1</h2>
+                <h1>NumPy 1.24.1 Release Notes</h1>
+                <p>NumPy 1.24.1 is a maintenance release that fixes bugs and regressions
+                discovered after the 1.24.0 release. The Python versions supported by
+                this release are 3.8-3.11.</p>
                 <h2>Contributors</h2>
-                <p>A total of 16 people contributed to this release. People with a &quot;+&quot; by
+                <p>A total of 12 people contributed to this release. People with a &quot;+&quot; by
                 their names contributed a patch for the first time.</p>
                 <ul>
-                <li>Aaron Meurer</li>
-                <li>Bas van Beek</li>
+                <li>Andrew Nelson</li>
+                <li>Ben Greiner +</li>
                 <li>Charles Harris</li>
-                <li>Ganesh Kathiresan</li>
-                <li>Gavin Zhang +</li>
-                <li>Iantra Solari+</li>
-                <li>Jyn Spring 琴春 +</li>
+                <li>Clément Robert</li>
+                <li>Matteo Raso</li>
                 <li>Matti Picus</li>
-                <li>Rafael Cardoso Fernandes Sousa</li>
-                <li>Rafael Sousa +</li>
+                <li>Melissa Weber Mendonça</li>
+                <li>Miles Cranmer</li>
                 <li>Ralf Gommers</li>
-                <li>Rin Cat (鈴猫) +</li>
-                <li>Saransh Chopra +</li>
+                <li>Rohit Goswami</li>
                 <li>Sayed Adel</li>
                 <li>Sebastian Berg</li>
-                <li>Serge Guelton</li>
                 </ul>
                 <h2>Pull requests merged</h2>
-                <p>A total of 14 pull requests were merged for this release.</p>
+                <p>A total of 18 pull requests were merged for this release.</p>
                 <ul>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22136">#22136</a>: BLD: Add Python 3.11 wheels to aarch64 build</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22148">#22148</a>: MAINT: Update setup.py for Python 3.11.</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22155">#22155</a>: CI: Test NumPy build against old versions of GCC(6, 7, 8)</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22156">#22156</a>: MAINT: support IBM i system</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22195">#22195</a>: BUG: Fix circleci build</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22214">#22214</a>: BUG: Expose heapsort algorithms in a shared header</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22215">#22215</a>: BUG: Support using libunwind for backtrack</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22216">#22216</a>: MAINT: fix an incorrect pointer type usage in f2py</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22220">#22220</a>: BUG: change overloads to play nice with pyright.</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22221">#22221</a>: TST,BUG: Use fork context to fix MacOS savez test</li>
-                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22222">#22222</a>: TYP,BUG: Reduce argument validation in C-based <code>__class_getitem__</code></li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22820">#22820</a>: BLD: add workaround in setup.py for newer setuptools</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22830">#22830</a>: BLD: CIRRUS_TAG redux</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22831">#22831</a>: DOC: fix a couple typos in 1.23 notes</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22832">#22832</a>: BUG: Fix refcounting errors found using pytest-leaks</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22834">#22834</a>: BUG, SIMD: Fix invalid value encountered in several ufuncs</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22837">#22837</a>: TST: ignore more np.distutils.log imports</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22839">#22839</a>: BUG: Do not use getdata() in np.ma.masked_invalid</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22847">#22847</a>: BUG: Ensure correct behavior for rows ending in delimiter in...</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22848">#22848</a>: BUG, SIMD: Fix the bitmask of the boolean comparison</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22857">#22857</a>: BLD: Help raspian arm + clang 13 about __builtin_mul_overflow</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22858">#22858</a>: API: Ensure a full mask is returned for masked_invalid</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22866">#22866</a>: BUG: Polynomials now copy properly (<a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22669">#22669</a>)</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22867">#22867</a>: BUG, SIMD: Fix memory overlap in ufunc comparison loops</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22868">#22868</a>: BUG: Fortify string casts against floating point warnings</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22875">#22875</a>: TST: Ignore nan-warnings in randomized out tests</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22883">#22883</a>: MAINT: restore npymath implementations needed for freebsd</li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22884">#22884</a>: BUG: Fix integer overflow in in1d for mixed integer dtypes <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22877">#22877</a></li>
+                <li><a href="https://github-redirect.dependabot.com/numpy/numpy/pull/22887">#22887</a>: BUG: Use whole file for encoding checks with <code>charset_normalizer</code>.</li>
                 </ul>
+                <h2>Checksums</h2>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -446,27 +454,27 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/numpy/numpy/commit/e47cbb69bebf36007c3ea009aee03e4bfe3b3f3d"><code>e47cbb6</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22234">#22234</a> from charris/prepare-1.23.3-release</li>
-                <li><a href="https://github.com/numpy/numpy/commit/e0e8991301dfe9148eab058477505a4ca8238af6"><code>e0e8991</code></a> REL: Prepare for the NumPy 1.23.3 release.</li>
-                <li><a href="https://github.com/numpy/numpy/commit/9bf22bb443582474913696139249e2b6331e53d7"><code>9bf22bb</code></a> BUG: Better report integer division overflow (backport) (<a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22230">#22230</a>)</li>
-                <li><a href="https://github.com/numpy/numpy/commit/0f0d355c20522366157631800ed4a0922b40d21c"><code>0f0d355</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22224">#22224</a> from charris/backport-21928</li>
-                <li><a href="https://github.com/numpy/numpy/commit/55a5ca743c19602cb28083fbcf3138b34a2f29fd"><code>55a5ca7</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22223">#22223</a> from charris/backport-21981</li>
-                <li><a href="https://github.com/numpy/numpy/commit/6cc41836e1d2d12eea8591fe5252ca484f54d6af"><code>6cc4183</code></a> BUG: Fix the implementation of numpy.array_api.vecdot (<a href="https://github-redirect.dependabot.com/numpy/numpy/issues/21928">#21928</a>)</li>
-                <li><a href="https://github.com/numpy/numpy/commit/fb9666ff84dbbd1c0f802795399c57db54eeab83"><code>fb9666f</code></a> BUG: Replace assert with correct error</li>
-                <li><a href="https://github.com/numpy/numpy/commit/fc0d62795a2228afd442703324e29ed10898061a"><code>fc0d627</code></a> TST: ensure <code>np.equal.reduce</code> raises a <code>TypeError</code></li>
-                <li><a href="https://github.com/numpy/numpy/commit/754ec89857a37fc8def3b5ca99bd7bb6211a739e"><code>754ec89</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22222">#22222</a> from charris/backport-22212</li>
-                <li><a href="https://github.com/numpy/numpy/commit/63ab75d00c4378115dc3e3542e12be7d1a360747"><code>63ab75d</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22221">#22221</a> from charris/backport-22204</li>
-                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.23.0...v1.23.3">compare view</a></li>
+                <li><a href="https://github.com/numpy/numpy/commit/a28f4f2a472dc826d043abf4442ba258bbd6ade5"><code>a28f4f2</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22888">#22888</a> from charris/prepare-1.24.1-release</li>
+                <li><a href="https://github.com/numpy/numpy/commit/f8fea39ad76e7a24895af6a59ddd5fbdee466eb3"><code>f8fea39</code></a> REL: Prepare for the NumPY 1.24.1 release.</li>
+                <li><a href="https://github.com/numpy/numpy/commit/6f491e08e8fa84d939f91f1404ea4cc8ccbf9bc1"><code>6f491e0</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22887">#22887</a> from charris/backport-22872</li>
+                <li><a href="https://github.com/numpy/numpy/commit/48f5fe454fedeea0128857909f2d2fe4aec3d5df"><code>48f5fe4</code></a> BUG: Use whole file for encoding checks with <code>charset_normalizer</code> [f2py] (<a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22">#22</a>...</li>
+                <li><a href="https://github.com/numpy/numpy/commit/0f3484ac2e4e2113ad33a29372538e48ac78e184"><code>0f3484a</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22883">#22883</a> from charris/backport-22882</li>
+                <li><a href="https://github.com/numpy/numpy/commit/002c60d1a667357ffdfe35290b1595cc18d5ee4f"><code>002c60d</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22884">#22884</a> from charris/backport-22878</li>
+                <li><a href="https://github.com/numpy/numpy/commit/38ef9ce08e1cd4e562fbb4578911a1df55e05687"><code>38ef9ce</code></a> BUG: Fix integer overflow in in1d for mixed integer dtypes <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22877">#22877</a> (<a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22878">#22878</a>)</li>
+                <li><a href="https://github.com/numpy/numpy/commit/bb00c689afb052b0556f06bf8e55f79c99901cde"><code>bb00c68</code></a> MAINT: restore npymath implementations needed for freebsd</li>
+                <li><a href="https://github.com/numpy/numpy/commit/64e09c34237a837975cf42e074d3bb55dc955146"><code>64e09c3</code></a> Merge pull request <a href="https://github-redirect.dependabot.com/numpy/numpy/issues/22875">#22875</a> from charris/backport-22869</li>
+                <li><a href="https://github.com/numpy/numpy/commit/dc7bac6b42b7c695e6d0ef7fdbc534e3f98a90b9"><code>dc7bac6</code></a> TST: Ignore nan-warnings in randomized out tests</li>
+                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.23.0...v1.24.1">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump numpy from 1.23.0 to 1.23.3 in /poetry
+                Bump numpy from 1.23.0 to 1.24.1 in /poetry
 
-                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.23.3.
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.24.1.
                 - [Release notes](https://github.com/numpy/numpy/releases)
                 - [Changelog](https://github.com/numpy/numpy/blob/main/doc/RELEASE_WALKTHROUGH.rst)
-                - [Commits](https://github.com/numpy/numpy/compare/v1.23.0...v1.23.3)
+                - [Commits](https://github.com/numpy/numpy/compare/v1.23.0...v1.24.1)
     - type: mark_as_processed
       expect:
         data:

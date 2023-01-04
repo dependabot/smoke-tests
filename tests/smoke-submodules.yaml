@@ -2,65 +2,73 @@ input:
     job:
         package-manager: submodules
         allowed-updates:
-          - update-type: all
+            - update-type: all
         source:
             provider: github
             repo: dependabot/smoke-tests
             directory: /
             commit: d55092e0297999bf4d29725606cfa082b378959a
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
 output:
-  - type: update_dependency_list
-    expect:
+    - type: update_dependency_list
+      expect:
         data:
             dependencies:
-              - name: dependabot-test
-                requirements:
-                  - file: .gitmodules
-                    groups: []
-                    requirement: null
-                    source:
+                - name: dependabot-test
+                  requirements:
+                    - file: .gitmodules
+                      groups: []
+                      requirement: null
+                      source:
                         branch: master
                         ref: master
                         type: git
                         url: https://github.com/feelepxyz/dependabot-test
-                version: 83e962f7f9fa27eaf62ecfb5da86f1eb0355b785
+                  version: 83e962f7f9fa27eaf62ecfb5da86f1eb0355b785
             dependency_files:
-              - /.gitmodules
-  - type: create_pull_request
-    expect:
+                - /.gitmodules
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: d55092e0297999bf4d29725606cfa082b378959a
             dependencies:
-              - name: dependabot-test
-                previous-requirements:
-                  - file: .gitmodules
-                    groups: []
-                    requirement: null
-                    source:
+                - name: dependabot-test
+                  previous-requirements:
+                    - file: .gitmodules
+                      groups: []
+                      requirement: null
+                      source:
                         branch: master
                         ref: master
                         type: git
                         url: https://github.com/feelepxyz/dependabot-test
-                previous-version: 83e962f7f9fa27eaf62ecfb5da86f1eb0355b785
-                requirements:
-                  - file: .gitmodules
-                    groups: []
-                    requirement: null
-                    source:
+                  previous-version: 83e962f7f9fa27eaf62ecfb5da86f1eb0355b785
+                  requirements:
+                    - file: .gitmodules
+                      groups: []
+                      requirement: null
+                      source:
                         branch: master
                         ref: master
                         type: git
                         url: https://github.com/feelepxyz/dependabot-test
-                version: 5fc0a8c682d66560fc46b3161621d6ebda874a53
+                  version: 5fc0a8c682d66560fc46b3161621d6ebda874a53
             updated-dependency-files:
-              - content: 5fc0a8c682d66560fc46b3161621d6ebda874a53
-                content_encoding: utf-8
-                deleted: false
-                directory: /
-                name: dependabot-test
-                operation: update
-                support_file: true
-                type: submodule
+                - content: 5fc0a8c682d66560fc46b3161621d6ebda874a53
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: dependabot-test
+                  operation: update
+                  support_file: true
+                  type: submodule
             pr-title: Bump dependabot-test from `83e962f` to `5fc0a8c`
             pr-body: |
                 Bumps [dependabot-test](https://github.com/feelepxyz/dependabot-test) from `83e962f` to `5fc0a8c`.
@@ -79,7 +87,7 @@ output:
                 Bumps [dependabot-test](https://github.com/feelepxyz/dependabot-test) from `83e962f` to `5fc0a8c`.
                 - [Release notes](https://github.com/feelepxyz/dependabot-test/releases)
                 - [Commits](https://github.com/feelepxyz/dependabot-test/compare/83e962f7f9fa27eaf62ecfb5da86f1eb0355b785...5fc0a8c682d66560fc46b3161621d6ebda874a53)
-  - type: mark_as_processed
-    expect:
+    - type: mark_as_processed
+      expect:
         data:
             base-commit-sha: d55092e0297999bf4d29725606cfa082b378959a

@@ -2,68 +2,76 @@ input:
     job:
         package-manager: github_actions
         allowed-updates:
-          - update-type: all
+            - update-type: all
         ignore-conditions:
-          - dependency-name: actions/checkout
-            source: tests/smoke-actions.yaml
-            version-requirement: '>3.0.2'
+            - dependency-name: actions/checkout
+              source: tests/smoke-actions.yaml
+              version-requirement: '>3.0.2'
         source:
             provider: github
             repo: dependabot/smoke-tests
             directory: /actions
             commit: 8b2c0d821028c531826db20ca22cffdd2cc05abf
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
 output:
-  - type: update_dependency_list
-    expect:
+    - type: update_dependency_list
+      expect:
         data:
             dependencies:
-              - name: actions/checkout
-                requirements:
-                  - file: action.yml
-                    groups: []
-                    metadata:
+                - name: actions/checkout
+                  requirements:
+                    - file: action.yml
+                      groups: []
+                      metadata:
                         declaration_string: actions/checkout@01aecccf739ca6ff86c0539fbc67a7a5007bbc81
-                    requirement: null
-                    source:
+                      requirement: null
+                      source:
                         branch: null
                         ref: 01aecccf739ca6ff86c0539fbc67a7a5007bbc81
                         type: git
                         url: https://github.com/actions/checkout
-                version: 2.1.0
+                  version: 2.1.0
             dependency_files:
-              - /actions/action.yml
-  - type: create_pull_request
-    expect:
+                - /actions/action.yml
+    - type: create_pull_request
+      expect:
         data:
             base-commit-sha: 8b2c0d821028c531826db20ca22cffdd2cc05abf
             dependencies:
-              - name: actions/checkout
-                previous-requirements:
-                  - file: action.yml
-                    groups: []
-                    metadata:
+                - name: actions/checkout
+                  previous-requirements:
+                    - file: action.yml
+                      groups: []
+                      metadata:
                         declaration_string: actions/checkout@01aecccf739ca6ff86c0539fbc67a7a5007bbc81
-                    requirement: null
-                    source:
+                      requirement: null
+                      source:
                         branch: null
                         ref: 01aecccf739ca6ff86c0539fbc67a7a5007bbc81
                         type: git
                         url: https://github.com/actions/checkout
-                previous-version: 2.1.0
-                requirements:
-                  - file: action.yml
-                    groups: []
-                    metadata:
+                  previous-version: 2.1.0
+                  requirements:
+                    - file: action.yml
+                      groups: []
+                      metadata:
                         declaration_string: actions/checkout@01aecccf739ca6ff86c0539fbc67a7a5007bbc81
-                    requirement: null
-                    source:
+                      requirement: null
+                      source:
                         branch: null
                         ref: 2541b1294d2704b0964813337f33b291d3f8596b
                         type: git
                         url: https://github.com/actions/checkout
-                version: 3.0.2
+                  version: 3.0.2
             updated-dependency-files:
-              - content: |
+                - content: |
                     name: Body moving
                     on: workflow_dispatch
 
@@ -77,13 +85,13 @@ output:
                         steps:
                           - name: Check out code
                             uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
-                content_encoding: utf-8
-                deleted: false
-                directory: /actions
-                name: action.yml
-                operation: update
-                support_file: false
-                type: file
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /actions
+                  name: action.yml
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump actions/checkout from 2.1.0 to 3.0.2 in /actions
             pr-body: |
                 Bumps [actions/checkout](https://github.com/actions/checkout) from 2.1.0 to 3.0.2.
@@ -111,6 +119,23 @@ output:
                 </ul>
                 </li>
                 </ul>
+                <h2>v2.6.0</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Add backports to v2 branch by <a href="https://github.com/cory-miller"><code>@​cory-miller</code></a> in <a href="https://github-redirect.dependabot.com/actions/checkout/pull/1040">actions/checkout#1040</a>
+                <ul>
+                <li>Includes backports from the following changes: <a href="https://github-redirect.dependabot.com/actions/checkout/pull/964">actions/checkout#964</a>, <a href="https://github-redirect.dependabot.com/actions/checkout/pull/1002">actions/checkout#1002</a>, <a href="https://github-redirect.dependabot.com/actions/checkout/pull/1029">actions/checkout#1029</a></li>
+                <li>Upgraded the licensed version to match what is used in v3.</li>
+                </ul>
+                </li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/checkout/compare/v2.5.0...v2.6.0">https://github.com/actions/checkout/compare/v2.5.0...v2.6.0</a></p>
+                <h2>v2.5.0</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Update <code>@​actions/core</code> to 1.10.0 by <a href="https://github.com/rentziass"><code>@​rentziass</code></a> in <a href="https://github-redirect.dependabot.com/actions/checkout/pull/962">actions/checkout#962</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/checkout/compare/v2...v2.5.0">https://github.com/actions/checkout/compare/v2...v2.5.0</a></p>
                 <h2>v2.4.2</h2>
                 <h2>What's Changed</h2>
                 <ul>
@@ -131,19 +156,7 @@ output:
                 <h2>v2.3.4</h2>
                 <ul>
                 <li><a href="https://github-redirect.dependabot.com/actions/checkout/pull/379">Add missing <code>await</code>s</a></li>
-                <li><a href="https://github-redirect.dependabot.com/actions/checkout/pull/360">Swap to Environment Files</a></li>
                 </ul>
-                <h2>v2.3.3</h2>
-                <ul>
-                <li><a href="https://github-redirect.dependabot.com/actions/checkout/pull/345">Remove Unneeded commit information from build logs</a></li>
-                <li><a href="https://github-redirect.dependabot.com/actions/checkout/pull/326">Add Licensed to verify third party dependencies</a></li>
-                </ul>
-                <h2>v2.3.2</h2>
-                <p><a href="https://github-redirect.dependabot.com/actions/checkout/pull/320">Add Third Party License Information to Dist Files</a></p>
-                <h2>v2.3.1</h2>
-                <p><a href="https://github-redirect.dependabot.com/actions/checkout/pull/284">Fix default branch resolution for .wiki and when using SSH</a></p>
-                <h2>v2.3.0</h2>
-                <p><a href="https://github-redirect.dependabot.com/actions/checkout/pull/278">Fallback to the default branch</a></p>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -153,6 +166,11 @@ output:
                 <p><em>Sourced from <a href="https://github.com/actions/checkout/blob/main/CHANGELOG.md">actions/checkout's changelog</a>.</em></p>
                 <blockquote>
                 <h1>Changelog</h1>
+                <h2>v3.1.0</h2>
+                <ul>
+                <li><a href="https://github-redirect.dependabot.com/actions/checkout/pull/939">Use <code>@​actions/core</code> <code>saveState</code> and <code>getState</code></a></li>
+                <li><a href="https://github-redirect.dependabot.com/actions/checkout/pull/922">Add <code>github-server-url</code> input</a></li>
+                </ul>
                 <h2>v3.0.2</h2>
                 <ul>
                 <li><a href="https://github-redirect.dependabot.com/actions/checkout/pull/770">Add input <code>set-safe-directory</code></a></li>
@@ -200,10 +218,6 @@ output:
                 <li><a href="https://github-redirect.dependabot.com/actions/checkout/pull/107">Add input persist-credentials</a></li>
                 <li><a href="https://github-redirect.dependabot.com/actions/checkout/pull/104">Fallback to REST API to download repo</a></li>
                 </ul>
-                <h2>v2 (beta)</h2>
-                <ul>
-                <li>Improved fetch performance</li>
-                </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -232,7 +246,7 @@ output:
                 - [Release notes](https://github.com/actions/checkout/releases)
                 - [Changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md)
                 - [Commits](https://github.com/actions/checkout/compare/01aecccf739ca6ff86c0539fbc67a7a5007bbc81...2541b1294d2704b0964813337f33b291d3f8596b)
-  - type: mark_as_processed
-    expect:
+    - type: mark_as_processed
+      expect:
         data:
             base-commit-sha: 8b2c0d821028c531826db20ca22cffdd2cc05abf

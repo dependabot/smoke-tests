@@ -12,6 +12,14 @@ input:
             repo: dependabot/smoke-tests
             directory: /composer
             commit: bb98f0c3489713c240ccc1f1800008d4f0844dfd
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
 output:
     - type: update_dependency_list
       expect:
