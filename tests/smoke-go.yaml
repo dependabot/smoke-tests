@@ -2,7 +2,8 @@ input:
     job:
         package-manager: go_modules
         allowed-updates:
-            - update-type: direct
+            - update-type: all
+              dependency-type: direct
         ignore-conditions:
             - dependency-name: github.com/fatih/color
               source: tests/smoke-go.yaml
