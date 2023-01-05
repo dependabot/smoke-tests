@@ -3,6 +3,7 @@ input:
         package-manager: go_modules
         allowed-updates:
             - update-type: all
+              dependency-type: direct
         ignore-conditions:
             - dependency-name: github.com/fatih/color
               source: tests/smoke-go.yaml
@@ -48,6 +49,12 @@ output:
                         type: git
                         url: https://github.com/inconshreveable/mousetrap
                   version: 0.0.0-20141017200713-76626ae9c91c
+                - name: github.com/mattn/go-colorable
+                  requirements: []
+                  version: 0.0.9
+                - name: github.com/mattn/go-isatty
+                  requirements: []
+                  version: 0.0.4
                 - name: golang.org/x/crypto
                   requirements:
                     - file: go.mod
@@ -59,9 +66,9 @@ output:
                         type: git
                         url: https://github.com/golang/crypto
                   version: 0.0.0-20180617042118-027cca12c2d6
-                - name: rsc.io/qr
+                - name: golang.org/x/sys
                   requirements: []
-                  version: 0.1.0
+                  version: 0.0.0-20220731174439-a90be440212d
                 - name: rsc.io/quote
                   requirements:
                     - file: go.mod
