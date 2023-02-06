@@ -41,6 +41,7 @@ env:
 jobs:
   cache_one:
     runs-on: ubuntu-latest
+    name: Cache ${{ github.event.inputs.package_manager }}
     steps:
       - uses: actions/checkout@v3
         with:
