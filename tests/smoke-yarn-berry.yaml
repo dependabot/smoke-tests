@@ -5,7 +5,7 @@ input:
             - dependency-name: jquery
         ignore-conditions:
             - dependency-name: jquery
-              version-requirement: '>3.6.1'
+              version-requirement: '>3.6.3'
         source:
             provider: github
             repo: dependabot/smoke-tests
@@ -1066,9 +1066,9 @@ output:
                     - file: package.json
                       groups:
                         - dependencies
-                      requirement: ^3.6.1
+                      requirement: ^3.6.3
                       source: null
-                  version: 3.6.1
+                  version: 3.6.3
             updated-dependency-files:
                 - content: |
                     {
@@ -1076,7 +1076,7 @@ output:
                       "packageManager": "yarn@3.3.0",
                       "dependencies": {
                         "jest": "28.1.3",
-                        "jquery": "^3.6.1",
+                        "jquery": "^3.6.3",
                         "ts-jest": "28.0.8",
                         "typescript": "^4.9.3"
                       }
@@ -3467,7 +3467,7 @@ output:
                       languageName: node
                       linkType: hard
 
-                    "jquery@npm:^3.6.1":
+                    "jquery@npm:^3.6.3":
                       version: 3.6.3
                       resolution: "jquery@npm:3.6.3"
                       checksum: 0fd366bdcaa0c84a7a8751ce20f8192290141913978b5059574426d9b01f4365daa675f95aab3eec94fd794d27b08d32078a2236bef404b8ba78073009988ce6
@@ -4629,7 +4629,7 @@ output:
                       resolution: "yarn@workspace:."
                       dependencies:
                         jest: 28.1.3
-                        jquery: ^3.6.1
+                        jquery: ^3.6.3
                         ts-jest: 28.0.8
                         typescript: ^4.9.3
                       languageName: unknown
@@ -30263,13 +30263,17 @@ output:
                   support_file: false
                   type: file
                   mode: "100644"
-            pr-title: Bump jquery from 3.5.0 to 3.6.1 in /yarn-berry
+            pr-title: Bump jquery from 3.5.0 to 3.6.3 in /yarn-berry
             pr-body: |
-                Bumps [jquery](https://github.com/jquery/jquery) from 3.5.0 to 3.6.1.
+                Bumps [jquery](https://github.com/jquery/jquery) from 3.5.0 to 3.6.3.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/jquery/jquery/releases">jquery's releases</a>.</em></p>
                 <blockquote>
+                <h2>jQuery supports CSS.supports in jQuery 3.6.3</h2>
+                <p><a href="https://blog.jquery.com/2022/12/20/jquery-3-6-3-released-a-quick-selector-fix/">https://blog.jquery.com/2022/12/20/jquery-3-6-3-released-a-quick-selector-fix/</a></p>
+                <h2>jQuery 3.6.2 :has arrived!</h2>
+                <p><a href="https://blog.jquery.com/2022/12/13/jquery-3-6-2-released/">https://blog.jquery.com/2022/12/13/jquery-3-6-2-released/</a></p>
                 <h2>jQuery 3.6.1 Maintenance Release</h2>
                 <p><a href="https://blog.jquery.com/2022/08/26/jquery-3-6-1-maintenance-release/">https://blog.jquery.com/2022/08/26/jquery-3-6-1-maintenance-release/</a></p>
                 <h2>jQuery 3.6.0 Released!</h2>
@@ -30279,26 +30283,26 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/jquery/jquery/commit/6ad26fc72ddbc9d3f3886f98164efabc112d6c78"><code>6ad26fc</code></a> 3.6.1</li>
-                <li><a href="https://github.com/jquery/jquery/commit/ba2665f3cdc01218898ada790da877c2e8153c70"><code>ba2665f</code></a> Release: update AUTHORS.txt</li>
-                <li><a href="https://github.com/jquery/jquery/commit/699401008fbc6cdfc5d6a1d531e1bc5013a94bec"><code>6994010</code></a> Deprecated: Improve $.trim performance for strings with lots of whitespace</li>
-                <li><a href="https://github.com/jquery/jquery/commit/410d5cf0c3d0d92b2e9abd7fe0b16eb79c9a2a51"><code>410d5cf</code></a> Docs: Update webpack website in README</li>
-                <li><a href="https://github.com/jquery/jquery/commit/bc16512879bd81de9874bffa690404e14e8f43ff"><code>bc16512</code></a> Tests: Exclude tests based on compilation flags, not API presence (3.x version)</li>
-                <li><a href="https://github.com/jquery/jquery/commit/0f6c3d9efc5f7e844bdcf8ef44f9327f414bea77"><code>0f6c3d9</code></a> Build: Update GitHub Actions</li>
-                <li><a href="https://github.com/jquery/jquery/commit/5a363017cf80c3329bace5b45812a9dc10fcde7c"><code>5a36301</code></a> Build: Add dependabot.yml config (GitHub Actions)</li>
-                <li><a href="https://github.com/jquery/jquery/commit/9bc0df70be9455128a26f2e726213f0d544c70d4"><code>9bc0df7</code></a> Build: Test on Node 17, update Grunt &amp; <code>karma-*</code> packages</li>
-                <li><a href="https://github.com/jquery/jquery/commit/be3bd560f47ba46e01dcf42c3f6833aaa8596a33"><code>be3bd56</code></a> Tests: Workaround an XML parsing bug in Firefox</li>
-                <li><a href="https://github.com/jquery/jquery/commit/b24e83bd9d7fceedadf1fe32a5982972500b772c"><code>b24e83b</code></a> Docs: add link to preview the new CLAs</li>
-                <li>Additional commits viewable in <a href="https://github.com/jquery/jquery/compare/3.5.0...3.6.1">compare view</a></li>
+                <li><a href="https://github.com/jquery/jquery/commit/6786a17edf982c50fd236ffa84cbde1a5723430e"><code>6786a17</code></a> 3.6.3</li>
+                <li><a href="https://github.com/jquery/jquery/commit/81d5bd17fd2f82779351c101de280f89c22948ac"><code>81d5bd1</code></a> Build: remove stale Insight package from custom builds</li>
+                <li><a href="https://github.com/jquery/jquery/commit/8989500e6c695d10806400d20381da4d1ed34a7b"><code>8989500</code></a> Selector: Update Sizzle from 2.3.8 to 2.3.9</li>
+                <li><a href="https://github.com/jquery/jquery/commit/2c5b47c4def78e447d2eb97a6f382e2b713165f8"><code>2c5b47c</code></a> Build: Updating the 3.x-stable version to 3.6.3-pre.</li>
+                <li><a href="https://github.com/jquery/jquery/commit/2215119529bd3281bcc4e572b65ed02206390d3b"><code>2215119</code></a> Release: update authors</li>
+                <li><a href="https://github.com/jquery/jquery/commit/0d9fae4c3acca66f9948aa00d7c00aa757dee597"><code>0d9fae4</code></a> Build: Limit permissions for GitHub workflows</li>
+                <li><a href="https://github.com/jquery/jquery/commit/f4809f9b4a2d48ac2f9d1ce1185dd1ecf48a7323"><code>f4809f9</code></a> Build: Test on Node.js 18 &amp; 19, stop testing on Node 12</li>
+                <li><a href="https://github.com/jquery/jquery/commit/5318e3111afd4c307ad6851682620d7413824fc5"><code>5318e31</code></a> Selector:Manipulation: Fix DOM manip within template contents</li>
+                <li><a href="https://github.com/jquery/jquery/commit/a1b7ae3b3fb86b184bd50666c211f08bbc2ee686"><code>a1b7ae3</code></a> Selector: Update Sizzle from 2.3.7 to 2.3.8</li>
+                <li><a href="https://github.com/jquery/jquery/commit/28241b7f92a967e5d844b0bbb8a9d3f7cb457854"><code>28241b7</code></a> Build: Bump actions/setup-node from 3.5.0 to 3.5.1</li>
+                <li>Additional commits viewable in <a href="https://github.com/jquery/jquery/compare/3.5.0...3.6.3">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump jquery from 3.5.0 to 3.6.1 in /yarn-berry
+                Bump jquery from 3.5.0 to 3.6.3 in /yarn-berry
 
-                Bumps [jquery](https://github.com/jquery/jquery) from 3.5.0 to 3.6.1.
+                Bumps [jquery](https://github.com/jquery/jquery) from 3.5.0 to 3.6.3.
                 - [Release notes](https://github.com/jquery/jquery/releases)
-                - [Commits](https://github.com/jquery/jquery/compare/3.5.0...3.6.1)
+                - [Commits](https://github.com/jquery/jquery/compare/3.5.0...3.6.3)
     - type: mark_as_processed
       expect:
         data:
