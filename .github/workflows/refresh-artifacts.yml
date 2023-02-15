@@ -1,0 +1,51 @@
+# Downloads and then uploads the artifacts to keep them from expiring.
+name: Refresh artifacts
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/refresh-artifacts.yml"
+  schedule:
+    - cron: "0 12 * * 1" # Every Monday at 12:00 UTC
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        suite:
+          - actions
+          - bundler
+          - cargo
+          - composer
+          - docker
+          - elm
+          - go
+          - gradle
+          - hex
+          - maven
+          - npm
+          - npm-remove-transitive
+          - nuget
+          - pip
+          - pip-compile
+          - pipenv
+          - poetry
+          - pub
+          - submodules
+          - terraform
+          - yarn-berry
+          - yarn-berry-workspaces
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download artifacts
+        run: script/download-cache.sh ${{ matrix.suite }}
+      - uses: actions/upload-artifact@v3
+        with:
+          name: cache-${{ matrix.suite }}
+          path: cache/
