@@ -42,6 +42,7 @@ jobs:
           - yarn-berry
           - yarn-berry-workspaces
     steps:
+      - uses: actions/checkout@v3
       - name: Download artifacts
         run: script/download-cache.sh ${{ matrix.suite }}
       - uses: actions/upload-artifact@v3
