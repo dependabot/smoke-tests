@@ -13,6 +13,12 @@ input:
             - dependency-name: rsc.io/quote
               source: tests/smoke-go.yaml
               version-requirement: '>1.5.2'
+            - dependency-name: github.com/inconshreveable/mousetrap
+              source: tests/smoke-go.yaml
+              version-requirement: '>1.1.0'
+            - dependency-name: golang.org/x/crypto
+              source: tests/smoke-go.yaml
+              version-requirement: '>0.6.0'
         source:
             provider: github
             repo: dependabot/smoke-tests
@@ -222,6 +228,217 @@ output:
                 Bumps [github.com/fatih/color](https://github.com/fatih/color) from 1.7.0 to 1.13.0.
                 - [Release notes](https://github.com/fatih/color/releases)
                 - [Commits](https://github.com/fatih/color/compare/v1.7.0...v1.13.0)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 941c9223edd97d233737435a404d038a4bc846c4
+            dependencies:
+                - name: github.com/inconshreveable/mousetrap
+                  previous-requirements:
+                    - file: go.mod
+                      groups: []
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 76626ae9c91c
+                        type: git
+                        url: https://github.com/inconshreveable/mousetrap
+                  previous-version: 0.0.0-20141017200713-76626ae9c91c
+                  requirements:
+                    - file: go.mod
+                      groups: []
+                      requirement: 1.1.0
+                      source:
+                        branch: null
+                        ref: 76626ae9c91c
+                        type: git
+                        url: https://github.com/inconshreveable/mousetrap
+                  version: 1.1.0
+            updated-dependency-files:
+                - content: |
+                    module github.com/dependabot/vgotest
+
+                    go 1.12
+
+                    require (
+                    	github.com/fatih/color v1.7.0
+                    	github.com/inconshreveable/mousetrap v1.1.0
+                    	github.com/mattn/go-colorable v0.0.9 // indirect
+                    	github.com/mattn/go-isatty v0.0.4 // indirect
+                    	golang.org/x/crypto v0.0.0-20180617042118-027cca12c2d6
+                    	golang.org/x/sys v0.0.0-20220731174439-a90be440212d // indirect
+                    	rsc.io/qr v0.1.0
+                    	rsc.io/quote v1.4.0
+                    )
+
+                    replace rsc.io/qr => github.com/rsc/qr v0.2.0
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go
+                  name: go.mod
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    github.com/fatih/color v1.7.0 h1:DkWD4oS2D8LGGgTQ6IvwJJXSL5Vp2ffcQg58nFV38Ys=
+                    github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
+                    github.com/inconshreveable/mousetrap v1.1.0 h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2s0bqwp9tc8=
+                    github.com/inconshreveable/mousetrap v1.1.0/go.mod h1:vpF70FUmC8bwa3OWnCshd2FqLfsEA9PFc4w1p2J65bw=
+                    github.com/mattn/go-colorable v0.0.9 h1:UVL0vNpWh04HeJXV0KLcaT7r06gOH2l4OW6ddYRUIY4=
+                    github.com/mattn/go-colorable v0.0.9/go.mod h1:9vuHe8Xs5qXnSaW/c/ABM9alt+Vo+STaOChaDxuIBZU=
+                    github.com/mattn/go-isatty v0.0.4 h1:bnP0vzxcAdeI1zdubAl5PjU6zsERjGZb7raWodagDYs=
+                    github.com/mattn/go-isatty v0.0.4/go.mod h1:M+lRXTBqGeGNdLjl/ufCoiOlB5xdOkqRJdNxMWT7Zi4=
+                    github.com/rsc/qr v0.2.0 h1:tH61+huiZvu+hXL1VUovAu2AnhdG4eJQk2+on3XsDBQ=
+                    github.com/rsc/qr v0.2.0/go.mod h1:IF+uZjkb9fqyeF/4tlBoynqmQxUoPfWEKh921coOuXs=
+                    golang.org/x/crypto v0.0.0-20180617042118-027cca12c2d6 h1:Y9MTpro8EV2sz/pZRxSgNsvSfMXLmIHhQO4BGv2My/Q=
+                    golang.org/x/crypto v0.0.0-20180617042118-027cca12c2d6/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
+                    golang.org/x/sys v0.0.0-20220731174439-a90be440212d h1:Sv5ogFZatcgIMMtBSTTAgMYsicp25MXBubjXNDKwm80=
+                    golang.org/x/sys v0.0.0-20220731174439-a90be440212d/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+                    rsc.io/quote v1.4.0 h1:tYuJspOzwTRMUOX6qmSDRTEKFVV80GM0/l89OLZuVNg=
+                    rsc.io/quote v1.4.0/go.mod h1:S2vMDfxMfk+OGQ7xf1uNqJCSuSPCW5QC127LHYfOJmQ=
+                    rsc.io/sampler v1.0.0 h1:CZX0Ury6np11Lwls9Jja2rFf3YrNPeUPAWiEVrJ0u/4=
+                    rsc.io/sampler v1.0.0/go.mod h1:cqxpM3ZVz9VtirqxZPmrWzkQ+UkiNiGtkrN+B+i8kx8=
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go
+                  name: go.sum
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump github.com/inconshreveable/mousetrap from 0.0.0-20141017200713-76626ae9c91c to 1.1.0 in /go
+            pr-body: |
+                Bumps [github.com/inconshreveable/mousetrap](https://github.com/inconshreveable/mousetrap) from 0.0.0-20141017200713-76626ae9c91c to 1.1.0.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/inconshreveable/mousetrap/commits/v1.1">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump github.com/inconshreveable/mousetrap in /go
+
+                Bumps [github.com/inconshreveable/mousetrap](https://github.com/inconshreveable/mousetrap) from 0.0.0-20141017200713-76626ae9c91c to 1.1.0.
+                - [Release notes](https://github.com/inconshreveable/mousetrap/releases)
+                - [Commits](https://github.com/inconshreveable/mousetrap/commits/v1.1)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 941c9223edd97d233737435a404d038a4bc846c4
+            dependencies:
+                - name: golang.org/x/crypto
+                  previous-requirements:
+                    - file: go.mod
+                      groups: []
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 027cca12c2d6
+                        type: git
+                        url: https://github.com/golang/crypto
+                  previous-version: 0.0.0-20180617042118-027cca12c2d6
+                  requirements:
+                    - file: go.mod
+                      groups: []
+                      requirement: 0.6.0
+                      source:
+                        branch: null
+                        ref: 027cca12c2d6
+                        type: git
+                        url: https://github.com/golang/crypto
+                  version: 0.6.0
+            updated-dependency-files:
+                - content: |
+                    module github.com/dependabot/vgotest
+
+                    go 1.12
+
+                    require (
+                    	github.com/fatih/color v1.7.0
+                    	github.com/inconshreveable/mousetrap v0.0.0-20141017200713-76626ae9c91c
+                    	github.com/mattn/go-colorable v0.0.9 // indirect
+                    	github.com/mattn/go-isatty v0.0.4 // indirect
+                    	golang.org/x/crypto v0.6.0
+                    	rsc.io/qr v0.1.0
+                    	rsc.io/quote v1.4.0
+                    )
+
+                    replace rsc.io/qr => github.com/rsc/qr v0.2.0
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go
+                  name: go.mod
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    github.com/fatih/color v1.7.0 h1:DkWD4oS2D8LGGgTQ6IvwJJXSL5Vp2ffcQg58nFV38Ys=
+                    github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
+                    github.com/inconshreveable/mousetrap v0.0.0-20141017200713-76626ae9c91c h1:Ur2o+2uZgGSejDFvjNQwiKVey0RCq6PjxK+WIDeRik8=
+                    github.com/inconshreveable/mousetrap v0.0.0-20141017200713-76626ae9c91c/go.mod h1:PxqpIevigyE2G7u3NXJIT2ANytuPF1OarO4DADm73n8=
+                    github.com/mattn/go-colorable v0.0.9 h1:UVL0vNpWh04HeJXV0KLcaT7r06gOH2l4OW6ddYRUIY4=
+                    github.com/mattn/go-colorable v0.0.9/go.mod h1:9vuHe8Xs5qXnSaW/c/ABM9alt+Vo+STaOChaDxuIBZU=
+                    github.com/mattn/go-isatty v0.0.4 h1:bnP0vzxcAdeI1zdubAl5PjU6zsERjGZb7raWodagDYs=
+                    github.com/mattn/go-isatty v0.0.4/go.mod h1:M+lRXTBqGeGNdLjl/ufCoiOlB5xdOkqRJdNxMWT7Zi4=
+                    github.com/rsc/qr v0.2.0 h1:tH61+huiZvu+hXL1VUovAu2AnhdG4eJQk2+on3XsDBQ=
+                    github.com/rsc/qr v0.2.0/go.mod h1:IF+uZjkb9fqyeF/4tlBoynqmQxUoPfWEKh921coOuXs=
+                    github.com/yuin/goldmark v1.4.13/go.mod h1:6yULJ656Px+3vBD8DxQVa3kxgyrAnzto9xy5taEt/CY=
+                    golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
+                    golang.org/x/crypto v0.0.0-20210921155107-089bfa567519/go.mod h1:GvvjBRRGRdwPK5ydBHafDWAxML/pGHZbMvKqRZ5+Abc=
+                    golang.org/x/crypto v0.6.0 h1:qfktjS5LUO+fFKeJXZ+ikTRijMmljikvG68fpMMruSc=
+                    golang.org/x/crypto v0.6.0/go.mod h1:OFC/31mSvZgRz0V1QTNCzfAI1aIRzbiufJtkMIlEp58=
+                    golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4/go.mod h1:jJ57K6gSWd91VN4djpZkiMVwK6gcyfeH4XE8wZrZaV4=
+                    golang.org/x/net v0.0.0-20190620200207-3b0461eec859/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
+                    golang.org/x/net v0.0.0-20210226172049-e18ecbb05110/go.mod h1:m0MpNAwzfU5UDzcl9v0D8zg8gWTRqZa9RBIspLL5mdg=
+                    golang.org/x/net v0.0.0-20220722155237-a158d28d115b/go.mod h1:XRhObCWvk6IyKnWLug+ECip1KBveYUHfp+8e9klMJ9c=
+                    golang.org/x/net v0.6.0/go.mod h1:2Tu9+aMcznHK/AK1HMvgo6xiTLG5rD5rZLDS+rp2Bjs=
+                    golang.org/x/sync v0.0.0-20190423024810-112230192c58/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
+                    golang.org/x/sync v0.0.0-20220722155255-886fb9371eb4/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
+                    golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
+                    golang.org/x/sys v0.0.0-20201119102817-f84b799fce68/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+                    golang.org/x/sys v0.0.0-20210615035016-665e8c7367d1/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+                    golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+                    golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+                    golang.org/x/sys v0.5.0 h1:MUK/U/4lj1t1oPg0HfuXDN/Z1wv31ZJ/YcPiGccS4DU=
+                    golang.org/x/sys v0.5.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+                    golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=
+                    golang.org/x/term v0.0.0-20210927222741-03fcf44c2211/go.mod h1:jbD1KX2456YbFQfuXm/mYQcufACuNUgVhRMnK/tPxf8=
+                    golang.org/x/term v0.5.0/go.mod h1:jMB1sMXY+tzblOD4FWmEbocvup2/aLOaQEp7JmGp78k=
+                    golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
+                    golang.org/x/text v0.3.3/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
+                    golang.org/x/text v0.3.7/go.mod h1:u+2+/6zg+i71rQMx5EYifcz6MCKuco9NR6JIITiCfzQ=
+                    golang.org/x/text v0.7.0/go.mod h1:mrYo+phRRbMaCq/xk9113O4dZlRixOauAjOtrjsXDZ8=
+                    golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
+                    golang.org/x/tools v0.0.0-20191119224855-298f0cb1881e/go.mod h1:b+2E5dAYhXwXZwtnZ6UAqBI28+e2cm9otk0dWdXHAEo=
+                    golang.org/x/tools v0.1.12/go.mod h1:hNGJHUnrk76NpqgfD5Aqm5Crs+Hm0VOH/i9J2+nxYbc=
+                    golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
+                    rsc.io/quote v1.4.0 h1:tYuJspOzwTRMUOX6qmSDRTEKFVV80GM0/l89OLZuVNg=
+                    rsc.io/quote v1.4.0/go.mod h1:S2vMDfxMfk+OGQ7xf1uNqJCSuSPCW5QC127LHYfOJmQ=
+                    rsc.io/sampler v1.0.0 h1:CZX0Ury6np11Lwls9Jja2rFf3YrNPeUPAWiEVrJ0u/4=
+                    rsc.io/sampler v1.0.0/go.mod h1:cqxpM3ZVz9VtirqxZPmrWzkQ+UkiNiGtkrN+B+i8kx8=
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go
+                  name: go.sum
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump golang.org/x/crypto from 0.0.0-20180617042118-027cca12c2d6 to 0.6.0 in /go
+            pr-body: |
+                Bumps [golang.org/x/crypto](https://github.com/golang/crypto) from 0.0.0-20180617042118-027cca12c2d6 to 0.6.0.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/golang/crypto/commits/v0.6.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump golang.org/x/crypto in /go
+
+                Bumps [golang.org/x/crypto](https://github.com/golang/crypto) from 0.0.0-20180617042118-027cca12c2d6 to 0.6.0.
+                - [Release notes](https://github.com/golang/crypto/releases)
+                - [Commits](https://github.com/golang/crypto/commits/v0.6.0)
     - type: create_pull_request
       expect:
         data:
