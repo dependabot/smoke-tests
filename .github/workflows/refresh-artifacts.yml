@@ -3,9 +3,6 @@ name: Refresh artifacts
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - ".github/workflows/refresh-artifacts.yml"
   schedule:
     - cron: "0 12 * * 1" # Every Monday at 12:00 UTC
 
@@ -26,6 +23,9 @@ jobs:
           - docker
           - elm
           - go
+          - go-close-pr
+          - go-security
+          - go-update-pr
           - gradle
           - hex
           - maven
