@@ -22,7 +22,7 @@ To run the test, run `dependabot test -f my-test.yml`. This will run Dependabot 
 
 ### Caching
 
-To further aid in reproducibility, the CLI can instruct the Proxy to enable caching with the ```--cache tmp/cache``` option. Simply pass that along with a path to use for the cache during testing, and the Proxy will dump messages it received there. 
+To further aid in reproducibility, the CLI can instruct the Proxy to enable caching with the `--cache tmp/cache` option. Simply pass that along with a path to use for the cache during testing, and the Proxy will dump messages it received there. 
 
 If there are already cache files present, the Proxy will use them during the run instead of making a network call. Neat!
 
