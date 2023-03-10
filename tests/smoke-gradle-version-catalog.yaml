@@ -48,9 +48,9 @@ input:
               version-requirement: '>3.13.0'
         source:
             provider: github
-            repo: dsp-testing/dependabot-core-3121
-            directory: /
-            commit: 99ad8dcb667e058158bbd8448e0cccd1453b1f59
+            repo: dependabot/smoke-tests
+            directory: /gradle-version-catalog/
+            commit: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
         credentials-metadata:
             - host: github.com
               type: git_source
@@ -198,14 +198,14 @@ output:
                       source: null
                   version: 3.11.0
             dependency_files:
-                - /build.gradle
-                - /settings.gradle
-                - /gradle/libs.versions.toml
-                - /app/build.gradle
+                - /gradle-version-catalog/build.gradle
+                - /gradle-version-catalog/settings.gradle
+                - /gradle-version-catalog/gradle/libs.versions.toml
+                - /gradle-version-catalog/app/build.gradle
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 99ad8dcb667e058158bbd8448e0cccd1453b1f59
+            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
             dependencies:
                 - name: com.android.application
                   previous-requirements:
@@ -244,22 +244,22 @@ output:
                     }
                   content_encoding: utf-8
                   deleted: false
-                  directory: /
+                  directory: /gradle-version-catalog
                   name: build.gradle
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump com.android.application from 7.3.1 to 7.4.2
+            pr-title: Bump com.android.application from 7.3.1 to 7.4.2 in /gradle-version-catalog
             pr-body: |
                 Bumps com.android.application from 7.3.1 to 7.4.2.
             commit-message: |-
-                Bump com.android.application from 7.3.1 to 7.4.2
+                Bump com.android.application in /gradle-version-catalog
 
                 Bumps com.android.application from 7.3.1 to 7.4.2.
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 99ad8dcb667e058158bbd8448e0cccd1453b1f59
+            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
             dependencies:
                 - name: com.android.library
                   previous-requirements:
@@ -298,22 +298,22 @@ output:
                     }
                   content_encoding: utf-8
                   deleted: false
-                  directory: /
+                  directory: /gradle-version-catalog
                   name: build.gradle
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump com.android.library from 7.3.1 to 7.4.2
+            pr-title: Bump com.android.library from 7.3.1 to 7.4.2 in /gradle-version-catalog
             pr-body: |
                 Bumps com.android.library from 7.3.1 to 7.4.2.
             commit-message: |-
-                Bump com.android.library from 7.3.1 to 7.4.2
+                Bump com.android.library from 7.3.1 to 7.4.2 in /gradle-version-catalog
 
                 Bumps com.android.library from 7.3.1 to 7.4.2.
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 99ad8dcb667e058158bbd8448e0cccd1453b1f59
+            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
             dependencies:
                 - name: org.jetbrains.kotlin.android
                   previous-requirements:
@@ -352,12 +352,12 @@ output:
                     }
                   content_encoding: utf-8
                   deleted: false
-                  directory: /
+                  directory: /gradle-version-catalog
                   name: build.gradle
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump org.jetbrains.kotlin.android from 1.7.0 to 1.8.10
+            pr-title: Bump org.jetbrains.kotlin.android from 1.7.0 to 1.8.10 in /gradle-version-catalog
             pr-body: |
                 Bumps [org.jetbrains.kotlin.android](https://github.com/JetBrains/kotlin) from 1.7.0 to 1.8.10.
                 <details>
@@ -505,7 +505,7 @@ output:
                 </details>
                 <br />
             commit-message: |-
-                Bump org.jetbrains.kotlin.android from 1.7.0 to 1.8.10
+                Bump org.jetbrains.kotlin.android in /gradle-version-catalog
 
                 Bumps [org.jetbrains.kotlin.android](https://github.com/JetBrains/kotlin) from 1.7.0 to 1.8.10.
                 - [Release notes](https://github.com/JetBrains/kotlin/releases)
@@ -514,7 +514,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 99ad8dcb667e058158bbd8448e0cccd1453b1f59
+            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
             dependencies:
                 - name: androidx.core:core-ktx
                   previous-requirements:
@@ -578,7 +578,7 @@ output:
                     kotlinter = { id = "org.jmailen.kotlinter", version = "3.11.0" }
                   content_encoding: utf-8
                   deleted: false
-                  directory: /
+                  directory: /gradle-version-catalog
                   name: gradle/libs.versions.toml
                   operation: update
                   support_file: false
@@ -651,22 +651,22 @@ output:
                     }
                   content_encoding: utf-8
                   deleted: false
-                  directory: /
+                  directory: /gradle-version-catalog
                   name: app/build.gradle
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump androidx.core:core-ktx from 1.7.0 to 1.9.0
+            pr-title: Bump androidx.core:core-ktx from 1.7.0 to 1.9.0 in /gradle-version-catalog
             pr-body: |
                 Bumps androidx.core:core-ktx from 1.7.0 to 1.9.0.
             commit-message: |-
-                Bump androidx.core:core-ktx from 1.7.0 to 1.9.0
+                Bump androidx.core:core-ktx in /gradle-version-catalog
 
                 Bumps androidx.core:core-ktx from 1.7.0 to 1.9.0.
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 99ad8dcb667e058158bbd8448e0cccd1453b1f59
+            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
             dependencies:
                 - name: androidx.lifecycle:lifecycle-runtime-ktx
                   previous-requirements:
@@ -720,22 +720,22 @@ output:
                     kotlinter = { id = "org.jmailen.kotlinter", version = "3.11.0" }
                   content_encoding: utf-8
                   deleted: false
-                  directory: /
+                  directory: /gradle-version-catalog
                   name: gradle/libs.versions.toml
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump androidx.lifecycle:lifecycle-runtime-ktx from 2.3.1 to 2.6.0
+            pr-title: Bump androidx.lifecycle:lifecycle-runtime-ktx from 2.3.1 to 2.6.0 in /gradle-version-catalog
             pr-body: |
                 Bumps androidx.lifecycle:lifecycle-runtime-ktx from 2.3.1 to 2.6.0.
             commit-message: |-
-                Bump androidx.lifecycle:lifecycle-runtime-ktx from 2.3.1 to 2.6.0
+                Bump androidx.lifecycle:lifecycle-runtime-ktx in /gradle-version-catalog
 
                 Bumps androidx.lifecycle:lifecycle-runtime-ktx from 2.3.1 to 2.6.0.
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 99ad8dcb667e058158bbd8448e0cccd1453b1f59
+            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
             dependencies:
                 - name: androidx.activity:activity-compose
                   previous-requirements:
@@ -785,22 +785,22 @@ output:
                     kotlinter = { id = "org.jmailen.kotlinter", version = "3.11.0" }
                   content_encoding: utf-8
                   deleted: false
-                  directory: /
+                  directory: /gradle-version-catalog
                   name: gradle/libs.versions.toml
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump androidx.activity:activity-compose from 1.3.1 to 1.6.1
+            pr-title: Bump androidx.activity:activity-compose from 1.3.1 to 1.6.1 in /gradle-version-catalog
             pr-body: |
                 Bumps androidx.activity:activity-compose from 1.3.1 to 1.6.1.
             commit-message: |-
-                Bump androidx.activity:activity-compose from 1.3.1 to 1.6.1
+                Bump androidx.activity:activity-compose in /gradle-version-catalog
 
                 Bumps androidx.activity:activity-compose from 1.3.1 to 1.6.1.
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 99ad8dcb667e058158bbd8448e0cccd1453b1f59
+            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
             dependencies:
                 - name: androidx.compose.ui:ui
                   previous-requirements:
@@ -930,12 +930,12 @@ output:
                     kotlinter = { id = "org.jmailen.kotlinter", version = "3.11.0" }
                   content_encoding: utf-8
                   deleted: false
-                  directory: /
+                  directory: /gradle-version-catalog
                   name: gradle/libs.versions.toml
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump composeUi from 1.2.0 to 1.3.3
+            pr-title: Bump composeUi from 1.2.0 to 1.3.3 in /gradle-version-catalog
             pr-body: |
                 Bumps `composeUi` from 1.2.0 to 1.3.3.
                 Updates `androidx.compose.ui:ui` from 1.2.0 to 1.3.3
@@ -948,7 +948,7 @@ output:
 
                 Updates `androidx.compose.ui:ui-test-manifest` from 1.2.0 to 1.3.3
             commit-message: |-
-                Bump composeUi from 1.2.0 to 1.3.3
+                Bump composeUi from 1.2.0 to 1.3.3 in /gradle-version-catalog
 
                 Bumps `composeUi` from 1.2.0 to 1.3.3.
 
@@ -964,7 +964,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 99ad8dcb667e058158bbd8448e0cccd1453b1f59
+            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
             dependencies:
                 - name: androidx.test.ext:junit
                   previous-requirements:
@@ -1018,22 +1018,22 @@ output:
                     kotlinter = { id = "org.jmailen.kotlinter", version = "3.11.0" }
                   content_encoding: utf-8
                   deleted: false
-                  directory: /
+                  directory: /gradle-version-catalog
                   name: gradle/libs.versions.toml
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump androidx.test.ext:junit from 1.1.3 to 1.1.5
+            pr-title: Bump androidx.test.ext:junit from 1.1.3 to 1.1.5 in /gradle-version-catalog
             pr-body: |
                 Bumps androidx.test.ext:junit from 1.1.3 to 1.1.5.
             commit-message: |-
-                Bump androidx.test.ext:junit from 1.1.3 to 1.1.5
+                Bump androidx.test.ext:junit in /gradle-version-catalog
 
                 Bumps androidx.test.ext:junit from 1.1.3 to 1.1.5.
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 99ad8dcb667e058158bbd8448e0cccd1453b1f59
+            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
             dependencies:
                 - name: androidx.test.espresso:espresso-core
                   previous-requirements:
@@ -1087,22 +1087,22 @@ output:
                     kotlinter = { id = "org.jmailen.kotlinter", version = "3.11.0" }
                   content_encoding: utf-8
                   deleted: false
-                  directory: /
+                  directory: /gradle-version-catalog
                   name: gradle/libs.versions.toml
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump androidx.test.espresso:espresso-core from 3.5.0 to 3.5.1
+            pr-title: Bump androidx.test.espresso:espresso-core from 3.5.0 to 3.5.1 in /gradle-version-catalog
             pr-body: |
                 Bumps androidx.test.espresso:espresso-core from 3.5.0 to 3.5.1.
             commit-message: |-
-                Bump androidx.test.espresso:espresso-core from 3.5.0 to 3.5.1
+                Bump androidx.test.espresso:espresso-core in /gradle-version-catalog
 
                 Bumps androidx.test.espresso:espresso-core from 3.5.0 to 3.5.1.
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 99ad8dcb667e058158bbd8448e0cccd1453b1f59
+            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
             dependencies:
                 - name: org.jmailen.kotlinter
                   previous-requirements:
@@ -1154,19 +1154,19 @@ output:
                     kotlinter = { id = "org.jmailen.kotlinter", version = "3.13.0" }
                   content_encoding: utf-8
                   deleted: false
-                  directory: /
+                  directory: /gradle-version-catalog
                   name: gradle/libs.versions.toml
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump org.jmailen.kotlinter from 3.11.0 to 3.13.0
+            pr-title: Bump org.jmailen.kotlinter from 3.11.0 to 3.13.0 in /gradle-version-catalog
             pr-body: |
                 Bumps org.jmailen.kotlinter from 3.11.0 to 3.13.0.
             commit-message: |-
-                Bump org.jmailen.kotlinter from 3.11.0 to 3.13.0
+                Bump org.jmailen.kotlinter in /gradle-version-catalog
 
                 Bumps org.jmailen.kotlinter from 3.11.0 to 3.13.0.
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 99ad8dcb667e058158bbd8448e0cccd1453b1f59
+            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
