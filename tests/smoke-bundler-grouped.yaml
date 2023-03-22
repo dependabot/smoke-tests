@@ -1,0 +1,456 @@
+input:
+    job:
+        package-manager: bundler
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        experiments:
+            grouped-updates-prototype: true
+        ignore-conditions:
+            - dependency-name: rubocop
+              source: tests/smoke-bundler-grouped.yaml
+              version-requirement: '>1.48.1'
+            - dependency-name: rack
+              source: tests/smoke-bundler-grouped.yaml
+              version-requirement: '>36ebd3d0ca0c7348e18dcdc4b5d2530e04238b8a'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /bundler
+            commit: 9ffecff4331b1e572747ef9b317196c1bfe5db3b
+            hostname: github.com
+            api-endpoint: https://api.github.com/
+        commit-message-options: {}
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+            - host: github.com
+              type: git_source
+        max-updater-run-time: 2700
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: record_package_manager_version
+      expect:
+        data:
+            ecosystem: bundler
+            package-managers:
+                bundler: "2"
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: rubocop
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: 0.76.0
+                      source: null
+                  version: 0.76.0
+                - name: toml-rb
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: 2.2.0
+                      source: null
+                  version: 2.2.0
+                - name: rack
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: '>= 0'
+                      source:
+                        branch: null
+                        ref: 2.1.4
+                        type: git
+                        url: git@github.com:rack/rack.git
+                  version: f3cf79d6460dc592767941806d1b2b7008f73e01
+                - name: ast
+                  requirements: []
+                  version: 2.4.2
+                - name: citrus
+                  requirements: []
+                  version: 3.0.2
+                - name: jaro_winkler
+                  requirements: []
+                  version: 1.5.4
+                - name: parallel
+                  requirements: []
+                  version: 1.22.1
+                - name: parser
+                  requirements: []
+                  version: 3.1.2.0
+                - name: rainbow
+                  requirements: []
+                  version: 3.1.1
+                - name: ruby-progressbar
+                  requirements: []
+                  version: 1.11.0
+                - name: unicode-display_width
+                  requirements: []
+                  version: 1.6.1
+            dependency_files:
+                - /bundler/Gemfile
+                - /bundler/Gemfile.lock
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 9ffecff4331b1e572747ef9b317196c1bfe5db3b
+            dependencies:
+                - name: rubocop
+                  previous-requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: 0.76.0
+                      source: null
+                  previous-version: 0.76.0
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: 1.48.1
+                      source: null
+                  version: 1.48.1
+                - name: rack
+                  previous-requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: '>= 0'
+                      source:
+                        branch: null
+                        ref: 2.1.4
+                        type: git
+                        url: git@github.com:rack/rack.git
+                  previous-version: f3cf79d6460dc592767941806d1b2b7008f73e01
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: '>= 0'
+                      source:
+                        branch: null
+                        ref: v3.0.7
+                        type: git
+                        url: git@github.com:rack/rack.git
+                  version: 36ebd3d0ca0c7348e18dcdc4b5d2530e04238b8a
+            updated-dependency-files:
+                - content: |
+                    # frozen_string_literal: true
+
+                    source "https://rubygems.org"
+
+                    gem "rubocop", "1.48.1"
+                    gem "toml-rb", "2.2.0"
+                    gem 'rack', git: 'git@github.com:rack/rack.git', tag: 'v3.0.7'
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bundler
+                  name: Gemfile
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    GIT
+                      remote: git@github.com:rack/rack.git
+                      revision: 36ebd3d0ca0c7348e18dcdc4b5d2530e04238b8a
+                      tag: v3.0.7
+                      specs:
+                        rack (3.0.7)
+
+                    GEM
+                      remote: https://rubygems.org/
+                      specs:
+                        ast (2.4.2)
+                        citrus (3.0.2)
+                        json (2.6.3)
+                        parallel (1.22.1)
+                        parser (3.2.1.1)
+                          ast (~> 2.4.1)
+                        rainbow (3.1.1)
+                        regexp_parser (2.7.0)
+                        rexml (3.2.5)
+                        rubocop (1.48.1)
+                          json (~> 2.3)
+                          parallel (~> 1.10)
+                          parser (>= 3.2.0.0)
+                          rainbow (>= 2.2.2, < 4.0)
+                          regexp_parser (>= 1.8, < 3.0)
+                          rexml (>= 3.2.5, < 4.0)
+                          rubocop-ast (>= 1.26.0, < 2.0)
+                          ruby-progressbar (~> 1.7)
+                          unicode-display_width (>= 2.4.0, < 3.0)
+                        rubocop-ast (1.27.0)
+                          parser (>= 3.2.1.0)
+                        ruby-progressbar (1.13.0)
+                        toml-rb (2.2.0)
+                          citrus (~> 3.0, > 3.0)
+                        unicode-display_width (2.4.2)
+
+                    PLATFORMS
+                      ruby
+
+                    DEPENDENCIES
+                      rack!
+                      rubocop (= 1.48.1)
+                      toml-rb (= 2.2.0)
+
+                    BUNDLED WITH
+                       2.1.4
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bundler
+                  name: Gemfile.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump rubocop and rack in /bundler
+            pr-body: |
+                Bumps [rubocop](https://github.com/rubocop/rubocop) and [rack](https://github.com/rack/rack). These dependencies needed to be updated together.
+                Updates `rubocop` from 0.76.0 to 1.48.1
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/rubocop/rubocop/releases">rubocop's releases</a>.</em></p>
+                <blockquote>
+                <h2>RuboCop 1.48.1</h2>
+                <h3>Bug fixes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11673">#11673</a>: Fix incorrect <code>Style/HashSyntax</code> autocorrection for assignment methods. (<a href="https://github.com/gsamokovarov"><code>@​gsamokovarov</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11682">#11682</a>: Fix a false positive for <code>Lint/UselessRescue</code> when using <code>Thread#raise</code> in <code>rescue</code> clause. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11672">#11672</a>: Fix an error for <code>Layout/BlockEndNewline</code> when multiline block <code>}</code> is not on its own line and it is used as multiple arguments. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11675">#11675</a>: <code>Style/AccessorGrouping</code>: Fix sibling detection for methods with type sigs. (<a href="https://github.com/issyl0"><code>@​issyl0</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11658">#11658</a>: Fix <code>Lint/Debugger</code> should not allow pry. (<a href="https://github.com/ThHareau"><code>@​ThHareau</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11689">#11689</a>: Fix <code>Lint/Syntax</code> behavior when <code>Enabled: false</code> of <code>Lint</code> department. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11677">#11677</a>: Fix the severity for <code>Lint/Syntax</code>. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11691">#11691</a>: Fix an error for <code>Gemspec/DependencyVersion</code> when method called on gem name argument for <code>add_dependency</code>. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                </ul>
+                <h2>RuboCop 1.48</h2>
+                <h3>New features</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11628">#11628</a>: Add new <code>Style/DirEmpty</code> cop. (<a href="https://github.com/ydah"><code>@​ydah</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11629">#11629</a>: Add new <code>Style/FileEmpty</code> cop. (<a href="https://github.com/ydah"><code>@​ydah</code></a>)</li>
+                </ul>
+                <h3>Bug fixes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11654">#11654</a>: Fix a false positive for <code>Lint/MissingSuper</code> when no <code>super</code> call and when defining some method. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11661">#11661</a>: Fix an error for <code>Style/Documentation</code> when namespace is a variable. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11647">#11647</a>: Fix an error for <code>Style/IfWithBooleanLiteralBranches</code> when using <code>()</code> as a condition. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11646">#11646</a>: Fix an error for <code>Style/NegatedIfElseCondition</code> when using <code>()</code> as a condition. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11659">#11659</a>: Fix an incorrect autocorrect for <code>Lint/OrAssignmentToConstant</code> when using or-assignment to a constant in method definition. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11663">#11663</a>: Fix an incorrect autocorrect for <code>Style/BlockDelimiters</code> when multi-line blocks to <code>{</code> and <code>}</code> with arithmetic operation method chain. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11638">#11638</a>: Fix a false positive for <code>Lint/UselessAccessModifier</code> when using same access modifier inside and outside the <code>included</code> block. (<a href="https://github.com/ydah"><code>@​ydah</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11164">#11164</a>: Suppress server mode message with <code>-f json</code>. (<a href="https://github.com/jasondoc3"><code>@​jasondoc3</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11643">#11643</a>: Fix incorrect shorthand autocorrections in calls inside parentheses. (<a href="https://github.com/gsamokovarov"><code>@​gsamokovarov</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11650">#11650</a>: <code>Style/AccessorGrouping</code>: Fix detection of Sorbet <code>sig {}</code> blocks. (<a href="https://github.com/issyl0"><code>@​issyl0</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11657">#11657</a>: Use cop name to check if cop inside registry is enabled. Previously, it was able to cause large memory usage during linting. (<a href="https://github.com/fatkodima"><code>@​fatkodima</code></a>)</li>
+                </ul>
+                <h3>Changes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11482">#11482</a>: Avoid comment deletion by <code>Style/IfUnlessModifier</code> when the modifier form expression has long comment. (<a href="https://github.com/nobuyo"><code>@​nobuyo</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11649">#11649</a>: Support <code>MinBranchesCount</code> config for <code>Style/CaseLikeIf</code> cop. (<a href="https://github.com/fatkodima"><code>@​fatkodima</code></a>)</li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md">rubocop's changelog</a>.</em></p>
+                <blockquote>
+                <h2>1.48.1 (2023-03-13)</h2>
+                <h3>Bug fixes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11673">#11673</a>: Fix incorrect <code>Style/HashSyntax</code> autocorrection for assignment methods. ([<a href="https://github.com/gsamokovarov"><code>@​gsamokovarov</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11682">#11682</a>: Fix a false positive for <code>Lint/UselessRescue</code> when using <code>Thread#raise</code> in <code>rescue</code> clause. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11672">#11672</a>: Fix an error for <code>Layout/BlockEndNewline</code> when multiline block <code>}</code> is not on its own line and it is used as multiple arguments. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11675">#11675</a>: <code>Style/AccessorGrouping</code>: Fix sibling detection for methods with type sigs. ([<a href="https://github.com/issyl0"><code>@​issyl0</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11658">#11658</a>: Fix <code>Lint/Debugger</code> should not allow pry. ([<a href="https://github.com/ThHareau"><code>@​ThHareau</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11689">#11689</a>: Fix <code>Lint/Syntax</code> behavior when <code>Enabled: false</code> of <code>Lint</code> department. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11677">#11677</a>: Fix the severity for <code>Lint/Syntax</code>. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11691">#11691</a>: Fix an error for <code>Gemspec/DependencyVersion</code> when method called on gem name argument for <code>add_dependency</code>. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                </ul>
+                <h2>1.48.0 (2023-03-06)</h2>
+                <h3>New features</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11628">#11628</a>: Add new <code>Style/DirEmpty</code> cop. ([<a href="https://github.com/ydah"><code>@​ydah</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11629">#11629</a>: Add new <code>Style/FileEmpty</code> cop. ([<a href="https://github.com/ydah"><code>@​ydah</code></a>][])</li>
+                </ul>
+                <h3>Bug fixes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11654">#11654</a>: Fix a false positive for <code>Lint/MissingSuper</code> when no <code>super</code> call and when defining some method. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11661">#11661</a>: Fix an error for <code>Style/Documentation</code> when namespace is a variable. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11647">#11647</a>: Fix an error for <code>Style/IfWithBooleanLiteralBranches</code> when using <code>()</code> as a condition. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11646">#11646</a>: Fix an error for <code>Style/NegatedIfElseCondition</code> when using <code>()</code> as a condition. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11659">#11659</a>: Fix an incorrect autocorrect for <code>Lint/OrAssignmentToConstant</code> when using or-assignment to a constant in method definition. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11663">#11663</a>: Fix an incorrect autocorrect for <code>Style/BlockDelimiters</code> when multi-line blocks to <code>{</code> and <code>}</code> with arithmetic operation method chain. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11638">#11638</a>: Fix a false positive for <code>Lint/UselessAccessModifier</code> when using same access modifier inside and outside the <code>included</code> block. ([<a href="https://github.com/ydah"><code>@​ydah</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11164">#11164</a>: Suppress server mode message with <code>-f json</code>. ([<a href="https://github.com/jasondoc3"><code>@​jasondoc3</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11643">#11643</a>: Fix incorrect shorthand autocorrections in calls inside parentheses. ([<a href="https://github.com/gsamokovarov"><code>@​gsamokovarov</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11650">#11650</a>: <code>Style/AccessorGrouping</code>: Fix detection of Sorbet <code>sig {}</code> blocks. ([<a href="https://github.com/issyl0"><code>@​issyl0</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11657">#11657</a>: Use cop name to check if cop inside registry is enabled. Previously, it was able to cause large memory usage during linting. ([<a href="https://github.com/fatkodima"><code>@​fatkodima</code></a>][])</li>
+                </ul>
+                <h3>Changes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11482">#11482</a>: Avoid comment deletion by <code>Style/IfUnlessModifier</code> when the modifier form expression has long comment. ([<a href="https://github.com/nobuyo"><code>@​nobuyo</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11649">#11649</a>: Support <code>MinBranchesCount</code> config for <code>Style/CaseLikeIf</code> cop. ([<a href="https://github.com/fatkodima"><code>@​fatkodima</code></a>][])</li>
+                </ul>
+                <h2>1.47.0 (2023-03-01)</h2>
+                <h3>New features</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11475">#11475</a>: Add autocorrect for hash in <code>Lint/LiteralInInterpolation</code>. ([<a href="https://github.com/KessaPassa"><code>@​KessaPassa</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11584">#11584</a>: Add <code>Metrics/CollectionLiteralLength</code> cop. ([<a href="https://github.com/sambostock"><code>@​sambostock</code></a>][])</li>
+                </ul>
+                <h3>Bug fixes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11615">#11615</a>: Fix a false negative for <code>Lint/MissingSuper</code> when no <code>super</code> call with <code>Class.new</code> block. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11615">#11615</a>: Fix a false negative for <code>Lint/MissingSuper</code> when using <code>Class.new</code> without parent class argument. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rubocop/rubocop/commit/675114c1b5a1999a112f8adaad8c99f8de6f7bcc"><code>675114c</code></a> Cut 1.48.1</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/a0d896a010f4d545147f2e1eaf2c75d900b1ba0c"><code>a0d896a</code></a> Update Changelog</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/ed786ab489102ac48197bb7b9753ab81236fc951"><code>ed786ab</code></a> [Fix <a href="https://redirect.github.com/rubocop/rubocop/issues/11658">#11658</a>] Register Object#pry as an offense (<a href="https://redirect.github.com/rubocop/rubocop/issues/11669">#11669</a>)</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/96911a9464cf2482b19a2b93345d8abaa1d97989"><code>96911a9</code></a> [Doc] Tweak the doc for <code>DisabledByDefault</code> config</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/e79974b8469f729fa0e293101bf094018c2d62b5"><code>e79974b</code></a> Merge pull request <a href="https://redirect.github.com/rubocop/rubocop/issues/11691">#11691</a> from koic/fix_an_error_for_gemspec_dependency_version</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/a3b8a8d4a7e82767c6abd2bc31c94c0205e57658"><code>a3b8a8d</code></a> Fix an error for <code>Gemspec/DependencyVersion</code></li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/f0356375b74d3fe11ce9c4c03c30925e6a273695"><code>f035637</code></a> Fix <code>Lint/Syntax</code> behavior when <code>Enabled: false</code> of <code>Lint</code> department</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/d11e25fa886ca74278c700bb60655955bb85e5fd"><code>d11e25f</code></a> Add Ruby 3.3 context to rspec/support.rb</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/0fc26d81d23f2ca206823bef44f1d35a237de290"><code>0fc26d8</code></a> [Fix <a href="https://redirect.github.com/rubocop/rubocop/issues/11677">#11677</a>] Fix the severity for <code>Lint/Syntax</code></li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/6c3bbff14630fb94bca266461c93696312106ca9"><code>6c3bbff</code></a> [Fix <a href="https://redirect.github.com/rubocop/rubocop/issues/11682">#11682</a>] Fix a false positive for <code>Lint/UselessRescue</code></li>
+                <li>Additional commits viewable in <a href="https://github.com/rubocop/rubocop/compare/v0.76.0...v1.48.1">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `rack` from 2.1.4 to v3.0.7
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/rack/rack/releases">rack's releases</a>.</em></p>
+                <blockquote>
+                <h2>v3.0.7</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Backport &quot;Make query parameters without = have nil values&quot;. by <a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2060">rack/rack#2060</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.6.1...v3.0.7">https://github.com/rack/rack/compare/v3.0.6.1...v3.0.7</a></p>
+                <h2>v3.0.6.1</h2>
+                <p>No release notes provided.</p>
+                <h2>v3.0.4.1</h2>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.4...v3.0.4.1">https://github.com/rack/rack/compare/v3.0.4...v3.0.4.1</a></p>
+                <h2>v3.0.4</h2>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.3...v3.0.4">https://github.com/rack/rack/compare/v3.0.3...v3.0.4</a></p>
+                <h2>v3.0.3</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Release v3.0.3 by <a href="https://github.com/ioquatix"><code>@​ioquatix</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2000">rack/rack#2000</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.2...v3.0.3">https://github.com/rack/rack/compare/v3.0.2...v3.0.3</a></p>
+                <h2>v3.0.2</h2>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.1...v3.0.2">https://github.com/rack/rack/compare/v3.0.1...v3.0.2</a></p>
+                <h2>v2.2.6.4</h2>
+                <p>No release notes provided.</p>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/rack/rack/blob/main/CHANGELOG.md">rack's changelog</a>.</em></p>
+                <blockquote>
+                <h2>[3.0.7] - 2023-03-16</h2>
+                <ul>
+                <li>Make query parameters without <code>=</code> have <code>nil</code> values. (<a href="https://redirect.github.com/rack/rack/pull/2059">#2059</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
+                </ul>
+                <h2>[3.0.6.1] - 2023-03-13</h2>
+                <ul>
+                <li>[CVE-2023-27539] Avoid ReDoS in header parsing</li>
+                </ul>
+                <h2>[3.0.6] - 2023-03-13</h2>
+                <ul>
+                <li>Add <code>QueryParser#missing_value</code> for handling missing values + tests. (<a href="https://redirect.github.com/rack/rack/pull/2052">#2052</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
+                </ul>
+                <h2>[3.0.5] - 2023-03-13</h2>
+                <ul>
+                <li>Split form/query parsing into two steps. (<a href="https://redirect.github.com/rack/rack/pull/2038">#2038</a>, <a href="https://github.com/matthewd"><code>@​matthewd</code></a>)</li>
+                </ul>
+                <h2>[3.0.4.1] - 2023-03-02</h2>
+                <h3>SPEC Changes</h3>
+                <ul>
+                <li><code>rack.input</code> is now optional. (<a href="https://redirect.github.com/rack/rack/pull/1997">#1997</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
+                </ul>
+                <h3>Changed</h3>
+                <ul>
+                <li><code>rack.input</code> is now optional, and if missing, will raise an error. Use this to fail on multipart parsing a request without an input body. (<a href="https://redirect.github.com/rack/rack/pull/2018">#2018</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
+                <li>Introduce <code>module Rack::BadRequest</code> which is included in multipart and query parser errors. (<a href="https://redirect.github.com/rack/rack/pull/2019">#2019</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
+                <li>MIME type for JavaScript files (<code>.js</code>) changed from <code>application/javascript</code> to <code>text/javascript</code> (<a href="https://github.com/rack/rack/commit/1bd0f1597d8f4a90d47115f3e156a8ce7870c9c8"><code>1bd0f15</code></a>)</li>
+                <li>Add <code>.mjs</code> MIME type (<a href="https://redirect.github.com/rack/rack/pull/2057">#2057</a>, [<a href="https://github.com/axilleas"><code>@​axilleas</code></a>])</li>
+                </ul>
+                <h2>[3.0.4.1] - 2023-01-17</h2>
+                <ul>
+                <li>[CVE-2022-44571] Fix ReDoS vulnerability in multipart parser</li>
+                <li>[CVE-2022-44570] Fix ReDoS in Rack::Utils.get_byte_ranges</li>
+                <li>[CVE-2022-44572] Forbid control characters in attributes (also ReDoS)</li>
+                </ul>
+                <h2>[3.0.4] - 2023-01-17</h2>
+                <ul>
+                <li><code>Rack::Request#POST</code> should consistently raise errors. Cache errors that occur when invoking <code>Rack::Request#POST</code> so they can be raised again later. (<a href="https://redirect.github.com/rack/rack/pull/2010">#2010</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
+                <li>Fix <code>Rack::Lint</code> error message for <code>HTTP_CONTENT_TYPE</code> and <code>HTTP_CONTENT_LENGTH</code>. (<a href="https://redirect.github.com/rack/rack/pull/2007">#2007</a>, <a href="https://github.com/byroot"><code>@​byroot</code></a>)</li>
+                <li>Extend <code>Rack::MethodOverride</code> to handle <code>QueryParser::ParamsTooDeepError</code> error. (<a href="https://redirect.github.com/rack/rack/pull/2006">#2006</a>, <a href="https://github.com/byroot"><code>@​byroot</code></a>)</li>
+                </ul>
+                <h2>[3.0.3] - 2022-12-27</h2>
+                <h3>Fixed</h3>
+                <ul>
+                <li><code>Rack::URLMap</code> uses non-deprecated form of <code>Regexp.new</code>. (<a href="https://redirect.github.com/rack/rack/pull/1998">#1998</a>, <a href="https://github.com/weizheheng"><code>@​weizheheng</code></a>)</li>
+                </ul>
+                <h2>[3.0.2] -2022-12-05</h2>
+                <h3>Fixed</h3>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rack/rack/commit/2429b7ba38e402fc2e29405cab69395134020aed"><code>2429b7b</code></a> Bump patch version.</li>
+                <li><a href="https://github.com/rack/rack/commit/94dd78b30794d0e2f3855e92afdf98cdb4835f79"><code>94dd78b</code></a> Update changelog.</li>
+                <li><a href="https://github.com/rack/rack/commit/d38b45615d9c71b7a4f692ab5845b8d06a22d774"><code>d38b456</code></a> Make query parameters without = have nil values (<a href="https://redirect.github.com/rack/rack/issues/2059">#2059</a>) (<a href="https://redirect.github.com/rack/rack/issues/2060">#2060</a>)</li>
+                <li><a href="https://github.com/rack/rack/commit/51e7a0f92edcccf91ab3b79d36751866699de76e"><code>51e7a0f</code></a> Merge branch '3-0-sec' into 3-0-stable</li>
+                <li><a href="https://github.com/rack/rack/commit/098d8e12c1553411ee198d7890c1fd9f1e8cf979"><code>098d8e1</code></a> bump version</li>
+                <li><a href="https://github.com/rack/rack/commit/231ef369ad0b542575fb36c74fcfcfabcf6c530c"><code>231ef36</code></a> Avoid ReDoS problem</li>
+                <li><a href="https://github.com/rack/rack/commit/54a9ed22035c6d10bc1bb8f1815f81307fd9d99b"><code>54a9ed2</code></a> Update changelog.</li>
+                <li><a href="https://github.com/rack/rack/commit/e9e9ae663d83f142d7666aee49622287828fa06f"><code>e9e9ae6</code></a> Bump patch version.</li>
+                <li><a href="https://github.com/rack/rack/commit/848c9c00562edbe54e72f83fcf253fcdc9449f74"><code>848c9c0</code></a> Add <code>QueryParser#missing_value</code> for handling missing values + tests. (<a href="https://redirect.github.com/rack/rack/issues/2052">#2052</a>)</li>
+                <li><a href="https://github.com/rack/rack/commit/9f8ba5e1fdf860338af7a65519278b32de00f516"><code>9f8ba5e</code></a> Bump patch version.</li>
+                <li>Additional commits viewable in <a href="https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...36ebd3d0ca0c7348e18dcdc4b5d2530e04238b8a">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump rubocop and rack in /bundler
+
+                Bumps [rubocop](https://github.com/rubocop/rubocop) and [rack](https://github.com/rack/rack). These dependencies needed to be updated together.
+
+                Updates `rubocop` from 0.76.0 to 1.48.1
+                - [Release notes](https://github.com/rubocop/rubocop/releases)
+                - [Changelog](https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/rubocop/rubocop/compare/v0.76.0...v1.48.1)
+
+                Updates `rack` from 2.1.4 to v3.0.7
+                - [Release notes](https://github.com/rack/rack/releases)
+                - [Changelog](https://github.com/rack/rack/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...36ebd3d0ca0c7348e18dcdc4b5d2530e04238b8a)
+            grouped-update: false
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 9ffecff4331b1e572747ef9b317196c1bfe5db3b
