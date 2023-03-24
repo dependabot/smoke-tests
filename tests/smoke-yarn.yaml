@@ -14,8 +14,7 @@ input:
             provider: github
             repo: dependabot/smoke-tests
             directory: /yarn/subdir
-            branch: jakecoffman/add-yarn-smoke-test
-            commit: 8c783d5398c8e01511448bacc3b8ae3637768235
+            commit: 689859ec8625145882baf9dc1d407ece646392ae
         credentials-metadata:
             - host: github.com
               type: git_source
@@ -88,7 +87,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 8c783d5398c8e01511448bacc3b8ae3637768235
+            base-commit-sha: 689859ec8625145882baf9dc1d407ece646392ae
             dependencies:
                 - name: fetch-factory
                   previous-requirements:
@@ -446,7 +445,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 8c783d5398c8e01511448bacc3b8ae3637768235
+            base-commit-sha: 689859ec8625145882baf9dc1d407ece646392ae
             dependencies:
                 - name: etag
                   previous-requirements:
@@ -746,4 +745,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 8c783d5398c8e01511448bacc3b8ae3637768235
+            base-commit-sha: 689859ec8625145882baf9dc1d407ece646392ae
