@@ -383,17 +383,9 @@ output:
                 <ul>
                 <li>Split form/query parsing into two steps. (<a href="https://redirect.github.com/rack/rack/pull/2038">#2038</a>, <a href="https://github.com/matthewd"><code>@​matthewd</code></a>)</li>
                 </ul>
-                <h2>[3.0.4.1] - 2023-03-02</h2>
-                <h3>SPEC Changes</h3>
+                <h2>[3.0.4.2] - 2023-03-02</h2>
                 <ul>
-                <li><code>rack.input</code> is now optional. (<a href="https://redirect.github.com/rack/rack/pull/1997">#1997</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
-                </ul>
-                <h3>Changed</h3>
-                <ul>
-                <li><code>rack.input</code> is now optional, and if missing, will raise an error. Use this to fail on multipart parsing a request without an input body. (<a href="https://redirect.github.com/rack/rack/pull/2018">#2018</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
-                <li>Introduce <code>module Rack::BadRequest</code> which is included in multipart and query parser errors. (<a href="https://redirect.github.com/rack/rack/pull/2019">#2019</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
-                <li>MIME type for JavaScript files (<code>.js</code>) changed from <code>application/javascript</code> to <code>text/javascript</code> (<a href="https://github.com/rack/rack/commit/1bd0f1597d8f4a90d47115f3e156a8ce7870c9c8"><code>1bd0f15</code></a>)</li>
-                <li>Add <code>.mjs</code> MIME type (<a href="https://redirect.github.com/rack/rack/pull/2057">#2057</a>, [<a href="https://github.com/axilleas"><code>@​axilleas</code></a>])</li>
+                <li>[CVE-2023-27530] Introduce multipart_total_part_limit to limit total parts</li>
                 </ul>
                 <h2>[3.0.4.1] - 2023-01-17</h2>
                 <ul>
@@ -414,6 +406,15 @@ output:
                 </ul>
                 <h2>[3.0.2] -2022-12-05</h2>
                 <h3>Fixed</h3>
+                <ul>
+                <li><code>Utils.build_nested_query</code> URL-encodes nested field names including the square brackets.</li>
+                <li>Allow <code>Rack::Response</code> to pass through streaming bodies. (<a href="https://redirect.github.com/rack/rack/pull/1993">#1993</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
+                </ul>
+                <h2>[3.0.1] - 2022-11-18</h2>
+                <h3>Fixed</h3>
+                <ul>
+                <li><code>MethodOverride</code> does not look for an override if a request does not include form/parseable data.</li>
+                </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -449,7 +450,7 @@ output:
                 - [Release notes](https://github.com/rack/rack/releases)
                 - [Changelog](https://github.com/rack/rack/blob/main/CHANGELOG.md)
                 - [Commits](https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...36ebd3d0ca0c7348e18dcdc4b5d2530e04238b8a)
-            grouped-update: false
+            grouped-update: true
     - type: mark_as_processed
       expect:
         data:
