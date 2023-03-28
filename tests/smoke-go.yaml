@@ -56,12 +56,10 @@ output:
                   requirements:
                     - file: go.mod
                       groups: []
-                      requirement: null
+                      requirement: v0.0.0-20141017200713-76626ae9c91c
                       source:
-                        branch: null
-                        ref: 76626ae9c91c
-                        type: git
-                        url: https://github.com/inconshreveable/mousetrap
+                        source: github.com/inconshreveable/mousetrap
+                        type: default
                   version: 0.0.0-20141017200713-76626ae9c91c
                 - name: github.com/mattn/go-colorable
                   requirements: []
@@ -73,12 +71,10 @@ output:
                   requirements:
                     - file: go.mod
                       groups: []
-                      requirement: null
+                      requirement: v0.0.0-20180617042118-027cca12c2d6
                       source:
-                        branch: null
-                        ref: 027cca12c2d6
-                        type: git
-                        url: https://github.com/golang/crypto
+                        source: golang.org/x/crypto
+                        type: default
                   version: 0.0.0-20180617042118-027cca12c2d6
                 - name: golang.org/x/sys
                   requirements: []
@@ -228,6 +224,7 @@ output:
                 Bumps [github.com/fatih/color](https://github.com/fatih/color) from 1.7.0 to 1.13.0.
                 - [Release notes](https://github.com/fatih/color/releases)
                 - [Commits](https://github.com/fatih/color/compare/v1.7.0...v1.13.0)
+            grouped-update: false
     - type: create_pull_request
       expect:
         data:
@@ -237,22 +234,18 @@ output:
                   previous-requirements:
                     - file: go.mod
                       groups: []
-                      requirement: null
+                      requirement: v0.0.0-20141017200713-76626ae9c91c
                       source:
-                        branch: null
-                        ref: 76626ae9c91c
-                        type: git
-                        url: https://github.com/inconshreveable/mousetrap
+                        source: github.com/inconshreveable/mousetrap
+                        type: default
                   previous-version: 0.0.0-20141017200713-76626ae9c91c
                   requirements:
                     - file: go.mod
                       groups: []
                       requirement: 1.1.0
                       source:
-                        branch: null
-                        ref: 76626ae9c91c
-                        type: git
-                        url: https://github.com/inconshreveable/mousetrap
+                        source: github.com/inconshreveable/mousetrap
+                        type: default
                   version: 1.1.0
             updated-dependency-files:
                 - content: |
@@ -321,6 +314,7 @@ output:
                 Bumps [github.com/inconshreveable/mousetrap](https://github.com/inconshreveable/mousetrap) from 0.0.0-20141017200713-76626ae9c91c to 1.1.0.
                 - [Release notes](https://github.com/inconshreveable/mousetrap/releases)
                 - [Commits](https://github.com/inconshreveable/mousetrap/commits/v1.1)
+            grouped-update: false
     - type: create_pull_request
       expect:
         data:
@@ -330,22 +324,18 @@ output:
                   previous-requirements:
                     - file: go.mod
                       groups: []
-                      requirement: null
+                      requirement: v0.0.0-20180617042118-027cca12c2d6
                       source:
-                        branch: null
-                        ref: 027cca12c2d6
-                        type: git
-                        url: https://github.com/golang/crypto
+                        source: golang.org/x/crypto
+                        type: default
                   previous-version: 0.0.0-20180617042118-027cca12c2d6
                   requirements:
                     - file: go.mod
                       groups: []
                       requirement: 0.6.0
                       source:
-                        branch: null
-                        ref: 027cca12c2d6
-                        type: git
-                        url: https://github.com/golang/crypto
+                        source: golang.org/x/crypto
+                        type: default
                   version: 0.6.0
             updated-dependency-files:
                 - content: |
@@ -439,6 +429,7 @@ output:
                 Bumps [golang.org/x/crypto](https://github.com/golang/crypto) from 0.0.0-20180617042118-027cca12c2d6 to 0.6.0.
                 - [Release notes](https://github.com/golang/crypto/releases)
                 - [Commits](https://github.com/golang/crypto/commits/v0.6.0)
+            grouped-update: false
     - type: create_pull_request
       expect:
         data:
@@ -533,6 +524,7 @@ output:
                 Bumps [rsc.io/quote](https://github.com/rsc/quote) from 1.4.0 to 1.5.2.
                 - [Release notes](https://github.com/rsc/quote/releases)
                 - [Commits](https://github.com/rsc/quote/compare/v1.4.0...v1.5.2)
+            grouped-update: false
     - type: mark_as_processed
       expect:
         data:
