@@ -1,0 +1,40 @@
+# Runs a single ecosystem without cache and does not fill the cache.
+name: Dry run
+
+on:
+  workflow_dispatch:
+    inputs:
+      git-ref:
+        description: git ref
+        required: true
+        default: main
+      test:
+        description: smoke test to run (e.g. go, go-close-pr, etc)
+        required: true
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  cache_one:
+    runs-on: ubuntu-latest
+    name: Cache ${{ github.event.inputs.package_manager }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.git-ref }}
+
+      - name: Download CLI
+        run: |
+          gh release download --repo dependabot/cli -p "*linux-amd64.tar.gz"
+          tar xzvf *.tar.gz >/dev/null 2>&1
+          ./dependabot --version
+
+      # No download first to get a clean cache.
+
+      - name: Smoke ${{ github.event.inputs.package_manager }}
+        env:
+          LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./dependabot test -f=tests/smoke-${{ github.event.inputs.package_manager }}.yaml --cache=cache
+
+      # No upload
