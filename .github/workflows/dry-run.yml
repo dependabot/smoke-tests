@@ -16,9 +16,9 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  cache_one:
+  dry_run:
     runs-on: ubuntu-latest
-    name: Cache ${{ github.event.inputs.package_manager }}
+    name: Dry run ${{ github.event.inputs.test }}
     steps:
       - uses: actions/checkout@v3
         with:
