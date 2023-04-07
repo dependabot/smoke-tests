@@ -6,21 +6,21 @@ input:
         ignore-conditions:
             - dependency-name: time
               source: tests/smoke-cargo.yaml
-              version-requirement: '>0.3.12'
+              version-requirement: '>0.3.20'
             - dependency-name: regex
               source: tests/smoke-cargo.yaml
-              version-requirement: '>1.6.0'
-            - dependency-name: libc
+              version-requirement: '>1.7.3'
+            - dependency-name: rand
               source: tests/smoke-cargo.yaml
-              version-requirement: '>0.2.127'
-            - dependency-name: redox_syscall
+              version-requirement: '>0.8.5'
+            - dependency-name: itoa
               source: tests/smoke-cargo.yaml
-              version-requirement: '>0.1.57'
+              version-requirement: '>1.0.6'
         source:
             provider: github
             repo: dependabot/smoke-tests
-            directory: /
-            commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            directory: /cargo
+            commit: 3d44220c5ab8e3c592b63373354a596b781f6e09
         credentials-metadata:
             - host: github.com
               type: git_source
@@ -39,64 +39,109 @@ output:
                     - file: Cargo.toml
                       groups:
                         - dependencies
-                      requirement: 0.1.12
+                      requirement: =0.3.0-alpha-2
                       source: null
-                  version: 0.1.38
+                  version: 0.3.0-alpha-2
                 - name: regex
                   requirements:
                     - file: Cargo.toml
                       groups:
                         - dependencies
-                      requirement: 0.1.41
+                      requirement: '>=1.6.0, <1.7.0'
                       source: null
-                  version: 0.1.41
+                  version: 1.6.0
+                - name: rand
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 0.8.4
+                        type: git
+                        url: ssh://git@github.com/rust-random/rand.git
+                  version: 8792268dfe57e49bb4518190bf4fe66176759a44
+                - name: itoa
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 1.0.5
+                        type: git
+                        url: https://github.com/dtolnay/itoa.git
+                  version: ef4faeda61024dfb38b3897e46aeda8140828dc6
                 - name: aho-corasick
                   requirements: []
-                  version: 0.3.4
-                - name: kernel32-sys
+                  version: 0.7.20
+                - name: cfg-if
                   requirements: []
-                  version: 0.2.2
+                  version: 1.0.0
+                - name: const_fn
+                  requirements: []
+                  version: 0.4.9
+                - name: easy-ext
+                  requirements: []
+                  version: 0.2.9
+                - name: getrandom
+                  requirements: []
+                  version: 0.2.9
                 - name: libc
                   requirements: []
-                  version: 0.2.40
+                  version: 0.2.141
                 - name: memchr
                   requirements: []
-                  version: 0.1.11
-                - name: redox_syscall
+                  version: 2.5.0
+                - name: ppv-lite86
                   requirements: []
-                  version: 0.1.37
+                  version: 0.2.17
+                - name: rand_chacha
+                  requirements: []
+                  version: 8792268dfe57e49bb4518190bf4fe66176759a44
+                - name: rand_core
+                  requirements: []
+                  version: 8792268dfe57e49bb4518190bf4fe66176759a44
+                - name: rand_hc
+                  requirements: []
+                  version: 8792268dfe57e49bb4518190bf4fe66176759a44
                 - name: regex-syntax
                   requirements: []
-                  version: 0.2.6
-                - name: winapi
+                  version: 0.6.29
+                - name: standback
                   requirements: []
-                  version: 0.2.8
-                - name: winapi-build
+                  version: 0.3.5
+                - name: version_check
                   requirements: []
-                  version: 0.1.1
+                  version: 0.9.4
+                - name: wasi
+                  requirements: []
+                  version: 0.11.0+wasi-snapshot-preview1
             dependency_files:
-                - /Cargo.toml
-                - /Cargo.lock
+                - /cargo/Cargo.toml
+                - /cargo/Cargo.lock
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 3d44220c5ab8e3c592b63373354a596b781f6e09
             dependencies:
                 - name: time
                   previous-requirements:
                     - file: Cargo.toml
                       groups:
                         - dependencies
-                      requirement: 0.1.12
+                      requirement: =0.3.0-alpha-2
                       source: null
-                  previous-version: 0.1.38
+                  previous-version: 0.3.0-alpha-2
                   requirements:
                     - file: Cargo.toml
                       groups:
                         - dependencies
-                      requirement: 0.3.12
+                      requirement: =0.3.20
                       source: null
-                  version: 0.3.12
+                  version: 0.3.20
             updated-dependency-files:
                 - content: |
                     [package]
@@ -105,377 +150,13 @@ output:
                     authors = ["support@dependabot.com"]
 
                     [dependencies]
-                    time = "0.3.12"
-                    regex = "0.1.41"
+                    time = "=0.3.20"
+                    regex = ">=1.6.0, <1.7.0"
+                    rand = { git = "ssh://git@github.com/rust-random/rand.git", tag = "0.8.4" }
+                    itoa = { git = "https://github.com/dtolnay/itoa.git", tag = "1.0.5" }
                   content_encoding: utf-8
                   deleted: false
-                  directory: /
-                  name: Cargo.toml
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    # This file is automatically @generated by Cargo.
-                    # It is not intended for manual editing.
-                    version = 3
-
-                    [[package]]
-                    name = "aho-corasick"
-                    version = "0.3.4"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "f5314d38125dc9b9ca99ed19a516eb19feac7bf8b22b5b32993c971bf8cb2a4d"
-                    dependencies = [
-                     "memchr",
-                    ]
-
-                    [[package]]
-                    name = "bumpalo"
-                    version = "3.12.0"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "0d261e256854913907f67ed06efbc3338dfe6179796deefc1ff763fc1aee5535"
-
-                    [[package]]
-                    name = "cfg-if"
-                    version = "1.0.0"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
-
-                    [[package]]
-                    name = "dependabot"
-                    version = "0.1.0"
-                    dependencies = [
-                     "regex",
-                     "time",
-                    ]
-
-                    [[package]]
-                    name = "js-sys"
-                    version = "0.3.61"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "445dde2150c55e483f3d8416706b97ec8e8237c307e5b7b4b8dd15e6af2a0730"
-                    dependencies = [
-                     "wasm-bindgen",
-                    ]
-
-                    [[package]]
-                    name = "libc"
-                    version = "0.2.140"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "99227334921fae1a979cf0bfdfcc6b3e5ce376ef57e16fb6fb3ea2ed6095f80c"
-
-                    [[package]]
-                    name = "log"
-                    version = "0.4.17"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "abb12e687cfb44aa40f41fc3978ef76448f9b6038cad6aef4259d3c095a2382e"
-                    dependencies = [
-                     "cfg-if",
-                    ]
-
-                    [[package]]
-                    name = "memchr"
-                    version = "0.1.11"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "d8b629fb514376c675b98c1421e80b151d3817ac42d7c667717d282761418d20"
-                    dependencies = [
-                     "libc",
-                    ]
-
-                    [[package]]
-                    name = "num_threads"
-                    version = "0.1.6"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "2819ce041d2ee131036f4fc9d6ae7ae125a3a40e97ba64d04fe799ad9dabbb44"
-                    dependencies = [
-                     "libc",
-                    ]
-
-                    [[package]]
-                    name = "once_cell"
-                    version = "1.17.1"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "b7e5500299e16ebb147ae15a00a942af264cf3688f47923b8fc2cd5858f23ad3"
-
-                    [[package]]
-                    name = "proc-macro2"
-                    version = "1.0.56"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "2b63bdb0cd06f1f4dedf69b254734f9b45af66e4a031e42a7480257d9898b435"
-                    dependencies = [
-                     "unicode-ident",
-                    ]
-
-                    [[package]]
-                    name = "quote"
-                    version = "1.0.26"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "4424af4bf778aae2051a77b60283332f386554255d722233d09fbfc7e30da2fc"
-                    dependencies = [
-                     "proc-macro2",
-                    ]
-
-                    [[package]]
-                    name = "regex"
-                    version = "0.1.41"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "4499ef755e709fbfe334ecbc3206537e84952ead5347791b0f54c2b75fe63a28"
-                    dependencies = [
-                     "aho-corasick",
-                     "memchr",
-                     "regex-syntax",
-                    ]
-
-                    [[package]]
-                    name = "regex-syntax"
-                    version = "0.2.6"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "a21935ce5a4dfa48e3ded1aefbbe353fb9ab258b0d3fa0bd168bef00797b3dc7"
-
-                    [[package]]
-                    name = "syn"
-                    version = "1.0.109"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "72b64191b275b66ffe2469e8af2c1cfe3bafa67b529ead792a6d0160888b4237"
-                    dependencies = [
-                     "proc-macro2",
-                     "quote",
-                     "unicode-ident",
-                    ]
-
-                    [[package]]
-                    name = "time"
-                    version = "0.3.12"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "74b7cc93fc23ba97fde84f7eea56c55d1ba183f495c6715defdfc7b9cb8c870f"
-                    dependencies = [
-                     "js-sys",
-                     "libc",
-                     "num_threads",
-                    ]
-
-                    [[package]]
-                    name = "unicode-ident"
-                    version = "1.0.8"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "e5464a87b239f13a63a501f2701565754bae92d243d4bb7eb12f6d57d2269bf4"
-
-                    [[package]]
-                    name = "wasm-bindgen"
-                    version = "0.2.84"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "31f8dcbc21f30d9b8f2ea926ecb58f6b91192c17e9d33594b3df58b2007ca53b"
-                    dependencies = [
-                     "cfg-if",
-                     "wasm-bindgen-macro",
-                    ]
-
-                    [[package]]
-                    name = "wasm-bindgen-backend"
-                    version = "0.2.84"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "95ce90fd5bcc06af55a641a86428ee4229e44e07033963a2290a8e241607ccb9"
-                    dependencies = [
-                     "bumpalo",
-                     "log",
-                     "once_cell",
-                     "proc-macro2",
-                     "quote",
-                     "syn",
-                     "wasm-bindgen-shared",
-                    ]
-
-                    [[package]]
-                    name = "wasm-bindgen-macro"
-                    version = "0.2.84"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "4c21f77c0bedc37fd5dc21f897894a5ca01e7bb159884559461862ae90c0b4c5"
-                    dependencies = [
-                     "quote",
-                     "wasm-bindgen-macro-support",
-                    ]
-
-                    [[package]]
-                    name = "wasm-bindgen-macro-support"
-                    version = "0.2.84"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "2aff81306fcac3c7515ad4e177f521b5c9a15f2b08f4e32d823066102f35a5f6"
-                    dependencies = [
-                     "proc-macro2",
-                     "quote",
-                     "syn",
-                     "wasm-bindgen-backend",
-                     "wasm-bindgen-shared",
-                    ]
-
-                    [[package]]
-                    name = "wasm-bindgen-shared"
-                    version = "0.2.84"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "0046fef7e28c3804e5e38bfa31ea2a0f73905319b677e57ebe37e49358989b5d"
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /
-                  name: Cargo.lock
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump time from 0.1.38 to 0.3.12
-            pr-body: |
-                Bumps [time](https://github.com/time-rs/time) from 0.1.38 to 0.3.12.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/time-rs/time/releases">time's releases</a>.</em></p>
-                <blockquote>
-                <h2>v0.3.12</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.11</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.10</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.9</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.7</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.6</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.5</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.4</h2>
-                <p>No release notes provided.</p>
-                <h2>v0.3.3</h2>
-                <p>No release notes provided.</p>
-                <h2>v0.3.2</h2>
-                <p>No release notes provided.</p>
-                <h2>v0.3.1</h2>
-                <p>No release notes provided.</p>
-                <h2>v0.3.0</h2>
-                <p>No release notes provided.</p>
-                <h2>v0.3.0-alpha-2</h2>
-                <p>No release notes provided.</p>
-                <h2>v0.3.0-alpha-1</h2>
-                <p>No release notes provided.</p>
-                <h2>v0.3.0-alpha-0</h2>
-                <p>No release notes provided.</p>
-                <h2>v0.2.27</h2>
-                <p>No release notes provided.</p>
-                <h2>v0.2.26</h2>
-                <p>No release notes provided.</p>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">time's changelog</a>.</em></p>
-                <blockquote>
-                <h2>0.3.12 [2022-08-01]</h2>
-                <h3>Added</h3>
-                <ul>
-                <li><code>js-sys</code> now supports obtaining the system's local UTC offset.</li>
-                </ul>
-                <h3>Changed</h3>
-                <ul>
-                <li>Performance of many <code>Date</code> operations has improved when using the <code>large-dates</code> feature.</li>
-                <li>While an internal change, <code>OffsetDateTime</code> now stores the value in the attached <code>UtcOffset</code>, not
-                UTC. This leads to significant performance gains on nearly all <code>OffsetDateTime</code> methods.</li>
-                </ul>
-                <h3>Fixed</h3>
-                <ul>
-                <li>Subtracting two <code>Time</code>s can no longer panic. This previously occurred in some situations where the
-                result was invalid.</li>
-                <li>ISO 8601 parsing rounds the subseconds to avoid incorrectly truncating the value.</li>
-                </ul>
-                <h2>0.3.11 [2022-06-21]</h2>
-                <h3>Fixed</h3>
-                <ul>
-                <li><a href="https://redirect.github.com/time-rs/time/issues/479">#479</a>: regression when parsing optional values with <code>serde</code></li>
-                <li><a href="https://redirect.github.com/time-rs/time/issues/481">#481</a>: <code>Time</code> subtracted from <code>Time</code> can panic. This was caused by a bug that has always existed,
-                in that an internal invariant was not upheld. Memory safety was not violated.</li>
-                </ul>
-                <h2>0.3.10 [2022-06-19]</h2>
-                <h3>Added</h3>
-                <ul>
-                <li>Serde support for non-self-describing formats</li>
-                <li><code>Duration::unsigned_abs</code>, which returns a <code>std::time::Duration</code></li>
-                <li>ISO 8601 well-known format</li>
-                <li><code>Duration</code> can now be formatted with a <code>.N</code> specifier, providing a shorter representation when
-                using <code>Display</code>.</li>
-                <li>Parse <code>null</code> as <code>None</code> on serde structs</li>
-                </ul>
-                <h3>Fixed</h3>
-                <ul>
-                <li>Fix incorrect parsing of UTC offset in <code>Rfc3339</code>.</li>
-                </ul>
-                <h3>Changed</h3>
-                <ul>
-                <li>The minimum supported Rust version is now 1.57.0.</li>
-                <li>Performance for <code>Rfc2822</code> has been improved.</li>
-                <li>Debug assertions have been added in a few places. This should have no user facing impact, as it
-                only serves to catch bugs and is disabled in release mode.</li>
-                </ul>
-                <h2>0.3.9 [2022-03-22]</h2>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/time-rs/time/commit/ea2d1040f1793c8e0b6b11dd2ab73dfb52b43243"><code>ea2d104</code></a> Update changelog, 0.3.12 release</li>
-                <li><a href="https://github.com/time-rs/time/commit/33afe9d86dae226b45ad5ff50debb89abc19a4be"><code>33afe9d</code></a> Simplify float rounding for use case</li>
-                <li><a href="https://github.com/time-rs/time/commit/cfaf7f947c57c0e0053df19dbf6460a3ca5d0697"><code>cfaf7f9</code></a> Remove references to Codestream and VSLS</li>
-                <li><a href="https://github.com/time-rs/time/commit/7be38dc28c56eb5d4e1c250720803ecbaea4f283"><code>7be38dc</code></a> Change <code>OffsetDateTime</code> to store local datetime</li>
-                <li><a href="https://github.com/time-rs/time/commit/ab17a667e5ef54f85de7e49d8e175cacde67dc9c"><code>ab17a66</code></a> WASM support (<a href="https://redirect.github.com/time-rs/time/issues/491">#491</a>)</li>
-                <li><a href="https://github.com/time-rs/time/commit/eb70b0eb52420f4b4b3c2c38b5bc6772ef9a78c8"><code>eb70b0e</code></a> Fix clippy lints</li>
-                <li><a href="https://github.com/time-rs/time/commit/9df48cd08d6adad218f5e01124cfb6468174ce13"><code>9df48cd</code></a> Round subseconds to avoid float underflow (<a href="https://redirect.github.com/time-rs/time/issues/489">#489</a>)</li>
-                <li><a href="https://github.com/time-rs/time/commit/1736ffe58d54de9ae1e22b2cd03a51667ba962e4"><code>1736ffe</code></a> Add direct doc example for <code>datetime!</code> macro (<a href="https://redirect.github.com/time-rs/time/issues/487">#487</a>)</li>
-                <li><a href="https://github.com/time-rs/time/commit/94d56ab4cdda876608f9221ef1db8c00304e4d57"><code>94d56ab</code></a> Hide impl block from public docs</li>
-                <li><a href="https://github.com/time-rs/time/commit/14eaa4942429ccf42f5a0f4f58896ac49de2bc77"><code>14eaa49</code></a> Use runtime check for Julian day optimization</li>
-                <li>Additional commits viewable in <a href="https://github.com/time-rs/time/compare/0.1.38...v0.3.12">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump time from 0.1.38 to 0.3.12
-
-                Bumps [time](https://github.com/time-rs/time) from 0.1.38 to 0.3.12.
-                - [Release notes](https://github.com/time-rs/time/releases)
-                - [Changelog](https://github.com/time-rs/time/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/time-rs/time/compare/0.1.38...v0.3.12)
-            grouped-update: false
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
-            dependencies:
-                - name: regex
-                  previous-requirements:
-                    - file: Cargo.toml
-                      groups:
-                        - dependencies
-                      requirement: 0.1.41
-                      source: null
-                  previous-version: 0.1.41
-                  requirements:
-                    - file: Cargo.toml
-                      groups:
-                        - dependencies
-                      requirement: 1.6.0
-                      source: null
-                  version: 1.6.0
-            updated-dependency-files:
-                - content: |
-                    [package]
-                    name = "dependabot" # the name of the package
-                    version = "0.1.0"    # the current version, obeying semver
-                    authors = ["support@dependabot.com"]
-
-                    [dependencies]
-                    time = "0.1.12"
-                    regex = "1.6.0"
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /
+                  directory: /cargo
                   name: Cargo.toml
                   operation: update
                   support_file: false
@@ -495,28 +176,42 @@ output:
                     ]
 
                     [[package]]
+                    name = "cfg-if"
+                    version = "1.0.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
+
+                    [[package]]
                     name = "dependabot"
                     version = "0.1.0"
                     dependencies = [
+                     "itoa",
+                     "rand",
                      "regex",
                      "time",
                     ]
 
                     [[package]]
-                    name = "kernel32-sys"
-                    version = "0.2.2"
+                    name = "getrandom"
+                    version = "0.2.9"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "7507624b29483431c0ba2d82aece8ca6cdba9382bff4ddd0f7490560c056098d"
+                    checksum = "c85e1d9ab2eadba7e5040d4e09cbd6d072b76a557ad64e797c2cb9d4da21d7e4"
                     dependencies = [
-                     "winapi",
-                     "winapi-build",
+                     "cfg-if",
+                     "libc",
+                     "wasi",
                     ]
 
                     [[package]]
+                    name = "itoa"
+                    version = "1.0.5"
+                    source = "git+https://github.com/dtolnay/itoa.git?tag=1.0.5#ef4faeda61024dfb38b3897e46aeda8140828dc6"
+
+                    [[package]]
                     name = "libc"
-                    version = "0.2.40"
+                    version = "0.2.141"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "6fd41f331ac7c5b8ac259b8bf82c75c0fb2e469bbf37d2becbba9a6a2221965b"
+                    checksum = "3304a64d199bb964be99741b7a14d26972741915b3649639149b2479bb46f4b5"
 
                     [[package]]
                     name = "memchr"
@@ -525,10 +220,46 @@ output:
                     checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
 
                     [[package]]
-                    name = "redox_syscall"
-                    version = "0.1.37"
+                    name = "ppv-lite86"
+                    version = "0.2.17"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "0d92eecebad22b767915e4d529f89f28ee96dbbf5a4810d2b844373f136417fd"
+                    checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
+
+                    [[package]]
+                    name = "rand"
+                    version = "0.8.4"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "libc",
+                     "rand_chacha",
+                     "rand_core",
+                     "rand_hc",
+                    ]
+
+                    [[package]]
+                    name = "rand_chacha"
+                    version = "0.3.1"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "ppv-lite86",
+                     "rand_core",
+                    ]
+
+                    [[package]]
+                    name = "rand_core"
+                    version = "0.6.3"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "getrandom",
+                    ]
+
+                    [[package]]
+                    name = "rand_hc"
+                    version = "0.3.1"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "rand_core",
+                    ]
 
                     [[package]]
                     name = "regex"
@@ -548,170 +279,486 @@ output:
                     checksum = "f162c6dd7b008981e4d40210aca20b4bd0f9b60ca9271061b07f78537722f2e1"
 
                     [[package]]
-                    name = "time"
-                    version = "0.1.38"
+                    name = "serde"
+                    version = "1.0.159"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "d5d788d3aa77bc0ef3e9621256885555368b47bd495c13dd2e7413c89f845520"
+                    checksum = "3c04e8343c3daeec41f58990b9d77068df31209f2af111e059e9fe9646693065"
+
+                    [[package]]
+                    name = "time"
+                    version = "0.3.20"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "cd0cbfecb4d19b5ea75bb31ad904eb5b9fa13f21079c3b92017ebdf4999a5890"
                     dependencies = [
-                     "kernel32-sys",
-                     "libc",
-                     "redox_syscall",
-                     "winapi",
+                     "serde",
+                     "time-core",
                     ]
 
                     [[package]]
-                    name = "winapi"
-                    version = "0.2.8"
+                    name = "time-core"
+                    version = "0.1.0"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "167dc9d6949a9b857f3451275e911c3f44255842c1f7a76f33c55103a909087a"
+                    checksum = "2e153e1f1acaef8acc537e68b44906d2db6436e2b35ac2c6b42640fff91f00fd"
 
                     [[package]]
-                    name = "winapi-build"
-                    version = "0.1.1"
+                    name = "wasi"
+                    version = "0.11.0+wasi-snapshot-preview1"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "2d315eee3b34aca4797b2da6b13ed88266e6d612562a0c46390af8299fc699bc"
+                    checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
                   content_encoding: utf-8
                   deleted: false
-                  directory: /
+                  directory: /cargo
                   name: Cargo.lock
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump regex from 0.1.41 to 1.6.0
+            pr-title: Bump time from 0.3.0-alpha-2 to 0.3.20 in /cargo
             pr-body: |
-                Bumps [regex](https://github.com/rust-lang/regex) from 0.1.41 to 1.6.0.
+                Bumps [time](https://github.com/time-rs/time) from 0.3.0-alpha-2 to 0.3.20.
                 <details>
                 <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/rust-lang/regex/releases">regex's releases</a>.</em></p>
+                <p><em>Sourced from <a href="https://github.com/time-rs/time/releases">time's releases</a>.</em></p>
                 <blockquote>
-                <h2>1.0.0</h2>
-                <p>This release marks the 1.0 release of regex.</p>
-                <p>While this release includes some breaking changes, most users of older versions
-                of the regex library should be able to migrate to 1.0 by simply bumping the
-                version number. The important changes are as follows:</p>
-                <ul>
-                <li>We adopt Rust 1.20 as the new minimum supported version of Rust for regex.
-                We also tentativley adopt a policy that permits bumping the minimum supported
-                version of Rust in minor version releases of regex, but no patch releases.
-                That is, with respect to semver, we do not strictly consider bumping the
-                minimum version of Rust to be a breaking change, but adopt a conservative
-                stance as a compromise.</li>
-                <li>Octal syntax in regular expressions has been disabled by default. This
-                permits better error messages that inform users that backreferences aren't
-                available. Octal syntax can be re-enabled via the corresponding option on
-                <code>RegexBuilder</code>.</li>
-                <li><code>(?-u:\B)</code> is no longer allowed in Unicode regexes since it can match at
-                invalid UTF-8 code unit boundaries. <code>(?-u:\b)</code> is still allowed in Unicode
-                regexes.</li>
-                <li>The <code>From&lt;regex_syntax::Error&gt;</code> impl has been removed. This formally removes
-                the public dependency on <code>regex-syntax</code>.</li>
-                <li>A new feature, <code>use_std</code>, has been added and enabled by default. Disabling
-                the feature will result in a compilation error. In the future, this may
-                permit us to support <code>no_std</code> environments (w/ <code>alloc</code>) in a backwards
-                compatible way.</li>
-                </ul>
-                <p>For more information and discussion, please see
-                <a href="https://redirect.github.com/rust-lang/regex/issues/457">1.0 release tracking issue</a>.</p>
-                <h2>0.2.7</h2>
-                <p>This release includes a ground-up rewrite of the regex-syntax crate, which has
-                been in development for over a year.</p>
-                <p>New features:</p>
-                <ul>
-                <li>Error messages for invalid regexes have been greatly improved. You get these
-                automatically; you don't need to do anything. In addition to better
-                formatting, error messages will now explicitly call out the use of look
-                around. When regex 1.0 is released, this will happen for backreferences as
-                well.</li>
-                <li>Full support for intersection, difference and symmetric difference of
-                character classes. These can be used via the <code>&amp;&amp;</code>, <code>--</code> and <code>~~</code> binary
-                operators within classes.</li>
-                <li>A Unicode Level 1 conformat implementation of <code>\p{..}</code> character classes.
-                Things like <code>\p{scx:Hira}</code>, <code>\p{age:3.2}</code> or <code>\p{Changes_When_Casefolded}</code>
-                now work. All property name and value aliases are supported, and properties
-                are selected via loose matching. e.g., <code>\p{Greek}</code> is the same as
-                <code>\p{G r E e K}</code>.</li>
-                <li>A new <code>UNICODE.md</code> document has been added to this repository that</li>
-                </ul>
+                <h2>v0.3.20</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.19</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.18</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.17</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.16</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.15</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.14</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.13</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.12</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.11</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.10</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.9</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.7</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.6</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.5</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.4</h2>
+                <p>No release notes provided.</p>
+                <h2>v0.3.3</h2>
+                <p>No release notes provided.</p>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
                 </details>
                 <details>
                 <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">time's changelog</a>.</em></p>
+                <blockquote>
+                <h2>0.3.20 [2023-02-24]</h2>
+                <h3>Changed</h3>
+                <ul>
+                <li>The minimum supported Rust version is now 1.63.0.</li>
+                <li>On Unix-based operating systems with known thread-safe environments, functions obtaining the local
+                offset no longer require a check that the program is single-threaded. This currently includes
+                MacOS, illumos, and NetBSD.</li>
+                </ul>
+                <h3>Added</h3>
+                <ul>
+                <li><code>[ignore]</code> component in format descriptions. A <code>count</code> modifier is required, indicating the number
+                of bytes to ignore when parsing.</li>
+                <li><code>[unix_timestamp]</code> component in format descriptions. This is currently only usable with
+                <code>OffsetDateTime</code>. Users can choose between seconds, milliseconds, microseconds, and nanoseconds,
+                and whether the sign is mandatory or optional.</li>
+                </ul>
+                <h3>Fixed</h3>
+                <ul>
+                <li>The API for declaring soundness now uses stricter atomic orderings internally.</li>
+                </ul>
+                <h2>0.3.19 [2023-02-16]</h2>
+                <h3>Fixed</h3>
+                <p>This includes the update to the <code>format_description!</code> macro, which was supposed to be included in
+                0.3.18.</p>
+                <h2>0.3.18 [2023-02-16]</h2>
+                <h3>Changed</h3>
+                <ul>
+                <li>The minimum supported Rust version is now 1.62.0.</li>
+                </ul>
+                <h3>Added</h3>
+                <ul>
+                <li><code>[first]</code> and <code>[optional]</code> items can now be included in format descriptions. To parse this at
+                runtime, you must use the <code>format_description::parse_owned</code> method.</li>
+                <li><code>format_description::parse_borrowed</code></li>
+                <li>An API has been added to opt out of soundness checks for obtaining the local offset. This replaces
+                the previous, officially unsupported <code>RUSTFLAGS=&quot;--cfg unsound_local_offset&quot;</code>. End users may call
+                <code>time::util::local_offset::set_soundness(time::util::local_offset::Soundness::Unsound)</code>. This
+                method is <code>unsafe</code> because it enables undefined behavior if its safety requirements are not
+                upheld. Note that libraries <strong>must not</strong> set this to <code>Unsound</code>, as it is impossible for a library
+                to guarantee end users uphold the required invariants.</li>
+                </ul>
+                <h3>Fixed</h3>
+                <ul>
+                <li>Correctly parse offset sign when hour is zero. The parse was previously unconditionally positive,
+                even if the sign indicated otherwise.</li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/time-rs/time/commit/d7c725c422e6cb551302601464042d434a91b6da"><code>d7c725c</code></a> v0.3.20 release</li>
+                <li><a href="https://github.com/time-rs/time/commit/91afd542871a7e81bff3fc05cd5e44c976f0d4be"><code>91afd54</code></a> Add lock to another test</li>
+                <li><a href="https://github.com/time-rs/time/commit/8dca98c9469b96e4b984f18bece876f1c20a9ed7"><code>8dca98c</code></a> Implement <code>[unix_timestamp]</code> component</li>
+                <li><a href="https://github.com/time-rs/time/commit/d07b394baf23154cf1d75582479d1967c51c179f"><code>d07b394</code></a> Further split logical and memory offset</li>
+                <li><a href="https://github.com/time-rs/time/commit/02298375180546119e7bb62a74f18a725f1f486f"><code>0229837</code></a> Slightly refactor <code>DateTime</code> internals</li>
+                <li><a href="https://github.com/time-rs/time/commit/1daedfb70518e147e1500ee8dcf4d2b3b60a5925"><code>1daedfb</code></a> Add missing test for new error variant</li>
+                <li><a href="https://github.com/time-rs/time/commit/4edf73a03519b372db35e9bcfd2af7f1b9c312cb"><code>4edf73a</code></a> Use <code>bug!</code> instead of <code>unreachable!</code></li>
+                <li><a href="https://github.com/time-rs/time/commit/0e82474728b6a2204ec8ae5799f73eb711012e09"><code>0e82474</code></a> Use <code>explicit_generic_args_with_impl_trait</code></li>
+                <li><a href="https://github.com/time-rs/time/commit/3b6d77f1dc1064a45bafe046847f19b50cfe79bc"><code>3b6d77f</code></a> Bump MSRV to 1.63</li>
+                <li><a href="https://github.com/time-rs/time/commit/eb7b60e74ea8e2a2b7dd45d6e6012d35fa53e020"><code>eb7b60e</code></a> Always test local offset</li>
+                <li>Additional commits viewable in <a href="https://github.com/time-rs/time/compare/v0.3.0-alpha-2...v0.3.20">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump time from 0.3.0-alpha-2 to 0.3.20 in /cargo
+
+                Bumps [time](https://github.com/time-rs/time) from 0.3.0-alpha-2 to 0.3.20.
+                - [Release notes](https://github.com/time-rs/time/releases)
+                - [Changelog](https://github.com/time-rs/time/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/time-rs/time/compare/v0.3.0-alpha-2...v0.3.20)
+            grouped-update: false
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 3d44220c5ab8e3c592b63373354a596b781f6e09
+            dependencies:
+                - name: regex
+                  previous-requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: '>=1.6.0, <1.7.0'
+                      source: null
+                  previous-version: 1.6.0
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: '>=1.6.0, <1.8.0'
+                      source: null
+                  version: 1.7.3
+            updated-dependency-files:
+                - content: |
+                    [package]
+                    name = "dependabot" # the name of the package
+                    version = "0.1.0"    # the current version, obeying semver
+                    authors = ["support@dependabot.com"]
+
+                    [dependencies]
+                    time = "=0.3.0-alpha-2"
+                    regex = ">=1.6.0, <1.8.0"
+                    rand = { git = "ssh://git@github.com/rust-random/rand.git", tag = "0.8.4" }
+                    itoa = { git = "https://github.com/dtolnay/itoa.git", tag = "1.0.5" }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /cargo
+                  name: Cargo.toml
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    # This file is automatically @generated by Cargo.
+                    # It is not intended for manual editing.
+                    version = 3
+
+                    [[package]]
+                    name = "aho-corasick"
+                    version = "0.7.20"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "cc936419f96fa211c1b9166887b38e5e40b19958e5b895be7c1f93adec7071ac"
+                    dependencies = [
+                     "memchr",
+                    ]
+
+                    [[package]]
+                    name = "cfg-if"
+                    version = "1.0.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
+
+                    [[package]]
+                    name = "const_fn"
+                    version = "0.4.9"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "fbdcdcb6d86f71c5e97409ad45898af11cbc995b4ee8112d59095a28d376c935"
+
+                    [[package]]
+                    name = "dependabot"
+                    version = "0.1.0"
+                    dependencies = [
+                     "itoa",
+                     "rand",
+                     "regex",
+                     "time",
+                    ]
+
+                    [[package]]
+                    name = "easy-ext"
+                    version = "0.2.9"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "53aff6fdc1b181225acdcb5b14c47106726fd8e486707315b1b138baed68ee31"
+
+                    [[package]]
+                    name = "getrandom"
+                    version = "0.2.9"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "c85e1d9ab2eadba7e5040d4e09cbd6d072b76a557ad64e797c2cb9d4da21d7e4"
+                    dependencies = [
+                     "cfg-if",
+                     "libc",
+                     "wasi",
+                    ]
+
+                    [[package]]
+                    name = "itoa"
+                    version = "1.0.5"
+                    source = "git+https://github.com/dtolnay/itoa.git?tag=1.0.5#ef4faeda61024dfb38b3897e46aeda8140828dc6"
+
+                    [[package]]
+                    name = "libc"
+                    version = "0.2.141"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "3304a64d199bb964be99741b7a14d26972741915b3649639149b2479bb46f4b5"
+
+                    [[package]]
+                    name = "memchr"
+                    version = "2.5.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
+
+                    [[package]]
+                    name = "ppv-lite86"
+                    version = "0.2.17"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
+
+                    [[package]]
+                    name = "rand"
+                    version = "0.8.4"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "libc",
+                     "rand_chacha",
+                     "rand_core",
+                     "rand_hc",
+                    ]
+
+                    [[package]]
+                    name = "rand_chacha"
+                    version = "0.3.1"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "ppv-lite86",
+                     "rand_core",
+                    ]
+
+                    [[package]]
+                    name = "rand_core"
+                    version = "0.6.3"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "getrandom",
+                    ]
+
+                    [[package]]
+                    name = "rand_hc"
+                    version = "0.3.1"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "rand_core",
+                    ]
+
+                    [[package]]
+                    name = "regex"
+                    version = "1.7.3"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "8b1f693b24f6ac912f4893ef08244d70b6067480d2f1a46e950c9691e6749d1d"
+                    dependencies = [
+                     "aho-corasick",
+                     "memchr",
+                     "regex-syntax",
+                    ]
+
+                    [[package]]
+                    name = "regex-syntax"
+                    version = "0.6.29"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "f162c6dd7b008981e4d40210aca20b4bd0f9b60ca9271061b07f78537722f2e1"
+
+                    [[package]]
+                    name = "standback"
+                    version = "0.3.5"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "a66b810a718e8ba519476ec4df79e2f380f568b83106b812b8182090e4bfba8d"
+                    dependencies = [
+                     "easy-ext",
+                     "version_check",
+                    ]
+
+                    [[package]]
+                    name = "time"
+                    version = "0.3.0-alpha-2"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "0f906d7af3f9c93ef57452c3c7d577f0dcfa1700516dcd15c7ba75ede4f0ed08"
+                    dependencies = [
+                     "const_fn",
+                     "libc",
+                     "standback",
+                    ]
+
+                    [[package]]
+                    name = "version_check"
+                    version = "0.9.4"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
+
+                    [[package]]
+                    name = "wasi"
+                    version = "0.11.0+wasi-snapshot-preview1"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /cargo
+                  name: Cargo.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump regex from 1.6.0 to 1.7.3 in /cargo
+            pr-body: |
+                Bumps [regex](https://github.com/rust-lang/regex) from 1.6.0 to 1.7.3.
+                <details>
+                <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/rust-lang/regex/blob/master/CHANGELOG.md">regex's changelog</a>.</em></p>
                 <blockquote>
-                <h1>1.6.0 (2022-07-05)</h1>
-                <p>This release principally includes an upgrade to Unicode 14.</p>
-                <p>New features:</p>
+                <h1>1.7.3 (2023-03-24)</h1>
+                <p>This is a small release that fixes a bug in <code>Regex::shortest_match_at</code> that
+                could cause it to panic, even when the offset given is valid.</p>
+                <p>Bug fixes:</p>
                 <ul>
-                <li>[FEATURE <a href="https://redirect.github.com/rust-lang/regex/issues/832">#832</a>](<a href="https://redirect.github.com/rust-lang/regex/pull/832">rust-lang/regex#832</a>):
-                Clarify that <code>Captures::len</code> includes all groups, not just matching groups.</li>
-                <li>[FEATURE <a href="https://redirect.github.com/rust-lang/regex/issues/857">#857</a>](<a href="https://redirect.github.com/rust-lang/regex/pull/857">rust-lang/regex#857</a>):
-                Add an <code>ExactSizeIterator</code> impl for <code>SubCaptureMatches</code>.</li>
-                <li>[FEATURE <a href="https://redirect.github.com/rust-lang/regex/issues/861">#861</a>](<a href="https://redirect.github.com/rust-lang/regex/pull/861">rust-lang/regex#861</a>):
-                Improve <code>RegexSet</code> documentation examples.</li>
-                <li>[FEATURE <a href="https://redirect.github.com/rust-lang/regex/issues/877">#877</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/877">rust-lang/regex#877</a>):
-                Upgrade to Unicode 14.</li>
+                <li>[BUG <a href="https://redirect.github.com/rust-lang/regex/issues/969">#969</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/969">rust-lang/regex#969</a>):
+                Fix a bug in how the reverse DFA was called for <code>Regex::shortest_match_at</code>.</li>
+                </ul>
+                <h1>1.7.2 (2023-03-21)</h1>
+                <p>This is a small release that fixes a failing test on FreeBSD.</p>
+                <p>Bug fixes:</p>
+                <ul>
+                <li>[BUG <a href="https://redirect.github.com/rust-lang/regex/issues/967">#967</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/967">rust-lang/regex#967</a>):
+                Fix &quot;no stack overflow&quot; test which can fail due to the small stack size.</li>
+                </ul>
+                <h1>1.7.1 (2023-01-09)</h1>
+                <p>This release was done principally to try and fix the doc.rs rendering for the
+                regex crate.</p>
+                <p>Performance improvements:</p>
+                <ul>
+                <li>[PERF <a href="https://redirect.github.com/rust-lang/regex/issues/930">#930</a>](<a href="https://redirect.github.com/rust-lang/regex/pull/930">rust-lang/regex#930</a>):
+                Optimize <code>replacen</code>. This also applies to <code>replace</code>, but not <code>replace_all</code>.</li>
                 </ul>
                 <p>Bug fixes:</p>
                 <ul>
-                <li>[BUG <a href="https://redirect.github.com/rust-lang/regex/issues/792">#792</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/792">rust-lang/regex#792</a>):
-                Fix error message rendering bug.</li>
+                <li>[BUG <a href="https://redirect.github.com/rust-lang/regex/issues/945">#945</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/945">rust-lang/regex#945</a>):
+                Maybe fix rustdoc rendering by just bumping a new release?</li>
                 </ul>
-                <h1>1.5.6 (2022-05-20)</h1>
-                <p>This release includes a few bug fixes, including a bug that produced incorrect
-                matches when a non-greedy <code>?</code> operator was used.</p>
+                <h1>1.7.0 (2022-11-05)</h1>
+                <p>This release principally includes an upgrade to Unicode 15.</p>
+                <p>New features:</p>
                 <ul>
-                <li>[BUG <a href="https://redirect.github.com/rust-lang/regex/issues/680">#680</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/680">rust-lang/regex#680</a>):
-                Fixes a bug where <code>[[:alnum:][:^ascii:]]</code> dropped <code>[:alnum:]</code> from the class.</li>
-                <li>[BUG <a href="https://redirect.github.com/rust-lang/regex/issues/859">#859</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/859">rust-lang/regex#859</a>):
-                Fixes a bug where <code>Hir::is_match_empty</code> returned <code>false</code> for <code>\b</code>.</li>
-                <li>[BUG <a href="https://redirect.github.com/rust-lang/regex/issues/862">#862</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/862">rust-lang/regex#862</a>):
-                Fixes a bug where 'ab??' matches 'ab' instead of 'a' in 'ab'.</li>
+                <li>[FEATURE <a href="https://redirect.github.com/rust-lang/regex/issues/832">#832</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/916">rust-lang/regex#916</a>):
+                Upgrade to Unicode 15.</li>
                 </ul>
-                <h1>1.5.5 (2022-03-08)</h1>
-                <p>This releases fixes a security bug in the regex compiler. This bug permits a
-                vector for a denial-of-service attack in cases where the regex being compiled
-                is untrusted. There are no known problems where the regex is itself trusted,
-                including in cases of untrusted haystacks.</p>
-                <ul>
-                <li><a href="https://github.com/rust-lang/regex/security/advisories/GHSA-m5pq-gvj9-9vr8">SECURITY #GHSA-m5pq-gvj9-9vr8</a>:
-                Fixes a bug in the regex compiler where empty sub-expressions subverted the
-                existing mitigations in place to enforce a size limit on compiled regexes.
-                The Rust Security Response WG published an advisory about this:
-                <a href="https://groups.google.com/g/rustlang-security-announcements/c/NcNNL1Jq7Yw">https://groups.google.com/g/rustlang-security-announcements/c/NcNNL1Jq7Yw</a></li>
-                </ul>
-                <h1>1.5.4 (2021-05-06)</h1>
-                <!-- raw HTML omitted -->
                 </blockquote>
-                <p>... (truncated)</p>
                 </details>
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li>See full diff in <a href="https://github.com/rust-lang/regex/commits/1.6.0">compare view</a></li>
+                <li><a href="https://github.com/rust-lang/regex/commit/9582040009820380a16819ca0d1ae262c7d454b0"><code>9582040</code></a> 1.7.3</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/9562ccd1612c3b7b0ca2122b27c3c9768e10f194"><code>9562ccd</code></a> changelog: 1.7.3</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/d94f95523aed7fecc71fc2e082d1458f69dd8de3"><code>d94f955</code></a> dfa: fix bug in how the reverse DFA is called</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/32fed9429eafba0ae92a64b01796a0c5a75b88c8"><code>32fed94</code></a> 1.7.2</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/6a7ba1e5781c90487b8ad9c446eebbb28d6b2c66"><code>6a7ba1e</code></a> deps: bump to regex-syntax 0.6.29</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/72d482f911c4057f9a31f7f434dfe27c929a8913"><code>72d482f</code></a> regex-syntax-0.6.29</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/48b3ba4df73d8917a000e28b7a13bb084a0b6090"><code>48b3ba4</code></a> changelog: 1.7.2</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/d8e22ddf9933c37daf6363837b32290d2961ffdb"><code>d8e22dd</code></a> syntax: tweak the &quot;no stack overflow&quot; test</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/a9b2e02352db92ce1f6e5b7ecd41b8bbffbe161a"><code>a9b2e02</code></a> 1.7.1</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/98c1b63ffe1d4d0c385137cf878e0e959454ce3d"><code>98c1b63</code></a> changelog: 1.7.1</li>
+                <li>Additional commits viewable in <a href="https://github.com/rust-lang/regex/compare/1.6.0...1.7.3">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump regex from 0.1.41 to 1.6.0
+                Bump regex from 1.6.0 to 1.7.3 in /cargo
 
-                Bumps [regex](https://github.com/rust-lang/regex) from 0.1.41 to 1.6.0.
+                Bumps [regex](https://github.com/rust-lang/regex) from 1.6.0 to 1.7.3.
                 - [Release notes](https://github.com/rust-lang/regex/releases)
                 - [Changelog](https://github.com/rust-lang/regex/blob/master/CHANGELOG.md)
-                - [Commits](https://github.com/rust-lang/regex/commits/1.6.0)
+                - [Commits](https://github.com/rust-lang/regex/compare/1.6.0...1.7.3)
             grouped-update: false
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 3d44220c5ab8e3c592b63373354a596b781f6e09
             dependencies:
-                - name: libc
-                  previous-requirements: []
-                  previous-version: 0.2.40
-                  requirements: []
-                  version: 0.2.140
+                - name: rand
+                  previous-requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 0.8.4
+                        type: git
+                        url: ssh://git@github.com/rust-random/rand.git
+                  previous-version: 8792268dfe57e49bb4518190bf4fe66176759a44
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 0.8.5
+                        type: git
+                        url: ssh://git@github.com/rust-random/rand.git
+                  version: 937320cbfeebd4352a23086d9c6e68f067f74644
             updated-dependency-files:
+                - content: |
+                    [package]
+                    name = "dependabot" # the name of the package
+                    version = "0.1.0"    # the current version, obeying semver
+                    authors = ["support@dependabot.com"]
+
+                    [dependencies]
+                    time = "=0.3.0-alpha-2"
+                    regex = ">=1.6.0, <1.7.0"
+                    rand = { git = "ssh://git@github.com/rust-random/rand.git", tag = "0.8.5" }
+                    itoa = { git = "https://github.com/dtolnay/itoa.git", tag = "1.0.5" }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /cargo
+                  name: Cargo.toml
+                  operation: update
+                  support_file: false
+                  type: file
                 - content: |
                     # This file is automatically @generated by Cargo.
                     # It is not intended for manual editing.
@@ -719,57 +766,107 @@ output:
 
                     [[package]]
                     name = "aho-corasick"
-                    version = "0.3.4"
+                    version = "0.7.20"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "f5314d38125dc9b9ca99ed19a516eb19feac7bf8b22b5b32993c971bf8cb2a4d"
+                    checksum = "cc936419f96fa211c1b9166887b38e5e40b19958e5b895be7c1f93adec7071ac"
                     dependencies = [
                      "memchr",
                     ]
 
                     [[package]]
+                    name = "cfg-if"
+                    version = "1.0.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
+
+                    [[package]]
+                    name = "const_fn"
+                    version = "0.4.9"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "fbdcdcb6d86f71c5e97409ad45898af11cbc995b4ee8112d59095a28d376c935"
+
+                    [[package]]
                     name = "dependabot"
                     version = "0.1.0"
                     dependencies = [
+                     "itoa",
+                     "rand",
                      "regex",
                      "time",
                     ]
 
                     [[package]]
-                    name = "kernel32-sys"
-                    version = "0.2.2"
+                    name = "easy-ext"
+                    version = "0.2.9"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "7507624b29483431c0ba2d82aece8ca6cdba9382bff4ddd0f7490560c056098d"
+                    checksum = "53aff6fdc1b181225acdcb5b14c47106726fd8e486707315b1b138baed68ee31"
+
+                    [[package]]
+                    name = "getrandom"
+                    version = "0.2.9"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "c85e1d9ab2eadba7e5040d4e09cbd6d072b76a557ad64e797c2cb9d4da21d7e4"
                     dependencies = [
-                     "winapi",
-                     "winapi-build",
+                     "cfg-if",
+                     "libc",
+                     "wasi",
                     ]
+
+                    [[package]]
+                    name = "itoa"
+                    version = "1.0.5"
+                    source = "git+https://github.com/dtolnay/itoa.git?tag=1.0.5#ef4faeda61024dfb38b3897e46aeda8140828dc6"
 
                     [[package]]
                     name = "libc"
-                    version = "0.2.140"
+                    version = "0.2.141"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "99227334921fae1a979cf0bfdfcc6b3e5ce376ef57e16fb6fb3ea2ed6095f80c"
+                    checksum = "3304a64d199bb964be99741b7a14d26972741915b3649639149b2479bb46f4b5"
 
                     [[package]]
                     name = "memchr"
-                    version = "0.1.11"
+                    version = "2.5.0"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "d8b629fb514376c675b98c1421e80b151d3817ac42d7c667717d282761418d20"
+                    checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
+
+                    [[package]]
+                    name = "ppv-lite86"
+                    version = "0.2.17"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
+
+                    [[package]]
+                    name = "rand"
+                    version = "0.8.5"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.5#937320cbfeebd4352a23086d9c6e68f067f74644"
                     dependencies = [
                      "libc",
+                     "rand_chacha",
+                     "rand_core",
                     ]
 
                     [[package]]
-                    name = "redox_syscall"
-                    version = "0.1.37"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "0d92eecebad22b767915e4d529f89f28ee96dbbf5a4810d2b844373f136417fd"
+                    name = "rand_chacha"
+                    version = "0.3.1"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.5#937320cbfeebd4352a23086d9c6e68f067f74644"
+                    dependencies = [
+                     "ppv-lite86",
+                     "rand_core",
+                    ]
+
+                    [[package]]
+                    name = "rand_core"
+                    version = "0.6.4"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.5#937320cbfeebd4352a23086d9c6e68f067f74644"
+                    dependencies = [
+                     "getrandom",
+                    ]
 
                     [[package]]
                     name = "regex"
-                    version = "0.1.41"
+                    version = "1.6.0"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "4499ef755e709fbfe334ecbc3206537e84952ead5347791b0f54c2b75fe63a28"
+                    checksum = "4c4eb3267174b8c6c2f654116623910a0fef09c4753f8dd83db29c48a0df988b"
                     dependencies = [
                      "aho-corasick",
                      "memchr",
@@ -778,138 +875,150 @@ output:
 
                     [[package]]
                     name = "regex-syntax"
-                    version = "0.2.6"
+                    version = "0.6.29"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "a21935ce5a4dfa48e3ded1aefbbe353fb9ab258b0d3fa0bd168bef00797b3dc7"
+                    checksum = "f162c6dd7b008981e4d40210aca20b4bd0f9b60ca9271061b07f78537722f2e1"
 
                     [[package]]
-                    name = "time"
-                    version = "0.1.38"
+                    name = "standback"
+                    version = "0.3.5"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "d5d788d3aa77bc0ef3e9621256885555368b47bd495c13dd2e7413c89f845520"
+                    checksum = "a66b810a718e8ba519476ec4df79e2f380f568b83106b812b8182090e4bfba8d"
                     dependencies = [
-                     "kernel32-sys",
-                     "libc",
-                     "redox_syscall",
-                     "winapi",
+                     "easy-ext",
+                     "version_check",
                     ]
 
                     [[package]]
-                    name = "winapi"
-                    version = "0.2.8"
+                    name = "time"
+                    version = "0.3.0-alpha-2"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "167dc9d6949a9b857f3451275e911c3f44255842c1f7a76f33c55103a909087a"
+                    checksum = "0f906d7af3f9c93ef57452c3c7d577f0dcfa1700516dcd15c7ba75ede4f0ed08"
+                    dependencies = [
+                     "const_fn",
+                     "libc",
+                     "standback",
+                    ]
 
                     [[package]]
-                    name = "winapi-build"
-                    version = "0.1.1"
+                    name = "version_check"
+                    version = "0.9.4"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "2d315eee3b34aca4797b2da6b13ed88266e6d612562a0c46390af8299fc699bc"
+                    checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
+
+                    [[package]]
+                    name = "wasi"
+                    version = "0.11.0+wasi-snapshot-preview1"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
                   content_encoding: utf-8
                   deleted: false
-                  directory: /
+                  directory: /cargo
                   name: Cargo.lock
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump libc from 0.2.40 to 0.2.140
+            pr-title: Bump rand from 0.8.4 to 0.8.5 in /cargo
             pr-body: |
-                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.40 to 0.2.140.
+                Bumps [rand](https://github.com/rust-random/rand) from 0.8.4 to 0.8.5.
                 <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/rust-lang/libc/releases">libc's releases</a>.</em></p>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/rust-random/rand/blob/master/CHANGELOG.md">rand's changelog</a>.</em></p>
                 <blockquote>
-                <h2>0.2.140</h2>
-                <h2>What's Changed</h2>
+                <h2>[0.8.5] - 2021-08-20</h2>
+                <h3>Fixes</h3>
                 <ul>
-                <li>linux-like: add AT_RECURSIVE constant by <a href="https://github.com/lucab"><code>@​lucab</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3043">rust-lang/libc#3043</a></li>
-                <li>Set correct <code>FD_SETSIZE</code> for <code>espidf</code> by <a href="https://github.com/zRedShift"><code>@​zRedShift</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3054">rust-lang/libc#3054</a></li>
-                <li>Fix Fuchsia target names by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3059">rust-lang/libc#3059</a></li>
-                <li>PIDFD_NONBLOCK addition into uclibc. by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3029">rust-lang/libc#3029</a></li>
-                <li>linux add scheduler core for prctl constants by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3055">rust-lang/libc#3055</a></li>
-                <li>linux-like: add OPEN_TREE_CLONE and OPEN_TREE_CLOEXEC by <a href="https://github.com/lucab"><code>@​lucab</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3048">rust-lang/libc#3048</a></li>
-                <li>adding mimmutable from openbsd (7.3) by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3063">rust-lang/libc#3063</a></li>
-                <li>Fix compile error for riscv64-linux-android by <a href="https://github.com/colincross"><code>@​colincross</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3064">rust-lang/libc#3064</a></li>
-                <li>android: add missing syscall constants by <a href="https://github.com/lucab"><code>@​lucab</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3062">rust-lang/libc#3062</a></li>
-                <li>haiku posix layer adding locale flavor of strcasecmp api by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3069">rust-lang/libc#3069</a></li>
-                <li>linux: add pthread barriers by <a href="https://github.com/Forestryks"><code>@​Forestryks</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3065">rust-lang/libc#3065</a></li>
-                <li>netbsd 10 adding getentropy/getrandom. by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3071">rust-lang/libc#3071</a></li>
-                <li>Ignore some ABI changed fns on macOS by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3077">rust-lang/libc#3077</a></li>
-                <li>Add struct ctl_info by <a href="https://github.com/siegfried"><code>@​siegfried</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3046">rust-lang/libc#3046</a></li>
-                <li>linux: add additional netlink interface attribute tags by <a href="https://github.com/tones111"><code>@​tones111</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3053">rust-lang/libc#3053</a></li>
-                <li>Add <code>pthread_main_np</code> on Apple targets by <a href="https://github.com/madsmtm"><code>@​madsmtm</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3079">rust-lang/libc#3079</a></li>
-                <li>uclibc/mips: add O_NOATIME &amp; O_PATH constant by <a href="https://github.com/cppcoffee"><code>@​cppcoffee</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3058">rust-lang/libc#3058</a></li>
-                <li>linux/uclibc: resync syscall tables by <a href="https://github.com/lucab"><code>@​lucab</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3061">rust-lang/libc#3061</a></li>
-                <li>freebsd 14 add ptrace_sc_remote. by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3073">rust-lang/libc#3073</a></li>
-                <li>netbsd 10 event api update. by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3080">rust-lang/libc#3080</a></li>
-                <li>linux glibc update arm64 HWCAP2 list including the last 6.1 kernel en… by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3081">rust-lang/libc#3081</a></li>
-                <li>adding specific freebsd signal constants by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3082">rust-lang/libc#3082</a></li>
-                <li>Add getentropy for Emscripten by <a href="https://github.com/kleisauke"><code>@​kleisauke</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3087">rust-lang/libc#3087</a></li>
-                <li>netbsd 10 add ppoll api support by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3083">rust-lang/libc#3083</a></li>
-                <li>uclibc/mips: add missing O_LARGEFILE constant by <a href="https://github.com/cppcoffee"><code>@​cppcoffee</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3088">rust-lang/libc#3088</a></li>
-                <li>add <code>user_regs</code> for linux on arm by <a href="https://github.com/Freax13"><code>@​Freax13</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3072">rust-lang/libc#3072</a></li>
-                <li>linux: add PTRACE_SYSCALL_INFO_* by <a href="https://github.com/mbyzhang"><code>@​mbyzhang</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3074">rust-lang/libc#3074</a></li>
-                <li>linux: add PR_SET_PTRACER_ANY by <a href="https://github.com/howjmay"><code>@​howjmay</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3086">rust-lang/libc#3086</a></li>
-                <li>uclibc/mips: add missing constant by <a href="https://github.com/cppcoffee"><code>@​cppcoffee</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3092">rust-lang/libc#3092</a></li>
-                <li>m68k: Fix incorrect type for sigaction::sa_flags by <a href="https://github.com/glaubitz"><code>@​glaubitz</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3078">rust-lang/libc#3078</a></li>
-                <li>Solaris/Illumos: use correct types for getrandom(2) flags by <a href="https://github.com/josephlr"><code>@​josephlr</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3090">rust-lang/libc#3090</a></li>
-                <li>Upgrade FreeBSD 14 image by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3096">rust-lang/libc#3096</a></li>
-                <li>ANDROID: Add syncfs API in liblibc by <a href="https://github.com/shikhapanwar"><code>@​shikhapanwar</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3060">rust-lang/libc#3060</a></li>
-                <li>add SO_TS_* constants for FreeBSD by <a href="https://github.com/folkertdev"><code>@​folkertdev</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3098">rust-lang/libc#3098</a></li>
-                <li>uclibc/mips: add more missing constant by <a href="https://github.com/cppcoffee"><code>@​cppcoffee</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3094">rust-lang/libc#3094</a></li>
-                <li>pidfile util api for freebsd addition. by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3099">rust-lang/libc#3099</a></li>
-                <li>freebsd add initial sctp support by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3101">rust-lang/libc#3101</a></li>
-                <li>uclibc/mips: add missing MAP_HUGETLB constant by <a href="https://github.com/cppcoffee"><code>@​cppcoffee</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3100">rust-lang/libc#3100</a></li>
-                <li>xous: add initial C definitions by <a href="https://github.com/xobs"><code>@​xobs</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3084">rust-lang/libc#3084</a></li>
-                <li>freebsd further sctp support. by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3102">rust-lang/libc#3102</a></li>
-                <li>apple add pthread_stack_frame_decode_np by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3105">rust-lang/libc#3105</a></li>
-                <li>linux tcp adding TCP_MD5SIG_MAXKEYLEN const. by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3107">rust-lang/libc#3107</a></li>
-                <li>linux: add more constants and FUTEX_OP for futex by <a href="https://github.com/voskh0d"><code>@​voskh0d</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3109">rust-lang/libc#3109</a></li>
-                <li>linux starting adding sctp support by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3095">rust-lang/libc#3095</a></li>
-                <li>freebsd tcp_info data addition. by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3112">rust-lang/libc#3112</a></li>
-                <li>netbsd tcp_info data addition. by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3113">rust-lang/libc#3113</a></li>
-                <li>FreeBSD: move all new ABI to base module, add more O_ flags by <a href="https://github.com/valpackett"><code>@​valpackett</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3114">rust-lang/libc#3114</a></li>
-                <li>freebsd sctp support part 3 by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3118">rust-lang/libc#3118</a></li>
+                <li>Fix build on non-32/64-bit architectures (<a href="https://redirect.github.com/rust-random/rand/issues/1144">#1144</a>)</li>
+                <li>Fix &quot;min_const_gen&quot; feature for <code>no_std</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1173">#1173</a>)</li>
+                <li>Check <code>libc::pthread_atfork</code> return value with panic on error (<a href="https://redirect.github.com/rust-random/rand/issues/1178">#1178</a>)</li>
+                <li>More robust reseeding in case <code>ReseedingRng</code> is used from a fork handler (<a href="https://redirect.github.com/rust-random/rand/issues/1178">#1178</a>)</li>
+                <li>Fix nightly: remove unused <code>slice_partition_at_index</code> feature (<a href="https://redirect.github.com/rust-random/rand/issues/1215">#1215</a>)</li>
+                <li>Fix nightly + <code>simd_support</code>: update <code>packed_simd</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1216">#1216</a>)</li>
                 </ul>
-                <!-- raw HTML omitted -->
+                <h3>Rngs</h3>
+                <ul>
+                <li><code>StdRng</code>: Switch from HC128 to ChaCha12 on emscripten (<a href="https://redirect.github.com/rust-random/rand/issues/1142">#1142</a>).
+                We now use ChaCha12 on all platforms.</li>
+                </ul>
+                <h3>Documentation</h3>
+                <ul>
+                <li>Added docs about rand's use of const generics (<a href="https://redirect.github.com/rust-random/rand/issues/1150">#1150</a>)</li>
+                <li>Better random chars example (<a href="https://redirect.github.com/rust-random/rand/issues/1157">#1157</a>)</li>
+                </ul>
                 </blockquote>
-                <p>... (truncated)</p>
                 </details>
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/rust-lang/libc/commit/ad7bbf4b5d4f61d2b05b6dad1bd5880e40fc22f7"><code>ad7bbf4</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3141">#3141</a> - Amanieu:v0.2.140, r=JohnTitor</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/34e9a5e37856ba122791ce6d5f04cec9c7c24f2b"><code>34e9a5e</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3143">#3143</a> - connor4312:add-errno, r=JohnTitor</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/89ec88197af91a1a59d0666e474edaed3a6b4aca"><code>89ec881</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3037">#3037</a> - ferrocene:pa-check-cfg, r=JohnTitor</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/d63eedc3a3fe078e0aa32ba5a329f10d2e63c18d"><code>d63eedc</code></a> compatibility with rust 1.13.0</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/9d3281baacde77e010ed6b90f8837fbec3acc9d3"><code>9d3281b</code></a> wasi: add __errno_location</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/3363d43574db04c805388566fc1456f9e02ad01d"><code>3363d43</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3142">#3142</a> - connor4312:wasi-irwx, r=JohnTitor</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/4b4cd15cef75872808008a15ecb316f6e8a7d061"><code>4b4cd15</code></a> add S_IRWX* constants to wasi</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/b9a49d442bdeeac8cac3bb097f5e224e7623e037"><code>b9a49d4</code></a> add ci job to test check-cfg</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/e74f73544f29fe3559081250b9a657a36bc860eb"><code>e74f735</code></a> support extra check-cfg</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/b636da0a67185598bbe739ed2c20910e51514e4d"><code>b636da0</code></a> emit rustc-check-cfg in the build script when LIBC_CHECK_CFG=1</li>
-                <li>Additional commits viewable in <a href="https://github.com/rust-lang/libc/compare/0.2.40...0.2.140">compare view</a></li>
+                <li><a href="https://github.com/rust-random/rand/commit/937320cbfeebd4352a23086d9c6e68f067f74644"><code>937320c</code></a> Update CHANGELOG for 0.8.5 (<a href="https://redirect.github.com/rust-random/rand/issues/1221">#1221</a>)</li>
+                <li><a href="https://github.com/rust-random/rand/commit/2924af688d352b889322870d017356f12651866b"><code>2924af6</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1183">#1183</a> from vks/fill-float-doc</li>
+                <li><a href="https://github.com/rust-random/rand/commit/dbbc1bf3176138c867f3d84c0c4d288119a5a84e"><code>dbbc1bf</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1218">#1218</a> from Will-Low/master</li>
+                <li><a href="https://github.com/rust-random/rand/commit/9f20df04d88698c38515833d6db62d7eb50d8b80"><code>9f20df0</code></a> Making distributions comparable by deriving PartialEq. Tests included</li>
+                <li><a href="https://github.com/rust-random/rand/commit/a407bdfa4563d0cfbf744049242926c8de079d3f"><code>a407bdf</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1216">#1216</a> from rust-random/work5</li>
+                <li><a href="https://github.com/rust-random/rand/commit/d3ca11b0bcc1f42fe34ba4f90f99509b7eb4ff18"><code>d3ca11b</code></a> Update to packed_simd_2 0.3.7</li>
+                <li><a href="https://github.com/rust-random/rand/commit/fa04c15d0bb5842fdbdbb73d7a53ead36f3fcf52"><code>fa04c15</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1215">#1215</a> from Lantern-chat/master</li>
+                <li><a href="https://github.com/rust-random/rand/commit/73f8ffd16379390e624ac53cd6882dd679dd9a6f"><code>73f8ffd</code></a> Remove unused <code>slice_partition_at_index</code> feature</li>
+                <li><a href="https://github.com/rust-random/rand/commit/8f372500f05dfadcff6c35e773e81029ab7debad"><code>8f37250</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1208">#1208</a> from newpavlov/rand_distr/fix_no_std</li>
+                <li><a href="https://github.com/rust-random/rand/commit/9ef737ba5b814f6ab36cebafb59ad29885d68a05"><code>9ef737b</code></a> update changelog</li>
+                <li>Additional commits viewable in <a href="https://github.com/rust-random/rand/compare/8792268dfe57e49bb4518190bf4fe66176759a44...937320cbfeebd4352a23086d9c6e68f067f74644">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump libc from 0.2.40 to 0.2.140
+                Bump rand from 0.8.4 to 0.8.5 in /cargo
 
-                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.40 to 0.2.140.
-                - [Release notes](https://github.com/rust-lang/libc/releases)
-                - [Commits](https://github.com/rust-lang/libc/compare/0.2.40...0.2.140)
+                Bumps [rand](https://github.com/rust-random/rand) from 0.8.4 to 0.8.5.
+                - [Release notes](https://github.com/rust-random/rand/releases)
+                - [Changelog](https://github.com/rust-random/rand/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/rust-random/rand/compare/8792268dfe57e49bb4518190bf4fe66176759a44...937320cbfeebd4352a23086d9c6e68f067f74644)
             grouped-update: false
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 3d44220c5ab8e3c592b63373354a596b781f6e09
             dependencies:
-                - name: redox_syscall
-                  previous-requirements: []
-                  previous-version: 0.1.37
-                  requirements: []
-                  version: 0.1.57
+                - name: itoa
+                  previous-requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 1.0.5
+                        type: git
+                        url: https://github.com/dtolnay/itoa.git
+                  previous-version: ef4faeda61024dfb38b3897e46aeda8140828dc6
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 1.0.6
+                        type: git
+                        url: https://github.com/dtolnay/itoa.git
+                  version: 3cab737d59c60014655268a79930861db300023d
             updated-dependency-files:
+                - content: |
+                    [package]
+                    name = "dependabot" # the name of the package
+                    version = "0.1.0"    # the current version, obeying semver
+                    authors = ["support@dependabot.com"]
+
+                    [dependencies]
+                    time = "=0.3.0-alpha-2"
+                    regex = ">=1.6.0, <1.7.0"
+                    rand = { git = "ssh://git@github.com/rust-random/rand.git", tag = "0.8.4" }
+                    itoa = { git = "https://github.com/dtolnay/itoa.git", tag = "1.0.6" }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /cargo
+                  name: Cargo.toml
+                  operation: update
+                  support_file: false
+                  type: file
                 - content: |
                     # This file is automatically @generated by Cargo.
                     # It is not intended for manual editing.
@@ -917,57 +1026,116 @@ output:
 
                     [[package]]
                     name = "aho-corasick"
-                    version = "0.3.4"
+                    version = "0.7.20"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "f5314d38125dc9b9ca99ed19a516eb19feac7bf8b22b5b32993c971bf8cb2a4d"
+                    checksum = "cc936419f96fa211c1b9166887b38e5e40b19958e5b895be7c1f93adec7071ac"
                     dependencies = [
                      "memchr",
                     ]
 
                     [[package]]
+                    name = "cfg-if"
+                    version = "1.0.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
+
+                    [[package]]
+                    name = "const_fn"
+                    version = "0.4.9"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "fbdcdcb6d86f71c5e97409ad45898af11cbc995b4ee8112d59095a28d376c935"
+
+                    [[package]]
                     name = "dependabot"
                     version = "0.1.0"
                     dependencies = [
+                     "itoa",
+                     "rand",
                      "regex",
                      "time",
                     ]
 
                     [[package]]
-                    name = "kernel32-sys"
-                    version = "0.2.2"
+                    name = "easy-ext"
+                    version = "0.2.9"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "7507624b29483431c0ba2d82aece8ca6cdba9382bff4ddd0f7490560c056098d"
+                    checksum = "53aff6fdc1b181225acdcb5b14c47106726fd8e486707315b1b138baed68ee31"
+
+                    [[package]]
+                    name = "getrandom"
+                    version = "0.2.9"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "c85e1d9ab2eadba7e5040d4e09cbd6d072b76a557ad64e797c2cb9d4da21d7e4"
                     dependencies = [
-                     "winapi",
-                     "winapi-build",
+                     "cfg-if",
+                     "libc",
+                     "wasi",
                     ]
+
+                    [[package]]
+                    name = "itoa"
+                    version = "1.0.6"
+                    source = "git+https://github.com/dtolnay/itoa.git?tag=1.0.6#3cab737d59c60014655268a79930861db300023d"
 
                     [[package]]
                     name = "libc"
-                    version = "0.2.40"
+                    version = "0.2.141"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "6fd41f331ac7c5b8ac259b8bf82c75c0fb2e469bbf37d2becbba9a6a2221965b"
+                    checksum = "3304a64d199bb964be99741b7a14d26972741915b3649639149b2479bb46f4b5"
 
                     [[package]]
                     name = "memchr"
-                    version = "0.1.11"
+                    version = "2.5.0"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "d8b629fb514376c675b98c1421e80b151d3817ac42d7c667717d282761418d20"
+                    checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
+
+                    [[package]]
+                    name = "ppv-lite86"
+                    version = "0.2.17"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
+
+                    [[package]]
+                    name = "rand"
+                    version = "0.8.4"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
                     dependencies = [
                      "libc",
+                     "rand_chacha",
+                     "rand_core",
+                     "rand_hc",
                     ]
 
                     [[package]]
-                    name = "redox_syscall"
-                    version = "0.1.57"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "41cc0f7e4d5d4544e8861606a285bb08d3e70712ccc7d2b84d7c0ccfaf4b05ce"
+                    name = "rand_chacha"
+                    version = "0.3.1"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "ppv-lite86",
+                     "rand_core",
+                    ]
+
+                    [[package]]
+                    name = "rand_core"
+                    version = "0.6.3"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "getrandom",
+                    ]
+
+                    [[package]]
+                    name = "rand_hc"
+                    version = "0.3.1"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "rand_core",
+                    ]
 
                     [[package]]
                     name = "regex"
-                    version = "0.1.41"
+                    version = "1.6.0"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "4499ef755e709fbfe334ecbc3206537e84952ead5347791b0f54c2b75fe63a28"
+                    checksum = "4c4eb3267174b8c6c2f654116623910a0fef09c4753f8dd83db29c48a0df988b"
                     dependencies = [
                      "aho-corasick",
                      "memchr",
@@ -976,49 +1144,74 @@ output:
 
                     [[package]]
                     name = "regex-syntax"
-                    version = "0.2.6"
+                    version = "0.6.29"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "a21935ce5a4dfa48e3ded1aefbbe353fb9ab258b0d3fa0bd168bef00797b3dc7"
+                    checksum = "f162c6dd7b008981e4d40210aca20b4bd0f9b60ca9271061b07f78537722f2e1"
 
                     [[package]]
-                    name = "time"
-                    version = "0.1.38"
+                    name = "standback"
+                    version = "0.3.5"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "d5d788d3aa77bc0ef3e9621256885555368b47bd495c13dd2e7413c89f845520"
+                    checksum = "a66b810a718e8ba519476ec4df79e2f380f568b83106b812b8182090e4bfba8d"
                     dependencies = [
-                     "kernel32-sys",
-                     "libc",
-                     "redox_syscall",
-                     "winapi",
+                     "easy-ext",
+                     "version_check",
                     ]
 
                     [[package]]
-                    name = "winapi"
-                    version = "0.2.8"
+                    name = "time"
+                    version = "0.3.0-alpha-2"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "167dc9d6949a9b857f3451275e911c3f44255842c1f7a76f33c55103a909087a"
+                    checksum = "0f906d7af3f9c93ef57452c3c7d577f0dcfa1700516dcd15c7ba75ede4f0ed08"
+                    dependencies = [
+                     "const_fn",
+                     "libc",
+                     "standback",
+                    ]
 
                     [[package]]
-                    name = "winapi-build"
-                    version = "0.1.1"
+                    name = "version_check"
+                    version = "0.9.4"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "2d315eee3b34aca4797b2da6b13ed88266e6d612562a0c46390af8299fc699bc"
+                    checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
+
+                    [[package]]
+                    name = "wasi"
+                    version = "0.11.0+wasi-snapshot-preview1"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
                   content_encoding: utf-8
                   deleted: false
-                  directory: /
+                  directory: /cargo
                   name: Cargo.lock
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump redox_syscall from 0.1.37 to 0.1.57
+            pr-title: Bump itoa from 1.0.5 to 1.0.6 in /cargo
             pr-body: |
-                Bumps redox_syscall from 0.1.37 to 0.1.57.
+                Bumps [itoa](https://github.com/dtolnay/itoa) from 1.0.5 to 1.0.6.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/dtolnay/itoa/commit/3cab737d59c60014655268a79930861db300023d"><code>3cab737</code></a> Release 1.0.6</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/e9573cd99ec1fe0bdf229c0614327c1196946e98"><code>e9573cd</code></a> Enable type layout randomization in CI on nightly</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/320250e56ddf75f3793b7bd448744fef2b501728"><code>320250e</code></a> Support a manual trigger on CI workflow</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/40db9e7ea8c5ccc75aaa6b971bcdbfbc590805f1"><code>40db9e7</code></a> Prevent actions duplication on noop merge commits</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/d79365b257c8d652c4d6ee3641a47209eed88df1"><code>d79365b</code></a> Speed up cargo fuzz CI job</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/5bd582c9654c7eba3d95e87256fc2c929c1745e2"><code>5bd582c</code></a> Opt out -Zrustdoc-scrape-examples on docs.rs</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/a77f3c911f519933f535ad672a98c10e977f77d7"><code>a77f3c9</code></a> Sync license text with rust-lang repos</li>
+                <li>See full diff in <a href="https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...3cab737d59c60014655268a79930861db300023d">compare view</a></li>
+                </ul>
+                </details>
+                <br />
             commit-message: |-
-                Bump redox_syscall from 0.1.37 to 0.1.57
+                Bump itoa from 1.0.5 to 1.0.6 in /cargo
 
-                Bumps redox_syscall from 0.1.37 to 0.1.57.
+                Bumps [itoa](https://github.com/dtolnay/itoa) from 1.0.5 to 1.0.6.
+                - [Release notes](https://github.com/dtolnay/itoa/releases)
+                - [Commits](https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...3cab737d59c60014655268a79930861db300023d)
             grouped-update: false
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 3d44220c5ab8e3c592b63373354a596b781f6e09
