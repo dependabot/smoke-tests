@@ -3,6 +3,8 @@ input:
         package-manager: go_modules
         allowed-updates:
             - update-type: all
+        dependencies:
+            - github.com/fatih/color
         ignore-conditions:
             - dependency-name: github.com/fatih/color
               source: tests/smoke-go-security.yaml
