@@ -1,0 +1,125 @@
+input:
+    job:
+        package-manager: npm_and_yarn
+        allowed-updates:
+            - update-type: all
+        dependency-groups:
+            - name: runtime
+              rules:
+                patterns:
+                    - fetch-factory
+                    - lodash
+            - name: babel
+              rules:
+                patterns:
+                    - '@babel/*'
+                    - babel-*
+                    - eslint-plugin-babel
+            - name: test
+              rules:
+                patterns:
+                    - '@types/jest'
+                    - babel-jest
+                    - diff-sequences
+                    - eslint-plugin-jest
+                    - expect
+                    - jest
+                    - jest-*
+            - name: lint
+              rules:
+                patterns:
+                    - '@typescript-eslint/*'
+                    - eslint
+                    - eslint-*
+                    - prettier
+        experiments:
+            grouped-updates-prototype: true
+        ignore-conditions:
+            - dependency-name: '@babel/cli'
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>7.21.0'
+            - dependency-name: '@babel/core'
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>7.21.4'
+            - dependency-name: '@babel/eslint-parser'
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>7.21.3'
+            - dependency-name: '@babel/parser'
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>7.21.4'
+            - dependency-name: '@babel/plugin-proposal-class-properties'
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>7.18.6'
+            - dependency-name: '@babel/preset-env'
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>7.21.4'
+            - dependency-name: '@babel/preset-typescript'
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>7.21.4'
+            - dependency-name: '@typescript-eslint/eslint-plugin'
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>5.59.1'
+            - dependency-name: '@types/jest'
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>29.5.1'
+            - dependency-name: '@types/lodash'
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>4.14.194'
+            - dependency-name: '@typescript-eslint/parser'
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>5.59.1'
+            - dependency-name: babel-jest
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>29.5.0'
+            - dependency-name: babel-plugin-lodash
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>3.3.4'
+            - dependency-name: diff-sequences
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>29.4.3'
+            - dependency-name: eslint
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>8.39.0'
+            - dependency-name: eslint-plugin-babel
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>5.3.1'
+            - dependency-name: eslint-plugin-import
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>2.27.5'
+            - dependency-name: eslint-plugin-jest
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>27.2.1'
+            - dependency-name: expect
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>29.5.0'
+            - dependency-name: fetch-factory
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>0.2.1'
+            - dependency-name: jest
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>29.5.0'
+            - dependency-name: jest-mock
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>29.5.0'
+            - dependency-name: jest-snapshot
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>29.5.0'
+            - dependency-name: lodash
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>4.17.21'
+            - dependency-name: prettier
+              source: tests/smoke-npm-grouped.yaml
+              version-requirement: '>2.8.8'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /npm
+            branch: nishnha/npm-no-change-error-test
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
