@@ -31,7 +31,7 @@ input:
             provider: github
             repo: dependabot/smoke-tests
             directory: /go
-            commit: ~
+            commit: d0f596d2e699a04cdbff5cfefcd4353d17534056
         credentials-metadata:
             - host: github.com
               type: git_source
@@ -103,7 +103,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: ~
+            base-commit-sha: d0f596d2e699a04cdbff5cfefcd4353d17534056
             dependencies:
                 - name: github.com/fatih/color
                   previous-requirements:
@@ -325,7 +325,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: ~
+            base-commit-sha: d0f596d2e699a04cdbff5cfefcd4353d17534056
             dependencies:
                 - name: rsc.io/quote
                   previous-requirements:
@@ -418,4 +418,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: ~
+            base-commit-sha: d0f596d2e699a04cdbff5cfefcd4353d17534056
