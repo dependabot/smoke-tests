@@ -16,7 +16,7 @@ However, we aren't accepting contributions at this time.
 
 Dependabot CLI has the capability to generate and consume test files. 
 
-To generate a test, run `dependabot update go_modules dependabot/smoke-tests --dry-run -o my-test.yml`. This will create `my-test.yml` containing the inputs you provided, plus some ignore conditions to make the test more reproducable, and also contain the ouputs the CLI recorded.
+To generate a test, run `dependabot update go_modules dependabot/smoke-tests -o my-test.yml`. This will create `my-test.yml` containing the inputs you provided, plus some ignore conditions to make the test more reproducable, and also contain the ouputs the CLI recorded.
 
 To run the test, run `dependabot test -f my-test.yml`. This will run Dependabot with the inputs provided in the test, and assert the outputs match what was previously recorded.
 
