@@ -29,7 +29,7 @@ input:
             provider: github
             repo: dependabot/smoke-tests
             directory: /npm
-            commit: ~
+            commit: d15ce2f331fa91f5ebb82da530dc7f3d69c64e6e
         credentials-metadata:
             - host: github.com
               type: git_source
@@ -137,7 +137,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: ~
+            base-commit-sha: d15ce2f331fa91f5ebb82da530dc7f3d69c64e6e
             dependencies:
                 - name: axios
                   previous-requirements:
@@ -1332,7 +1332,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: ~
+            base-commit-sha: d15ce2f331fa91f5ebb82da530dc7f3d69c64e6e
             dependencies:
                 - name: etag
                   previous-requirements:
@@ -1846,4 +1846,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: ~
+            base-commit-sha: d15ce2f331fa91f5ebb82da530dc7f3d69c64e6e
