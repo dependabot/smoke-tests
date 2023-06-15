@@ -29,7 +29,7 @@ input:
             provider: github
             repo: dependabot/smoke-tests
             directory: /yarn/subdir
-            commit: ~
+            commit: b2e3f25d7c79e190ffb6149171ba1eb1f1f817ce
         credentials-metadata:
             - host: github.com
               type: git_source
@@ -140,7 +140,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: ~
+            base-commit-sha: b2e3f25d7c79e190ffb6149171ba1eb1f1f817ce
             dependencies:
                 - name: axios
                   previous-requirements:
@@ -767,7 +767,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: ~
+            base-commit-sha: b2e3f25d7c79e190ffb6149171ba1eb1f1f817ce
             dependencies:
                 - name: etag
                   previous-requirements:
@@ -1092,4 +1092,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: ~
+            base-commit-sha: b2e3f25d7c79e190ffb6149171ba1eb1f1f817ce
