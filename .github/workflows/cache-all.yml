@@ -47,7 +47,10 @@ jobs:
           - { path: tests/smoke-terraform.yaml, name: terraform }
           - { path: tests/smoke-yarn.yaml, name: yarn }
           - { path: tests/smoke-yarn-berry.yaml, name: yarn-berry }
+          - { path: tests/smoke-yarn-berry-group-rules.yaml, name: yarn-berry-group-rules }
           - { path: tests/smoke-yarn-berry-workspaces.yaml, name: yarn-berry-workspaces }
+          - { path: tests/smoke-yarn-berry-workspaces-group-rules.yaml, name: yarn-berry-workspaces-group-rules }
+          - { path: tests/smoke-yarn-group-rules.yaml, name: yarn-group-rules }
     steps:
       - uses: actions/checkout@v3
 

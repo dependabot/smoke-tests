@@ -1,0 +1,44 @@
+input:
+    job:
+        package-manager: npm_and_yarn
+        allowed-updates:
+            - dependency-type: all
+        dependency-groups:
+            - name: ruleset
+              rules:
+                patterns:
+                    - '@types/lodash'
+                    - axios
+                    - fetch-factory
+                    - lodash
+        experiments:
+            grouped-updates-prototype: true
+        ignore-conditions:
+            - dependency-name: '@types/lodash'
+              source: tests/smoke-yarn-berry-workspaces-group-rules.yaml
+              version-requirement: '>4.14.195'
+            - dependency-name: axios
+              source: tests/smoke-yarn-berry-workspaces-group-rules.yaml
+              version-requirement: '>1.4.0'
+            - dependency-name: etag
+              source: tests/smoke-yarn-berry-workspaces-group-rules.yaml
+              version-requirement: '>1.8.1'
+            - dependency-name: fetch-factory
+              source: tests/smoke-yarn-berry-workspaces-group-rules.yaml
+              version-requirement: '>0.2.1'
+            - dependency-name: lodash
+              source: tests/smoke-yarn-berry-workspaces-group-rules.yaml
+              version-requirement: '>4.17.21'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /yarn-berry/workspaces
+            commit: ~
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
