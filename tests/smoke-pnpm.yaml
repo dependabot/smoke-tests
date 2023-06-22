@@ -13,7 +13,7 @@ input:
             provider: github
             repo: dependabot/smoke-tests
             directory: /pnpm/
-            commit: adb7a09a65c8ed329da366920b5355ef248111ee
+            commit: a2579c0ace294be0332276ea32db3da71fa253cc
         credentials-metadata:
             - host: github.com
               type: git_source
@@ -28,7 +28,7 @@ output:
         data:
             ecosystem: npm
             package-managers:
-                pnpm: 8
+                pnpm: 8.3.1
     - type: update_dependency_list
       expect:
         data:
@@ -347,7 +347,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: adb7a09a65c8ed329da366920b5355ef248111ee
+            base-commit-sha: a2579c0ace294be0332276ea32db3da71fa253cc
             dependencies:
                 - name: eslint-plugin-yml
                   previous-requirements:
@@ -386,7 +386,8 @@ output:
                       "main": "lib/pkg.js",
                       "devDependencies": {
                         "eslint-plugin-yml": "1.7.0"
-                      }
+                      },
+                      "packageManager": "pnpm@8.3.1"
                     }
                   content_encoding: utf-8
                   deleted: false
@@ -1145,4 +1146,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: adb7a09a65c8ed329da366920b5355ef248111ee
+            base-commit-sha: a2579c0ace294be0332276ea32db3da71fa253cc
