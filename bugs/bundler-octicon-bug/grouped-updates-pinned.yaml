@@ -1,0 +1,400 @@
+input:
+    job:
+        package-manager: bundler
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        debug: true
+        dependency-groups:
+            - name: octicon
+              rules:
+                patterns:
+                    - octicon*
+        experiments:
+            grouped-updates-prototype: true
+        ignore-conditions:
+            - dependency-name: octicons
+              source: tests/smoke-bundler-octicon-bug.yaml
+              version-requirement: '>19.4.0'
+            - dependency-name: octicons_helper
+              source: tests/smoke-bundler-octicon-bug.yaml
+              version-requirement: '>19.4.0'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /bugs/bundler-octicon-bug/manifests-pinned
+            commit: 245966be52e3cfd6e112b44fcd81d3426409121a
+            hostname: github.com
+            api-endpoint: https://api.github.com/
+        vendor-dependencies: true
+        commit-message-options: {}
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+        max-updater-run-time: 2700
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: record_package_manager_version
+      expect:
+        data:
+            ecosystem: bundler
+            package-managers:
+                bundler: "2"
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: octicons
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: "19.2"
+                      source: null
+                  version: 19.2.0
+                - name: octicons_helper
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: "19.2"
+                      source: null
+                  version: 19.2.0
+                - name: actionpack
+                  requirements: []
+                  version: 7.0.6
+                - name: actionview
+                  requirements: []
+                  version: 7.0.6
+                - name: activesupport
+                  requirements: []
+                  version: 7.0.6
+                - name: builder
+                  requirements: []
+                  version: 3.2.4
+                - name: concurrent-ruby
+                  requirements: []
+                  version: 1.2.2
+                - name: crass
+                  requirements: []
+                  version: 1.0.6
+                - name: erubi
+                  requirements: []
+                  version: 1.12.0
+                - name: i18n
+                  requirements: []
+                  version: 1.14.1
+                - name: loofah
+                  requirements: []
+                  version: 2.21.3
+                - name: method_source
+                  requirements: []
+                  version: 1.0.0
+                - name: mini_portile2
+                  requirements: []
+                  version: 2.8.2
+                - name: minitest
+                  requirements: []
+                  version: 5.18.1
+                - name: nokogiri
+                  requirements: []
+                  version: 1.15.2
+                - name: racc
+                  requirements: []
+                  version: 1.7.1
+                - name: rack
+                  requirements: []
+                  version: 2.2.7
+                - name: rack-test
+                  requirements: []
+                  version: 2.1.0
+                - name: rails-dom-testing
+                  requirements: []
+                  version: 2.1.1
+                - name: rails-html-sanitizer
+                  requirements: []
+                  version: 1.6.0
+                - name: railties
+                  requirements: []
+                  version: 7.0.6
+                - name: rake
+                  requirements: []
+                  version: 13.0.6
+                - name: thor
+                  requirements: []
+                  version: 1.2.2
+                - name: tzinfo
+                  requirements: []
+                  version: 2.0.6
+                - name: zeitwerk
+                  requirements: []
+                  version: 2.6.8
+            dependency_files:
+                - /bugs/bundler-octicon-bug/manifests-pinned/Gemfile
+                - /bugs/bundler-octicon-bug/manifests-pinned/Gemfile.lock
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 245966be52e3cfd6e112b44fcd81d3426409121a
+            dependencies:
+                - name: octicons
+                  previous-requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: "19.2"
+                      source: null
+                  previous-version: 19.2.0
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: 19.4.0
+                      source: null
+                  version: 19.4.0
+                - name: octicons_helper
+                  previous-requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: "19.2"
+                      source: null
+                  previous-version: 19.2.0
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: 19.4.0
+                      source: null
+                  version: 19.4.0
+            updated-dependency-files:
+                - content: |
+                    # frozen_string_literal: true
+
+                    source "https://rubygems.org"
+
+                    git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+
+                    gem "octicons", "19.4.0"
+                    gem "octicons_helper", "19.4.0"
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bugs/bundler-octicon-bug/manifests-pinned
+                  name: Gemfile
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    GEM
+                      remote: https://rubygems.org/
+                      specs:
+                        actionpack (7.0.6)
+                          actionview (= 7.0.6)
+                          activesupport (= 7.0.6)
+                          rack (~> 2.0, >= 2.2.4)
+                          rack-test (>= 0.6.3)
+                          rails-dom-testing (~> 2.0)
+                          rails-html-sanitizer (~> 1.0, >= 1.2.0)
+                        actionview (7.0.6)
+                          activesupport (= 7.0.6)
+                          builder (~> 3.1)
+                          erubi (~> 1.4)
+                          rails-dom-testing (~> 2.0)
+                          rails-html-sanitizer (~> 1.1, >= 1.2.0)
+                        activesupport (7.0.6)
+                          concurrent-ruby (~> 1.0, >= 1.0.2)
+                          i18n (>= 1.6, < 2)
+                          minitest (>= 5.1)
+                          tzinfo (~> 2.0)
+                        builder (3.2.4)
+                        concurrent-ruby (1.2.2)
+                        crass (1.0.6)
+                        erubi (1.12.0)
+                        i18n (1.14.1)
+                          concurrent-ruby (~> 1.0)
+                        loofah (2.21.3)
+                          crass (~> 1.0.2)
+                          nokogiri (>= 1.12.0)
+                        method_source (1.0.0)
+                        mini_portile2 (2.8.2)
+                        minitest (5.18.1)
+                        nokogiri (1.15.2)
+                          mini_portile2 (~> 2.8.2)
+                          racc (~> 1.4)
+                        octicons (19.4.0)
+                        octicons_helper (19.4.0)
+                          actionview
+                          octicons (= 19.4.0)
+                          railties
+                        racc (1.7.1)
+                        rack (2.2.7)
+                        rack-test (2.1.0)
+                          rack (>= 1.3)
+                        rails-dom-testing (2.1.1)
+                          activesupport (>= 5.0.0)
+                          minitest
+                          nokogiri (>= 1.6)
+                        rails-html-sanitizer (1.6.0)
+                          loofah (~> 2.21)
+                          nokogiri (~> 1.14)
+                        railties (7.0.6)
+                          actionpack (= 7.0.6)
+                          activesupport (= 7.0.6)
+                          method_source
+                          rake (>= 12.2)
+                          thor (~> 1.0)
+                          zeitwerk (~> 2.5)
+                        rake (13.0.6)
+                        thor (1.2.2)
+                        tzinfo (2.0.6)
+                          concurrent-ruby (~> 1.0)
+                        zeitwerk (2.6.8)
+
+                    PLATFORMS
+                      ruby
+
+                    DEPENDENCIES
+                      octicons (= 19.4.0)
+                      octicons_helper (= 19.4.0)
+
+                    BUNDLED WITH
+                       2.1.4
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bugs/bundler-octicon-bug/manifests-pinned
+                  name: Gemfile.lock
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: ""
+                  content_encoding: ""
+                  deleted: true
+                  directory: /bugs/bundler-octicon-bug/manifests-pinned
+                  name: vendor/cache/octicons-19.2.0.gem
+                  operation: delete
+                  support_file: false
+                  type: file
+                - content: ""
+                  content_encoding: ""
+                  deleted: true
+                  directory: /bugs/bundler-octicon-bug/manifests-pinned
+                  name: vendor/cache/octicons_helper-19.2.0.gem
+                  operation: delete
+                  support_file: false
+                  type: file
+                - content: 85aa478bc042cfdcfa2a9f01833f53c376b9a252c7691594303ce0d25e15b132
+                  content_encoding: sha256
+                  deleted: false
+                  directory: /bugs/bundler-octicon-bug/manifests-pinned
+                  name: vendor/cache/nokogiri-1.15.2.gem
+                  operation: create
+                  support_file: false
+                  type: file
+                  mode: "100644"
+                - content: 1f540b216dc3de631e7a34ecad4b59967163ca1f8aeb7cc779bbc769fffbdebc
+                  content_encoding: sha256
+                  deleted: false
+                  directory: /bugs/bundler-octicon-bug/manifests-pinned
+                  name: vendor/cache/octicons-19.4.0.gem
+                  operation: create
+                  support_file: false
+                  type: file
+                  mode: "100644"
+                - content: 4e84c6e81789b2638ba138749d9b81c944a76a3156f5bfb1b6aa9eeade36d124
+                  content_encoding: sha256
+                  deleted: false
+                  directory: /bugs/bundler-octicon-bug/manifests-pinned
+                  name: vendor/cache/octicons_helper-19.4.0.gem
+                  operation: create
+                  support_file: false
+                  type: file
+                  mode: "100644"
+            pr-title: Bump the octicon group in /bugs/bundler-octicon-bug/manifests-pinned with 2 updates
+            pr-body: |
+                Bumps the octicon group in /bugs/bundler-octicon-bug/manifests-pinned with 2 updates: [octicons](https://github.com/primer/octicons_gem) and [octicons_helper](https://github.com/primer/octicons).
+
+                Updates `octicons` from 19.2.0 to 19.4.0
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/primer/octicons_gem/commits">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `octicons_helper` from 19.2.0 to 19.4.0
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/primer/octicons/releases">octicons_helper's releases</a>.</em></p>
+                <blockquote>
+                <h2>v19.4.0</h2>
+                <h3>Minor Changes</h3>
+                <ul>
+                <li>
+                <p><a href="https://redirect.github.com/primer/octicons/pull/962">#962</a> <a href="https://github.com/primer/octicons/commit/5805622c1f9005a4c81a7e7fb09225f2a0e31af4"><code>5805622c</code></a> Thanks <a href="https://github.com/CameronFoxly"><code>@​CameronFoxly</code></a>! - Edited small details on <code>copilot-warning</code> and <code>copilot-error</code> to maintain consistency with the rest of the copilot icon set.</p>
+                </li>
+                <li>
+                <p><a href="https://redirect.github.com/primer/octicons/pull/961">#961</a> <a href="https://github.com/primer/octicons/commit/e92cb36aedc3a9c28b8502733e8c30d01d716bb6"><code>e92cb36a</code></a> Thanks <a href="https://github.com/gavinmn"><code>@​gavinmn</code></a>! - Save file-directory-symlink-16.svg, file-directory-symlink-24.svg</p>
+                </li>
+                </ul>
+                <h2>v19.3.0</h2>
+                <h3>Minor Changes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/primer/octicons/pull/953">#953</a> <a href="https://github.com/primer/octicons/commit/d3cb9cd8b5186a05eb26159f9c97754bef9ea127"><code>d3cb9cd8</code></a> Thanks <a href="https://github.com/gavinmn"><code>@​gavinmn</code></a>! - Add Tracked By states</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/primer/octicons/blob/main/CHANGELOG.md">octicons_helper's changelog</a>.</em></p>
+                <blockquote>
+                <h2>19.4.0</h2>
+                <h3>Minor Changes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/primer/octicons/pull/962">#962</a> <a href="https://github.com/primer/octicons/commit/5805622c1f9005a4c81a7e7fb09225f2a0e31af4"><code>5805622c</code></a> Thanks <a href="https://github.com/CameronFoxly"><code>@​CameronFoxly</code></a>! - Edited small details on <code>copilot-warning</code> and <code>copilot-error</code> to maintain consistency with the rest of the copilot icon set.</li>
+                </ul>
+                <ul>
+                <li><a href="https://redirect.github.com/primer/octicons/pull/961">#961</a> <a href="https://github.com/primer/octicons/commit/e92cb36aedc3a9c28b8502733e8c30d01d716bb6"><code>e92cb36a</code></a> Thanks <a href="https://github.com/gavinmn"><code>@​gavinmn</code></a>! - Save file-directory-symlink-16.svg, file-directory-symlink-24.svg</li>
+                </ul>
+                <h2>19.3.0</h2>
+                <h3>Minor Changes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/primer/octicons/pull/953">#953</a> <a href="https://github.com/primer/octicons/commit/d3cb9cd8b5186a05eb26159f9c97754bef9ea127"><code>d3cb9cd8</code></a> Thanks <a href="https://github.com/gavinmn"><code>@​gavinmn</code></a>! - Add Tracked By states</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/primer/octicons/commit/029d351f0ab85e526aae5ee42e465231ddf8e329"><code>029d351</code></a> Version Packages (<a href="https://redirect.github.com/primer/octicons/issues/963">#963</a>)</li>
+                <li><a href="https://github.com/primer/octicons/commit/5805622c1f9005a4c81a7e7fb09225f2a0e31af4"><code>5805622</code></a> Save copilot-warning-16.svg, copilot-error-16.svg (<a href="https://redirect.github.com/primer/octicons/issues/962">#962</a>)</li>
+                <li><a href="https://github.com/primer/octicons/commit/e92cb36aedc3a9c28b8502733e8c30d01d716bb6"><code>e92cb36</code></a> Save file-directory-symlink-16.svg, file-directory-symlink-24.svg (<a href="https://redirect.github.com/primer/octicons/issues/961">#961</a>)</li>
+                <li><a href="https://github.com/primer/octicons/commit/b0c771d96f572cfa03fda6b95e56d9e8b029bb3f"><code>b0c771d</code></a> Version Packages (<a href="https://redirect.github.com/primer/octicons/issues/960">#960</a>)</li>
+                <li><a href="https://github.com/primer/octicons/commit/d3cb9cd8b5186a05eb26159f9c97754bef9ea127"><code>d3cb9cd</code></a> Add Tracked By states (<a href="https://redirect.github.com/primer/octicons/issues/953">#953</a>)</li>
+                <li>See full diff in <a href="https://github.com/primer/octicons/compare/v19.2.0...v19.4.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump the octicon group
+
+                Bumps the octicon group in /bugs/bundler-octicon-bug/manifests-pinned with 2 updates: [octicons](https://github.com/primer/octicons_gem) and [octicons_helper](https://github.com/primer/octicons).
+
+
+                Updates `octicons` from 19.2.0 to 19.4.0
+                - [Commits](https://github.com/primer/octicons_gem/commits)
+
+                Updates `octicons_helper` from 19.2.0 to 19.4.0
+                - [Release notes](https://github.com/primer/octicons/releases)
+                - [Changelog](https://github.com/primer/octicons/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/primer/octicons/compare/v19.2.0...v19.4.0)
+            dependency-group:
+                name: octicon
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 245966be52e3cfd6e112b44fcd81d3426409121a
