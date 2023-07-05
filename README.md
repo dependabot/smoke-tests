@@ -14,15 +14,15 @@ However, we aren't accepting contributions at this time.
 
 ## How does this work?
 
-Dependabot CLI has the capability to generate and consume test files. 
+Dependabot CLI has the capability to generate and consume test files.
 
-To generate a test, run `dependabot update go_modules dependabot/smoke-tests -o my-test.yml`. This will create `my-test.yml` containing the inputs you provided, plus some ignore conditions to make the test more reproducable, and also contain the ouputs the CLI recorded.
+To generate a test, run `dependabot update go_modules dependabot/smoke-tests -o my-test.yml`. This will create `my-test.yml` containing the inputs you provided, plus some ignore conditions to make the test more reproducible, and also contain the outputs the CLI recorded.
 
 To run the test, run `dependabot test -f my-test.yml`. This will run Dependabot with the inputs provided in the test, and assert the outputs match what was previously recorded.
 
 ### Caching
 
-To further aid in reproducibility, the CLI can instruct the Proxy to enable caching with the `--cache tmp/cache` option. Simply pass that along with a path to use for the cache during testing, and the Proxy will dump messages it received there. 
+To further aid in reproducibility, the CLI can instruct the Proxy to enable caching with the `--cache tmp/cache` option. Simply pass that along with a path to use for the cache during testing, and the Proxy will dump messages it received there.
 
 If there are already cache files present, the Proxy will use them during the run instead of making a network call. Neat!
 
@@ -51,8 +51,8 @@ This repo has several workflows used to manage the caches that are stored as bui
   - This runs all of the smoke tests and cache the results, which is useful when a large change happens.
 - Smoke
   - This test downloads the cache from the build artifacts before running each test in parallel. This was designed to run after each Pull Request.
-  
-To see the percentage of caching on each test, go to the [Smoke tests](https://github.com/dependabot/smoke-tests/actions/workflows/smoke.yml) summary view. If the test has low cache coverage then it is more likely to fail in the future. Rerun the Cache one workflow to recache it, or debug why it is uncachable. 
+
+To see the percentage of caching on each test, go to the [Smoke tests](https://github.com/dependabot/smoke-tests/actions/workflows/smoke.yml) summary view. If the test has low cache coverage then it is more likely to fail in the future. Rerun the Cache one workflow to recache it, or debug why it is uncachable.
 
 ### Regenerating tests
 
