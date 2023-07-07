@@ -3,6 +3,8 @@ input:
         package-manager: go_modules
         dependencies:
             - none
+        experiments:
+            record-ecosystem-versions: true
         security-updates-only: true
         source:
             provider: github
@@ -22,7 +24,7 @@ output:
     - type: record_package_manager_version
       expect:
         data:
-            ecosystem: gomod
+            ecosystem: deprecated
             package-managers:
                 gomod: "1.12"
     - type: update_dependency_list

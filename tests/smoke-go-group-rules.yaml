@@ -14,6 +14,7 @@ input:
         experiments:
             goprivate: ""
             grouped-updates-prototype: true
+            record-ecosystem-versions: true
         ignore-conditions:
             - dependency-name: github.com/fatih/color
               source: tests/smoke-go-group-rules.yaml
@@ -45,7 +46,7 @@ output:
     - type: record_package_manager_version
       expect:
         data:
-            ecosystem: gomod
+            ecosystem: deprecated
             package-managers:
                 gomod: "1.12"
     - type: update_dependency_list

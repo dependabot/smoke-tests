@@ -12,6 +12,7 @@ input:
                     - rubocop
         experiments:
             grouped-updates-prototype: true
+            record-ecosystem-versions: true
         ignore-conditions:
             - dependency-name: rubocop
               source: tests/smoke-bundler-group-vendoring.yaml
@@ -38,7 +39,7 @@ output:
     - type: record_package_manager_version
       expect:
         data:
-            ecosystem: bundler
+            ecosystem: deprecated
             package-managers:
                 bundler: "2"
     - type: update_dependency_list

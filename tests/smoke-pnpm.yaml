@@ -4,7 +4,7 @@ input:
         allowed-updates:
             - dependency-name: eslint-plugin-yml
         experiments:
-            pnpm-updates: true
+            record-ecosystem-versions: true
         ignore-conditions:
             - dependency-name: eslint-plugin-yml
               source: pnpm.yml
@@ -26,7 +26,7 @@ output:
     - type: record_package_manager_version
       expect:
         data:
-            ecosystem: npm
+            ecosystem: deprecated
             package-managers:
                 pnpm: 8.3.1
     - type: update_dependency_list
