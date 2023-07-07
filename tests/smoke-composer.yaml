@@ -11,7 +11,7 @@ input:
             provider: github
             repo: dependabot/smoke-tests
             directory: /composer
-            commit: bb98f0c3489713c240ccc1f1800008d4f0844dfd
+            commit: 0dae96b7938dc857a9b8f2a5b0a950735aceb15a
         credentials-metadata:
             - host: github.com
               type: git_source
@@ -35,13 +35,33 @@ output:
                         type: git
                         url: https://github.com/PHPMailer/PHPMailer.git
                   version: 5.2.2
+                - name: phpstan/phpstan
+                  requirements:
+                    - file: composer.json
+                      groups:
+                        - development
+                      requirement: 1.10.23
+                      source:
+                        type: git
+                        url: https://github.com/phpstan/phpstan.git
+                  version: 1.10.23
+                - name: phpstan/phpstan-strict-rules
+                  requirements:
+                    - file: composer.json
+                      groups:
+                        - development
+                      requirement: 1.5.0
+                      source:
+                        type: git
+                        url: https://github.com/phpstan/phpstan-strict-rules.git
+                  version: 1.5.0
             dependency_files:
                 - /composer/composer.json
                 - /composer/composer.lock
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: bb98f0c3489713c240ccc1f1800008d4f0844dfd
+            base-commit-sha: 0dae96b7938dc857a9b8f2a5b0a950735aceb15a
             dependencies:
                 - name: phpmailer/phpmailer
                   previous-requirements:
@@ -67,6 +87,10 @@ output:
                     {
                         "require": {
                             "phpmailer/phpmailer": "6.6.3"
+                        },
+                        "require-dev": {
+                            "phpstan/phpstan": "1.10.23",
+                            "phpstan/phpstan-strict-rules": "1.5.0"
                         }
                     }
                   content_encoding: utf-8
@@ -83,7 +107,7 @@ output:
                             "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
                             "This file is @generated automatically"
                         ],
-                        "content-hash": "1e6a93901a76874faba19cae4283cab4",
+                        "content-hash": "b2ed1f5459db73fb4ad03a65d653c69c",
                         "packages": [
                             {
                                 "name": "phpmailer/phpmailer",
@@ -151,6 +175,10 @@ output:
                                     }
                                 ],
                                 "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
+                                "support": {
+                                    "issues": "https://github.com/PHPMailer/PHPMailer/issues",
+                                    "source": "https://github.com/PHPMailer/PHPMailer/tree/v6.6.3"
+                                },
                                 "funding": [
                                     {
                                         "url": "https://github.com/Synchro",
@@ -160,7 +188,119 @@ output:
                                 "time": "2022-06-20T09:21:02+00:00"
                             }
                         ],
-                        "packages-dev": [],
+                        "packages-dev": [
+                            {
+                                "name": "phpstan/phpstan",
+                                "version": "1.10.23",
+                                "source": {
+                                    "type": "git",
+                                    "url": "https://github.com/phpstan/phpstan.git",
+                                    "reference": "65ab678d1248a8bc6fde456f0d7ff3562a61a4cd"
+                                },
+                                "dist": {
+                                    "type": "zip",
+                                    "url": "https://api.github.com/repos/phpstan/phpstan/zipball/65ab678d1248a8bc6fde456f0d7ff3562a61a4cd",
+                                    "reference": "65ab678d1248a8bc6fde456f0d7ff3562a61a4cd",
+                                    "shasum": ""
+                                },
+                                "require": {
+                                    "php": "^7.2|^8.0"
+                                },
+                                "conflict": {
+                                    "phpstan/phpstan-shim": "*"
+                                },
+                                "bin": [
+                                    "phpstan",
+                                    "phpstan.phar"
+                                ],
+                                "type": "library",
+                                "autoload": {
+                                    "files": [
+                                        "bootstrap.php"
+                                    ]
+                                },
+                                "notification-url": "https://packagist.org/downloads/",
+                                "license": [
+                                    "MIT"
+                                ],
+                                "description": "PHPStan - PHP Static Analysis Tool",
+                                "keywords": [
+                                    "dev",
+                                    "static analysis"
+                                ],
+                                "support": {
+                                    "docs": "https://phpstan.org/user-guide/getting-started",
+                                    "forum": "https://github.com/phpstan/phpstan/discussions",
+                                    "issues": "https://github.com/phpstan/phpstan/issues",
+                                    "security": "https://github.com/phpstan/phpstan/security/policy",
+                                    "source": "https://github.com/phpstan/phpstan-src"
+                                },
+                                "funding": [
+                                    {
+                                        "url": "https://github.com/ondrejmirtes",
+                                        "type": "github"
+                                    },
+                                    {
+                                        "url": "https://github.com/phpstan",
+                                        "type": "github"
+                                    },
+                                    {
+                                        "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
+                                        "type": "tidelift"
+                                    }
+                                ],
+                                "time": "2023-07-04T13:32:44+00:00"
+                            },
+                            {
+                                "name": "phpstan/phpstan-strict-rules",
+                                "version": "1.5.0",
+                                "source": {
+                                    "type": "git",
+                                    "url": "https://github.com/phpstan/phpstan-strict-rules.git",
+                                    "reference": "b7dd96a5503919a43b3cd06a2dced9d4252492f2"
+                                },
+                                "dist": {
+                                    "type": "zip",
+                                    "url": "https://api.github.com/repos/phpstan/phpstan-strict-rules/zipball/b7dd96a5503919a43b3cd06a2dced9d4252492f2",
+                                    "reference": "b7dd96a5503919a43b3cd06a2dced9d4252492f2",
+                                    "shasum": ""
+                                },
+                                "require": {
+                                    "php": "^7.2 || ^8.0",
+                                    "phpstan/phpstan": "^1.10"
+                                },
+                                "require-dev": {
+                                    "nikic/php-parser": "^4.13.0",
+                                    "php-parallel-lint/php-parallel-lint": "^1.2",
+                                    "phpstan/phpstan-deprecation-rules": "^1.1",
+                                    "phpstan/phpstan-phpunit": "^1.0",
+                                    "phpunit/phpunit": "^9.5"
+                                },
+                                "type": "phpstan-extension",
+                                "extra": {
+                                    "phpstan": {
+                                        "includes": [
+                                            "rules.neon"
+                                        ]
+                                    }
+                                },
+                                "autoload": {
+                                    "psr-4": {
+                                        "PHPStan\\": "src/"
+                                    }
+                                },
+                                "notification-url": "https://packagist.org/downloads/",
+                                "license": [
+                                    "MIT"
+                                ],
+                                "description": "Extra strict and opinionated rules for PHPStan",
+                                "support": {
+                                    "issues": "https://github.com/phpstan/phpstan-strict-rules/issues",
+                                    "source": "https://github.com/phpstan/phpstan-strict-rules/tree/1.5.0"
+                                },
+                                "time": "2023-02-21T10:17:10+00:00"
+                            }
+                        ],
                         "aliases": [],
                         "minimum-stability": "stable",
                         "stability-flags": [],
@@ -168,7 +308,7 @@ output:
                         "prefer-lowest": false,
                         "platform": [],
                         "platform-dev": [],
-                        "plugin-api-version": "1.1.0"
+                        "plugin-api-version": "2.3.0"
                     }
                   content_encoding: utf-8
                   deleted: false
@@ -186,7 +326,517 @@ output:
                 - [Release notes](https://github.com/PHPMailer/PHPMailer/releases)
                 - [Changelog](https://github.com/PHPMailer/PHPMailer/blob/master/changelog.md)
                 - [Commits](https://github.com/PHPMailer/PHPMailer/compare/v5.2.2...v6.6.3)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 0dae96b7938dc857a9b8f2a5b0a950735aceb15a
+            dependencies:
+                - name: phpstan/phpstan
+                  previous-requirements:
+                    - file: composer.json
+                      groups:
+                        - development
+                      requirement: 1.10.23
+                      source:
+                        type: git
+                        url: https://github.com/phpstan/phpstan.git
+                  previous-version: 1.10.23
+                  requirements:
+                    - file: composer.json
+                      groups:
+                        - development
+                      requirement: 1.10.25
+                      source:
+                        type: git
+                        url: https://github.com/phpstan/phpstan.git
+                  version: 1.10.25
+            updated-dependency-files:
+                - content: |
+                    {
+                        "require": {
+                            "phpmailer/phpmailer": "5.2.2"
+                        },
+                        "require-dev": {
+                            "phpstan/phpstan": "1.10.25",
+                            "phpstan/phpstan-strict-rules": "1.5.0"
+                        }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /composer
+                  name: composer.json
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    {
+                        "_readme": [
+                            "This file locks the dependencies of your project to a known state",
+                            "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+                            "This file is @generated automatically"
+                        ],
+                        "content-hash": "1cfcf24c7091fd6a71d3c700038cd759",
+                        "packages": [
+                            {
+                                "name": "phpmailer/phpmailer",
+                                "version": "v5.2.2",
+                                "source": {
+                                    "type": "git",
+                                    "url": "https://github.com/PHPMailer/PHPMailer.git",
+                                    "reference": "10c57b72fe4476901d1b3f5ccf3f5cedb4b3c8b1"
+                                },
+                                "dist": {
+                                    "type": "zip",
+                                    "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/10c57b72fe4476901d1b3f5ccf3f5cedb4b3c8b1",
+                                    "reference": "10c57b72fe4476901d1b3f5ccf3f5cedb4b3c8b1",
+                                    "shasum": ""
+                                },
+                                "require": {
+                                    "php": ">=5.0.0"
+                                },
+                                "require-dev": {
+                                    "phpdocumentor/phpdocumentor": "*",
+                                    "phpunit/phpunit": "*"
+                                },
+                                "type": "library",
+                                "autoload": {
+                                    "classmap": [
+                                        "class.phpmailer.php",
+                                        "class.pop3.php",
+                                        "class.smtp.php"
+                                    ]
+                                },
+                                "notification-url": "https://packagist.org/downloads/",
+                                "license": [
+                                    "LGPL-2.1"
+                                ],
+                                "authors": [
+                                    {
+                                        "name": "Jim Jagielski",
+                                        "email": "jimjag@gmail.com"
+                                    },
+                                    {
+                                        "name": "Marcus Bointon",
+                                        "email": "phpmailer@synchromedia.co.uk"
+                                    },
+                                    {
+                                        "name": "Andy Prevost",
+                                        "email": "codeworxtech@users.sourceforge.net"
+                                    },
+                                    {
+                                        "name": "Brent R. Matzelle"
+                                    }
+                                ],
+                                "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
+                                "time": "2012-12-04T11:15:39+00:00"
+                            }
+                        ],
+                        "packages-dev": [
+                            {
+                                "name": "phpstan/phpstan",
+                                "version": "1.10.25",
+                                "source": {
+                                    "type": "git",
+                                    "url": "https://github.com/phpstan/phpstan.git",
+                                    "reference": "578f4e70d117f9a90699324c555922800ac38d8c"
+                                },
+                                "dist": {
+                                    "type": "zip",
+                                    "url": "https://api.github.com/repos/phpstan/phpstan/zipball/578f4e70d117f9a90699324c555922800ac38d8c",
+                                    "reference": "578f4e70d117f9a90699324c555922800ac38d8c",
+                                    "shasum": ""
+                                },
+                                "require": {
+                                    "php": "^7.2|^8.0"
+                                },
+                                "conflict": {
+                                    "phpstan/phpstan-shim": "*"
+                                },
+                                "bin": [
+                                    "phpstan",
+                                    "phpstan.phar"
+                                ],
+                                "type": "library",
+                                "autoload": {
+                                    "files": [
+                                        "bootstrap.php"
+                                    ]
+                                },
+                                "notification-url": "https://packagist.org/downloads/",
+                                "license": [
+                                    "MIT"
+                                ],
+                                "description": "PHPStan - PHP Static Analysis Tool",
+                                "keywords": [
+                                    "dev",
+                                    "static analysis"
+                                ],
+                                "support": {
+                                    "docs": "https://phpstan.org/user-guide/getting-started",
+                                    "forum": "https://github.com/phpstan/phpstan/discussions",
+                                    "issues": "https://github.com/phpstan/phpstan/issues",
+                                    "security": "https://github.com/phpstan/phpstan/security/policy",
+                                    "source": "https://github.com/phpstan/phpstan-src"
+                                },
+                                "funding": [
+                                    {
+                                        "url": "https://github.com/ondrejmirtes",
+                                        "type": "github"
+                                    },
+                                    {
+                                        "url": "https://github.com/phpstan",
+                                        "type": "github"
+                                    },
+                                    {
+                                        "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
+                                        "type": "tidelift"
+                                    }
+                                ],
+                                "time": "2023-07-06T12:11:37+00:00"
+                            },
+                            {
+                                "name": "phpstan/phpstan-strict-rules",
+                                "version": "1.5.0",
+                                "source": {
+                                    "type": "git",
+                                    "url": "https://github.com/phpstan/phpstan-strict-rules.git",
+                                    "reference": "b7dd96a5503919a43b3cd06a2dced9d4252492f2"
+                                },
+                                "dist": {
+                                    "type": "zip",
+                                    "url": "https://api.github.com/repos/phpstan/phpstan-strict-rules/zipball/b7dd96a5503919a43b3cd06a2dced9d4252492f2",
+                                    "reference": "b7dd96a5503919a43b3cd06a2dced9d4252492f2",
+                                    "shasum": ""
+                                },
+                                "require": {
+                                    "php": "^7.2 || ^8.0",
+                                    "phpstan/phpstan": "^1.10"
+                                },
+                                "require-dev": {
+                                    "nikic/php-parser": "^4.13.0",
+                                    "php-parallel-lint/php-parallel-lint": "^1.2",
+                                    "phpstan/phpstan-deprecation-rules": "^1.1",
+                                    "phpstan/phpstan-phpunit": "^1.0",
+                                    "phpunit/phpunit": "^9.5"
+                                },
+                                "type": "phpstan-extension",
+                                "extra": {
+                                    "phpstan": {
+                                        "includes": [
+                                            "rules.neon"
+                                        ]
+                                    }
+                                },
+                                "autoload": {
+                                    "psr-4": {
+                                        "PHPStan\\": "src/"
+                                    }
+                                },
+                                "notification-url": "https://packagist.org/downloads/",
+                                "license": [
+                                    "MIT"
+                                ],
+                                "description": "Extra strict and opinionated rules for PHPStan",
+                                "support": {
+                                    "issues": "https://github.com/phpstan/phpstan-strict-rules/issues",
+                                    "source": "https://github.com/phpstan/phpstan-strict-rules/tree/1.5.0"
+                                },
+                                "time": "2023-02-21T10:17:10+00:00"
+                            }
+                        ],
+                        "aliases": [],
+                        "minimum-stability": "stable",
+                        "stability-flags": [],
+                        "prefer-stable": false,
+                        "prefer-lowest": false,
+                        "platform": [],
+                        "platform-dev": [],
+                        "plugin-api-version": "2.3.0"
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /composer
+                  name: composer.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump phpstan/phpstan from 1.10.23 to 1.10.25 in /composer
+            pr-body: "Bumps [phpstan/phpstan](https://github.com/phpstan/phpstan) from 1.10.23 to 1.10.25.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/phpstan/phpstan/releases\">phpstan/phpstan's releases</a>.</em></p>\n<blockquote>\n<h2>1.10.25</h2>\n<h1>Improvements \U0001F527</h1>\n<ul>\n<li>Understand that promoted property can come from renamed trait constructor (<a href=\"https://github.com/phpstan/phpstan-src/commit/eafba2e09164846a010dc29e65bbc49c814941ae\">https://github.com/phpstan/phpstan-src/commit/eafba2e09164846a010dc29e65bbc49c814941ae</a>)</li>\n<li>Understand that methods called from constructor throwing exception cannot leave object in an uninitializad state (<a href=\"https://github.com/phpstan/phpstan-src/commit/f4d060b6888c8ef4469e99becfd23eb64c40da89\">https://github.com/phpstan/phpstan-src/commit/f4d060b6888c8ef4469e99becfd23eb64c40da89</a>)</li>\n</ul>\n<h1>Bugfixes \U0001F41B</h1>\n<ul>\n<li>Allow promoted properties in trait <code>__construct</code> even when renamed (<a href=\"https://github.com/phpstan/phpstan-src/commit/4dd3f753b1438c30e9ee882a3f2b4632b1a8cecc\">https://github.com/phpstan/phpstan-src/commit/4dd3f753b1438c30e9ee882a3f2b4632b1a8cecc</a>), <a href=\"https://redirect.github.com/phpstan/phpstan/issues/9577\">#9577</a></li>\n<li>IllegalConstructorStaticCallRule - fix for renamed trait constructor (<a href=\"https://github.com/phpstan/phpstan-src/commit/65330d3be77c4c7e28a2eb51b19850f8895c147a\">https://github.com/phpstan/phpstan-src/commit/65330d3be77c4c7e28a2eb51b19850f8895c147a</a>), <a href=\"https://redirect.github.com/phpstan/phpstan/issues/9577\">#9577</a></li>\n</ul>\n<h2>1.10.24</h2>\n<h1>Improvements \U0001F527</h1>\n<ul>\n<li>Evaluate uninitialized properties based on each execution end in constructor (<a href=\"https://github.com/phpstan/phpstan-src/commit/b2d2a9d08df092e78fa0cd652e158e13f2e63a7d\">https://github.com/phpstan/phpstan-src/commit/b2d2a9d08df092e78fa0cd652e158e13f2e63a7d</a>), <a href=\"https://redirect.github.com/phpstan/phpstan/issues/7649\">#7649</a></li>\n<li>ConstructorReturnTypeRule (<a href=\"https://github.com/phpstan/phpstan-src/commit/2ebbb5303aad6b757c65ca6f12cafebed79bed83\">https://github.com/phpstan/phpstan-src/commit/2ebbb5303aad6b757c65ca6f12cafebed79bed83</a>)</li>\n</ul>\n<h1>Bugfixes \U0001F41B</h1>\n<ul>\n<li>Fix <code>processCalledMethod</code> when anonymous classes are involved (<a href=\"https://github.com/phpstan/phpstan-src/commit/3f5277975a4c625b0fd6a29ea256a672d0bb77fa\">https://github.com/phpstan/phpstan-src/commit/3f5277975a4c625b0fd6a29ea256a672d0bb77fa</a>)</li>\n<li>Do not require return type for renamed trait constructor (<a href=\"https://github.com/phpstan/phpstan-src/commit/f6ca9c88d66af8d272e4baec19dbd63a0ec54a5f\">https://github.com/phpstan/phpstan-src/commit/f6ca9c88d66af8d272e4baec19dbd63a0ec54a5f</a>), <a href=\"https://redirect.github.com/phpstan/phpstan/issues/9571\">#9571</a></li>\n<li>FileTypeMapper - fix PHPDocs for renamed trait methods (<a href=\"https://github.com/phpstan/phpstan-src/commit/0bd48b4ae0f397de435ba657f7a36284d90ef2dd\">https://github.com/phpstan/phpstan-src/commit/0bd48b4ae0f397de435ba657f7a36284d90ef2dd</a>), <a href=\"https://redirect.github.com/phpstan/phpstan/issues/9571\">#9571</a>, <a href=\"https://redirect.github.com/phpstan/phpstan/issues/6856\">#6856</a></li>\n<li>Register <code>json_validate</code> stub only on PHP 8.3+ (<a href=\"https://github.com/phpstan/phpstan-src/commit/8f8c1af790395a07eb46016ec20f20485bc42c66\">https://github.com/phpstan/phpstan-src/commit/8f8c1af790395a07eb46016ec20f20485bc42c66</a>), <a href=\"https://redirect.github.com/phpstan/phpstan/issues/9574\">#9574</a></li>\n</ul>\n<h1>Function signature fixes \U0001F916</h1>\n<ul>\n<li>More precise <code>session_status()</code> return type (<a href=\"https://redirect.github.com/phpstan/phpstan-src/pull/2509\">#2509</a>), thanks <a href=\"https://github.com/staabm\"><code>@​staabm</code></a>!</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/phpstan/phpstan/commit/578f4e70d117f9a90699324c555922800ac38d8c\"><code>578f4e7</code></a> PHPStan 1.10.25</li>\n<li><a href=\"https://github.com/phpstan/phpstan/commit/326528d787ef32dca7e8b713cb49cbcd567aa82a\"><code>326528d</code></a> Updated PHPStan to commit 326528de94348cacb1abaa3b6385a8cfa406bcdc</li>\n<li><a href=\"https://github.com/phpstan/phpstan/commit/f4d060baa0c07940a94da43262a73173f337d544\"><code>f4d060b</code></a> Updated PHPStan to commit f4d060b6888c8ef4469e99becfd23eb64c40da89</li>\n<li><a href=\"https://github.com/phpstan/phpstan/commit/58a4ae958b39a2b7eda6cc5a8c681099d6f3b5f3\"><code>58a4ae9</code></a> Updated PHPStan to commit 58a4ae992dd399b416caf4961e066974c47c3884</li>\n<li><a href=\"https://github.com/phpstan/phpstan/commit/65330d3de2c78b4f1da31055c8ced80e99c616e9\"><code>65330d3</code></a> Updated PHPStan to commit 65330d3be77c4c7e28a2eb51b19850f8895c147a</li>\n<li><a href=\"https://github.com/phpstan/phpstan/commit/eafba2ecae35472a341a3cb199d8ac8e5239cf9b\"><code>eafba2e</code></a> Updated PHPStan to commit eafba2e09164846a010dc29e65bbc49c814941ae</li>\n<li><a href=\"https://github.com/phpstan/phpstan/commit/360ecc90569e9a60c2954ee209ec04fa0d958e14\"><code>360ecc9</code></a> PHPStan 1.10.24</li>\n<li><a href=\"https://github.com/phpstan/phpstan/commit/e2bb941b72c99c8e1d891d0747e9e14f1d7ea5b0\"><code>e2bb941</code></a> Update baselines</li>\n<li><a href=\"https://github.com/phpstan/phpstan/commit/8f8c1af83bc265a8de8254cee64b8281dac1ca3b\"><code>8f8c1af</code></a> Updated PHPStan to commit 8f8c1af790395a07eb46016ec20f20485bc42c66</li>\n<li><a href=\"https://github.com/phpstan/phpstan/commit/5bb8f193d7e0085c37721c1cacbf175d8e3a842f\"><code>5bb8f19</code></a> Failing test</li>\n<li>Additional commits viewable in <a href=\"https://github.com/phpstan/phpstan/compare/1.10.23...1.10.25\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
+            commit-message: |-
+                Bump phpstan/phpstan from 1.10.23 to 1.10.25 in /composer
+
+                Bumps [phpstan/phpstan](https://github.com/phpstan/phpstan) from 1.10.23 to 1.10.25.
+                - [Release notes](https://github.com/phpstan/phpstan/releases)
+                - [Changelog](https://github.com/phpstan/phpstan/blob/1.11.x/CHANGELOG.md)
+                - [Commits](https://github.com/phpstan/phpstan/compare/1.10.23...1.10.25)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 0dae96b7938dc857a9b8f2a5b0a950735aceb15a
+            dependencies:
+                - name: phpstan/phpstan-strict-rules
+                  previous-requirements:
+                    - file: composer.json
+                      groups:
+                        - development
+                      requirement: 1.5.0
+                      source:
+                        type: git
+                        url: https://github.com/phpstan/phpstan-strict-rules.git
+                  previous-version: 1.5.0
+                  requirements:
+                    - file: composer.json
+                      groups:
+                        - development
+                      requirement: 1.5.1
+                      source:
+                        type: git
+                        url: https://github.com/phpstan/phpstan-strict-rules.git
+                  version: 1.5.1
+            updated-dependency-files:
+                - content: |
+                    {
+                        "require": {
+                            "phpmailer/phpmailer": "5.2.2"
+                        },
+                        "require-dev": {
+                            "phpstan/phpstan": "1.10.23",
+                            "phpstan/phpstan-strict-rules": "1.5.1"
+                        }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /composer
+                  name: composer.json
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    {
+                        "_readme": [
+                            "This file locks the dependencies of your project to a known state",
+                            "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+                            "This file is @generated automatically"
+                        ],
+                        "content-hash": "45ead93bee30c669ff1d5c0928c252b9",
+                        "packages": [
+                            {
+                                "name": "phpmailer/phpmailer",
+                                "version": "v5.2.2",
+                                "source": {
+                                    "type": "git",
+                                    "url": "https://github.com/PHPMailer/PHPMailer.git",
+                                    "reference": "10c57b72fe4476901d1b3f5ccf3f5cedb4b3c8b1"
+                                },
+                                "dist": {
+                                    "type": "zip",
+                                    "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/10c57b72fe4476901d1b3f5ccf3f5cedb4b3c8b1",
+                                    "reference": "10c57b72fe4476901d1b3f5ccf3f5cedb4b3c8b1",
+                                    "shasum": ""
+                                },
+                                "require": {
+                                    "php": ">=5.0.0"
+                                },
+                                "require-dev": {
+                                    "phpdocumentor/phpdocumentor": "*",
+                                    "phpunit/phpunit": "*"
+                                },
+                                "type": "library",
+                                "autoload": {
+                                    "classmap": [
+                                        "class.phpmailer.php",
+                                        "class.pop3.php",
+                                        "class.smtp.php"
+                                    ]
+                                },
+                                "notification-url": "https://packagist.org/downloads/",
+                                "license": [
+                                    "LGPL-2.1"
+                                ],
+                                "authors": [
+                                    {
+                                        "name": "Jim Jagielski",
+                                        "email": "jimjag@gmail.com"
+                                    },
+                                    {
+                                        "name": "Marcus Bointon",
+                                        "email": "phpmailer@synchromedia.co.uk"
+                                    },
+                                    {
+                                        "name": "Andy Prevost",
+                                        "email": "codeworxtech@users.sourceforge.net"
+                                    },
+                                    {
+                                        "name": "Brent R. Matzelle"
+                                    }
+                                ],
+                                "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
+                                "time": "2012-12-04T11:15:39+00:00"
+                            }
+                        ],
+                        "packages-dev": [
+                            {
+                                "name": "phpstan/phpstan",
+                                "version": "1.10.23",
+                                "source": {
+                                    "type": "git",
+                                    "url": "https://github.com/phpstan/phpstan.git",
+                                    "reference": "65ab678d1248a8bc6fde456f0d7ff3562a61a4cd"
+                                },
+                                "dist": {
+                                    "type": "zip",
+                                    "url": "https://api.github.com/repos/phpstan/phpstan/zipball/65ab678d1248a8bc6fde456f0d7ff3562a61a4cd",
+                                    "reference": "65ab678d1248a8bc6fde456f0d7ff3562a61a4cd",
+                                    "shasum": ""
+                                },
+                                "require": {
+                                    "php": "^7.2|^8.0"
+                                },
+                                "conflict": {
+                                    "phpstan/phpstan-shim": "*"
+                                },
+                                "bin": [
+                                    "phpstan",
+                                    "phpstan.phar"
+                                ],
+                                "type": "library",
+                                "autoload": {
+                                    "files": [
+                                        "bootstrap.php"
+                                    ]
+                                },
+                                "notification-url": "https://packagist.org/downloads/",
+                                "license": [
+                                    "MIT"
+                                ],
+                                "description": "PHPStan - PHP Static Analysis Tool",
+                                "keywords": [
+                                    "dev",
+                                    "static analysis"
+                                ],
+                                "support": {
+                                    "docs": "https://phpstan.org/user-guide/getting-started",
+                                    "forum": "https://github.com/phpstan/phpstan/discussions",
+                                    "issues": "https://github.com/phpstan/phpstan/issues",
+                                    "security": "https://github.com/phpstan/phpstan/security/policy",
+                                    "source": "https://github.com/phpstan/phpstan-src"
+                                },
+                                "funding": [
+                                    {
+                                        "url": "https://github.com/ondrejmirtes",
+                                        "type": "github"
+                                    },
+                                    {
+                                        "url": "https://github.com/phpstan",
+                                        "type": "github"
+                                    },
+                                    {
+                                        "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
+                                        "type": "tidelift"
+                                    }
+                                ],
+                                "time": "2023-07-04T13:32:44+00:00"
+                            },
+                            {
+                                "name": "phpstan/phpstan-strict-rules",
+                                "version": "1.5.1",
+                                "source": {
+                                    "type": "git",
+                                    "url": "https://github.com/phpstan/phpstan-strict-rules.git",
+                                    "reference": "b21c03d4f6f3a446e4311155f4be9d65048218e6"
+                                },
+                                "dist": {
+                                    "type": "zip",
+                                    "url": "https://api.github.com/repos/phpstan/phpstan-strict-rules/zipball/b21c03d4f6f3a446e4311155f4be9d65048218e6",
+                                    "reference": "b21c03d4f6f3a446e4311155f4be9d65048218e6",
+                                    "shasum": ""
+                                },
+                                "require": {
+                                    "php": "^7.2 || ^8.0",
+                                    "phpstan/phpstan": "^1.10"
+                                },
+                                "require-dev": {
+                                    "nikic/php-parser": "^4.13.0",
+                                    "php-parallel-lint/php-parallel-lint": "^1.2",
+                                    "phpstan/phpstan-deprecation-rules": "^1.1",
+                                    "phpstan/phpstan-phpunit": "^1.0",
+                                    "phpunit/phpunit": "^9.5"
+                                },
+                                "type": "phpstan-extension",
+                                "extra": {
+                                    "phpstan": {
+                                        "includes": [
+                                            "rules.neon"
+                                        ]
+                                    }
+                                },
+                                "autoload": {
+                                    "psr-4": {
+                                        "PHPStan\\": "src/"
+                                    }
+                                },
+                                "notification-url": "https://packagist.org/downloads/",
+                                "license": [
+                                    "MIT"
+                                ],
+                                "description": "Extra strict and opinionated rules for PHPStan",
+                                "support": {
+                                    "issues": "https://github.com/phpstan/phpstan-strict-rules/issues",
+                                    "source": "https://github.com/phpstan/phpstan-strict-rules/tree/1.5.1"
+                                },
+                                "time": "2023-03-29T14:47:40+00:00"
+                            }
+                        ],
+                        "aliases": [],
+                        "minimum-stability": "stable",
+                        "stability-flags": [],
+                        "prefer-stable": false,
+                        "prefer-lowest": false,
+                        "platform": [],
+                        "platform-dev": [],
+                        "plugin-api-version": "2.3.0"
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /composer
+                  name: composer.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump phpstan/phpstan-strict-rules from 1.5.0 to 1.5.1 in /composer
+            pr-body: |
+                Bumps [phpstan/phpstan-strict-rules](https://github.com/phpstan/phpstan-strict-rules) from 1.5.0 to 1.5.1.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/phpstan/phpstan-strict-rules/releases">phpstan/phpstan-strict-rules's releases</a>.</em></p>
+                <blockquote>
+                <h2>1.5.1</h2>
+                <ul>
+                <li><a href="http://github.com/phpstan/phpstan-strict-rules/commit/b21c03d4f6f3a446e4311155f4be9d65048218e6">b21c03d</a> - DynamicCallOnStaticMethodsRule - do not report for methods declared on PHPStanTestCase and TypeInferenceTestCase</li>
+                <li><a href="http://github.com/phpstan/phpstan-strict-rules/commit/ce25f06a29be307aef03a726799a57b6dd833b8a">ce25f06</a> - Update dependency slevomat/coding-standard to v8.9.0</li>
+                <li><a href="http://github.com/phpstan/phpstan-strict-rules/commit/b3a558c9cefa128f83df6787f7b1b86e67ca4cc2">b3a558c</a> - Update PHPCS</li>
+                <li><a href="http://github.com/phpstan/phpstan-strict-rules/commit/d811ef616a1ca84978d5ab44c105b7aa9ba082db">d811ef6</a> - Update metcalfc/changelog-generator action to v4.1.0</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/phpstan/phpstan-strict-rules/commit/b21c03d4f6f3a446e4311155f4be9d65048218e6"><code>b21c03d</code></a> DynamicCallOnStaticMethodsRule - do not report for methods declared on PHPSta...</li>
+                <li><a href="https://github.com/phpstan/phpstan-strict-rules/commit/ce25f06a29be307aef03a726799a57b6dd833b8a"><code>ce25f06</code></a> Update dependency slevomat/coding-standard to v8.9.0</li>
+                <li><a href="https://github.com/phpstan/phpstan-strict-rules/commit/b3a558c9cefa128f83df6787f7b1b86e67ca4cc2"><code>b3a558c</code></a> Update PHPCS</li>
+                <li><a href="https://github.com/phpstan/phpstan-strict-rules/commit/d811ef616a1ca84978d5ab44c105b7aa9ba082db"><code>d811ef6</code></a> Update metcalfc/changelog-generator action to v4.1.0</li>
+                <li>See full diff in <a href="https://github.com/phpstan/phpstan-strict-rules/compare/1.5.0...1.5.1">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump phpstan/phpstan-strict-rules from 1.5.0 to 1.5.1 in /composer
+
+                Bumps [phpstan/phpstan-strict-rules](https://github.com/phpstan/phpstan-strict-rules) from 1.5.0 to 1.5.1.
+                - [Release notes](https://github.com/phpstan/phpstan-strict-rules/releases)
+                - [Commits](https://github.com/phpstan/phpstan-strict-rules/compare/1.5.0...1.5.1)
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: bb98f0c3489713c240ccc1f1800008d4f0844dfd
+            base-commit-sha: 0dae96b7938dc857a9b8f2a5b0a950735aceb15a
