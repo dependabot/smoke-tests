@@ -3,6 +3,14 @@ input:
         package-manager: github_actions
         allowed-updates:
             - update-type: all
+        dependency-groups:
+            - name: setup
+              rules:
+                patterns:
+                    - actions/setup*
+        experiments:
+            grouped-updates-prototype: true
+            record-ecosystem-versions: true
         ignore-conditions:
             - dependency-name: actions/checkout
               source: tests/smoke-actions.yaml
@@ -96,76 +104,6 @@ output:
                         type: git
                         url: https://github.com/actions/setup-go
                   version: 4.0.1
-            updated-dependency-files:
-                - content: |
-                    name: Body moving
-                    on: workflow_dispatch
-
-                    permissions:
-                      contents: read
-
-                    jobs:
-                      body-moving:
-                        name: We be body moving
-                        runs-on: ubuntu-latest
-                        steps:
-                          - name: Setup Go
-                            uses: actions/setup-go@fac708d6674e30b6ba41289acaab6d4b75aa0753
-                          - name: Setup Ruby
-                            uses: actions/setup-ruby@5f29a1cd8dfebf420691c4c9a0e832e2fae5a526
-                          - name: Check out code
-                            uses: actions/checkout@01aecccf739ca6ff86c0539fbc67a7a5007bbc81
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /actions
-                  name: action.yml
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump actions/setup-go from 4.0.0 to 4.0.1 in /actions
-            pr-body: |
-                Bumps [actions/setup-go](https://github.com/actions/setup-go) from 4.0.0 to 4.0.1.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/actions/setup-go/releases">actions/setup-go's releases</a>.</em></p>
-                <blockquote>
-                <h2>v4.0.1</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Update documentation for <code>v4</code> by <a href="https://github.com/dsame"><code>@​dsame</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/354">actions/setup-go#354</a></li>
-                <li>Fix glob bug in the package.json scripts section by <a href="https://github.com/IvanZosimov"><code>@​IvanZosimov</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/359">actions/setup-go#359</a></li>
-                <li>Bump <code>xml2js</code> dependency by <a href="https://github.com/dmitry-shibanov"><code>@​dmitry-shibanov</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/370">actions/setup-go#370</a></li>
-                <li>Bump <code>@actions/cache</code> dependency to v3.2.1 by <a href="https://github.com/nikolai-laevskii"><code>@​nikolai-laevskii</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/374">actions/setup-go#374</a></li>
-                </ul>
-                <h2>New Contributors</h2>
-                <ul>
-                <li><a href="https://github.com/nikolai-laevskii"><code>@​nikolai-laevskii</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/374">actions/setup-go#374</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/setup-go/compare/v4...v4.0.1">https://github.com/actions/setup-go/compare/v4...v4.0.1</a></p>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/actions/setup-go/commit/fac708d6674e30b6ba41289acaab6d4b75aa0753"><code>fac708d</code></a> Bump <code>@​actions/cache</code> dependency to v3.2.1 (<a href="https://redirect.github.com/actions/setup-go/issues/374">#374</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/dd84a9531a6f8e72c321f2aa3b9048ed359670e4"><code>dd84a95</code></a> Update xml2js (<a href="https://redirect.github.com/actions/setup-go/issues/370">#370</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/41c2024c46acfe1d0b8c9b7f20e28406983e553b"><code>41c2024</code></a> Fix glob bug in package.json scripts section (<a href="https://redirect.github.com/actions/setup-go/issues/359">#359</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/8dbf352f069be09d9a0b567cc1a9d16a5663fc3a"><code>8dbf352</code></a> update README fo v4 (<a href="https://redirect.github.com/actions/setup-go/issues/354">#354</a>)</li>
-                <li>See full diff in <a href="https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...fac708d6674e30b6ba41289acaab6d4b75aa0753">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump actions/setup-go from 4.0.0 to 4.0.1 in /actions
-
-                Bumps [actions/setup-go](https://github.com/actions/setup-go) from 4.0.0 to 4.0.1.
-                - [Release notes](https://github.com/actions/setup-go/releases)
-                - [Commits](https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...fac708d6674e30b6ba41289acaab6d4b75aa0753)
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: a2064cb25db5a8a048513d5e61b27987612d5612
-            dependencies:
                 - name: actions/setup-ruby
                   previous-requirements:
                     - file: action.yml
@@ -205,7 +143,7 @@ output:
                         runs-on: ubuntu-latest
                         steps:
                           - name: Setup Go
-                            uses: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9
+                            uses: actions/setup-go@fac708d6674e30b6ba41289acaab6d4b75aa0753
                           - name: Setup Ruby
                             uses: actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543
                           - name: Check out code
@@ -217,9 +155,43 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump actions/setup-ruby from 1.1.2 to 1.1.3 in /actions
+            pr-title: Bump the setup group in /actions with 2 updates
             pr-body: |
-                Bumps [actions/setup-ruby](https://github.com/actions/setup-ruby) from 1.1.2 to 1.1.3.
+                Bumps the setup group in /actions with 2 updates: [actions/setup-go](https://github.com/actions/setup-go) and [actions/setup-ruby](https://github.com/actions/setup-ruby).
+
+                Updates `actions/setup-go` from 4.0.0 to 4.0.1
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/actions/setup-go/releases">actions/setup-go's releases</a>.</em></p>
+                <blockquote>
+                <h2>v4.0.1</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Update documentation for <code>v4</code> by <a href="https://github.com/dsame"><code>@​dsame</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/354">actions/setup-go#354</a></li>
+                <li>Fix glob bug in the package.json scripts section by <a href="https://github.com/IvanZosimov"><code>@​IvanZosimov</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/359">actions/setup-go#359</a></li>
+                <li>Bump <code>xml2js</code> dependency by <a href="https://github.com/dmitry-shibanov"><code>@​dmitry-shibanov</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/370">actions/setup-go#370</a></li>
+                <li>Bump <code>@actions/cache</code> dependency to v3.2.1 by <a href="https://github.com/nikolai-laevskii"><code>@​nikolai-laevskii</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/374">actions/setup-go#374</a></li>
+                </ul>
+                <h2>New Contributors</h2>
+                <ul>
+                <li><a href="https://github.com/nikolai-laevskii"><code>@​nikolai-laevskii</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/374">actions/setup-go#374</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/setup-go/compare/v4...v4.0.1">https://github.com/actions/setup-go/compare/v4...v4.0.1</a></p>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/actions/setup-go/commit/fac708d6674e30b6ba41289acaab6d4b75aa0753"><code>fac708d</code></a> Bump <code>@​actions/cache</code> dependency to v3.2.1 (<a href="https://redirect.github.com/actions/setup-go/issues/374">#374</a>)</li>
+                <li><a href="https://github.com/actions/setup-go/commit/dd84a9531a6f8e72c321f2aa3b9048ed359670e4"><code>dd84a95</code></a> Update xml2js (<a href="https://redirect.github.com/actions/setup-go/issues/370">#370</a>)</li>
+                <li><a href="https://github.com/actions/setup-go/commit/41c2024c46acfe1d0b8c9b7f20e28406983e553b"><code>41c2024</code></a> Fix glob bug in package.json scripts section (<a href="https://redirect.github.com/actions/setup-go/issues/359">#359</a>)</li>
+                <li><a href="https://github.com/actions/setup-go/commit/8dbf352f069be09d9a0b567cc1a9d16a5663fc3a"><code>8dbf352</code></a> update README fo v4 (<a href="https://redirect.github.com/actions/setup-go/issues/354">#354</a>)</li>
+                <li>See full diff in <a href="https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...fac708d6674e30b6ba41289acaab6d4b75aa0753">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `actions/setup-ruby` from 1.1.2 to 1.1.3
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/actions/setup-ruby/releases">actions/setup-ruby's releases</a>.</em></p>
@@ -244,11 +216,20 @@ output:
                 </details>
                 <br />
             commit-message: |-
-                Bump actions/setup-ruby from 1.1.2 to 1.1.3 in /actions
+                Bump the setup group in /actions with 2 updates
 
-                Bumps [actions/setup-ruby](https://github.com/actions/setup-ruby) from 1.1.2 to 1.1.3.
+                Bumps the setup group in /actions with 2 updates: [actions/setup-go](https://github.com/actions/setup-go) and [actions/setup-ruby](https://github.com/actions/setup-ruby).
+
+
+                Updates `actions/setup-go` from 4.0.0 to 4.0.1
+                - [Release notes](https://github.com/actions/setup-go/releases)
+                - [Commits](https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...fac708d6674e30b6ba41289acaab6d4b75aa0753)
+
+                Updates `actions/setup-ruby` from 1.1.2 to 1.1.3
                 - [Release notes](https://github.com/actions/setup-ruby/releases)
                 - [Commits](https://github.com/actions/setup-ruby/compare/5f29a1cd8dfebf420691c4c9a0e832e2fae5a526...e932e7af67fc4a8fc77bd86b744acd4e42fe3543)
+            dependency-group:
+                name: setup
     - type: create_pull_request
       expect:
         data:
