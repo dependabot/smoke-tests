@@ -3,6 +3,8 @@ input:
         package-manager: cargo
         allowed-updates:
             - update-type: all
+        experiments:
+            record-ecosystem-versions: true
         ignore-conditions:
             - dependency-name: time
               source: tests/smoke-cargo.yaml

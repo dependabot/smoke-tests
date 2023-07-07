@@ -3,6 +3,8 @@ input:
         package-manager: npm_and_yarn
         allowed-updates:
             - update-type: all
+        experiments:
+            record-ecosystem-versions: true
         ignore-conditions:
             - dependency-name: fetch-factory
               source: tests/smoke-yarn.yaml

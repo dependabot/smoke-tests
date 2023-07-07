@@ -3,6 +3,8 @@ input:
         package-manager: npm_and_yarn
         allowed-updates:
             - dependency-name: jquery
+        experiments:
+            record-ecosystem-versions: true
         ignore-conditions:
             - dependency-name: jquery
               version-requirement: '>3.6.3'
