@@ -1,8 +1,13 @@
-# Runs all smoke tests individually to refill caches after a change to how caching works.
+# Runs all smoke tests individually to refill caches. Useful after modifying how caching works.
 name: Cache all (SLOW!)
 
 on:
   workflow_dispatch:
+    inputs:
+      git-ref:
+        description: git ref
+        required: true
+        default: main
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -52,6 +57,8 @@ jobs:
           - { path: tests/smoke-yarn-berry-workspaces.yaml, name: yarn-berry-workspaces }
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.git-ref }}
 
       - name: Download CLI
         run: |
