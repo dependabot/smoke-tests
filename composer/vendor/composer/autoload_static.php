@@ -6,7 +6,26 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit0ceac13d49cab8ed98cfbf3f2634c685
 {
+    public static $files = array (
+        '9b38cf48e83f5d8f60375221cd213eee' => __DIR__ . '/..' . '/phpstan/phpstan/bootstrap.php',
+    );
+
+    public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'PHPStan\\' => 8,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'PHPStan\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpstan/phpstan-strict-rules/src',
+        ),
+    );
+
     public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmailer.php',
         'POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.pop3.php',
         'SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.smtp.php',
@@ -16,6 +35,8 @@ class ComposerStaticInit0ceac13d49cab8ed98cfbf3f2634c685
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit0ceac13d49cab8ed98cfbf3f2634c685::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit0ceac13d49cab8ed98cfbf3f2634c685::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit0ceac13d49cab8ed98cfbf3f2634c685::$classMap;
 
         }, null, ClassLoader::class);
