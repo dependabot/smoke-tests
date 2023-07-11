@@ -288,9 +288,9 @@ output:
 
                     [[package]]
                     name = "serde"
-                    version = "1.0.160"
+                    version = "1.0.171"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "bb2f3770c8bce3bcda7e149193a069a0f4365bda1fa5cd88e03bca26afc1216c"
+                    checksum = "30e27d1e4fd7659406c492fd6cfaf2066ba8773de45ca75e855590f856dc34a9"
 
                     [[package]]
                     name = "time"
@@ -1000,10 +1000,10 @@ output:
                       requirement: null
                       source:
                         branch: null
-                        ref: 1.0.6
+                        ref: 1.0.8
                         type: git
                         url: https://github.com/dtolnay/itoa.git
-                  version: 3cab737d59c60014655268a79930861db300023d
+                  version: a6af90ff98545f7370f1d52f1d9cc813a224e98f
             updated-dependency-files:
                 - content: |
                     [package]
@@ -1015,7 +1015,7 @@ output:
                     time = "=0.3.0-alpha-2"
                     regex = ">=1.6.0, <1.7.0"
                     rand = { git = "ssh://git@github.com/rust-random/rand.git", tag = "0.8.4" }
-                    itoa = { git = "https://github.com/dtolnay/itoa.git", tag = "1.0.6" }
+                    itoa = { git = "https://github.com/dtolnay/itoa.git", tag = "1.0.8" }
                   content_encoding: utf-8
                   deleted: false
                   directory: /cargo
@@ -1078,8 +1078,8 @@ output:
 
                     [[package]]
                     name = "itoa"
-                    version = "1.0.6"
-                    source = "git+https://github.com/dtolnay/itoa.git?tag=1.0.6#3cab737d59c60014655268a79930861db300023d"
+                    version = "1.0.8"
+                    source = "git+https://github.com/dtolnay/itoa.git?tag=1.0.8#a6af90ff98545f7370f1d52f1d9cc813a224e98f"
 
                     [[package]]
                     name = "libc"
@@ -1191,39 +1191,60 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump itoa from 1.0.5 to 1.0.6 in /cargo
+            pr-title: Bump itoa from 1.0.5 to 1.0.8 in /cargo
             pr-body: |
-                Bumps [itoa](https://github.com/dtolnay/itoa) from 1.0.5 to 1.0.6.
+                Bumps [itoa](https://github.com/dtolnay/itoa) from 1.0.5 to 1.0.8.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/dtolnay/itoa/releases">itoa's releases</a>.</em></p>
+                <blockquote>
+                <h2>1.0.8</h2>
+                <ul>
+                <li>Add <code>no-alloc</code> category to crates.io metadata</li>
+                </ul>
+                <h2>1.0.7</h2>
+                <ul>
+                <li>Implement Copy for itoa::Buffer</li>
+                </ul>
+                <h2>1.0.6</h2>
+                <ul>
+                <li>Documentation improvements</li>
+                </ul>
+                </blockquote>
+                </details>
                 <details>
                 <summary>Commits</summary>
                 <ul>
+                <li><a href="https://github.com/dtolnay/itoa/commit/a6af90ff98545f7370f1d52f1d9cc813a224e98f"><code>a6af90f</code></a> Release 1.0.8</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/f834fdb88eb43789aeca57d303b90bbe4d8c4eae"><code>f834fdb</code></a> Add no-std::no-alloc category</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/26259a9a1ada016a6d045b5f0ebeea2089f646a3"><code>26259a9</code></a> Release 1.0.7</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/21ee1ba69749a20a076c15a310612c5b4350d844"><code>21ee1ba</code></a> Suppress incorrect_clone_impl_on_copy_type clippy false positive</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/0dccfa45975264cd0e270854d5debca510b74d7f"><code>0dccfa4</code></a> Ignore expl_impl_clone_on_copy pedantic clippy lint</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/9c8ced9755d940d301ce4b2dba264082d6439bdd"><code>9c8ced9</code></a> impl Copy for Buffer</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/f2d5e2750a39298d9c93ee58cd1203dea2bb3c9b"><code>f2d5e27</code></a> Remove .clippy.toml in favor of respecting rust-version from Cargo.toml</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/97a5102fef76824202bb1a3762dee313e84d3348"><code>97a5102</code></a> Show error details during miri setup in CI</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/57fa3a387870b5917e953ff8e57575c058dd33e1"><code>57fa3a3</code></a> Update fuzz crate gitignore to ignore coverage dir</li>
                 <li><a href="https://github.com/dtolnay/itoa/commit/3cab737d59c60014655268a79930861db300023d"><code>3cab737</code></a> Release 1.0.6</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/e9573cd99ec1fe0bdf229c0614327c1196946e98"><code>e9573cd</code></a> Enable type layout randomization in CI on nightly</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/320250e56ddf75f3793b7bd448744fef2b501728"><code>320250e</code></a> Support a manual trigger on CI workflow</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/40db9e7ea8c5ccc75aaa6b971bcdbfbc590805f1"><code>40db9e7</code></a> Prevent actions duplication on noop merge commits</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/d79365b257c8d652c4d6ee3641a47209eed88df1"><code>d79365b</code></a> Speed up cargo fuzz CI job</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/5bd582c9654c7eba3d95e87256fc2c929c1745e2"><code>5bd582c</code></a> Opt out -Zrustdoc-scrape-examples on docs.rs</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/a77f3c911f519933f535ad672a98c10e977f77d7"><code>a77f3c9</code></a> Sync license text with rust-lang repos</li>
-                <li>See full diff in <a href="https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...3cab737d59c60014655268a79930861db300023d">compare view</a></li>
+                <li>Additional commits viewable in <a href="https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...a6af90ff98545f7370f1d52f1d9cc813a224e98f">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump itoa from 1.0.5 to 1.0.6 in /cargo
+                Bump itoa from 1.0.5 to 1.0.8 in /cargo
 
-                Bumps [itoa](https://github.com/dtolnay/itoa) from 1.0.5 to 1.0.6.
+                Bumps [itoa](https://github.com/dtolnay/itoa) from 1.0.5 to 1.0.8.
                 - [Release notes](https://github.com/dtolnay/itoa/releases)
-                - [Commits](https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...3cab737d59c60014655268a79930861db300023d)
+                - [Commits](https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...a6af90ff98545f7370f1d52f1d9cc813a224e98f)
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 3d44220c5ab8e3c592b63373354a596b781f6e09
             dependencies:
-                - name: libc
+                - name: getrandom
                   previous-requirements: []
-                  previous-version: 0.2.141
+                  previous-version: 0.2.9
                   requirements: []
-                  version: 0.2.142
+                  version: 0.2.10
             updated-dependency-files:
                 - content: |
                     # This file is automatically @generated by Cargo.
@@ -1269,9 +1290,9 @@ output:
 
                     [[package]]
                     name = "getrandom"
-                    version = "0.2.9"
+                    version = "0.2.10"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "c85e1d9ab2eadba7e5040d4e09cbd6d072b76a557ad64e797c2cb9d4da21d7e4"
+                    checksum = "be4136b2a15dd319360be1c07d9933517ccf0be8f16bf62a3bee4f0d618df427"
                     dependencies = [
                      "cfg-if",
                      "libc",
@@ -1285,9 +1306,9 @@ output:
 
                     [[package]]
                     name = "libc"
-                    version = "0.2.142"
+                    version = "0.2.147"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "6a987beff54b60ffa6d51982e1aa1146bc42f19bd26be28b0586f252fccf5317"
+                    checksum = "b4668fb0ea861c1df094127ac5f1da3409a82116a4ba74fca2e58ef927159bb3"
 
                     [[package]]
                     name = "memchr"
@@ -1393,64 +1414,307 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump libc from 0.2.141 to 0.2.142 in /cargo
+            pr-title: Bump getrandom from 0.2.9 to 0.2.10 in /cargo
             pr-body: |
-                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.141 to 0.2.142.
+                Bumps [getrandom](https://github.com/rust-random/getrandom) from 0.2.9 to 0.2.10.
                 <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/rust-lang/libc/releases">libc's releases</a>.</em></p>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/rust-random/getrandom/blob/master/CHANGELOG.md">getrandom's changelog</a>.</em></p>
                 <blockquote>
-                <h2>0.2.142</h2>
-                <h2>What's Changed</h2>
+                <h2>[0.2.10] - 2023-06-06</h2>
+                <h3>Added</h3>
                 <ul>
-                <li>netbsd add MAP_ALIGNED macro by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3170">rust-lang/libc#3170</a></li>
-                <li>Install libnghttp2 on all FreeBSD jobs by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3192">rust-lang/libc#3192</a></li>
-                <li>freebsd add MAP_ALIGNED macro by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3167">rust-lang/libc#3167</a></li>
-                <li>Add more declarations for AIX by <a href="https://github.com/ecnelises"><code>@​ecnelises</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3144">rust-lang/libc#3144</a></li>
-                <li>Remove AIX specific definition of sigval by <a href="https://github.com/ecnelises"><code>@​ecnelises</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3189">rust-lang/libc#3189</a></li>
-                <li>haiku adding bsd missing constants by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3193">rust-lang/libc#3193</a></li>
-                <li>netbsd,openbsd: add more waitid related constants by <a href="https://github.com/valpackett"><code>@​valpackett</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3188">rust-lang/libc#3188</a></li>
-                <li>Pin FreeBSD 14 version on CI by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3203">rust-lang/libc#3203</a></li>
-                <li>adding getdtablesize on redox by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3199">rust-lang/libc#3199</a></li>
-                <li>Add kexec_file_load system call for arm linux by <a href="https://github.com/ribalda"><code>@​ribalda</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3200">rust-lang/libc#3200</a></li>
-                <li>Upstream a few more constants from rustix. by <a href="https://github.com/sunfishcode"><code>@​sunfishcode</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3173">rust-lang/libc#3173</a></li>
-                <li>freebsd i686 add ucontext/mcontext by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3202">rust-lang/libc#3202</a></li>
-                <li>fuchsia: add definitions for riscv64 by <a href="https://github.com/ComputerDruid"><code>@​ComputerDruid</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3204">rust-lang/libc#3204</a></li>
-                <li>Mention unstable values on PR template by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3207">rust-lang/libc#3207</a></li>
-                <li>fix: CMSG_HEADER_ALIGNMENT was not properly equal to the C Header file in illumos by <a href="https://github.com/Toasterson"><code>@​Toasterson</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3171">rust-lang/libc#3171</a></li>
-                <li>Bump to 0.2.142 by <a href="https://github.com/ComputerDruid"><code>@​ComputerDruid</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3208">rust-lang/libc#3208</a></li>
+                <li>Support for PS Vita (<code>armv7-sony-vita-newlibeabihf</code>) <a href="https://redirect.github.com/rust-random/getrandom/issues/359">#359</a></li>
                 </ul>
-                <h2>New Contributors</h2>
+                <h3>Changed</h3>
                 <ul>
-                <li><a href="https://github.com/ComputerDruid"><code>@​ComputerDruid</code></a> made their first contribution in <a href="https://redirect.github.com/rust-lang/libc/pull/3204">rust-lang/libc#3204</a></li>
-                <li><a href="https://github.com/Toasterson"><code>@​Toasterson</code></a> made their first contribution in <a href="https://redirect.github.com/rust-lang/libc/pull/3171">rust-lang/libc#3171</a></li>
+                <li>Use getentropy from libc on Emscripten targets <a href="https://redirect.github.com/rust-random/getrandom/issues/362">#362</a></li>
                 </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rust-lang/libc/compare/0.2.141...0.2.142">https://github.com/rust-lang/libc/compare/0.2.141...0.2.142</a></p>
+                <p><a href="https://redirect.github.com/rust-random/getrandom/issues/359">#359</a>: <a href="https://redirect.github.com/rust-random/getrandom/pull/359">rust-random/getrandom#359</a>
+                <a href="https://redirect.github.com/rust-random/getrandom/issues/362">#362</a>: <a href="https://redirect.github.com/rust-random/getrandom/pull/362">rust-random/getrandom#362</a></p>
                 </blockquote>
                 </details>
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/rust-lang/libc/commit/e4cccf92421e5a8a2bf56fed9bd4278eda1f7907"><code>e4cccf9</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3208">#3208</a> - ComputerDruid:bump_142, r=JohnTitor</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/79b7d3c7520a29c98f346285b1184091fd36fff2"><code>79b7d3c</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3171">#3171</a> - Toasterson:master, r=JohnTitor,pfmooney</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/a964608984589fb4190304e7cad14afec993a250"><code>a964608</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3207">#3207</a> - JohnTitor:placeholder-pr-template, r=JohnTitor</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/38702b2623a2acfbf1957263f0c84950ef071aa4"><code>38702b2</code></a> Bump to 0.2.142</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/4e82ee6998753f49f4ac6c08459e8cdc0d0c66a6"><code>4e82ee6</code></a> Mention unstable values on PR template</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/4983ced7004f075672e0663ebbc4e8122302f1e1"><code>4983ced</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3204">#3204</a> - ComputerDruid:riscv64, r=JohnTitor</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/9cc77816fae6b66172798df7bc975e5faae754f2"><code>9cc7781</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3202">#3202</a> - devnexen:fbsd_ucontext_i686, r=JohnTitor</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/157ac25cc09ac65fdcadf02ffd5e797841a68cb3"><code>157ac25</code></a> fuchsia: add definitions for riscv64</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/b811b70f6676a24c16a786a3549eb6b35071c13c"><code>b811b70</code></a> freebsd i686 add ucontext/mcontext</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/8077351f4b28a1b9fc46e2ac11a530d782264273"><code>8077351</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3173">#3173</a> - sunfishcode:sunfishcode/upstream, r=JohnTitor</li>
-                <li>Additional commits viewable in <a href="https://github.com/rust-lang/libc/compare/0.2.141...0.2.142">compare view</a></li>
+                <li><a href="https://github.com/rust-random/getrandom/commit/2e483d68aaa57168a84489349d6473b492e05478"><code>2e483d6</code></a> Release v0.2.10 (<a href="https://redirect.github.com/rust-random/getrandom/issues/364">#364</a>)</li>
+                <li><a href="https://github.com/rust-random/getrandom/commit/e57fcac8dc3cb1f8c906cf1f8f7179050927df1b"><code>e57fcac</code></a> emscripten: use getentropy from libc (<a href="https://redirect.github.com/rust-random/getrandom/issues/362">#362</a>)</li>
+                <li><a href="https://github.com/rust-random/getrandom/commit/5aa4105c23065ca7477d1332022a017d6488a6c4"><code>5aa4105</code></a> Create SECURITY.md (<a href="https://redirect.github.com/rust-random/getrandom/issues/361">#361</a>)</li>
+                <li><a href="https://github.com/rust-random/getrandom/commit/53cf0cc3afb94722d21f35c2a30de80cec6e1947"><code>53cf0cc</code></a> Add support for PS Vita (armv7-sony-vita-newlibeabihf) (<a href="https://redirect.github.com/rust-random/getrandom/issues/359">#359</a>)</li>
+                <li><a href="https://github.com/rust-random/getrandom/commit/666b2d4c8352a188da7dbb4a4d6754a6ba2ac3f8"><code>666b2d4</code></a> Fix v0.2.9 release date (<a href="https://redirect.github.com/rust-random/getrandom/issues/357">#357</a>)</li>
+                <li>See full diff in <a href="https://github.com/rust-random/getrandom/compare/v0.2.9...v0.2.10">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump libc from 0.2.141 to 0.2.142 in /cargo
+                Bump getrandom from 0.2.9 to 0.2.10 in /cargo
 
-                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.141 to 0.2.142.
+                Bumps [getrandom](https://github.com/rust-random/getrandom) from 0.2.9 to 0.2.10.
+                - [Changelog](https://github.com/rust-random/getrandom/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/rust-random/getrandom/compare/v0.2.9...v0.2.10)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 3d44220c5ab8e3c592b63373354a596b781f6e09
+            dependencies:
+                - name: libc
+                  previous-requirements: []
+                  previous-version: 0.2.141
+                  requirements: []
+                  version: 0.2.147
+            updated-dependency-files:
+                - content: |
+                    # This file is automatically @generated by Cargo.
+                    # It is not intended for manual editing.
+                    version = 3
+
+                    [[package]]
+                    name = "aho-corasick"
+                    version = "0.7.20"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "cc936419f96fa211c1b9166887b38e5e40b19958e5b895be7c1f93adec7071ac"
+                    dependencies = [
+                     "memchr",
+                    ]
+
+                    [[package]]
+                    name = "cfg-if"
+                    version = "1.0.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
+
+                    [[package]]
+                    name = "const_fn"
+                    version = "0.4.9"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "fbdcdcb6d86f71c5e97409ad45898af11cbc995b4ee8112d59095a28d376c935"
+
+                    [[package]]
+                    name = "dependabot"
+                    version = "0.1.0"
+                    dependencies = [
+                     "itoa",
+                     "rand",
+                     "regex",
+                     "time",
+                    ]
+
+                    [[package]]
+                    name = "easy-ext"
+                    version = "0.2.9"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "53aff6fdc1b181225acdcb5b14c47106726fd8e486707315b1b138baed68ee31"
+
+                    [[package]]
+                    name = "getrandom"
+                    version = "0.2.9"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "c85e1d9ab2eadba7e5040d4e09cbd6d072b76a557ad64e797c2cb9d4da21d7e4"
+                    dependencies = [
+                     "cfg-if",
+                     "libc",
+                     "wasi",
+                    ]
+
+                    [[package]]
+                    name = "itoa"
+                    version = "1.0.5"
+                    source = "git+https://github.com/dtolnay/itoa.git?tag=1.0.5#ef4faeda61024dfb38b3897e46aeda8140828dc6"
+
+                    [[package]]
+                    name = "libc"
+                    version = "0.2.147"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "b4668fb0ea861c1df094127ac5f1da3409a82116a4ba74fca2e58ef927159bb3"
+
+                    [[package]]
+                    name = "memchr"
+                    version = "2.5.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
+
+                    [[package]]
+                    name = "ppv-lite86"
+                    version = "0.2.17"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
+
+                    [[package]]
+                    name = "rand"
+                    version = "0.8.4"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "libc",
+                     "rand_chacha",
+                     "rand_core",
+                     "rand_hc",
+                    ]
+
+                    [[package]]
+                    name = "rand_chacha"
+                    version = "0.3.1"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "ppv-lite86",
+                     "rand_core",
+                    ]
+
+                    [[package]]
+                    name = "rand_core"
+                    version = "0.6.3"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "getrandom",
+                    ]
+
+                    [[package]]
+                    name = "rand_hc"
+                    version = "0.3.1"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "rand_core",
+                    ]
+
+                    [[package]]
+                    name = "regex"
+                    version = "1.6.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "4c4eb3267174b8c6c2f654116623910a0fef09c4753f8dd83db29c48a0df988b"
+                    dependencies = [
+                     "aho-corasick",
+                     "memchr",
+                     "regex-syntax",
+                    ]
+
+                    [[package]]
+                    name = "regex-syntax"
+                    version = "0.6.29"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "f162c6dd7b008981e4d40210aca20b4bd0f9b60ca9271061b07f78537722f2e1"
+
+                    [[package]]
+                    name = "standback"
+                    version = "0.3.5"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "a66b810a718e8ba519476ec4df79e2f380f568b83106b812b8182090e4bfba8d"
+                    dependencies = [
+                     "easy-ext",
+                     "version_check",
+                    ]
+
+                    [[package]]
+                    name = "time"
+                    version = "0.3.0-alpha-2"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "0f906d7af3f9c93ef57452c3c7d577f0dcfa1700516dcd15c7ba75ede4f0ed08"
+                    dependencies = [
+                     "const_fn",
+                     "libc",
+                     "standback",
+                    ]
+
+                    [[package]]
+                    name = "version_check"
+                    version = "0.9.4"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
+
+                    [[package]]
+                    name = "wasi"
+                    version = "0.11.0+wasi-snapshot-preview1"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /cargo
+                  name: Cargo.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump libc from 0.2.141 to 0.2.147 in /cargo
+            pr-body: |
+                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.141 to 0.2.147.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/rust-lang/libc/releases">libc's releases</a>.</em></p>
+                <blockquote>
+                <h2>0.2.147</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Add socket timestamping for Android by <a href="https://github.com/spencercw"><code>@​spencercw</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3267">rust-lang/libc#3267</a></li>
+                <li>Fix s390x-installer paths by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3281">rust-lang/libc#3281</a></li>
+                <li>Generate documentation for all supported targets on docs.rs by <a href="https://github.com/GuillaumeGomez"><code>@​GuillaumeGomez</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3279">rust-lang/libc#3279</a></li>
+                <li>Define <code>IPPROTO_ETHERNET</code> on Linux-like platforms. by <a href="https://github.com/sunfishcode"><code>@​sunfishcode</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3272">rust-lang/libc#3272</a></li>
+                <li>Add trait implementations for QNX Neutrino by <a href="https://github.com/flba-eb"><code>@​flba-eb</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3273">rust-lang/libc#3273</a></li>
+                <li>getentropy addition to android by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3270">rust-lang/libc#3270</a></li>
+                <li>android adding sendfile64 variant by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3271">rust-lang/libc#3271</a></li>
+                <li>android: Add NLM_F_DUMP_FILTERED constant by <a href="https://github.com/dragan-cecavac-nordsec"><code>@​dragan-cecavac-nordsec</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3276">rust-lang/libc#3276</a></li>
+                <li>Update and release version 0.2.147 by <a href="https://github.com/flba-eb"><code>@​flba-eb</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3283">rust-lang/libc#3283</a></li>
+                </ul>
+                <h2>New Contributors</h2>
+                <ul>
+                <li><a href="https://github.com/dragan-cecavac-nordsec"><code>@​dragan-cecavac-nordsec</code></a> made their first contribution in <a href="https://redirect.github.com/rust-lang/libc/pull/3276">rust-lang/libc#3276</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/rust-lang/libc/compare/0.2.146...0.2.147">https://github.com/rust-lang/libc/compare/0.2.146...0.2.147</a></p>
+                <h2>0.2.146</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Use <code>use</code> to alias open/openat in lfs64.rs by <a href="https://github.com/bossmc"><code>@​bossmc</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3265">rust-lang/libc#3265</a></li>
+                <li>Update crate version to 0.2.146 by <a href="https://github.com/nikarh"><code>@​nikarh</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3266">rust-lang/libc#3266</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/rust-lang/libc/compare/0.2.145...0.2.146">https://github.com/rust-lang/libc/compare/0.2.145...0.2.146</a></p>
+                <h2>0.2.145</h2>
+                <p><strong>This version has been yanked on crates.io.</strong></p>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>redox add sig(timed)wait calls by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3244">rust-lang/libc#3244</a></li>
+                <li>Support for <code>PTRACE_SYSEMU</code> and <code>PTRACE_SYSEMU_SINGLESTEP</code> on musl by <a href="https://github.com/emilengler"><code>@​emilengler</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3245">rust-lang/libc#3245</a></li>
+                <li>Fix loongarch64 bindings by <a href="https://github.com/heiher"><code>@​heiher</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3246">rust-lang/libc#3246</a></li>
+                <li>Add linux canxl constants and canxl frame struct by <a href="https://github.com/marcelbuesing"><code>@​marcelbuesing</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3247">rust-lang/libc#3247</a></li>
+                <li>Change branch references to HEAD where possible or main otherwise by <a href="https://github.com/joshtriplett"><code>@​joshtriplett</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3249">rust-lang/libc#3249</a></li>
+                <li>linux/musl/s390x: change f_* constants to uint from ulong by <a href="https://github.com/nekopsykose"><code>@​nekopsykose</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3137">rust-lang/libc#3137</a></li>
+                <li>android: add memmem by <a href="https://github.com/tibordp"><code>@​tibordp</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3252">rust-lang/libc#3252</a></li>
+                <li>redox adding lockf flags by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3251">rust-lang/libc#3251</a></li>
+                <li>Add ucred struct and field type aliases for redox by <a href="https://github.com/andrewdavidmackenzie"><code>@​andrewdavidmackenzie</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3250">rust-lang/libc#3250</a></li>
+                <li>Fixed vita libc definitions by <a href="https://github.com/nikarh"><code>@​nikarh</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3255">rust-lang/libc#3255</a></li>
+                <li>Skip round-trip tests for structs with FAMs by <a href="https://github.com/bossmc"><code>@​bossmc</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3254">rust-lang/libc#3254</a></li>
+                <li>Fixed pthread_attr_t and pthread_rwlockattr_t for newlib by <a href="https://github.com/nikarh"><code>@​nikarh</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3256">rust-lang/libc#3256</a></li>
+                <li>Alias all LFS64 symbols to their non-LFS64 counterparts on musl by <a href="https://github.com/bossmc"><code>@​bossmc</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/2935">rust-lang/libc#2935</a></li>
+                <li>add constants and structs for vsock on macos by <a href="https://github.com/tzneal"><code>@​tzneal</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3258">rust-lang/libc#3258</a></li>
+                <li>dragonflybsd supports malloc_usable_size too by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3253">rust-lang/libc#3253</a></li>
+                <li>linux-gnu: add putpwent/putgrent by <a href="https://github.com/superwhiskers"><code>@​superwhiskers</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3257">rust-lang/libc#3257</a></li>
+                <li>s390x-musl: define O_LARGEFILE constant by <a href="https://github.com/nekopsykose"><code>@​nekopsykose</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3262">rust-lang/libc#3262</a></li>
+                <li>add MSG_NEEDSA and MSG_NOSIGNAL for macos by <a href="https://github.com/tzneal"><code>@​tzneal</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3263">rust-lang/libc#3263</a></li>
+                <li>Update crate version to 0.2.145 by <a href="https://github.com/nikarh"><code>@​nikarh</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3259">rust-lang/libc#3259</a></li>
+                </ul>
+                <h2>New Contributors</h2>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rust-lang/libc/commit/e2b5151633a44b0db850b74aa007f3b83dc2336d"><code>e2b5151</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3283">#3283</a> - flba-eb:release_147, r=JohnTitor</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/2fc3ef936ec63ee3ae9a22ec9021333a04f1e42a"><code>2fc3ef9</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3276">#3276</a> - dragan-cecavac-nordsec:android/add-nlm_f_dump_filtered,...</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/fffd79113b68fd6f74dab3fda7d8df2801467f80"><code>fffd791</code></a> Update and release version 0.2.147</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/1e8943d432c3c3012eaacb091e07b88d2ca068d6"><code>1e8943d</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3271">#3271</a> - devnexen:android_sendfile, r=JohnTitor</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/b5e3a8a9b981c68b4edd15c8254f95f4bf913fda"><code>b5e3a8a</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3270">#3270</a> - devnexen:android_getentropy, r=JohnTitor</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/ea1e56154dd461299e0fc942329f2809a2384962"><code>ea1e561</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3273">#3273</a> - flba-eb:add_qnx_extra_traits, r=JohnTitor</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/0c7a69c00c2f230d84a4627ddb104b2be117a53d"><code>0c7a69c</code></a> Update src/unix/nto/neutrino.rs</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/c16d97cfd0826a264688f16b1f054f8491cc7f0f"><code>c16d97c</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3272">#3272</a> - sunfishcode:sunfishcode/ethernet, r=JohnTitor</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/8530e6fb1996f3ab41e587df2a2b29c5eaa32ec7"><code>8530e6f</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3279">#3279</a> - GuillaumeGomez:docs-rs, r=JohnTitor</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/4df398162fab0d0b13b6ff7c7f4073a83d7d25d8"><code>4df3981</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3281">#3281</a> - JohnTitor:fix-s390x-installer, r=JohnTitor</li>
+                <li>Additional commits viewable in <a href="https://github.com/rust-lang/libc/compare/0.2.141...0.2.147">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump libc from 0.2.141 to 0.2.147 in /cargo
+
+                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.141 to 0.2.147.
                 - [Release notes](https://github.com/rust-lang/libc/releases)
-                - [Commits](https://github.com/rust-lang/libc/compare/0.2.141...0.2.142)
+                - [Commits](https://github.com/rust-lang/libc/compare/0.2.141...0.2.147)
     - type: mark_as_processed
       expect:
         data:

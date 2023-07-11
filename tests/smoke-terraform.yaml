@@ -124,10 +124,10 @@ output:
                       requirement: null
                       source:
                         branch: null
-                        ref: tags/0.3.0
+                        ref: tags/0.5.0
                         type: git
                         url: https://github.com/cloudposse/terraform-cloudflare-zone.git
-                  version: 0.3.0
+                  version: 0.5.0
             updated-dependency-files:
                 - content: |
                     module "origin_label" {
@@ -245,7 +245,7 @@ output:
                     }
 
                     module "dns" {
-                      source           = "git::https://github.com/cloudposse/terraform-cloudflare-zone.git//some/dir?ref=tags/0.3.0"
+                      source           = "git::https://github.com/cloudposse/terraform-cloudflare-zone.git//some/dir?ref=tags/0.5.0"
                       enabled          = "${var.dns_aliases_enabled}"
                       aliases          = "${var.aliases}"
                       parent_zone_id   = "${var.parent_zone_id}"
@@ -280,13 +280,41 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump dns::terraform-cloudflare-zone from 0.2.5 to 0.3.0 in /terraform
+            pr-title: Bump dns::terraform-cloudflare-zone from 0.2.5 to 0.5.0 in /terraform
             pr-body: |
-                Bumps [dns::terraform-cloudflare-zone](https://github.com/cloudposse/terraform-cloudflare-zone) from 0.2.5 to 0.3.0.
+                Bumps [dns::terraform-cloudflare-zone](https://github.com/cloudposse/terraform-cloudflare-zone) from 0.2.5 to 0.5.0.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/cloudposse/terraform-cloudflare-zone/releases">dns::terraform-cloudflare-zone's releases</a>.</em></p>
                 <blockquote>
+                <h2>v0.5.0</h2>
+                <!-- raw HTML omitted -->
+                <h2>what</h2>
+                <ul>
+                <li>Added account_id as a variable</li>
+                <li>Added account_id to teh record resource</li>
+                </ul>
+                <h2>why</h2>
+                <ul>
+                <li>Module no longer worked if creating any records</li>
+                </ul>
+                <pre><code>Planning changes with 0 custom hooks...
+                Error: Missing required argument
+                on .terraform/modules/zone/main.tf line 23, in resource &quot;cloudflare_zone&quot; &quot;default&quot;:
+                23: resource &quot;cloudflare_zone&quot; &quot;default&quot; {
+                The argument &quot;account_id&quot; is required, but no definition was found.
+                Unexpected exit code when planning changes: 1
+                </code></pre>
+                <h2>references</h2>
+                <p>closes <a href="https://redirect.github.com/cloudposse/terraform-cloudflare-zone/issues/22">#22</a></p>
+                <!-- raw HTML omitted -->
+                <!-- raw HTML omitted -->
+                <p>Rebuild github dir from the template</p>
+                <!-- raw HTML omitted -->
+                <h2>v0.4.0</h2>
+                <ul>
+                <li>No changes</li>
+                </ul>
                 <h2>v0.3.0</h2>
                 <!-- raw HTML omitted -->
                 <h2>what</h2>
@@ -300,25 +328,23 @@ output:
                 <li>Remove flatten() as it's confusing and unnecessary</li>
                 </ul>
                 <h2>references</h2>
-                <ul>
-                <li>Closes <a href="https://redirect.github.com/cloudposse/terraform-cloudflare-zone/issues/14">#14</a></li>
-                </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
+                <p>... (truncated)</p>
                 </details>
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li>See full diff in <a href="https://github.com/cloudposse/terraform-cloudflare-zone/compare/tags/0.2.5...tags/0.3.0">compare view</a></li>
+                <li>See full diff in <a href="https://github.com/cloudposse/terraform-cloudflare-zone/compare/tags/0.2.5...tags/0.5.0">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump dns::terraform-cloudflare-zone from 0.2.5 to 0.3.0 in /terraform
+                Bump dns::terraform-cloudflare-zone from 0.2.5 to 0.5.0 in /terraform
 
-                Bumps [dns::terraform-cloudflare-zone](https://github.com/cloudposse/terraform-cloudflare-zone) from 0.2.5 to 0.3.0.
+                Bumps [dns::terraform-cloudflare-zone](https://github.com/cloudposse/terraform-cloudflare-zone) from 0.2.5 to 0.5.0.
                 - [Release notes](https://github.com/cloudposse/terraform-cloudflare-zone/releases)
-                - [Commits](https://github.com/cloudposse/terraform-cloudflare-zone/compare/tags/0.2.5...tags/0.3.0)
+                - [Commits](https://github.com/cloudposse/terraform-cloudflare-zone/compare/tags/0.2.5...tags/0.5.0)
     - type: create_pull_request
       expect:
         data:

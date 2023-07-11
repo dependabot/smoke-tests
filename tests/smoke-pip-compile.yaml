@@ -61,7 +61,7 @@ output:
                   previous-requirements: []
                   previous-version: 3.5.2
                   requirements: []
-                  version: 3.6.0
+                  version: 3.7.2
             updated-dependency-files:
                 - content: |
                     #
@@ -70,7 +70,7 @@ output:
                     #
                     #    pip-compile
                     #
-                    asgiref==3.6.0
+                    asgiref==3.7.2
                         # via django
                     django==3.2.14
                         # via -r requirements.in
@@ -87,13 +87,45 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump asgiref from 3.5.2 to 3.6.0 in /pip-compile
+            pr-title: Bump asgiref from 3.5.2 to 3.7.2 in /pip-compile
             pr-body: |
-                Bumps [asgiref](https://github.com/django/asgiref) from 3.5.2 to 3.6.0.
+                Bumps [asgiref](https://github.com/django/asgiref) from 3.5.2 to 3.7.2.
                 <details>
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/django/asgiref/blob/main/CHANGELOG.txt">asgiref's changelog</a>.</em></p>
                 <blockquote>
+                <h2>3.7.2 (2023-05-27)</h2>
+                <ul>
+                <li>The type annotations for SyncToAsync and AsyncToSync have been changed to
+                more accurately reflect the kind of callables they return.</li>
+                </ul>
+                <h2>3.7.1 (2023-05-24)</h2>
+                <ul>
+                <li>On Python 3.10 and below, the version of the &quot;typing_extensions&quot; package
+                is now constrained to be at least version 4 (as we depend on functionality
+                in that version and above)</li>
+                </ul>
+                <h2>3.7.0 (2023-05-23)</h2>
+                <ul>
+                <li>
+                <p>Contextvars are now required for the implementation of <code>sync</code> as Python 3.6
+                is now no longer a supported version.</p>
+                </li>
+                <li>
+                <p>sync_to_async and async_to_sync now pass-through</p>
+                </li>
+                <li>
+                <p>Debug and Lifespan State extensions have resulted in a typing change for some
+                request and response types. This change should be backwards-compatible.</p>
+                </li>
+                <li>
+                <p><code>asgiref</code> frames will now be hidden in Django tracebacks by default.</p>
+                </li>
+                <li>
+                <p>Raw performance and garbage collection improvements in Local, SyncToAsync,
+                and AsyncToSync.</p>
+                </li>
+                </ul>
                 <h2>3.6.0 (2022-12-20)</h2>
                 <ul>
                 <li>
@@ -112,44 +144,36 @@ output:
                 </li>
                 <li>
                 <p>The <code>loop</code> argument to <code>asgiref.timeout.timeout</code> is deprecated. As per other
-                <code>asyncio</code> based APIs, the running event loop is used by default. Note that
-                <code>asyncio</code> provides timeout utilities from Python 3.11, and these should be
-                preferred where available.</p>
-                </li>
-                <li>
-                <p>Support for the <code>ASGI_THREADS</code> environment variable, used by
-                <code>SyncToAsync</code>, is removed. In general, a running event-loop is not
-                available to <code>asgiref</code> at import time, and so the default thread pool
-                executor cannot be configured. Protocol servers, or applications, should set
-                the default executor as required when configuring the event loop at
-                application startup.</p>
+                <code>asyncio</code> based APIs, the running event loop is used by default. Note that</p>
                 </li>
                 </ul>
+                <!-- raw HTML omitted -->
                 </blockquote>
+                <p>... (truncated)</p>
                 </details>
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/django/asgiref/commit/79a1d01565533d79dd44ff92eabcd3a91354c20d"><code>79a1d01</code></a> Releasing 3.6.0.</li>
-                <li><a href="https://github.com/django/asgiref/commit/7a6c631f8c98cbfa4968a6296bbb915e22294420"><code>7a6c631</code></a> Added release note for coroutine detection shims.</li>
-                <li><a href="https://github.com/django/asgiref/commit/bea951e725b472e7fe4a4a50937a23a911354065"><code>bea951e</code></a> Added Python 3.11 support</li>
-                <li><a href="https://github.com/django/asgiref/commit/ea7901655444df6e3bd2ca487a0937046d97939a"><code>ea79016</code></a> Updated timeout helper to use get_running_loop(). (<a href="https://redirect.github.com/django/asgiref/issues/337">#337</a>)</li>
-                <li><a href="https://github.com/django/asgiref/commit/36f37c9ee5bf2d1f240db23643734f1225a0b5fd"><code>36f37c9</code></a> Added coroutine detection shims for Python 3.12 (<a href="https://redirect.github.com/django/asgiref/issues/360">#360</a>)</li>
-                <li><a href="https://github.com/django/asgiref/commit/467c154f9c18b3132baf0c4bd5e0cb3cc0355a33"><code>467c154</code></a> Updated pre-commit versions and fixed linting errors.</li>
-                <li><a href="https://github.com/django/asgiref/commit/72c5ca1fe0aac4d241eabfebdc9f37c0eb8415c0"><code>72c5ca1</code></a> Updated flake8 repo location in pre-commit config to github.</li>
-                <li><a href="https://github.com/django/asgiref/commit/8b76e05b80a944aa9f3527072120db635ef9d31e"><code>8b76e05</code></a> Tweak conf.py to fix Sphinx warnings (<a href="https://redirect.github.com/django/asgiref/issues/355">#355</a>)</li>
-                <li><a href="https://github.com/django/asgiref/commit/9acb1a2ee6ad89408f1f71c812e397a72344d072"><code>9acb1a2</code></a> Added missing <code>HTTPResponseTrailersEvent</code> to <code>ASGISendEvent</code></li>
-                <li><a href="https://github.com/django/asgiref/commit/3b5aaff55ca8f5d1c6ea5cd010a88ad34041dada"><code>3b5aaff</code></a> Added HTTP Trailers extension</li>
-                <li>Additional commits viewable in <a href="https://github.com/django/asgiref/compare/3.5.2...3.6.0">compare view</a></li>
+                <li><a href="https://github.com/django/asgiref/commit/a90aeb93c424c471400118879cb652cddc1726a8"><code>a90aeb9</code></a> Releasing 3.7.2</li>
+                <li><a href="https://github.com/django/asgiref/commit/09a234e109e7d60a9ce62764b24ff83470d3d2ff"><code>09a234e</code></a> Type sync_to_async/async_to_async as returning callables</li>
+                <li><a href="https://github.com/django/asgiref/commit/085ba6a1ce520468e00be2a7c03aac0901068749"><code>085ba6a</code></a> Releasing 3.7.1</li>
+                <li><a href="https://github.com/django/asgiref/commit/db2e53a66be92cb4b073408e4faf37db709699e9"><code>db2e53a</code></a> Pin typing_extensions high enough for our use of it</li>
+                <li><a href="https://github.com/django/asgiref/commit/89cfe10fd58eca207c3f9db2bbfee5d7b8bd1108"><code>89cfe10</code></a> Releasing 3.7.0</li>
+                <li><a href="https://github.com/django/asgiref/commit/72f45c5feb158f71c5b5fb337e323c7bacd6c7b3"><code>72f45c5</code></a> Improve sync.py typing and utilities performance (<a href="https://redirect.github.com/django/asgiref/issues/390">#390</a>)</li>
+                <li><a href="https://github.com/django/asgiref/commit/fd7a63c591653146379b55e68a29883b9bf7e706"><code>fd7a63c</code></a> Mention BlackSheep as one of the implementation (<a href="https://redirect.github.com/django/asgiref/issues/391">#391</a>)</li>
+                <li><a href="https://github.com/django/asgiref/commit/7c8d31c05957bd644f9cead04206f11a0011c3d4"><code>7c8d31c</code></a> Add information about when to start sending response (<a href="https://redirect.github.com/django/asgiref/issues/389">#389</a>)</li>
+                <li><a href="https://github.com/django/asgiref/commit/c3d70c3e7a1b7a73d2688c574d47766ebfa100d1"><code>c3d70c3</code></a> Remove &quot;wait for body&quot; response constraint</li>
+                <li><a href="https://github.com/django/asgiref/commit/e22d765397fe24497c32224b99ac244f1f79db99"><code>e22d765</code></a> Better garbage-collection on exceptions in sync_to_async (<a href="https://redirect.github.com/django/asgiref/issues/386">#386</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/django/asgiref/compare/3.5.2...3.7.2">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump asgiref from 3.5.2 to 3.6.0 in /pip-compile
+                Bump asgiref from 3.5.2 to 3.7.2 in /pip-compile
 
-                Bumps [asgiref](https://github.com/django/asgiref) from 3.5.2 to 3.6.0.
+                Bumps [asgiref](https://github.com/django/asgiref) from 3.5.2 to 3.7.2.
                 - [Changelog](https://github.com/django/asgiref/blob/main/CHANGELOG.txt)
-                - [Commits](https://github.com/django/asgiref/compare/3.5.2...3.6.0)
+                - [Commits](https://github.com/django/asgiref/compare/3.5.2...3.7.2)
     - type: create_pull_request
       expect:
         data:
@@ -245,13 +269,13 @@ output:
                     - file: requirements.in
                       groups:
                         - dependencies
-                      requirement: ==1.24.1
+                      requirement: ==1.25.1
                       source: null
-                  version: 1.24.1
+                  version: 1.25.1
             updated-dependency-files:
                 - content: |
                     django>=3.1,<4.0
-                    numpy==1.24.1
+                    numpy==1.25.1
                   content_encoding: utf-8
                   deleted: false
                   directory: /pip-compile
@@ -270,7 +294,7 @@ output:
                         # via django
                     django==3.2.14
                         # via -r requirements.in
-                    numpy==1.24.1
+                    numpy==1.25.1
                         # via -r requirements.in
                     pytz==2022.1
                         # via django
@@ -283,58 +307,58 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump numpy from 1.23.0 to 1.24.1 in /pip-compile
+            pr-title: Bump numpy from 1.23.0 to 1.25.1 in /pip-compile
             pr-body: |
-                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.24.1.
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.25.1.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/numpy/numpy/releases">numpy's releases</a>.</em></p>
                 <blockquote>
-                <h2>v1.24.1</h2>
-                <h1>NumPy 1.24.1 Release Notes</h1>
-                <p>NumPy 1.24.1 is a maintenance release that fixes bugs and regressions
-                discovered after the 1.24.0 release. The Python versions supported by
-                this release are 3.8-3.11.</p>
+                <h2>v1.25.1</h2>
+                <h1>NumPy 1.25.1 Release Notes</h1>
+                <p>NumPy 1.25.1 is a maintenance release that fixes bugs and regressions
+                discovered after the 1.25.0 release. The Python versions supported by
+                this release are 3.9-3.11.</p>
                 <h2>Contributors</h2>
-                <p>A total of 12 people contributed to this release. People with a &quot;+&quot; by
+                <p>A total of 10 people contributed to this release. People with a &quot;+&quot; by
                 their names contributed a patch for the first time.</p>
                 <ul>
                 <li>Andrew Nelson</li>
-                <li>Ben Greiner +</li>
                 <li>Charles Harris</li>
-                <li>Clément Robert</li>
-                <li>Matteo Raso</li>
-                <li>Matti Picus</li>
-                <li>Melissa Weber Mendonça</li>
-                <li>Miles Cranmer</li>
-                <li>Ralf Gommers</li>
+                <li>Developer-Ecosystem-Engineering</li>
+                <li>Hood Chatham</li>
+                <li>Nathan Goldbaum</li>
                 <li>Rohit Goswami</li>
-                <li>Sayed Adel</li>
                 <li>Sebastian Berg</li>
+                <li>Tim Paine +</li>
+                <li>dependabot[bot]</li>
+                <li>matoro +</li>
                 </ul>
                 <h2>Pull requests merged</h2>
-                <p>A total of 18 pull requests were merged for this release.</p>
+                <p>A total of 14 pull requests were merged for this release.</p>
                 <ul>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22820">#22820</a>: BLD: add workaround in setup.py for newer setuptools</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22830">#22830</a>: BLD: CIRRUS_TAG redux</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22831">#22831</a>: DOC: fix a couple typos in 1.23 notes</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22832">#22832</a>: BUG: Fix refcounting errors found using pytest-leaks</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22834">#22834</a>: BUG, SIMD: Fix invalid value encountered in several ufuncs</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22837">#22837</a>: TST: ignore more np.distutils.log imports</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22839">#22839</a>: BUG: Do not use getdata() in np.ma.masked_invalid</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22847">#22847</a>: BUG: Ensure correct behavior for rows ending in delimiter in...</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22848">#22848</a>: BUG, SIMD: Fix the bitmask of the boolean comparison</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22857">#22857</a>: BLD: Help raspian arm + clang 13 about __builtin_mul_overflow</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22858">#22858</a>: API: Ensure a full mask is returned for masked_invalid</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22866">#22866</a>: BUG: Polynomials now copy properly (<a href="https://redirect.github.com/numpy/numpy/issues/22669">#22669</a>)</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22867">#22867</a>: BUG, SIMD: Fix memory overlap in ufunc comparison loops</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22868">#22868</a>: BUG: Fortify string casts against floating point warnings</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22875">#22875</a>: TST: Ignore nan-warnings in randomized out tests</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22883">#22883</a>: MAINT: restore npymath implementations needed for freebsd</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22884">#22884</a>: BUG: Fix integer overflow in in1d for mixed integer dtypes <a href="https://redirect.github.com/numpy/numpy/issues/22877">#22877</a></li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22887">#22887</a>: BUG: Use whole file for encoding checks with <code>charset_normalizer</code>.</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/23968">#23968</a>: MAINT: prepare 1.25.x for further development</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24036">#24036</a>: BLD: Port long double identification to C for meson</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24037">#24037</a>: BUG: Fix reduction <code>return NULL</code> to be <code>goto fail</code></li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24038">#24038</a>: BUG: Avoid undefined behavior in array.astype()</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24039">#24039</a>: BUG: Ensure <code>__array_ufunc__</code> works without any kwargs passed</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24117">#24117</a>: MAINT: Pin urllib3 to avoid anaconda-client bug.</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24118">#24118</a>: TST: Pin pydantic&lt;2 in Pyodide workflow</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24119">#24119</a>: MAINT: Bump pypa/cibuildwheel from 2.13.0 to 2.13.1</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24120">#24120</a>: MAINT: Bump actions/checkout from 3.5.2 to 3.5.3</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24122">#24122</a>: BUG: Multiply or Divides using SIMD without a full vector can...</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24127">#24127</a>: MAINT: testing for IS_MUSL closes <a href="https://redirect.github.com/numpy/numpy/issues/24074">#24074</a></li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24128">#24128</a>: BUG: Only replace dtype temporarily if dimensions changed</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24129">#24129</a>: MAINT: Bump actions/setup-node from 3.6.0 to 3.7.0</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24134">#24134</a>: BUG: Fix private procedures in f2py modules</li>
                 </ul>
                 <h2>Checksums</h2>
+                <h3>MD5</h3>
+                <pre><code>d09d98643db31e892fad11b8c2b7af22  numpy-1.25.1-cp310-cp310-macosx_10_9_x86_64.whl
+                d5b8d3b0424e2af41018f35a087c4500  numpy-1.25.1-cp310-cp310-macosx_11_0_arm64.whl
+                1007893b1a8bfd97d445a63d29d33642  numpy-1.25.1-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+                6a62d7a6cee310b41dc872aa7f3d7e8b  numpy-1.25.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+                </code></pre>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -342,27 +366,27 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/numpy/numpy/commit/a28f4f2a472dc826d043abf4442ba258bbd6ade5"><code>a28f4f2</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/22888">#22888</a> from charris/prepare-1.24.1-release</li>
-                <li><a href="https://github.com/numpy/numpy/commit/f8fea39ad76e7a24895af6a59ddd5fbdee466eb3"><code>f8fea39</code></a> REL: Prepare for the NumPY 1.24.1 release.</li>
-                <li><a href="https://github.com/numpy/numpy/commit/6f491e08e8fa84d939f91f1404ea4cc8ccbf9bc1"><code>6f491e0</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/22887">#22887</a> from charris/backport-22872</li>
-                <li><a href="https://github.com/numpy/numpy/commit/48f5fe454fedeea0128857909f2d2fe4aec3d5df"><code>48f5fe4</code></a> BUG: Use whole file for encoding checks with <code>charset_normalizer</code> [f2py] (<a href="https://redirect.github.com/numpy/numpy/issues/22">#22</a>...</li>
-                <li><a href="https://github.com/numpy/numpy/commit/0f3484ac2e4e2113ad33a29372538e48ac78e184"><code>0f3484a</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/22883">#22883</a> from charris/backport-22882</li>
-                <li><a href="https://github.com/numpy/numpy/commit/002c60d1a667357ffdfe35290b1595cc18d5ee4f"><code>002c60d</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/22884">#22884</a> from charris/backport-22878</li>
-                <li><a href="https://github.com/numpy/numpy/commit/38ef9ce08e1cd4e562fbb4578911a1df55e05687"><code>38ef9ce</code></a> BUG: Fix integer overflow in in1d for mixed integer dtypes <a href="https://redirect.github.com/numpy/numpy/issues/22877">#22877</a> (<a href="https://redirect.github.com/numpy/numpy/issues/22878">#22878</a>)</li>
-                <li><a href="https://github.com/numpy/numpy/commit/bb00c689afb052b0556f06bf8e55f79c99901cde"><code>bb00c68</code></a> MAINT: restore npymath implementations needed for freebsd</li>
-                <li><a href="https://github.com/numpy/numpy/commit/64e09c34237a837975cf42e074d3bb55dc955146"><code>64e09c3</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/22875">#22875</a> from charris/backport-22869</li>
-                <li><a href="https://github.com/numpy/numpy/commit/dc7bac6b42b7c695e6d0ef7fdbc534e3f98a90b9"><code>dc7bac6</code></a> TST: Ignore nan-warnings in randomized out tests</li>
-                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.23.0...v1.24.1">compare view</a></li>
+                <li><a href="https://github.com/numpy/numpy/commit/609c5399d0c2ca284ccc4b84d606727ed5640469"><code>609c539</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/24146">#24146</a> from charris/prepare-1.25.1-release</li>
+                <li><a href="https://github.com/numpy/numpy/commit/000e46f2b83567aad6e107e53d385a578a946acd"><code>000e46f</code></a> REL: Prepare for the NumPy 1.25.1 release.</li>
+                <li><a href="https://github.com/numpy/numpy/commit/eb68150b4610a2a9a3830a41083ffa9c85785c97"><code>eb68150</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/24134">#24134</a> from charris/backport-23971</li>
+                <li><a href="https://github.com/numpy/numpy/commit/a8279f1d0dcc080bc14edca338741b11e39663c8"><code>a8279f1</code></a> MAINT: Cleaner formatting</li>
+                <li><a href="https://github.com/numpy/numpy/commit/09abcec31869796fc5adf046358ded8a1bc9fa37"><code>09abcec</code></a> MAINT: No printing in f2py tests</li>
+                <li><a href="https://github.com/numpy/numpy/commit/0940ac18d3b5676a3c6559b5c349413f741ffb55"><code>0940ac1</code></a> BUG: Fix overly aggressive skipfuncs additions</li>
+                <li><a href="https://github.com/numpy/numpy/commit/84bce1329e7ae7bdcbc1606f4b568209211933f2"><code>84bce13</code></a> TST: f2py <a href="https://redirect.github.com/numpy/numpy/issues/23879">gh-23879</a> on private module proceedures</li>
+                <li><a href="https://github.com/numpy/numpy/commit/9fc1ca4f4a31114fcf2fe83f2524e8903ccbe1fc"><code>9fc1ca4</code></a> BUG: fix <a href="https://redirect.github.com/numpy/numpy/issues/23879">gh-23879</a> for private procedures</li>
+                <li><a href="https://github.com/numpy/numpy/commit/231f01c546d34b66df82a87b62948bdabb19ef69"><code>231f01c</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/24129">#24129</a> from charris/backport-24124</li>
+                <li><a href="https://github.com/numpy/numpy/commit/0d366732de8b6998e9cdf0e7caaebce2e6d250cc"><code>0d36673</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/24128">#24128</a> from charris/backport-24103</li>
+                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.23.0...v1.25.1">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump numpy from 1.23.0 to 1.24.1 in /pip-compile
+                Bump numpy from 1.23.0 to 1.25.1 in /pip-compile
 
-                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.24.1.
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.25.1.
                 - [Release notes](https://github.com/numpy/numpy/releases)
                 - [Changelog](https://github.com/numpy/numpy/blob/main/doc/RELEASE_WALKTHROUGH.rst)
-                - [Commits](https://github.com/numpy/numpy/compare/v1.23.0...v1.24.1)
+                - [Commits](https://github.com/numpy/numpy/compare/v1.23.0...v1.25.1)
     - type: create_pull_request
       expect:
         data:
@@ -372,7 +396,7 @@ output:
                   previous-requirements: []
                   previous-version: "2022.1"
                   requirements: []
-                  version: "2022.7"
+                  version: "2023.3"
             updated-dependency-files:
                 - content: |
                     #
@@ -387,7 +411,7 @@ output:
                         # via -r requirements.in
                     numpy==1.23.0
                         # via -r requirements.in
-                    pytz==2022.7
+                    pytz==2023.3
                         # via django
                     sqlparse==0.4.2
                         # via django
@@ -398,31 +422,31 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump pytz from 2022.1 to 2022.7 in /pip-compile
+            pr-title: Bump pytz from 2022.1 to 2023.3 in /pip-compile
             pr-body: |
-                Bumps [pytz](https://github.com/stub42/pytz) from 2022.1 to 2022.7.
+                Bumps [pytz](https://github.com/stub42/pytz) from 2022.1 to 2023.3.
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/stub42/pytz/commit/309a4572370e72d5088d4b3707e54431ca98900c"><code>309a457</code></a> Update i18n section of README</li>
-                <li><a href="https://github.com/stub42/pytz/commit/67b32d027f504725c5fdc4bd6d00b04929aad22e"><code>67b32d0</code></a> Separete legacy tests to run in legacy container</li>
-                <li><a href="https://github.com/stub42/pytz/commit/ce19dbe032e259ad65f0e646b1062f9732bd5797"><code>ce19dbe</code></a> Bump version numbers to 2022.7/2022g</li>
-                <li><a href="https://github.com/stub42/pytz/commit/7285e7048e0448e6c7080fd729f58f487ffd3e49"><code>7285e70</code></a> IANA 2022g</li>
-                <li><a href="https://github.com/stub42/pytz/commit/3a52798841cec67c951b80e102a0248df80eb782"><code>3a52798</code></a> Squashed 'tz/' changes from d3dc2a9d6..9baf0d34d</li>
-                <li><a href="https://github.com/stub42/pytz/commit/86568705df89fde7e9271329b0ba06c4a7ad7f1b"><code>8656870</code></a> Let _all_timezones_unchecked be garbage collected when no longer needed</li>
-                <li><a href="https://github.com/stub42/pytz/commit/bd3e51f7bb5393d023c557bdcc130ccc05ed0058"><code>bd3e51f</code></a> Rename all_timezones_unchecked to strongly indicate it is not public</li>
-                <li><a href="https://github.com/stub42/pytz/commit/01592a959db0284890ed5e3bd8e83806eab2ef22"><code>01592a9</code></a> Merge pull request <a href="https://redirect.github.com/stub42/pytz/issues/90">#90</a> from eendebakpt/import_time_lazy_list</li>
-                <li><a href="https://github.com/stub42/pytz/commit/5e9f112adf81214d2d3f953967ccb7ae96be08a7"><code>5e9f112</code></a> lazy timezone</li>
-                <li><a href="https://github.com/stub42/pytz/commit/4ebc28de7d31a80497e0bbc08042a81c8f3e591d"><code>4ebc28d</code></a> Bump version numbers to 2022.6 / 2022f</li>
-                <li>Additional commits viewable in <a href="https://github.com/stub42/pytz/compare/release_2022.1...release_2022.7">compare view</a></li>
+                <li><a href="https://github.com/stub42/pytz/commit/0017b988bf8e1b41c2445a1f7acef0a5cc9eb29e"><code>0017b98</code></a> Bump version numbers to 2023.3 / 2023c</li>
+                <li><a href="https://github.com/stub42/pytz/commit/78dd05adb582180b1ff9ce6aefeae2b37a09fdae"><code>78dd05a</code></a> Update README for 2023</li>
+                <li><a href="https://github.com/stub42/pytz/commit/cadd6a923450794059c61309298ed8b64595ad11"><code>cadd6a9</code></a> IANA 2023c</li>
+                <li><a href="https://github.com/stub42/pytz/commit/c402b01866d16d0520b9c84a55f8a80cb2a4b19d"><code>c402b01</code></a> Squashed 'tz/' changes from 71faa2a55..ed996bfdc</li>
+                <li><a href="https://github.com/stub42/pytz/commit/8c73ebde48dd7119b37c7a0fc62cdbd86f5716ab"><code>8c73ebd</code></a> Bump version numbers to 2023.2 and 2023b</li>
+                <li><a href="https://github.com/stub42/pytz/commit/a341b6cab54aafffbf74a412ad8afc9587055d59"><code>a341b6c</code></a> Squashed 'tz/' changes from 4e604e411..6fdef0a54</li>
+                <li><a href="https://github.com/stub42/pytz/commit/80743c87d7a3e45503915d1b56cf8e87a9e45f0b"><code>80743c8</code></a> IANA 2023b</li>
+                <li><a href="https://github.com/stub42/pytz/commit/b8379447ba3db1f95698ba0f26ff91eadcff47bf"><code>b837944</code></a> Bump version numbers to 2022.7.1 and 2022g</li>
+                <li><a href="https://github.com/stub42/pytz/commit/14d919936ea51e3abc7d4a207a8ed12a9e78cd64"><code>14d9199</code></a> Revert 8656870 to fix initialization thread safety</li>
+                <li><a href="https://github.com/stub42/pytz/commit/c412073cb9d81c727079ab0c2f376eba003ff129"><code>c412073</code></a> Fix Babel hyperlink in README</li>
+                <li>Additional commits viewable in <a href="https://github.com/stub42/pytz/compare/release_2022.1...release_2023.3">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump pytz from 2022.1 to 2022.7 in /pip-compile
+                Bump pytz from 2022.1 to 2023.3 in /pip-compile
 
-                Bumps [pytz](https://github.com/stub42/pytz) from 2022.1 to 2022.7.
-                - [Commits](https://github.com/stub42/pytz/compare/release_2022.1...release_2022.7)
+                Bumps [pytz](https://github.com/stub42/pytz) from 2022.1 to 2023.3.
+                - [Commits](https://github.com/stub42/pytz/compare/release_2022.1...release_2023.3)
     - type: create_pull_request
       expect:
         data:
@@ -432,7 +456,7 @@ output:
                   previous-requirements: []
                   previous-version: 0.4.2
                   requirements: []
-                  version: 0.4.3
+                  version: 0.4.4
             updated-dependency-files:
                 - content: |
                     #
@@ -449,7 +473,7 @@ output:
                         # via -r requirements.in
                     pytz==2022.1
                         # via django
-                    sqlparse==0.4.3
+                    sqlparse==0.4.4
                         # via django
                   content_encoding: utf-8
                   deleted: false
@@ -458,13 +482,35 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump sqlparse from 0.4.2 to 0.4.3 in /pip-compile
+            pr-title: Bump sqlparse from 0.4.2 to 0.4.4 in /pip-compile
             pr-body: |
-                Bumps [sqlparse](https://github.com/andialbrecht/sqlparse) from 0.4.2 to 0.4.3.
+                Bumps [sqlparse](https://github.com/andialbrecht/sqlparse) from 0.4.2 to 0.4.4.
                 <details>
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/andialbrecht/sqlparse/blob/master/CHANGELOG">sqlparse's changelog</a>.</em></p>
                 <blockquote>
+                <h2>Release 0.4.4 (Apr 18, 2023)</h2>
+                <p>Notable Changes</p>
+                <ul>
+                <li>IMPORTANT: This release fixes a security vulnerability in the
+                parser where a regular expression vulnerable to ReDOS (Regular
+                Expression Denial of Service) was used. See the security advisory
+                for details: <a href="https://github.com/andialbrecht/sqlparse/security/advisories/GHSA-rrm6-wvj7-cwh2">https://github.com/andialbrecht/sqlparse/security/advisories/GHSA-rrm6-wvj7-cwh2</a>
+                The vulnerability was discovered by <a href="https://github.com/erik-krogh"><code>@​erik-krogh</code></a> from GitHub
+                Security Lab (GHSL). Thanks for reporting!</li>
+                </ul>
+                <p>Bug Fixes</p>
+                <ul>
+                <li>Revert a change from 0.4.0 that changed IN to be a comparison (issue694).
+                The primary expectation is that IN is treated as a keyword and not as a
+                comparison operator. That also follows the definition of reserved keywords
+                for the major SQL syntax definitions.</li>
+                <li>Fix regular expressions for string parsing.</li>
+                </ul>
+                <p>Other</p>
+                <ul>
+                <li>sqlparse now uses pyproject.toml instead of setup.cfg (issue685).</li>
+                </ul>
                 <h2>Release 0.4.3 (Sep 23, 2022)</h2>
                 <p>Enhancements</p>
                 <ul>
@@ -492,26 +538,26 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/andialbrecht/sqlparse/commit/fba15d34a01739c10596d727e20b89762298eea8"><code>fba15d3</code></a> Bump version.</li>
-                <li><a href="https://github.com/andialbrecht/sqlparse/commit/b72a8ff42f53cba0517b1dd9e8af051b4a060ecf"><code>b72a8ff</code></a> Allow any unicode character as identifier name (fixes <a href="https://redirect.github.com/andialbrecht/sqlparse/issues/641">#641</a>).</li>
-                <li><a href="https://github.com/andialbrecht/sqlparse/commit/07a2e81532daf62f1f4360e48ff322abeade7315"><code>07a2e81</code></a> Add docstring and comments.</li>
-                <li><a href="https://github.com/andialbrecht/sqlparse/commit/4235eb89a904216aef9d9ef36a0381be885c87a9"><code>4235eb8</code></a> Add tests for utils.remove_quotes.</li>
-                <li><a href="https://github.com/andialbrecht/sqlparse/commit/e2698819c4481ad6fdf04f2caf018ff4b6181e6c"><code>e269881</code></a> Update Changelog and authors.</li>
-                <li><a href="https://github.com/andialbrecht/sqlparse/commit/c1a597ee6e8e22c94ca5bdfa1c6665453e0d2c25"><code>c1a597e</code></a> add backtick to remove_quotes character list</li>
-                <li><a href="https://github.com/andialbrecht/sqlparse/commit/893d7b2e8075d6867d8a9b377faba7786f28f66d"><code>893d7b2</code></a> Update CHANGELOG.</li>
-                <li><a href="https://github.com/andialbrecht/sqlparse/commit/403de6fc648ac4e012b60b49161c3f5f36dc944a"><code>403de6f</code></a> Fixed bad parsing of create table statements that use lower case</li>
-                <li><a href="https://github.com/andialbrecht/sqlparse/commit/a17248666f8bafaacf16016f797c830af4d0102e"><code>a172486</code></a> Update Changelog.</li>
-                <li><a href="https://github.com/andialbrecht/sqlparse/commit/7de1999a0af9dbbd09f0afb3a50383ad91c22c4c"><code>7de1999</code></a> CREATE TABLE tbl AS SELECT should return get_alias() for its column</li>
-                <li>Additional commits viewable in <a href="https://github.com/andialbrecht/sqlparse/compare/0.4.2...0.4.3">compare view</a></li>
+                <li><a href="https://github.com/andialbrecht/sqlparse/commit/647d1457acf7d88614215841eb15d423df2a1895"><code>647d145</code></a> Update Changelog.</li>
+                <li><a href="https://github.com/andialbrecht/sqlparse/commit/58dae6fcd2a51209aeccd4fff3b923bf37714e19"><code>58dae6f</code></a> Bump version.</li>
+                <li><a href="https://github.com/andialbrecht/sqlparse/commit/d9d69f47ed13a583c81473211f44ae320470a58b"><code>d9d69f4</code></a> Removed test file</li>
+                <li><a href="https://github.com/andialbrecht/sqlparse/commit/64bb91f4880b46f73b4cc9207ae9ccc180d56d1b"><code>64bb91f</code></a> Testing branch</li>
+                <li><a href="https://github.com/andialbrecht/sqlparse/commit/c457abd5f097dd13fb21543381e7cfafe7d31cfb"><code>c457abd</code></a> Remove unnecessary parts in regex for bad escaping.</li>
+                <li><a href="https://github.com/andialbrecht/sqlparse/commit/b949fdf9a1538f98b57612bef6306fc38f32aaf7"><code>b949fdf</code></a> CI: Use codecov action.</li>
+                <li><a href="https://github.com/andialbrecht/sqlparse/commit/fc76056fb8f0ec713a3f2a2b6206a3336932c382"><code>fc76056</code></a> Cleanup regex for detecting keywords (fixes <a href="https://redirect.github.com/andialbrecht/sqlparse/issues/709">#709</a>).</li>
+                <li><a href="https://github.com/andialbrecht/sqlparse/commit/7fdb2da82d51a9a02baaefb5c7fe5cbbaac4329e"><code>7fdb2da</code></a> Merge pull request <a href="https://redirect.github.com/andialbrecht/sqlparse/issues/633">#633</a> from shikanime/master</li>
+                <li><a href="https://github.com/andialbrecht/sqlparse/commit/dd9d5b91d7aa30e4a000d5370f09dc99378891dc"><code>dd9d5b9</code></a> Fix get_type with comments between WITH keyword</li>
+                <li><a href="https://github.com/andialbrecht/sqlparse/commit/907fb496f90f2719095a1f01fe24db1e5c0e15a8"><code>907fb49</code></a> change singleton behavior</li>
+                <li>Additional commits viewable in <a href="https://github.com/andialbrecht/sqlparse/compare/0.4.2...0.4.4">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump sqlparse from 0.4.2 to 0.4.3 in /pip-compile
+                Bump sqlparse from 0.4.2 to 0.4.4 in /pip-compile
 
-                Bumps [sqlparse](https://github.com/andialbrecht/sqlparse) from 0.4.2 to 0.4.3.
+                Bumps [sqlparse](https://github.com/andialbrecht/sqlparse) from 0.4.2 to 0.4.4.
                 - [Changelog](https://github.com/andialbrecht/sqlparse/blob/master/CHANGELOG)
-                - [Commits](https://github.com/andialbrecht/sqlparse/compare/0.4.2...0.4.3)
+                - [Commits](https://github.com/andialbrecht/sqlparse/compare/0.4.2...0.4.4)
     - type: mark_as_processed
       expect:
         data:
