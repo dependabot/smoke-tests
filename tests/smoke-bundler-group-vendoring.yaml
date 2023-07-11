@@ -36,12 +36,12 @@ input:
           type: git_source
           username: x-access-token
 output:
-    - type: record_package_manager_version
+    - type: record_ecosystem_versions
       expect:
         data:
-            ecosystem: deprecated
-            package-managers:
-                bundler: "2"
+            ecosystem_versions:
+                package_managers:
+                    bundler: "2"
     - type: update_dependency_list
       expect:
         data:

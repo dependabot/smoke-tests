@@ -25,12 +25,12 @@ input:
             directory: /npm/removed
             commit: 4e5e081d77a06dd5092a65e161c1142fbec372bd
 output:
-    - type: record_package_manager_version
+    - type: record_ecosystem_versions
       expect:
         data:
-            ecosystem: deprecated
-            package-managers:
-                npm: 8
+            ecosystem_versions:
+                package_managers:
+                    npm: 8
     - type: update_dependency_list
       expect:
         data:
