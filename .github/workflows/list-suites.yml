@@ -6,8 +6,6 @@ on:
         description: List of suites to run from the tests/ directory
         value: ${{ jobs.gather.outputs.suites }}
 jobs:
-  suites:
-    uses: dependabot/smoke-tests/.github/workflows/list-suites.yml@jakecoffman/reusable-suites-list
   gather:
     runs-on: ubuntu-latest
     needs: suites
