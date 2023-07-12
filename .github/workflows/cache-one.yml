@@ -11,40 +11,6 @@ on:
       package_manager:
         description: The package manager to use
         required: true
-        type: choice
-        options:
-          - actions
-          - bundler
-          - bundler-group-rules
-          - bundler-group-vendoring
-          - cargo
-          - composer
-          - docker
-          - elm
-          - go
-          - go-close-pr
-          - go-group-rules
-          - go-security
-          - go-update-pr
-          - gradle
-          - gradle-version-catalog
-          - hex
-          - maven
-          - npm
-          - npm-group-rules
-          - npm-remove-transitive
-          - nuget
-          - pip
-          - pip-compile
-          - pipenv
-          - pnpm
-          - poetry
-          - pub
-          - submodules
-          - terraform
-          - yarn
-          - yarn-berry
-          - yarn-berry-workspaces
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

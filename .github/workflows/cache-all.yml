@@ -9,47 +9,18 @@ env:
 
 
 jobs:
+  suites:
+    uses: ./.github/workflows/list-suites.yml
   e2e:
     runs-on: ubuntu-latest
+    needs: suites
     strategy:
       # Running serially since GitHub API doesn't like concurrent requests.
       max-parallel: 1
       fail-fast: false
       # Using a matrix so if 1 fails it can just be retried instead of restarting the whole job.
       matrix:
-        suite:
-          - { path: tests/smoke-actions.yaml, name: actions }
-          - { path: tests/smoke-bundler.yaml, name: bundler }
-          - { path: tests/smoke-bundler-group-rules.yaml, name: bundler-group-rules }
-          - { path: tests/smoke-bundler-group-vendoring.yaml, name: bundler-group-vendoring }
-          - { path: tests/smoke-cargo.yaml, name: cargo }
-          - { path: tests/smoke-composer.yaml, name: composer }
-          - { path: tests/smoke-docker.yaml, name: docker }
-          - { path: tests/smoke-elm.yaml, name: elm }
-          - { path: tests/smoke-go.yaml, name: go }
-          - { path: tests/smoke-go-close-pr.yaml, name: go-close }
-          - { path: tests/smoke-go-group-rules.yaml, name: go-group-rules }
-          - { path: tests/smoke-go-security.yaml, name: go-security }
-          - { path: tests/smoke-go-update-pr.yaml, name: go-update }
-          - { path: tests/smoke-gradle.yaml, name: gradle }
-          - { path: tests/smoke-gradle-version-catalog.yaml, name: gradle-version-catalog }
-          - { path: tests/smoke-hex.yaml, name: hex }
-          - { path: tests/smoke-maven.yaml, name: maven }
-          - { path: tests/smoke-npm.yaml, name: npm }
-          - { path: tests/smoke-npm-group-rules.yaml, name: npm-group-rules }
-          - { path: tests/smoke-npm-remove-transitive.yaml, name: npm-remove-transitive }
-          - { path: tests/smoke-nuget.yaml, name: nuget }
-          - { path: tests/smoke-pip.yaml, name: pip }
-          - { path: tests/smoke-pip-compile.yaml, name: pip-compile }
-          - { path: tests/smoke-pipenv.yaml, name: pipenv }
-          - { path: tests/smoke-pnpm.yaml, name: pnpm }
-          - { path: tests/smoke-poetry.yaml, name: poetry }
-          - { path: tests/smoke-pub.yaml, name: pub }
-          - { path: tests/smoke-submodules.yaml, name: submodules }
-          - { path: tests/smoke-terraform.yaml, name: terraform }
-          - { path: tests/smoke-yarn.yaml, name: yarn }
-          - { path: tests/smoke-yarn-berry.yaml, name: yarn-berry }
-          - { path: tests/smoke-yarn-berry-workspaces.yaml, name: yarn-berry-workspaces }
+        suite: ${{ fromJSON(needs.suites.outputs.suites) }}
     steps:
       - uses: actions/checkout@v3
 
@@ -60,12 +31,12 @@ jobs:
           ./dependabot --version
 
       # Not downloading the cache first, this job is to bust the cache for all ecosystems.
-      - name: Smoke ${{ matrix.suite.name }}
+      - name: Smoke ${{ matrix.suite }}
         env:
           LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./dependabot test -f=${{ matrix.suite.path }} --cache=cache
+        run: ./dependabot test -f=tests/smoke-${{ matrix.suite }}.yaml --cache=cache
 
       - uses: actions/upload-artifact@v3
         with:
-          name: cache-${{ matrix.suite.name }}
+          name: cache-${{ matrix.suite }}
           path: cache/

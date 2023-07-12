@@ -10,43 +10,15 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
+  suites:
+    uses: ./.github/workflows/list-suites.yml
   refresh:
     runs-on: ubuntu-latest
+    needs: suites
     strategy:
       fail-fast: false
       matrix:
-        suite:
-          - actions
-          - bundler
-          - bundler-group-rules
-          - bundler-group-vendoring
-          - cargo
-          - composer
-          - docker
-          - elm
-          - go
-          - go-close-pr
-          - go-security
-          - go-update-pr
-          - gradle
-          - gradle-version-catalog
-          - hex
-          - maven
-          - npm
-          - npm-group-rules
-          - npm-remove-transitive
-          - nuget
-          - pip
-          - pip-compile
-          - pipenv
-          - pnpm
-          - poetry
-          - pub
-          - submodules
-          - terraform
-          - yarn
-          - yarn-berry
-          - yarn-berry-workspaces
+        suite: ${{ fromJSON(needs.suites.outputs.suites) }}
     steps:
       - uses: actions/checkout@v3
       - name: Download artifacts

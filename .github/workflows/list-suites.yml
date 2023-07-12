@@ -1,0 +1,18 @@
+name: List Suites
+on:
+  workflow_call:
+    outputs:
+      suites:
+        description: List of suites to run from the tests/ directory
+        value: ${{ jobs.gather.outputs.suites }}
+jobs:
+  gather:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get workflow names
+        id: suites
+        run: |
+          echo "suite=$(ls tests | sed 's/^tests\///' | sed 's/smoke-//' | sed 's/.yaml$//' | jq -R | jq -sc)" >> $GITHUB_OUTPUT
+    outputs:
+      suites: ${{ steps.suites.outputs.suite }}
