@@ -11,7 +11,7 @@ env:
 
 jobs:
   suites:
-    uses: dependabot/smoke-tests/.github/workflows/list-suites.yml@main
+    uses: dependabot/smoke-tests/.github/workflows/list-suites.yml@jakecoffman/reusable-suites-list
   refresh:
     runs-on: ubuntu-latest
     needs: suites
