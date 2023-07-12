@@ -13,7 +13,7 @@ env:
 
 jobs:
   suites:
-    uses: dependabot/smoke-tests/.github/workflows/list-suites.yml
+    uses: ./.github/workflows/list-suites.yml
   smoke:
     runs-on: ubuntu-latest
     needs: suites
