@@ -18,11 +18,11 @@ env:
 jobs:
   cache_one:
     runs-on: ubuntu-latest
-    name: Cache ${{ github.event.inputs.package_manager }}
+    name: Cache ${{ inputs.package_manager }}
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.inputs.git-ref }}
+          ref: ${{ inputs.git-ref }}
 
       - name: Download CLI
         run: |
@@ -32,12 +32,12 @@ jobs:
 
       # No download first to get a clean cache.
 
-      - name: Smoke ${{ github.event.inputs.package_manager }}
+      - name: Smoke ${{ inputs.package_manager }}
         env:
           LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./dependabot test -f=tests/smoke-${{ github.event.inputs.package_manager }}.yaml --cache=cache
+        run: ./dependabot test -f=tests/smoke-${{ inputs.package_manager }}.yaml --cache=cache
 
       - uses: actions/upload-artifact@v3
         with:
-          name: cache-${{ github.event.inputs.package_manager }}
+          name: cache-${{ inputs.package_manager }}
           path: cache/
