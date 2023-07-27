@@ -7,7 +7,7 @@ input:
             - name: ruleset
               rules:
                 patterns:
-                    - '@hoek/*'
+                    - '@hapi/*'
         experiments:
             grouped-updates-prototype: true
             record-ecosystem-versions: true
@@ -83,104 +83,6 @@ output:
                   previous-version: 9.2.0
                   requirements: []
                   version: 9.3.0
-            updated-dependency-files:
-                - content: |
-                    {
-                      "name": "transitive",
-                      "version": "1.0.0",
-                      "lockfileVersion": 3,
-                      "requires": true,
-                      "packages": {
-                        "": {
-                          "name": "transitive",
-                          "version": "1.0.0",
-                          "license": "ISC",
-                          "dependencies": {
-                            "joi": "^17.9.2"
-                          }
-                        },
-                        "node_modules/@hapi/hoek": {
-                          "version": "9.3.0",
-                          "resolved": "https://registry.npmjs.org/@hapi/hoek/-/hoek-9.3.0.tgz",
-                          "integrity": "sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ=="
-                        },
-                        "node_modules/@hapi/topo": {
-                          "version": "5.0.0",
-                          "resolved": "https://registry.npmjs.org/@hapi/topo/-/topo-5.0.0.tgz",
-                          "integrity": "sha512-tFJlT47db0kMqVm3H4nQYgn6Pwg10GTZHb1pwmSiv1K4ks6drQOtfEF5ZnPjkvC+y4/bUPHK+bc87QvLcL+WMw==",
-                          "dependencies": {
-                            "@hapi/hoek": "^9.0.0"
-                          }
-                        },
-                        "node_modules/@sideway/address": {
-                          "version": "4.1.4",
-                          "resolved": "https://registry.npmjs.org/@sideway/address/-/address-4.1.4.tgz",
-                          "integrity": "sha512-7vwq+rOHVWjyXxVlR76Agnvhy8I9rpzjosTESvmhNeXOXdZZB15Fl+TI9x1SiHZH5Jv2wTGduSxFDIaq0m3DUw==",
-                          "dependencies": {
-                            "@hapi/hoek": "^9.0.0"
-                          }
-                        },
-                        "node_modules/@sideway/pinpoint": {
-                          "version": "2.0.0",
-                          "resolved": "https://registry.npmjs.org/@sideway/pinpoint/-/pinpoint-2.0.0.tgz",
-                          "integrity": "sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ=="
-                        },
-                        "node_modules/joi": {
-                          "version": "17.9.2",
-                          "resolved": "https://registry.npmjs.org/joi/-/joi-17.9.2.tgz",
-                          "integrity": "sha512-Itk/r+V4Dx0V3c7RLFdRh12IOjySm2/WGPMubBT92cQvRfYZhPM2W0hZlctjj72iES8jsRCwp7S/cRmWBnJ4nw==",
-                          "dependencies": {
-                            "@hapi/hoek": "^9.0.0",
-                            "@hapi/topo": "^5.0.0",
-                            "@sideway/address": "^4.1.3",
-                            "@sideway/formula": "^3.0.1",
-                            "@sideway/pinpoint": "^2.0.0"
-                          }
-                        },
-                        "node_modules/joi/node_modules/@sideway/formula": {
-                          "version": "3.0.1",
-                          "resolved": "https://registry.npmjs.org/@sideway/formula/-/formula-3.0.1.tgz",
-                          "integrity": "sha512-/poHZJJVjx3L+zVD6g9KgHfYnb443oi7wLu/XKojDviHy6HOEOA6z1Trk5aR1dGcmPenJEgb2sK2I80LeS3MIg=="
-                        }
-                      }
-                    }
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /npm/transitive
-                  name: package-lock.json
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump @hapi/hoek from 9.2.0 to 9.3.0 in /npm/transitive
-            pr-body: |
-                Bumps [@hapi/hoek](https://github.com/hapijs/hoek) from 9.2.0 to 9.3.0.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/hapijs/hoek/commit/24467c98a471a23c0b1901098948b6662e516173"><code>24467c9</code></a> 9.3.0</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/71250a0d187bafe3b31cc3a86a3ce306e0d99734"><code>71250a0</code></a> Handle very long waits (<a href="https://redirect.github.com/hapijs/hoek/issues/373">#373</a>)</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/3964633be1b756e5d0b8449af7fc517a43004e13"><code>3964633</code></a> Cleanup (<a href="https://redirect.github.com/hapijs/hoek/issues/372">#372</a>)</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/e3210f281d8278b1da6f22d8c2854e1b9f106edd"><code>e3210f2</code></a> add dispatcher and use shared config</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/8b57d38a55b690d91d0fa886be17d1b462e43d1e"><code>8b57d38</code></a> Fix Hoek.reach() docs formatting issue (<a href="https://redirect.github.com/hapijs/hoek/issues/376">#376</a>)</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/0d614977a23e30e344a34d4539952ccd1ea71306"><code>0d61497</code></a> 9.2.1</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/82504b720922f73300d7e9fd75e98a48863edccf"><code>82504b7</code></a> Fix reach template regex for timing (<a href="https://redirect.github.com/hapijs/hoek/issues/371">#371</a>)</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/4c05eeeaf6116861d0477f74a024066aa098122f"><code>4c05eee</code></a> Update reach template documentation (<a href="https://redirect.github.com/hapijs/hoek/issues/370">#370</a>)</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/fcc7ba60f686e909f63a4ed9939c512c61e17bf0"><code>fcc7ba6</code></a> add IDE linting</li>
-                <li>See full diff in <a href="https://github.com/hapijs/hoek/compare/v9.2.0...v9.3.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump @hapi/hoek from 9.2.0 to 9.3.0 in /npm/transitive
-
-                Bumps [@hapi/hoek](https://github.com/hapijs/hoek) from 9.2.0 to 9.3.0.
-                - [Release notes](https://github.com/hapijs/hoek/releases)
-                - [Commits](https://github.com/hapijs/hoek/compare/v9.2.0...v9.3.0)
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: dde3e21e99b5237377d6e8a4858615e293bfacc4
-            dependencies:
                 - name: '@hapi/topo'
                   previous-requirements: []
                   previous-version: 5.0.0
@@ -203,9 +105,9 @@ output:
                           }
                         },
                         "node_modules/@hapi/hoek": {
-                          "version": "9.2.0",
-                          "resolved": "https://registry.npmjs.org/@hapi/hoek/-/hoek-9.2.0.tgz",
-                          "integrity": "sha512-sqKVVVOe5ivCaXDWivIJYVSaEgdQK9ul7a4Kity5Iw7u9+wBAPbX1RMSnLLmp7O4Vzj0WOWwMAJsTL00xwaNug=="
+                          "version": "9.3.0",
+                          "resolved": "https://registry.npmjs.org/@hapi/hoek/-/hoek-9.3.0.tgz",
+                          "integrity": "sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ=="
                         },
                         "node_modules/@hapi/topo": {
                           "version": "5.1.0",
@@ -254,9 +156,29 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump @hapi/topo from 5.0.0 to 5.1.0 in /npm/transitive
+            pr-title: Bump the ruleset group in /npm/transitive with 2 updates
             pr-body: |
-                Bumps [@hapi/topo](https://github.com/hapijs/topo) from 5.0.0 to 5.1.0.
+                Bumps the ruleset group in /npm/transitive with 2 updates: [@hapi/hoek](https://github.com/hapijs/hoek) and [@hapi/topo](https://github.com/hapijs/topo).
+
+                Updates `@hapi/hoek` from 9.2.0 to 9.3.0
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/hapijs/hoek/commit/24467c98a471a23c0b1901098948b6662e516173"><code>24467c9</code></a> 9.3.0</li>
+                <li><a href="https://github.com/hapijs/hoek/commit/71250a0d187bafe3b31cc3a86a3ce306e0d99734"><code>71250a0</code></a> Handle very long waits (<a href="https://redirect.github.com/hapijs/hoek/issues/373">#373</a>)</li>
+                <li><a href="https://github.com/hapijs/hoek/commit/3964633be1b756e5d0b8449af7fc517a43004e13"><code>3964633</code></a> Cleanup (<a href="https://redirect.github.com/hapijs/hoek/issues/372">#372</a>)</li>
+                <li><a href="https://github.com/hapijs/hoek/commit/e3210f281d8278b1da6f22d8c2854e1b9f106edd"><code>e3210f2</code></a> add dispatcher and use shared config</li>
+                <li><a href="https://github.com/hapijs/hoek/commit/8b57d38a55b690d91d0fa886be17d1b462e43d1e"><code>8b57d38</code></a> Fix Hoek.reach() docs formatting issue (<a href="https://redirect.github.com/hapijs/hoek/issues/376">#376</a>)</li>
+                <li><a href="https://github.com/hapijs/hoek/commit/0d614977a23e30e344a34d4539952ccd1ea71306"><code>0d61497</code></a> 9.2.1</li>
+                <li><a href="https://github.com/hapijs/hoek/commit/82504b720922f73300d7e9fd75e98a48863edccf"><code>82504b7</code></a> Fix reach template regex for timing (<a href="https://redirect.github.com/hapijs/hoek/issues/371">#371</a>)</li>
+                <li><a href="https://github.com/hapijs/hoek/commit/4c05eeeaf6116861d0477f74a024066aa098122f"><code>4c05eee</code></a> Update reach template documentation (<a href="https://redirect.github.com/hapijs/hoek/issues/370">#370</a>)</li>
+                <li><a href="https://github.com/hapijs/hoek/commit/fcc7ba60f686e909f63a4ed9939c512c61e17bf0"><code>fcc7ba6</code></a> add IDE linting</li>
+                <li>See full diff in <a href="https://github.com/hapijs/hoek/compare/v9.2.0...v9.3.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `@hapi/topo` from 5.0.0 to 5.1.0
                 <details>
                 <summary>Commits</summary>
                 <ul>
@@ -275,10 +197,19 @@ output:
                 </details>
                 <br />
             commit-message: |-
-                Bump @hapi/topo from 5.0.0 to 5.1.0 in /npm/transitive
+                Bump the ruleset group in /npm/transitive with 2 updates
 
-                Bumps [@hapi/topo](https://github.com/hapijs/topo) from 5.0.0 to 5.1.0.
+                Bumps the ruleset group in /npm/transitive with 2 updates: [@hapi/hoek](https://github.com/hapijs/hoek) and [@hapi/topo](https://github.com/hapijs/topo).
+
+
+                Updates `@hapi/hoek` from 9.2.0 to 9.3.0
+                - [Release notes](https://github.com/hapijs/hoek/releases)
+                - [Commits](https://github.com/hapijs/hoek/compare/v9.2.0...v9.3.0)
+
+                Updates `@hapi/topo` from 5.0.0 to 5.1.0
                 - [Commits](https://github.com/hapijs/topo/compare/v5.0.0...v5.1.0)
+            dependency-group:
+                name: ruleset
     - type: create_pull_request
       expect:
         data:
