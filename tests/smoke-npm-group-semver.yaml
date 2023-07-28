@@ -4,10 +4,11 @@ input:
         allowed-updates:
             - update-type: all
         dependency-groups:
-            - name: minor
+            - name: not major
               rules:
                 update-types:
                     - minor
+                    - patch
         experiments:
             grouped-updates-experimental-rules: true
             grouped-updates-prototype: true
@@ -147,6 +148,25 @@ output:
                         type: registry
                         url: https://registry.npmjs.org
                   version: 0.2.1
+                - name: lodash
+                  previous-requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^4.17.15
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  previous-version: 4.17.15
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^4.17.15
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 4.17.21
                 - name: etag
                   previous-requirements:
                     - file: package.json
@@ -570,9 +590,9 @@ output:
                           }
                         },
                         "node_modules/lodash": {
-                          "version": "4.17.15",
-                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
-                          "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
+                          "version": "4.17.21",
+                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz",
+                          "integrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
                         },
                         "node_modules/mime-db": {
                           "version": "1.52.0",
@@ -991,9 +1011,9 @@ output:
                           }
                         },
                         "lodash": {
-                          "version": "4.17.15",
-                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
-                          "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
+                          "version": "4.17.21",
+                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz",
+                          "integrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
                         },
                         "mime-db": {
                           "version": "1.52.0",
@@ -1121,11 +1141,34 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the minor group in /npm with 2 updates
+            pr-title: Bump the not major group in /npm with 3 updates
             pr-body: |
-                Bumps the minor group in /npm with 2 updates: fetch-factory and [etag](https://github.com/jshttp/etag).
+                Bumps the not major group in /npm with 3 updates: fetch-factory, [lodash](https://github.com/lodash/lodash) and [etag](https://github.com/jshttp/etag).
 
                 Updates `fetch-factory` from 0.0.1 to 0.2.1
+
+                Updates `lodash` from 4.17.15 to 4.17.21
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/lodash/lodash/commit/f299b52f39486275a9e6483b60a410e06520c538"><code>f299b52</code></a> Bump to v4.17.21</li>
+                <li><a href="https://github.com/lodash/lodash/commit/c4847ebe7d14540bb28a8b932a9ce1b9ecbfee1a"><code>c4847eb</code></a> Improve performance of <code>toNumber</code>, <code>trim</code> and <code>trimEnd</code> on large input strings</li>
+                <li><a href="https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c"><code>3469357</code></a> Prevent command injection through <code>_.template</code>'s <code>variable</code> option</li>
+                <li><a href="https://github.com/lodash/lodash/commit/ded9bc66583ed0b4e3b7dc906206d40757b4a90a"><code>ded9bc6</code></a> Bump to v4.17.20.</li>
+                <li><a href="https://github.com/lodash/lodash/commit/63150ef7645ac07961b63a86490f419f356429aa"><code>63150ef</code></a> Documentation fixes.</li>
+                <li><a href="https://github.com/lodash/lodash/commit/00f0f62a979d2f5fa0287c06eae70cf9a62d8794"><code>00f0f62</code></a> test.js: Remove trailing comma.</li>
+                <li><a href="https://github.com/lodash/lodash/commit/846e434c7a5b5692c55ebf5715ed677b70a32389"><code>846e434</code></a> Temporarily use a custom fork of <code>lodash-cli</code>.</li>
+                <li><a href="https://github.com/lodash/lodash/commit/5d046f39cbd27f573914768e3b36eeefcc4f1229"><code>5d046f3</code></a> Re-enable Travis tests on <code>4.17</code> branch.</li>
+                <li><a href="https://github.com/lodash/lodash/commit/aa816b36d402a1ad9385142ce7188f17dae514fd"><code>aa816b3</code></a> Remove <code>/npm-package</code>.</li>
+                <li><a href="https://github.com/lodash/lodash/commit/d7fbc52ee0466a6d248f047b5d5c3e6d1e099056"><code>d7fbc52</code></a> Bump to v4.17.19</li>
+                <li>Additional commits viewable in <a href="https://github.com/lodash/lodash/compare/4.17.15...4.17.21">compare view</a></li>
+                </ul>
+                </details>
+                <details>
+                <summary>Maintainer changes</summary>
+                <p>This version was pushed to npm by <a href="https://www.npmjs.com/~bnjmnt4n">bnjmnt4n</a>, a new releaser for lodash since your current version.</p>
+                </details>
+                <br />
 
                 Updates `etag` from 1.0.0 to 1.8.1
                 <details>
@@ -1283,19 +1326,23 @@ output:
                 </details>
                 <br />
             commit-message: |-
-                Bump the minor group in /npm with 2 updates
+                Bump the not major group in /npm with 3 updates
 
-                Bumps the minor group in /npm with 2 updates: fetch-factory and [etag](https://github.com/jshttp/etag).
+                Bumps the not major group in /npm with 3 updates: fetch-factory, [lodash](https://github.com/lodash/lodash) and [etag](https://github.com/jshttp/etag).
 
 
                 Updates `fetch-factory` from 0.0.1 to 0.2.1
+
+                Updates `lodash` from 4.17.15 to 4.17.21
+                - [Release notes](https://github.com/lodash/lodash/releases)
+                - [Commits](https://github.com/lodash/lodash/compare/4.17.15...4.17.21)
 
                 Updates `etag` from 1.0.0 to 1.8.1
                 - [Release notes](https://github.com/jshttp/etag/releases)
                 - [Changelog](https://github.com/jshttp/etag/blob/master/HISTORY.md)
                 - [Commits](https://github.com/jshttp/etag/compare/v1.0.0...v1.8.1)
             dependency-group:
-                name: minor
+                name: not major
     - type: create_pull_request
       expect:
         data:
