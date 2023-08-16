@@ -1,323 +1,323 @@
 input:
-    job:
-        package-manager: npm_and_yarn
-        allowed-updates:
-            - update-type: indirect
-        dependency-groups:
-            - name: ruleset
-              rules:
-                patterns:
-                    - '@hapi/*'
-        experiments:
-            grouped-updates-prototype: true
-            record-ecosystem-versions: true
-        ignore-conditions:
-            - dependency-name: '@hapi/hoek'
-              source: tests/smoke-npm-group-transitive.yaml
-              version-requirement: '>9.3.0'
-            - dependency-name: '@hapi/topo'
-              source: tests/smoke-npm-group-transitive.yaml
-              version-requirement: '>5.1.0'
-            - dependency-name: '@sideway/formula'
-              source: tests/smoke-npm-group-transitive.yaml
-              version-requirement: '>3.0.1'
-            - dependency-name: '@joi'
-              source: tests/smoke-npm-group-transitive.yaml
-            - dependency-name: '@sideway/address'
-              source: tests/smoke-npm-group-transitive.yaml
-            - dependency-name: '@sideway/pinpoint'
-              source: tests/smoke-npm-group-transitive.yaml
-        source:
-            provider: github
-            repo: dependabot/smoke-tests
-            directory: /npm/transitive
-            commit: dde3e21e99b5237377d6e8a4858615e293bfacc4
-        credentials-metadata:
-            - host: github.com
-              type: git_source
-    credentials:
-        - host: github.com
-          password: $LOCAL_GITHUB_ACCESS_TOKEN
-          type: git_source
-          username: x-access-token
+  job:
+    package-manager: npm_and_yarn
+    allowed-updates:
+      - update-type: indirect
+    dependency-groups:
+      - name: ruleset
+        rules:
+          patterns:
+            - "@hapi/*"
+    experiments:
+      grouped-updates-prototype: true
+      record-ecosystem-versions: true
+    ignore-conditions:
+      - dependency-name: "@hapi/hoek"
+        source: tests/smoke-npm-group-transitive.yaml
+        version-requirement: ">9.3.0"
+      - dependency-name: "@hapi/topo"
+        source: tests/smoke-npm-group-transitive.yaml
+        version-requirement: ">5.1.0"
+      - dependency-name: "@sideway/formula"
+        source: tests/smoke-npm-group-transitive.yaml
+        version-requirement: ">3.0.1"
+      - dependency-name: "@joi"
+        source: tests/smoke-npm-group-transitive.yaml
+      - dependency-name: "@sideway/address"
+        source: tests/smoke-npm-group-transitive.yaml
+      - dependency-name: "@sideway/pinpoint"
+        source: tests/smoke-npm-group-transitive.yaml
+    source:
+      provider: github
+      repo: dependabot/smoke-tests
+      directory: /npm/transitive
+      commit: dde3e21e99b5237377d6e8a4858615e293bfacc4
+    credentials-metadata:
+      - host: github.com
+        type: git_source
+  credentials:
+    - host: github.com
+      password: $LOCAL_GITHUB_ACCESS_TOKEN
+      type: git_source
+      username: x-access-token
 output:
-    - type: record_ecosystem_versions
-      expect:
-        data:
-            ecosystem_versions:
-                package_managers:
-                    npm: 8
-    - type: update_dependency_list
-      expect:
-        data:
-            dependencies:
-                - name: joi
-                  requirements:
-                    - file: package.json
-                      groups:
-                        - dependencies
-                      requirement: ^17.9.2
-                      source:
-                        type: registry
-                        url: https://registry.npmjs.org
-                  version: 17.9.2
-                - name: '@hapi/hoek'
-                  requirements: []
-                  version: 9.2.0
-                - name: '@hapi/topo'
-                  requirements: []
-                  version: 5.0.0
-                - name: '@sideway/address'
-                  requirements: []
-                  version: 4.1.4
-                - name: '@sideway/formula'
-                  requirements: []
-                  version: 3.0.0
-                - name: '@sideway/pinpoint'
-                  requirements: []
-                  version: 2.0.0
-            dependency_files:
-                - /npm/transitive/package.json
-                - /npm/transitive/package-lock.json
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: dde3e21e99b5237377d6e8a4858615e293bfacc4
-            dependencies:
-                - name: '@hapi/hoek'
-                  previous-requirements: []
-                  previous-version: 9.2.0
-                  requirements: []
-                  version: 9.3.0
-                - name: '@hapi/topo'
-                  previous-requirements: []
-                  previous-version: 5.0.0
-                  requirements: []
-                  version: 5.1.0
-            updated-dependency-files:
-                - content: |
-                    {
-                      "name": "transitive",
-                      "version": "1.0.0",
-                      "lockfileVersion": 3,
-                      "requires": true,
-                      "packages": {
-                        "": {
-                          "name": "transitive",
-                          "version": "1.0.0",
-                          "license": "ISC",
-                          "dependencies": {
-                            "joi": "^17.9.2"
-                          }
-                        },
-                        "node_modules/@hapi/hoek": {
-                          "version": "9.3.0",
-                          "resolved": "https://registry.npmjs.org/@hapi/hoek/-/hoek-9.3.0.tgz",
-                          "integrity": "sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ=="
-                        },
-                        "node_modules/@hapi/topo": {
-                          "version": "5.1.0",
-                          "resolved": "https://registry.npmjs.org/@hapi/topo/-/topo-5.1.0.tgz",
-                          "integrity": "sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==",
-                          "dependencies": {
-                            "@hapi/hoek": "^9.0.0"
-                          }
-                        },
-                        "node_modules/@sideway/address": {
-                          "version": "4.1.4",
-                          "resolved": "https://registry.npmjs.org/@sideway/address/-/address-4.1.4.tgz",
-                          "integrity": "sha512-7vwq+rOHVWjyXxVlR76Agnvhy8I9rpzjosTESvmhNeXOXdZZB15Fl+TI9x1SiHZH5Jv2wTGduSxFDIaq0m3DUw==",
-                          "dependencies": {
-                            "@hapi/hoek": "^9.0.0"
-                          }
-                        },
-                        "node_modules/@sideway/pinpoint": {
-                          "version": "2.0.0",
-                          "resolved": "https://registry.npmjs.org/@sideway/pinpoint/-/pinpoint-2.0.0.tgz",
-                          "integrity": "sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ=="
-                        },
-                        "node_modules/joi": {
-                          "version": "17.9.2",
-                          "resolved": "https://registry.npmjs.org/joi/-/joi-17.9.2.tgz",
-                          "integrity": "sha512-Itk/r+V4Dx0V3c7RLFdRh12IOjySm2/WGPMubBT92cQvRfYZhPM2W0hZlctjj72iES8jsRCwp7S/cRmWBnJ4nw==",
-                          "dependencies": {
-                            "@hapi/hoek": "^9.0.0",
-                            "@hapi/topo": "^5.0.0",
-                            "@sideway/address": "^4.1.3",
-                            "@sideway/formula": "^3.0.1",
-                            "@sideway/pinpoint": "^2.0.0"
-                          }
-                        },
-                        "node_modules/joi/node_modules/@sideway/formula": {
-                          "version": "3.0.1",
-                          "resolved": "https://registry.npmjs.org/@sideway/formula/-/formula-3.0.1.tgz",
-                          "integrity": "sha512-/poHZJJVjx3L+zVD6g9KgHfYnb443oi7wLu/XKojDviHy6HOEOA6z1Trk5aR1dGcmPenJEgb2sK2I80LeS3MIg=="
-                        }
-                      }
+  - type: record_ecosystem_versions
+    expect:
+      data:
+        ecosystem_versions:
+          package_managers:
+            npm: 8
+  - type: update_dependency_list
+    expect:
+      data:
+        dependencies:
+          - name: joi
+            requirements:
+              - file: package.json
+                groups:
+                  - dependencies
+                requirement: ^17.9.2
+                source:
+                  type: registry
+                  url: https://registry.npmjs.org
+            version: 17.9.2
+          - name: "@hapi/hoek"
+            requirements: []
+            version: 9.2.0
+          - name: "@hapi/topo"
+            requirements: []
+            version: 5.0.0
+          - name: "@sideway/address"
+            requirements: []
+            version: 4.1.4
+          - name: "@sideway/formula"
+            requirements: []
+            version: 3.0.0
+          - name: "@sideway/pinpoint"
+            requirements: []
+            version: 2.0.0
+        dependency_files:
+          - /npm/transitive/package.json
+          - /npm/transitive/package-lock.json
+  - type: create_pull_request
+    expect:
+      data:
+        base-commit-sha: dde3e21e99b5237377d6e8a4858615e293bfacc4
+        dependencies:
+          - name: "@hapi/hoek"
+            previous-requirements: []
+            previous-version: 9.2.0
+            requirements: []
+            version: 9.3.0
+          - name: "@hapi/topo"
+            previous-requirements: []
+            previous-version: 5.0.0
+            requirements: []
+            version: 5.1.0
+        updated-dependency-files:
+          - content: |
+              {
+                "name": "transitive",
+                "version": "1.0.0",
+                "lockfileVersion": 3,
+                "requires": true,
+                "packages": {
+                  "": {
+                    "name": "transitive",
+                    "version": "1.0.0",
+                    "license": "ISC",
+                    "dependencies": {
+                      "joi": "^17.9.2"
                     }
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /npm/transitive
-                  name: package-lock.json
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump the ruleset group in /npm/transitive with 2 updates
-            pr-body: |
-                Bumps the ruleset group in /npm/transitive with 2 updates: [@hapi/hoek](https://github.com/hapijs/hoek) and [@hapi/topo](https://github.com/hapijs/topo).
-
-                Updates `@hapi/hoek` from 9.2.0 to 9.3.0
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/hapijs/hoek/commit/24467c98a471a23c0b1901098948b6662e516173"><code>24467c9</code></a> 9.3.0</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/71250a0d187bafe3b31cc3a86a3ce306e0d99734"><code>71250a0</code></a> Handle very long waits (<a href="https://redirect.github.com/hapijs/hoek/issues/373">#373</a>)</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/3964633be1b756e5d0b8449af7fc517a43004e13"><code>3964633</code></a> Cleanup (<a href="https://redirect.github.com/hapijs/hoek/issues/372">#372</a>)</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/e3210f281d8278b1da6f22d8c2854e1b9f106edd"><code>e3210f2</code></a> add dispatcher and use shared config</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/8b57d38a55b690d91d0fa886be17d1b462e43d1e"><code>8b57d38</code></a> Fix Hoek.reach() docs formatting issue (<a href="https://redirect.github.com/hapijs/hoek/issues/376">#376</a>)</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/0d614977a23e30e344a34d4539952ccd1ea71306"><code>0d61497</code></a> 9.2.1</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/82504b720922f73300d7e9fd75e98a48863edccf"><code>82504b7</code></a> Fix reach template regex for timing (<a href="https://redirect.github.com/hapijs/hoek/issues/371">#371</a>)</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/4c05eeeaf6116861d0477f74a024066aa098122f"><code>4c05eee</code></a> Update reach template documentation (<a href="https://redirect.github.com/hapijs/hoek/issues/370">#370</a>)</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/fcc7ba60f686e909f63a4ed9939c512c61e17bf0"><code>fcc7ba6</code></a> add IDE linting</li>
-                <li>See full diff in <a href="https://github.com/hapijs/hoek/compare/v9.2.0...v9.3.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-
-                Updates `@hapi/topo` from 5.0.0 to 5.1.0
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/hapijs/topo/commit/0e8fe262b06f9d2b258a0c796beb104b54b206f3"><code>0e8fe26</code></a> 5.1.0</li>
-                <li><a href="https://github.com/hapijs/topo/commit/3173aa038c8216e6f4a413f61b2b717701e0718e"><code>3173aa0</code></a> Support manual sorting (performance) (<a href="https://redirect.github.com/hapijs/topo/issues/66">#66</a>)</li>
-                <li><a href="https://github.com/hapijs/topo/commit/ce16fb2a09b9033592b610cfe11c99833f5af3d7"><code>ce16fb2</code></a> Create ci-module.yml (<a href="https://redirect.github.com/hapijs/topo/issues/65">#65</a>)</li>
-                <li><a href="https://github.com/hapijs/topo/commit/af760661f79af0a4905c85483087d1e89412a4cf"><code>af76066</code></a> upgrade lab to v24 and devDependency of typescript (<a href="https://redirect.github.com/hapijs/topo/issues/64">#64</a>)</li>
-                <li><a href="https://github.com/hapijs/topo/commit/e578c19e885d6131d190a7616bf4e9df423475a3"><code>e578c19</code></a> migrate to new travis format (<a href="https://redirect.github.com/hapijs/topo/issues/63">#63</a>)</li>
-                <li><a href="https://github.com/hapijs/topo/commit/642c3a20098d593bfc1cd34a02ce0a55eff22532"><code>642c3a2</code></a> test on node 14</li>
-                <li>See full diff in <a href="https://github.com/hapijs/topo/compare/v5.0.0...v5.1.0">compare view</a></li>
-                </ul>
-                </details>
-                <details>
-                <summary>Maintainer changes</summary>
-                <p>This version was pushed to npm by <a href="https://www.npmjs.com/~devinivy">devinivy</a>, a new releaser for <code>@​hapi/topo</code> since your current version.</p>
-                </details>
-                <br />
-            commit-message: |-
-                Bump the ruleset group in /npm/transitive with 2 updates
-
-                Bumps the ruleset group in /npm/transitive with 2 updates: [@hapi/hoek](https://github.com/hapijs/hoek) and [@hapi/topo](https://github.com/hapijs/topo).
-
-
-                Updates `@hapi/hoek` from 9.2.0 to 9.3.0
-                - [Release notes](https://github.com/hapijs/hoek/releases)
-                - [Commits](https://github.com/hapijs/hoek/compare/v9.2.0...v9.3.0)
-
-                Updates `@hapi/topo` from 5.0.0 to 5.1.0
-                - [Commits](https://github.com/hapijs/topo/compare/v5.0.0...v5.1.0)
-            dependency-group:
-                name: ruleset
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: dde3e21e99b5237377d6e8a4858615e293bfacc4
-            dependencies:
-                - name: '@sideway/formula'
-                  previous-requirements: []
-                  previous-version: 3.0.0
-                  requirements: []
-                  version: 3.0.1
-            updated-dependency-files:
-                - content: |
-                    {
-                      "name": "transitive",
-                      "version": "1.0.0",
-                      "lockfileVersion": 3,
-                      "requires": true,
-                      "packages": {
-                        "": {
-                          "name": "transitive",
-                          "version": "1.0.0",
-                          "license": "ISC",
-                          "dependencies": {
-                            "joi": "^17.9.2"
-                          }
-                        },
-                        "node_modules/@hapi/hoek": {
-                          "version": "9.2.0",
-                          "resolved": "https://registry.npmjs.org/@hapi/hoek/-/hoek-9.2.0.tgz",
-                          "integrity": "sha512-sqKVVVOe5ivCaXDWivIJYVSaEgdQK9ul7a4Kity5Iw7u9+wBAPbX1RMSnLLmp7O4Vzj0WOWwMAJsTL00xwaNug=="
-                        },
-                        "node_modules/@hapi/topo": {
-                          "version": "5.0.0",
-                          "resolved": "https://registry.npmjs.org/@hapi/topo/-/topo-5.0.0.tgz",
-                          "integrity": "sha512-tFJlT47db0kMqVm3H4nQYgn6Pwg10GTZHb1pwmSiv1K4ks6drQOtfEF5ZnPjkvC+y4/bUPHK+bc87QvLcL+WMw==",
-                          "dependencies": {
-                            "@hapi/hoek": "^9.0.0"
-                          }
-                        },
-                        "node_modules/@sideway/address": {
-                          "version": "4.1.4",
-                          "resolved": "https://registry.npmjs.org/@sideway/address/-/address-4.1.4.tgz",
-                          "integrity": "sha512-7vwq+rOHVWjyXxVlR76Agnvhy8I9rpzjosTESvmhNeXOXdZZB15Fl+TI9x1SiHZH5Jv2wTGduSxFDIaq0m3DUw==",
-                          "dependencies": {
-                            "@hapi/hoek": "^9.0.0"
-                          }
-                        },
-                        "node_modules/@sideway/formula": {
-                          "version": "3.0.1",
-                          "resolved": "https://registry.npmjs.org/@sideway/formula/-/formula-3.0.1.tgz",
-                          "integrity": "sha512-/poHZJJVjx3L+zVD6g9KgHfYnb443oi7wLu/XKojDviHy6HOEOA6z1Trk5aR1dGcmPenJEgb2sK2I80LeS3MIg=="
-                        },
-                        "node_modules/@sideway/pinpoint": {
-                          "version": "2.0.0",
-                          "resolved": "https://registry.npmjs.org/@sideway/pinpoint/-/pinpoint-2.0.0.tgz",
-                          "integrity": "sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ=="
-                        },
-                        "node_modules/joi": {
-                          "version": "17.9.2",
-                          "resolved": "https://registry.npmjs.org/joi/-/joi-17.9.2.tgz",
-                          "integrity": "sha512-Itk/r+V4Dx0V3c7RLFdRh12IOjySm2/WGPMubBT92cQvRfYZhPM2W0hZlctjj72iES8jsRCwp7S/cRmWBnJ4nw==",
-                          "dependencies": {
-                            "@hapi/hoek": "^9.0.0",
-                            "@hapi/topo": "^5.0.0",
-                            "@sideway/address": "^4.1.3",
-                            "@sideway/formula": "^3.0.1",
-                            "@sideway/pinpoint": "^2.0.0"
-                          }
-                        }
-                      }
+                  },
+                  "node_modules/@hapi/hoek": {
+                    "version": "9.3.0",
+                    "resolved": "https://registry.npmjs.org/@hapi/hoek/-/hoek-9.3.0.tgz",
+                    "integrity": "sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ=="
+                  },
+                  "node_modules/@hapi/topo": {
+                    "version": "5.1.0",
+                    "resolved": "https://registry.npmjs.org/@hapi/topo/-/topo-5.1.0.tgz",
+                    "integrity": "sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==",
+                    "dependencies": {
+                      "@hapi/hoek": "^9.0.0"
                     }
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /npm/transitive
-                  name: package-lock.json
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump @sideway/formula from 3.0.0 to 3.0.1 in /npm/transitive
-            pr-body: |
-                Bumps [@sideway/formula](https://github.com/sideway/formula) from 3.0.0 to 3.0.1.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/hapijs/formula/commit/5b44c1bffc38135616fb91d5ad46eaf64f03d23b"><code>5b44c1b</code></a> 3.0.1</li>
-                <li><a href="https://github.com/hapijs/formula/commit/9fbc20a02d75ae809c37a610a57802cd1b41b3fe"><code>9fbc20a</code></a> chore: better number regex</li>
-                <li><a href="https://github.com/hapijs/formula/commit/41ae98e0421913b100886adb0107a25d552d9e1a"><code>41ae98e</code></a> Cleanup</li>
-                <li><a href="https://github.com/hapijs/formula/commit/c59f35ec401e18cead10e0cedfb44291517610b1"><code>c59f35e</code></a> Move to Sideway</li>
-                <li>See full diff in <a href="https://github.com/sideway/formula/compare/v3.0.0...v3.0.1">compare view</a></li>
-                </ul>
-                </details>
-                <details>
-                <summary>Maintainer changes</summary>
-                <p>This version was pushed to npm by <a href="https://www.npmjs.com/~marsup">marsup</a>, a new releaser for <code>@​sideway/formula</code> since your current version.</p>
-                </details>
-                <br />
-            commit-message: |-
-                Bump @sideway/formula from 3.0.0 to 3.0.1 in /npm/transitive
+                  },
+                  "node_modules/@sideway/address": {
+                    "version": "4.1.4",
+                    "resolved": "https://registry.npmjs.org/@sideway/address/-/address-4.1.4.tgz",
+                    "integrity": "sha512-7vwq+rOHVWjyXxVlR76Agnvhy8I9rpzjosTESvmhNeXOXdZZB15Fl+TI9x1SiHZH5Jv2wTGduSxFDIaq0m3DUw==",
+                    "dependencies": {
+                      "@hapi/hoek": "^9.0.0"
+                    }
+                  },
+                  "node_modules/@sideway/pinpoint": {
+                    "version": "2.0.0",
+                    "resolved": "https://registry.npmjs.org/@sideway/pinpoint/-/pinpoint-2.0.0.tgz",
+                    "integrity": "sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ=="
+                  },
+                  "node_modules/joi": {
+                    "version": "17.9.2",
+                    "resolved": "https://registry.npmjs.org/joi/-/joi-17.9.2.tgz",
+                    "integrity": "sha512-Itk/r+V4Dx0V3c7RLFdRh12IOjySm2/WGPMubBT92cQvRfYZhPM2W0hZlctjj72iES8jsRCwp7S/cRmWBnJ4nw==",
+                    "dependencies": {
+                      "@hapi/hoek": "^9.0.0",
+                      "@hapi/topo": "^5.0.0",
+                      "@sideway/address": "^4.1.3",
+                      "@sideway/formula": "^3.0.1",
+                      "@sideway/pinpoint": "^2.0.0"
+                    }
+                  },
+                  "node_modules/joi/node_modules/@sideway/formula": {
+                    "version": "3.0.1",
+                    "resolved": "https://registry.npmjs.org/@sideway/formula/-/formula-3.0.1.tgz",
+                    "integrity": "sha512-/poHZJJVjx3L+zVD6g9KgHfYnb443oi7wLu/XKojDviHy6HOEOA6z1Trk5aR1dGcmPenJEgb2sK2I80LeS3MIg=="
+                  }
+                }
+              }
+            content_encoding: utf-8
+            deleted: false
+            directory: /npm/transitive
+            name: package-lock.json
+            operation: update
+            support_file: false
+            type: file
+        pr-title: Bump the ruleset group in /npm/transitive with 2 updates
+        pr-body: |
+          Bumps the ruleset group in /npm/transitive with 2 updates: [@hapi/hoek](https://github.com/hapijs/hoek) and [@hapi/topo](https://github.com/hapijs/topo).
 
-                Bumps [@sideway/formula](https://github.com/sideway/formula) from 3.0.0 to 3.0.1.
-                - [Commits](https://github.com/sideway/formula/compare/v3.0.0...v3.0.1)
-    - type: mark_as_processed
-      expect:
-        data:
-            base-commit-sha: dde3e21e99b5237377d6e8a4858615e293bfacc4
+          Updates `@hapi/hoek` from 9.2.0 to 9.3.0
+          <details>
+          <summary>Commits</summary>
+          <ul>
+          <li><a href="https://github.com/hapijs/hoek/commit/24467c98a471a23c0b1901098948b6662e516173"><code>24467c9</code></a> 9.3.0</li>
+          <li><a href="https://github.com/hapijs/hoek/commit/71250a0d187bafe3b31cc3a86a3ce306e0d99734"><code>71250a0</code></a> Handle very long waits (<a href="https://redirect.github.com/hapijs/hoek/issues/373">#373</a>)</li>
+          <li><a href="https://github.com/hapijs/hoek/commit/3964633be1b756e5d0b8449af7fc517a43004e13"><code>3964633</code></a> Cleanup (<a href="https://redirect.github.com/hapijs/hoek/issues/372">#372</a>)</li>
+          <li><a href="https://github.com/hapijs/hoek/commit/e3210f281d8278b1da6f22d8c2854e1b9f106edd"><code>e3210f2</code></a> add dispatcher and use shared config</li>
+          <li><a href="https://github.com/hapijs/hoek/commit/8b57d38a55b690d91d0fa886be17d1b462e43d1e"><code>8b57d38</code></a> Fix Hoek.reach() docs formatting issue (<a href="https://redirect.github.com/hapijs/hoek/issues/376">#376</a>)</li>
+          <li><a href="https://github.com/hapijs/hoek/commit/0d614977a23e30e344a34d4539952ccd1ea71306"><code>0d61497</code></a> 9.2.1</li>
+          <li><a href="https://github.com/hapijs/hoek/commit/82504b720922f73300d7e9fd75e98a48863edccf"><code>82504b7</code></a> Fix reach template regex for timing (<a href="https://redirect.github.com/hapijs/hoek/issues/371">#371</a>)</li>
+          <li><a href="https://github.com/hapijs/hoek/commit/4c05eeeaf6116861d0477f74a024066aa098122f"><code>4c05eee</code></a> Update reach template documentation (<a href="https://redirect.github.com/hapijs/hoek/issues/370">#370</a>)</li>
+          <li><a href="https://github.com/hapijs/hoek/commit/fcc7ba60f686e909f63a4ed9939c512c61e17bf0"><code>fcc7ba6</code></a> add IDE linting</li>
+          <li>See full diff in <a href="https://github.com/hapijs/hoek/compare/v9.2.0...v9.3.0">compare view</a></li>
+          </ul>
+          </details>
+          <br />
+
+          Updates `@hapi/topo` from 5.0.0 to 5.1.0
+          <details>
+          <summary>Commits</summary>
+          <ul>
+          <li><a href="https://github.com/hapijs/topo/commit/0e8fe262b06f9d2b258a0c796beb104b54b206f3"><code>0e8fe26</code></a> 5.1.0</li>
+          <li><a href="https://github.com/hapijs/topo/commit/3173aa038c8216e6f4a413f61b2b717701e0718e"><code>3173aa0</code></a> Support manual sorting (performance) (<a href="https://redirect.github.com/hapijs/topo/issues/66">#66</a>)</li>
+          <li><a href="https://github.com/hapijs/topo/commit/ce16fb2a09b9033592b610cfe11c99833f5af3d7"><code>ce16fb2</code></a> Create ci-module.yml (<a href="https://redirect.github.com/hapijs/topo/issues/65">#65</a>)</li>
+          <li><a href="https://github.com/hapijs/topo/commit/af760661f79af0a4905c85483087d1e89412a4cf"><code>af76066</code></a> upgrade lab to v24 and devDependency of typescript (<a href="https://redirect.github.com/hapijs/topo/issues/64">#64</a>)</li>
+          <li><a href="https://github.com/hapijs/topo/commit/e578c19e885d6131d190a7616bf4e9df423475a3"><code>e578c19</code></a> migrate to new travis format (<a href="https://redirect.github.com/hapijs/topo/issues/63">#63</a>)</li>
+          <li><a href="https://github.com/hapijs/topo/commit/642c3a20098d593bfc1cd34a02ce0a55eff22532"><code>642c3a2</code></a> test on node 14</li>
+          <li>See full diff in <a href="https://github.com/hapijs/topo/compare/v5.0.0...v5.1.0">compare view</a></li>
+          </ul>
+          </details>
+          <details>
+          <summary>Maintainer changes</summary>
+          <p>This version was pushed to npm by <a href="https://www.npmjs.com/~devinivy">devinivy</a>, a new releaser for <code>@​hapi/topo</code> since your current version.</p>
+          </details>
+          <br />
+        commit-message: |-
+          Bump the ruleset group in /npm/transitive with 2 updates
+
+          Bumps the ruleset group in /npm/transitive with 2 updates: [@hapi/hoek](https://github.com/hapijs/hoek) and [@hapi/topo](https://github.com/hapijs/topo).
+
+
+          Updates `@hapi/hoek` from 9.2.0 to 9.3.0
+          - [Release notes](https://github.com/hapijs/hoek/releases)
+          - [Commits](https://github.com/hapijs/hoek/compare/v9.2.0...v9.3.0)
+
+          Updates `@hapi/topo` from 5.0.0 to 5.1.0
+          - [Commits](https://github.com/hapijs/topo/compare/v5.0.0...v5.1.0)
+        dependency-group:
+          name: ruleset
+  - type: create_pull_request
+    expect:
+      data:
+        base-commit-sha: dde3e21e99b5237377d6e8a4858615e293bfacc4
+        dependencies:
+          - name: "@sideway/formula"
+            previous-requirements: []
+            previous-version: 3.0.0
+            requirements: []
+            version: 3.0.1
+        updated-dependency-files:
+          - content: |
+              {
+                "name": "transitive",
+                "version": "1.0.0",
+                "lockfileVersion": 3,
+                "requires": true,
+                "packages": {
+                  "": {
+                    "name": "transitive",
+                    "version": "1.0.0",
+                    "license": "ISC",
+                    "dependencies": {
+                      "joi": "^17.9.2"
+                    }
+                  },
+                  "node_modules/@hapi/hoek": {
+                    "version": "9.2.0",
+                    "resolved": "https://registry.npmjs.org/@hapi/hoek/-/hoek-9.2.0.tgz",
+                    "integrity": "sha512-sqKVVVOe5ivCaXDWivIJYVSaEgdQK9ul7a4Kity5Iw7u9+wBAPbX1RMSnLLmp7O4Vzj0WOWwMAJsTL00xwaNug=="
+                  },
+                  "node_modules/@hapi/topo": {
+                    "version": "5.0.0",
+                    "resolved": "https://registry.npmjs.org/@hapi/topo/-/topo-5.0.0.tgz",
+                    "integrity": "sha512-tFJlT47db0kMqVm3H4nQYgn6Pwg10GTZHb1pwmSiv1K4ks6drQOtfEF5ZnPjkvC+y4/bUPHK+bc87QvLcL+WMw==",
+                    "dependencies": {
+                      "@hapi/hoek": "^9.0.0"
+                    }
+                  },
+                  "node_modules/@sideway/address": {
+                    "version": "4.1.4",
+                    "resolved": "https://registry.npmjs.org/@sideway/address/-/address-4.1.4.tgz",
+                    "integrity": "sha512-7vwq+rOHVWjyXxVlR76Agnvhy8I9rpzjosTESvmhNeXOXdZZB15Fl+TI9x1SiHZH5Jv2wTGduSxFDIaq0m3DUw==",
+                    "dependencies": {
+                      "@hapi/hoek": "^9.0.0"
+                    }
+                  },
+                  "node_modules/@sideway/formula": {
+                    "version": "3.0.1",
+                    "resolved": "https://registry.npmjs.org/@sideway/formula/-/formula-3.0.1.tgz",
+                    "integrity": "sha512-/poHZJJVjx3L+zVD6g9KgHfYnb443oi7wLu/XKojDviHy6HOEOA6z1Trk5aR1dGcmPenJEgb2sK2I80LeS3MIg=="
+                  },
+                  "node_modules/@sideway/pinpoint": {
+                    "version": "2.0.0",
+                    "resolved": "https://registry.npmjs.org/@sideway/pinpoint/-/pinpoint-2.0.0.tgz",
+                    "integrity": "sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ=="
+                  },
+                  "node_modules/joi": {
+                    "version": "17.9.2",
+                    "resolved": "https://registry.npmjs.org/joi/-/joi-17.9.2.tgz",
+                    "integrity": "sha512-Itk/r+V4Dx0V3c7RLFdRh12IOjySm2/WGPMubBT92cQvRfYZhPM2W0hZlctjj72iES8jsRCwp7S/cRmWBnJ4nw==",
+                    "dependencies": {
+                      "@hapi/hoek": "^9.0.0",
+                      "@hapi/topo": "^5.0.0",
+                      "@sideway/address": "^4.1.3",
+                      "@sideway/formula": "^3.0.1",
+                      "@sideway/pinpoint": "^2.0.0"
+                    }
+                  }
+                }
+              }
+            content_encoding: utf-8
+            deleted: false
+            directory: /npm/transitive
+            name: package-lock.json
+            operation: update
+            support_file: false
+            type: file
+        pr-title: Bump @sideway/formula from 3.0.0 to 3.0.1 in /npm/transitive
+        pr-body: |
+          Bumps [@sideway/formula](https://github.com/sideway/formula) from 3.0.0 to 3.0.1.
+          <details>
+          <summary>Commits</summary>
+          <ul>
+          <li><a href="https://github.com/hapijs/formula/commit/5b44c1bffc38135616fb91d5ad46eaf64f03d23b"><code>5b44c1b</code></a> 3.0.1</li>
+          <li><a href="https://github.com/hapijs/formula/commit/9fbc20a02d75ae809c37a610a57802cd1b41b3fe"><code>9fbc20a</code></a> chore: better number regex</li>
+          <li><a href="https://github.com/hapijs/formula/commit/41ae98e0421913b100886adb0107a25d552d9e1a"><code>41ae98e</code></a> Cleanup</li>
+          <li><a href="https://github.com/hapijs/formula/commit/c59f35ec401e18cead10e0cedfb44291517610b1"><code>c59f35e</code></a> Move to Sideway</li>
+          <li>See full diff in <a href="https://github.com/sideway/formula/compare/v3.0.0...v3.0.1">compare view</a></li>
+          </ul>
+          </details>
+          <details>
+          <summary>Maintainer changes</summary>
+          <p>This version was pushed to npm by <a href="https://www.npmjs.com/~marsup">marsup</a>, a new releaser for <code>@​sideway/formula</code> since your current version.</p>
+          </details>
+          <br />
+        commit-message: |-
+          Bump @sideway/formula from 3.0.0 to 3.0.1 in /npm/transitive
+
+          Bumps [@sideway/formula](https://github.com/sideway/formula) from 3.0.0 to 3.0.1.
+          - [Commits](https://github.com/sideway/formula/compare/v3.0.0...v3.0.1)
+  - type: mark_as_processed
+    expect:
+      data:
+        base-commit-sha: dde3e21e99b5237377d6e8a4858615e293bfacc4

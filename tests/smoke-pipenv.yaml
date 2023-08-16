@@ -1,234 +1,234 @@
 input:
-    job:
-        package-manager: pip
-        allowed-updates:
-            - dependency-name: django
-        ignore-conditions:
-            - dependency-name: django
-              version-requirement: '>4.0.6'
-        source:
-            provider: github
-            repo: dependabot/smoke-tests
-            directory: /pipenv/
-            commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
-        credentials-metadata:
-            - host: github.com
-              type: git_source
-    credentials:
-        - host: github.com
-          password: $LOCAL_GITHUB_ACCESS_TOKEN
-          type: git_source
-          username: x-access-token
+  job:
+    package-manager: pip
+    allowed-updates:
+      - dependency-name: django
+    ignore-conditions:
+      - dependency-name: django
+        version-requirement: ">4.0.6"
+    source:
+      provider: github
+      repo: dependabot/smoke-tests
+      directory: /pipenv/
+      commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+    credentials-metadata:
+      - host: github.com
+        type: git_source
+  credentials:
+    - host: github.com
+      password: $LOCAL_GITHUB_ACCESS_TOKEN
+      type: git_source
+      username: x-access-token
 output:
-    - type: update_dependency_list
-      expect:
-        data:
-            dependencies:
-                - name: django
-                  requirements:
-                    - file: Pipfile
-                      groups:
-                        - default
-                      requirement: ==3.2.10
-                      source: null
-                  version: 3.2.10
-                - name: numpy
-                  requirements:
-                    - file: Pipfile
-                      groups:
-                        - default
-                      requirement: 1.23.0
-                      source: null
-                  version: 1.23.2
-                - name: asgiref
-                  requirements: []
-                  version: 3.5.2
-                - name: pytz
-                  requirements: []
-                  version: 2022.2.1
-                - name: sqlparse
-                  requirements: []
-                  version: 0.4.2
-            dependency_files:
-                - /pipenv/Pipfile
-                - /pipenv/Pipfile.lock
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
-            dependencies:
-                - name: django
-                  previous-requirements:
-                    - file: Pipfile
-                      groups:
-                        - default
-                      requirement: ==3.2.10
-                      source: null
-                  previous-version: 3.2.10
-                  requirements:
-                    - file: Pipfile
-                      groups:
-                        - default
-                      requirement: ==4.0.6
-                      source: null
-                  version: 4.0.6
-            updated-dependency-files:
-                - content: |
-                    [[source]]
-                    url = "https://pypi.python.org/simple"
-                    verify_ssl = true
-                    name = "pypi"
+  - type: update_dependency_list
+    expect:
+      data:
+        dependencies:
+          - name: django
+            requirements:
+              - file: Pipfile
+                groups:
+                  - default
+                requirement: ==3.2.10
+                source: null
+            version: 3.2.10
+          - name: numpy
+            requirements:
+              - file: Pipfile
+                groups:
+                  - default
+                requirement: 1.23.0
+                source: null
+            version: 1.23.2
+          - name: asgiref
+            requirements: []
+            version: 3.5.2
+          - name: pytz
+            requirements: []
+            version: 2022.2.1
+          - name: sqlparse
+            requirements: []
+            version: 0.4.2
+        dependency_files:
+          - /pipenv/Pipfile
+          - /pipenv/Pipfile.lock
+  - type: create_pull_request
+    expect:
+      data:
+        base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+        dependencies:
+          - name: django
+            previous-requirements:
+              - file: Pipfile
+                groups:
+                  - default
+                requirement: ==3.2.10
+                source: null
+            previous-version: 3.2.10
+            requirements:
+              - file: Pipfile
+                groups:
+                  - default
+                requirement: ==4.0.6
+                source: null
+            version: 4.0.6
+        updated-dependency-files:
+          - content: |
+              [[source]]
+              url = "https://pypi.python.org/simple"
+              verify_ssl = true
+              name = "pypi"
 
-                    [packages]
-                    django = "==4.0.6"
-                    numpy = "1.23.0"
+              [packages]
+              django = "==4.0.6"
+              numpy = "1.23.0"
 
-                    [dev-packages]
+              [dev-packages]
 
-                    [requires]
-                    python_version = "3.8"
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /pipenv
-                  name: Pipfile
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    {
-                        "_meta": {
-                            "hash": {
-                                "sha256": "409f9f801baf7b3a26ac51c4d738f6feb3b28407d790c6e0387a39ad7a0ee6c8"
-                            },
-                            "pipfile-spec": 6,
-                            "requires": {
-                                "python_version": "3.8"
-                            },
-                            "sources": [
-                                {
-                                    "name": "pypi",
-                                    "url": "https://pypi.python.org/simple",
-                                    "verify_ssl": true
-                                }
-                            ]
-                        },
-                        "default": {
-                            "asgiref": {
-                                "hashes": [
-                                    "sha256:71e68008da809b957b7ee4b43dbccff33d1b23519fb8344e33f049897077afac",
-                                    "sha256:9567dfe7bd8d3c8c892227827c41cce860b368104c3431da67a0c5a65a949506"
-                                ],
-                                "markers": "python_version >= '3.7'",
-                                "version": "==3.6.0"
-                            },
-                            "backports.zoneinfo": {
-                                "hashes": [
-                                    "sha256:17746bd546106fa389c51dbea67c8b7c8f0d14b5526a579ca6ccf5ed72c526cf",
-                                    "sha256:1b13e654a55cd45672cb54ed12148cd33628f672548f373963b0bff67b217328",
-                                    "sha256:1c5742112073a563c81f786e77514969acb58649bcdf6cdf0b4ed31a348d4546",
-                                    "sha256:4a0f800587060bf8880f954dbef70de6c11bbe59c673c3d818921f042f9954a6",
-                                    "sha256:5c144945a7752ca544b4b78c8c41544cdfaf9786f25fe5ffb10e838e19a27570",
-                                    "sha256:7b0a64cda4145548fed9efc10322770f929b944ce5cee6c0dfe0c87bf4c0c8c9",
-                                    "sha256:8439c030a11780786a2002261569bdf362264f605dfa4d65090b64b05c9f79a7",
-                                    "sha256:8961c0f32cd0336fb8e8ead11a1f8cd99ec07145ec2931122faaac1c8f7fd987",
-                                    "sha256:89a48c0d158a3cc3f654da4c2de1ceba85263fafb861b98b59040a5086259722",
-                                    "sha256:a76b38c52400b762e48131494ba26be363491ac4f9a04c1b7e92483d169f6582",
-                                    "sha256:da6013fd84a690242c310d77ddb8441a559e9cb3d3d59ebac9aca1a57b2e18bc",
-                                    "sha256:e55b384612d93be96506932a786bbcde5a2db7a9e6a4bb4bffe8b733f5b9036b",
-                                    "sha256:e81b76cace8eda1fca50e345242ba977f9be6ae3945af8d46326d776b4cf78d1",
-                                    "sha256:e8236383a20872c0cdf5a62b554b27538db7fa1bbec52429d8d106effbaeca08",
-                                    "sha256:f04e857b59d9d1ccc39ce2da1021d196e47234873820cbeaad210724b1ee28ac",
-                                    "sha256:fadbfe37f74051d024037f223b8e001611eac868b5c5b06144ef4d8b799862f2"
-                                ],
-                                "markers": "python_version < '3.9'",
-                                "version": "==0.2.1"
-                            },
-                            "django": {
-                                "hashes": [
-                                    "sha256:a67a793ff6827fd373555537dca0da293a63a316fe34cb7f367f898ccca3c3ae",
-                                    "sha256:ca54ebedfcbc60d191391efbf02ba68fb52165b8bf6ccd6fe71f098cac1fe59e"
-                                ],
-                                "index": "pypi",
-                                "version": "==4.0.6"
-                            },
-                            "numpy": {
-                                "hashes": [
-                                    "sha256:17e5226674f6ea79e14e3b91bfbc153fdf3ac13f5cc54ee7bc8fdbe820a32da0",
-                                    "sha256:2bd879d3ca4b6f39b7770829f73278b7c5e248c91d538aab1e506c628353e47f",
-                                    "sha256:4f41f5bf20d9a521f8cab3a34557cd77b6f205ab2116651f12959714494268b0",
-                                    "sha256:5593f67e66dea4e237f5af998d31a43e447786b2154ba1ad833676c788f37cde",
-                                    "sha256:5e28cd64624dc2354a349152599e55308eb6ca95a13ce6a7d5679ebff2962913",
-                                    "sha256:633679a472934b1c20a12ed0c9a6c9eb167fbb4cb89031939bfd03dd9dbc62b8",
-                                    "sha256:806970e69106556d1dd200e26647e9bee5e2b3f1814f9da104a943e8d548ca38",
-                                    "sha256:806cc25d5c43e240db709875e947076b2826f47c2c340a5a2f36da5bb10c58d6",
-                                    "sha256:8247f01c4721479e482cc2f9f7d973f3f47810cbc8c65e38fd1bbd3141cc9842",
-                                    "sha256:8ebf7e194b89bc66b78475bd3624d92980fca4e5bb86dda08d677d786fefc414",
-                                    "sha256:8ecb818231afe5f0f568c81f12ce50f2b828ff2b27487520d85eb44c71313b9e",
-                                    "sha256:8f9d84a24889ebb4c641a9b99e54adb8cab50972f0166a3abc14c3b93163f074",
-                                    "sha256:909c56c4d4341ec8315291a105169d8aae732cfb4c250fbc375a1efb7a844f8f",
-                                    "sha256:9b83d48e464f393d46e8dd8171687394d39bc5abfe2978896b77dc2604e8635d",
-                                    "sha256:ac987b35df8c2a2eab495ee206658117e9ce867acf3ccb376a19e83070e69418",
-                                    "sha256:b78d00e48261fbbd04aa0d7427cf78d18401ee0abd89c7559bbf422e5b1c7d01",
-                                    "sha256:b8b97a8a87cadcd3f94659b4ef6ec056261fa1e1c3317f4193ac231d4df70215",
-                                    "sha256:bd5b7ccae24e3d8501ee5563e82febc1771e73bd268eef82a1e8d2b4d556ae66",
-                                    "sha256:bdc02c0235b261925102b1bd586579b7158e9d0d07ecb61148a1799214a4afd5",
-                                    "sha256:be6b350dfbc7f708d9d853663772a9310783ea58f6035eec649fb9c4371b5389",
-                                    "sha256:c403c81bb8ffb1c993d0165a11493fd4bf1353d258f6997b3ee288b0a48fce77",
-                                    "sha256:cf8c6aed12a935abf2e290860af8e77b26a042eb7f2582ff83dc7ed5f963340c",
-                                    "sha256:d98addfd3c8728ee8b2c49126f3c44c703e2b005d4a95998e2167af176a9e722",
-                                    "sha256:dc76bca1ca98f4b122114435f83f1fcf3c0fe48e4e6f660e07996abf2f53903c",
-                                    "sha256:dec198619b7dbd6db58603cd256e092bcadef22a796f778bf87f8592b468441d",
-                                    "sha256:df28dda02c9328e122661f399f7655cdcbcf22ea42daa3650a26bce08a187450",
-                                    "sha256:e603ca1fb47b913942f3e660a15e55a9ebca906857edfea476ae5f0fe9b457d5",
-                                    "sha256:ecfdd68d334a6b97472ed032b5b37a30d8217c097acfff15e8452c710e775524"
-                                ],
-                                "index": "pypi",
-                                "version": "==1.23.2"
-                            },
-                            "sqlparse": {
-                                "hashes": [
-                                    "sha256:0323c0ec29cd52bceabc1b4d9d579e311f3e4961b98d174201d5622a23b85e34",
-                                    "sha256:69ca804846bb114d2ec380e4360a8a340db83f0ccf3afceeb1404df028f57268"
-                                ],
-                                "markers": "python_version >= '3.5'",
-                                "version": "==0.4.3"
-                            }
-                        },
-                        "develop": {}
-                    }
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /pipenv
-                  name: Pipfile.lock
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump django from 3.2.10 to 4.0.6 in /pipenv
-            pr-body: |
-                Bumps [django](https://github.com/django/django) from 3.2.10 to 4.0.6.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/django/django/commit/caad462feaa84ba78ed658a9595a4a4363dad2db"><code>caad462</code></a> [4.0.x] Bumped version for 4.0.6 release.</li>
-                <li><a href="https://github.com/django/django/commit/c73215272a723b939548fe22c607a732530ce04f"><code>c732152</code></a> [4.0.x] Updated man page for Django 4.0.6.</li>
-                <li><a href="https://github.com/django/django/commit/0dc9c016fadb71a067e5a42be30164e3f96c0492"><code>0dc9c01</code></a> [4.0.x] Fixed CVE-2022-34265 -- Protected Trunc(kind)/Extract(lookup_name) ag...</li>
-                <li><a href="https://github.com/django/django/commit/a2b88d7be6fc9b443794518d2f75fd2f3d9e677a"><code>a2b88d7</code></a> [4.0.x] Fixed typo in docs/topics/signals.txt.</li>
-                <li><a href="https://github.com/django/django/commit/2b901c1be462a12cad39af40a57a454ffe185406"><code>2b901c1</code></a> [4.0.x] Fixed GEOSTest.test_emptyCollections() on GEOS 3.8.0.</li>
-                <li><a href="https://github.com/django/django/commit/4d20d2f7c2b8e74c3e85bd0716ebdcb3b35a70e6"><code>4d20d2f</code></a> [4.0.x] Fixed docs build with sphinxcontrib-spelling 7.5.0+.</li>
-                <li><a href="https://github.com/django/django/commit/8a294ee2e0e30f073f764310c74899e385a302ec"><code>8a294ee</code></a> [4.0.x] Added stub release notes and release date for 4.0.6 and 3.2.14.</li>
-                <li><a href="https://github.com/django/django/commit/1c28443fc92e57588fb9b37b700f97be9fde5982"><code>1c28443</code></a> [4.0.x] Fixed CoveringIndexTests.test_covering_partial_index() when DEFAULT_I...</li>
-                <li><a href="https://github.com/django/django/commit/0f3b25044c34fd17b6fcde0cb53db0181f212b20"><code>0f3b250</code></a> [4.0.x] Fixed <a href="https://redirect.github.com/django/django/issues/33789">#33789</a> -- Doc'd changes in quoting table/column names on Oracle...</li>
-                <li><a href="https://github.com/django/django/commit/6661c48a20d788dc76397ab4ec334b28b51db872"><code>6661c48</code></a> [4.0.x] Updated OWASP Top 10 link in security topic.</li>
-                <li>Additional commits viewable in <a href="https://github.com/django/django/compare/3.2.10...4.0.6">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump django from 3.2.10 to 4.0.6 in /pipenv
+              [requires]
+              python_version = "3.8"
+            content_encoding: utf-8
+            deleted: false
+            directory: /pipenv
+            name: Pipfile
+            operation: update
+            support_file: false
+            type: file
+          - content: |
+              {
+                  "_meta": {
+                      "hash": {
+                          "sha256": "409f9f801baf7b3a26ac51c4d738f6feb3b28407d790c6e0387a39ad7a0ee6c8"
+                      },
+                      "pipfile-spec": 6,
+                      "requires": {
+                          "python_version": "3.8"
+                      },
+                      "sources": [
+                          {
+                              "name": "pypi",
+                              "url": "https://pypi.python.org/simple",
+                              "verify_ssl": true
+                          }
+                      ]
+                  },
+                  "default": {
+                      "asgiref": {
+                          "hashes": [
+                              "sha256:71e68008da809b957b7ee4b43dbccff33d1b23519fb8344e33f049897077afac",
+                              "sha256:9567dfe7bd8d3c8c892227827c41cce860b368104c3431da67a0c5a65a949506"
+                          ],
+                          "markers": "python_version >= '3.7'",
+                          "version": "==3.6.0"
+                      },
+                      "backports.zoneinfo": {
+                          "hashes": [
+                              "sha256:17746bd546106fa389c51dbea67c8b7c8f0d14b5526a579ca6ccf5ed72c526cf",
+                              "sha256:1b13e654a55cd45672cb54ed12148cd33628f672548f373963b0bff67b217328",
+                              "sha256:1c5742112073a563c81f786e77514969acb58649bcdf6cdf0b4ed31a348d4546",
+                              "sha256:4a0f800587060bf8880f954dbef70de6c11bbe59c673c3d818921f042f9954a6",
+                              "sha256:5c144945a7752ca544b4b78c8c41544cdfaf9786f25fe5ffb10e838e19a27570",
+                              "sha256:7b0a64cda4145548fed9efc10322770f929b944ce5cee6c0dfe0c87bf4c0c8c9",
+                              "sha256:8439c030a11780786a2002261569bdf362264f605dfa4d65090b64b05c9f79a7",
+                              "sha256:8961c0f32cd0336fb8e8ead11a1f8cd99ec07145ec2931122faaac1c8f7fd987",
+                              "sha256:89a48c0d158a3cc3f654da4c2de1ceba85263fafb861b98b59040a5086259722",
+                              "sha256:a76b38c52400b762e48131494ba26be363491ac4f9a04c1b7e92483d169f6582",
+                              "sha256:da6013fd84a690242c310d77ddb8441a559e9cb3d3d59ebac9aca1a57b2e18bc",
+                              "sha256:e55b384612d93be96506932a786bbcde5a2db7a9e6a4bb4bffe8b733f5b9036b",
+                              "sha256:e81b76cace8eda1fca50e345242ba977f9be6ae3945af8d46326d776b4cf78d1",
+                              "sha256:e8236383a20872c0cdf5a62b554b27538db7fa1bbec52429d8d106effbaeca08",
+                              "sha256:f04e857b59d9d1ccc39ce2da1021d196e47234873820cbeaad210724b1ee28ac",
+                              "sha256:fadbfe37f74051d024037f223b8e001611eac868b5c5b06144ef4d8b799862f2"
+                          ],
+                          "markers": "python_version < '3.9'",
+                          "version": "==0.2.1"
+                      },
+                      "django": {
+                          "hashes": [
+                              "sha256:a67a793ff6827fd373555537dca0da293a63a316fe34cb7f367f898ccca3c3ae",
+                              "sha256:ca54ebedfcbc60d191391efbf02ba68fb52165b8bf6ccd6fe71f098cac1fe59e"
+                          ],
+                          "index": "pypi",
+                          "version": "==4.0.6"
+                      },
+                      "numpy": {
+                          "hashes": [
+                              "sha256:17e5226674f6ea79e14e3b91bfbc153fdf3ac13f5cc54ee7bc8fdbe820a32da0",
+                              "sha256:2bd879d3ca4b6f39b7770829f73278b7c5e248c91d538aab1e506c628353e47f",
+                              "sha256:4f41f5bf20d9a521f8cab3a34557cd77b6f205ab2116651f12959714494268b0",
+                              "sha256:5593f67e66dea4e237f5af998d31a43e447786b2154ba1ad833676c788f37cde",
+                              "sha256:5e28cd64624dc2354a349152599e55308eb6ca95a13ce6a7d5679ebff2962913",
+                              "sha256:633679a472934b1c20a12ed0c9a6c9eb167fbb4cb89031939bfd03dd9dbc62b8",
+                              "sha256:806970e69106556d1dd200e26647e9bee5e2b3f1814f9da104a943e8d548ca38",
+                              "sha256:806cc25d5c43e240db709875e947076b2826f47c2c340a5a2f36da5bb10c58d6",
+                              "sha256:8247f01c4721479e482cc2f9f7d973f3f47810cbc8c65e38fd1bbd3141cc9842",
+                              "sha256:8ebf7e194b89bc66b78475bd3624d92980fca4e5bb86dda08d677d786fefc414",
+                              "sha256:8ecb818231afe5f0f568c81f12ce50f2b828ff2b27487520d85eb44c71313b9e",
+                              "sha256:8f9d84a24889ebb4c641a9b99e54adb8cab50972f0166a3abc14c3b93163f074",
+                              "sha256:909c56c4d4341ec8315291a105169d8aae732cfb4c250fbc375a1efb7a844f8f",
+                              "sha256:9b83d48e464f393d46e8dd8171687394d39bc5abfe2978896b77dc2604e8635d",
+                              "sha256:ac987b35df8c2a2eab495ee206658117e9ce867acf3ccb376a19e83070e69418",
+                              "sha256:b78d00e48261fbbd04aa0d7427cf78d18401ee0abd89c7559bbf422e5b1c7d01",
+                              "sha256:b8b97a8a87cadcd3f94659b4ef6ec056261fa1e1c3317f4193ac231d4df70215",
+                              "sha256:bd5b7ccae24e3d8501ee5563e82febc1771e73bd268eef82a1e8d2b4d556ae66",
+                              "sha256:bdc02c0235b261925102b1bd586579b7158e9d0d07ecb61148a1799214a4afd5",
+                              "sha256:be6b350dfbc7f708d9d853663772a9310783ea58f6035eec649fb9c4371b5389",
+                              "sha256:c403c81bb8ffb1c993d0165a11493fd4bf1353d258f6997b3ee288b0a48fce77",
+                              "sha256:cf8c6aed12a935abf2e290860af8e77b26a042eb7f2582ff83dc7ed5f963340c",
+                              "sha256:d98addfd3c8728ee8b2c49126f3c44c703e2b005d4a95998e2167af176a9e722",
+                              "sha256:dc76bca1ca98f4b122114435f83f1fcf3c0fe48e4e6f660e07996abf2f53903c",
+                              "sha256:dec198619b7dbd6db58603cd256e092bcadef22a796f778bf87f8592b468441d",
+                              "sha256:df28dda02c9328e122661f399f7655cdcbcf22ea42daa3650a26bce08a187450",
+                              "sha256:e603ca1fb47b913942f3e660a15e55a9ebca906857edfea476ae5f0fe9b457d5",
+                              "sha256:ecfdd68d334a6b97472ed032b5b37a30d8217c097acfff15e8452c710e775524"
+                          ],
+                          "index": "pypi",
+                          "version": "==1.23.2"
+                      },
+                      "sqlparse": {
+                          "hashes": [
+                              "sha256:0323c0ec29cd52bceabc1b4d9d579e311f3e4961b98d174201d5622a23b85e34",
+                              "sha256:69ca804846bb114d2ec380e4360a8a340db83f0ccf3afceeb1404df028f57268"
+                          ],
+                          "markers": "python_version >= '3.5'",
+                          "version": "==0.4.3"
+                      }
+                  },
+                  "develop": {}
+              }
+            content_encoding: utf-8
+            deleted: false
+            directory: /pipenv
+            name: Pipfile.lock
+            operation: update
+            support_file: false
+            type: file
+        pr-title: Bump django from 3.2.10 to 4.0.6 in /pipenv
+        pr-body: |
+          Bumps [django](https://github.com/django/django) from 3.2.10 to 4.0.6.
+          <details>
+          <summary>Commits</summary>
+          <ul>
+          <li><a href="https://github.com/django/django/commit/caad462feaa84ba78ed658a9595a4a4363dad2db"><code>caad462</code></a> [4.0.x] Bumped version for 4.0.6 release.</li>
+          <li><a href="https://github.com/django/django/commit/c73215272a723b939548fe22c607a732530ce04f"><code>c732152</code></a> [4.0.x] Updated man page for Django 4.0.6.</li>
+          <li><a href="https://github.com/django/django/commit/0dc9c016fadb71a067e5a42be30164e3f96c0492"><code>0dc9c01</code></a> [4.0.x] Fixed CVE-2022-34265 -- Protected Trunc(kind)/Extract(lookup_name) ag...</li>
+          <li><a href="https://github.com/django/django/commit/a2b88d7be6fc9b443794518d2f75fd2f3d9e677a"><code>a2b88d7</code></a> [4.0.x] Fixed typo in docs/topics/signals.txt.</li>
+          <li><a href="https://github.com/django/django/commit/2b901c1be462a12cad39af40a57a454ffe185406"><code>2b901c1</code></a> [4.0.x] Fixed GEOSTest.test_emptyCollections() on GEOS 3.8.0.</li>
+          <li><a href="https://github.com/django/django/commit/4d20d2f7c2b8e74c3e85bd0716ebdcb3b35a70e6"><code>4d20d2f</code></a> [4.0.x] Fixed docs build with sphinxcontrib-spelling 7.5.0+.</li>
+          <li><a href="https://github.com/django/django/commit/8a294ee2e0e30f073f764310c74899e385a302ec"><code>8a294ee</code></a> [4.0.x] Added stub release notes and release date for 4.0.6 and 3.2.14.</li>
+          <li><a href="https://github.com/django/django/commit/1c28443fc92e57588fb9b37b700f97be9fde5982"><code>1c28443</code></a> [4.0.x] Fixed CoveringIndexTests.test_covering_partial_index() when DEFAULT_I...</li>
+          <li><a href="https://github.com/django/django/commit/0f3b25044c34fd17b6fcde0cb53db0181f212b20"><code>0f3b250</code></a> [4.0.x] Fixed <a href="https://redirect.github.com/django/django/issues/33789">#33789</a> -- Doc'd changes in quoting table/column names on Oracle...</li>
+          <li><a href="https://github.com/django/django/commit/6661c48a20d788dc76397ab4ec334b28b51db872"><code>6661c48</code></a> [4.0.x] Updated OWASP Top 10 link in security topic.</li>
+          <li>Additional commits viewable in <a href="https://github.com/django/django/compare/3.2.10...4.0.6">compare view</a></li>
+          </ul>
+          </details>
+          <br />
+        commit-message: |-
+          Bump django from 3.2.10 to 4.0.6 in /pipenv
 
-                Bumps [django](https://github.com/django/django) from 3.2.10 to 4.0.6.
-                - [Commits](https://github.com/django/django/compare/3.2.10...4.0.6)
-    - type: mark_as_processed
-      expect:
-        data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+          Bumps [django](https://github.com/django/django) from 3.2.10 to 4.0.6.
+          - [Commits](https://github.com/django/django/compare/3.2.10...4.0.6)
+  - type: mark_as_processed
+    expect:
+      data:
+        base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994

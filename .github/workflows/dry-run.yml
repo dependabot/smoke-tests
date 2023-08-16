@@ -1,7 +1,7 @@
 # Runs a single ecosystem without cache and does not fill the cache.
 name: Dry run
 
-on:
+on:  # yamllint disable-line rule:truthy
   workflow_dispatch:
     inputs:
       git-ref:
@@ -37,4 +37,4 @@ jobs:
           LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./dependabot test -f=tests/smoke-${{ inputs.test }}.yaml --cache=cache
 
-      # No upload
+        # No upload

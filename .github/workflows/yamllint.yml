@@ -1,0 +1,14 @@
+---
+name: yamllint
+on:  # yamllint disable-line rule:truthy
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  yamllint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # yamllint is installed in GitHub Actions base runner image: https://github.com/adrienverge/yamllint/pull/588
+      - run: yamllint .

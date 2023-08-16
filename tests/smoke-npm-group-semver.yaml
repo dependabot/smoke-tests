@@ -1,1165 +1,1165 @@
 input:
-    job:
-        package-manager: npm_and_yarn
-        allowed-updates:
-            - update-type: all
-        dependency-groups:
-            - name: not major
-              rules:
-                update-types:
-                    - minor
-                    - patch
-        experiments:
-            grouped-updates-experimental-rules: true
-            grouped-updates-prototype: true
-            record-ecosystem-versions: true
-        ignore-conditions:
-            - dependency-name: none
-        source:
-            provider: github
-            repo: dependabot/smoke-tests
-            directory: /npm/semver
-            commit: deb769e795beb877414bdc5aea2df16d4ff8d4df
-        credentials-metadata:
-            - host: github.com
-              type: git_source
-    credentials:
-        - host: github.com
-          password: $LOCAL_GITHUB_ACCESS_TOKEN
-          type: git_source
-          username: x-access-token
+  job:
+    package-manager: npm_and_yarn
+    allowed-updates:
+      - update-type: all
+    dependency-groups:
+      - name: not major
+        rules:
+          update-types:
+            - minor
+            - patch
+    experiments:
+      grouped-updates-experimental-rules: true
+      grouped-updates-prototype: true
+      record-ecosystem-versions: true
+    ignore-conditions:
+      - dependency-name: none
+    source:
+      provider: github
+      repo: dependabot/smoke-tests
+      directory: /npm/semver
+      commit: deb769e795beb877414bdc5aea2df16d4ff8d4df
+    credentials-metadata:
+      - host: github.com
+        type: git_source
+  credentials:
+    - host: github.com
+      password: $LOCAL_GITHUB_ACCESS_TOKEN
+      type: git_source
+      username: x-access-token
 output:
-    - type: record_ecosystem_versions
-      expect:
-        data:
-            ecosystem_versions:
-                package_managers:
-                    npm: 8
-    - type: update_dependency_list
-      expect:
-        data:
-            dependencies:
-                - name: axios
-                  requirements:
-                    - file: package.json
-                      groups:
-                        - dependencies
-                      requirement: 0.27.1
-                      source:
-                        type: registry
-                        url: https://registry.npmjs.org
-                  version: 0.27.1
-                - name: fetch-factory
-                  requirements:
-                    - file: package.json
-                      groups:
-                        - dependencies
-                      requirement: 0.0.1
-                      source:
-                        type: registry
-                        url: https://registry.npmjs.org
-                  version: 0.0.1
-                - name: lodash
-                  requirements:
-                    - file: package.json
-                      groups:
-                        - dependencies
-                      requirement: 4.16.6
-                      source:
-                        type: registry
-                        url: https://registry.npmjs.org
-                  version: 4.16.6
-                - name: asynckit
-                  requirements: []
-                  version: 0.4.0
-                - name: combined-stream
-                  requirements: []
-                  version: 1.0.8
-                - name: delayed-stream
-                  requirements: []
-                  version: 1.0.0
-                - name: encoding
-                  requirements: []
-                  version: 0.1.13
-                - name: es6-promise
-                  requirements: []
-                  version: 3.3.1
-                - name: follow-redirects
-                  requirements: []
-                  version: 1.15.2
-                - name: form-data
-                  requirements: []
-                  version: 4.0.0
-                - name: iconv-lite
-                  requirements: []
-                  version: 0.6.3
-                - name: is-stream
-                  requirements: []
-                  version: 1.1.0
-                - name: isomorphic-fetch
-                  requirements: []
-                  version: 2.2.1
-                - name: mime-db
-                  requirements: []
-                  version: 1.52.0
-                - name: mime-types
-                  requirements: []
-                  version: 2.1.35
-                - name: node-fetch
-                  requirements: []
-                  version: 1.7.3
-                - name: safer-buffer
-                  requirements: []
-                  version: 2.1.2
-                - name: whatwg-fetch
-                  requirements: []
-                  version: 3.6.17
-            dependency_files:
-                - /npm/semver/package.json
-                - /npm/semver/package-lock.json
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: deb769e795beb877414bdc5aea2df16d4ff8d4df
-            dependencies:
-                - name: fetch-factory
-                  previous-requirements:
-                    - file: package.json
-                      groups:
-                        - dependencies
-                      requirement: 0.0.1
-                      source:
-                        type: registry
-                        url: https://registry.npmjs.org
-                  previous-version: 0.0.1
-                  requirements:
-                    - file: package.json
-                      groups:
-                        - dependencies
-                      requirement: 0.2.1
-                      source:
-                        type: registry
-                        url: https://registry.npmjs.org
-                  version: 0.2.1
-                - name: lodash
-                  previous-requirements:
-                    - file: package.json
-                      groups:
-                        - dependencies
-                      requirement: 4.16.6
-                      source:
-                        type: registry
-                        url: https://registry.npmjs.org
-                  previous-version: 4.16.6
-                  requirements:
-                    - file: package.json
-                      groups:
-                        - dependencies
-                      requirement: 4.17.21
-                      source:
-                        type: registry
-                        url: https://registry.npmjs.org
-                  version: 4.17.21
-            updated-dependency-files:
-                - content: |
-                    {
-                      "name": "npm-test",
-                      "version": "1.0.0",
-                      "description": "",
-                      "main": "index.js",
-                      "repository": {
-                        "type": "git",
-                        "url": "git+https://github.com/dsp-testing/dependabot-all-updates-test.git"
-                      },
-                      "author": "",
-                      "license": "ISC",
-                      "bugs": {
-                        "url": "https://github.com/dsp-testing/dependabot-all-updates-test/issues"
-                      },
-                      "homepage": "https://github.com/dsp-testing/dependabot-all-updates-test",
-                      "dependencies": {
-                        "axios": "0.27.1",
-                        "fetch-factory": "0.2.1",
-                        "lodash": "4.17.21"
+  - type: record_ecosystem_versions
+    expect:
+      data:
+        ecosystem_versions:
+          package_managers:
+            npm: 8
+  - type: update_dependency_list
+    expect:
+      data:
+        dependencies:
+          - name: axios
+            requirements:
+              - file: package.json
+                groups:
+                  - dependencies
+                requirement: 0.27.1
+                source:
+                  type: registry
+                  url: https://registry.npmjs.org
+            version: 0.27.1
+          - name: fetch-factory
+            requirements:
+              - file: package.json
+                groups:
+                  - dependencies
+                requirement: 0.0.1
+                source:
+                  type: registry
+                  url: https://registry.npmjs.org
+            version: 0.0.1
+          - name: lodash
+            requirements:
+              - file: package.json
+                groups:
+                  - dependencies
+                requirement: 4.16.6
+                source:
+                  type: registry
+                  url: https://registry.npmjs.org
+            version: 4.16.6
+          - name: asynckit
+            requirements: []
+            version: 0.4.0
+          - name: combined-stream
+            requirements: []
+            version: 1.0.8
+          - name: delayed-stream
+            requirements: []
+            version: 1.0.0
+          - name: encoding
+            requirements: []
+            version: 0.1.13
+          - name: es6-promise
+            requirements: []
+            version: 3.3.1
+          - name: follow-redirects
+            requirements: []
+            version: 1.15.2
+          - name: form-data
+            requirements: []
+            version: 4.0.0
+          - name: iconv-lite
+            requirements: []
+            version: 0.6.3
+          - name: is-stream
+            requirements: []
+            version: 1.1.0
+          - name: isomorphic-fetch
+            requirements: []
+            version: 2.2.1
+          - name: mime-db
+            requirements: []
+            version: 1.52.0
+          - name: mime-types
+            requirements: []
+            version: 2.1.35
+          - name: node-fetch
+            requirements: []
+            version: 1.7.3
+          - name: safer-buffer
+            requirements: []
+            version: 2.1.2
+          - name: whatwg-fetch
+            requirements: []
+            version: 3.6.17
+        dependency_files:
+          - /npm/semver/package.json
+          - /npm/semver/package-lock.json
+  - type: create_pull_request
+    expect:
+      data:
+        base-commit-sha: deb769e795beb877414bdc5aea2df16d4ff8d4df
+        dependencies:
+          - name: fetch-factory
+            previous-requirements:
+              - file: package.json
+                groups:
+                  - dependencies
+                requirement: 0.0.1
+                source:
+                  type: registry
+                  url: https://registry.npmjs.org
+            previous-version: 0.0.1
+            requirements:
+              - file: package.json
+                groups:
+                  - dependencies
+                requirement: 0.2.1
+                source:
+                  type: registry
+                  url: https://registry.npmjs.org
+            version: 0.2.1
+          - name: lodash
+            previous-requirements:
+              - file: package.json
+                groups:
+                  - dependencies
+                requirement: 4.16.6
+                source:
+                  type: registry
+                  url: https://registry.npmjs.org
+            previous-version: 4.16.6
+            requirements:
+              - file: package.json
+                groups:
+                  - dependencies
+                requirement: 4.17.21
+                source:
+                  type: registry
+                  url: https://registry.npmjs.org
+            version: 4.17.21
+        updated-dependency-files:
+          - content: |
+              {
+                "name": "npm-test",
+                "version": "1.0.0",
+                "description": "",
+                "main": "index.js",
+                "repository": {
+                  "type": "git",
+                  "url": "git+https://github.com/dsp-testing/dependabot-all-updates-test.git"
+                },
+                "author": "",
+                "license": "ISC",
+                "bugs": {
+                  "url": "https://github.com/dsp-testing/dependabot-all-updates-test/issues"
+                },
+                "homepage": "https://github.com/dsp-testing/dependabot-all-updates-test",
+                "dependencies": {
+                  "axios": "0.27.1",
+                  "fetch-factory": "0.2.1",
+                  "lodash": "4.17.21"
+                }
+              }
+            content_encoding: utf-8
+            deleted: false
+            directory: /npm/semver
+            name: package.json
+            operation: update
+            support_file: false
+            type: file
+          - content: |
+              {
+                "name": "npm-test",
+                "version": "1.0.0",
+                "lockfileVersion": 3,
+                "requires": true,
+                "packages": {
+                  "": {
+                    "name": "npm-test",
+                    "version": "1.0.0",
+                    "license": "ISC",
+                    "dependencies": {
+                      "axios": "0.27.1",
+                      "fetch-factory": "0.2.1",
+                      "lodash": "4.17.21"
+                    }
+                  },
+                  "node_modules/assertion-error": {
+                    "version": "1.1.0",
+                    "resolved": "https://registry.npmjs.org/assertion-error/-/assertion-error-1.1.0.tgz",
+                    "integrity": "sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==",
+                    "engines": {
+                      "node": "*"
+                    }
+                  },
+                  "node_modules/asynckit": {
+                    "version": "0.4.0",
+                    "resolved": "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz",
+                    "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
+                  },
+                  "node_modules/axios": {
+                    "version": "0.27.1",
+                    "resolved": "https://registry.npmjs.org/axios/-/axios-0.27.1.tgz",
+                    "integrity": "sha512-ePNMai55xo5GsXajb/k756AqZqpqeDaGwGcdvbZLSSELbbYwsIn2jNmGfUPEwd8j/yu4OoMstLLIVa4t0MneEA==",
+                    "deprecated": "Formdata complete broken, incorrect build size",
+                    "dependencies": {
+                      "follow-redirects": "^1.14.9",
+                      "form-data": "^4.0.0"
+                    }
+                  },
+                  "node_modules/call-bind": {
+                    "version": "1.0.2",
+                    "resolved": "https://registry.npmjs.org/call-bind/-/call-bind-1.0.2.tgz",
+                    "integrity": "sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==",
+                    "dependencies": {
+                      "function-bind": "^1.1.1",
+                      "get-intrinsic": "^1.0.2"
+                    },
+                    "funding": {
+                      "url": "https://github.com/sponsors/ljharb"
+                    }
+                  },
+                  "node_modules/chai": {
+                    "version": "3.5.0",
+                    "resolved": "https://registry.npmjs.org/chai/-/chai-3.5.0.tgz",
+                    "integrity": "sha512-eRYY0vPS2a9zt5w5Z0aCeWbrXTEyvk7u/Xf71EzNObrjSCPgMm1Nku/D/u2tiqHBX5j40wWhj54YJLtgn8g55A==",
+                    "dependencies": {
+                      "assertion-error": "^1.0.1",
+                      "deep-eql": "^0.1.3",
+                      "type-detect": "^1.0.0"
+                    },
+                    "engines": {
+                      "node": ">= 0.4.0"
+                    }
+                  },
+                  "node_modules/combined-stream": {
+                    "version": "1.0.8",
+                    "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz",
+                    "integrity": "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==",
+                    "dependencies": {
+                      "delayed-stream": "~1.0.0"
+                    },
+                    "engines": {
+                      "node": ">= 0.8"
+                    }
+                  },
+                  "node_modules/debug": {
+                    "version": "1.0.5",
+                    "resolved": "https://registry.npmjs.org/debug/-/debug-1.0.5.tgz",
+                    "integrity": "sha512-SIKSrp4+XqcUaNWhwaPJbLFnvSXPsZ4xBdH2WRK0Xo++UzMC4eepYghGAVhVhOwmfq3kqowqJ5w45R3pmYZnuA==",
+                    "dependencies": {
+                      "ms": "2.0.0"
+                    }
+                  },
+                  "node_modules/deep-eql": {
+                    "version": "0.1.3",
+                    "resolved": "https://registry.npmjs.org/deep-eql/-/deep-eql-0.1.3.tgz",
+                    "integrity": "sha512-6sEotTRGBFiNcqVoeHwnfopbSpi5NbH1VWJmYCVkmxMmaVTT0bUTrNaGyBwhgP4MZL012W/mkzIn3Da+iDYweg==",
+                    "dependencies": {
+                      "type-detect": "0.1.1"
+                    },
+                    "engines": {
+                      "node": "*"
+                    }
+                  },
+                  "node_modules/deep-eql/node_modules/type-detect": {
+                    "version": "0.1.1",
+                    "resolved": "https://registry.npmjs.org/type-detect/-/type-detect-0.1.1.tgz",
+                    "integrity": "sha512-5rqszGVwYgBoDkIm2oUtvkfZMQ0vk29iDMU0W2qCa3rG0vPDNczCMT4hV/bLBgLg8k8ri6+u3Zbt+S/14eMzlA==",
+                    "engines": {
+                      "node": "*"
+                    }
+                  },
+                  "node_modules/deep-equal": {
+                    "version": "1.1.1",
+                    "resolved": "https://registry.npmjs.org/deep-equal/-/deep-equal-1.1.1.tgz",
+                    "integrity": "sha512-yd9c5AdiqVcR+JjcwUQb9DkhJc8ngNr0MahEBGvDiJw8puWab2yZlh+nkasOnZP+EGTAP6rRp2JzJhJZzvNF8g==",
+                    "dependencies": {
+                      "is-arguments": "^1.0.4",
+                      "is-date-object": "^1.0.1",
+                      "is-regex": "^1.0.4",
+                      "object-is": "^1.0.1",
+                      "object-keys": "^1.1.1",
+                      "regexp.prototype.flags": "^1.2.0"
+                    },
+                    "funding": {
+                      "url": "https://github.com/sponsors/ljharb"
+                    }
+                  },
+                  "node_modules/define-properties": {
+                    "version": "1.2.0",
+                    "resolved": "https://registry.npmjs.org/define-properties/-/define-properties-1.2.0.tgz",
+                    "integrity": "sha512-xvqAVKGfT1+UAvPwKTVw/njhdQ8ZhXK4lI0bCIuCMrp2up9nPnaDftrLtmpTazqd1o+UY4zgzU+avtMbDP+ldA==",
+                    "dependencies": {
+                      "has-property-descriptors": "^1.0.0",
+                      "object-keys": "^1.1.1"
+                    },
+                    "engines": {
+                      "node": ">= 0.4"
+                    },
+                    "funding": {
+                      "url": "https://github.com/sponsors/ljharb"
+                    }
+                  },
+                  "node_modules/delayed-stream": {
+                    "version": "1.0.0",
+                    "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz",
+                    "integrity": "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==",
+                    "engines": {
+                      "node": ">=0.4.0"
+                    }
+                  },
+                  "node_modules/encoding": {
+                    "version": "0.1.13",
+                    "resolved": "https://registry.npmjs.org/encoding/-/encoding-0.1.13.tgz",
+                    "integrity": "sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==",
+                    "dependencies": {
+                      "iconv-lite": "^0.6.2"
+                    }
+                  },
+                  "node_modules/es6-promise": {
+                    "version": "3.3.1",
+                    "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.3.1.tgz",
+                    "integrity": "sha512-SOp9Phqvqn7jtEUxPWdWfWoLmyt2VaJ6MpvP9Comy1MceMXqE6bxvaTu4iaxpYYPzhny28Lc+M87/c2cPK6lDg=="
+                  },
+                  "node_modules/fetch-factory": {
+                    "version": "0.2.1",
+                    "resolved": "https://registry.npmjs.org/fetch-factory/-/fetch-factory-0.2.1.tgz",
+                    "integrity": "sha512-sqt1ONiKIRec2E66VSBI6+vRQSTdpsfJc7ZF3T0N3MnG1q7thE0w6B8nGhiffLoqPF7yLcKY/y4CPjldBbT2wA==",
+                    "dependencies": {
+                      "es6-promise": "^3.0.2",
+                      "isomorphic-fetch": "^2.1.1",
+                      "lodash": "^3.10.1",
+                      "nock": "^2.18.0",
+                      "query-string": "^2.4.1",
+                      "url-pattern": "^0.10.0"
+                    }
+                  },
+                  "node_modules/fetch-factory/node_modules/lodash": {
+                    "version": "3.10.1",
+                    "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz",
+                    "integrity": "sha512-9mDDwqVIma6OZX79ZlDACZl8sBm0TEnkf99zV3iMA4GzkIT/9hiqP5mY0HoT1iNLCrKc/R1HByV+yJfRWVJryQ=="
+                  },
+                  "node_modules/follow-redirects": {
+                    "version": "1.15.2",
+                    "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz",
+                    "integrity": "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==",
+                    "funding": [
+                      {
+                        "type": "individual",
+                        "url": "https://github.com/sponsors/RubenVerborgh"
+                      }
+                    ],
+                    "engines": {
+                      "node": ">=4.0"
+                    },
+                    "peerDependenciesMeta": {
+                      "debug": {
+                        "optional": true
                       }
                     }
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /npm/semver
-                  name: package.json
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    {
-                      "name": "npm-test",
-                      "version": "1.0.0",
-                      "lockfileVersion": 3,
-                      "requires": true,
-                      "packages": {
-                        "": {
-                          "name": "npm-test",
-                          "version": "1.0.0",
-                          "license": "ISC",
-                          "dependencies": {
-                            "axios": "0.27.1",
-                            "fetch-factory": "0.2.1",
-                            "lodash": "4.17.21"
-                          }
-                        },
-                        "node_modules/assertion-error": {
-                          "version": "1.1.0",
-                          "resolved": "https://registry.npmjs.org/assertion-error/-/assertion-error-1.1.0.tgz",
-                          "integrity": "sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==",
-                          "engines": {
-                            "node": "*"
-                          }
-                        },
-                        "node_modules/asynckit": {
-                          "version": "0.4.0",
-                          "resolved": "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz",
-                          "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
-                        },
-                        "node_modules/axios": {
-                          "version": "0.27.1",
-                          "resolved": "https://registry.npmjs.org/axios/-/axios-0.27.1.tgz",
-                          "integrity": "sha512-ePNMai55xo5GsXajb/k756AqZqpqeDaGwGcdvbZLSSELbbYwsIn2jNmGfUPEwd8j/yu4OoMstLLIVa4t0MneEA==",
-                          "deprecated": "Formdata complete broken, incorrect build size",
-                          "dependencies": {
-                            "follow-redirects": "^1.14.9",
-                            "form-data": "^4.0.0"
-                          }
-                        },
-                        "node_modules/call-bind": {
-                          "version": "1.0.2",
-                          "resolved": "https://registry.npmjs.org/call-bind/-/call-bind-1.0.2.tgz",
-                          "integrity": "sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==",
-                          "dependencies": {
-                            "function-bind": "^1.1.1",
-                            "get-intrinsic": "^1.0.2"
-                          },
-                          "funding": {
-                            "url": "https://github.com/sponsors/ljharb"
-                          }
-                        },
-                        "node_modules/chai": {
-                          "version": "3.5.0",
-                          "resolved": "https://registry.npmjs.org/chai/-/chai-3.5.0.tgz",
-                          "integrity": "sha512-eRYY0vPS2a9zt5w5Z0aCeWbrXTEyvk7u/Xf71EzNObrjSCPgMm1Nku/D/u2tiqHBX5j40wWhj54YJLtgn8g55A==",
-                          "dependencies": {
-                            "assertion-error": "^1.0.1",
-                            "deep-eql": "^0.1.3",
-                            "type-detect": "^1.0.0"
-                          },
-                          "engines": {
-                            "node": ">= 0.4.0"
-                          }
-                        },
-                        "node_modules/combined-stream": {
-                          "version": "1.0.8",
-                          "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz",
-                          "integrity": "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==",
-                          "dependencies": {
-                            "delayed-stream": "~1.0.0"
-                          },
-                          "engines": {
-                            "node": ">= 0.8"
-                          }
-                        },
-                        "node_modules/debug": {
-                          "version": "1.0.5",
-                          "resolved": "https://registry.npmjs.org/debug/-/debug-1.0.5.tgz",
-                          "integrity": "sha512-SIKSrp4+XqcUaNWhwaPJbLFnvSXPsZ4xBdH2WRK0Xo++UzMC4eepYghGAVhVhOwmfq3kqowqJ5w45R3pmYZnuA==",
-                          "dependencies": {
-                            "ms": "2.0.0"
-                          }
-                        },
-                        "node_modules/deep-eql": {
-                          "version": "0.1.3",
-                          "resolved": "https://registry.npmjs.org/deep-eql/-/deep-eql-0.1.3.tgz",
-                          "integrity": "sha512-6sEotTRGBFiNcqVoeHwnfopbSpi5NbH1VWJmYCVkmxMmaVTT0bUTrNaGyBwhgP4MZL012W/mkzIn3Da+iDYweg==",
-                          "dependencies": {
-                            "type-detect": "0.1.1"
-                          },
-                          "engines": {
-                            "node": "*"
-                          }
-                        },
-                        "node_modules/deep-eql/node_modules/type-detect": {
-                          "version": "0.1.1",
-                          "resolved": "https://registry.npmjs.org/type-detect/-/type-detect-0.1.1.tgz",
-                          "integrity": "sha512-5rqszGVwYgBoDkIm2oUtvkfZMQ0vk29iDMU0W2qCa3rG0vPDNczCMT4hV/bLBgLg8k8ri6+u3Zbt+S/14eMzlA==",
-                          "engines": {
-                            "node": "*"
-                          }
-                        },
-                        "node_modules/deep-equal": {
-                          "version": "1.1.1",
-                          "resolved": "https://registry.npmjs.org/deep-equal/-/deep-equal-1.1.1.tgz",
-                          "integrity": "sha512-yd9c5AdiqVcR+JjcwUQb9DkhJc8ngNr0MahEBGvDiJw8puWab2yZlh+nkasOnZP+EGTAP6rRp2JzJhJZzvNF8g==",
-                          "dependencies": {
-                            "is-arguments": "^1.0.4",
-                            "is-date-object": "^1.0.1",
-                            "is-regex": "^1.0.4",
-                            "object-is": "^1.0.1",
-                            "object-keys": "^1.1.1",
-                            "regexp.prototype.flags": "^1.2.0"
-                          },
-                          "funding": {
-                            "url": "https://github.com/sponsors/ljharb"
-                          }
-                        },
-                        "node_modules/define-properties": {
-                          "version": "1.2.0",
-                          "resolved": "https://registry.npmjs.org/define-properties/-/define-properties-1.2.0.tgz",
-                          "integrity": "sha512-xvqAVKGfT1+UAvPwKTVw/njhdQ8ZhXK4lI0bCIuCMrp2up9nPnaDftrLtmpTazqd1o+UY4zgzU+avtMbDP+ldA==",
-                          "dependencies": {
-                            "has-property-descriptors": "^1.0.0",
-                            "object-keys": "^1.1.1"
-                          },
-                          "engines": {
-                            "node": ">= 0.4"
-                          },
-                          "funding": {
-                            "url": "https://github.com/sponsors/ljharb"
-                          }
-                        },
-                        "node_modules/delayed-stream": {
-                          "version": "1.0.0",
-                          "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz",
-                          "integrity": "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==",
-                          "engines": {
-                            "node": ">=0.4.0"
-                          }
-                        },
-                        "node_modules/encoding": {
-                          "version": "0.1.13",
-                          "resolved": "https://registry.npmjs.org/encoding/-/encoding-0.1.13.tgz",
-                          "integrity": "sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==",
-                          "dependencies": {
-                            "iconv-lite": "^0.6.2"
-                          }
-                        },
-                        "node_modules/es6-promise": {
-                          "version": "3.3.1",
-                          "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.3.1.tgz",
-                          "integrity": "sha512-SOp9Phqvqn7jtEUxPWdWfWoLmyt2VaJ6MpvP9Comy1MceMXqE6bxvaTu4iaxpYYPzhny28Lc+M87/c2cPK6lDg=="
-                        },
-                        "node_modules/fetch-factory": {
-                          "version": "0.2.1",
-                          "resolved": "https://registry.npmjs.org/fetch-factory/-/fetch-factory-0.2.1.tgz",
-                          "integrity": "sha512-sqt1ONiKIRec2E66VSBI6+vRQSTdpsfJc7ZF3T0N3MnG1q7thE0w6B8nGhiffLoqPF7yLcKY/y4CPjldBbT2wA==",
-                          "dependencies": {
-                            "es6-promise": "^3.0.2",
-                            "isomorphic-fetch": "^2.1.1",
-                            "lodash": "^3.10.1",
-                            "nock": "^2.18.0",
-                            "query-string": "^2.4.1",
-                            "url-pattern": "^0.10.0"
-                          }
-                        },
-                        "node_modules/fetch-factory/node_modules/lodash": {
-                          "version": "3.10.1",
-                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz",
-                          "integrity": "sha512-9mDDwqVIma6OZX79ZlDACZl8sBm0TEnkf99zV3iMA4GzkIT/9hiqP5mY0HoT1iNLCrKc/R1HByV+yJfRWVJryQ=="
-                        },
-                        "node_modules/follow-redirects": {
-                          "version": "1.15.2",
-                          "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz",
-                          "integrity": "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==",
-                          "funding": [
-                            {
-                              "type": "individual",
-                              "url": "https://github.com/sponsors/RubenVerborgh"
-                            }
-                          ],
-                          "engines": {
-                            "node": ">=4.0"
-                          },
-                          "peerDependenciesMeta": {
-                            "debug": {
-                              "optional": true
-                            }
-                          }
-                        },
-                        "node_modules/form-data": {
-                          "version": "4.0.0",
-                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz",
-                          "integrity": "sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==",
-                          "dependencies": {
-                            "asynckit": "^0.4.0",
-                            "combined-stream": "^1.0.8",
-                            "mime-types": "^2.1.12"
-                          },
-                          "engines": {
-                            "node": ">= 6"
-                          }
-                        },
-                        "node_modules/function-bind": {
-                          "version": "1.1.1",
-                          "resolved": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz",
-                          "integrity": "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
-                        },
-                        "node_modules/functions-have-names": {
-                          "version": "1.2.3",
-                          "resolved": "https://registry.npmjs.org/functions-have-names/-/functions-have-names-1.2.3.tgz",
-                          "integrity": "sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==",
-                          "funding": {
-                            "url": "https://github.com/sponsors/ljharb"
-                          }
-                        },
-                        "node_modules/get-intrinsic": {
-                          "version": "1.2.1",
-                          "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.2.1.tgz",
-                          "integrity": "sha512-2DcsyfABl+gVHEfCOaTrWgyt+tb6MSEGmKq+kI5HwLbIYgjgmMcV8KQ41uaKz1xxUcn9tJtgFbQUEVcEbd0FYw==",
-                          "dependencies": {
-                            "function-bind": "^1.1.1",
-                            "has": "^1.0.3",
-                            "has-proto": "^1.0.1",
-                            "has-symbols": "^1.0.3"
-                          },
-                          "funding": {
-                            "url": "https://github.com/sponsors/ljharb"
-                          }
-                        },
-                        "node_modules/has": {
-                          "version": "1.0.3",
-                          "resolved": "https://registry.npmjs.org/has/-/has-1.0.3.tgz",
-                          "integrity": "sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==",
-                          "dependencies": {
-                            "function-bind": "^1.1.1"
-                          },
-                          "engines": {
-                            "node": ">= 0.4.0"
-                          }
-                        },
-                        "node_modules/has-property-descriptors": {
-                          "version": "1.0.0",
-                          "resolved": "https://registry.npmjs.org/has-property-descriptors/-/has-property-descriptors-1.0.0.tgz",
-                          "integrity": "sha512-62DVLZGoiEBDHQyqG4w9xCuZ7eJEwNmJRWw2VY84Oedb7WFcA27fiEVe8oUQx9hAUJ4ekurquucTGwsyO1XGdQ==",
-                          "dependencies": {
-                            "get-intrinsic": "^1.1.1"
-                          },
-                          "funding": {
-                            "url": "https://github.com/sponsors/ljharb"
-                          }
-                        },
-                        "node_modules/has-proto": {
-                          "version": "1.0.1",
-                          "resolved": "https://registry.npmjs.org/has-proto/-/has-proto-1.0.1.tgz",
-                          "integrity": "sha512-7qE+iP+O+bgF9clE5+UoBFzE65mlBiVj3tKCrlNQ0Ogwm0BjpT/gK4SlLYDMybDh5I3TCTKnPPa0oMG7JDYrhg==",
-                          "engines": {
-                            "node": ">= 0.4"
-                          },
-                          "funding": {
-                            "url": "https://github.com/sponsors/ljharb"
-                          }
-                        },
-                        "node_modules/has-symbols": {
-                          "version": "1.0.3",
-                          "resolved": "https://registry.npmjs.org/has-symbols/-/has-symbols-1.0.3.tgz",
-                          "integrity": "sha512-l3LCuF6MgDNwTDKkdYGEihYjt5pRPbEg46rtlmnSPlUbgmB8LOIrKJbYYFBSbnPaJexMKtiPO8hmeRjRz2Td+A==",
-                          "engines": {
-                            "node": ">= 0.4"
-                          },
-                          "funding": {
-                            "url": "https://github.com/sponsors/ljharb"
-                          }
-                        },
-                        "node_modules/has-tostringtag": {
-                          "version": "1.0.0",
-                          "resolved": "https://registry.npmjs.org/has-tostringtag/-/has-tostringtag-1.0.0.tgz",
-                          "integrity": "sha512-kFjcSNhnlGV1kyoGk7OXKSawH5JOb/LzUc5w9B02hOTO0dfFRjbHQKvg1d6cf3HbeUmtU9VbbV3qzZ2Teh97WQ==",
-                          "dependencies": {
-                            "has-symbols": "^1.0.2"
-                          },
-                          "engines": {
-                            "node": ">= 0.4"
-                          },
-                          "funding": {
-                            "url": "https://github.com/sponsors/ljharb"
-                          }
-                        },
-                        "node_modules/iconv-lite": {
-                          "version": "0.6.3",
-                          "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz",
-                          "integrity": "sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==",
-                          "dependencies": {
-                            "safer-buffer": ">= 2.1.2 < 3.0.0"
-                          },
-                          "engines": {
-                            "node": ">=0.10.0"
-                          }
-                        },
-                        "node_modules/is-arguments": {
-                          "version": "1.1.1",
-                          "resolved": "https://registry.npmjs.org/is-arguments/-/is-arguments-1.1.1.tgz",
-                          "integrity": "sha512-8Q7EARjzEnKpt/PCD7e1cgUS0a6X8u5tdSiMqXhojOdoV9TsMsiO+9VLC5vAmO8N7/GmXn7yjR8qnA6bVAEzfA==",
-                          "dependencies": {
-                            "call-bind": "^1.0.2",
-                            "has-tostringtag": "^1.0.0"
-                          },
-                          "engines": {
-                            "node": ">= 0.4"
-                          },
-                          "funding": {
-                            "url": "https://github.com/sponsors/ljharb"
-                          }
-                        },
-                        "node_modules/is-date-object": {
-                          "version": "1.0.5",
-                          "resolved": "https://registry.npmjs.org/is-date-object/-/is-date-object-1.0.5.tgz",
-                          "integrity": "sha512-9YQaSxsAiSwcvS33MBk3wTCVnWK+HhF8VZR2jRxehM16QcVOdHqPn4VPHmRK4lSr38n9JriurInLcP90xsYNfQ==",
-                          "dependencies": {
-                            "has-tostringtag": "^1.0.0"
-                          },
-                          "engines": {
-                            "node": ">= 0.4"
-                          },
-                          "funding": {
-                            "url": "https://github.com/sponsors/ljharb"
-                          }
-                        },
-                        "node_modules/is-regex": {
-                          "version": "1.1.4",
-                          "resolved": "https://registry.npmjs.org/is-regex/-/is-regex-1.1.4.tgz",
-                          "integrity": "sha512-kvRdxDsxZjhzUX07ZnLydzS1TU/TJlTUHHY4YLL87e37oUA49DfkLqgy+VjFocowy29cKvcSiu+kIv728jTTVg==",
-                          "dependencies": {
-                            "call-bind": "^1.0.2",
-                            "has-tostringtag": "^1.0.0"
-                          },
-                          "engines": {
-                            "node": ">= 0.4"
-                          },
-                          "funding": {
-                            "url": "https://github.com/sponsors/ljharb"
-                          }
-                        },
-                        "node_modules/is-stream": {
-                          "version": "1.1.0",
-                          "resolved": "https://registry.npmjs.org/is-stream/-/is-stream-1.1.0.tgz",
-                          "integrity": "sha512-uQPm8kcs47jx38atAcWTVxyltQYoPT68y9aWYdV6yWXSyW8mzSat0TL6CiWdZeCdF3KrAvpVtnHbTv4RN+rqdQ==",
-                          "engines": {
-                            "node": ">=0.10.0"
-                          }
-                        },
-                        "node_modules/isomorphic-fetch": {
-                          "version": "2.2.1",
-                          "resolved": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
-                          "integrity": "sha512-9c4TNAKYXM5PRyVcwUZrF3W09nQ+sO7+jydgs4ZGW9dhsLG2VOlISJABombdQqQRXCwuYG3sYV/puGf5rp0qmA==",
-                          "dependencies": {
-                            "node-fetch": "^1.0.1",
-                            "whatwg-fetch": ">=0.10.0"
-                          }
-                        },
-                        "node_modules/lodash": {
-                          "version": "4.17.21",
-                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz",
-                          "integrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
-                        },
-                        "node_modules/mime-db": {
-                          "version": "1.52.0",
-                          "resolved": "https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz",
-                          "integrity": "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==",
-                          "engines": {
-                            "node": ">= 0.6"
-                          }
-                        },
-                        "node_modules/mime-types": {
-                          "version": "2.1.35",
-                          "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz",
-                          "integrity": "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==",
-                          "dependencies": {
-                            "mime-db": "1.52.0"
-                          },
-                          "engines": {
-                            "node": ">= 0.6"
-                          }
-                        },
-                        "node_modules/minimist": {
-                          "version": "1.2.8",
-                          "resolved": "https://registry.npmjs.org/minimist/-/minimist-1.2.8.tgz",
-                          "integrity": "sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==",
-                          "funding": {
-                            "url": "https://github.com/sponsors/ljharb"
-                          }
-                        },
-                        "node_modules/mkdirp": {
-                          "version": "0.5.6",
-                          "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.6.tgz",
-                          "integrity": "sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==",
-                          "dependencies": {
-                            "minimist": "^1.2.6"
-                          },
-                          "bin": {
-                            "mkdirp": "bin/cmd.js"
-                          }
-                        },
-                        "node_modules/ms": {
-                          "version": "2.0.0",
-                          "resolved": "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz",
-                          "integrity": "sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A=="
-                        },
-                        "node_modules/nock": {
-                          "version": "2.18.2",
-                          "resolved": "https://registry.npmjs.org/nock/-/nock-2.18.2.tgz",
-                          "integrity": "sha512-g/+7KTdoMOUxH6HVKD7mmtlNe4K/OVEEiH/pyBG/TuRsHl0lrts894x72+LJFkQiGCkh/i05FEBwKnb15+WSVg==",
-                          "engines": [
-                            "node >= 0.10.0"
-                          ],
-                          "dependencies": {
-                            "chai": ">=1.9.2 <4.0.0",
-                            "debug": "^1.0.4",
-                            "deep-equal": "^1.0.0",
-                            "lodash": "2.4.1",
-                            "mkdirp": "^0.5.0",
-                            "propagate": "0.3.x"
-                          }
-                        },
-                        "node_modules/nock/node_modules/lodash": {
-                          "version": "2.4.1",
-                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.1.tgz",
-                          "integrity": "sha512-qa6QqjA9jJB4AYw+NpD2GI4dzHL6Mv0hL+By6iIul4Ce0C1refrjZJmcGvWdnLUwl4LIPtvzje3UQfGH+nCEsQ==",
-                          "engines": [
-                            "node",
-                            "rhino"
-                          ]
-                        },
-                        "node_modules/node-fetch": {
-                          "version": "1.7.3",
-                          "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.7.3.tgz",
-                          "integrity": "sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==",
-                          "dependencies": {
-                            "encoding": "^0.1.11",
-                            "is-stream": "^1.0.1"
-                          }
-                        },
-                        "node_modules/object-is": {
-                          "version": "1.1.5",
-                          "resolved": "https://registry.npmjs.org/object-is/-/object-is-1.1.5.tgz",
-                          "integrity": "sha512-3cyDsyHgtmi7I7DfSSI2LDp6SK2lwvtbg0p0R1e0RvTqF5ceGx+K2dfSjm1bKDMVCFEDAQvy+o8c6a7VujOddw==",
-                          "dependencies": {
-                            "call-bind": "^1.0.2",
-                            "define-properties": "^1.1.3"
-                          },
-                          "engines": {
-                            "node": ">= 0.4"
-                          },
-                          "funding": {
-                            "url": "https://github.com/sponsors/ljharb"
-                          }
-                        },
-                        "node_modules/object-keys": {
-                          "version": "1.1.1",
-                          "resolved": "https://registry.npmjs.org/object-keys/-/object-keys-1.1.1.tgz",
-                          "integrity": "sha512-NuAESUOUMrlIXOfHKzD6bpPu3tYt3xvjNdRIQ+FeT0lNb4K8WR70CaDxhuNguS2XG+GjkyMwOzsN5ZktImfhLA==",
-                          "engines": {
-                            "node": ">= 0.4"
-                          }
-                        },
-                        "node_modules/propagate": {
-                          "version": "0.3.1",
-                          "resolved": "https://registry.npmjs.org/propagate/-/propagate-0.3.1.tgz",
-                          "integrity": "sha512-GOc8Eoa3MWbN905b5l2PNNt1Pf+I/CF6uAPt3IGT+v9WExDE7WPT/kDfLe7vYXtG11KbTnBhTNfcoq9+umDrSw==",
-                          "engines": [
-                            "node >= 0.8.1"
-                          ]
-                        },
-                        "node_modules/query-string": {
-                          "version": "2.4.2",
-                          "resolved": "https://registry.npmjs.org/query-string/-/query-string-2.4.2.tgz",
-                          "integrity": "sha512-Y+OMYUuY7HxznI6WBN822fi/FMvnCTiuqd6KNcidPColOmMWPoV1RGYyyzObve1T/dD1i0ZgCCbO8ytu0ZUrkA==",
-                          "dependencies": {
-                            "strict-uri-encode": "^1.0.0"
-                          },
-                          "engines": {
-                            "node": ">=0.10.0"
-                          }
-                        },
-                        "node_modules/regexp.prototype.flags": {
-                          "version": "1.5.0",
-                          "resolved": "https://registry.npmjs.org/regexp.prototype.flags/-/regexp.prototype.flags-1.5.0.tgz",
-                          "integrity": "sha512-0SutC3pNudRKgquxGoRGIz946MZVHqbNfPjBdxeOhBrdgDKlRoXmYLQN9xRbrR09ZXWeGAdPuif7egofn6v5LA==",
-                          "dependencies": {
-                            "call-bind": "^1.0.2",
-                            "define-properties": "^1.2.0",
-                            "functions-have-names": "^1.2.3"
-                          },
-                          "engines": {
-                            "node": ">= 0.4"
-                          },
-                          "funding": {
-                            "url": "https://github.com/sponsors/ljharb"
-                          }
-                        },
-                        "node_modules/safer-buffer": {
-                          "version": "2.1.2",
-                          "resolved": "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz",
-                          "integrity": "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg=="
-                        },
-                        "node_modules/strict-uri-encode": {
-                          "version": "1.1.0",
-                          "resolved": "https://registry.npmjs.org/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz",
-                          "integrity": "sha512-R3f198pcvnB+5IpnBlRkphuE9n46WyVl8I39W/ZUTZLz4nqSP/oLYUrcnJrw462Ds8he4YKMov2efsTIw1BDGQ==",
-                          "engines": {
-                            "node": ">=0.10.0"
-                          }
-                        },
-                        "node_modules/type-detect": {
-                          "version": "1.0.0",
-                          "resolved": "https://registry.npmjs.org/type-detect/-/type-detect-1.0.0.tgz",
-                          "integrity": "sha512-f9Uv6ezcpvCQjJU0Zqbg+65qdcszv3qUQsZfjdRbWiZ7AMenrX1u0lNk9EoWWX6e1F+NULyg27mtdeZ5WhpljA==",
-                          "engines": {
-                            "node": "*"
-                          }
-                        },
-                        "node_modules/url-pattern": {
-                          "version": "0.10.2",
-                          "resolved": "https://registry.npmjs.org/url-pattern/-/url-pattern-0.10.2.tgz",
-                          "integrity": "sha512-zv1iNlKB8XhUcHTaz68wdUwBWLQEji3AFbIKahCjxJftL6uOir1heHqM8EKymsgFWDO7ct8jRW/rMybOLo4OyQ==",
-                          "engines": {
-                            "node": ">=0.12.0"
-                          }
-                        },
-                        "node_modules/whatwg-fetch": {
-                          "version": "3.6.17",
-                          "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-3.6.17.tgz",
-                          "integrity": "sha512-c4ghIvG6th0eudYwKZY5keb81wtFz9/WeAHAoy8+r18kcWlitUIrmGFQ2rWEl4UCKUilD3zCLHOIPheHx5ypRQ=="
-                        }
+                  },
+                  "node_modules/form-data": {
+                    "version": "4.0.0",
+                    "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz",
+                    "integrity": "sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==",
+                    "dependencies": {
+                      "asynckit": "^0.4.0",
+                      "combined-stream": "^1.0.8",
+                      "mime-types": "^2.1.12"
+                    },
+                    "engines": {
+                      "node": ">= 6"
+                    }
+                  },
+                  "node_modules/function-bind": {
+                    "version": "1.1.1",
+                    "resolved": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz",
+                    "integrity": "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
+                  },
+                  "node_modules/functions-have-names": {
+                    "version": "1.2.3",
+                    "resolved": "https://registry.npmjs.org/functions-have-names/-/functions-have-names-1.2.3.tgz",
+                    "integrity": "sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==",
+                    "funding": {
+                      "url": "https://github.com/sponsors/ljharb"
+                    }
+                  },
+                  "node_modules/get-intrinsic": {
+                    "version": "1.2.1",
+                    "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.2.1.tgz",
+                    "integrity": "sha512-2DcsyfABl+gVHEfCOaTrWgyt+tb6MSEGmKq+kI5HwLbIYgjgmMcV8KQ41uaKz1xxUcn9tJtgFbQUEVcEbd0FYw==",
+                    "dependencies": {
+                      "function-bind": "^1.1.1",
+                      "has": "^1.0.3",
+                      "has-proto": "^1.0.1",
+                      "has-symbols": "^1.0.3"
+                    },
+                    "funding": {
+                      "url": "https://github.com/sponsors/ljharb"
+                    }
+                  },
+                  "node_modules/has": {
+                    "version": "1.0.3",
+                    "resolved": "https://registry.npmjs.org/has/-/has-1.0.3.tgz",
+                    "integrity": "sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==",
+                    "dependencies": {
+                      "function-bind": "^1.1.1"
+                    },
+                    "engines": {
+                      "node": ">= 0.4.0"
+                    }
+                  },
+                  "node_modules/has-property-descriptors": {
+                    "version": "1.0.0",
+                    "resolved": "https://registry.npmjs.org/has-property-descriptors/-/has-property-descriptors-1.0.0.tgz",
+                    "integrity": "sha512-62DVLZGoiEBDHQyqG4w9xCuZ7eJEwNmJRWw2VY84Oedb7WFcA27fiEVe8oUQx9hAUJ4ekurquucTGwsyO1XGdQ==",
+                    "dependencies": {
+                      "get-intrinsic": "^1.1.1"
+                    },
+                    "funding": {
+                      "url": "https://github.com/sponsors/ljharb"
+                    }
+                  },
+                  "node_modules/has-proto": {
+                    "version": "1.0.1",
+                    "resolved": "https://registry.npmjs.org/has-proto/-/has-proto-1.0.1.tgz",
+                    "integrity": "sha512-7qE+iP+O+bgF9clE5+UoBFzE65mlBiVj3tKCrlNQ0Ogwm0BjpT/gK4SlLYDMybDh5I3TCTKnPPa0oMG7JDYrhg==",
+                    "engines": {
+                      "node": ">= 0.4"
+                    },
+                    "funding": {
+                      "url": "https://github.com/sponsors/ljharb"
+                    }
+                  },
+                  "node_modules/has-symbols": {
+                    "version": "1.0.3",
+                    "resolved": "https://registry.npmjs.org/has-symbols/-/has-symbols-1.0.3.tgz",
+                    "integrity": "sha512-l3LCuF6MgDNwTDKkdYGEihYjt5pRPbEg46rtlmnSPlUbgmB8LOIrKJbYYFBSbnPaJexMKtiPO8hmeRjRz2Td+A==",
+                    "engines": {
+                      "node": ">= 0.4"
+                    },
+                    "funding": {
+                      "url": "https://github.com/sponsors/ljharb"
+                    }
+                  },
+                  "node_modules/has-tostringtag": {
+                    "version": "1.0.0",
+                    "resolved": "https://registry.npmjs.org/has-tostringtag/-/has-tostringtag-1.0.0.tgz",
+                    "integrity": "sha512-kFjcSNhnlGV1kyoGk7OXKSawH5JOb/LzUc5w9B02hOTO0dfFRjbHQKvg1d6cf3HbeUmtU9VbbV3qzZ2Teh97WQ==",
+                    "dependencies": {
+                      "has-symbols": "^1.0.2"
+                    },
+                    "engines": {
+                      "node": ">= 0.4"
+                    },
+                    "funding": {
+                      "url": "https://github.com/sponsors/ljharb"
+                    }
+                  },
+                  "node_modules/iconv-lite": {
+                    "version": "0.6.3",
+                    "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz",
+                    "integrity": "sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==",
+                    "dependencies": {
+                      "safer-buffer": ">= 2.1.2 < 3.0.0"
+                    },
+                    "engines": {
+                      "node": ">=0.10.0"
+                    }
+                  },
+                  "node_modules/is-arguments": {
+                    "version": "1.1.1",
+                    "resolved": "https://registry.npmjs.org/is-arguments/-/is-arguments-1.1.1.tgz",
+                    "integrity": "sha512-8Q7EARjzEnKpt/PCD7e1cgUS0a6X8u5tdSiMqXhojOdoV9TsMsiO+9VLC5vAmO8N7/GmXn7yjR8qnA6bVAEzfA==",
+                    "dependencies": {
+                      "call-bind": "^1.0.2",
+                      "has-tostringtag": "^1.0.0"
+                    },
+                    "engines": {
+                      "node": ">= 0.4"
+                    },
+                    "funding": {
+                      "url": "https://github.com/sponsors/ljharb"
+                    }
+                  },
+                  "node_modules/is-date-object": {
+                    "version": "1.0.5",
+                    "resolved": "https://registry.npmjs.org/is-date-object/-/is-date-object-1.0.5.tgz",
+                    "integrity": "sha512-9YQaSxsAiSwcvS33MBk3wTCVnWK+HhF8VZR2jRxehM16QcVOdHqPn4VPHmRK4lSr38n9JriurInLcP90xsYNfQ==",
+                    "dependencies": {
+                      "has-tostringtag": "^1.0.0"
+                    },
+                    "engines": {
+                      "node": ">= 0.4"
+                    },
+                    "funding": {
+                      "url": "https://github.com/sponsors/ljharb"
+                    }
+                  },
+                  "node_modules/is-regex": {
+                    "version": "1.1.4",
+                    "resolved": "https://registry.npmjs.org/is-regex/-/is-regex-1.1.4.tgz",
+                    "integrity": "sha512-kvRdxDsxZjhzUX07ZnLydzS1TU/TJlTUHHY4YLL87e37oUA49DfkLqgy+VjFocowy29cKvcSiu+kIv728jTTVg==",
+                    "dependencies": {
+                      "call-bind": "^1.0.2",
+                      "has-tostringtag": "^1.0.0"
+                    },
+                    "engines": {
+                      "node": ">= 0.4"
+                    },
+                    "funding": {
+                      "url": "https://github.com/sponsors/ljharb"
+                    }
+                  },
+                  "node_modules/is-stream": {
+                    "version": "1.1.0",
+                    "resolved": "https://registry.npmjs.org/is-stream/-/is-stream-1.1.0.tgz",
+                    "integrity": "sha512-uQPm8kcs47jx38atAcWTVxyltQYoPT68y9aWYdV6yWXSyW8mzSat0TL6CiWdZeCdF3KrAvpVtnHbTv4RN+rqdQ==",
+                    "engines": {
+                      "node": ">=0.10.0"
+                    }
+                  },
+                  "node_modules/isomorphic-fetch": {
+                    "version": "2.2.1",
+                    "resolved": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
+                    "integrity": "sha512-9c4TNAKYXM5PRyVcwUZrF3W09nQ+sO7+jydgs4ZGW9dhsLG2VOlISJABombdQqQRXCwuYG3sYV/puGf5rp0qmA==",
+                    "dependencies": {
+                      "node-fetch": "^1.0.1",
+                      "whatwg-fetch": ">=0.10.0"
+                    }
+                  },
+                  "node_modules/lodash": {
+                    "version": "4.17.21",
+                    "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz",
+                    "integrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
+                  },
+                  "node_modules/mime-db": {
+                    "version": "1.52.0",
+                    "resolved": "https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz",
+                    "integrity": "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==",
+                    "engines": {
+                      "node": ">= 0.6"
+                    }
+                  },
+                  "node_modules/mime-types": {
+                    "version": "2.1.35",
+                    "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz",
+                    "integrity": "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==",
+                    "dependencies": {
+                      "mime-db": "1.52.0"
+                    },
+                    "engines": {
+                      "node": ">= 0.6"
+                    }
+                  },
+                  "node_modules/minimist": {
+                    "version": "1.2.8",
+                    "resolved": "https://registry.npmjs.org/minimist/-/minimist-1.2.8.tgz",
+                    "integrity": "sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==",
+                    "funding": {
+                      "url": "https://github.com/sponsors/ljharb"
+                    }
+                  },
+                  "node_modules/mkdirp": {
+                    "version": "0.5.6",
+                    "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.6.tgz",
+                    "integrity": "sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==",
+                    "dependencies": {
+                      "minimist": "^1.2.6"
+                    },
+                    "bin": {
+                      "mkdirp": "bin/cmd.js"
+                    }
+                  },
+                  "node_modules/ms": {
+                    "version": "2.0.0",
+                    "resolved": "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz",
+                    "integrity": "sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A=="
+                  },
+                  "node_modules/nock": {
+                    "version": "2.18.2",
+                    "resolved": "https://registry.npmjs.org/nock/-/nock-2.18.2.tgz",
+                    "integrity": "sha512-g/+7KTdoMOUxH6HVKD7mmtlNe4K/OVEEiH/pyBG/TuRsHl0lrts894x72+LJFkQiGCkh/i05FEBwKnb15+WSVg==",
+                    "engines": [
+                      "node >= 0.10.0"
+                    ],
+                    "dependencies": {
+                      "chai": ">=1.9.2 <4.0.0",
+                      "debug": "^1.0.4",
+                      "deep-equal": "^1.0.0",
+                      "lodash": "2.4.1",
+                      "mkdirp": "^0.5.0",
+                      "propagate": "0.3.x"
+                    }
+                  },
+                  "node_modules/nock/node_modules/lodash": {
+                    "version": "2.4.1",
+                    "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.1.tgz",
+                    "integrity": "sha512-qa6QqjA9jJB4AYw+NpD2GI4dzHL6Mv0hL+By6iIul4Ce0C1refrjZJmcGvWdnLUwl4LIPtvzje3UQfGH+nCEsQ==",
+                    "engines": [
+                      "node",
+                      "rhino"
+                    ]
+                  },
+                  "node_modules/node-fetch": {
+                    "version": "1.7.3",
+                    "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.7.3.tgz",
+                    "integrity": "sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==",
+                    "dependencies": {
+                      "encoding": "^0.1.11",
+                      "is-stream": "^1.0.1"
+                    }
+                  },
+                  "node_modules/object-is": {
+                    "version": "1.1.5",
+                    "resolved": "https://registry.npmjs.org/object-is/-/object-is-1.1.5.tgz",
+                    "integrity": "sha512-3cyDsyHgtmi7I7DfSSI2LDp6SK2lwvtbg0p0R1e0RvTqF5ceGx+K2dfSjm1bKDMVCFEDAQvy+o8c6a7VujOddw==",
+                    "dependencies": {
+                      "call-bind": "^1.0.2",
+                      "define-properties": "^1.1.3"
+                    },
+                    "engines": {
+                      "node": ">= 0.4"
+                    },
+                    "funding": {
+                      "url": "https://github.com/sponsors/ljharb"
+                    }
+                  },
+                  "node_modules/object-keys": {
+                    "version": "1.1.1",
+                    "resolved": "https://registry.npmjs.org/object-keys/-/object-keys-1.1.1.tgz",
+                    "integrity": "sha512-NuAESUOUMrlIXOfHKzD6bpPu3tYt3xvjNdRIQ+FeT0lNb4K8WR70CaDxhuNguS2XG+GjkyMwOzsN5ZktImfhLA==",
+                    "engines": {
+                      "node": ">= 0.4"
+                    }
+                  },
+                  "node_modules/propagate": {
+                    "version": "0.3.1",
+                    "resolved": "https://registry.npmjs.org/propagate/-/propagate-0.3.1.tgz",
+                    "integrity": "sha512-GOc8Eoa3MWbN905b5l2PNNt1Pf+I/CF6uAPt3IGT+v9WExDE7WPT/kDfLe7vYXtG11KbTnBhTNfcoq9+umDrSw==",
+                    "engines": [
+                      "node >= 0.8.1"
+                    ]
+                  },
+                  "node_modules/query-string": {
+                    "version": "2.4.2",
+                    "resolved": "https://registry.npmjs.org/query-string/-/query-string-2.4.2.tgz",
+                    "integrity": "sha512-Y+OMYUuY7HxznI6WBN822fi/FMvnCTiuqd6KNcidPColOmMWPoV1RGYyyzObve1T/dD1i0ZgCCbO8ytu0ZUrkA==",
+                    "dependencies": {
+                      "strict-uri-encode": "^1.0.0"
+                    },
+                    "engines": {
+                      "node": ">=0.10.0"
+                    }
+                  },
+                  "node_modules/regexp.prototype.flags": {
+                    "version": "1.5.0",
+                    "resolved": "https://registry.npmjs.org/regexp.prototype.flags/-/regexp.prototype.flags-1.5.0.tgz",
+                    "integrity": "sha512-0SutC3pNudRKgquxGoRGIz946MZVHqbNfPjBdxeOhBrdgDKlRoXmYLQN9xRbrR09ZXWeGAdPuif7egofn6v5LA==",
+                    "dependencies": {
+                      "call-bind": "^1.0.2",
+                      "define-properties": "^1.2.0",
+                      "functions-have-names": "^1.2.3"
+                    },
+                    "engines": {
+                      "node": ">= 0.4"
+                    },
+                    "funding": {
+                      "url": "https://github.com/sponsors/ljharb"
+                    }
+                  },
+                  "node_modules/safer-buffer": {
+                    "version": "2.1.2",
+                    "resolved": "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz",
+                    "integrity": "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg=="
+                  },
+                  "node_modules/strict-uri-encode": {
+                    "version": "1.1.0",
+                    "resolved": "https://registry.npmjs.org/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz",
+                    "integrity": "sha512-R3f198pcvnB+5IpnBlRkphuE9n46WyVl8I39W/ZUTZLz4nqSP/oLYUrcnJrw462Ds8he4YKMov2efsTIw1BDGQ==",
+                    "engines": {
+                      "node": ">=0.10.0"
+                    }
+                  },
+                  "node_modules/type-detect": {
+                    "version": "1.0.0",
+                    "resolved": "https://registry.npmjs.org/type-detect/-/type-detect-1.0.0.tgz",
+                    "integrity": "sha512-f9Uv6ezcpvCQjJU0Zqbg+65qdcszv3qUQsZfjdRbWiZ7AMenrX1u0lNk9EoWWX6e1F+NULyg27mtdeZ5WhpljA==",
+                    "engines": {
+                      "node": "*"
+                    }
+                  },
+                  "node_modules/url-pattern": {
+                    "version": "0.10.2",
+                    "resolved": "https://registry.npmjs.org/url-pattern/-/url-pattern-0.10.2.tgz",
+                    "integrity": "sha512-zv1iNlKB8XhUcHTaz68wdUwBWLQEji3AFbIKahCjxJftL6uOir1heHqM8EKymsgFWDO7ct8jRW/rMybOLo4OyQ==",
+                    "engines": {
+                      "node": ">=0.12.0"
+                    }
+                  },
+                  "node_modules/whatwg-fetch": {
+                    "version": "3.6.17",
+                    "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-3.6.17.tgz",
+                    "integrity": "sha512-c4ghIvG6th0eudYwKZY5keb81wtFz9/WeAHAoy8+r18kcWlitUIrmGFQ2rWEl4UCKUilD3zCLHOIPheHx5ypRQ=="
+                  }
+                }
+              }
+            content_encoding: utf-8
+            deleted: false
+            directory: /npm/semver
+            name: package-lock.json
+            operation: update
+            support_file: false
+            type: file
+        pr-title: Bump the not major group in /npm/semver with 2 updates
+        pr-body: |
+          Bumps the not major group in /npm/semver with 2 updates: fetch-factory and [lodash](https://github.com/lodash/lodash).
+
+          Updates `fetch-factory` from 0.0.1 to 0.2.1
+
+          Updates `lodash` from 4.16.6 to 4.17.21
+          <details>
+          <summary>Commits</summary>
+          <ul>
+          <li><a href="https://github.com/lodash/lodash/commit/f299b52f39486275a9e6483b60a410e06520c538"><code>f299b52</code></a> Bump to v4.17.21</li>
+          <li><a href="https://github.com/lodash/lodash/commit/c4847ebe7d14540bb28a8b932a9ce1b9ecbfee1a"><code>c4847eb</code></a> Improve performance of <code>toNumber</code>, <code>trim</code> and <code>trimEnd</code> on large input strings</li>
+          <li><a href="https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c"><code>3469357</code></a> Prevent command injection through <code>_.template</code>'s <code>variable</code> option</li>
+          <li><a href="https://github.com/lodash/lodash/commit/ded9bc66583ed0b4e3b7dc906206d40757b4a90a"><code>ded9bc6</code></a> Bump to v4.17.20.</li>
+          <li><a href="https://github.com/lodash/lodash/commit/63150ef7645ac07961b63a86490f419f356429aa"><code>63150ef</code></a> Documentation fixes.</li>
+          <li><a href="https://github.com/lodash/lodash/commit/00f0f62a979d2f5fa0287c06eae70cf9a62d8794"><code>00f0f62</code></a> test.js: Remove trailing comma.</li>
+          <li><a href="https://github.com/lodash/lodash/commit/846e434c7a5b5692c55ebf5715ed677b70a32389"><code>846e434</code></a> Temporarily use a custom fork of <code>lodash-cli</code>.</li>
+          <li><a href="https://github.com/lodash/lodash/commit/5d046f39cbd27f573914768e3b36eeefcc4f1229"><code>5d046f3</code></a> Re-enable Travis tests on <code>4.17</code> branch.</li>
+          <li><a href="https://github.com/lodash/lodash/commit/aa816b36d402a1ad9385142ce7188f17dae514fd"><code>aa816b3</code></a> Remove <code>/npm-package</code>.</li>
+          <li><a href="https://github.com/lodash/lodash/commit/d7fbc52ee0466a6d248f047b5d5c3e6d1e099056"><code>d7fbc52</code></a> Bump to v4.17.19</li>
+          <li>Additional commits viewable in <a href="https://github.com/lodash/lodash/compare/4.16.6...4.17.21">compare view</a></li>
+          </ul>
+          </details>
+          <details>
+          <summary>Maintainer changes</summary>
+          <p>This version was pushed to npm by <a href="https://www.npmjs.com/~bnjmnt4n">bnjmnt4n</a>, a new releaser for lodash since your current version.</p>
+          </details>
+          <br />
+        commit-message: |-
+          Bump the not major group in /npm/semver with 2 updates
+
+          Bumps the not major group in /npm/semver with 2 updates: fetch-factory and [lodash](https://github.com/lodash/lodash).
+
+
+          Updates `fetch-factory` from 0.0.1 to 0.2.1
+
+          Updates `lodash` from 4.16.6 to 4.17.21
+          - [Release notes](https://github.com/lodash/lodash/releases)
+          - [Commits](https://github.com/lodash/lodash/compare/4.16.6...4.17.21)
+        dependency-group:
+          name: not major
+  - type: create_pull_request
+    expect:
+      data:
+        base-commit-sha: deb769e795beb877414bdc5aea2df16d4ff8d4df
+        dependencies:
+          - name: axios
+            previous-requirements:
+              - file: package.json
+                groups:
+                  - dependencies
+                requirement: 0.27.1
+                source:
+                  type: registry
+                  url: https://registry.npmjs.org
+            previous-version: 0.27.1
+            requirements:
+              - file: package.json
+                groups:
+                  - dependencies
+                requirement: 1.4.0
+                source:
+                  type: registry
+                  url: https://registry.npmjs.org
+            version: 1.4.0
+        updated-dependency-files:
+          - content: |
+              {
+                "name": "npm-test",
+                "version": "1.0.0",
+                "description": "",
+                "main": "index.js",
+                "repository": {
+                  "type": "git",
+                  "url": "git+https://github.com/dsp-testing/dependabot-all-updates-test.git"
+                },
+                "author": "",
+                "license": "ISC",
+                "bugs": {
+                  "url": "https://github.com/dsp-testing/dependabot-all-updates-test/issues"
+                },
+                "homepage": "https://github.com/dsp-testing/dependabot-all-updates-test",
+                "dependencies": {
+                  "axios": "1.4.0",
+                  "fetch-factory": "0.0.1",
+                  "lodash": "4.16.6"
+                }
+              }
+            content_encoding: utf-8
+            deleted: false
+            directory: /npm/semver
+            name: package.json
+            operation: update
+            support_file: false
+            type: file
+          - content: |
+              {
+                "name": "npm-test",
+                "version": "1.0.0",
+                "lockfileVersion": 3,
+                "requires": true,
+                "packages": {
+                  "": {
+                    "name": "npm-test",
+                    "version": "1.0.0",
+                    "license": "ISC",
+                    "dependencies": {
+                      "axios": "1.4.0",
+                      "fetch-factory": "0.0.1",
+                      "lodash": "4.16.6"
+                    }
+                  },
+                  "node_modules/asynckit": {
+                    "version": "0.4.0",
+                    "resolved": "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz",
+                    "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
+                  },
+                  "node_modules/axios": {
+                    "version": "1.4.0",
+                    "resolved": "https://registry.npmjs.org/axios/-/axios-1.4.0.tgz",
+                    "integrity": "sha512-S4XCWMEmzvo64T9GfvQDOXgYRDJ/wsSZc7Jvdgx5u1sd0JwsuPLqb3SYmusag+edF6ziyMensPVqLTSc1PiSEA==",
+                    "dependencies": {
+                      "follow-redirects": "^1.15.0",
+                      "form-data": "^4.0.0",
+                      "proxy-from-env": "^1.1.0"
+                    }
+                  },
+                  "node_modules/combined-stream": {
+                    "version": "1.0.8",
+                    "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz",
+                    "integrity": "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==",
+                    "dependencies": {
+                      "delayed-stream": "~1.0.0"
+                    },
+                    "engines": {
+                      "node": ">= 0.8"
+                    }
+                  },
+                  "node_modules/delayed-stream": {
+                    "version": "1.0.0",
+                    "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz",
+                    "integrity": "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==",
+                    "engines": {
+                      "node": ">=0.4.0"
+                    }
+                  },
+                  "node_modules/encoding": {
+                    "version": "0.1.13",
+                    "resolved": "https://registry.npmjs.org/encoding/-/encoding-0.1.13.tgz",
+                    "integrity": "sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==",
+                    "dependencies": {
+                      "iconv-lite": "^0.6.2"
+                    }
+                  },
+                  "node_modules/es6-promise": {
+                    "version": "3.3.1",
+                    "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.3.1.tgz",
+                    "integrity": "sha512-SOp9Phqvqn7jtEUxPWdWfWoLmyt2VaJ6MpvP9Comy1MceMXqE6bxvaTu4iaxpYYPzhny28Lc+M87/c2cPK6lDg=="
+                  },
+                  "node_modules/fetch-factory": {
+                    "version": "0.0.1",
+                    "resolved": "https://registry.npmjs.org/fetch-factory/-/fetch-factory-0.0.1.tgz",
+                    "integrity": "sha512-gexRwqIhwzDJ2pJvL0UYfiZwW06/bdYWxAmswFFts7C87CF8i6liApihTk7TZFYMDcQjvvDIvyHv0q379z0aWA==",
+                    "dependencies": {
+                      "es6-promise": "^3.0.2",
+                      "isomorphic-fetch": "^2.1.1",
+                      "lodash": "^3.10.1"
+                    }
+                  },
+                  "node_modules/fetch-factory/node_modules/lodash": {
+                    "version": "3.10.1",
+                    "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz",
+                    "integrity": "sha512-9mDDwqVIma6OZX79ZlDACZl8sBm0TEnkf99zV3iMA4GzkIT/9hiqP5mY0HoT1iNLCrKc/R1HByV+yJfRWVJryQ=="
+                  },
+                  "node_modules/follow-redirects": {
+                    "version": "1.15.2",
+                    "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz",
+                    "integrity": "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==",
+                    "funding": [
+                      {
+                        "type": "individual",
+                        "url": "https://github.com/sponsors/RubenVerborgh"
+                      }
+                    ],
+                    "engines": {
+                      "node": ">=4.0"
+                    },
+                    "peerDependenciesMeta": {
+                      "debug": {
+                        "optional": true
                       }
                     }
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /npm/semver
-                  name: package-lock.json
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump the not major group in /npm/semver with 2 updates
-            pr-body: |
-                Bumps the not major group in /npm/semver with 2 updates: fetch-factory and [lodash](https://github.com/lodash/lodash).
-
-                Updates `fetch-factory` from 0.0.1 to 0.2.1
-
-                Updates `lodash` from 4.16.6 to 4.17.21
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/lodash/lodash/commit/f299b52f39486275a9e6483b60a410e06520c538"><code>f299b52</code></a> Bump to v4.17.21</li>
-                <li><a href="https://github.com/lodash/lodash/commit/c4847ebe7d14540bb28a8b932a9ce1b9ecbfee1a"><code>c4847eb</code></a> Improve performance of <code>toNumber</code>, <code>trim</code> and <code>trimEnd</code> on large input strings</li>
-                <li><a href="https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c"><code>3469357</code></a> Prevent command injection through <code>_.template</code>'s <code>variable</code> option</li>
-                <li><a href="https://github.com/lodash/lodash/commit/ded9bc66583ed0b4e3b7dc906206d40757b4a90a"><code>ded9bc6</code></a> Bump to v4.17.20.</li>
-                <li><a href="https://github.com/lodash/lodash/commit/63150ef7645ac07961b63a86490f419f356429aa"><code>63150ef</code></a> Documentation fixes.</li>
-                <li><a href="https://github.com/lodash/lodash/commit/00f0f62a979d2f5fa0287c06eae70cf9a62d8794"><code>00f0f62</code></a> test.js: Remove trailing comma.</li>
-                <li><a href="https://github.com/lodash/lodash/commit/846e434c7a5b5692c55ebf5715ed677b70a32389"><code>846e434</code></a> Temporarily use a custom fork of <code>lodash-cli</code>.</li>
-                <li><a href="https://github.com/lodash/lodash/commit/5d046f39cbd27f573914768e3b36eeefcc4f1229"><code>5d046f3</code></a> Re-enable Travis tests on <code>4.17</code> branch.</li>
-                <li><a href="https://github.com/lodash/lodash/commit/aa816b36d402a1ad9385142ce7188f17dae514fd"><code>aa816b3</code></a> Remove <code>/npm-package</code>.</li>
-                <li><a href="https://github.com/lodash/lodash/commit/d7fbc52ee0466a6d248f047b5d5c3e6d1e099056"><code>d7fbc52</code></a> Bump to v4.17.19</li>
-                <li>Additional commits viewable in <a href="https://github.com/lodash/lodash/compare/4.16.6...4.17.21">compare view</a></li>
-                </ul>
-                </details>
-                <details>
-                <summary>Maintainer changes</summary>
-                <p>This version was pushed to npm by <a href="https://www.npmjs.com/~bnjmnt4n">bnjmnt4n</a>, a new releaser for lodash since your current version.</p>
-                </details>
-                <br />
-            commit-message: |-
-                Bump the not major group in /npm/semver with 2 updates
-
-                Bumps the not major group in /npm/semver with 2 updates: fetch-factory and [lodash](https://github.com/lodash/lodash).
-
-
-                Updates `fetch-factory` from 0.0.1 to 0.2.1
-
-                Updates `lodash` from 4.16.6 to 4.17.21
-                - [Release notes](https://github.com/lodash/lodash/releases)
-                - [Commits](https://github.com/lodash/lodash/compare/4.16.6...4.17.21)
-            dependency-group:
-                name: not major
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: deb769e795beb877414bdc5aea2df16d4ff8d4df
-            dependencies:
-                - name: axios
-                  previous-requirements:
-                    - file: package.json
-                      groups:
-                        - dependencies
-                      requirement: 0.27.1
-                      source:
-                        type: registry
-                        url: https://registry.npmjs.org
-                  previous-version: 0.27.1
-                  requirements:
-                    - file: package.json
-                      groups:
-                        - dependencies
-                      requirement: 1.4.0
-                      source:
-                        type: registry
-                        url: https://registry.npmjs.org
-                  version: 1.4.0
-            updated-dependency-files:
-                - content: |
-                    {
-                      "name": "npm-test",
-                      "version": "1.0.0",
-                      "description": "",
-                      "main": "index.js",
-                      "repository": {
-                        "type": "git",
-                        "url": "git+https://github.com/dsp-testing/dependabot-all-updates-test.git"
-                      },
-                      "author": "",
-                      "license": "ISC",
-                      "bugs": {
-                        "url": "https://github.com/dsp-testing/dependabot-all-updates-test/issues"
-                      },
-                      "homepage": "https://github.com/dsp-testing/dependabot-all-updates-test",
-                      "dependencies": {
-                        "axios": "1.4.0",
-                        "fetch-factory": "0.0.1",
-                        "lodash": "4.16.6"
-                      }
+                  },
+                  "node_modules/form-data": {
+                    "version": "4.0.0",
+                    "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz",
+                    "integrity": "sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==",
+                    "dependencies": {
+                      "asynckit": "^0.4.0",
+                      "combined-stream": "^1.0.8",
+                      "mime-types": "^2.1.12"
+                    },
+                    "engines": {
+                      "node": ">= 6"
                     }
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /npm/semver
-                  name: package.json
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    {
-                      "name": "npm-test",
-                      "version": "1.0.0",
-                      "lockfileVersion": 3,
-                      "requires": true,
-                      "packages": {
-                        "": {
-                          "name": "npm-test",
-                          "version": "1.0.0",
-                          "license": "ISC",
-                          "dependencies": {
-                            "axios": "1.4.0",
-                            "fetch-factory": "0.0.1",
-                            "lodash": "4.16.6"
-                          }
-                        },
-                        "node_modules/asynckit": {
-                          "version": "0.4.0",
-                          "resolved": "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz",
-                          "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
-                        },
-                        "node_modules/axios": {
-                          "version": "1.4.0",
-                          "resolved": "https://registry.npmjs.org/axios/-/axios-1.4.0.tgz",
-                          "integrity": "sha512-S4XCWMEmzvo64T9GfvQDOXgYRDJ/wsSZc7Jvdgx5u1sd0JwsuPLqb3SYmusag+edF6ziyMensPVqLTSc1PiSEA==",
-                          "dependencies": {
-                            "follow-redirects": "^1.15.0",
-                            "form-data": "^4.0.0",
-                            "proxy-from-env": "^1.1.0"
-                          }
-                        },
-                        "node_modules/combined-stream": {
-                          "version": "1.0.8",
-                          "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz",
-                          "integrity": "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==",
-                          "dependencies": {
-                            "delayed-stream": "~1.0.0"
-                          },
-                          "engines": {
-                            "node": ">= 0.8"
-                          }
-                        },
-                        "node_modules/delayed-stream": {
-                          "version": "1.0.0",
-                          "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz",
-                          "integrity": "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==",
-                          "engines": {
-                            "node": ">=0.4.0"
-                          }
-                        },
-                        "node_modules/encoding": {
-                          "version": "0.1.13",
-                          "resolved": "https://registry.npmjs.org/encoding/-/encoding-0.1.13.tgz",
-                          "integrity": "sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==",
-                          "dependencies": {
-                            "iconv-lite": "^0.6.2"
-                          }
-                        },
-                        "node_modules/es6-promise": {
-                          "version": "3.3.1",
-                          "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.3.1.tgz",
-                          "integrity": "sha512-SOp9Phqvqn7jtEUxPWdWfWoLmyt2VaJ6MpvP9Comy1MceMXqE6bxvaTu4iaxpYYPzhny28Lc+M87/c2cPK6lDg=="
-                        },
-                        "node_modules/fetch-factory": {
-                          "version": "0.0.1",
-                          "resolved": "https://registry.npmjs.org/fetch-factory/-/fetch-factory-0.0.1.tgz",
-                          "integrity": "sha512-gexRwqIhwzDJ2pJvL0UYfiZwW06/bdYWxAmswFFts7C87CF8i6liApihTk7TZFYMDcQjvvDIvyHv0q379z0aWA==",
-                          "dependencies": {
-                            "es6-promise": "^3.0.2",
-                            "isomorphic-fetch": "^2.1.1",
-                            "lodash": "^3.10.1"
-                          }
-                        },
-                        "node_modules/fetch-factory/node_modules/lodash": {
-                          "version": "3.10.1",
-                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz",
-                          "integrity": "sha512-9mDDwqVIma6OZX79ZlDACZl8sBm0TEnkf99zV3iMA4GzkIT/9hiqP5mY0HoT1iNLCrKc/R1HByV+yJfRWVJryQ=="
-                        },
-                        "node_modules/follow-redirects": {
-                          "version": "1.15.2",
-                          "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz",
-                          "integrity": "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==",
-                          "funding": [
-                            {
-                              "type": "individual",
-                              "url": "https://github.com/sponsors/RubenVerborgh"
-                            }
-                          ],
-                          "engines": {
-                            "node": ">=4.0"
-                          },
-                          "peerDependenciesMeta": {
-                            "debug": {
-                              "optional": true
-                            }
-                          }
-                        },
-                        "node_modules/form-data": {
-                          "version": "4.0.0",
-                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz",
-                          "integrity": "sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==",
-                          "dependencies": {
-                            "asynckit": "^0.4.0",
-                            "combined-stream": "^1.0.8",
-                            "mime-types": "^2.1.12"
-                          },
-                          "engines": {
-                            "node": ">= 6"
-                          }
-                        },
-                        "node_modules/iconv-lite": {
-                          "version": "0.6.3",
-                          "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz",
-                          "integrity": "sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==",
-                          "dependencies": {
-                            "safer-buffer": ">= 2.1.2 < 3.0.0"
-                          },
-                          "engines": {
-                            "node": ">=0.10.0"
-                          }
-                        },
-                        "node_modules/is-stream": {
-                          "version": "1.1.0",
-                          "resolved": "https://registry.npmjs.org/is-stream/-/is-stream-1.1.0.tgz",
-                          "integrity": "sha512-uQPm8kcs47jx38atAcWTVxyltQYoPT68y9aWYdV6yWXSyW8mzSat0TL6CiWdZeCdF3KrAvpVtnHbTv4RN+rqdQ==",
-                          "engines": {
-                            "node": ">=0.10.0"
-                          }
-                        },
-                        "node_modules/isomorphic-fetch": {
-                          "version": "2.2.1",
-                          "resolved": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
-                          "integrity": "sha512-9c4TNAKYXM5PRyVcwUZrF3W09nQ+sO7+jydgs4ZGW9dhsLG2VOlISJABombdQqQRXCwuYG3sYV/puGf5rp0qmA==",
-                          "dependencies": {
-                            "node-fetch": "^1.0.1",
-                            "whatwg-fetch": ">=0.10.0"
-                          }
-                        },
-                        "node_modules/lodash": {
-                          "version": "4.16.6",
-                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.16.6.tgz",
-                          "integrity": "sha512-QXrLkYI2gXjL0QoQ9j932ca+Oh/wCUBeZULjqsJy78KjntrohXawEoOfgA2fXwy4vKh7OTD00p757/pUROtv+w=="
-                        },
-                        "node_modules/mime-db": {
-                          "version": "1.52.0",
-                          "resolved": "https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz",
-                          "integrity": "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==",
-                          "engines": {
-                            "node": ">= 0.6"
-                          }
-                        },
-                        "node_modules/mime-types": {
-                          "version": "2.1.35",
-                          "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz",
-                          "integrity": "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==",
-                          "dependencies": {
-                            "mime-db": "1.52.0"
-                          },
-                          "engines": {
-                            "node": ">= 0.6"
-                          }
-                        },
-                        "node_modules/node-fetch": {
-                          "version": "1.7.3",
-                          "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.7.3.tgz",
-                          "integrity": "sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==",
-                          "dependencies": {
-                            "encoding": "^0.1.11",
-                            "is-stream": "^1.0.1"
-                          }
-                        },
-                        "node_modules/proxy-from-env": {
-                          "version": "1.1.0",
-                          "resolved": "https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-1.1.0.tgz",
-                          "integrity": "sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg=="
-                        },
-                        "node_modules/safer-buffer": {
-                          "version": "2.1.2",
-                          "resolved": "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz",
-                          "integrity": "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg=="
-                        },
-                        "node_modules/whatwg-fetch": {
-                          "version": "3.6.17",
-                          "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-3.6.17.tgz",
-                          "integrity": "sha512-c4ghIvG6th0eudYwKZY5keb81wtFz9/WeAHAoy8+r18kcWlitUIrmGFQ2rWEl4UCKUilD3zCLHOIPheHx5ypRQ=="
-                        }
-                      }
+                  },
+                  "node_modules/iconv-lite": {
+                    "version": "0.6.3",
+                    "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz",
+                    "integrity": "sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==",
+                    "dependencies": {
+                      "safer-buffer": ">= 2.1.2 < 3.0.0"
+                    },
+                    "engines": {
+                      "node": ">=0.10.0"
                     }
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /npm/semver
-                  name: package-lock.json
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump axios from 0.27.1 to 1.4.0 in /npm/semver
-            pr-body: |
-                Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.4.0.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/axios/axios/releases">axios's releases</a>.</em></p>
-                <blockquote>
-                <h2>Release v1.4.0</h2>
-                <h2>Release notes:</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href="https://redirect.github.com/axios/axios/issues/5678">#5678</a>) (<a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1">bbb61e7</a>)</li>
-                <li><strong>package:</strong> export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>) (<a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09">df38c94</a>)</li>
-                </ul>
-                <h3>Features</h3>
-                <ul>
-                <li><strong>dns:</strong> added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>) (<a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb">2701911</a>)</li>
-                <li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>) (<a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf">726f1c8</a>)</li>
-                </ul>
-                <h3>Performance Improvements</h3>
-                <ul>
-                <li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href="https://redirect.github.com/axios/axios/issues/5679">#5679</a>) (<a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e">e6f7053</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/arthurfiorette" title="+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )">Arthur Fiorette</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/npiyush97" title="+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )">PIYUSH NEGI</a></li>
-                </ul>
-                <h2>Release v1.3.6</h2>
-                <h2>Release notes:</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href="https://redirect.github.com/axios/axios/issues/5445">#5445</a>) (<a href="https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2">6f360a2</a>)</li>
-                <li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href="https://redirect.github.com/axios/axios/issues/5661">#5661</a>) (<a href="https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76">aa372f7</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/Cadienvan" title="+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )">Michael Di Prisco</a></li>
-                </ul>
-                <h2>Release v1.3.5</h2>
-                <h2>Release notes:</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>headers:</strong> fixed isValidHeaderName to support full list of allowed characters; (<a href="https://redirect.github.com/axios/axios/issues/5584">#5584</a>) (<a href="https://github.com/axios/axios/commit/e7decef6a99f4627e27ed9ea5b00ce8e201c3841">e7decef</a>)</li>
-                <li><strong>params:</strong> re-added the ability to set the function as <code>paramsSerializer</code> config; (<a href="https://redirect.github.com/axios/axios/issues/5633">#5633</a>) (<a href="https://github.com/axios/axios/commit/a56c8661209d5ce5a645a05f294a0e08a6c1f6b3">a56c866</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+28/-10 ([#5633](https://github.com/axios/axios/issues/5633) [#5584](https://github.com/axios/axios/issues/5584) )">Dmitriy Mozgovoy</a></li>
-                </ul>
-                <h2>Release v1.3.4</h2>
-                <h2>Release notes:</h2>
-                <h3>Bug Fixes</h3>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/axios/axios/blob/v1.x/CHANGELOG.md">axios's changelog</a>.</em></p>
-                <blockquote>
-                <h1><a href="https://github.com/axios/axios/compare/v1.3.6...v1.4.0">1.4.0</a> (2023-04-27)</h1>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href="https://redirect.github.com/axios/axios/issues/5678">#5678</a>) (<a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1">bbb61e7</a>)</li>
-                <li><strong>package:</strong> export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>) (<a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09">df38c94</a>)</li>
-                </ul>
-                <h3>Features</h3>
-                <ul>
-                <li><strong>dns:</strong> added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>) (<a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb">2701911</a>)</li>
-                <li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>) (<a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf">726f1c8</a>)</li>
-                </ul>
-                <h3>Performance Improvements</h3>
-                <ul>
-                <li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href="https://redirect.github.com/axios/axios/issues/5679">#5679</a>) (<a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e">e6f7053</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/arthurfiorette" title="+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )">Arthur Fiorette</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/npiyush97" title="+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )">PIYUSH NEGI</a></li>
-                </ul>
-                <h2><a href="https://github.com/axios/axios/compare/v1.3.5...v1.3.6">1.3.6</a> (2023-04-19)</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href="https://redirect.github.com/axios/axios/issues/5445">#5445</a>) (<a href="https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2">6f360a2</a>)</li>
-                <li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href="https://redirect.github.com/axios/axios/issues/5661">#5661</a>) (<a href="https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76">aa372f7</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/Cadienvan" title="+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )">Michael Di Prisco</a></li>
-                </ul>
-                <h2><a href="https://github.com/axios/axios/compare/v1.3.4...v1.3.5">1.3.5</a> (2023-04-05)</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>headers:</strong> fixed isValidHeaderName to support full list of allowed characters; (<a href="https://redirect.github.com/axios/axios/issues/5584">#5584</a>) (<a href="https://github.com/axios/axios/commit/e7decef6a99f4627e27ed9ea5b00ce8e201c3841">e7decef</a>)</li>
-                <li><strong>params:</strong> re-added the ability to set the function as <code>paramsSerializer</code> config; (<a href="https://redirect.github.com/axios/axios/issues/5633">#5633</a>) (<a href="https://github.com/axios/axios/commit/a56c8661209d5ce5a645a05f294a0e08a6c1f6b3">a56c866</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+28/-10 ([#5633](https://github.com/axios/axios/issues/5633) [#5584](https://github.com/axios/axios/issues/5584) )">Dmitriy Mozgovoy</a></li>
-                </ul>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/axios/axios/commit/21a5ad34c4a5956d81d338059ac0dd34a19ed094"><code>21a5ad3</code></a> chore(release): v1.4.0 (<a href="https://redirect.github.com/axios/axios/issues/5683">#5683</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/d627610d0c427de57c10618b36fa97814e2a75f0"><code>d627610</code></a> chore(utils): refactored isAsyncFn util to avoid inlining additional Babel he...</li>
-                <li><a href="https://github.com/axios/axios/commit/e18fdd893dfc67630c33fb6744d1b99d72857d92"><code>e18fdd8</code></a> refactor: remove deprecated url-search-params polyfill for URLSearchParams (#...</li>
-                <li><a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf"><code>726f1c8</code></a> feat(types): export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb"><code>2701911</code></a> feat(dns): added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e"><code>e6f7053</code></a> perf(merge-config): optimize mergeConfig performance by avoiding duplicate ke...</li>
-                <li><a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1"><code>bbb61e7</code></a> fix(formdata): add <code>multipart/form-data</code> content type for FormData payload on...</li>
-                <li><a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09"><code>df38c94</code></a> fix(package): export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/59eb99183546d822bc27e881f5dcd748daa04173"><code>59eb991</code></a> chore(release): v1.3.6 (<a href="https://redirect.github.com/axios/axios/issues/5666">#5666</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/1b8cc3b02b13f5d16ad988460edbda463113177e"><code>1b8cc3b</code></a> chore(template): improve issue template; (<a href="https://redirect.github.com/axios/axios/issues/5665">#5665</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/axios/axios/compare/v0.27.1...v1.4.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump axios from 0.27.1 to 1.4.0 in /npm/semver
+                  },
+                  "node_modules/is-stream": {
+                    "version": "1.1.0",
+                    "resolved": "https://registry.npmjs.org/is-stream/-/is-stream-1.1.0.tgz",
+                    "integrity": "sha512-uQPm8kcs47jx38atAcWTVxyltQYoPT68y9aWYdV6yWXSyW8mzSat0TL6CiWdZeCdF3KrAvpVtnHbTv4RN+rqdQ==",
+                    "engines": {
+                      "node": ">=0.10.0"
+                    }
+                  },
+                  "node_modules/isomorphic-fetch": {
+                    "version": "2.2.1",
+                    "resolved": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
+                    "integrity": "sha512-9c4TNAKYXM5PRyVcwUZrF3W09nQ+sO7+jydgs4ZGW9dhsLG2VOlISJABombdQqQRXCwuYG3sYV/puGf5rp0qmA==",
+                    "dependencies": {
+                      "node-fetch": "^1.0.1",
+                      "whatwg-fetch": ">=0.10.0"
+                    }
+                  },
+                  "node_modules/lodash": {
+                    "version": "4.16.6",
+                    "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.16.6.tgz",
+                    "integrity": "sha512-QXrLkYI2gXjL0QoQ9j932ca+Oh/wCUBeZULjqsJy78KjntrohXawEoOfgA2fXwy4vKh7OTD00p757/pUROtv+w=="
+                  },
+                  "node_modules/mime-db": {
+                    "version": "1.52.0",
+                    "resolved": "https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz",
+                    "integrity": "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==",
+                    "engines": {
+                      "node": ">= 0.6"
+                    }
+                  },
+                  "node_modules/mime-types": {
+                    "version": "2.1.35",
+                    "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz",
+                    "integrity": "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==",
+                    "dependencies": {
+                      "mime-db": "1.52.0"
+                    },
+                    "engines": {
+                      "node": ">= 0.6"
+                    }
+                  },
+                  "node_modules/node-fetch": {
+                    "version": "1.7.3",
+                    "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.7.3.tgz",
+                    "integrity": "sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==",
+                    "dependencies": {
+                      "encoding": "^0.1.11",
+                      "is-stream": "^1.0.1"
+                    }
+                  },
+                  "node_modules/proxy-from-env": {
+                    "version": "1.1.0",
+                    "resolved": "https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-1.1.0.tgz",
+                    "integrity": "sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg=="
+                  },
+                  "node_modules/safer-buffer": {
+                    "version": "2.1.2",
+                    "resolved": "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz",
+                    "integrity": "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg=="
+                  },
+                  "node_modules/whatwg-fetch": {
+                    "version": "3.6.17",
+                    "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-3.6.17.tgz",
+                    "integrity": "sha512-c4ghIvG6th0eudYwKZY5keb81wtFz9/WeAHAoy8+r18kcWlitUIrmGFQ2rWEl4UCKUilD3zCLHOIPheHx5ypRQ=="
+                  }
+                }
+              }
+            content_encoding: utf-8
+            deleted: false
+            directory: /npm/semver
+            name: package-lock.json
+            operation: update
+            support_file: false
+            type: file
+        pr-title: Bump axios from 0.27.1 to 1.4.0 in /npm/semver
+        pr-body: |
+          Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.4.0.
+          <details>
+          <summary>Release notes</summary>
+          <p><em>Sourced from <a href="https://github.com/axios/axios/releases">axios's releases</a>.</em></p>
+          <blockquote>
+          <h2>Release v1.4.0</h2>
+          <h2>Release notes:</h2>
+          <h3>Bug Fixes</h3>
+          <ul>
+          <li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href="https://redirect.github.com/axios/axios/issues/5678">#5678</a>) (<a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1">bbb61e7</a>)</li>
+          <li><strong>package:</strong> export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>) (<a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09">df38c94</a>)</li>
+          </ul>
+          <h3>Features</h3>
+          <ul>
+          <li><strong>dns:</strong> added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>) (<a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb">2701911</a>)</li>
+          <li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>) (<a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf">726f1c8</a>)</li>
+          </ul>
+          <h3>Performance Improvements</h3>
+          <ul>
+          <li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href="https://redirect.github.com/axios/axios/issues/5679">#5679</a>) (<a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e">e6f7053</a>)</li>
+          </ul>
+          <h3>Contributors to this release</h3>
+          <ul>
+          <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )">Dmitriy Mozgovoy</a></li>
+          <li><!-- raw HTML omitted --> <a href="https://github.com/arthurfiorette" title="+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )">Arthur Fiorette</a></li>
+          <li><!-- raw HTML omitted --> <a href="https://github.com/npiyush97" title="+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )">PIYUSH NEGI</a></li>
+          </ul>
+          <h2>Release v1.3.6</h2>
+          <h2>Release notes:</h2>
+          <h3>Bug Fixes</h3>
+          <ul>
+          <li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href="https://redirect.github.com/axios/axios/issues/5445">#5445</a>) (<a href="https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2">6f360a2</a>)</li>
+          <li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href="https://redirect.github.com/axios/axios/issues/5661">#5661</a>) (<a href="https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76">aa372f7</a>)</li>
+          </ul>
+          <h3>Contributors to this release</h3>
+          <ul>
+          <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )">Dmitriy Mozgovoy</a></li>
+          <li><!-- raw HTML omitted --> <a href="https://github.com/Cadienvan" title="+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )">Michael Di Prisco</a></li>
+          </ul>
+          <h2>Release v1.3.5</h2>
+          <h2>Release notes:</h2>
+          <h3>Bug Fixes</h3>
+          <ul>
+          <li><strong>headers:</strong> fixed isValidHeaderName to support full list of allowed characters; (<a href="https://redirect.github.com/axios/axios/issues/5584">#5584</a>) (<a href="https://github.com/axios/axios/commit/e7decef6a99f4627e27ed9ea5b00ce8e201c3841">e7decef</a>)</li>
+          <li><strong>params:</strong> re-added the ability to set the function as <code>paramsSerializer</code> config; (<a href="https://redirect.github.com/axios/axios/issues/5633">#5633</a>) (<a href="https://github.com/axios/axios/commit/a56c8661209d5ce5a645a05f294a0e08a6c1f6b3">a56c866</a>)</li>
+          </ul>
+          <h3>Contributors to this release</h3>
+          <ul>
+          <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+28/-10 ([#5633](https://github.com/axios/axios/issues/5633) [#5584](https://github.com/axios/axios/issues/5584) )">Dmitriy Mozgovoy</a></li>
+          </ul>
+          <h2>Release v1.3.4</h2>
+          <h2>Release notes:</h2>
+          <h3>Bug Fixes</h3>
+          <!-- raw HTML omitted -->
+          </blockquote>
+          <p>... (truncated)</p>
+          </details>
+          <details>
+          <summary>Changelog</summary>
+          <p><em>Sourced from <a href="https://github.com/axios/axios/blob/v1.x/CHANGELOG.md">axios's changelog</a>.</em></p>
+          <blockquote>
+          <h1><a href="https://github.com/axios/axios/compare/v1.3.6...v1.4.0">1.4.0</a> (2023-04-27)</h1>
+          <h3>Bug Fixes</h3>
+          <ul>
+          <li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href="https://redirect.github.com/axios/axios/issues/5678">#5678</a>) (<a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1">bbb61e7</a>)</li>
+          <li><strong>package:</strong> export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>) (<a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09">df38c94</a>)</li>
+          </ul>
+          <h3>Features</h3>
+          <ul>
+          <li><strong>dns:</strong> added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>) (<a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb">2701911</a>)</li>
+          <li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>) (<a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf">726f1c8</a>)</li>
+          </ul>
+          <h3>Performance Improvements</h3>
+          <ul>
+          <li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href="https://redirect.github.com/axios/axios/issues/5679">#5679</a>) (<a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e">e6f7053</a>)</li>
+          </ul>
+          <h3>Contributors to this release</h3>
+          <ul>
+          <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )">Dmitriy Mozgovoy</a></li>
+          <li><!-- raw HTML omitted --> <a href="https://github.com/arthurfiorette" title="+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )">Arthur Fiorette</a></li>
+          <li><!-- raw HTML omitted --> <a href="https://github.com/npiyush97" title="+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )">PIYUSH NEGI</a></li>
+          </ul>
+          <h2><a href="https://github.com/axios/axios/compare/v1.3.5...v1.3.6">1.3.6</a> (2023-04-19)</h2>
+          <h3>Bug Fixes</h3>
+          <ul>
+          <li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href="https://redirect.github.com/axios/axios/issues/5445">#5445</a>) (<a href="https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2">6f360a2</a>)</li>
+          <li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href="https://redirect.github.com/axios/axios/issues/5661">#5661</a>) (<a href="https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76">aa372f7</a>)</li>
+          </ul>
+          <h3>Contributors to this release</h3>
+          <ul>
+          <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )">Dmitriy Mozgovoy</a></li>
+          <li><!-- raw HTML omitted --> <a href="https://github.com/Cadienvan" title="+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )">Michael Di Prisco</a></li>
+          </ul>
+          <h2><a href="https://github.com/axios/axios/compare/v1.3.4...v1.3.5">1.3.5</a> (2023-04-05)</h2>
+          <h3>Bug Fixes</h3>
+          <ul>
+          <li><strong>headers:</strong> fixed isValidHeaderName to support full list of allowed characters; (<a href="https://redirect.github.com/axios/axios/issues/5584">#5584</a>) (<a href="https://github.com/axios/axios/commit/e7decef6a99f4627e27ed9ea5b00ce8e201c3841">e7decef</a>)</li>
+          <li><strong>params:</strong> re-added the ability to set the function as <code>paramsSerializer</code> config; (<a href="https://redirect.github.com/axios/axios/issues/5633">#5633</a>) (<a href="https://github.com/axios/axios/commit/a56c8661209d5ce5a645a05f294a0e08a6c1f6b3">a56c866</a>)</li>
+          </ul>
+          <h3>Contributors to this release</h3>
+          <ul>
+          <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+28/-10 ([#5633](https://github.com/axios/axios/issues/5633) [#5584](https://github.com/axios/axios/issues/5584) )">Dmitriy Mozgovoy</a></li>
+          </ul>
+          <!-- raw HTML omitted -->
+          </blockquote>
+          <p>... (truncated)</p>
+          </details>
+          <details>
+          <summary>Commits</summary>
+          <ul>
+          <li><a href="https://github.com/axios/axios/commit/21a5ad34c4a5956d81d338059ac0dd34a19ed094"><code>21a5ad3</code></a> chore(release): v1.4.0 (<a href="https://redirect.github.com/axios/axios/issues/5683">#5683</a>)</li>
+          <li><a href="https://github.com/axios/axios/commit/d627610d0c427de57c10618b36fa97814e2a75f0"><code>d627610</code></a> chore(utils): refactored isAsyncFn util to avoid inlining additional Babel he...</li>
+          <li><a href="https://github.com/axios/axios/commit/e18fdd893dfc67630c33fb6744d1b99d72857d92"><code>e18fdd8</code></a> refactor: remove deprecated url-search-params polyfill for URLSearchParams (#...</li>
+          <li><a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf"><code>726f1c8</code></a> feat(types): export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>)</li>
+          <li><a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb"><code>2701911</code></a> feat(dns): added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>)</li>
+          <li><a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e"><code>e6f7053</code></a> perf(merge-config): optimize mergeConfig performance by avoiding duplicate ke...</li>
+          <li><a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1"><code>bbb61e7</code></a> fix(formdata): add <code>multipart/form-data</code> content type for FormData payload on...</li>
+          <li><a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09"><code>df38c94</code></a> fix(package): export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>)</li>
+          <li><a href="https://github.com/axios/axios/commit/59eb99183546d822bc27e881f5dcd748daa04173"><code>59eb991</code></a> chore(release): v1.3.6 (<a href="https://redirect.github.com/axios/axios/issues/5666">#5666</a>)</li>
+          <li><a href="https://github.com/axios/axios/commit/1b8cc3b02b13f5d16ad988460edbda463113177e"><code>1b8cc3b</code></a> chore(template): improve issue template; (<a href="https://redirect.github.com/axios/axios/issues/5665">#5665</a>)</li>
+          <li>Additional commits viewable in <a href="https://github.com/axios/axios/compare/v0.27.1...v1.4.0">compare view</a></li>
+          </ul>
+          </details>
+          <br />
+        commit-message: |-
+          Bump axios from 0.27.1 to 1.4.0 in /npm/semver
 
-                Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.4.0.
-                - [Release notes](https://github.com/axios/axios/releases)
-                - [Changelog](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
-                - [Commits](https://github.com/axios/axios/compare/v0.27.1...v1.4.0)
-    - type: mark_as_processed
-      expect:
-        data:
-            base-commit-sha: deb769e795beb877414bdc5aea2df16d4ff8d4df
+          Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.4.0.
+          - [Release notes](https://github.com/axios/axios/releases)
+          - [Changelog](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
+          - [Commits](https://github.com/axios/axios/compare/v0.27.1...v1.4.0)
+  - type: mark_as_processed
+    expect:
+      data:
+        base-commit-sha: deb769e795beb877414bdc5aea2df16d4ff8d4df
