@@ -1,288 +1,288 @@
 input:
-    job:
-        package-manager: maven
-        allowed-updates:
-            - update-type: all
-        ignore-conditions:
-            - dependency-name: org.springframework.boot:spring-boot-starter-parent
-              source: tests/smoke-maven.yaml
-              version-requirement: '>2.7.2'
-        source:
-            provider: github
-            repo: dependabot/smoke-tests
-            directory: /
-            commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
-        credentials-metadata:
-            - host: github.com
-              type: git_source
-    credentials:
-        - host: github.com
-          password: $LOCAL_GITHUB_ACCESS_TOKEN
-          type: git_source
-          username: x-access-token
+  job:
+    package-manager: maven
+    allowed-updates:
+      - update-type: all
+    ignore-conditions:
+      - dependency-name: org.springframework.boot:spring-boot-starter-parent
+        source: tests/smoke-maven.yaml
+        version-requirement: ">2.7.2"
+    source:
+      provider: github
+      repo: dependabot/smoke-tests
+      directory: /
+      commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+    credentials-metadata:
+      - host: github.com
+        type: git_source
+  credentials:
+    - host: github.com
+      password: $LOCAL_GITHUB_ACCESS_TOKEN
+      type: git_source
+      username: x-access-token
 output:
-    - type: update_dependency_list
-      expect:
-        data:
-            dependencies:
-                - name: org.springframework.boot:spring-boot-starter-parent
-                  requirements:
-                    - file: pom.xml
-                      groups: []
-                      metadata:
-                        packaging_type: pom
-                      requirement: 1.5.9.RELEASE
-                      source: null
-                  version: 1.5.9.RELEASE
-                - name: org.springframework.boot:spring-boot-starter-web
-                  requirements:
-                    - file: pom.xml
-                      groups: []
-                      metadata:
-                        packaging_type: jar
-                      requirement: null
-                      source: null
-                  version: null
-                - name: mysql:mysql-connector-java
-                  requirements:
-                    - file: pom.xml
-                      groups: []
-                      metadata:
-                        packaging_type: jar
-                      requirement: null
-                      source: null
-                  version: null
-                - name: org.hibernate:hibernate-java8
-                  requirements:
-                    - file: pom.xml
-                      groups: []
-                      metadata:
-                        packaging_type: jar
-                      requirement: null
-                      source: null
-                  version: null
-                - name: org.springframework.boot:spring-boot-starter-data-jpa
-                  requirements:
-                    - file: pom.xml
-                      groups: []
-                      metadata:
-                        packaging_type: jar
-                      requirement: null
-                      source: null
-                  version: null
-                - name: org.springframework.boot:spring-boot-starter-test
-                  requirements:
-                    - file: pom.xml
-                      groups:
-                        - test
-                      metadata:
-                        packaging_type: jar
-                      requirement: null
-                      source: null
-                  version: null
-                - name: org.springframework.boot:spring-boot-starter-actuator
-                  requirements:
-                    - file: pom.xml
-                      groups: []
-                      metadata:
-                        packaging_type: jar
-                      requirement: null
-                      source: null
-                  version: null
-                - name: org.springframework.boot:spring-boot-configuration-processor
-                  requirements:
-                    - file: pom.xml
-                      groups: []
-                      metadata:
-                        packaging_type: jar
-                      requirement: null
-                      source: null
-                  version: null
-            dependency_files:
-                - /pom.xml
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
-            dependencies:
-                - name: org.springframework.boot:spring-boot-starter-parent
-                  previous-requirements:
-                    - file: pom.xml
-                      groups: []
-                      metadata:
-                        packaging_type: pom
-                      requirement: 1.5.9.RELEASE
-                      source: null
-                  previous-version: 1.5.9.RELEASE
-                  requirements:
-                    - file: pom.xml
-                      groups: []
-                      metadata:
-                        packaging_type: pom
-                      requirement: 2.7.2
-                      source:
-                        type: maven_repo
-                        url: https://repo.maven.apache.org/maven2
-                  version: 2.7.2
-            updated-dependency-files:
-                - content: |
-                    <?xml version="1.0" encoding="UTF-8"?>
-                    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                             xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-                      <modelVersion>4.0.0</modelVersion>
+  - type: update_dependency_list
+    expect:
+      data:
+        dependencies:
+          - name: org.springframework.boot:spring-boot-starter-parent
+            requirements:
+              - file: pom.xml
+                groups: []
+                metadata:
+                  packaging_type: pom
+                requirement: 1.5.9.RELEASE
+                source: null
+            version: 1.5.9.RELEASE
+          - name: org.springframework.boot:spring-boot-starter-web
+            requirements:
+              - file: pom.xml
+                groups: []
+                metadata:
+                  packaging_type: jar
+                requirement: null
+                source: null
+            version: null
+          - name: mysql:mysql-connector-java
+            requirements:
+              - file: pom.xml
+                groups: []
+                metadata:
+                  packaging_type: jar
+                requirement: null
+                source: null
+            version: null
+          - name: org.hibernate:hibernate-java8
+            requirements:
+              - file: pom.xml
+                groups: []
+                metadata:
+                  packaging_type: jar
+                requirement: null
+                source: null
+            version: null
+          - name: org.springframework.boot:spring-boot-starter-data-jpa
+            requirements:
+              - file: pom.xml
+                groups: []
+                metadata:
+                  packaging_type: jar
+                requirement: null
+                source: null
+            version: null
+          - name: org.springframework.boot:spring-boot-starter-test
+            requirements:
+              - file: pom.xml
+                groups:
+                  - test
+                metadata:
+                  packaging_type: jar
+                requirement: null
+                source: null
+            version: null
+          - name: org.springframework.boot:spring-boot-starter-actuator
+            requirements:
+              - file: pom.xml
+                groups: []
+                metadata:
+                  packaging_type: jar
+                requirement: null
+                source: null
+            version: null
+          - name: org.springframework.boot:spring-boot-configuration-processor
+            requirements:
+              - file: pom.xml
+                groups: []
+                metadata:
+                  packaging_type: jar
+                requirement: null
+                source: null
+            version: null
+        dependency_files:
+          - /pom.xml
+  - type: create_pull_request
+    expect:
+      data:
+        base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+        dependencies:
+          - name: org.springframework.boot:spring-boot-starter-parent
+            previous-requirements:
+              - file: pom.xml
+                groups: []
+                metadata:
+                  packaging_type: pom
+                requirement: 1.5.9.RELEASE
+                source: null
+            previous-version: 1.5.9.RELEASE
+            requirements:
+              - file: pom.xml
+                groups: []
+                metadata:
+                  packaging_type: pom
+                requirement: 2.7.2
+                source:
+                  type: maven_repo
+                  url: https://repo.maven.apache.org/maven2
+            version: 2.7.2
+        updated-dependency-files:
+          - content: |
+              <?xml version="1.0" encoding="UTF-8"?>
+              <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                       xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+                <modelVersion>4.0.0</modelVersion>
 
-                      <groupId>com.dependabot</groupId>
-                      <artifactId>pom-with-parent</artifactId>
-                      <version>0.0.1-RELEASE</version>
-                      <name>Dependabot POM that inherits from parent POM</name>
-                      <packaging>jar</packaging>
+                <groupId>com.dependabot</groupId>
+                <artifactId>pom-with-parent</artifactId>
+                <version>0.0.1-RELEASE</version>
+                <name>Dependabot POM that inherits from parent POM</name>
+                <packaging>jar</packaging>
 
-                      <parent>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-starter-parent</artifactId>
-                        <version>2.7.2</version>
-                        <relativePath /> <!-- lookup parent from repository -->
-                      </parent>
+                <parent>
+                  <groupId>org.springframework.boot</groupId>
+                  <artifactId>spring-boot-starter-parent</artifactId>
+                  <version>2.7.2</version>
+                  <relativePath /> <!-- lookup parent from repository -->
+                </parent>
 
-                      <properties>
-                        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-                        <java.version>1.8</java.version>
-                      </properties>
+                <properties>
+                  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                  <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+                  <java.version>1.8</java.version>
+                </properties>
 
-                      <dependencies>
-                        <!-- Web -->
-                        <dependency>
-                          <groupId>org.springframework.boot</groupId>
-                          <artifactId>spring-boot-starter-web</artifactId>
-                        </dependency>
+                <dependencies>
+                  <!-- Web -->
+                  <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                  </dependency>
 
-                        <!-- Persistence -->
-                        <dependency>
-                          <groupId>mysql</groupId>
-                          <artifactId>mysql-connector-java</artifactId>
-                        </dependency>
-                        <dependency>
-                          <groupId>org.hibernate</groupId>
-                          <artifactId>hibernate-java8</artifactId>
-                        </dependency>
-                        <dependency>
-                          <groupId>org.springframework.boot</groupId>
-                          <artifactId>spring-boot-starter-data-jpa</artifactId>
-                        </dependency>
+                  <!-- Persistence -->
+                  <dependency>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                  </dependency>
+                  <dependency>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-java8</artifactId>
+                  </dependency>
+                  <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-data-jpa</artifactId>
+                  </dependency>
 
-                        <!-- Test -->
-                        <dependency>
-                          <groupId>org.springframework.boot</groupId>
-                          <artifactId>spring-boot-starter-test</artifactId>
-                          <scope>test</scope>
-                        </dependency>
+                  <!-- Test -->
+                  <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-test</artifactId>
+                    <scope>test</scope>
+                  </dependency>
 
-                        <!-- Ops -->
-                        <dependency>
-                          <groupId>org.springframework.boot</groupId>
-                          <artifactId>spring-boot-starter-actuator</artifactId>
-                        </dependency>
+                  <!-- Ops -->
+                  <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-actuator</artifactId>
+                  </dependency>
 
-                        <dependency>
-                          <groupId>org.springframework.boot</groupId>
-                          <artifactId>spring-boot-configuration-processor</artifactId>
-                          <optional>true</optional>
-                        </dependency>
-                      </dependencies>
-                    </project>
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /
-                  name: pom.xml
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump org.springframework.boot:spring-boot-starter-parent from 1.5.9.RELEASE to 2.7.2
-            pr-body: |
-                Bumps [org.springframework.boot:spring-boot-starter-parent](https://github.com/spring-projects/spring-boot) from 1.5.9.RELEASE to 2.7.2.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/spring-projects/spring-boot/releases">org.springframework.boot:spring-boot-starter-parent's releases</a>.</em></p>
-                <blockquote>
-                <h2>v2.7.2</h2>
-                <h2>:lady_beetle: Bug Fixes</h2>
-                <ul>
-                <li>Publishing a docker image to a private registry fails without authentication <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31824">#31824</a></li>
-                <li>In a non-reactive application, health indicators in a parent context are not found <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31818">#31818</a></li>
-                <li>Dependency management for Derby is incomplete <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31814">#31814</a></li>
-                <li>ApplicationPid doesn't log a warning if it takes a long time to return <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31810">#31810</a></li>
-                <li>A router function with attributes causes /actuator/mappings to return a 500 response due to an UnsupportedOperationException <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31806">#31806</a></li>
-                <li>InstanceAlreadyExistsException when using Actuator with multiple context and JMX enabled <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31804">#31804</a></li>
-                <li>Using 'ImportAutoConfigurationImportSelector' in the jar package loaded by a custom class loader throws ClassNotFoundException <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31801">#31801</a></li>
-                <li>GraphQL auto-configuration does not configure the GrapQlSource with SubscriptionExceptionResolver beans <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31794">#31794</a></li>
-                <li>Trailing whitespace in the value of a property is hard to identify in failure analysis descriptions <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31780">#31780</a></li>
-                <li>Log4j2's shutdown hook is not disabled when using Log4j 2.18 or later <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31732">#31732</a></li>
-                <li>HTTP Server and Data repositories metrics record null for the description <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31706">#31706</a></li>
-                <li>Deprecation hint for spring.data.mongodb.grid-fs-database is located in the wrong section <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31690">#31690</a></li>
-                <li>Image building fails with latest Paketo base builder and additional buildpacks configured <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31558">#31558</a></li>
-                <li>Tomcat fails to start when PEM files are used and key-store-password is not specified <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31253">#31253</a></li>
-                </ul>
-                <h2>:notebook_with_decorative_cover: Documentation</h2>
-                <ul>
-                <li>Clarify how docker image publishing registry is determined  <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31826">#31826</a></li>
-                <li>Fix typo in &quot;HTTP and WebSocket&quot; section of GraphQL documentation <a href="https://redirect.github.com/spring-projects/spring-boot/pull/31518">#31518</a></li>
-                </ul>
-                <h2>:hammer: Dependency Upgrades</h2>
-                <ul>
-                <li>Upgrade to AppEngine SDK 1.9.98 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31790">#31790</a></li>
-                <li>Upgrade to Byte Buddy 1.12.12 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31735">#31735</a></li>
-                <li>Upgrade to Couchbase Client 3.3.2 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31736">#31736</a></li>
-                <li>Upgrade to Dependency Management Plugin 1.0.12.RELEASE <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31556">#31556</a></li>
-                <li>Upgrade to Embedded Mongo 3.4.7 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31830">#31830</a></li>
-                <li>Upgrade to GraphQL Java 18.2  <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31812">#31812</a></li>
-                <li>Upgrade to Hibernate 5.6.10.Final <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31738">#31738</a></li>
-                <li>Upgrade to HttpCore5 5.1.4 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31739">#31739</a></li>
-                <li>Upgrade to Jetty Reactive HTTPClient 1.1.12 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31740">#31740</a></li>
-                <li>Upgrade to JsonAssert 1.5.1 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31741">#31741</a></li>
-                <li>Upgrade to Kotlin Coroutines 1.6.4 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31742">#31742</a></li>
-                <li>Upgrade to Lettuce 6.1.9.RELEASE <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31743">#31743</a></li>
-                <li>Upgrade to MariaDB 3.0.6 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31744">#31744</a></li>
-                <li>Upgrade to Micrometer 1.9.2 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31614">#31614</a></li>
-                <li>Upgrade to Neo4j Java Driver 4.4.9 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31745">#31745</a></li>
-                <li>Upgrade to Netty 4.1.79.Final <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31746">#31746</a></li>
-                <li>Upgrade to Reactor 2020.0.21 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31608">#31608</a></li>
-                <li>Upgrade to SendGrid 4.9.3 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31747">#31747</a></li>
-                <li>Upgrade to Spring Data 2021.2.2 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31615">#31615</a></li>
-                <li>Upgrade to Spring Framework 5.3.22 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31613">#31613</a></li>
-                <li>Upgrade to Spring GraphQL 1.0.1 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31616">#31616</a></li>
-                <li>Upgrade to Spring Integration 5.5.14 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31800">#31800</a></li>
-                <li>Upgrade to Spring Kafka 2.8.8 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31786">#31786</a></li>
-                <li>Upgrade to Tomcat 9.0.65 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31831">#31831</a></li>
-                </ul>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/6f89aca00c3aec6f9587eb3807270c4854bddbd7"><code>6f89aca</code></a> Release v2.7.2</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/16f63afd0b63b6cb9a0f830e7b17bcf315603d3a"><code>16f63af</code></a> Merge branch '2.6.x' into 2.7.x</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/c8e44372b22b250c15713e794806f1b23432f2c1"><code>c8e4437</code></a> Upgrade to Tomcat 9.0.65</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/aa93b2153adc7a280e0a440390e56ecf711ccd2c"><code>aa93b21</code></a> Upgrade to Embedded Mongo 3.4.7</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/07f332ad96f60d52cd609585d74a517f123dc6f9"><code>07f332a</code></a> Upgrade to Tomcat 9.0.65</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/9da38c8d2d7ea503b7547f9cecde312a30953011"><code>9da38c8</code></a> Merge branch '2.6.x' into 2.7.x</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/4e0b3aad9f8e5aee286c08cb7412818a409ec988"><code>4e0b3aa</code></a> Clarify how docker image publishing registry is determined</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/f9cf31e59e77f49a54b64ea842760ce5a3a1691d"><code>f9cf31e</code></a> Fix compile errors</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/09c7ce6dabe9bc67c30fc0af13c6f78ac3162a1e"><code>09c7ce6</code></a> Merge branch '2.6.x' into 2.7.x</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/a7dfeae09cb01a02c1f67f21e234347814b6cb12"><code>a7dfeae</code></a> Merge branch '<a href="https://redirect.github.com/spring-projects/spring-boot/issues/28844">gh-28844</a>' into 2.6.x</li>
-                <li>Additional commits viewable in <a href="https://github.com/spring-projects/spring-boot/compare/v1.5.9.RELEASE...v2.7.2">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump org.springframework.boot:spring-boot-starter-parent
+                  <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-configuration-processor</artifactId>
+                    <optional>true</optional>
+                  </dependency>
+                </dependencies>
+              </project>
+            content_encoding: utf-8
+            deleted: false
+            directory: /
+            name: pom.xml
+            operation: update
+            support_file: false
+            type: file
+        pr-title: Bump org.springframework.boot:spring-boot-starter-parent from 1.5.9.RELEASE to 2.7.2
+        pr-body: |
+          Bumps [org.springframework.boot:spring-boot-starter-parent](https://github.com/spring-projects/spring-boot) from 1.5.9.RELEASE to 2.7.2.
+          <details>
+          <summary>Release notes</summary>
+          <p><em>Sourced from <a href="https://github.com/spring-projects/spring-boot/releases">org.springframework.boot:spring-boot-starter-parent's releases</a>.</em></p>
+          <blockquote>
+          <h2>v2.7.2</h2>
+          <h2>:lady_beetle: Bug Fixes</h2>
+          <ul>
+          <li>Publishing a docker image to a private registry fails without authentication <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31824">#31824</a></li>
+          <li>In a non-reactive application, health indicators in a parent context are not found <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31818">#31818</a></li>
+          <li>Dependency management for Derby is incomplete <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31814">#31814</a></li>
+          <li>ApplicationPid doesn't log a warning if it takes a long time to return <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31810">#31810</a></li>
+          <li>A router function with attributes causes /actuator/mappings to return a 500 response due to an UnsupportedOperationException <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31806">#31806</a></li>
+          <li>InstanceAlreadyExistsException when using Actuator with multiple context and JMX enabled <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31804">#31804</a></li>
+          <li>Using 'ImportAutoConfigurationImportSelector' in the jar package loaded by a custom class loader throws ClassNotFoundException <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31801">#31801</a></li>
+          <li>GraphQL auto-configuration does not configure the GrapQlSource with SubscriptionExceptionResolver beans <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31794">#31794</a></li>
+          <li>Trailing whitespace in the value of a property is hard to identify in failure analysis descriptions <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31780">#31780</a></li>
+          <li>Log4j2's shutdown hook is not disabled when using Log4j 2.18 or later <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31732">#31732</a></li>
+          <li>HTTP Server and Data repositories metrics record null for the description <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31706">#31706</a></li>
+          <li>Deprecation hint for spring.data.mongodb.grid-fs-database is located in the wrong section <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31690">#31690</a></li>
+          <li>Image building fails with latest Paketo base builder and additional buildpacks configured <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31558">#31558</a></li>
+          <li>Tomcat fails to start when PEM files are used and key-store-password is not specified <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31253">#31253</a></li>
+          </ul>
+          <h2>:notebook_with_decorative_cover: Documentation</h2>
+          <ul>
+          <li>Clarify how docker image publishing registry is determined  <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31826">#31826</a></li>
+          <li>Fix typo in &quot;HTTP and WebSocket&quot; section of GraphQL documentation <a href="https://redirect.github.com/spring-projects/spring-boot/pull/31518">#31518</a></li>
+          </ul>
+          <h2>:hammer: Dependency Upgrades</h2>
+          <ul>
+          <li>Upgrade to AppEngine SDK 1.9.98 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31790">#31790</a></li>
+          <li>Upgrade to Byte Buddy 1.12.12 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31735">#31735</a></li>
+          <li>Upgrade to Couchbase Client 3.3.2 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31736">#31736</a></li>
+          <li>Upgrade to Dependency Management Plugin 1.0.12.RELEASE <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31556">#31556</a></li>
+          <li>Upgrade to Embedded Mongo 3.4.7 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31830">#31830</a></li>
+          <li>Upgrade to GraphQL Java 18.2  <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31812">#31812</a></li>
+          <li>Upgrade to Hibernate 5.6.10.Final <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31738">#31738</a></li>
+          <li>Upgrade to HttpCore5 5.1.4 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31739">#31739</a></li>
+          <li>Upgrade to Jetty Reactive HTTPClient 1.1.12 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31740">#31740</a></li>
+          <li>Upgrade to JsonAssert 1.5.1 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31741">#31741</a></li>
+          <li>Upgrade to Kotlin Coroutines 1.6.4 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31742">#31742</a></li>
+          <li>Upgrade to Lettuce 6.1.9.RELEASE <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31743">#31743</a></li>
+          <li>Upgrade to MariaDB 3.0.6 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31744">#31744</a></li>
+          <li>Upgrade to Micrometer 1.9.2 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31614">#31614</a></li>
+          <li>Upgrade to Neo4j Java Driver 4.4.9 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31745">#31745</a></li>
+          <li>Upgrade to Netty 4.1.79.Final <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31746">#31746</a></li>
+          <li>Upgrade to Reactor 2020.0.21 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31608">#31608</a></li>
+          <li>Upgrade to SendGrid 4.9.3 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31747">#31747</a></li>
+          <li>Upgrade to Spring Data 2021.2.2 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31615">#31615</a></li>
+          <li>Upgrade to Spring Framework 5.3.22 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31613">#31613</a></li>
+          <li>Upgrade to Spring GraphQL 1.0.1 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31616">#31616</a></li>
+          <li>Upgrade to Spring Integration 5.5.14 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31800">#31800</a></li>
+          <li>Upgrade to Spring Kafka 2.8.8 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31786">#31786</a></li>
+          <li>Upgrade to Tomcat 9.0.65 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/31831">#31831</a></li>
+          </ul>
+          <!-- raw HTML omitted -->
+          </blockquote>
+          <p>... (truncated)</p>
+          </details>
+          <details>
+          <summary>Commits</summary>
+          <ul>
+          <li><a href="https://github.com/spring-projects/spring-boot/commit/6f89aca00c3aec6f9587eb3807270c4854bddbd7"><code>6f89aca</code></a> Release v2.7.2</li>
+          <li><a href="https://github.com/spring-projects/spring-boot/commit/16f63afd0b63b6cb9a0f830e7b17bcf315603d3a"><code>16f63af</code></a> Merge branch '2.6.x' into 2.7.x</li>
+          <li><a href="https://github.com/spring-projects/spring-boot/commit/c8e44372b22b250c15713e794806f1b23432f2c1"><code>c8e4437</code></a> Upgrade to Tomcat 9.0.65</li>
+          <li><a href="https://github.com/spring-projects/spring-boot/commit/aa93b2153adc7a280e0a440390e56ecf711ccd2c"><code>aa93b21</code></a> Upgrade to Embedded Mongo 3.4.7</li>
+          <li><a href="https://github.com/spring-projects/spring-boot/commit/07f332ad96f60d52cd609585d74a517f123dc6f9"><code>07f332a</code></a> Upgrade to Tomcat 9.0.65</li>
+          <li><a href="https://github.com/spring-projects/spring-boot/commit/9da38c8d2d7ea503b7547f9cecde312a30953011"><code>9da38c8</code></a> Merge branch '2.6.x' into 2.7.x</li>
+          <li><a href="https://github.com/spring-projects/spring-boot/commit/4e0b3aad9f8e5aee286c08cb7412818a409ec988"><code>4e0b3aa</code></a> Clarify how docker image publishing registry is determined</li>
+          <li><a href="https://github.com/spring-projects/spring-boot/commit/f9cf31e59e77f49a54b64ea842760ce5a3a1691d"><code>f9cf31e</code></a> Fix compile errors</li>
+          <li><a href="https://github.com/spring-projects/spring-boot/commit/09c7ce6dabe9bc67c30fc0af13c6f78ac3162a1e"><code>09c7ce6</code></a> Merge branch '2.6.x' into 2.7.x</li>
+          <li><a href="https://github.com/spring-projects/spring-boot/commit/a7dfeae09cb01a02c1f67f21e234347814b6cb12"><code>a7dfeae</code></a> Merge branch '<a href="https://redirect.github.com/spring-projects/spring-boot/issues/28844">gh-28844</a>' into 2.6.x</li>
+          <li>Additional commits viewable in <a href="https://github.com/spring-projects/spring-boot/compare/v1.5.9.RELEASE...v2.7.2">compare view</a></li>
+          </ul>
+          </details>
+          <br />
+        commit-message: |-
+          Bump org.springframework.boot:spring-boot-starter-parent
 
-                Bumps [org.springframework.boot:spring-boot-starter-parent](https://github.com/spring-projects/spring-boot) from 1.5.9.RELEASE to 2.7.2.
-                - [Release notes](https://github.com/spring-projects/spring-boot/releases)
-                - [Commits](https://github.com/spring-projects/spring-boot/compare/v1.5.9.RELEASE...v2.7.2)
-    - type: mark_as_processed
-      expect:
-        data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+          Bumps [org.springframework.boot:spring-boot-starter-parent](https://github.com/spring-projects/spring-boot) from 1.5.9.RELEASE to 2.7.2.
+          - [Release notes](https://github.com/spring-projects/spring-boot/releases)
+          - [Commits](https://github.com/spring-projects/spring-boot/compare/v1.5.9.RELEASE...v2.7.2)
+  - type: mark_as_processed
+    expect:
+      data:
+        base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
