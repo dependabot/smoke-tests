@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Cache ${{ inputs.package_manager }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: ${{ inputs.git-ref }}
 

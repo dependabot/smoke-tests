@@ -20,7 +20,7 @@ jobs:
       matrix:
         suite: ${{ fromJSON(needs.suites.outputs.suites) }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Download artifacts
         run: script/download-cache.sh ${{ matrix.suite }}
       - uses: actions/upload-artifact@v3
