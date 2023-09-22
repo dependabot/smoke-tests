@@ -11,17 +11,14 @@ on:  # yamllint disable-line rule:truthy
         description: The test name (e.g. go-group-rules)
         required: true
 
-env:
-  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 jobs:
-  cache_one:
+  regen:
     runs-on: ubuntu-latest
-    name: Cache ${{ inputs.test_name }}
+    name: Regen ${{ inputs.test_name }}
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.git-ref }}
 
       - name: Download CLI
         run: |
@@ -34,6 +31,26 @@ jobs:
           LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./dependabot test -f=tests/smoke-${{ inputs.test_name }}.yaml -o tests/smoke-${{ inputs.test_name }}.yaml
 
+      - name: Upload changed test
+        uses: actions/upload-artifact@v3
+        with:
+          name: smoke-${{ inputs.test_name }}.yaml
+          path: tests/smoke-${{ inputs.test_name }}.yaml
+
+  create_pr:
+    needs: regen
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v3
+        with:
+          name: smoke-${{ inputs.test_name }}.yaml
+          path: tests/smoke-${{ inputs.test_name }}.yaml
       - name: Commit changes and create PR
         run: |
             git config --global user.email "${{ github.triggering_actor }}@github.com"
