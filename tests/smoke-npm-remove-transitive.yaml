@@ -1,172 +1,184 @@
 input:
-  job:
-    package-manager: npm_and_yarn
-    allowed-updates:
-      - dependency-type: direct
-        update-type: all
-      - dependency-type: indirect
-        update-type: security
-    dependencies:
-      - "@dependabot-fixtures/npm-transitive-dependency"
-    experiments:
-      npm-transitive-dependency-removal: true
-      npm-transitive-security-updates: true
-      record-ecosystem-versions: true
-    security-advisories:
-      - dependency-name: "@dependabot-fixtures/npm-transitive-dependency"
-        affected-versions:
-          - < 1.0.1
-        patched-versions: []
-        unaffected-versions: []
-    security-updates-only: true
-    source:
-      provider: github
-      repo: dependabot/smoke-tests
-      directory: /npm/removed
-      commit: 4e5e081d77a06dd5092a65e161c1142fbec372bd
+    job:
+        package-manager: npm_and_yarn
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+            - dependency-type: indirect
+              update-type: security
+        dependencies:
+            - '@dependabot-fixtures/npm-transitive-dependency'
+        experiments:
+            npm-transitive-dependency-removal: true
+            npm-transitive-security-updates: true
+            record-ecosystem-versions: true
+        ignore-conditions:
+            - dependency-name: '@dependabot-fixtures/npm-remove-dependency'
+              source: tests/smoke-npm-remove-transitive.yaml
+              version-requirement: '>10.0.1'
+        security-advisories:
+            - dependency-name: '@dependabot-fixtures/npm-transitive-dependency'
+              affected-versions:
+                - < 1.0.1
+              patched-versions: []
+              unaffected-versions: []
+        security-updates-only: true
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /npm/removed
+            commit: 4e5e081d77a06dd5092a65e161c1142fbec372bd
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
 output:
-  - type: record_ecosystem_versions
-    expect:
-      data:
-        ecosystem_versions:
-          package_managers:
-            npm: 8
-  - type: update_dependency_list
-    expect:
-      data:
-        dependencies:
-          - name: "@dependabot-fixtures/npm-remove-dependency"
-            requirements:
-              - file: package.json
-                groups:
-                  - dependencies
-                requirement: 10.0.0
-                source:
-                  type: registry
-                  url: https://registry.npmjs.org
-            version: 10.0.0
-          - name: "@dependabot-fixtures/npm-transitive-dependency"
-            requirements: []
-            version: 1.0.0
-        dependency_files:
-          - /npm/removed/package.json
-          - /npm/removed/package-lock.json
-  - type: create_pull_request
-    expect:
-      data:
-        base-commit-sha: 4e5e081d77a06dd5092a65e161c1142fbec372bd
-        dependencies:
-          - name: "@dependabot-fixtures/npm-transitive-dependency"
-            previous-requirements: []
-            previous-version: 1.0.0
-            requirements: []
-            version: null
-            removed: true
-          - name: "@dependabot-fixtures/npm-remove-dependency"
-            previous-requirements:
-              - file: package.json
-                groups:
-                  - dependencies
-                requirement: 10.0.0
-                source:
-                  type: registry
-                  url: https://registry.npmjs.org
-            previous-version: 10.0.0
-            requirements:
-              - file: package.json
-                groups:
-                  - dependencies
-                requirement: 10.0.1
-                source:
-                  type: registry
-                  url: https://registry.npmjs.org
-            version: 10.0.1
-        updated-dependency-files:
-          - content: |
-              {
-                "name": "locked-transitive-dependency-removed",
-                "version": "1.0.0",
-                "description": "",
-                "main": "index.js",
-                "scripts": {
-                  "test": "echo \"Error: no test specified\" && exit 1"
-                },
-                "keywords": [],
-                "author": "",
-                "license": "ISC",
-                "dependencies": {
-                  "@dependabot-fixtures/npm-remove-dependency": "10.0.1"
-                }
-              }
-            content_encoding: utf-8
-            deleted: false
-            directory: /npm/removed
-            name: package.json
-            operation: update
-            support_file: false
-            type: file
-          - content: |
-              {
-                "name": "locked-transitive-dependency-removed",
-                "version": "1.0.0",
-                "lockfileVersion": 2,
-                "requires": true,
-                "packages": {
-                  "": {
-                    "name": "locked-transitive-dependency-removed",
-                    "version": "1.0.0",
-                    "license": "ISC",
-                    "dependencies": {
-                      "@dependabot-fixtures/npm-remove-dependency": "10.0.1"
+    - type: record_ecosystem_versions
+      expect:
+        data:
+            ecosystem_versions:
+                package_managers:
+                    npm: 8
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: '@dependabot-fixtures/npm-remove-dependency'
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: 10.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 10.0.0
+                - name: '@dependabot-fixtures/npm-transitive-dependency'
+                  requirements: []
+                  version: 1.0.0
+            dependency_files:
+                - /npm/removed/package.json
+                - /npm/removed/package-lock.json
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 4e5e081d77a06dd5092a65e161c1142fbec372bd
+            dependencies:
+                - name: '@dependabot-fixtures/npm-transitive-dependency'
+                  previous-requirements: []
+                  previous-version: 1.0.0
+                  requirements: []
+                  version: null
+                  removed: true
+                - name: '@dependabot-fixtures/npm-remove-dependency'
+                  previous-requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: 10.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  previous-version: 10.0.0
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: 10.0.1
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 10.0.1
+            updated-dependency-files:
+                - content: |
+                    {
+                      "name": "locked-transitive-dependency-removed",
+                      "version": "1.0.0",
+                      "description": "",
+                      "main": "index.js",
+                      "scripts": {
+                        "test": "echo \"Error: no test specified\" && exit 1"
+                      },
+                      "keywords": [],
+                      "author": "",
+                      "license": "ISC",
+                      "dependencies": {
+                        "@dependabot-fixtures/npm-remove-dependency": "10.0.1"
+                      }
                     }
-                  },
-                  "node_modules/@dependabot-fixtures/npm-remove-dependency": {
-                    "version": "10.0.1",
-                    "resolved": "https://registry.npmjs.org/@dependabot-fixtures/npm-remove-dependency/-/npm-remove-dependency-10.0.1.tgz",
-                    "integrity": "sha512-acz1nPaB5TR8A5FBmOyZcYE8YQVs5TwrSGtqCyT0hbKJPtDYBt8yxRdbgC36fPrP/4JZn++bvaohG7IQq6NrPA=="
-                  }
-                },
-                "dependencies": {
-                  "@dependabot-fixtures/npm-remove-dependency": {
-                    "version": "10.0.1",
-                    "resolved": "https://registry.npmjs.org/@dependabot-fixtures/npm-remove-dependency/-/npm-remove-dependency-10.0.1.tgz",
-                    "integrity": "sha512-acz1nPaB5TR8A5FBmOyZcYE8YQVs5TwrSGtqCyT0hbKJPtDYBt8yxRdbgC36fPrP/4JZn++bvaohG7IQq6NrPA=="
-                  }
-                }
-              }
-            content_encoding: utf-8
-            deleted: false
-            directory: /npm/removed
-            name: package-lock.json
-            operation: update
-            support_file: false
-            type: file
-        pr-title: Bump @dependabot-fixtures/npm-transitive-dependency and @dependabot-fixtures/npm-remove-dependency in /npm/removed
-        pr-body: |
-          Removes [@dependabot-fixtures/npm-transitive-dependency](https://github.com/dependabot-fixtures/npm-transitive-dependency). It's no longer used after updating ancestor dependency [@dependabot-fixtures/npm-remove-dependency](https://github.com/dependabot-fixtures/npm-remove-dependency). These dependencies need to be updated together.
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /npm/removed
+                  name: package.json
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    {
+                      "name": "locked-transitive-dependency-removed",
+                      "version": "1.0.0",
+                      "lockfileVersion": 2,
+                      "requires": true,
+                      "packages": {
+                        "": {
+                          "name": "locked-transitive-dependency-removed",
+                          "version": "1.0.0",
+                          "license": "ISC",
+                          "dependencies": {
+                            "@dependabot-fixtures/npm-remove-dependency": "10.0.1"
+                          }
+                        },
+                        "node_modules/@dependabot-fixtures/npm-remove-dependency": {
+                          "version": "10.0.1",
+                          "resolved": "https://registry.npmjs.org/@dependabot-fixtures/npm-remove-dependency/-/npm-remove-dependency-10.0.1.tgz",
+                          "integrity": "sha512-acz1nPaB5TR8A5FBmOyZcYE8YQVs5TwrSGtqCyT0hbKJPtDYBt8yxRdbgC36fPrP/4JZn++bvaohG7IQq6NrPA=="
+                        }
+                      },
+                      "dependencies": {
+                        "@dependabot-fixtures/npm-remove-dependency": {
+                          "version": "10.0.1",
+                          "resolved": "https://registry.npmjs.org/@dependabot-fixtures/npm-remove-dependency/-/npm-remove-dependency-10.0.1.tgz",
+                          "integrity": "sha512-acz1nPaB5TR8A5FBmOyZcYE8YQVs5TwrSGtqCyT0hbKJPtDYBt8yxRdbgC36fPrP/4JZn++bvaohG7IQq6NrPA=="
+                        }
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /npm/removed
+                  name: package-lock.json
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump @dependabot-fixtures/npm-transitive-dependency and @dependabot-fixtures/npm-remove-dependency in /npm/removed
+            pr-body: |
+                Removes [@dependabot-fixtures/npm-transitive-dependency](https://github.com/dependabot-fixtures/npm-transitive-dependency). It's no longer used after updating ancestor dependency [@dependabot-fixtures/npm-remove-dependency](https://github.com/dependabot-fixtures/npm-remove-dependency). These dependencies need to be updated together.
 
-          Removes `@dependabot-fixtures/npm-transitive-dependency`
+                Removes `@dependabot-fixtures/npm-transitive-dependency`
 
-          Updates `@dependabot-fixtures/npm-remove-dependency` from 10.0.0 to 10.0.1
-          <details>
-          <summary>Commits</summary>
-          <ul>
-          <li><a href="https://github.com/dependabot-fixtures/npm-remove-dependency/commit/84218f3c75c252017a921e0cbd9c7ec8cb91df51"><code>84218f3</code></a> Remove dependencies</li>
-          <li>See full diff in <a href="https://github.com/dependabot-fixtures/npm-remove-dependency/compare/v10.0.0...v10.0.1">compare view</a></li>
-          </ul>
-          </details>
-          <br />
-        commit-message: |-
-          Bump @dependabot-fixtures/npm-transitive-dependency and @dependabot-fixtures/npm-remove-dependency
+                Updates `@dependabot-fixtures/npm-remove-dependency` from 10.0.0 to 10.0.1
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/dependabot-fixtures/npm-remove-dependency/commit/84218f3c75c252017a921e0cbd9c7ec8cb91df51"><code>84218f3</code></a> Remove dependencies</li>
+                <li>See full diff in <a href="https://github.com/dependabot-fixtures/npm-remove-dependency/compare/v10.0.0...v10.0.1">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump @dependabot-fixtures/npm-transitive-dependency and @dependabot-fixtures/npm-remove-dependency
 
-          Removes [@dependabot-fixtures/npm-transitive-dependency](https://github.com/dependabot-fixtures/npm-transitive-dependency). It's no longer used after updating ancestor dependency [@dependabot-fixtures/npm-remove-dependency](https://github.com/dependabot-fixtures/npm-remove-dependency). These dependencies need to be updated together.
+                Removes [@dependabot-fixtures/npm-transitive-dependency](https://github.com/dependabot-fixtures/npm-transitive-dependency). It's no longer used after updating ancestor dependency [@dependabot-fixtures/npm-remove-dependency](https://github.com/dependabot-fixtures/npm-remove-dependency). These dependencies need to be updated together.
 
 
-          Removes `@dependabot-fixtures/npm-transitive-dependency`
+                Removes `@dependabot-fixtures/npm-transitive-dependency`
 
-          Updates `@dependabot-fixtures/npm-remove-dependency` from 10.0.0 to 10.0.1
-          - [Commits](https://github.com/dependabot-fixtures/npm-remove-dependency/compare/v10.0.0...v10.0.1)
-  - type: mark_as_processed
-    expect:
-      data:
-        base-commit-sha: 4e5e081d77a06dd5092a65e161c1142fbec372bd
+                Updates `@dependabot-fixtures/npm-remove-dependency` from 10.0.0 to 10.0.1
+                - [Commits](https://github.com/dependabot-fixtures/npm-remove-dependency/compare/v10.0.0...v10.0.1)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 4e5e081d77a06dd5092a65e161c1142fbec372bd

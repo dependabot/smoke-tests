@@ -1,96 +1,96 @@
 input:
-  job:
-    package-manager: docker
-    allowed-updates:
-      - update-type: all
-    ignore-conditions:
-      - dependency-name: ubuntu
-        source: tests/smoke-docker.yaml
-        version-requirement: ">22.04"
-    source:
-      provider: github
-      repo: dependabot/smoke-tests
-      directory: /
-      commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
-    credentials-metadata:
-      - host: github.com
-        type: git_source
-  credentials:
-    - host: github.com
-      password: $LOCAL_GITHUB_ACCESS_TOKEN
-      type: git_source
-      username: x-access-token
-output:
-  - type: update_dependency_list
-    expect:
-      data:
-        dependencies:
-          - name: ubuntu
-            requirements:
-              - file: Dockerfile
-                groups: []
-                requirement: null
-                source:
-                  tag: "17.04"
-            version: "17.04"
-        dependency_files:
-          - /Dockerfile
-  - type: create_pull_request
-    expect:
-      data:
-        base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
-        dependencies:
-          - name: ubuntu
-            previous-requirements:
-              - file: Dockerfile
-                groups: []
-                requirement: null
-                source:
-                  tag: "17.04"
-            previous-version: "17.04"
-            requirements:
-              - file: Dockerfile
-                groups: []
-                requirement: null
-                source:
-                  tag: "22.04"
-            version: "22.04"
-        updated-dependency-files:
-          - content: |
-              FROM ubuntu:22.04
-
-              ### SYSTEM DEPENDENCIES
-
-              RUN apt-get update \
-                  && apt-get upgrade -y \
-                  && apt-get install -y --no-install-recommends \
-                    build-essential \
-                    dirmngr \
-                    git \
-
-
-              ### RUBY
-
-              # Install Ruby 2.4
-              RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C3173AA6 \
-                  && echo "deb http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu zesty main" > /etc/apt/sources.list.d/brightbox.list \
-                  && apt-get update
-              RUN apt-get install -y ruby2.4 ruby2.4-dev
-            content_encoding: utf-8
-            deleted: false
+    job:
+        package-manager: docker
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: ubuntu
+              source: tests/smoke-docker.yaml
+              version-requirement: '>22.04'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
             directory: /
-            name: Dockerfile
-            operation: update
-            support_file: false
-            type: file
-        pr-title: Bump ubuntu from 17.04 to 22.04
-        pr-body: |
-          Bumps ubuntu from 17.04 to 22.04.
-        commit-message: |-
-          Bump ubuntu from 17.04 to 22.04
+            commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: ubuntu
+                  requirements:
+                    - file: Dockerfile
+                      groups: []
+                      requirement: null
+                      source:
+                        tag: "17.04"
+                  version: "17.04"
+            dependency_files:
+                - /Dockerfile
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            dependencies:
+                - name: ubuntu
+                  previous-requirements:
+                    - file: Dockerfile
+                      groups: []
+                      requirement: null
+                      source:
+                        tag: "17.04"
+                  previous-version: "17.04"
+                  requirements:
+                    - file: Dockerfile
+                      groups: []
+                      requirement: null
+                      source:
+                        tag: "22.04"
+                  version: "22.04"
+            updated-dependency-files:
+                - content: |
+                    FROM ubuntu:22.04
 
-          Bumps ubuntu from 17.04 to 22.04.
-  - type: mark_as_processed
-    expect:
-      data:
-        base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+                    ### SYSTEM DEPENDENCIES
+
+                    RUN apt-get update \
+                        && apt-get upgrade -y \
+                        && apt-get install -y --no-install-recommends \
+                          build-essential \
+                          dirmngr \
+                          git \
+
+
+                    ### RUBY
+
+                    # Install Ruby 2.4
+                    RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C3173AA6 \
+                        && echo "deb http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu zesty main" > /etc/apt/sources.list.d/brightbox.list \
+                        && apt-get update
+                    RUN apt-get install -y ruby2.4 ruby2.4-dev
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: Dockerfile
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump ubuntu from 17.04 to 22.04
+            pr-body: |
+                Bumps ubuntu from 17.04 to 22.04.
+            commit-message: |-
+                Bump ubuntu from 17.04 to 22.04
+
+                Bumps ubuntu from 17.04 to 22.04.
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
