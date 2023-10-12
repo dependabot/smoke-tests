@@ -1,0 +1,195 @@
+input:
+    job:
+        package-manager: go_modules
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        dependencies:
+            - rsc.io/quote
+            - rsc.io/qr
+        experiments:
+            goprivate: ""
+            record-ecosystem-versions: true
+        ignore-conditions:
+            - dependency-name: not-used
+        security-advisories:
+            - dependency-name: rsc.io/quote
+              affected-versions:
+                - < 1.5.1
+              patched-versions: []
+              unaffected-versions: []
+            - dependency-name: rsc.io/qr
+              affected-versions:
+                - <= 0.1.0
+              patched-versions: []
+              unaffected-versions: []
+        security-updates-only: true
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /go/grouped-security-update
+            commit: 6842b44b55335f744d2e382218229a007e696f46
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: record_ecosystem_versions
+      expect:
+        data:
+            ecosystem_versions:
+                package_managers:
+                    gomod: "1.21"
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: rsc.io/qr
+                  requirements:
+                    - file: go.mod
+                      groups: []
+                      requirement: v0.1.0
+                      source:
+                        source: rsc.io/qr
+                        type: default
+                  version: 0.1.0
+                - name: rsc.io/quote
+                  requirements:
+                    - file: go.mod
+                      groups: []
+                      requirement: v1.5.0
+                      source:
+                        source: rsc.io/quote
+                        type: default
+                  version: 1.5.0
+                - name: golang.org/x/text
+                  requirements: []
+                  version: 0.4.0
+                - name: rsc.io/sampler
+                  requirements: []
+                  version: 1.3.0
+            dependency_files:
+                - /go/grouped-security-update/go.mod
+                - /go/grouped-security-update/go.sum
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 6842b44b55335f744d2e382218229a007e696f46
+            dependencies:
+                - name: rsc.io/qr
+                  previous-requirements:
+                    - file: go.mod
+                      groups: []
+                      requirement: v0.1.0
+                      source:
+                        source: rsc.io/qr
+                        type: default
+                  previous-version: 0.1.0
+                  requirements:
+                    - file: go.mod
+                      groups: []
+                      requirement: 0.2.0
+                      source:
+                        source: rsc.io/qr
+                        type: default
+                  version: 0.2.0
+                - name: rsc.io/quote
+                  previous-requirements:
+                    - file: go.mod
+                      groups: []
+                      requirement: v1.5.0
+                      source:
+                        source: rsc.io/quote
+                        type: default
+                  previous-version: 1.5.0
+                  requirements:
+                    - file: go.mod
+                      groups: []
+                      requirement: 1.5.2
+                      source:
+                        source: rsc.io/quote
+                        type: default
+                  version: 1.5.1
+            updated-dependency-files:
+                - content: |
+                    module group-security-update-test
+
+                    go 1.21
+
+                    require (
+                    	rsc.io/qr v0.2.0
+                    	rsc.io/quote v1.5.1
+                    )
+
+                    require (
+                    	golang.org/x/text v0.4.0 // indirect
+                    	rsc.io/sampler v1.3.0 // indirect
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/grouped-security-update
+                  name: go.mod
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
+                    golang.org/x/text v0.4.0 h1:BrVqGRd7+k1DiOgtnFvAkoQEWQvBc25ouMJM6429SFg=
+                    golang.org/x/text v0.4.0/go.mod h1:mrYo+phRRbMaCq/xk9113O4dZlRixOauAjOtrjsXDZ8=
+                    rsc.io/qr v0.2.0 h1:6vBLea5/NRMVTz8V66gipeLycZMl/+UlFmk8DvqQ6WY=
+                    rsc.io/qr v0.2.0/go.mod h1:IF+uZjkb9fqyeF/4tlBoynqmQxUoPfWEKh921coOuXs=
+                    rsc.io/quote v1.5.1 h1:ptSemFtffEBvMed43o25vSUpcTVcqxfXU8Jv0sfFVJs=
+                    rsc.io/quote v1.5.1/go.mod h1:LzX7hefJvL54yjefDEDHNONDjII0t9xZLPXsUe+TKr0=
+                    rsc.io/sampler v1.3.0 h1:7uVkIFmeBqHfdjD+gZwtXXI+RODJ2Wc4O7MPEh/QiW4=
+                    rsc.io/sampler v1.3.0/go.mod h1:T1hPZKmBbMNahiBKFy5HrXp6adAjACjK9JXDnKaTXpA=
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/grouped-security-update
+                  name: go.sum
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump the go_modules at /go/grouped-security-update security update group in /go/grouped-security-update with 2 updates
+            pr-body: |
+                Bumps the go_modules at /go/grouped-security-update security update group in /go/grouped-security-update with 2 updates: [rsc.io/qr](https://github.com/rsc/qr) and [rsc.io/quote](https://github.com/rsc/quote).
+
+                Updates `rsc.io/qr` from 0.1.0 to 0.2.0
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rsc/qr/commit/ca9a01fc2f9505024045632c50e5e8cd6142fafe"><code>ca9a01f</code></a> qr: add import comments, go.mod</li>
+                <li>See full diff in <a href="https://github.com/rsc/qr/compare/v0.1.0...v0.2.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `rsc.io/quote` from 1.5.0 to 1.5.1
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rsc/quote/commit/23179ee8a569bb05d896ae05c6503ec69a19f99f"><code>23179ee</code></a> quote: fix test for new rsc.io/sampler</li>
+                <li>See full diff in <a href="https://github.com/rsc/quote/compare/v1.5.0...v1.5.1">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump the go_modules at /go/grouped-security-update security update group
+
+                Bumps the go_modules at /go/grouped-security-update security update group in /go/grouped-security-update with 2 updates: [rsc.io/qr](https://github.com/rsc/qr) and [rsc.io/quote](https://github.com/rsc/quote).
+
+
+                Updates `rsc.io/qr` from 0.1.0 to 0.2.0
+                - [Commits](https://github.com/rsc/qr/compare/v0.1.0...v0.2.0)
+
+                Updates `rsc.io/quote` from 1.5.0 to 1.5.1
+                - [Commits](https://github.com/rsc/quote/compare/v1.5.0...v1.5.1)
+            dependency-group:
+                name: go_modules at /go/grouped-security-update security update
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 6842b44b55335f744d2e382218229a007e696f46
