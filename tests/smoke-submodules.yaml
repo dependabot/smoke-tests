@@ -6,7 +6,7 @@ input:
         source:
             provider: github
             repo: dependabot/smoke-tests
-            directory: /
+            directory: /submodules
             commit: d55092e0297999bf4d29725606cfa082b378959a
         credentials-metadata:
             - host: github.com
@@ -33,7 +33,7 @@ output:
                         url: https://github.com/feelepxyz/dependabot-test
                   version: 83e962f7f9fa27eaf62ecfb5da86f1eb0355b785
             dependency_files:
-                - /.gitmodules
+                - /submodules/.gitmodules
     - type: create_pull_request
       expect:
         data:
@@ -41,7 +41,7 @@ output:
             dependencies:
                 - name: dependabot-test
                   previous-requirements:
-                    - file: .gitmodules
+                    - file: /submodules/.gitmodules
                       groups: []
                       requirement: null
                       source:
@@ -51,7 +51,7 @@ output:
                         url: https://github.com/feelepxyz/dependabot-test
                   previous-version: 83e962f7f9fa27eaf62ecfb5da86f1eb0355b785
                   requirements:
-                    - file: .gitmodules
+                    - file: /submodules/.gitmodules
                       groups: []
                       requirement: null
                       source:
@@ -64,7 +64,7 @@ output:
                 - content: 5fc0a8c682d66560fc46b3161621d6ebda874a53
                   content_encoding: utf-8
                   deleted: false
-                  directory: /
+                  directory: /submodules
                   name: dependabot-test
                   operation: update
                   support_file: true

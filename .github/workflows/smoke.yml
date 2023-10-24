@@ -23,6 +23,8 @@ jobs:
         suite: ${{ fromJSON(needs.suites.outputs.suites) }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: true
 
       - name: Download CLI
         run: |
