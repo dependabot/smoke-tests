@@ -1,0 +1,25 @@
+input:
+    job:
+        package-manager: pip
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        ignore-conditions:
+            - dependency-name: django
+              source: tests/smoke-pip.yaml
+              version-requirement: '>4.0.6'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+              - /pip/multi-dir/foo
+              - /pip/multi-dir/bar
+            commit: 7b8e1971f18f6a47430796ec0e430e005d2d97f3
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
