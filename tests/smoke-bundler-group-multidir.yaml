@@ -1,0 +1,49 @@
+input:
+    job:
+        dependencies:
+          - rails
+          - pg
+          - sinatra
+          - nokogiri
+        security-updates-only: true
+        security-advisories:
+          - dependency-name: nokogiri
+            affected-versions:
+              - <= 1.11.0
+            patched-versions: []
+            unaffected-versions: []
+          - dependency-name: sinatra
+            affected-versions:
+              - <= 1.2.2
+            patched-versions: []
+            unaffected-versions: []
+          - dependency-name: rails
+            affected-versions:
+              - <= 5.1.0
+            patched-versions: []
+            unaffected-versions: []
+          - dependency-name: pg
+            affected-versions:
+              - <= 1.2
+            patched-versions: []
+            unaffected-versions: []
+
+        package-manager: npm_and_yarn
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+              - /bundler/multi-dir/foo
+              - /bundler/multi-dir/bar
+            commit: abb40f812e315094cb8e443dfd303c535c06a256
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
