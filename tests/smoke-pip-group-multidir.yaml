@@ -1,5 +1,27 @@
 input:
     job:
+        dependencies:
+          - urllib3
+          - numpy
+          - Flask
+        security-updates-only: true
+        security-advisories:
+          - dependency-name: Flask
+            affected-versions:
+              - <= 2.0.0
+            patched-versions: [ ]
+            unaffected-versions: [ ]
+          - dependency-name: numpy
+            affected-versions:
+              - <= 1.0.0
+            patched-versions: [ ]
+            unaffected-versions: [ ]
+          - dependency-name: urllib3
+            affected-versions:
+              - <= 1.0.0
+            patched-versions: [ ]
+            unaffected-versions: [ ]
+
         package-manager: pip
         allowed-updates:
             - dependency-type: direct

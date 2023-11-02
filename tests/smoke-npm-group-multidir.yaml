@@ -1,5 +1,27 @@
 input:
     job:
+        dependencies:
+          - "@dependabot/dummy-pkg-a"
+          - "@dependabot/dummy-pkg-b"
+          - left-pad
+        security-updates-only: true
+        security-advisories:
+          - dependency-name: left-pad
+            affected-versions:
+              - < 1.1.0
+            patched-versions: []
+            unaffected-versions: []
+          - dependency-name: "@dependabot/dummy-pkg-a"
+            affected-versions:
+              - < 1.1.0
+            patched-versions: []
+            unaffected-versions: []
+          - dependency-name: "@dependabot/dummy-pkg-b"
+            affected-versions:
+              - < 1.1.0
+            patched-versions: []
+            unaffected-versions: []
+
         package-manager: npm_and_yarn
         allowed-updates:
             - dependency-type: direct
