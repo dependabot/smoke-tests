@@ -1,8 +1,7 @@
 input:
     job:
         dependencies:
-          - rails
-          - pg
+          - rack
           - sinatra
           - nokogiri
         security-updates-only: true
@@ -17,14 +16,9 @@ input:
               - <= 1.2.2
             patched-versions: []
             unaffected-versions: []
-          - dependency-name: rails
+          - dependency-name: rack
             affected-versions:
-              - <= 5.1.0
-            patched-versions: []
-            unaffected-versions: []
-          - dependency-name: pg
-            affected-versions:
-              - <= 1.2
+              - < 3.0.7
             patched-versions: []
             unaffected-versions: []
 
@@ -38,7 +32,7 @@ input:
             directories:
               - /bundler/multi-dir/foo
               - /bundler/multi-dir/bar
-            commit: abb40f812e315094cb8e443dfd303c535c06a256
+            commit: 212c1f8e06ecf351f64605892856b5fc7cd7d9a3
         credentials-metadata:
             - host: github.com
               type: git_source
