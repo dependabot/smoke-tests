@@ -1,8 +1,11 @@
 version: 2
 updates:
-  - package-ecosystem: "github-actions"
+  - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "16:00"
+      interval: "daily"
+    groups:
+      npm-dependencies:
+        patterns:
+          - "lodash*"
+          
