@@ -1,0 +1,37 @@
+input:
+    job:
+        dependencies:
+          - "rsc.io/quote"
+          - "rsc.io/qr"
+        security-updates-only: true
+        security-advisories:
+          - dependency-name: "rsc.io/quote"
+            affected-versions:
+              - <= 1.5.0
+            patched-versions: []
+            unaffected-versions: []
+          - dependency-name: "rsc.io/qr"
+            affected-versions:
+              - <= 0.1.0
+            patched-versions: []
+            unaffected-versions: []
+
+        package-manager: go_modules
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+              - /go/multi-dir/foo
+              - /go/multi-dir/bar
+            commit: fb37fe61a7462139c74f2fc7e80400b325d066a0
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
