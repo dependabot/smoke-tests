@@ -5,9 +5,9 @@ input:
             - dependency-type: direct
               update-type: all
         dependencies:
-            - "org.springframework.boot:spring-boot-starter-parent"
+            - org.springframework.boot:spring-boot-starter-parent
         security-advisories:
-            - dependency-name: "org.springframework.boot:spring-boot-starter-parent"
+            - dependency-name: org.springframework.boot:spring-boot-starter-parent
               affected-versions:
                 - < 1.5.11
               patched-versions: []
@@ -28,3 +28,94 @@ input:
           password: $LOCAL_GITHUB_ACCESS_TOKEN
           type: git_source
           username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: org.springframework.boot:spring-boot-starter-parent
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: pom
+                      requirement: 1.5.10.RELEASE
+                      source: null
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: pom
+                      requirement: 1.5.9.RELEASE
+                      source: null
+                  version: 1.5.9.RELEASE
+                - name: org.springframework.boot:spring-boot-starter-web
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: mysql:mysql-connector-java
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.hibernate:hibernate-java8
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-starter-data-jpa
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-starter-test
+                  requirements:
+                    - file: pom.xml
+                      groups:
+                        - test
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-starter-actuator
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-configuration-processor
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+            dependency_files:
+                - /maven/multi-dir/foo/pom.xml
+                - /maven/multi-dir/bar/pom.xml
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 56600671ab2495ed67614624740292fb5d54e4f4
