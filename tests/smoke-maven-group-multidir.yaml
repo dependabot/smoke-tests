@@ -1,0 +1,30 @@
+input:
+    job:
+        package-manager: maven
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        dependencies:
+            - "org.springframework.boot:spring-boot-starter-parent"
+        security-advisories:
+            - dependency-name: "org.springframework.boot:spring-boot-starter-parent"
+              affected-versions:
+                - < 1.5.11
+              patched-versions: []
+              unaffected-versions: []
+        security-updates-only: true
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /maven/multi-dir/foo
+                - /maven/multi-dir/bar
+            commit: 56600671ab2495ed67614624740292fb5d54e4f4
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
