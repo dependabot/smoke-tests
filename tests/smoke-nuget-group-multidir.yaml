@@ -1,0 +1,30 @@
+input:
+    job:
+        package-manager: nuget
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        security-updates-only: true
+        dependencies:
+            - "NuGet.Versioning"
+        security-advisories:
+            - dependency-name: "NuGet.Versioning"
+              affected-versions:
+                - "< 6.2.4"
+              patched-versions: []
+              unaffected-versions: []
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /nuget/multi-dir/foo
+                - /nuget/multi-dir/bar
+            commit: 015a266f4472fe15631f6e0d77517e7a9d471023
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
