@@ -1,104 +1,104 @@
 input:
-  job:
-    package-manager: nuget
-    allowed-updates:
-      - update-type: all
-    ignore-conditions:
-      - dependency-name: NuGet.Versioning
-        source: tests/smoke-nuget.yaml
-        version-requirement: ">6.2.2"
-    source:
-      provider: github
-      repo: dependabot/smoke-tests
-      directory: /nuget
-      commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
-    credentials-metadata:
-      - host: github.com
-        type: git_source
-  credentials:
-    - host: github.com
-      password: $LOCAL_GITHUB_ACCESS_TOKEN
-      type: git_source
-      username: x-access-token
-output:
-  - type: update_dependency_list
-    expect:
-      data:
-        dependencies:
-          - name: NuGet.Versioning
-            requirements:
-              - file: project.csproj
-                groups:
-                  - dependencies
-                requirement: 6.1.0
-                source: null
-            version: 6.1.0
-        dependency_files:
-          - /nuget/project.csproj
-  - type: create_pull_request
-    expect:
-      data:
-        base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
-        dependencies:
-          - name: NuGet.Versioning
-            previous-requirements:
-              - file: project.csproj
-                groups:
-                  - dependencies
-                requirement: 6.1.0
-                source: null
-            previous-version: 6.1.0
-            requirements:
-              - file: project.csproj
-                groups:
-                  - dependencies
-                requirement: 6.2.2
-                source:
-                  nuspec_url: https://api.nuget.org/v3-flatcontainer/nuget.versioning/6.2.2/nuget.versioning.nuspec
-                  source_url: null
-                  type: nuget_repo
-                  url: https://api.nuget.org/v3/index.json
-            version: 6.2.2
-        updated-dependency-files:
-          - content: |
-              <Project Sdk="Microsoft.NET.Sdk">
-
-                <PropertyGroup>
-                  <OutputType>Exe</OutputType>
-                  <TargetFramework>net6.0</TargetFramework>
-                  <ImplicitUsings>enable</ImplicitUsings>
-                  <Nullable>enable</Nullable>
-                </PropertyGroup>
-
-                <ItemGroup>
-                  <PackageReference Include="NuGet.Versioning" Version="6.2.2" />
-                </ItemGroup>
-
-              </Project>
-            content_encoding: utf-8
-            deleted: false
+    job:
+        package-manager: nuget
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: NuGet.Versioning
+              source: tests/smoke-nuget.yaml
+              version-requirement: '>6.2.2'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
             directory: /nuget
-            name: project.csproj
-            operation: update
-            support_file: false
-            type: file
-        pr-title: Bump NuGet.Versioning from 6.1.0 to 6.2.2 in /nuget
-        pr-body: |
-          Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.2.2.
-          <details>
-          <summary>Commits</summary>
-          <ul>
-          <li>See full diff in <a href="https://github.com/NuGet/NuGet.Client/commits">compare view</a></li>
-          </ul>
-          </details>
-          <br />
-        commit-message: |-
-          Bump NuGet.Versioning from 6.1.0 to 6.2.2 in /nuget
+            commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: NuGet.Versioning
+                  requirements:
+                    - file: project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.1.0
+                      source: null
+                  version: 6.1.0
+            dependency_files:
+                - /nuget/project.csproj
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            dependencies:
+                - name: NuGet.Versioning
+                  previous-requirements:
+                    - file: project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.1.0
+                      source: null
+                  previous-version: 6.1.0
+                  requirements:
+                    - file: project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.2.2
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/nuget.versioning/6.2.2/nuget.versioning.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                  version: 6.2.2
+            updated-dependency-files:
+                - content: |
+                    <Project Sdk="Microsoft.NET.Sdk">
 
-          Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.2.2.
-          - [Release notes](https://github.com/NuGet/NuGet.Client/releases)
-          - [Commits](https://github.com/NuGet/NuGet.Client/commits)
-  - type: mark_as_processed
-    expect:
-      data:
-        base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+                      <PropertyGroup>
+                        <OutputType>Exe</OutputType>
+                        <TargetFramework>net6.0</TargetFramework>
+                        <ImplicitUsings>enable</ImplicitUsings>
+                        <Nullable>enable</Nullable>
+                      </PropertyGroup>
+
+                      <ItemGroup>
+                        <PackageReference Include="NuGet.Versioning" Version="6.2.2" />
+                      </ItemGroup>
+
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget
+                  name: project.csproj
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump NuGet.Versioning from 6.1.0 to 6.2.2 in /nuget
+            pr-body: |
+                Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.2.2.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/NuGet/NuGet.Client/commits">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump NuGet.Versioning from 6.1.0 to 6.2.2 in /nuget
+
+                Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.2.2.
+                - [Release notes](https://github.com/NuGet/NuGet.Client/releases)
+                - [Commits](https://github.com/NuGet/NuGet.Client/commits)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994

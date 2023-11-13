@@ -1,613 +1,613 @@
 input:
-  job:
-    package-manager: gradle
-    allowed-updates:
-      - update-type: all
-    ignore-conditions:
-      - dependency-name: com.google.inject:guice
-        source: tests/smoke-gradle.yaml
-        version-requirement: ">5.1.0"
-      - dependency-name: net.kyori:text
-        source: tests/smoke-gradle.yaml
-        version-requirement: ">1.12-1.6.5"
-      - dependency-name: org.eclipse.jgit:org.eclipse.jgit
-        source: tests/smoke-gradle.yaml
-        version-requirement: ">6.3.0.202209071007-r"
-      - dependency-name: org.hibernate:hibernate-core
-        source: tests/smoke-gradle.yaml
-        version-requirement: ">6.1.3.Final"
-    source:
-      provider: github
-      repo: dependabot/smoke-tests
-      directory: /gradle
-      commit: 9d77bc7063ed8328a7dbc4fc3b30605530322877
-    credentials-metadata:
-      - host: github.com
-        type: git_source
-  credentials:
-    - host: github.com
-      password: $LOCAL_GITHUB_ACCESS_TOKEN
-      type: git_source
-      username: x-access-token
+    job:
+        package-manager: gradle
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: com.google.inject:guice
+              source: tests/smoke-gradle.yaml
+              version-requirement: '>5.1.0'
+            - dependency-name: net.kyori:text
+              source: tests/smoke-gradle.yaml
+              version-requirement: '>1.12-1.6.5'
+            - dependency-name: org.eclipse.jgit:org.eclipse.jgit
+              source: tests/smoke-gradle.yaml
+              version-requirement: '>6.3.0.202209071007-r'
+            - dependency-name: org.hibernate:hibernate-core
+              source: tests/smoke-gradle.yaml
+              version-requirement: '>6.1.3.Final'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /gradle
+            commit: 9d77bc7063ed8328a7dbc4fc3b30605530322877
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
 output:
-  - type: update_dependency_list
-    expect:
-      data:
-        dependencies:
-          - name: co.aikar:acf-paper
-            requirements:
-              - file: build.gradle
-                groups: []
-                requirement: 0.5.0-SNAPSHOT
-                source: null
-            version: 0.5.0-SNAPSHOT
-          - name: com.google.inject:guice
-            requirements:
-              - file: build.gradle
-                groups: []
-                requirement: 4.2.0
-                source: null
-            version: 4.2.0
-          - name: com.google.code.findbugs:jsr305
-            requirements:
-              - file: build.gradle
-                groups: []
-                requirement: 3.0.2
-                source: null
-            version: 3.0.2
-          - name: de.davidbilge:jskill
-            requirements:
-              - file: build.gradle
-                groups: []
-                requirement: 1.1-SNAPSHOT
-                source: null
-            version: 1.1-SNAPSHOT
-          - name: net.kyori:text
-            requirements:
-              - file: build.gradle
-                groups: []
-                requirement: 1.12-1.4.0
-                source: null
-            version: 1.12-1.4.0
-          - name: org.eclipse.jgit:org.eclipse.jgit
-            requirements:
-              - file: build.gradle
-                groups: []
-                requirement: 4.11.0.201803080745-r
-                source: null
-            version: 4.11.0.201803080745-r
-          - name: org.hibernate:hibernate-core
-            requirements:
-              - file: build.gradle
-                groups: []
-                requirement: 5.3.0.CR1
-                source: null
-            version: 5.3.0.CR1
-          - name: org.inventivetalent:menubuilder
-            requirements:
-              - file: build.gradle
-                groups: []
-                requirement: 1.0.2
-                source: null
-            version: 1.0.2
-          - name: org.mineskin:java-client
-            requirements:
-              - file: build.gradle
-                groups: []
-                requirement: 1.0.1-SNAPSHOT
-                source: null
-            version: 1.0.1-SNAPSHOT
-        dependency_files:
-          - /gradle/build.gradle
-  - type: create_pull_request
-    expect:
-      data:
-        base-commit-sha: 9d77bc7063ed8328a7dbc4fc3b30605530322877
-        dependencies:
-          - name: com.google.inject:guice
-            previous-requirements:
-              - file: build.gradle
-                groups: []
-                requirement: 4.2.0
-                source: null
-            previous-version: 4.2.0
-            requirements:
-              - file: build.gradle
-                groups: []
-                requirement: 5.1.0
-                source:
-                  type: maven_repo
-                  url: https://repo.maven.apache.org/maven2
-            version: 5.1.0
-        updated-dependency-files:
-          - content: |
-              group 'me.minidigger'
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: co.aikar:acf-paper
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 0.5.0-SNAPSHOT
+                      source: null
+                  version: 0.5.0-SNAPSHOT
+                - name: com.google.inject:guice
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 4.2.0
+                      source: null
+                  version: 4.2.0
+                - name: com.google.code.findbugs:jsr305
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 3.0.2
+                      source: null
+                  version: 3.0.2
+                - name: de.davidbilge:jskill
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.1-SNAPSHOT
+                      source: null
+                  version: 1.1-SNAPSHOT
+                - name: net.kyori:text
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.12-1.4.0
+                      source: null
+                  version: 1.12-1.4.0
+                - name: org.eclipse.jgit:org.eclipse.jgit
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 4.11.0.201803080745-r
+                      source: null
+                  version: 4.11.0.201803080745-r
+                - name: org.hibernate:hibernate-core
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 5.3.0.CR1
+                      source: null
+                  version: 5.3.0.CR1
+                - name: org.inventivetalent:menubuilder
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.0.2
+                      source: null
+                  version: 1.0.2
+                - name: org.mineskin:java-client
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.0.1-SNAPSHOT
+                      source: null
+                  version: 1.0.1-SNAPSHOT
+            dependency_files:
+                - /gradle/build.gradle
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 9d77bc7063ed8328a7dbc4fc3b30605530322877
+            dependencies:
+                - name: com.google.inject:guice
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 4.2.0
+                      source: null
+                  previous-version: 4.2.0
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 5.1.0
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 5.1.0
+            updated-dependency-files:
+                - content: |
+                    group 'me.minidigger'
 
-              apply plugin: 'com.github.johnrengelman.shadow'
+                    apply plugin: 'com.github.johnrengelman.shadow'
 
-              task copyToServer(type: Copy) {
-                  from shadowJar
-                  into testServerFolder
-              }
+                    task copyToServer(type: Copy) {
+                        from shadowJar
+                        into testServerFolder
+                    }
 
-              shadowJar {
-                  mergeServiceFiles()
-                  configurations = [project.configurations.compile]
+                    shadowJar {
+                        mergeServiceFiles()
+                        configurations = [project.configurations.compile]
 
-                  //relocate 'org.bstats', 'com.voxelgameslib.voxelgameslib.metrics' TODO relocate bstats
+                        //relocate 'org.bstats', 'com.voxelgameslib.voxelgameslib.metrics' TODO relocate bstats
 
-                  manifest {
-                      attributes 'Implementation-Version': project.version + "@" + revision
-                  }
-              }
+                        manifest {
+                            attributes 'Implementation-Version': project.version + "@" + revision
+                        }
+                    }
 
-              def devNull = new OutputStream() {
-                @Override
-                public void write(int b) {}
-              }
-
-
-              build.dependsOn shadowJar
-
-              dependencies {
-                  compile project(":ChatMenuAPI")
-
-                  // Some details about 'co.aikar:acf-paper', version: '0.5.0-SNAPSHOT'
-                  compile group: 'co.aikar', name: 'acf-paper', version: '0.5.0-SNAPSHOT', changing: true
-                  compile group: 'com.google.inject', name: 'guice', version: '5.1.0'
-                  compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
-                  compile group: 'de.davidbilge', name: 'jskill', version: '1.1-SNAPSHOT'
-                  compile group: 'net.kyori', name: 'text', version: '1.12-1.4.0'
-                  compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.11.0.201803080745-r'
-                  compile group: 'org.hibernate', name: 'hibernate-core', version: '5.3.0.CR1'
-
-                  compile(group: 'org.inventivetalent', name: 'menubuilder', version: '1.0.2') {
-                      exclude group: 'org.bukkit'
-                  }
-                  compile(group: 'org.mineskin', name: 'java-client', version: '1.0.1-SNAPSHOT') {
-                      exclude group: 'junit'
-                  }
-              }
-
-              task createPom() {
-                  pom {
-                      project {
-                          groupId 'com.voxelgameslib'
-                          artifactId 'dependencies'
-                          version version
-                      }
-                  }.writeTo("pom.xml")
-              }
-
-              task debugApp(type: JavaExec, dependsOn: distBin) {
-                workingDir = 'dist-bin'
-                classpath = (fileTree(dir: 'dist-bin', includes:['eclipsito.jar']) + files('dist-bin'))
-                main = 'org.bardsoftware.eclipsito.Boot'
-                args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
-                jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
-              }
-            content_encoding: utf-8
-            deleted: false
-            directory: /gradle
-            name: build.gradle
-            operation: update
-            support_file: false
-            type: file
-        pr-title: Bump com.google.inject:guice from 4.2.0 to 5.1.0 in /gradle
-        pr-body: |
-          Bumps [com.google.inject:guice](https://github.com/google/guice) from 4.2.0 to 5.1.0.
-          <details>
-          <summary>Release notes</summary>
-          <p><em>Sourced from <a href="https://github.com/google/guice/releases">com.google.inject:guice's releases</a>.</em></p>
-          <blockquote>
-          <h2>Guice 5.1.0</h2>
-          <p>See <a href="https://github.com/google/guice/wiki/Guice510">https://github.com/google/guice/wiki/Guice510</a> for release notes.</p>
-          <h2>Guice 5.0.1</h2>
-          <p>See <a href="https://github.com/google/guice/wiki/Guice501">release notes</a> for details.</p>
-          <h2>Guice 5.0.0 (Don't use)</h2>
-          <p>Note: Use 5.0.1 instead</p>
-          <p>There is a <a href="https://redirect.github.com/google/guice/issues/1496">bug</a> in this release so use <a href="https://github.com/google/guice/releases/tag/5.0.1">5.0.1</a> instead.</p>
-          <h2>Guice 5.0.0-BETA-1</h2>
-          <p>Latest beta release of Guice and Guice extensions.</p>
-          <p>Guice 4.2.3.  See the <a href="https://github.com/google/guice/wiki/Guice423">release notes</a> for details.</p>
-          <p>Guice 4.2.2.  See the <a href="https://github.com/google/guice/wiki/Guice422">release notes</a> for details.</p>
-          <p>Guice 4.2.1.  See the <a href="https://github.com/google/guice/wiki/Guice421">release notes</a> for details.</p>
-          </blockquote>
-          </details>
-          <details>
-          <summary>Commits</summary>
-          <ul>
-          <li><a href="https://github.com/google/guice/commit/b0ff10c8ec8911137451623a333d6daa65f73d8a"><code>b0ff10c</code></a> specify release version numbers</li>
-          <li><a href="https://github.com/google/guice/commit/bcc9fe45e39fa2d743616cf822c7f6dcbbff6e88"><code>bcc9fe4</code></a> Fix JDK17+ assistedinject private lookup behavior by catching InaccessibleObj...</li>
-          <li><a href="https://github.com/google/guice/commit/6d503098ff9704ca6d2865844f269116f523047a"><code>6d50309</code></a> upgrade easy mock versions and enable tests against Java 17.</li>
-          <li><a href="https://github.com/google/guice/commit/c4854d5cf594e2cc03f3a3413d1576180617b843"><code>c4854d5</code></a> Fix tests that break with Java 17 base on suggestions from <a href="https://github.com/mcculls"><code>@​mcculls</code></a> <a href="https://g">https://g</a>...</li>
-          <li><a href="https://github.com/google/guice/commit/02c46875940ff75bb393ddb2758fbe8fedc43d64"><code>02c4687</code></a> Mark javadoc_library as manual, so <code>test //...</code> doesn't build it.</li>
-          <li><a href="https://github.com/google/guice/commit/bc960c5c05e72de98f6417939f93e1354933a49e"><code>bc960c5</code></a> Generate test suite to run tests under a package.</li>
-          <li><a href="https://github.com/google/guice/commit/1acb91cfff10ec9a58c17c0e1185a07d411e6c3e"><code>1acb91c</code></a> Run bazel test in ci workflow.</li>
-          <li><a href="https://github.com/google/guice/commit/1c57d16158423fe3e39e021a5acd1f7fac151821"><code>1c57d16</code></a> Add javadoc targets for Guice libraries.</li>
-          <li><a href="https://github.com/google/guice/commit/f7abab4bb3a6dadeebc1427f2ed44ae0a62040b9"><code>f7abab4</code></a> fix java-version property for publish workflow.</li>
-          <li><a href="https://github.com/google/guice/commit/dea06c1087bf61738fd9e92d81a4c315b2eb5d02"><code>dea06c1</code></a> Make Guice builds with bazel.</li>
-          <li>Additional commits viewable in <a href="https://github.com/google/guice/compare/4.2...5.1.0">compare view</a></li>
-          </ul>
-          </details>
-          <br />
-        commit-message: |-
-          Bump com.google.inject:guice from 4.2.0 to 5.1.0 in /gradle
-
-          Bumps [com.google.inject:guice](https://github.com/google/guice) from 4.2.0 to 5.1.0.
-          - [Release notes](https://github.com/google/guice/releases)
-          - [Commits](https://github.com/google/guice/compare/4.2...5.1.0)
-  - type: create_pull_request
-    expect:
-      data:
-        base-commit-sha: 9d77bc7063ed8328a7dbc4fc3b30605530322877
-        dependencies:
-          - name: net.kyori:text
-            previous-requirements:
-              - file: build.gradle
-                groups: []
-                requirement: 1.12-1.4.0
-                source: null
-            previous-version: 1.12-1.4.0
-            requirements:
-              - file: build.gradle
-                groups: []
-                requirement: 1.12-1.6.5
-                source:
-                  type: maven_repo
-                  url: https://repo.maven.apache.org/maven2
-            version: 1.12-1.6.5
-        updated-dependency-files:
-          - content: |
-              group 'me.minidigger'
-
-              apply plugin: 'com.github.johnrengelman.shadow'
-
-              task copyToServer(type: Copy) {
-                  from shadowJar
-                  into testServerFolder
-              }
-
-              shadowJar {
-                  mergeServiceFiles()
-                  configurations = [project.configurations.compile]
-
-                  //relocate 'org.bstats', 'com.voxelgameslib.voxelgameslib.metrics' TODO relocate bstats
-
-                  manifest {
-                      attributes 'Implementation-Version': project.version + "@" + revision
-                  }
-              }
-
-              def devNull = new OutputStream() {
-                @Override
-                public void write(int b) {}
-              }
+                    def devNull = new OutputStream() {
+                      @Override
+                      public void write(int b) {}
+                    }
 
 
-              build.dependsOn shadowJar
+                    build.dependsOn shadowJar
 
-              dependencies {
-                  compile project(":ChatMenuAPI")
+                    dependencies {
+                        compile project(":ChatMenuAPI")
 
-                  // Some details about 'co.aikar:acf-paper', version: '0.5.0-SNAPSHOT'
-                  compile group: 'co.aikar', name: 'acf-paper', version: '0.5.0-SNAPSHOT', changing: true
-                  compile group: 'com.google.inject', name: 'guice', version: '4.2.0'
-                  compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
-                  compile group: 'de.davidbilge', name: 'jskill', version: '1.1-SNAPSHOT'
-                  compile group: 'net.kyori', name: 'text', version: '1.12-1.6.5'
-                  compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.11.0.201803080745-r'
-                  compile group: 'org.hibernate', name: 'hibernate-core', version: '5.3.0.CR1'
+                        // Some details about 'co.aikar:acf-paper', version: '0.5.0-SNAPSHOT'
+                        compile group: 'co.aikar', name: 'acf-paper', version: '0.5.0-SNAPSHOT', changing: true
+                        compile group: 'com.google.inject', name: 'guice', version: '5.1.0'
+                        compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
+                        compile group: 'de.davidbilge', name: 'jskill', version: '1.1-SNAPSHOT'
+                        compile group: 'net.kyori', name: 'text', version: '1.12-1.4.0'
+                        compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.11.0.201803080745-r'
+                        compile group: 'org.hibernate', name: 'hibernate-core', version: '5.3.0.CR1'
 
-                  compile(group: 'org.inventivetalent', name: 'menubuilder', version: '1.0.2') {
-                      exclude group: 'org.bukkit'
-                  }
-                  compile(group: 'org.mineskin', name: 'java-client', version: '1.0.1-SNAPSHOT') {
-                      exclude group: 'junit'
-                  }
-              }
+                        compile(group: 'org.inventivetalent', name: 'menubuilder', version: '1.0.2') {
+                            exclude group: 'org.bukkit'
+                        }
+                        compile(group: 'org.mineskin', name: 'java-client', version: '1.0.1-SNAPSHOT') {
+                            exclude group: 'junit'
+                        }
+                    }
 
-              task createPom() {
-                  pom {
-                      project {
-                          groupId 'com.voxelgameslib'
-                          artifactId 'dependencies'
-                          version version
-                      }
-                  }.writeTo("pom.xml")
-              }
+                    task createPom() {
+                        pom {
+                            project {
+                                groupId 'com.voxelgameslib'
+                                artifactId 'dependencies'
+                                version version
+                            }
+                        }.writeTo("pom.xml")
+                    }
 
-              task debugApp(type: JavaExec, dependsOn: distBin) {
-                workingDir = 'dist-bin'
-                classpath = (fileTree(dir: 'dist-bin', includes:['eclipsito.jar']) + files('dist-bin'))
-                main = 'org.bardsoftware.eclipsito.Boot'
-                args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
-                jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
-              }
-            content_encoding: utf-8
-            deleted: false
-            directory: /gradle
-            name: build.gradle
-            operation: update
-            support_file: false
-            type: file
-        pr-title: Bump net.kyori:text from 1.12-1.4.0 to 1.12-1.6.5 in /gradle
-        pr-body: |
-          Bumps [net.kyori:text](https://github.com/KyoriPowered/text) from 1.12-1.4.0 to 1.12-1.6.5.
-          <details>
-          <summary>Commits</summary>
-          <ul>
-          <li>See full diff in <a href="https://github.com/KyoriPowered/text/commits">compare view</a></li>
-          </ul>
-          </details>
-          <br />
-        commit-message: |-
-          Bump net.kyori:text from 1.12-1.4.0 to 1.12-1.6.5 in /gradle
+                    task debugApp(type: JavaExec, dependsOn: distBin) {
+                      workingDir = 'dist-bin'
+                      classpath = (fileTree(dir: 'dist-bin', includes:['eclipsito.jar']) + files('dist-bin'))
+                      main = 'org.bardsoftware.eclipsito.Boot'
+                      args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
+                      jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /gradle
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump com.google.inject:guice from 4.2.0 to 5.1.0 in /gradle
+            pr-body: |
+                Bumps [com.google.inject:guice](https://github.com/google/guice) from 4.2.0 to 5.1.0.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/google/guice/releases">com.google.inject:guice's releases</a>.</em></p>
+                <blockquote>
+                <h2>Guice 5.1.0</h2>
+                <p>See <a href="https://github.com/google/guice/wiki/Guice510">https://github.com/google/guice/wiki/Guice510</a> for release notes.</p>
+                <h2>Guice 5.0.1</h2>
+                <p>See <a href="https://github.com/google/guice/wiki/Guice501">release notes</a> for details.</p>
+                <h2>Guice 5.0.0 (Don't use)</h2>
+                <p>Note: Use 5.0.1 instead</p>
+                <p>There is a <a href="https://redirect.github.com/google/guice/issues/1496">bug</a> in this release so use <a href="https://github.com/google/guice/releases/tag/5.0.1">5.0.1</a> instead.</p>
+                <h2>Guice 5.0.0-BETA-1</h2>
+                <p>Latest beta release of Guice and Guice extensions.</p>
+                <p>Guice 4.2.3.  See the <a href="https://github.com/google/guice/wiki/Guice423">release notes</a> for details.</p>
+                <p>Guice 4.2.2.  See the <a href="https://github.com/google/guice/wiki/Guice422">release notes</a> for details.</p>
+                <p>Guice 4.2.1.  See the <a href="https://github.com/google/guice/wiki/Guice421">release notes</a> for details.</p>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/google/guice/commit/b0ff10c8ec8911137451623a333d6daa65f73d8a"><code>b0ff10c</code></a> specify release version numbers</li>
+                <li><a href="https://github.com/google/guice/commit/bcc9fe45e39fa2d743616cf822c7f6dcbbff6e88"><code>bcc9fe4</code></a> Fix JDK17+ assistedinject private lookup behavior by catching InaccessibleObj...</li>
+                <li><a href="https://github.com/google/guice/commit/6d503098ff9704ca6d2865844f269116f523047a"><code>6d50309</code></a> upgrade easy mock versions and enable tests against Java 17.</li>
+                <li><a href="https://github.com/google/guice/commit/c4854d5cf594e2cc03f3a3413d1576180617b843"><code>c4854d5</code></a> Fix tests that break with Java 17 base on suggestions from <a href="https://github.com/mcculls"><code>@​mcculls</code></a> <a href="https://g">https://g</a>...</li>
+                <li><a href="https://github.com/google/guice/commit/02c46875940ff75bb393ddb2758fbe8fedc43d64"><code>02c4687</code></a> Mark javadoc_library as manual, so <code>test //...</code> doesn't build it.</li>
+                <li><a href="https://github.com/google/guice/commit/bc960c5c05e72de98f6417939f93e1354933a49e"><code>bc960c5</code></a> Generate test suite to run tests under a package.</li>
+                <li><a href="https://github.com/google/guice/commit/1acb91cfff10ec9a58c17c0e1185a07d411e6c3e"><code>1acb91c</code></a> Run bazel test in ci workflow.</li>
+                <li><a href="https://github.com/google/guice/commit/1c57d16158423fe3e39e021a5acd1f7fac151821"><code>1c57d16</code></a> Add javadoc targets for Guice libraries.</li>
+                <li><a href="https://github.com/google/guice/commit/f7abab4bb3a6dadeebc1427f2ed44ae0a62040b9"><code>f7abab4</code></a> fix java-version property for publish workflow.</li>
+                <li><a href="https://github.com/google/guice/commit/dea06c1087bf61738fd9e92d81a4c315b2eb5d02"><code>dea06c1</code></a> Make Guice builds with bazel.</li>
+                <li>Additional commits viewable in <a href="https://github.com/google/guice/compare/4.2...5.1.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump com.google.inject:guice from 4.2.0 to 5.1.0 in /gradle
 
-          Bumps [net.kyori:text](https://github.com/KyoriPowered/text) from 1.12-1.4.0 to 1.12-1.6.5.
-          - [Release notes](https://github.com/KyoriPowered/text/releases)
-          - [Commits](https://github.com/KyoriPowered/text/commits)
-  - type: create_pull_request
-    expect:
-      data:
-        base-commit-sha: 9d77bc7063ed8328a7dbc4fc3b30605530322877
-        dependencies:
-          - name: org.eclipse.jgit:org.eclipse.jgit
-            previous-requirements:
-              - file: build.gradle
-                groups: []
-                requirement: 4.11.0.201803080745-r
-                source: null
-            previous-version: 4.11.0.201803080745-r
-            requirements:
-              - file: build.gradle
-                groups: []
-                requirement: 6.3.0.202209071007-r
-                source:
-                  type: maven_repo
-                  url: https://repo.maven.apache.org/maven2
-            version: 6.3.0.202209071007-r
-        updated-dependency-files:
-          - content: |
-              group 'me.minidigger'
+                Bumps [com.google.inject:guice](https://github.com/google/guice) from 4.2.0 to 5.1.0.
+                - [Release notes](https://github.com/google/guice/releases)
+                - [Commits](https://github.com/google/guice/compare/4.2...5.1.0)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 9d77bc7063ed8328a7dbc4fc3b30605530322877
+            dependencies:
+                - name: net.kyori:text
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.12-1.4.0
+                      source: null
+                  previous-version: 1.12-1.4.0
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.12-1.6.5
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 1.12-1.6.5
+            updated-dependency-files:
+                - content: |
+                    group 'me.minidigger'
 
-              apply plugin: 'com.github.johnrengelman.shadow'
+                    apply plugin: 'com.github.johnrengelman.shadow'
 
-              task copyToServer(type: Copy) {
-                  from shadowJar
-                  into testServerFolder
-              }
+                    task copyToServer(type: Copy) {
+                        from shadowJar
+                        into testServerFolder
+                    }
 
-              shadowJar {
-                  mergeServiceFiles()
-                  configurations = [project.configurations.compile]
+                    shadowJar {
+                        mergeServiceFiles()
+                        configurations = [project.configurations.compile]
 
-                  //relocate 'org.bstats', 'com.voxelgameslib.voxelgameslib.metrics' TODO relocate bstats
+                        //relocate 'org.bstats', 'com.voxelgameslib.voxelgameslib.metrics' TODO relocate bstats
 
-                  manifest {
-                      attributes 'Implementation-Version': project.version + "@" + revision
-                  }
-              }
+                        manifest {
+                            attributes 'Implementation-Version': project.version + "@" + revision
+                        }
+                    }
 
-              def devNull = new OutputStream() {
-                @Override
-                public void write(int b) {}
-              }
-
-
-              build.dependsOn shadowJar
-
-              dependencies {
-                  compile project(":ChatMenuAPI")
-
-                  // Some details about 'co.aikar:acf-paper', version: '0.5.0-SNAPSHOT'
-                  compile group: 'co.aikar', name: 'acf-paper', version: '0.5.0-SNAPSHOT', changing: true
-                  compile group: 'com.google.inject', name: 'guice', version: '4.2.0'
-                  compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
-                  compile group: 'de.davidbilge', name: 'jskill', version: '1.1-SNAPSHOT'
-                  compile group: 'net.kyori', name: 'text', version: '1.12-1.4.0'
-                  compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '6.3.0.202209071007-r'
-                  compile group: 'org.hibernate', name: 'hibernate-core', version: '5.3.0.CR1'
-
-                  compile(group: 'org.inventivetalent', name: 'menubuilder', version: '1.0.2') {
-                      exclude group: 'org.bukkit'
-                  }
-                  compile(group: 'org.mineskin', name: 'java-client', version: '1.0.1-SNAPSHOT') {
-                      exclude group: 'junit'
-                  }
-              }
-
-              task createPom() {
-                  pom {
-                      project {
-                          groupId 'com.voxelgameslib'
-                          artifactId 'dependencies'
-                          version version
-                      }
-                  }.writeTo("pom.xml")
-              }
-
-              task debugApp(type: JavaExec, dependsOn: distBin) {
-                workingDir = 'dist-bin'
-                classpath = (fileTree(dir: 'dist-bin', includes:['eclipsito.jar']) + files('dist-bin'))
-                main = 'org.bardsoftware.eclipsito.Boot'
-                args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
-                jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
-              }
-            content_encoding: utf-8
-            deleted: false
-            directory: /gradle
-            name: build.gradle
-            operation: update
-            support_file: false
-            type: file
-        pr-title: Bump org.eclipse.jgit:org.eclipse.jgit from 4.11.0.201803080745-r to 6.3.0.202209071007-r in /gradle
-        pr-body: |
-          Bumps org.eclipse.jgit:org.eclipse.jgit from 4.11.0.201803080745-r to 6.3.0.202209071007-r.
-        commit-message: |-
-          Bump org.eclipse.jgit:org.eclipse.jgit in /gradle
-
-          Bumps org.eclipse.jgit:org.eclipse.jgit from 4.11.0.201803080745-r to 6.3.0.202209071007-r.
-  - type: create_pull_request
-    expect:
-      data:
-        base-commit-sha: 9d77bc7063ed8328a7dbc4fc3b30605530322877
-        dependencies:
-          - name: org.hibernate:hibernate-core
-            previous-requirements:
-              - file: build.gradle
-                groups: []
-                requirement: 5.3.0.CR1
-                source: null
-            previous-version: 5.3.0.CR1
-            requirements:
-              - file: build.gradle
-                groups: []
-                requirement: 6.1.3.Final
-                source:
-                  type: maven_repo
-                  url: https://repo.maven.apache.org/maven2
-            version: 6.1.3.Final
-        updated-dependency-files:
-          - content: |
-              group 'me.minidigger'
-
-              apply plugin: 'com.github.johnrengelman.shadow'
-
-              task copyToServer(type: Copy) {
-                  from shadowJar
-                  into testServerFolder
-              }
-
-              shadowJar {
-                  mergeServiceFiles()
-                  configurations = [project.configurations.compile]
-
-                  //relocate 'org.bstats', 'com.voxelgameslib.voxelgameslib.metrics' TODO relocate bstats
-
-                  manifest {
-                      attributes 'Implementation-Version': project.version + "@" + revision
-                  }
-              }
-
-              def devNull = new OutputStream() {
-                @Override
-                public void write(int b) {}
-              }
+                    def devNull = new OutputStream() {
+                      @Override
+                      public void write(int b) {}
+                    }
 
 
-              build.dependsOn shadowJar
+                    build.dependsOn shadowJar
 
-              dependencies {
-                  compile project(":ChatMenuAPI")
+                    dependencies {
+                        compile project(":ChatMenuAPI")
 
-                  // Some details about 'co.aikar:acf-paper', version: '0.5.0-SNAPSHOT'
-                  compile group: 'co.aikar', name: 'acf-paper', version: '0.5.0-SNAPSHOT', changing: true
-                  compile group: 'com.google.inject', name: 'guice', version: '4.2.0'
-                  compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
-                  compile group: 'de.davidbilge', name: 'jskill', version: '1.1-SNAPSHOT'
-                  compile group: 'net.kyori', name: 'text', version: '1.12-1.4.0'
-                  compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.11.0.201803080745-r'
-                  compile group: 'org.hibernate', name: 'hibernate-core', version: '6.1.3.Final'
+                        // Some details about 'co.aikar:acf-paper', version: '0.5.0-SNAPSHOT'
+                        compile group: 'co.aikar', name: 'acf-paper', version: '0.5.0-SNAPSHOT', changing: true
+                        compile group: 'com.google.inject', name: 'guice', version: '4.2.0'
+                        compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
+                        compile group: 'de.davidbilge', name: 'jskill', version: '1.1-SNAPSHOT'
+                        compile group: 'net.kyori', name: 'text', version: '1.12-1.6.5'
+                        compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.11.0.201803080745-r'
+                        compile group: 'org.hibernate', name: 'hibernate-core', version: '5.3.0.CR1'
 
-                  compile(group: 'org.inventivetalent', name: 'menubuilder', version: '1.0.2') {
-                      exclude group: 'org.bukkit'
-                  }
-                  compile(group: 'org.mineskin', name: 'java-client', version: '1.0.1-SNAPSHOT') {
-                      exclude group: 'junit'
-                  }
-              }
+                        compile(group: 'org.inventivetalent', name: 'menubuilder', version: '1.0.2') {
+                            exclude group: 'org.bukkit'
+                        }
+                        compile(group: 'org.mineskin', name: 'java-client', version: '1.0.1-SNAPSHOT') {
+                            exclude group: 'junit'
+                        }
+                    }
 
-              task createPom() {
-                  pom {
-                      project {
-                          groupId 'com.voxelgameslib'
-                          artifactId 'dependencies'
-                          version version
-                      }
-                  }.writeTo("pom.xml")
-              }
+                    task createPom() {
+                        pom {
+                            project {
+                                groupId 'com.voxelgameslib'
+                                artifactId 'dependencies'
+                                version version
+                            }
+                        }.writeTo("pom.xml")
+                    }
 
-              task debugApp(type: JavaExec, dependsOn: distBin) {
-                workingDir = 'dist-bin'
-                classpath = (fileTree(dir: 'dist-bin', includes:['eclipsito.jar']) + files('dist-bin'))
-                main = 'org.bardsoftware.eclipsito.Boot'
-                args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
-                jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
-              }
-            content_encoding: utf-8
-            deleted: false
-            directory: /gradle
-            name: build.gradle
-            operation: update
-            support_file: false
-            type: file
-        pr-title: Bump org.hibernate:hibernate-core from 5.3.0.CR1 to 6.1.3.Final in /gradle
-        pr-body: |
-          Bumps [org.hibernate:hibernate-core](https://github.com/hibernate/hibernate-orm) from 5.3.0.CR1 to 6.1.3.Final.
-          <details>
-          <summary>Changelog</summary>
-          <p><em>Sourced from <a href="https://github.com/hibernate/hibernate-orm/blob/6.1.3/changelog.txt">org.hibernate:hibernate-core's changelog</a>.</em></p>
-          <blockquote>
-          <h2>Changes in 6.1.3.Final (September 08, 2022)</h2>
-          <p><a href="https://hibernate.atlassian.net/projects/HHH/versions/32093">https://hibernate.atlassian.net/projects/HHH/versions/32093</a></p>
-          <p>** Bug
-          * [HHH-15477] - Criteria EXISTS Subquery referring the Root of the Query of which it is a Subquery causes &quot;Error interpreting query [SqmRoot not yet resolved to TableGroup]&quot;
-          * [HHH-15468] - contributor-build.yml has no explicit permissions set
-          * [HHH-15455] - User Guide Contains a reference to hibernate-ehcache, no longer supported
-          * [HHH-15454] - Primitive type requested from tuple throws exception
-          * [HHH-15453] - java.lang.NullPointerException: Cannot invoke &quot;org.hibernate.engine.spi.EntityEntry.getEntityKey()&quot; because &quot;ownerEntry&quot; is null
-          * [HHH-15452] - Predicate add expression results in UnsupportedOperationException
-          * [HHH-15449] - <a href="https://github.com/ManyToOne"><code>@​ManyToOne</code></a> associations not loaded correctly with default EAGER and batch fetch property set when using TypedQuery.resultStream
-          * [HHH-15440] - <a href="https://github.com/OneToOne"><code>@​OneToOne</code></a> and <a href="https://github.com/OptimisticLock"><code>@​OptimisticLock</code></a>(excluded = true) not working correctly
-          * [HHH-15438] - PostgreSQL integration classes shouldn't throw ClassNotFoundException on org.postgresql driver classes that we try loading
-          * [HHH-15433] - Make sure Path#type() never returns null as per JPA TCK requirement
-          * [HHH-15432] - Potential IndexOutOfBoundsException in SqmQueryPart
-          * [HHH-15416] - PostgreSQLJsonbJdbcType is assuming there is a valid Json FormatMapper implementation
-          * [HHH-15359] - The entity returned by a merge doesn't contain <a href="https://github.com/ManyToMany"><code>@​ManyToMany</code></a> relation when the collection resides in <a href="https://github.com/Embeddable"><code>@​Embeddable</code></a>
-          * [HHH-15356] - Unable to get primary information on some dialects (ex: Oracle) when the PK column's position doesn't match the alphabetical name's order
-          * [HHH-15216] - Cannot change MetadataProvider implementation because JPAXMLOverriddenMetadataProvider is final and precisely expected by a cast operator
-          * [HHH-15100] - Limitation of metamodel imports cache causes severe performance drops in large projects
-          * [HHH-14387] - A collection with cascade=&quot;all-delete-orphan&quot; was no longer referenced by the owning entity instance with hibernate-enhance-maven-plugin
-          * [HHH-13485] - FilterJoinTable does not to use the defualt condition</p>
-          <p>** Improvement
-          * [HHH-15471] - Improve merge replace operation when original and target are the same object
-          * [HHH-15466] - Compatibility with Jandex 3.0.0
-          * [HHH-15462] - Optimize ColumnReference rendering and reduce buffering
-          * [HHH-15461] - Replace uses of method references for SqlAppender with proper implementation
-          * [HHH-15458] - Interpret String with JSON/XML type code as plain JSON/XML
-          * [HHH-15442] - Allow for setParameter usage with a queries for a specific type in an Any-discriminated relationship
-          * [HHH-15441] - Improve error message if SqlTypes type code can't be interpreted
-          * [HHH-15381] - Clean up Gradle Plugin publishing as part of release process</p>
-          <p>** Task
-          * [HHH-15451] - Upgrade PostgreSQL JDBC driver to 42.5.0
-          * [HHH-15448] - Upgrade MSSQL JDBC and container image versions used for testing
-          * [HHH-15388] - Upgrade to Micrometer 1.9.3</p>
-          <h2>Changes in 6.1.2.Final (August 03, 2022)</h2>
-          <p><a href="https://hibernate.atlassian.net/projects/HHH/versions/32087">https://hibernate.atlassian.net/projects/HHH/versions/32087</a></p>
-          <p>** Bug
-          * [HHH-15430] - Allow use of <a href="https://github.com/Enumerated"><code>@​Enumerated</code></a> on basic collection
-          * [HHH-15428] - Converters for BasicCollectionType don't work
-          * [HHH-15423] - <a href="https://github.com/Any"><code>@​Any</code></a> discriminated association fails to be implicitly fetched due to UnsupportedOperationException</p>
-          <!-- raw HTML omitted -->
-          </blockquote>
-          <p>... (truncated)</p>
-          </details>
-          <details>
-          <summary>Commits</summary>
-          <ul>
-          <li>See full diff in <a href="https://github.com/hibernate/hibernate-orm/commits/6.1.3">compare view</a></li>
-          </ul>
-          </details>
-          <br />
-        commit-message: |-
-          Bump org.hibernate:hibernate-core in /gradle
+                    task debugApp(type: JavaExec, dependsOn: distBin) {
+                      workingDir = 'dist-bin'
+                      classpath = (fileTree(dir: 'dist-bin', includes:['eclipsito.jar']) + files('dist-bin'))
+                      main = 'org.bardsoftware.eclipsito.Boot'
+                      args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
+                      jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /gradle
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump net.kyori:text from 1.12-1.4.0 to 1.12-1.6.5 in /gradle
+            pr-body: |
+                Bumps [net.kyori:text](https://github.com/KyoriPowered/text) from 1.12-1.4.0 to 1.12-1.6.5.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/KyoriPowered/text/commits">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump net.kyori:text from 1.12-1.4.0 to 1.12-1.6.5 in /gradle
 
-          Bumps [org.hibernate:hibernate-core](https://github.com/hibernate/hibernate-orm) from 5.3.0.CR1 to 6.1.3.Final.
-          - [Release notes](https://github.com/hibernate/hibernate-orm/releases)
-          - [Changelog](https://github.com/hibernate/hibernate-orm/blob/6.1.3/changelog.txt)
-          - [Commits](https://github.com/hibernate/hibernate-orm/commits/6.1.3)
-  - type: mark_as_processed
-    expect:
-      data:
-        base-commit-sha: 9d77bc7063ed8328a7dbc4fc3b30605530322877
+                Bumps [net.kyori:text](https://github.com/KyoriPowered/text) from 1.12-1.4.0 to 1.12-1.6.5.
+                - [Release notes](https://github.com/KyoriPowered/text/releases)
+                - [Commits](https://github.com/KyoriPowered/text/commits)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 9d77bc7063ed8328a7dbc4fc3b30605530322877
+            dependencies:
+                - name: org.eclipse.jgit:org.eclipse.jgit
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 4.11.0.201803080745-r
+                      source: null
+                  previous-version: 4.11.0.201803080745-r
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 6.3.0.202209071007-r
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 6.3.0.202209071007-r
+            updated-dependency-files:
+                - content: |
+                    group 'me.minidigger'
+
+                    apply plugin: 'com.github.johnrengelman.shadow'
+
+                    task copyToServer(type: Copy) {
+                        from shadowJar
+                        into testServerFolder
+                    }
+
+                    shadowJar {
+                        mergeServiceFiles()
+                        configurations = [project.configurations.compile]
+
+                        //relocate 'org.bstats', 'com.voxelgameslib.voxelgameslib.metrics' TODO relocate bstats
+
+                        manifest {
+                            attributes 'Implementation-Version': project.version + "@" + revision
+                        }
+                    }
+
+                    def devNull = new OutputStream() {
+                      @Override
+                      public void write(int b) {}
+                    }
+
+
+                    build.dependsOn shadowJar
+
+                    dependencies {
+                        compile project(":ChatMenuAPI")
+
+                        // Some details about 'co.aikar:acf-paper', version: '0.5.0-SNAPSHOT'
+                        compile group: 'co.aikar', name: 'acf-paper', version: '0.5.0-SNAPSHOT', changing: true
+                        compile group: 'com.google.inject', name: 'guice', version: '4.2.0'
+                        compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
+                        compile group: 'de.davidbilge', name: 'jskill', version: '1.1-SNAPSHOT'
+                        compile group: 'net.kyori', name: 'text', version: '1.12-1.4.0'
+                        compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '6.3.0.202209071007-r'
+                        compile group: 'org.hibernate', name: 'hibernate-core', version: '5.3.0.CR1'
+
+                        compile(group: 'org.inventivetalent', name: 'menubuilder', version: '1.0.2') {
+                            exclude group: 'org.bukkit'
+                        }
+                        compile(group: 'org.mineskin', name: 'java-client', version: '1.0.1-SNAPSHOT') {
+                            exclude group: 'junit'
+                        }
+                    }
+
+                    task createPom() {
+                        pom {
+                            project {
+                                groupId 'com.voxelgameslib'
+                                artifactId 'dependencies'
+                                version version
+                            }
+                        }.writeTo("pom.xml")
+                    }
+
+                    task debugApp(type: JavaExec, dependsOn: distBin) {
+                      workingDir = 'dist-bin'
+                      classpath = (fileTree(dir: 'dist-bin', includes:['eclipsito.jar']) + files('dist-bin'))
+                      main = 'org.bardsoftware.eclipsito.Boot'
+                      args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
+                      jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /gradle
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump org.eclipse.jgit:org.eclipse.jgit from 4.11.0.201803080745-r to 6.3.0.202209071007-r in /gradle
+            pr-body: |
+                Bumps org.eclipse.jgit:org.eclipse.jgit from 4.11.0.201803080745-r to 6.3.0.202209071007-r.
+            commit-message: |-
+                Bump org.eclipse.jgit:org.eclipse.jgit in /gradle
+
+                Bumps org.eclipse.jgit:org.eclipse.jgit from 4.11.0.201803080745-r to 6.3.0.202209071007-r.
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 9d77bc7063ed8328a7dbc4fc3b30605530322877
+            dependencies:
+                - name: org.hibernate:hibernate-core
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 5.3.0.CR1
+                      source: null
+                  previous-version: 5.3.0.CR1
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 6.1.3.Final
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 6.1.3.Final
+            updated-dependency-files:
+                - content: |
+                    group 'me.minidigger'
+
+                    apply plugin: 'com.github.johnrengelman.shadow'
+
+                    task copyToServer(type: Copy) {
+                        from shadowJar
+                        into testServerFolder
+                    }
+
+                    shadowJar {
+                        mergeServiceFiles()
+                        configurations = [project.configurations.compile]
+
+                        //relocate 'org.bstats', 'com.voxelgameslib.voxelgameslib.metrics' TODO relocate bstats
+
+                        manifest {
+                            attributes 'Implementation-Version': project.version + "@" + revision
+                        }
+                    }
+
+                    def devNull = new OutputStream() {
+                      @Override
+                      public void write(int b) {}
+                    }
+
+
+                    build.dependsOn shadowJar
+
+                    dependencies {
+                        compile project(":ChatMenuAPI")
+
+                        // Some details about 'co.aikar:acf-paper', version: '0.5.0-SNAPSHOT'
+                        compile group: 'co.aikar', name: 'acf-paper', version: '0.5.0-SNAPSHOT', changing: true
+                        compile group: 'com.google.inject', name: 'guice', version: '4.2.0'
+                        compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
+                        compile group: 'de.davidbilge', name: 'jskill', version: '1.1-SNAPSHOT'
+                        compile group: 'net.kyori', name: 'text', version: '1.12-1.4.0'
+                        compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.11.0.201803080745-r'
+                        compile group: 'org.hibernate', name: 'hibernate-core', version: '6.1.3.Final'
+
+                        compile(group: 'org.inventivetalent', name: 'menubuilder', version: '1.0.2') {
+                            exclude group: 'org.bukkit'
+                        }
+                        compile(group: 'org.mineskin', name: 'java-client', version: '1.0.1-SNAPSHOT') {
+                            exclude group: 'junit'
+                        }
+                    }
+
+                    task createPom() {
+                        pom {
+                            project {
+                                groupId 'com.voxelgameslib'
+                                artifactId 'dependencies'
+                                version version
+                            }
+                        }.writeTo("pom.xml")
+                    }
+
+                    task debugApp(type: JavaExec, dependsOn: distBin) {
+                      workingDir = 'dist-bin'
+                      classpath = (fileTree(dir: 'dist-bin', includes:['eclipsito.jar']) + files('dist-bin'))
+                      main = 'org.bardsoftware.eclipsito.Boot'
+                      args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
+                      jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /gradle
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump org.hibernate:hibernate-core from 5.3.0.CR1 to 6.1.3.Final in /gradle
+            pr-body: |
+                Bumps [org.hibernate:hibernate-core](https://github.com/hibernate/hibernate-orm) from 5.3.0.CR1 to 6.1.3.Final.
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/hibernate/hibernate-orm/blob/6.1.3/changelog.txt">org.hibernate:hibernate-core's changelog</a>.</em></p>
+                <blockquote>
+                <h2>Changes in 6.1.3.Final (September 08, 2022)</h2>
+                <p><a href="https://hibernate.atlassian.net/projects/HHH/versions/32093">https://hibernate.atlassian.net/projects/HHH/versions/32093</a></p>
+                <p>** Bug
+                * [HHH-15477] - Criteria EXISTS Subquery referring the Root of the Query of which it is a Subquery causes &quot;Error interpreting query [SqmRoot not yet resolved to TableGroup]&quot;
+                * [HHH-15468] - contributor-build.yml has no explicit permissions set
+                * [HHH-15455] - User Guide Contains a reference to hibernate-ehcache, no longer supported
+                * [HHH-15454] - Primitive type requested from tuple throws exception
+                * [HHH-15453] - java.lang.NullPointerException: Cannot invoke &quot;org.hibernate.engine.spi.EntityEntry.getEntityKey()&quot; because &quot;ownerEntry&quot; is null
+                * [HHH-15452] - Predicate add expression results in UnsupportedOperationException
+                * [HHH-15449] - <a href="https://github.com/ManyToOne"><code>@​ManyToOne</code></a> associations not loaded correctly with default EAGER and batch fetch property set when using TypedQuery.resultStream
+                * [HHH-15440] - <a href="https://github.com/OneToOne"><code>@​OneToOne</code></a> and <a href="https://github.com/OptimisticLock"><code>@​OptimisticLock</code></a>(excluded = true) not working correctly
+                * [HHH-15438] - PostgreSQL integration classes shouldn't throw ClassNotFoundException on org.postgresql driver classes that we try loading
+                * [HHH-15433] - Make sure Path#type() never returns null as per JPA TCK requirement
+                * [HHH-15432] - Potential IndexOutOfBoundsException in SqmQueryPart
+                * [HHH-15416] - PostgreSQLJsonbJdbcType is assuming there is a valid Json FormatMapper implementation
+                * [HHH-15359] - The entity returned by a merge doesn't contain <a href="https://github.com/ManyToMany"><code>@​ManyToMany</code></a> relation when the collection resides in <a href="https://github.com/Embeddable"><code>@​Embeddable</code></a>
+                * [HHH-15356] - Unable to get primary information on some dialects (ex: Oracle) when the PK column's position doesn't match the alphabetical name's order
+                * [HHH-15216] - Cannot change MetadataProvider implementation because JPAXMLOverriddenMetadataProvider is final and precisely expected by a cast operator
+                * [HHH-15100] - Limitation of metamodel imports cache causes severe performance drops in large projects
+                * [HHH-14387] - A collection with cascade=&quot;all-delete-orphan&quot; was no longer referenced by the owning entity instance with hibernate-enhance-maven-plugin
+                * [HHH-13485] - FilterJoinTable does not to use the defualt condition</p>
+                <p>** Improvement
+                * [HHH-15471] - Improve merge replace operation when original and target are the same object
+                * [HHH-15466] - Compatibility with Jandex 3.0.0
+                * [HHH-15462] - Optimize ColumnReference rendering and reduce buffering
+                * [HHH-15461] - Replace uses of method references for SqlAppender with proper implementation
+                * [HHH-15458] - Interpret String with JSON/XML type code as plain JSON/XML
+                * [HHH-15442] - Allow for setParameter usage with a queries for a specific type in an Any-discriminated relationship
+                * [HHH-15441] - Improve error message if SqlTypes type code can't be interpreted
+                * [HHH-15381] - Clean up Gradle Plugin publishing as part of release process</p>
+                <p>** Task
+                * [HHH-15451] - Upgrade PostgreSQL JDBC driver to 42.5.0
+                * [HHH-15448] - Upgrade MSSQL JDBC and container image versions used for testing
+                * [HHH-15388] - Upgrade to Micrometer 1.9.3</p>
+                <h2>Changes in 6.1.2.Final (August 03, 2022)</h2>
+                <p><a href="https://hibernate.atlassian.net/projects/HHH/versions/32087">https://hibernate.atlassian.net/projects/HHH/versions/32087</a></p>
+                <p>** Bug
+                * [HHH-15430] - Allow use of <a href="https://github.com/Enumerated"><code>@​Enumerated</code></a> on basic collection
+                * [HHH-15428] - Converters for BasicCollectionType don't work
+                * [HHH-15423] - <a href="https://github.com/Any"><code>@​Any</code></a> discriminated association fails to be implicitly fetched due to UnsupportedOperationException</p>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/hibernate/hibernate-orm/commits/6.1.3">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump org.hibernate:hibernate-core in /gradle
+
+                Bumps [org.hibernate:hibernate-core](https://github.com/hibernate/hibernate-orm) from 5.3.0.CR1 to 6.1.3.Final.
+                - [Release notes](https://github.com/hibernate/hibernate-orm/releases)
+                - [Changelog](https://github.com/hibernate/hibernate-orm/blob/6.1.3/changelog.txt)
+                - [Commits](https://github.com/hibernate/hibernate-orm/commits/6.1.3)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 9d77bc7063ed8328a7dbc4fc3b30605530322877
