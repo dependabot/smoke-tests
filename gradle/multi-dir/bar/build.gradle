@@ -1,0 +1,63 @@
+group 'me.minidigger'
+
+apply plugin: 'com.github.johnrengelman.shadow'
+
+task copyToServer(type: Copy) {
+    from shadowJar
+    into testServerFolder
+}
+
+shadowJar {
+    mergeServiceFiles()
+    configurations = [project.configurations.compile]
+
+    //relocate 'org.bstats', 'com.voxelgameslib.voxelgameslib.metrics' TODO relocate bstats
+
+    manifest {
+        attributes 'Implementation-Version': project.version + "@" + revision
+    }
+}
+
+def devNull = new OutputStream() {
+  @Override
+  public void write(int b) {}
+}
+
+
+build.dependsOn shadowJar
+
+dependencies {
+    compile project(":ChatMenuAPI")
+
+    // Some details about 'co.aikar:acf-paper', version: '0.5.0-SNAPSHOT'
+    compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+    compile group: 'de.davidbilge', name: 'jskill', version: '1.1-SNAPSHOT'
+    compile group: 'net.kyori', name: 'text', version: '1.12-1.4.0'
+    compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.11.0.201803080745-r'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.3.0.CR1'
+
+    compile(group: 'org.inventivetalent', name: 'menubuilder', version: '1.0.2') {
+        exclude group: 'org.bukkit'
+    }
+    compile(group: 'org.mineskin', name: 'java-client', version: '1.0.1-SNAPSHOT') {
+        exclude group: 'junit'
+    }
+}
+
+task createPom() {
+    pom {
+        project {
+            groupId 'com.voxelgameslib'
+            artifactId 'dependencies'
+            version version
+        }
+    }.writeTo("pom.xml")
+}
+
+task debugApp(type: JavaExec, dependsOn: distBin) {
+  workingDir = 'dist-bin'
+  classpath = (fileTree(dir: 'dist-bin', includes:['eclipsito.jar']) + files('dist-bin'))
+  main = 'org.bardsoftware.eclipsito.Boot'
+  args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
+  jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
+}

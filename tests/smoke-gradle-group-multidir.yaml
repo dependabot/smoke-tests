@@ -1,0 +1,442 @@
+input:
+    job:
+        package-manager: gradle
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        dependencies:
+            - com.google.code.findbugs:jsr305
+            - org.hibernate:hibernate-core
+            - com.google.inject:guice
+        ignore-conditions:
+            - dependency-name: com.google.inject:guice
+              source: ../smoke-tests/tests/smoke-gradle-group-multidir.yaml
+              version-requirement: '>4.2.1'
+            - dependency-name: org.hibernate:hibernate-core
+              source: ../smoke-tests/tests/smoke-gradle-group-multidir.yaml
+              version-requirement: '>5.3.0.Final'
+        security-advisories:
+            - dependency-name: com.google.code.findbugs:jsr305
+              affected-versions:
+                - < 3.0.2
+              patched-versions: []
+              unaffected-versions: []
+            - dependency-name: org.hibernate:hibernate-core
+              affected-versions:
+                - < 5.3.0
+              patched-versions: []
+              unaffected-versions: []
+            - dependency-name: com.google.inject:guice
+              affected-versions:
+                - <= 4.2.0
+              patched-versions: []
+              unaffected-versions: []
+        security-updates-only: true
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /gradle/multi-dir/foo
+                - /gradle/multi-dir/bar
+            commit: bdc8fd5e4980081b086bcfcb2c4746c43e4b789d
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: co.aikar:acf-paper
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 0.5.0-SNAPSHOT
+                      source: null
+                  version: 0.5.0-SNAPSHOT
+                - name: com.google.inject:guice
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 4.2.0
+                      source: null
+                  version: 4.2.0
+                - name: com.google.code.findbugs:jsr305
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 3.0.1
+                      source: null
+                  version: 3.0.1
+                - name: de.davidbilge:jskill
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.1-SNAPSHOT
+                      source: null
+                  version: 1.1-SNAPSHOT
+                - name: org.inventivetalent:menubuilder
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.0.2
+                      source: null
+                  version: 1.0.2
+                - name: org.mineskin:java-client
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.0.1-SNAPSHOT
+                      source: null
+                  version: 1.0.1-SNAPSHOT
+                - name: net.kyori:text
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 1.12-1.4.0
+                      source: null
+                  version: 1.12-1.4.0
+                - name: org.eclipse.jgit:org.eclipse.jgit
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 4.11.0.201803080745-r
+                      source: null
+                  version: 4.11.0.201803080745-r
+                - name: org.hibernate:hibernate-core
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 5.3.0.CR1
+                      source: null
+                  version: 5.3.0.CR1
+            dependency_files:
+                - /gradle/multi-dir/foo/build.gradle
+                - /gradle/multi-dir/bar/build.gradle
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: bdc8fd5e4980081b086bcfcb2c4746c43e4b789d
+            dependencies:
+                - name: com.google.inject:guice
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 4.2.0
+                      source: null
+                  previous-version: 4.2.0
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 4.2.1
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 4.2.1
+                - name: com.google.code.findbugs:jsr305
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 3.0.1
+                      source: null
+                  previous-version: 3.0.1
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 3.0.2
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 3.0.2
+                - name: com.google.code.findbugs:jsr305
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 3.0.1
+                      source: null
+                  previous-version: 3.0.1
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 3.0.2
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 3.0.2
+                - name: org.hibernate:hibernate-core
+                  previous-requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 5.3.0.CR1
+                      source: null
+                  previous-version: 5.3.0.CR1
+                  requirements:
+                    - file: build.gradle
+                      groups: []
+                      requirement: 5.3.0.Final
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 5.3.0.Final
+            updated-dependency-files:
+                - content: |
+                    group 'me.minidigger'
+
+                    apply plugin: 'com.github.johnrengelman.shadow'
+
+                    task copyToServer(type: Copy) {
+                        from shadowJar
+                        into testServerFolder
+                    }
+
+                    shadowJar {
+                        mergeServiceFiles()
+                        configurations = [project.configurations.compile]
+
+                        //relocate 'org.bstats', 'com.voxelgameslib.voxelgameslib.metrics' TODO relocate bstats
+
+                        manifest {
+                            attributes 'Implementation-Version': project.version + "@" + revision
+                        }
+                    }
+
+                    def devNull = new OutputStream() {
+                      @Override
+                      public void write(int b) {}
+                    }
+
+
+                    build.dependsOn shadowJar
+
+                    dependencies {
+                        compile project(":ChatMenuAPI")
+
+                        // Some details about 'co.aikar:acf-paper', version: '0.5.0-SNAPSHOT'
+                        compile group: 'co.aikar', name: 'acf-paper', version: '0.5.0-SNAPSHOT', changing: true
+                        compile group: 'com.google.inject', name: 'guice', version: '4.2.1'
+                        compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
+                        compile group: 'de.davidbilge', name: 'jskill', version: '1.1-SNAPSHOT'
+
+                        compile(group: 'org.inventivetalent', name: 'menubuilder', version: '1.0.2') {
+                            exclude group: 'org.bukkit'
+                        }
+                        compile(group: 'org.mineskin', name: 'java-client', version: '1.0.1-SNAPSHOT') {
+                            exclude group: 'junit'
+                        }
+                    }
+
+                    task createPom() {
+                        pom {
+                            project {
+                                groupId 'com.voxelgameslib'
+                                artifactId 'dependencies'
+                                version version
+                            }
+                        }.writeTo("pom.xml")
+                    }
+
+                    task debugApp(type: JavaExec, dependsOn: distBin) {
+                      workingDir = 'dist-bin'
+                      classpath = (fileTree(dir: 'dist-bin', includes:['eclipsito.jar']) + files('dist-bin'))
+                      main = 'org.bardsoftware.eclipsito.Boot'
+                      args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
+                      jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /gradle/multi-dir/foo
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    group 'me.minidigger'
+
+                    apply plugin: 'com.github.johnrengelman.shadow'
+
+                    task copyToServer(type: Copy) {
+                        from shadowJar
+                        into testServerFolder
+                    }
+
+                    shadowJar {
+                        mergeServiceFiles()
+                        configurations = [project.configurations.compile]
+
+                        //relocate 'org.bstats', 'com.voxelgameslib.voxelgameslib.metrics' TODO relocate bstats
+
+                        manifest {
+                            attributes 'Implementation-Version': project.version + "@" + revision
+                        }
+                    }
+
+                    def devNull = new OutputStream() {
+                      @Override
+                      public void write(int b) {}
+                    }
+
+
+                    build.dependsOn shadowJar
+
+                    dependencies {
+                        compile project(":ChatMenuAPI")
+
+                        // Some details about 'co.aikar:acf-paper', version: '0.5.0-SNAPSHOT'
+                        compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
+                        compile group: 'de.davidbilge', name: 'jskill', version: '1.1-SNAPSHOT'
+                        compile group: 'net.kyori', name: 'text', version: '1.12-1.4.0'
+                        compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.11.0.201803080745-r'
+                        compile group: 'org.hibernate', name: 'hibernate-core', version: '5.3.0.Final'
+
+                        compile(group: 'org.inventivetalent', name: 'menubuilder', version: '1.0.2') {
+                            exclude group: 'org.bukkit'
+                        }
+                        compile(group: 'org.mineskin', name: 'java-client', version: '1.0.1-SNAPSHOT') {
+                            exclude group: 'junit'
+                        }
+                    }
+
+                    task createPom() {
+                        pom {
+                            project {
+                                groupId 'com.voxelgameslib'
+                                artifactId 'dependencies'
+                                version version
+                            }
+                        }.writeTo("pom.xml")
+                    }
+
+                    task debugApp(type: JavaExec, dependsOn: distBin) {
+                      workingDir = 'dist-bin'
+                      classpath = (fileTree(dir: 'dist-bin', includes:['eclipsito.jar']) + files('dist-bin'))
+                      main = 'org.bardsoftware.eclipsito.Boot'
+                      args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
+                      jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /gradle/multi-dir/bar
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump the gradle at /gradle/multi-dir/foo security update group in /gradle/multi-dir/foo with 3 updates
+            pr-body: |
+                Bumps the gradle at /gradle/multi-dir/foo security update group in /gradle/multi-dir/foo with 3 updates: [com.google.inject:guice](https://github.com/google/guice), com.google.code.findbugs:jsr305 and [org.hibernate:hibernate-core](https://github.com/hibernate/hibernate-orm).
+
+                Updates `com.google.inject:guice` from 4.2.0 to 4.2.1
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/google/guice/releases">com.google.inject:guice's releases</a>.</em></p>
+                <blockquote>
+                <p>Guice 4.2.1.  See the <a href="https://github.com/google/guice/wiki/Guice421">release notes</a> for details.</p>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/google/guice/commit/74557ac8f18329d01fc95b256c560ba8ab7847be"><code>74557ac</code></a> specify release version numbers</li>
+                <li><a href="https://github.com/google/guice/commit/cbca8fe18633b79a3701f5414775e0b710debce0"><code>cbca8fe</code></a> Merge pull request <a href="https://redirect.github.com/google/guice/issues/1199">#1199</a> from google/sync-master-2018/07/16</li>
+                <li><a href="https://github.com/google/guice/commit/b958fd0ef08b0aa7dbbe2056f6138c96d0d0d657"><code>b958fd0</code></a> Fix the JDK11 opensource build for Guice.  This was failing by chance in the ...</li>
+                <li><a href="https://github.com/google/guice/commit/7e042165a6d136b3c93e99f744c6e09626be67c3"><code>7e04216</code></a> Bump asm to 6.2.1, cglib to 3.2.8.  The cglib bump should fix the JDK11 test ...</li>
+                <li><a href="https://github.com/google/guice/commit/184630d9e4ee9d2b0305647329a3664783f81927"><code>184630d</code></a> Correct example to use &quot;plugins&quot; consistently, rather than &quot;urls&quot;. Pointed ou...</li>
+                <li><a href="https://github.com/google/guice/commit/f734770aa6938cb8dec7d11f9719875177d020fe"><code>f734770</code></a> Migrated from Subject.failWithRawMessage to Subject.failWithoutActual</li>
+                <li><a href="https://github.com/google/guice/commit/2c8b56156677b11f4e4114784f31c4469ba3eabe"><code>2c8b561</code></a> Run tests on JDK 10 and 11 now that ASM has been updated to 6.2</li>
+                <li><a href="https://github.com/google/guice/commit/cab3f07f15bdf904561fc9d30dd4f9697719993b"><code>cab3f07</code></a> Update guice opensource asm dep to 6.2.</li>
+                <li><a href="https://github.com/google/guice/commit/289073ec20832130fdf6c46bc895f689a16249e3"><code>289073e</code></a> Update to Guava 25.1-android.</li>
+                <li><a href="https://github.com/google/guice/commit/12692cbe898cecbc34c3488f1166d73c49d64bd5"><code>12692cb</code></a> Update to Truth 0.41, and expect a single failure-message format instead of t...</li>
+                <li>Additional commits viewable in <a href="https://github.com/google/guice/compare/4.2...4.2.1">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `com.google.code.findbugs:jsr305` from 3.0.1 to 3.0.2
+
+                Updates `com.google.code.findbugs:jsr305` from 3.0.1 to 3.0.2
+
+                Updates `org.hibernate:hibernate-core` from 5.3.0.CR1 to 5.3.0.Final
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/hibernate/hibernate-orm/blob/5.3.0.Final/changelog.txt">org.hibernate:hibernate-core's changelog</a>.</em></p>
+                <blockquote>
+                <h2>Changes in 5.3.0.Final (May 14, 2018)</h2>
+                <p><a href="https://hibernate.atlassian.net/projects/HHH/versions/31661/tab/release-report-done">https://hibernate.atlassian.net/projects/HHH/versions/31661/tab/release-report-done</a></p>
+                <p>** Bug
+                * [HHH-8786] - find, refresh, lock should throw LockTimeoutException or PessimisticLockException when lock problems occur
+                * [HHH-10435] - ClassLoaderServiceImpl is getting a Permission check failed &quot;createClassLoader&quot; when run under Java security manager
+                * [HHH-11859] -  Class annotated with <a href="https://github.com/Audited"><code>@​Audited</code></a> (withModifiedFlag = true) is giving error when executing update.
+                * [HHH-12011] - Field annotated with target TYPE_USE break metamodel generation
+                * [HHH-12090] - PropertyAccessBuildingException: Could not locate setter for property named XXX for Java 8 default methods
+                * [HHH-12199] - Static fields should be ignored when resolving property type via reflection
+                * [HHH-12362] - Allow both SQL query hints and comments
+                * [HHH-12470] - Batching statements fails for delete
+                * [HHH-12517] - Incorrect method references in <a href="https://github.com/deprecated"><code>@​deprecated</code></a> elements of the Query javadoc
+                * [HHH-12529] - Some StatisticsImpl methods throw an exception instead of returning null
+                * [HHH-12534] - SAP HANA dialects use unqualified dummy table in queries
+                * [HHH-12535] - SAP HANA dialect doesn't support circular cascade delete constraints
+                * [HHH-12539] - NPE in AbstractPropertyMapping.getCommonPersistentClass when creating UnionSubclassEntityPersister for dynamic-map
+                * [HHH-12540] - Reusing same EntityTransaction with JTA enabled
+                * [HHH-12546] - locate function doesn't work on SAP HANA
+                * [HHH-12565] - Can't use TYPE function on leaf subtype of a table per class inheritance hierarchy</p>
+                <p>** New Feature
+                * [HHH-12505] - Option to disable scanning of entity mapping metadata</p>
+                <p>** Task
+                * [HHH-12316] - Document usage of the new Feature Packs
+                * [HHH-12503] - Finalize 5.3 Migration Guide
+                * [HHH-12519] - Use Forbidden APIs library (Gradle plugin) to check our use of APIs
+                * [HHH-12527] - Verify that all binary compatibility breaks between 5.1 and 5.3 are accounted for
+                * [HHH-12530] - Add processing of unknown hints
+                * [HHH-12545] - ByteBuddy based enhancer not accepting special character in description names
+                * [HHH-12554] - Make ByteBuddy EnhancerImpl more closely match the semantics described in Enhancer javadoc
+                * [HHH-12562] - Remove DefaultSchemaNameResolver#delegate since the value should not be cached</p>
+                <p>** Improvement
+                * [HHH-12463] - Delegate CustomType#equals/hashCode to wrapped UserType
+                * [HHH-12472] - WildFly (IronJacamar) - EntityManager#find with roll-back-only leads to exception rather than return null
+                * [HHH-12537] - Query hint test for SAP HANA
+                * [HHH-12541] - Test for SAP HANA calculation views
+                * [HHH-12544] - Add jipijapa hook to plug in specialized caching and transaction services
+                * [HHH-12556] - Share data structures between similar LoadPlan based EntityLoaders
+                * [HHH-12558] - Lazy load EntityLoaders to improve memory usage
+                * [HHH-12560] - Make sure only one Service registration (initiator/provided) exists per role
+                * [HHH-12570] - MariaDB 10.3 adds support for lock timeouts via WAIT plus NOWAIT</p>
+                <p>Changes in 5.3.0.CR2 (April 27, 2018)</p>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/hibernate/hibernate-orm/commits/5.3.0.Final">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump the gradle at /gradle/multi-dir/foo security update group
+
+                Bumps the gradle at /gradle/multi-dir/foo security update group in /gradle/multi-dir/foo with 3 updates: [com.google.inject:guice](https://github.com/google/guice), com.google.code.findbugs:jsr305 and [org.hibernate:hibernate-core](https://github.com/hibernate/hibernate-orm).
+
+
+                Updates `com.google.inject:guice` from 4.2.0 to 4.2.1
+                - [Release notes](https://github.com/google/guice/releases)
+                - [Commits](https://github.com/google/guice/compare/4.2...4.2.1)
+
+                Updates `com.google.code.findbugs:jsr305` from 3.0.1 to 3.0.2
+
+                Updates `com.google.code.findbugs:jsr305` from 3.0.1 to 3.0.2
+
+                Updates `org.hibernate:hibernate-core` from 5.3.0.CR1 to 5.3.0.Final
+                - [Release notes](https://github.com/hibernate/hibernate-orm/releases)
+                - [Changelog](https://github.com/hibernate/hibernate-orm/blob/5.3.0.Final/changelog.txt)
+                - [Commits](https://github.com/hibernate/hibernate-orm/commits/5.3.0.Final)
+            dependency-group:
+                name: gradle at /gradle/multi-dir/foo security update
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: bdc8fd5e4980081b086bcfcb2c4746c43e4b789d
