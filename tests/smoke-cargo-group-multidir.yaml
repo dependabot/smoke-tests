@@ -1,0 +1,48 @@
+input:
+    job:
+        package-manager: cargo
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        dependencies:
+            - time
+            - regex
+            - rand
+            - iota
+        security-advisories:
+            - dependency-name: time
+              affected-versions:
+                - < 0.3.0
+              patched-versions: []
+              unaffected-versions: []
+            - dependency-name: regex
+              affected-versions:
+                - <= 1.7.0
+              patched-versions: []
+              unaffected-versions: []
+            - dependency-name: rand
+              affected-versions:
+                - <= 0.8.4
+              patched-versions: []
+              unaffected-versions: []
+            - dependency-name: iota
+              affected-versions:
+                - <= 1.0.5
+              patched-versions: []
+              unaffected-versions: []
+        security-updates-only: true
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /cargo/multi-dir/foo
+                - /cargo/multi-dir/bar
+            commit: f5a4b0925beceaec208805533ac98637967df794
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
