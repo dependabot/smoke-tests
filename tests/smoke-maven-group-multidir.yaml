@@ -1,0 +1,329 @@
+input:
+    job:
+        package-manager: maven
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        dependencies:
+            - org.springframework.boot:spring-boot-starter-parent
+        security-advisories:
+            - dependency-name: org.springframework.boot:spring-boot-starter-parent
+              affected-versions:
+                - < 1.5.11
+              patched-versions: []
+              unaffected-versions: []
+        security-updates-only: true
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /maven/multi-dir/foo
+                - /maven/multi-dir/bar
+            commit: 56600671ab2495ed67614624740292fb5d54e4f4
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: org.springframework.boot:spring-boot-starter-parent
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: pom
+                      requirement: 1.5.10.RELEASE
+                      source: null
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: pom
+                      requirement: 1.5.9.RELEASE
+                      source: null
+                  version: 1.5.9.RELEASE
+                - name: org.springframework.boot:spring-boot-starter-web
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: mysql:mysql-connector-java
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.hibernate:hibernate-java8
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-starter-data-jpa
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-starter-test
+                  requirements:
+                    - file: pom.xml
+                      groups:
+                        - test
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-starter-actuator
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-configuration-processor
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+            dependency_files:
+                - /maven/multi-dir/foo/pom.xml
+                - /maven/multi-dir/bar/pom.xml
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 56600671ab2495ed67614624740292fb5d54e4f4
+            dependencies:
+                - name: org.springframework.boot:spring-boot-starter-parent
+                  previous-requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: pom
+                      requirement: 1.5.10.RELEASE
+                      source: null
+                  previous-version: 1.5.10.RELEASE
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: pom
+                      requirement: 1.5.12.RELEASE
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 1.5.12.RELEASE
+                - name: org.springframework.boot:spring-boot-starter-parent
+                  previous-requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: pom
+                      requirement: 1.5.9.RELEASE
+                      source: null
+                  previous-version: 1.5.9.RELEASE
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: pom
+                      requirement: 1.5.12.RELEASE
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 1.5.12.RELEASE
+            updated-dependency-files:
+                - content: |
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                             xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+                      <modelVersion>4.0.0</modelVersion>
+
+                      <groupId>com.dependabot</groupId>
+                      <artifactId>pom-with-parent</artifactId>
+                      <version>0.0.1-RELEASE</version>
+                      <name>Dependabot POM that inherits from parent POM</name>
+                      <packaging>jar</packaging>
+
+                      <parent>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-parent</artifactId>
+                        <version>1.5.12.RELEASE</version>
+                        <relativePath /> <!-- lookup parent from repository -->
+                      </parent>
+
+                      <properties>
+                        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+                        <java.version>1.8</java.version>
+                      </properties>
+
+                      <dependencies>
+                        <!-- Web -->
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-starter-web</artifactId>
+                        </dependency>
+
+                        <!-- Persistence -->
+                        <dependency>
+                          <groupId>mysql</groupId>
+                          <artifactId>mysql-connector-java</artifactId>
+                        </dependency>
+                        <dependency>
+                          <groupId>org.hibernate</groupId>
+                          <artifactId>hibernate-java8</artifactId>
+                        </dependency>
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-starter-data-jpa</artifactId>
+                        </dependency>
+
+                        <!-- Test -->
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-starter-test</artifactId>
+                          <scope>test</scope>
+                        </dependency>
+
+                        <!-- Ops -->
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-starter-actuator</artifactId>
+                        </dependency>
+
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-configuration-processor</artifactId>
+                          <optional>true</optional>
+                        </dependency>
+                      </dependencies>
+                    </project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /maven/multi-dir/foo
+                  name: pom.xml
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                             xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+                      <modelVersion>4.0.0</modelVersion>
+
+                      <groupId>com.dependabot</groupId>
+                      <artifactId>pom-with-parent</artifactId>
+                      <version>0.0.1-RELEASE</version>
+                      <name>Dependabot POM that inherits from parent POM</name>
+                      <packaging>jar</packaging>
+
+                      <parent>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-parent</artifactId>
+                        <version>1.5.12.RELEASE</version>
+                        <relativePath /> <!-- lookup parent from repository -->
+                      </parent>
+
+                      <properties>
+                        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+                        <java.version>1.8</java.version>
+                      </properties>
+
+                      <dependencies>
+                        <!-- Web -->
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-starter-web</artifactId>
+                        </dependency>
+
+                        <!-- Persistence -->
+                        <dependency>
+                          <groupId>mysql</groupId>
+                          <artifactId>mysql-connector-java</artifactId>
+                        </dependency>
+                        <dependency>
+                          <groupId>org.hibernate</groupId>
+                          <artifactId>hibernate-java8</artifactId>
+                        </dependency>
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-starter-data-jpa</artifactId>
+                        </dependency>
+
+                        <!-- Test -->
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-starter-test</artifactId>
+                          <scope>test</scope>
+                        </dependency>
+
+                        <!-- Ops -->
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-starter-actuator</artifactId>
+                        </dependency>
+
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-configuration-processor</artifactId>
+                          <optional>true</optional>
+                        </dependency>
+                      </dependencies>
+                    </project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /maven/multi-dir/bar
+                  name: pom.xml
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump the maven at /maven/multi-dir/foo security update group in /maven/multi-dir/foo with 1 update
+            pr-body: |
+                Bumps the maven at /maven/multi-dir/foo security update group in /maven/multi-dir/foo with 1 update: org.springframework.boot:spring-boot-starter-parent.
+
+                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.10.RELEASE to 1.5.12.RELEASE
+
+                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.9.RELEASE to 1.5.12.RELEASE
+            commit-message: |-
+                Bump the maven at /maven/multi-dir/foo security update group
+
+                Bumps the maven at /maven/multi-dir/foo security update group in /maven/multi-dir/foo with 1 update: org.springframework.boot:spring-boot-starter-parent.
+
+
+                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.10.RELEASE to 1.5.12.RELEASE
+
+                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.9.RELEASE to 1.5.12.RELEASE
+            dependency-group:
+                name: maven at /maven/multi-dir/foo security update
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 56600671ab2495ed67614624740292fb5d54e4f4

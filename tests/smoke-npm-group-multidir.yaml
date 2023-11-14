@@ -1,0 +1,284 @@
+input:
+    job:
+        dependencies:
+          - "@dependabot/dummy-pkg-a"
+          - "@dependabot/dummy-pkg-b"
+          - left-pad
+        security-updates-only: true
+        security-advisories:
+          - dependency-name: left-pad
+            affected-versions:
+              - < 1.1.0
+            patched-versions: []
+            unaffected-versions: []
+          - dependency-name: "@dependabot/dummy-pkg-a"
+            affected-versions:
+              - < 1.1.0
+            patched-versions: []
+            unaffected-versions: []
+          - dependency-name: "@dependabot/dummy-pkg-b"
+            affected-versions:
+              - < 1.1.0
+            patched-versions: []
+            unaffected-versions: []
+
+        package-manager: npm_and_yarn
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+              - /npm/multi-dir/foo
+              - /npm/multi-dir/bar
+            commit: b430c0e13597246f5e81d6c4adab35602c1ddf3d
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: '@dependabot/dummy-pkg-b'
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 1.0.0
+                - name: left-pad
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 1.0.0
+                - name: '@dependabot/dummy-pkg-a'
+                  requirements: []
+                  version: 1.1.0
+            dependency_files:
+                - /npm/multi-dir/foo/package.json
+                - /npm/multi-dir/foo/package-lock.json
+                - /npm/multi-dir/bar/package.json
+                - /npm/multi-dir/bar/package-lock.json
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: b430c0e13597246f5e81d6c4adab35602c1ddf3d
+            dependencies:
+                - name: '@dependabot/dummy-pkg-b'
+                  previous-requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  previous-version: 1.0.0
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 1.1.0
+                - name: left-pad
+                  previous-requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  previous-version: 1.0.0
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 1.3.0
+                - name: left-pad
+                  previous-requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  previous-version: 1.0.0
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 1.3.0
+                - name: '@dependabot/dummy-pkg-a'
+                  previous-requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  previous-version: 1.0.0
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 1.1.0
+            updated-dependency-files:
+                - content: |
+                    {
+                      "name": "foo",
+                      "version": "1.0.0",
+                      "lockfileVersion": 3,
+                      "requires": true,
+                      "packages": {
+                        "": {
+                          "name": "foo",
+                          "version": "1.0.0",
+                          "license": "ISC",
+                          "dependencies": {
+                            "@dependabot/dummy-pkg-b": "^1.0.0",
+                            "left-pad": "^1.0.0"
+                          }
+                        },
+                        "node_modules/@dependabot/dummy-pkg-a": {
+                          "version": "2.0.0",
+                          "resolved": "https://registry.npmjs.org/@dependabot/dummy-pkg-a/-/dummy-pkg-a-2.0.0.tgz",
+                          "integrity": "sha512-kUkqhjyK+9PgJMiwoBrkfX7NTkZiw2s94gGnSRSP1ZFaoBqpwTuvQbZhDCa+mKPgpP5719qsW2YzuSK4RXhGAg=="
+                        },
+                        "node_modules/@dependabot/dummy-pkg-b": {
+                          "version": "1.1.0",
+                          "resolved": "https://registry.npmjs.org/@dependabot/dummy-pkg-b/-/dummy-pkg-b-1.1.0.tgz",
+                          "integrity": "sha512-6r/5iuUs49Hln9Dl05waRoyzgkY9gwt8Yaa5SlhDmM5c2LwJ8tIG23+690FlXSUZ9c6xmOeuhHbcXGBMXsawbw==",
+                          "dependencies": {
+                            "@dependabot/dummy-pkg-a": "^2.0.0"
+                          }
+                        },
+                        "node_modules/left-pad": {
+                          "version": "1.3.0",
+                          "resolved": "https://registry.npmjs.org/left-pad/-/left-pad-1.3.0.tgz",
+                          "integrity": "sha512-XI5MPzVNApjAyhQzphX8BkmKsKUxD4LdyK24iZeQGinBN9yTQT3bFlCBy/aVx2HrNcqQGsdot8ghrjyrvMCoEA==",
+                          "deprecated": "use String.prototype.padStart()"
+                        }
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /npm/multi-dir/foo
+                  name: package-lock.json
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    {
+                      "name": "bar",
+                      "version": "1.0.0",
+                      "lockfileVersion": 3,
+                      "requires": true,
+                      "packages": {
+                        "": {
+                          "name": "bar",
+                          "version": "1.0.0",
+                          "license": "ISC",
+                          "dependencies": {
+                            "@dependabot/dummy-pkg-a": "^1.0.0",
+                            "left-pad": "^1.0.0"
+                          }
+                        },
+                        "node_modules/@dependabot/dummy-pkg-a": {
+                          "version": "1.1.0",
+                          "resolved": "https://registry.npmjs.org/@dependabot/dummy-pkg-a/-/dummy-pkg-a-1.1.0.tgz",
+                          "integrity": "sha512-mjJzV5MdCP389oz3J0j3CiOZjF6h0R+36HqhG0Rl4Y0uCj0xdX+r0QboLZBugPwb7yBxrRHs6ZIe8J182r9Ssw=="
+                        },
+                        "node_modules/left-pad": {
+                          "version": "1.3.0",
+                          "resolved": "https://registry.npmjs.org/left-pad/-/left-pad-1.3.0.tgz",
+                          "integrity": "sha512-XI5MPzVNApjAyhQzphX8BkmKsKUxD4LdyK24iZeQGinBN9yTQT3bFlCBy/aVx2HrNcqQGsdot8ghrjyrvMCoEA==",
+                          "deprecated": "use String.prototype.padStart()"
+                        }
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /npm/multi-dir/bar
+                  name: package-lock.json
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump the npm_and_yarn at /npm/multi-dir/foo security update group in /npm/multi-dir/foo with 3 updates
+            pr-body: |
+                Bumps the npm_and_yarn at /npm/multi-dir/foo security update group in /npm/multi-dir/foo with 3 updates: @dependabot/dummy-pkg-b, [left-pad](https://github.com/stevemao/left-pad) and @dependabot/dummy-pkg-a.
+
+                Updates `@dependabot/dummy-pkg-b` from 1.0.0 to 1.1.0
+
+                Updates `left-pad` from 1.0.0 to 1.3.0
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/stevemao/left-pad/commits/v1.3.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `left-pad` from 1.0.0 to 1.3.0
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/stevemao/left-pad/commits/v1.3.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `@dependabot/dummy-pkg-a` from 1.0.0 to 1.1.0
+            commit-message: |-
+                Bump the npm_and_yarn at /npm/multi-dir/foo security update group
+
+                Bumps the npm_and_yarn at /npm/multi-dir/foo security update group in /npm/multi-dir/foo with 3 updates: @dependabot/dummy-pkg-b, [left-pad](https://github.com/stevemao/left-pad) and @dependabot/dummy-pkg-a.
+
+
+                Updates `@dependabot/dummy-pkg-b` from 1.0.0 to 1.1.0
+
+                Updates `left-pad` from 1.0.0 to 1.3.0
+                - [Commits](https://github.com/stevemao/left-pad/commits/v1.3.0)
+
+                Updates `left-pad` from 1.0.0 to 1.3.0
+                - [Commits](https://github.com/stevemao/left-pad/commits/v1.3.0)
+
+                Updates `@dependabot/dummy-pkg-a` from 1.0.0 to 1.1.0
+            dependency-group:
+                name: npm_and_yarn at /npm/multi-dir/foo security update
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: b430c0e13597246f5e81d6c4adab35602c1ddf3d

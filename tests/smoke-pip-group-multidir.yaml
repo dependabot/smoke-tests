@@ -1,0 +1,236 @@
+input:
+    job:
+        dependencies:
+          - urllib3
+          - numpy
+          - Flask
+        security-updates-only: true
+        security-advisories:
+          - dependency-name: Flask
+            affected-versions:
+              - <= 2.0.0
+            patched-versions: [ ]
+            unaffected-versions: [ ]
+          - dependency-name: numpy
+            affected-versions:
+              - <= 1.0.0
+            patched-versions: [ ]
+            unaffected-versions: [ ]
+          - dependency-name: urllib3
+            affected-versions:
+              - <= 1.0.0
+            patched-versions: [ ]
+            unaffected-versions: [ ]
+
+        package-manager: pip
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        ignore-conditions:
+            - dependency-name: django
+              source: tests/smoke-pip.yaml
+              version-requirement: '>4.0.6'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+              - /pip/multi-dir/foo
+              - /pip/multi-dir/bar
+            commit: 7b8e1971f18f6a47430796ec0e430e005d2d97f3
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: urllib3
+                  requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==1.0
+                      source: null
+                  version: "1.0"
+                - name: numpy
+                  requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==1.0
+                      source: null
+                  version: "1.0"
+            dependency_files:
+                - /pip/multi-dir/foo/requirements.txt
+                - /pip/multi-dir/bar/requirements.txt
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 7b8e1971f18f6a47430796ec0e430e005d2d97f3
+            dependencies:
+                - name: urllib3
+                  previous-requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==1.0
+                      source: null
+                  previous-version: "1.0"
+                  requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==1.0.1
+                      source: null
+                  version: 1.0.1
+                - name: urllib3
+                  previous-requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==1.0
+                      source: null
+                  previous-version: "1.0"
+                  requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==1.0.1
+                      source: null
+                  version: 1.0.1
+                - name: numpy
+                  previous-requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==1.0
+                      source: null
+                  previous-version: "1.0"
+                  requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==1.3.0
+                      source: null
+                  version: 1.3.0
+            updated-dependency-files:
+                - content: |
+                    urllib3==1.0.1
+                    Flask==2.0.0
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /pip/multi-dir/foo
+                  name: requirements.txt
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    urllib3==1.0.1
+                    numpy==1.3.0
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /pip/multi-dir/bar
+                  name: requirements.txt
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump the pip at /pip/multi-dir/foo security update group in /pip/multi-dir/foo with 2 updates
+            pr-body: |
+                Bumps the pip at /pip/multi-dir/foo security update group in /pip/multi-dir/foo with 2 updates: [urllib3](https://github.com/urllib3/urllib3) and [numpy](https://github.com/numpy/numpy).
+
+                Updates `urllib3` from 1.0 to 1.0.1
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/urllib3/urllib3/blob/main/CHANGES.rst">urllib3's changelog</a>.</em></p>
+                <blockquote>
+                <h1>1.0.1 (2011-10-10)</h1>
+                <ul>
+                <li>Fixed a bug where the same connection would get returned into the pool twice,
+                causing extraneous &quot;HttpConnectionPool is full&quot; log warnings.</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/urllib3/urllib3/commit/9f6e2eaae4b8ef84b6d3dddf55197c4d17946ca1"><code>9f6e2ea</code></a> Version bump to 1.0.1</li>
+                <li><a href="https://github.com/urllib3/urllib3/commit/231b75492c85692ec307fb9606dbaabff0a80754"><code>231b754</code></a> Added test which fails when double release bug exists.</li>
+                <li><a href="https://github.com/urllib3/urllib3/commit/9f7306fed618577ca89d0d355e8f51027aaeb54d"><code>9f7306f</code></a> Bug fix: Connection was double-released when preload_content=True.</li>
+                <li>See full diff in <a href="https://github.com/urllib3/urllib3/compare/1.0...1.0.1">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `urllib3` from 1.0 to 1.0.1
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/urllib3/urllib3/blob/main/CHANGES.rst">urllib3's changelog</a>.</em></p>
+                <blockquote>
+                <h1>1.0.1 (2011-10-10)</h1>
+                <ul>
+                <li>Fixed a bug where the same connection would get returned into the pool twice,
+                causing extraneous &quot;HttpConnectionPool is full&quot; log warnings.</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/urllib3/urllib3/commit/9f6e2eaae4b8ef84b6d3dddf55197c4d17946ca1"><code>9f6e2ea</code></a> Version bump to 1.0.1</li>
+                <li><a href="https://github.com/urllib3/urllib3/commit/231b75492c85692ec307fb9606dbaabff0a80754"><code>231b754</code></a> Added test which fails when double release bug exists.</li>
+                <li><a href="https://github.com/urllib3/urllib3/commit/9f7306fed618577ca89d0d355e8f51027aaeb54d"><code>9f7306f</code></a> Bug fix: Connection was double-released when preload_content=True.</li>
+                <li>See full diff in <a href="https://github.com/urllib3/urllib3/compare/1.0...1.0.1">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `numpy` from 1.0 to 1.3.0
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/numpy/numpy/commit/c3e0147d49286c0cb1b65a95d42f5eb4a4779129"><code>c3e0147</code></a> Release 1.3.0.</li>
+                <li><a href="https://github.com/numpy/numpy/commit/66d80f358d10fede3743809eceba32a47f103907"><code>66d80f3</code></a> Backport 6839 and 6840 from trunk.</li>
+                <li><a href="https://github.com/numpy/numpy/commit/22b5beed3f4c15d905f589189b5d526e29fb823c"><code>22b5bee</code></a> Start RC3.</li>
+                <li><a href="https://github.com/numpy/numpy/commit/2f9063f598515a2708decd55a13cd5672851047f"><code>2f9063f</code></a> RC2 for 1.3.0.</li>
+                <li><a href="https://github.com/numpy/numpy/commit/adb7e7074f7578de230d3aa54d3ad17cc929b1c2"><code>adb7e70</code></a> Backport 6833-6834 to 1.3.x.</li>
+                <li><a href="https://github.com/numpy/numpy/commit/8601c3446a52e7f7b70c830be6ebb9e2d10700ed"><code>8601c34</code></a> Backport r6827 to fix ticket <a href="https://redirect.github.com/numpy/numpy/issues/1039">#1039</a></li>
+                <li><a href="https://github.com/numpy/numpy/commit/2131d92751c32cf69ffe9689c09bb1d5b61013a6"><code>2131d92</code></a> 1.3.x backport r6820, r6821: Fix docstring formatting (blocks doc build)</li>
+                <li><a href="https://github.com/numpy/numpy/commit/b6a2b941a35509758784bf9aed308b04dac5f8a5"><code>b6a2b94</code></a> 1.3.x backport 6818: Move routines.testing.rst to the correct place</li>
+                <li><a href="https://github.com/numpy/numpy/commit/4a5e87298925e42cc7727f18134e0d8bee0c4291"><code>4a5e872</code></a> 1.3.x backport r6816: Enable docstrings for fmin and fmax</li>
+                <li><a href="https://github.com/numpy/numpy/commit/58ac9c480a230d4cb8029b9666150601632ef04f"><code>58ac9c4</code></a> Bump to rc2.</li>
+                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.0...v1.3.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump the pip at /pip/multi-dir/foo security update group
+
+                Bumps the pip at /pip/multi-dir/foo security update group in /pip/multi-dir/foo with 2 updates: [urllib3](https://github.com/urllib3/urllib3) and [numpy](https://github.com/numpy/numpy).
+
+
+                Updates `urllib3` from 1.0 to 1.0.1
+                - [Release notes](https://github.com/urllib3/urllib3/releases)
+                - [Changelog](https://github.com/urllib3/urllib3/blob/main/CHANGES.rst)
+                - [Commits](https://github.com/urllib3/urllib3/compare/1.0...1.0.1)
+
+                Updates `urllib3` from 1.0 to 1.0.1
+                - [Release notes](https://github.com/urllib3/urllib3/releases)
+                - [Changelog](https://github.com/urllib3/urllib3/blob/main/CHANGES.rst)
+                - [Commits](https://github.com/urllib3/urllib3/compare/1.0...1.0.1)
+
+                Updates `numpy` from 1.0 to 1.3.0
+                - [Release notes](https://github.com/numpy/numpy/releases)
+                - [Changelog](https://github.com/numpy/numpy/blob/main/doc/RELEASE_WALKTHROUGH.rst)
+                - [Commits](https://github.com/numpy/numpy/compare/v1.0...v1.3.0)
+            dependency-group:
+                name: pip at /pip/multi-dir/foo security update
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 7b8e1971f18f6a47430796ec0e430e005d2d97f3
