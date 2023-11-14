@@ -1,37 +1,49 @@
 input:
     job:
-        dependencies:
-          - rack
-          - sinatra
-          - nokogiri
-        security-updates-only: true
-        security-advisories:
-          - dependency-name: nokogiri
-            affected-versions:
-              - <= 1.11.0
-            patched-versions: []
-            unaffected-versions: []
-          - dependency-name: sinatra
-            affected-versions:
-              - <= 1.2.2
-            patched-versions: []
-            unaffected-versions: []
-          - dependency-name: rack
-            affected-versions:
-              - < 3.0.7
-            patched-versions: []
-            unaffected-versions: []
-
         package-manager: bundler
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        dependencies:
+            - rack
+            - sinatra
+            - nokogiri
+        ignore-conditions:
+            - dependency-name: sinatra
+              source: ../smoke-tests/tests/smoke-bundler-group-multidir.yaml
+              version-requirement: '>1.2.3'
+            - dependency-name: nokogiri
+              source: ../smoke-tests/tests/smoke-bundler-group-multidir.yaml
+              version-requirement: '>1.11.1'
+            - dependency-name: nokogiri
+              source: ../smoke-tests/tests/smoke-bundler-group-multidir.yaml
+              version-requirement: '>1.11.1'
+            - dependency-name: rack
+              source: ../smoke-tests/tests/smoke-bundler-group-multidir.yaml
+              version-requirement: '>3.0.7'
+        security-advisories:
+            - dependency-name: nokogiri
+              affected-versions:
+                - <= 1.11.0
+              patched-versions: []
+              unaffected-versions: []
+            - dependency-name: sinatra
+              affected-versions:
+                - <= 1.2.2
+              patched-versions: []
+              unaffected-versions: []
+            - dependency-name: rack
+              affected-versions:
+                - < 3.0.7
+              patched-versions: []
+              unaffected-versions: []
+        security-updates-only: true
         source:
             provider: github
             repo: dependabot/smoke-tests
             directories:
-              - /bundler/multi-dir/foo
-              - /bundler/multi-dir/bar
+                - /bundler/multi-dir/foo
+                - /bundler/multi-dir/bar
             commit: 212c1f8e06ecf351f64605892856b5fc7cd7d9a3
         credentials-metadata:
             - host: github.com
@@ -167,7 +179,7 @@ output:
                         nokogiri (1.11.1)
                           mini_portile2 (~> 2.5.0)
                           racc (~> 1.4)
-                        racc (1.7.2)
+                        racc (1.7.3)
                         rack (1.6.13)
                         sinatra (1.2.3)
                           rack (~> 1.1)
@@ -213,7 +225,7 @@ output:
                         nokogiri (1.11.1)
                           mini_portile2 (~> 2.5.0)
                           racc (~> 1.4)
-                        racc (1.7.2)
+                        racc (1.7.3)
                         rack (3.0.7)
 
                     PLATFORMS
