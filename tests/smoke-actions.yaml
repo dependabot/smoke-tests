@@ -2,24 +2,27 @@ input:
     job:
         package-manager: github_actions
         allowed-updates:
-            - update-type: all
+            - dependency-name: actions/setup-go
+            - dependency-name: actions/setup-ruby
+            - dependency-name: actions/setup-node
         dependency-groups:
             - name: setup
               rules:
                 patterns:
-                    - actions/setup*
+                    - actions/setup-node
+                    - actions/setup-ruby
         experiments:
             grouped-updates-prototype: true
             record-ecosystem-versions: true
         ignore-conditions:
-            - dependency-name: actions/checkout
+            - dependency-name: actions/setup-node
               source: tests/smoke-actions.yaml
-              version-requirement: '>3.0.2'
+              version-requirement: '>2.0.0'
         source:
             provider: github
             repo: dependabot/smoke-tests
-            directory: /actions
-            commit: a2064cb25db5a8a048513d5e61b27987612d5612
+            directory: /.
+            commit: 9e96615658c7e573f451797088c5d078cb496c8a
         credentials-metadata:
             - host: github.com
               type: git_source
@@ -33,9 +36,115 @@ output:
       expect:
         data:
             dependencies:
+                - name: actions/checkout
+                  requirements:
+                    - file: .github/workflows/cache-all.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/checkout@v4
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v4
+                        type: git
+                        url: https://github.com/actions/checkout
+                    - file: .github/workflows/cache-one.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/checkout@v4
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v4
+                        type: git
+                        url: https://github.com/actions/checkout
+                    - file: .github/workflows/dry-run.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/checkout@v4
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v4
+                        type: git
+                        url: https://github.com/actions/checkout
+                    - file: .github/workflows/list-suites.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/checkout@v4
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v4
+                        type: git
+                        url: https://github.com/actions/checkout
+                    - file: .github/workflows/refresh-artifacts.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/checkout@v4
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v4
+                        type: git
+                        url: https://github.com/actions/checkout
+                    - file: .github/workflows/smoke.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/checkout@v4
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v4
+                        type: git
+                        url: https://github.com/actions/checkout
+                    - file: .github/workflows/yamllint.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/checkout@v4
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v4
+                        type: git
+                        url: https://github.com/actions/checkout
+                  version: "4"
+                - name: actions/upload-artifact
+                  requirements:
+                    - file: .github/workflows/cache-all.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/upload-artifact@v3
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v3
+                        type: git
+                        url: https://github.com/actions/upload-artifact
+                    - file: .github/workflows/cache-one.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/upload-artifact@v3
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v3
+                        type: git
+                        url: https://github.com/actions/upload-artifact
+                    - file: .github/workflows/refresh-artifacts.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/upload-artifact@v3
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v3
+                        type: git
+                        url: https://github.com/actions/upload-artifact
+                  version: "3"
                 - name: actions/setup-go
                   requirements:
-                    - file: action.yml
+                    - file: .github/workflows/i-am-a-smoke-test.yml
                       groups: []
                       metadata:
                         declaration_string: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9
@@ -48,7 +157,7 @@ output:
                   version: 4.0.0
                 - name: actions/setup-ruby
                   requirements:
-                    - file: action.yml
+                    - file: .github/workflows/i-am-a-smoke-test.yml
                       groups: []
                       metadata:
                         declaration_string: actions/setup-ruby@5f29a1cd8dfebf420691c4c9a0e832e2fae5a526
@@ -59,54 +168,36 @@ output:
                         type: git
                         url: https://github.com/actions/setup-ruby
                   version: 1.1.2
-                - name: actions/checkout
+                - name: actions/setup-node
                   requirements:
-                    - file: action.yml
+                    - file: .github/workflows/i-am-a-smoke-test.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/checkout@01aecccf739ca6ff86c0539fbc67a7a5007bbc81
+                        declaration_string: actions/setup-node@v1
                       requirement: null
                       source:
                         branch: null
-                        ref: 01aecccf739ca6ff86c0539fbc67a7a5007bbc81
+                        ref: v1
                         type: git
-                        url: https://github.com/actions/checkout
-                  version: 2.1.0
+                        url: https://github.com/actions/setup-node
+                  version: "1"
             dependency_files:
-                - /actions/action.yml
+                - /.github/workflows/cache-all.yml
+                - /.github/workflows/cache-one.yml
+                - /.github/workflows/dry-run.yml
+                - /.github/workflows/i-am-a-smoke-test.yml
+                - /.github/workflows/list-suites.yml
+                - /.github/workflows/refresh-artifacts.yml
+                - /.github/workflows/smoke.yml
+                - /.github/workflows/yamllint.yml
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: a2064cb25db5a8a048513d5e61b27987612d5612
+            base-commit-sha: 9e96615658c7e573f451797088c5d078cb496c8a
             dependencies:
-                - name: actions/setup-go
-                  previous-requirements:
-                    - file: action.yml
-                      groups: []
-                      metadata:
-                        declaration_string: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9
-                      requirement: null
-                      source:
-                        branch: null
-                        ref: 4d34df0c2316fe8122ab82dc22947d607c0c91f9
-                        type: git
-                        url: https://github.com/actions/setup-go
-                  previous-version: 4.0.0
-                  requirements:
-                    - file: action.yml
-                      groups: []
-                      metadata:
-                        declaration_string: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9
-                      requirement: null
-                      source:
-                        branch: null
-                        ref: fac708d6674e30b6ba41289acaab6d4b75aa0753
-                        type: git
-                        url: https://github.com/actions/setup-go
-                  version: 4.0.1
                 - name: actions/setup-ruby
                   previous-requirements:
-                    - file: action.yml
+                    - file: .github/workflows/i-am-a-smoke-test.yml
                       groups: []
                       metadata:
                         declaration_string: actions/setup-ruby@5f29a1cd8dfebf420691c4c9a0e832e2fae5a526
@@ -118,7 +209,7 @@ output:
                         url: https://github.com/actions/setup-ruby
                   previous-version: 1.1.2
                   requirements:
-                    - file: action.yml
+                    - file: .github/workflows/i-am-a-smoke-test.yml
                       groups: []
                       metadata:
                         declaration_string: actions/setup-ruby@5f29a1cd8dfebf420691c4c9a0e832e2fae5a526
@@ -129,9 +220,34 @@ output:
                         type: git
                         url: https://github.com/actions/setup-ruby
                   version: 1.1.3
+                - name: actions/setup-node
+                  previous-requirements:
+                    - file: .github/workflows/i-am-a-smoke-test.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/setup-node@v1
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v1
+                        type: git
+                        url: https://github.com/actions/setup-node
+                  previous-version: "1"
+                  requirements:
+                    - file: .github/workflows/i-am-a-smoke-test.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/setup-node@v1
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v2
+                        type: git
+                        url: https://github.com/actions/setup-node
+                  version: "2"
             updated-dependency-files:
                 - content: |
-                    name: Body moving
+                    name: Smoke test manifest
                     on: workflow_dispatch
 
                     permissions:
@@ -139,57 +255,25 @@ output:
 
                     jobs:
                       body-moving:
-                        name: We be body moving
+                        name: This is a smoke test
                         runs-on: ubuntu-latest
                         steps:
                           - name: Setup Go
-                            uses: actions/setup-go@fac708d6674e30b6ba41289acaab6d4b75aa0753
+                            uses: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9
                           - name: Setup Ruby
                             uses: actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543
-                          - name: Check out code
-                            uses: actions/checkout@01aecccf739ca6ff86c0539fbc67a7a5007bbc81
+                          - name: Setup Node
+                            uses: actions/setup-node@v2
                   content_encoding: utf-8
                   deleted: false
-                  directory: /actions
-                  name: action.yml
+                  directory: /
+                  name: .github/workflows/i-am-a-smoke-test.yml
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the setup group in /actions with 2 updates
+            pr-title: Bump the setup group with 2 updates
             pr-body: |
-                Bumps the setup group in /actions with 2 updates: [actions/setup-go](https://github.com/actions/setup-go) and [actions/setup-ruby](https://github.com/actions/setup-ruby).
-
-                Updates `actions/setup-go` from 4.0.0 to 4.0.1
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/actions/setup-go/releases">actions/setup-go's releases</a>.</em></p>
-                <blockquote>
-                <h2>v4.0.1</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Update documentation for <code>v4</code> by <a href="https://github.com/dsame"><code>@​dsame</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/354">actions/setup-go#354</a></li>
-                <li>Fix glob bug in the package.json scripts section by <a href="https://github.com/IvanZosimov"><code>@​IvanZosimov</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/359">actions/setup-go#359</a></li>
-                <li>Bump <code>xml2js</code> dependency by <a href="https://github.com/dmitry-shibanov"><code>@​dmitry-shibanov</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/370">actions/setup-go#370</a></li>
-                <li>Bump <code>@actions/cache</code> dependency to v3.2.1 by <a href="https://github.com/nikolai-laevskii"><code>@​nikolai-laevskii</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/374">actions/setup-go#374</a></li>
-                </ul>
-                <h2>New Contributors</h2>
-                <ul>
-                <li><a href="https://github.com/nikolai-laevskii"><code>@​nikolai-laevskii</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/374">actions/setup-go#374</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/setup-go/compare/v4...v4.0.1">https://github.com/actions/setup-go/compare/v4...v4.0.1</a></p>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/actions/setup-go/commit/fac708d6674e30b6ba41289acaab6d4b75aa0753"><code>fac708d</code></a> Bump <code>@​actions/cache</code> dependency to v3.2.1 (<a href="https://redirect.github.com/actions/setup-go/issues/374">#374</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/dd84a9531a6f8e72c321f2aa3b9048ed359670e4"><code>dd84a95</code></a> Update xml2js (<a href="https://redirect.github.com/actions/setup-go/issues/370">#370</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/41c2024c46acfe1d0b8c9b7f20e28406983e553b"><code>41c2024</code></a> Fix glob bug in package.json scripts section (<a href="https://redirect.github.com/actions/setup-go/issues/359">#359</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/8dbf352f069be09d9a0b567cc1a9d16a5663fc3a"><code>8dbf352</code></a> update README fo v4 (<a href="https://redirect.github.com/actions/setup-go/issues/354">#354</a>)</li>
-                <li>See full diff in <a href="https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...fac708d6674e30b6ba41289acaab6d4b75aa0753">compare view</a></li>
-                </ul>
-                </details>
-                <br />
+                Bumps the setup group with 2 updates: [actions/setup-ruby](https://github.com/actions/setup-ruby) and [actions/setup-node](https://github.com/actions/setup-node).
 
                 Updates `actions/setup-ruby` from 1.1.2 to 1.1.3
                 <details>
@@ -215,54 +299,86 @@ output:
                 </ul>
                 </details>
                 <br />
+
+                Updates `actions/setup-node` from 1 to 2
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/actions/setup-node/releases">actions/setup-node's releases</a>.</em></p>
+                <blockquote>
+                <h2>v2.0.0 (beta)</h2>
+                <p>This is a beta release.</p>
+                <ul>
+                <li>Downloads LTS versions from <code>node-versions</code> releases for reliability.  Falls back to nodejs.org dist on misses or failures</li>
+                <li>Full semver spec support</li>
+                <li>Support for upcoming GHES</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/actions/setup-node/commit/7c12f8017d5436eb855f1ed4399f037a36fbd9e8"><code>7c12f80</code></a> Update actions/core dependencies for releases/v2 (<a href="https://redirect.github.com/actions/setup-node/issues/713">#713</a>)</li>
+                <li><a href="https://github.com/actions/setup-node/commit/1f8c6b94b26d0feae1e387ca63ccbdc44d27b561"><code>1f8c6b9</code></a> Pass to warning uncaught exceptions (<a href="https://redirect.github.com/actions/setup-node/issues/359">#359</a>)</li>
+                <li><a href="https://github.com/actions/setup-node/commit/9a74eb4e6473f91fbde564f97c2662fd1dc4875c"><code>9a74eb4</code></a> Throw error only if exit code is note zero.  (<a href="https://redirect.github.com/actions/setup-node/issues/358">#358</a>)</li>
+                <li><a href="https://github.com/actions/setup-node/commit/04c56d2f954f1e4c69436aa54cfef261a018f458"><code>04c56d2</code></a> update cache to 1.0.8 (<a href="https://redirect.github.com/actions/setup-node/issues/367">#367</a>)</li>
+                <li><a href="https://github.com/actions/setup-node/commit/d08cf222111d5c1d21b3cd4b958937f818d10d9a"><code>d08cf22</code></a> Adding Node.js version file support (<a href="https://redirect.github.com/actions/setup-node/issues/338">#338</a>)</li>
+                <li><a href="https://github.com/actions/setup-node/commit/360ab8b75b056fc18d368ee27a78d34e29c0b2d9"><code>360ab8b</code></a> Fix typo in the <code>bug_report</code> template (<a href="https://redirect.github.com/actions/setup-node/issues/353">#353</a>)</li>
+                <li><a href="https://github.com/actions/setup-node/commit/fd4bd829f2dd6b6c1420bd94a93449c54612ffc2"><code>fd4bd82</code></a> Add issue and pull request templates (<a href="https://redirect.github.com/actions/setup-node/issues/344">#344</a>)</li>
+                <li><a href="https://github.com/actions/setup-node/commit/a4b8ed2f4e9dd97eeae325f6967ce23d5478bd53"><code>a4b8ed2</code></a> Update dependencies (<a href="https://redirect.github.com/actions/setup-node/issues/346">#346</a>)</li>
+                <li><a href="https://github.com/actions/setup-node/commit/270253e841af726300e85d718a5f606959b2903c"><code>270253e</code></a> Merge pull request <a href="https://redirect.github.com/actions/setup-node/issues/327">#327</a> from WtfJoke/addCacheHitOutPut</li>
+                <li><a href="https://github.com/actions/setup-node/commit/d1178716dbbe024f9d459612c22072517a781faa"><code>d117871</code></a> Add 'cache-hit' as output</li>
+                <li>Additional commits viewable in <a href="https://github.com/actions/setup-node/compare/v1...v2">compare view</a></li>
+                </ul>
+                </details>
+                <br />
             commit-message: |-
-                Bump the setup group in /actions with 2 updates
+                Bump the setup group with 2 updates
 
-                Bumps the setup group in /actions with 2 updates: [actions/setup-go](https://github.com/actions/setup-go) and [actions/setup-ruby](https://github.com/actions/setup-ruby).
+                Bumps the setup group with 2 updates: [actions/setup-ruby](https://github.com/actions/setup-ruby) and [actions/setup-node](https://github.com/actions/setup-node).
 
-
-                Updates `actions/setup-go` from 4.0.0 to 4.0.1
-                - [Release notes](https://github.com/actions/setup-go/releases)
-                - [Commits](https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...fac708d6674e30b6ba41289acaab6d4b75aa0753)
 
                 Updates `actions/setup-ruby` from 1.1.2 to 1.1.3
                 - [Release notes](https://github.com/actions/setup-ruby/releases)
                 - [Commits](https://github.com/actions/setup-ruby/compare/5f29a1cd8dfebf420691c4c9a0e832e2fae5a526...e932e7af67fc4a8fc77bd86b744acd4e42fe3543)
+
+                Updates `actions/setup-node` from 1 to 2
+                - [Release notes](https://github.com/actions/setup-node/releases)
+                - [Commits](https://github.com/actions/setup-node/compare/v1...v2)
             dependency-group:
                 name: setup
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: a2064cb25db5a8a048513d5e61b27987612d5612
+            base-commit-sha: 9e96615658c7e573f451797088c5d078cb496c8a
             dependencies:
-                - name: actions/checkout
+                - name: actions/setup-go
                   previous-requirements:
-                    - file: action.yml
+                    - file: .github/workflows/i-am-a-smoke-test.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/checkout@01aecccf739ca6ff86c0539fbc67a7a5007bbc81
+                        declaration_string: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9
                       requirement: null
                       source:
                         branch: null
-                        ref: 01aecccf739ca6ff86c0539fbc67a7a5007bbc81
+                        ref: 4d34df0c2316fe8122ab82dc22947d607c0c91f9
                         type: git
-                        url: https://github.com/actions/checkout
-                  previous-version: 2.1.0
+                        url: https://github.com/actions/setup-go
+                  previous-version: 4.0.0
                   requirements:
-                    - file: action.yml
+                    - file: .github/workflows/i-am-a-smoke-test.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/checkout@01aecccf739ca6ff86c0539fbc67a7a5007bbc81
+                        declaration_string: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9
                       requirement: null
                       source:
                         branch: null
-                        ref: 2541b1294d2704b0964813337f33b291d3f8596b
+                        ref: 93397bea11091df50f3d7e59dc26a7711a8bcfbe
                         type: git
-                        url: https://github.com/actions/checkout
-                  version: 3.0.2
+                        url: https://github.com/actions/setup-go
+                  version: 4.1.0
             updated-dependency-files:
                 - content: |
-                    name: Body moving
+                    name: Smoke test manifest
                     on: workflow_dispatch
 
                     permissions:
@@ -270,180 +386,88 @@ output:
 
                     jobs:
                       body-moving:
-                        name: We be body moving
+                        name: This is a smoke test
                         runs-on: ubuntu-latest
                         steps:
                           - name: Setup Go
-                            uses: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9
+                            uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe
                           - name: Setup Ruby
                             uses: actions/setup-ruby@5f29a1cd8dfebf420691c4c9a0e832e2fae5a526
-                          - name: Check out code
-                            uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+                          - name: Setup Node
+                            uses: actions/setup-node@v1
                   content_encoding: utf-8
                   deleted: false
-                  directory: /actions
-                  name: action.yml
+                  directory: /
+                  name: .github/workflows/i-am-a-smoke-test.yml
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump actions/checkout from 2.1.0 to 3.0.2 in /actions
+            pr-title: Bump actions/setup-go from 4.0.0 to 4.1.0
             pr-body: |
-                Bumps [actions/checkout](https://github.com/actions/checkout) from 2.1.0 to 3.0.2.
+                Bumps [actions/setup-go](https://github.com/actions/setup-go) from 4.0.0 to 4.1.0.
                 <details>
                 <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/actions/checkout/releases">actions/checkout's releases</a>.</em></p>
+                <p><em>Sourced from <a href="https://github.com/actions/setup-go/releases">actions/setup-go's releases</a>.</em></p>
                 <blockquote>
-                <h2>v3.0.2</h2>
+                <h2>v4.1.0</h2>
+                <h2>What's Changed</h2>
+                <p>In scope of this release, slow installation on Windows was fixed by <a href="https://github.com/dsame"><code>@​dsame</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/393">actions/setup-go#393</a> and OS version was added to <code>primaryKey</code> for Ubuntu runners to avoid conflicts (<a href="https://redirect.github.com/actions/setup-go/pull/383">actions/setup-go#383</a>)</p>
+                <p>This release also includes the following changes:</p>
+                <ul>
+                <li>Remove implicit dependencies by <a href="https://github.com/nikolai-laevskii"><code>@​nikolai-laevskii</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/378">actions/setup-go#378</a></li>
+                <li>Update action.yml by <a href="https://github.com/mkelly"><code>@​mkelly</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/379">actions/setup-go#379</a></li>
+                <li>Added a description that go-version should be specified as a string type by <a href="https://github.com/n3xem"><code>@​n3xem</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/367">actions/setup-go#367</a></li>
+                <li>Add note about YAML parsing versions by <a href="https://github.com/dmitry-shibanov"><code>@​dmitry-shibanov</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/382">actions/setup-go#382</a></li>
+                <li>Automatic update of configuration files from 05/23/2023 by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/377">actions/setup-go#377</a></li>
+                <li>Bump tough-cookie and <code>@​azure/ms-rest-js</code> by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/392">actions/setup-go#392</a></li>
+                <li>Bump word-wrap from 1.2.3 to 1.2.4 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/397">actions/setup-go#397</a></li>
+                <li>Bump semver from 6.3.0 to 6.3.1 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/396">actions/setup-go#396</a></li>
+                </ul>
+                <h2>New Contributors</h2>
+                <ul>
+                <li><a href="https://github.com/mkelly"><code>@​mkelly</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/379">actions/setup-go#379</a></li>
+                <li><a href="https://github.com/n3xem"><code>@​n3xem</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/367">actions/setup-go#367</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/setup-go/compare/v4...v4.1.0">https://github.com/actions/setup-go/compare/v4...v4.1.0</a></p>
+                <h2>v4.0.1</h2>
                 <h2>What's Changed</h2>
                 <ul>
-                <li>Add set-safe-directory input to allow customers to take control. by <a href="https://github.com/TingluoHuang"><code>@​TingluoHuang</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/770">actions/checkout#770</a></li>
-                <li>Prepare changelog for v3.0.2. by <a href="https://github.com/TingluoHuang"><code>@​TingluoHuang</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/777">actions/checkout#777</a></li>
+                <li>Update documentation for <code>v4</code> by <a href="https://github.com/dsame"><code>@​dsame</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/354">actions/setup-go#354</a></li>
+                <li>Fix glob bug in the package.json scripts section by <a href="https://github.com/IvanZosimov"><code>@​IvanZosimov</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/359">actions/setup-go#359</a></li>
+                <li>Bump <code>xml2js</code> dependency by <a href="https://github.com/dmitry-shibanov"><code>@​dmitry-shibanov</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/370">actions/setup-go#370</a></li>
+                <li>Bump <code>@actions/cache</code> dependency to v3.2.1 by <a href="https://github.com/nikolai-laevskii"><code>@​nikolai-laevskii</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/374">actions/setup-go#374</a></li>
                 </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/checkout/compare/v3...v3.0.2">https://github.com/actions/checkout/compare/v3...v3.0.2</a></p>
-                <h2>v3.0.1</h2>
+                <h2>New Contributors</h2>
                 <ul>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/762">Fixed an issue where checkout failed to run in container jobs due to the new git setting <code>safe.directory</code></a></li>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/744">Bumped various npm package versions</a></li>
+                <li><a href="https://github.com/nikolai-laevskii"><code>@​nikolai-laevskii</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/374">actions/setup-go#374</a></li>
                 </ul>
-                <h2>v3.0.0</h2>
-                <ul>
-                <li>Updated to the node16 runtime by default
-                <ul>
-                <li>This requires a minimum <a href="https://github.com/actions/runner/releases/tag/v2.285.0">Actions Runner</a> version of v2.285.0 to run, which is by default available in GHES 3.4 or later.</li>
-                </ul>
-                </li>
-                </ul>
-                <h2>v2.7.0</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Add new public key for known_hosts (<a href="https://redirect.github.com/actions/checkout/issues/1237">#1237</a>) by <a href="https://github.com/TingluoHuang"><code>@​TingluoHuang</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/1238">actions/checkout#1238</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/checkout/compare/v2.6.0...v2.7.0">https://github.com/actions/checkout/compare/v2.6.0...v2.7.0</a></p>
-                <h2>v2.6.0</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Add backports to v2 branch by <a href="https://github.com/cory-miller"><code>@​cory-miller</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/1040">actions/checkout#1040</a>
-                <ul>
-                <li>Includes backports from the following changes: <a href="https://redirect.github.com/actions/checkout/pull/964">actions/checkout#964</a>, <a href="https://redirect.github.com/actions/checkout/pull/1002">actions/checkout#1002</a>, <a href="https://redirect.github.com/actions/checkout/pull/1029">actions/checkout#1029</a></li>
-                <li>Upgraded the licensed version to match what is used in v3.</li>
-                </ul>
-                </li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/checkout/compare/v2.5.0...v2.6.0">https://github.com/actions/checkout/compare/v2.5.0...v2.6.0</a></p>
-                <h2>v2.5.0</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Update <code>@​actions/core</code> to 1.10.0 by <a href="https://github.com/rentziass"><code>@​rentziass</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/962">actions/checkout#962</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/checkout/compare/v2...v2.5.0">https://github.com/actions/checkout/compare/v2...v2.5.0</a></p>
-                <h2>v2.4.2</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Add set-safe-directory input to allow customers to take control. (<a href="https://redirect.github.com/actions/checkout/issues/770">#770</a>) by <a href="https://github.com/TingluoHuang"><code>@​TingluoHuang</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/776">actions/checkout#776</a></li>
-                <li>Prepare changelog for v2.4.2. by <a href="https://github.com/TingluoHuang"><code>@​TingluoHuang</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/778">actions/checkout#778</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/checkout/compare/v2...v2.4.2">https://github.com/actions/checkout/compare/v2...v2.4.2</a></p>
-                <h2>v2.4.1</h2>
-                <ul>
-                <li>Fixed an issue where checkout failed to run in container jobs due to the new git setting <code>safe.directory</code></li>
-                </ul>
-                <h2>v2.4.0</h2>
-                <!-- raw HTML omitted -->
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/setup-go/compare/v4...v4.0.1">https://github.com/actions/setup-go/compare/v4...v4.0.1</a></p>
                 </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/actions/checkout/blob/main/CHANGELOG.md">actions/checkout's changelog</a>.</em></p>
-                <blockquote>
-                <h1>Changelog</h1>
-                <h2>v3.5.3</h2>
-                <ul>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/1196">Fix: Checkout fail in self-hosted runners when faulty submodule are checked-in</a></li>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/1287">Fix typos found by codespell</a></li>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/1369">Add support for sparse checkouts</a></li>
-                </ul>
-                <h2>v3.5.2</h2>
-                <ul>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/1289">Fix api endpoint for GHES</a></li>
-                </ul>
-                <h2>v3.5.1</h2>
-                <ul>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/1246">Fix slow checkout on Windows</a></li>
-                </ul>
-                <h2>v3.5.0</h2>
-                <ul>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/1237">Add new public key for known_hosts</a></li>
-                </ul>
-                <h2>v3.4.0</h2>
-                <ul>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/1209">Upgrade codeql actions to v2</a></li>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/1210">Upgrade dependencies</a></li>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/1225">Upgrade <code>@​actions/io</code></a></li>
-                </ul>
-                <h2>v3.3.0</h2>
-                <ul>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/1045">Implement branch list using callbacks from exec function</a></li>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/1050">Add in explicit reference to private checkout options</a></li>
-                <li>[Fix comment typos (that got added in <a href="https://redirect.github.com/actions/checkout/issues/770">#770</a>)](<a href="https://redirect.github.com/actions/checkout/pull/1057">actions/checkout#1057</a>)</li>
-                </ul>
-                <h2>v3.2.0</h2>
-                <ul>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/942">Add GitHub Action to perform release</a></li>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/967">Fix status badge</a></li>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/1002">Replace datadog/squid with ubuntu/squid Docker image</a></li>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/964">Wrap pipeline commands for submoduleForeach in quotes</a></li>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/1029">Update <code>@​actions/io</code> to 1.1.2</a></li>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/1039">Upgrading version to 3.2.0</a></li>
-                </ul>
-                <h2>v3.1.0</h2>
-                <ul>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/939">Use <code>@​actions/core</code> <code>saveState</code> and <code>getState</code></a></li>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/922">Add <code>github-server-url</code> input</a></li>
-                </ul>
-                <h2>v3.0.2</h2>
-                <ul>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/770">Add input <code>set-safe-directory</code></a></li>
-                </ul>
-                <h2>v3.0.1</h2>
-                <ul>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/762">Fixed an issue where checkout failed to run in container jobs due to the new git setting <code>safe.directory</code></a></li>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/744">Bumped various npm package versions</a></li>
-                </ul>
-                <h2>v3.0.0</h2>
-                <ul>
-                <li><a href="https://redirect.github.com/actions/checkout/pull/689">Update to node 16</a></li>
-                </ul>
-                <h2>v2.3.1</h2>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
                 </details>
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/actions/checkout/commit/2541b1294d2704b0964813337f33b291d3f8596b"><code>2541b12</code></a> Prepare changelog for v3.0.2. (<a href="https://redirect.github.com/actions/checkout/issues/777">#777</a>)</li>
-                <li><a href="https://github.com/actions/checkout/commit/0ffe6f9c5599e73776da5b7f113e994bc0a76ede"><code>0ffe6f9</code></a> Add set-safe-directory input to allow customers to take control. (<a href="https://redirect.github.com/actions/checkout/issues/770">#770</a>)</li>
-                <li><a href="https://github.com/actions/checkout/commit/dcd71f646680f2efd8db4afa5ad64fdcba30e748"><code>dcd71f6</code></a> Enforce safe directory (<a href="https://redirect.github.com/actions/checkout/issues/762">#762</a>)</li>
-                <li><a href="https://github.com/actions/checkout/commit/add3486cc3b55d4a5e11c8045058cef96538edc7"><code>add3486</code></a> Patch to fix the dependbot alert. (<a href="https://redirect.github.com/actions/checkout/issues/744">#744</a>)</li>
-                <li><a href="https://github.com/actions/checkout/commit/5126516654c75f76bca1de45dd82a3006d8890f9"><code>5126516</code></a> Bump minimist from 1.2.5 to 1.2.6 (<a href="https://redirect.github.com/actions/checkout/issues/741">#741</a>)</li>
-                <li><a href="https://github.com/actions/checkout/commit/d50f8ea76748df49594d9b109b614f3b4db63c71"><code>d50f8ea</code></a> Add v3.0 release information to changelog (<a href="https://redirect.github.com/actions/checkout/issues/740">#740</a>)</li>
-                <li><a href="https://github.com/actions/checkout/commit/2d1c1198e79c30cca5c3957b1e3b65ce95b5356e"><code>2d1c119</code></a> update test workflows to checkout v3 (<a href="https://redirect.github.com/actions/checkout/issues/709">#709</a>)</li>
-                <li><a href="https://github.com/actions/checkout/commit/a12a3943b4bdde767164f792f33f40b04645d846"><code>a12a394</code></a> update readme for v3 (<a href="https://redirect.github.com/actions/checkout/issues/708">#708</a>)</li>
-                <li><a href="https://github.com/actions/checkout/commit/8f9e05e482293f862823fcca12d9eddfb3723131"><code>8f9e05e</code></a> Update to node 16 (<a href="https://redirect.github.com/actions/checkout/issues/689">#689</a>)</li>
-                <li><a href="https://github.com/actions/checkout/commit/230611dbd0eb52da1e1f4f7bc8bb0c3a339fc8b7"><code>230611d</code></a> Change secret name for PAT to not start with GITHUB_ (<a href="https://redirect.github.com/actions/checkout/issues/623">#623</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/actions/checkout/compare/01aecccf739ca6ff86c0539fbc67a7a5007bbc81...2541b1294d2704b0964813337f33b291d3f8596b">compare view</a></li>
+                <li><a href="https://github.com/actions/setup-go/commit/93397bea11091df50f3d7e59dc26a7711a8bcfbe"><code>93397be</code></a> Fix Install on Windows is very slow (<a href="https://redirect.github.com/actions/setup-go/issues/393">#393</a>)</li>
+                <li><a href="https://github.com/actions/setup-go/commit/27eec5b9827114de74a8fbddada57bd21221d79b"><code>27eec5b</code></a> Merge pull request <a href="https://redirect.github.com/actions/setup-go/issues/396">#396</a> from actions/dependabot/npm_and_yarn/semver-6.3.1</li>
+                <li><a href="https://github.com/actions/setup-go/commit/ecfc77a56f4c58db46b8f45d9b67e080f4401156"><code>ecfc77a</code></a> Merge pull request <a href="https://redirect.github.com/actions/setup-go/issues/397">#397</a> from actions/dependabot/npm_and_yarn/word-wrap-1.2.4</li>
+                <li><a href="https://github.com/actions/setup-go/commit/1b80a11e05ba624fe146ccc39f322912e3d38ae9"><code>1b80a11</code></a> Bump word-wrap from 1.2.3 to 1.2.4</li>
+                <li><a href="https://github.com/actions/setup-go/commit/b1c343484c992a921dd0d7653785a43167f35458"><code>b1c3434</code></a> Fix licensing for Semver 6.3.1</li>
+                <li><a href="https://github.com/actions/setup-go/commit/0bb97b1c5c1e1494619bc2a90dccc029bba36753"><code>0bb97b1</code></a> Rebuild after updating Semver</li>
+                <li><a href="https://github.com/actions/setup-go/commit/4220624b80315b7394cd9b9edc82b5c50411a023"><code>4220624</code></a> Bump semver from 6.3.0 to 6.3.1</li>
+                <li><a href="https://github.com/actions/setup-go/commit/db8764c1e24b94e6bf86c7b9195ce862c97a4090"><code>db8764c</code></a> Bump tough-cookie and <code>@​azure/ms-rest-js</code> (<a href="https://redirect.github.com/actions/setup-go/issues/392">#392</a>)</li>
+                <li><a href="https://github.com/actions/setup-go/commit/08b314a5730da00e95d0394603ed798406886596"><code>08b314a</code></a> Merge pull request <a href="https://redirect.github.com/actions/setup-go/issues/383">#383</a> from akv-platform/issue-368</li>
+                <li><a href="https://github.com/actions/setup-go/commit/4e0b6c77c6448caafaff5eed51516cad78e7639a"><code>4e0b6c7</code></a> Limit to Linux only</li>
+                <li>Additional commits viewable in <a href="https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...93397bea11091df50f3d7e59dc26a7711a8bcfbe">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump actions/checkout from 2.1.0 to 3.0.2 in /actions
+                Bump actions/setup-go from 4.0.0 to 4.1.0
 
-                Bumps [actions/checkout](https://github.com/actions/checkout) from 2.1.0 to 3.0.2.
-                - [Release notes](https://github.com/actions/checkout/releases)
-                - [Changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/actions/checkout/compare/01aecccf739ca6ff86c0539fbc67a7a5007bbc81...2541b1294d2704b0964813337f33b291d3f8596b)
+                Bumps [actions/setup-go](https://github.com/actions/setup-go) from 4.0.0 to 4.1.0.
+                - [Release notes](https://github.com/actions/setup-go/releases)
+                - [Commits](https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...93397bea11091df50f3d7e59dc26a7711a8bcfbe)
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: a2064cb25db5a8a048513d5e61b27987612d5612
+            base-commit-sha: 9e96615658c7e573f451797088c5d078cb496c8a

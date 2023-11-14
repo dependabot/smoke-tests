@@ -1,18 +1,17 @@
-name: Body moving
-on:  # yamllint disable-line rule:truthy
-  workflow_dispatch
+name: Smoke test manifest
+on: workflow_dispatch
 
 permissions:
   contents: read
 
 jobs:
   body-moving:
-    name: We be body moving
+    name: This is a smoke test
     runs-on: ubuntu-latest
     steps:
       - name: Setup Go
         uses: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9
       - name: Setup Ruby
         uses: actions/setup-ruby@5f29a1cd8dfebf420691c4c9a0e832e2fae5a526
-      - name: Check out code
-        uses: actions/checkout@01aecccf739ca6ff86c0539fbc67a7a5007bbc81
+      - name: Setup Node
+        uses: actions/setup-node@v1
