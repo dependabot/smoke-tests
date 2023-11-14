@@ -1,0 +1,42 @@
+input:
+    job:
+        package-manager: gradle
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        dependencies:
+            - "com.google.code.findbugs:jsr305"
+            - "org.hibernate:hibernate-core"
+            - "com.google.inject:guice"
+        security-advisories:
+            - dependency-name: "com.google.code.findbugs:jsr305"
+              affected-versions:
+                - <= 3.0.2
+              patched-versions: []
+              unaffected-versions: []
+            - dependency-name: "org.hibernate:hibernate-core"
+              affected-versions:
+                - < 5.3.0
+              patched-versions: []
+              unaffected-versions: []
+            - dependency-name: "com.google.inject:guice"
+              affected-versions:
+                - <= 4.2.0
+              patched-versions: []
+              unaffected-versions: []
+        security-updates-only: true
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /gradle/multi-dir/foo
+                - /gradle/multi-dir/bar
+            commit: cd6542cb2b99fce3a1c506446e22e32d79d1b2b7
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
