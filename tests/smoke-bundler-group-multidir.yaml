@@ -44,7 +44,7 @@ input:
             directories:
                 - /bundler/multi-dir/foo
                 - /bundler/multi-dir/bar
-            commit: 212c1f8e06ecf351f64605892856b5fc7cd7d9a3
+            commit: cd6542cb2b99fce3a1c506446e22e32d79d1b2b7
         credentials-metadata:
             - host: github.com
               type: git_source
@@ -94,7 +94,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 212c1f8e06ecf351f64605892856b5fc7cd7d9a3
+            base-commit-sha: cd6542cb2b99fce3a1c506446e22e32d79d1b2b7
             dependencies:
                 - name: sinatra
                   previous-requirements:
@@ -187,8 +187,7 @@ output:
                         tilt (1.4.1)
 
                     PLATFORMS
-                      aarch64-linux
-                      arm64-darwin-23
+                      ruby
 
                     DEPENDENCIES
                       nokogiri (= 1.11.1)
@@ -229,8 +228,7 @@ output:
                         rack (3.0.7)
 
                     PLATFORMS
-                      aarch64-linux
-                      arm64-darwin-23
+                      ruby
 
                     DEPENDENCIES
                       nokogiri (= 1.11.1)
@@ -517,4 +515,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 212c1f8e06ecf351f64605892856b5fc7cd7d9a3
+            base-commit-sha: cd6542cb2b99fce3a1c506446e22e32d79d1b2b7
