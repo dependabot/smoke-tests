@@ -1,0 +1,582 @@
+input:
+    job:
+        package-manager: nuget
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: AspNetCore.HealthChecks.Rabbitmq
+              source: ../smoke-tests/tests/smoke-nuget-resolvability.yaml
+              version-requirement: '>7.0.0'
+            - dependency-name: Microsoft.Extensions.Diagnostics.HealthChecks
+              source: ../smoke-tests/tests/smoke-nuget-resolvability.yaml
+              version-requirement: '>7.0.9'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /nuget/resolvability
+            commit: 1204ab6852a4872bbb0ba4fff1343fefb39663d6
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: AspNetCore.HealthChecks.Rabbitmq
+                  requirements:
+                    - file: Directory.Packages.props
+                      groups:
+                        - dependencies
+                      requirement: 5.0.2
+                      source: null
+                    - file: A/A.csproj
+                      groups:
+                        - dependencies
+                      requirement: 5.0.2
+                      source: null
+                    - file: B/B.csproj
+                      groups:
+                        - dependencies
+                      requirement: 5.0.2
+                      source: null
+                  version: 5.0.2
+                - name: Microsoft.Extensions.Diagnostics.HealthChecks
+                  requirements:
+                    - file: Directory.Packages.props
+                      groups:
+                        - dependencies
+                      requirement: 5.0.17
+                      source: null
+                    - file: B/B.csproj
+                      groups:
+                        - dependencies
+                      requirement: 5.0.17
+                      source: null
+                  version: 5.0.17
+                - name: Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions
+                  requirements: []
+                  version: 5.0.1
+                - name: Microsoft.Extensions.Hosting.Abstractions
+                  requirements: []
+                  version: 5.0.0
+                - name: Microsoft.Bcl.AsyncInterfaces
+                  requirements: []
+                  version: 5.0.0
+                - name: System.Threading.Tasks.Extensions
+                  requirements: []
+                  version: 4.5.4
+                - name: System.Runtime.CompilerServices.Unsafe
+                  requirements: []
+                  version: 5.0.0
+                - name: System.Runtime
+                  requirements: []
+                  version: 4.3.0
+                - name: Microsoft.NETCore.Platforms
+                  requirements: []
+                  version: 1.1.0
+                - name: Microsoft.NETCore.Targets
+                  requirements: []
+                  version: 1.1.0
+                - name: System.Collections
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Threading.Tasks
+                  requirements: []
+                  version: 4.3.0
+                - name: Microsoft.Extensions.Configuration.Abstractions
+                  requirements: []
+                  version: 5.0.0
+                - name: Microsoft.Extensions.Primitives
+                  requirements: []
+                  version: 5.0.0
+                - name: System.Buffers
+                  requirements: []
+                  version: 4.5.1
+                - name: System.Memory
+                  requirements: []
+                  version: 4.5.4
+                - name: System.Numerics.Vectors
+                  requirements: []
+                  version: 4.5.0
+                - name: NETStandard.Library
+                  requirements: []
+                  version: 1.6.1
+                - name: System.Diagnostics.Debug
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Diagnostics.Tools
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Globalization
+                  requirements: []
+                  version: 4.3.0
+                - name: System.IO
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Text.Encoding
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Linq
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Linq.Expressions
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Reflection
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Reflection.Primitives
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Net.Primitives
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Runtime.Handles
+                  requirements: []
+                  version: 4.3.0
+                - name: System.ObjectModel
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Reflection.Extensions
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Resources.ResourceManager
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Runtime.Extensions
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Text.Encoding.Extensions
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Text.RegularExpressions
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Threading
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Xml.ReaderWriter
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Xml.XDocument
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Collections.Concurrent
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Diagnostics.Tracing
+                  requirements: []
+                  version: 4.3.0
+                - name: System.IO.Compression
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Net.Http
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Security.Cryptography.X509Certificates
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Security.Cryptography.Algorithms
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Security.Cryptography.Primitives
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Security.Cryptography.Encoding
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Runtime.InteropServices
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Runtime.InteropServices.RuntimeInformation
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Runtime.Numerics
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Threading.Timer
+                  requirements: []
+                  version: 4.3.0
+                - name: Microsoft.Win32.Primitives
+                  requirements: []
+                  version: 4.3.0
+                - name: System.AppContext
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Console
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Globalization.Calendars
+                  requirements: []
+                  version: 4.3.0
+                - name: System.IO.Compression.ZipFile
+                  requirements: []
+                  version: 4.3.0
+                - name: System.IO.FileSystem
+                  requirements: []
+                  version: 4.3.0
+                - name: System.IO.FileSystem.Primitives
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Net.Sockets
+                  requirements: []
+                  version: 4.3.0
+                - name: System.ValueTuple
+                  requirements: []
+                  version: 4.5.0
+                - name: Microsoft.Extensions.DependencyInjection.Abstractions
+                  requirements: []
+                  version: 5.0.0
+                - name: Microsoft.Extensions.FileProviders.Abstractions
+                  requirements: []
+                  version: 5.0.0
+                - name: Microsoft.Extensions.Logging.Abstractions
+                  requirements: []
+                  version: 5.0.0
+                - name: Microsoft.Extensions.Options
+                  requirements: []
+                  version: 5.0.0
+                - name: RabbitMQ.Client
+                  requirements: []
+                  version: 6.2.1
+                - name: System.Threading.Channels
+                  requirements: []
+                  version: 4.7.1
+            dependency_files:
+                - /nuget/resolvability/Directory.Packages.props
+                - /nuget/resolvability/A/A.csproj
+                - /nuget/resolvability/B/B.csproj
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 1204ab6852a4872bbb0ba4fff1343fefb39663d6
+            dependencies:
+                - name: AspNetCore.HealthChecks.Rabbitmq
+                  previous-requirements:
+                    - file: Directory.Packages.props
+                      groups:
+                        - dependencies
+                      requirement: 5.0.2
+                      source: null
+                    - file: A/A.csproj
+                      groups:
+                        - dependencies
+                      requirement: 5.0.2
+                      source: null
+                    - file: B/B.csproj
+                      groups:
+                        - dependencies
+                      requirement: 5.0.2
+                      source: null
+                  previous-version: 5.0.2
+                  requirements:
+                    - file: Directory.Packages.props
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/aspnetcore.healthchecks.rabbitmq/7.0.0/aspnetcore.healthchecks.rabbitmq.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                    - file: A/A.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/aspnetcore.healthchecks.rabbitmq/7.0.0/aspnetcore.healthchecks.rabbitmq.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                    - file: B/B.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/aspnetcore.healthchecks.rabbitmq/7.0.0/aspnetcore.healthchecks.rabbitmq.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                  version: 7.0.0
+                - name: Microsoft.Extensions.Diagnostics.HealthChecks
+                  previous-requirements:
+                    - file: Directory.Packages.props
+                      groups:
+                        - dependencies
+                      requirement: 5.0.17
+                      source: null
+                    - file: B/B.csproj
+                      groups:
+                        - dependencies
+                      requirement: 5.0.17
+                      source: null
+                  previous-version: 5.0.17
+                  requirements:
+                    - file: Directory.Packages.props
+                      groups:
+                        - dependencies
+                      requirement: 7.0.9
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.diagnostics.healthchecks/7.0.9/microsoft.extensions.diagnostics.healthchecks.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                    - file: B/B.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.9
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.diagnostics.healthchecks/7.0.9/microsoft.extensions.diagnostics.healthchecks.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                  version: 7.0.9
+            updated-dependency-files:
+                - content: |-
+                    <Project>
+                      <!--https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management-->
+                      <PropertyGroup>
+                        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+                      </PropertyGroup>
+                      <ItemGroup>
+                        <PackageVersion Include="AspNetCore.HealthChecks.Rabbitmq" Version="7.0.0" />
+                        <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="7.0.9" />
+                      </ItemGroup>
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/resolvability
+                  name: Directory.Packages.props
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump AspNetCore.HealthChecks.Rabbitmq and Microsoft.Extensions.Diagnostics.HealthChecks in /nuget/resolvability
+            pr-body: |
+                Bumps [AspNetCore.HealthChecks.Rabbitmq](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) and [Microsoft.Extensions.Diagnostics.HealthChecks](https://github.com/dotnet/aspnetcore). These dependencies needed to be updated together.
+                Updates `AspNetCore.HealthChecks.Rabbitmq` from 5.0.2 to 7.0.0
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/releases">AspNetCore.HealthChecks.Rabbitmq's releases</a>.</em></p>
+                <blockquote>
+                <h2>V7 Release</h2>
+                <p>This release has come a long way. A lot was done. I tried to edit the list of changes, but considered it a waste of time. Just scroll through a few screens of the text in <a href="https://redirect.github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/issues/1593">Xabaril/AspNetCore.Diagnostics.HealthChecks#1593</a> and you will understand.</p>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/commits/preview-all-7.0.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `Microsoft.Extensions.Diagnostics.HealthChecks` from 5.0.17 to 7.0.9
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/dotnet/aspnetcore/releases">Microsoft.Extensions.Diagnostics.HealthChecks's releases</a>.</em></p>
+                <blockquote>
+                <h2>.NET 7.0.9</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.9">Release</a></p>
+                <h2>.NET 7.0.8</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.8">Release</a></p>
+                <h2>.NET 7.0.7</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.7">Release</a></p>
+                <h2>.NET 7.0.5</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.5">Release</a></p>
+                <h2>.NET 7.0.4</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.4">Release</a></p>
+                <h2>.NET 7.0.3</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.3">Release</a></p>
+                <h2>.NET 7.0.2</h2>
+                <p><a href="https://github.com/dotnet/core/tree/v7.0.2">Release</a></p>
+                <h2>.NET 7.0.1</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.1">Release</a></p>
+                <h2>.NET 7.0.0</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0">Release</a></p>
+                <h2>.NET 7.0 RC 2</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0-rc.2">Release</a></p>
+                <h2>.NET 7.0 RC 1</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0-rc.1">Release</a></p>
+                <h2>.NET 7.0 Preview 7</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0-preview.7">Release</a></p>
+                <h2>.NET 7.0 Preview 6</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0-preview.6">Release</a></p>
+                <h2>.NET 7.0 Preview 5</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0-preview.5">Release</a></p>
+                <h2>.NET 7.0 Preview 4</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0-preview.4">Release</a></p>
+                <h2>.NET 7.0 Preview 3</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0-preview.3">Release</a></p>
+                <h2>.NET 7.0 Preview 2</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0-preview.2">Release</a></p>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/b506e2cb7b6c0fe787305f8cfdee046b7b3f9a53"><code>b506e2c</code></a> Merged PR 32117: Fix shas for July</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/8c6acc1ed8d5d544edf1d8120dad148d98b162b7"><code>8c6acc1</code></a> Merged PR 32093: [internal/release/7.0] Update dependencies from dnceng/inter...</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/4102502992b9a73c26ebce398a2e51253037e204"><code>4102502</code></a> [internal/release/7.0] Update dependencies from dnceng/internal/dotnet-runtime</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/01ed6ed4873ade889e61e9b797d4e3965570f216"><code>01ed6ed</code></a> [internal/release/7.0] Update dependencies from dnceng/internal/dotnet-efcore</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/52009a90fe82fefb6f03abf3d2da103dcb24e6f8"><code>52009a9</code></a> Merge in 'release/7.0' changes</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/d248a4f2cba5e68eb26ba2e2208dc8ba3187ad85"><code>d248a4f</code></a> Update NuGet client dependencies (<a href="https://redirect.github.com/dotnet/aspnetcore/issues/48865">#48865</a>)</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/2dead36ccf4ccb7e9c132f33f9bacf37dcb3af46"><code>2dead36</code></a> Merge in 'release/7.0' changes</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/8804a1a835821e811e5532edb3716242f481b5d2"><code>8804a1a</code></a> Update branding to 7.0.9 (<a href="https://redirect.github.com/dotnet/aspnetcore/issues/48901">#48901</a>)</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/db6432162c83e94c0334b403f4a8a2b475a9160b"><code>db64321</code></a> Merged PR 31966: [internal/release/7.0] Merge from public</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/80034989d137b7f61735ce4e9a47a99ee79c2174"><code>8003498</code></a> [internal/release/7.0] Update dependencies from dnceng/internal/dotnet-efcore</li>
+                <li>Additional commits viewable in <a href="https://github.com/dotnet/aspnetcore/compare/v5.0.17...v7.0.9">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump AspNetCore.HealthChecks.Rabbitmq and Microsoft.Extensions.Diagnostics.HealthChecks
+
+                Bumps [AspNetCore.HealthChecks.Rabbitmq](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) and [Microsoft.Extensions.Diagnostics.HealthChecks](https://github.com/dotnet/aspnetcore). These dependencies needed to be updated together.
+
+                Updates `AspNetCore.HealthChecks.Rabbitmq` from 5.0.2 to 7.0.0
+                - [Release notes](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/releases)
+                - [Changelog](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/blob/master/doc/ui-changelog.md)
+                - [Commits](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/commits/preview-all-7.0.0)
+
+                Updates `Microsoft.Extensions.Diagnostics.HealthChecks` from 5.0.17 to 7.0.9
+                - [Release notes](https://github.com/dotnet/aspnetcore/releases)
+                - [Changelog](https://github.com/dotnet/aspnetcore/blob/main/docs/ReleasePlanning.md)
+                - [Commits](https://github.com/dotnet/aspnetcore/compare/v5.0.17...v7.0.9)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 1204ab6852a4872bbb0ba4fff1343fefb39663d6
+            dependencies:
+                - name: Microsoft.Extensions.Diagnostics.HealthChecks
+                  previous-requirements:
+                    - file: Directory.Packages.props
+                      groups:
+                        - dependencies
+                      requirement: 5.0.17
+                      source: null
+                    - file: B/B.csproj
+                      groups:
+                        - dependencies
+                      requirement: 5.0.17
+                      source: null
+                  previous-version: 5.0.17
+                  requirements:
+                    - file: Directory.Packages.props
+                      groups:
+                        - dependencies
+                      requirement: 7.0.9
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.diagnostics.healthchecks/7.0.9/microsoft.extensions.diagnostics.healthchecks.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                    - file: B/B.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.9
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.diagnostics.healthchecks/7.0.9/microsoft.extensions.diagnostics.healthchecks.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                  version: 7.0.9
+            updated-dependency-files:
+                - content: |-
+                    <Project>
+                      <!--https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management-->
+                      <PropertyGroup>
+                        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+                      </PropertyGroup>
+                      <ItemGroup>
+                        <PackageVersion Include="AspNetCore.HealthChecks.Rabbitmq" Version="5.0.2" />
+                        <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="7.0.9" />
+                      </ItemGroup>
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/resolvability
+                  name: Directory.Packages.props
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump Microsoft.Extensions.Diagnostics.HealthChecks from 5.0.17 to 7.0.9 in /nuget/resolvability
+            pr-body: |
+                Bumps [Microsoft.Extensions.Diagnostics.HealthChecks](https://github.com/dotnet/aspnetcore) from 5.0.17 to 7.0.9.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/dotnet/aspnetcore/releases">Microsoft.Extensions.Diagnostics.HealthChecks's releases</a>.</em></p>
+                <blockquote>
+                <h2>.NET 7.0.9</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.9">Release</a></p>
+                <h2>.NET 7.0.8</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.8">Release</a></p>
+                <h2>.NET 7.0.7</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.7">Release</a></p>
+                <h2>.NET 7.0.5</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.5">Release</a></p>
+                <h2>.NET 7.0.4</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.4">Release</a></p>
+                <h2>.NET 7.0.3</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.3">Release</a></p>
+                <h2>.NET 7.0.2</h2>
+                <p><a href="https://github.com/dotnet/core/tree/v7.0.2">Release</a></p>
+                <h2>.NET 7.0.1</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.1">Release</a></p>
+                <h2>.NET 7.0.0</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0">Release</a></p>
+                <h2>.NET 7.0 RC 2</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0-rc.2">Release</a></p>
+                <h2>.NET 7.0 RC 1</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0-rc.1">Release</a></p>
+                <h2>.NET 7.0 Preview 7</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0-preview.7">Release</a></p>
+                <h2>.NET 7.0 Preview 6</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0-preview.6">Release</a></p>
+                <h2>.NET 7.0 Preview 5</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0-preview.5">Release</a></p>
+                <h2>.NET 7.0 Preview 4</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0-preview.4">Release</a></p>
+                <h2>.NET 7.0 Preview 3</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0-preview.3">Release</a></p>
+                <h2>.NET 7.0 Preview 2</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v7.0.0-preview.2">Release</a></p>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/b506e2cb7b6c0fe787305f8cfdee046b7b3f9a53"><code>b506e2c</code></a> Merged PR 32117: Fix shas for July</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/8c6acc1ed8d5d544edf1d8120dad148d98b162b7"><code>8c6acc1</code></a> Merged PR 32093: [internal/release/7.0] Update dependencies from dnceng/inter...</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/4102502992b9a73c26ebce398a2e51253037e204"><code>4102502</code></a> [internal/release/7.0] Update dependencies from dnceng/internal/dotnet-runtime</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/01ed6ed4873ade889e61e9b797d4e3965570f216"><code>01ed6ed</code></a> [internal/release/7.0] Update dependencies from dnceng/internal/dotnet-efcore</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/52009a90fe82fefb6f03abf3d2da103dcb24e6f8"><code>52009a9</code></a> Merge in 'release/7.0' changes</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/d248a4f2cba5e68eb26ba2e2208dc8ba3187ad85"><code>d248a4f</code></a> Update NuGet client dependencies (<a href="https://redirect.github.com/dotnet/aspnetcore/issues/48865">#48865</a>)</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/2dead36ccf4ccb7e9c132f33f9bacf37dcb3af46"><code>2dead36</code></a> Merge in 'release/7.0' changes</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/8804a1a835821e811e5532edb3716242f481b5d2"><code>8804a1a</code></a> Update branding to 7.0.9 (<a href="https://redirect.github.com/dotnet/aspnetcore/issues/48901">#48901</a>)</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/db6432162c83e94c0334b403f4a8a2b475a9160b"><code>db64321</code></a> Merged PR 31966: [internal/release/7.0] Merge from public</li>
+                <li><a href="https://github.com/dotnet/aspnetcore/commit/80034989d137b7f61735ce4e9a47a99ee79c2174"><code>8003498</code></a> [internal/release/7.0] Update dependencies from dnceng/internal/dotnet-efcore</li>
+                <li>Additional commits viewable in <a href="https://github.com/dotnet/aspnetcore/compare/v5.0.17...v7.0.9">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump Microsoft.Extensions.Diagnostics.HealthChecks
+
+                Bumps [Microsoft.Extensions.Diagnostics.HealthChecks](https://github.com/dotnet/aspnetcore) from 5.0.17 to 7.0.9.
+                - [Release notes](https://github.com/dotnet/aspnetcore/releases)
+                - [Changelog](https://github.com/dotnet/aspnetcore/blob/main/docs/ReleasePlanning.md)
+                - [Commits](https://github.com/dotnet/aspnetcore/compare/v5.0.17...v7.0.9)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 1204ab6852a4872bbb0ba4fff1343fefb39663d6
