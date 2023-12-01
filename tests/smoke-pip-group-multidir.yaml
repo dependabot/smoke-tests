@@ -1,41 +1,40 @@
 input:
     job:
-        dependencies:
-          - urllib3
-          - numpy
-          - Flask
-        security-updates-only: true
-        security-advisories:
-          - dependency-name: Flask
-            affected-versions:
-              - <= 2.0.0
-            patched-versions: [ ]
-            unaffected-versions: [ ]
-          - dependency-name: numpy
-            affected-versions:
-              - <= 1.0.0
-            patched-versions: [ ]
-            unaffected-versions: [ ]
-          - dependency-name: urllib3
-            affected-versions:
-              - <= 1.0.0
-            patched-versions: [ ]
-            unaffected-versions: [ ]
-
         package-manager: pip
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        dependencies:
+            - urllib3
+            - numpy
+            - Flask
         ignore-conditions:
             - dependency-name: django
               source: tests/smoke-pip.yaml
               version-requirement: '>4.0.6'
+        security-advisories:
+            - dependency-name: Flask
+              affected-versions:
+                - <= 2.0.0
+              patched-versions: []
+              unaffected-versions: []
+            - dependency-name: numpy
+              affected-versions:
+                - <= 1.0.0
+              patched-versions: []
+              unaffected-versions: []
+            - dependency-name: urllib3
+              affected-versions:
+                - <= 1.0.0
+              patched-versions: []
+              unaffected-versions: []
+        security-updates-only: true
         source:
             provider: github
             repo: dependabot/smoke-tests
             directories:
-              - /pip/multi-dir/foo
-              - /pip/multi-dir/bar
+                - /pip/multi-dir/foo
+                - /pip/multi-dir/bar
             commit: 7b8e1971f18f6a47430796ec0e430e005d2d97f3
         credentials-metadata:
             - host: github.com
@@ -140,9 +139,10 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the pip at /pip/multi-dir/foo security update group in /pip/multi-dir/foo with 2 updates
+            pr-title: Bump the pip group across 2 directories with 2 updates
             pr-body: |
-                Bumps the pip at /pip/multi-dir/foo security update group in /pip/multi-dir/foo with 2 updates: [urllib3](https://github.com/urllib3/urllib3) and [numpy](https://github.com/numpy/numpy).
+                Bumps the pip group across 2 directories with 1 update: [urllib3](https://github.com/urllib3/urllib3).
+                Bumps the pip group across 2 directories with 2 updates: [urllib3](https://github.com/urllib3/urllib3) and [numpy](https://github.com/numpy/numpy).
 
                 Updates `urllib3` from 1.0 to 1.0.1
                 <details>
@@ -209,9 +209,10 @@ output:
                 </details>
                 <br />
             commit-message: |-
-                Bump the pip at /pip/multi-dir/foo security update group
+                Bump the pip group across 2 directories with 2 updates
 
-                Bumps the pip at /pip/multi-dir/foo security update group in /pip/multi-dir/foo with 2 updates: [urllib3](https://github.com/urllib3/urllib3) and [numpy](https://github.com/numpy/numpy).
+                Bumps the pip group across 2 directories with 1 update: [urllib3](https://github.com/urllib3/urllib3).
+                Bumps the pip group across 2 directories with 2 updates: [urllib3](https://github.com/urllib3/urllib3) and [numpy](https://github.com/numpy/numpy).
 
 
                 Updates `urllib3` from 1.0 to 1.0.1
@@ -229,7 +230,7 @@ output:
                 - [Changelog](https://github.com/numpy/numpy/blob/main/doc/RELEASE_WALKTHROUGH.rst)
                 - [Commits](https://github.com/numpy/numpy/compare/v1.0...v1.3.0)
             dependency-group:
-                name: pip at /pip/multi-dir/foo security update
+                name: pip group across 2 directories
     - type: mark_as_processed
       expect:
         data:

@@ -1,37 +1,49 @@
 input:
     job:
-        dependencies:
-          - "@dependabot/dummy-pkg-a"
-          - "@dependabot/dummy-pkg-b"
-          - left-pad
-        security-updates-only: true
-        security-advisories:
-          - dependency-name: left-pad
-            affected-versions:
-              - < 1.1.0
-            patched-versions: []
-            unaffected-versions: []
-          - dependency-name: "@dependabot/dummy-pkg-a"
-            affected-versions:
-              - < 1.1.0
-            patched-versions: []
-            unaffected-versions: []
-          - dependency-name: "@dependabot/dummy-pkg-b"
-            affected-versions:
-              - < 1.1.0
-            patched-versions: []
-            unaffected-versions: []
-
         package-manager: npm_and_yarn
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        dependencies:
+            - '@dependabot/dummy-pkg-a'
+            - '@dependabot/dummy-pkg-b'
+            - left-pad
+        ignore-conditions:
+            - dependency-name: '@dependabot/dummy-pkg-b'
+              source: tests/smoke-npm-group-multidir.yaml
+              version-requirement: '>1.1.0'
+            - dependency-name: left-pad
+              source: tests/smoke-npm-group-multidir.yaml
+              version-requirement: '>1.3.0'
+            - dependency-name: left-pad
+              source: tests/smoke-npm-group-multidir.yaml
+              version-requirement: '>1.3.0'
+            - dependency-name: '@dependabot/dummy-pkg-a'
+              source: tests/smoke-npm-group-multidir.yaml
+              version-requirement: '>1.1.0'
+        security-advisories:
+            - dependency-name: left-pad
+              affected-versions:
+                - < 1.1.0
+              patched-versions: []
+              unaffected-versions: []
+            - dependency-name: '@dependabot/dummy-pkg-a'
+              affected-versions:
+                - < 1.1.0
+              patched-versions: []
+              unaffected-versions: []
+            - dependency-name: '@dependabot/dummy-pkg-b'
+              affected-versions:
+                - < 1.1.0
+              patched-versions: []
+              unaffected-versions: []
+        security-updates-only: true
         source:
             provider: github
             repo: dependabot/smoke-tests
             directories:
-              - /npm/multi-dir/foo
-              - /npm/multi-dir/bar
+                - /npm/multi-dir/foo
+                - /npm/multi-dir/bar
             commit: b430c0e13597246f5e81d6c4adab35602c1ddf3d
         credentials-metadata:
             - host: github.com

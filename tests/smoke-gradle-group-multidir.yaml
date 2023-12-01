@@ -325,9 +325,10 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the gradle at /gradle/multi-dir/foo security update group in /gradle/multi-dir/foo with 3 updates
+            pr-title: Bump the gradle group across 2 directories with 3 updates
             pr-body: |
-                Bumps the gradle at /gradle/multi-dir/foo security update group in /gradle/multi-dir/foo with 3 updates: [com.google.inject:guice](https://github.com/google/guice), com.google.code.findbugs:jsr305 and [org.hibernate:hibernate-core](https://github.com/hibernate/hibernate-orm).
+                Bumps the gradle group across 2 directories with 2 updates: [com.google.inject:guice](https://github.com/google/guice) and com.google.code.findbugs:jsr305.
+                Bumps the gradle group across 2 directories with 2 updates: com.google.code.findbugs:jsr305 and [org.hibernate:hibernate-core](https://github.com/hibernate/hibernate-orm).
 
                 Updates `com.google.inject:guice` from 4.2.0 to 4.2.1
                 <details>
@@ -417,9 +418,10 @@ output:
                 </details>
                 <br />
             commit-message: |-
-                Bump the gradle at /gradle/multi-dir/foo security update group
+                Bump the gradle group across 2 directories with 3 updates
 
-                Bumps the gradle at /gradle/multi-dir/foo security update group in /gradle/multi-dir/foo with 3 updates: [com.google.inject:guice](https://github.com/google/guice), com.google.code.findbugs:jsr305 and [org.hibernate:hibernate-core](https://github.com/hibernate/hibernate-orm).
+                Bumps the gradle group across 2 directories with 2 updates: [com.google.inject:guice](https://github.com/google/guice) and com.google.code.findbugs:jsr305.
+                Bumps the gradle group across 2 directories with 2 updates: com.google.code.findbugs:jsr305 and [org.hibernate:hibernate-core](https://github.com/hibernate/hibernate-orm).
 
 
                 Updates `com.google.inject:guice` from 4.2.0 to 4.2.1
@@ -435,7 +437,7 @@ output:
                 - [Changelog](https://github.com/hibernate/hibernate-orm/blob/5.3.0.Final/changelog.txt)
                 - [Commits](https://github.com/hibernate/hibernate-orm/commits/5.3.0.Final)
             dependency-group:
-                name: gradle at /gradle/multi-dir/foo security update
+                name: gradle group across 2 directories
     - type: mark_as_processed
       expect:
         data:
