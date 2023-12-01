@@ -30,11 +30,6 @@ output:
             dependencies:
                 - name: AspNetCore.HealthChecks.Rabbitmq
                   requirements:
-                    - file: Directory.Packages.props
-                      groups:
-                        - dependencies
-                      requirement: 5.0.2
-                      source: null
                     - file: A/A.csproj
                       groups:
                         - dependencies
@@ -45,15 +40,20 @@ output:
                         - dependencies
                       requirement: 5.0.2
                       source: null
+                    - file: Directory.Packages.props
+                      groups:
+                        - dependencies
+                      requirement: 5.0.2
+                      source: null
                   version: 5.0.2
                 - name: Microsoft.Extensions.Diagnostics.HealthChecks
                   requirements:
-                    - file: Directory.Packages.props
+                    - file: B/B.csproj
                       groups:
                         - dependencies
                       requirement: 5.0.17
                       source: null
-                    - file: B/B.csproj
+                    - file: Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 5.0.17
@@ -249,9 +249,9 @@ output:
                   requirements: []
                   version: 4.7.1
             dependency_files:
-                - /nuget/resolvability/Directory.Packages.props
                 - /nuget/resolvability/A/A.csproj
                 - /nuget/resolvability/B/B.csproj
+                - /nuget/resolvability/Directory.Packages.props
     - type: create_pull_request
       expect:
         data:
@@ -259,32 +259,23 @@ output:
             dependencies:
                 - name: AspNetCore.HealthChecks.Rabbitmq
                   previous-requirements:
-                    - file: Directory.Packages.props
-                      groups:
-                        - dependencies
-                      requirement: 5.0.2
-                      source: null
                     - file: A/A.csproj
                       groups:
                         - dependencies
                       requirement: 5.0.2
                       source: null
                     - file: B/B.csproj
+                      groups:
+                        - dependencies
+                      requirement: 5.0.2
+                      source: null
+                    - file: Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 5.0.2
                       source: null
                   previous-version: 5.0.2
                   requirements:
-                    - file: Directory.Packages.props
-                      groups:
-                        - dependencies
-                      requirement: 7.0.0
-                      source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/aspnetcore.healthchecks.rabbitmq/7.0.0/aspnetcore.healthchecks.rabbitmq.nuspec
-                        source_url: null
-                        type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
                     - file: A/A.csproj
                       groups:
                         - dependencies
@@ -295,6 +286,15 @@ output:
                         type: nuget_repo
                         url: https://api.nuget.org/v3/index.json
                     - file: B/B.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/aspnetcore.healthchecks.rabbitmq/7.0.0/aspnetcore.healthchecks.rabbitmq.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                    - file: Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 7.0.0
@@ -306,19 +306,19 @@ output:
                   version: 7.0.0
                 - name: Microsoft.Extensions.Diagnostics.HealthChecks
                   previous-requirements:
-                    - file: Directory.Packages.props
+                    - file: B/B.csproj
                       groups:
                         - dependencies
                       requirement: 5.0.17
                       source: null
-                    - file: B/B.csproj
+                    - file: Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 5.0.17
                       source: null
                   previous-version: 5.0.17
                   requirements:
-                    - file: Directory.Packages.props
+                    - file: B/B.csproj
                       groups:
                         - dependencies
                       requirement: 7.0.9
@@ -327,7 +327,7 @@ output:
                         source_url: null
                         type: nuget_repo
                         url: https://api.nuget.org/v3/index.json
-                    - file: B/B.csproj
+                    - file: Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 7.0.9
@@ -457,19 +457,19 @@ output:
             dependencies:
                 - name: Microsoft.Extensions.Diagnostics.HealthChecks
                   previous-requirements:
-                    - file: Directory.Packages.props
+                    - file: B/B.csproj
                       groups:
                         - dependencies
                       requirement: 5.0.17
                       source: null
-                    - file: B/B.csproj
+                    - file: Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 5.0.17
                       source: null
                   previous-version: 5.0.17
                   requirements:
-                    - file: Directory.Packages.props
+                    - file: B/B.csproj
                       groups:
                         - dependencies
                       requirement: 7.0.9
@@ -478,7 +478,7 @@ output:
                         source_url: null
                         type: nuget_repo
                         url: https://api.nuget.org/v3/index.json
-                    - file: B/B.csproj
+                    - file: Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 7.0.9
