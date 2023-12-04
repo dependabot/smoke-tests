@@ -243,9 +243,10 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the bundler at /bundler/multi-dir/foo security update group in /bundler/multi-dir/foo with 3 updates
+            pr-title: Bump the bundler group across 2 directories with 3 updates
             pr-body: |
-                Bumps the bundler at /bundler/multi-dir/foo security update group in /bundler/multi-dir/foo with 3 updates: [sinatra](https://github.com/sinatra/sinatra), [nokogiri](https://github.com/sparklemotion/nokogiri) and [rack](https://github.com/rack/rack).
+                Bumps the bundler group across 2 directories with 2 updates: [sinatra](https://github.com/sinatra/sinatra) and [nokogiri](https://github.com/sparklemotion/nokogiri).
+                Bumps the bundler group across 2 directories with 2 updates: [nokogiri](https://github.com/sparklemotion/nokogiri) and [rack](https://github.com/rack/rack).
 
                 Updates `sinatra` from 1.2.2 to 1.2.3
                 <details>
@@ -487,9 +488,10 @@ output:
                 </details>
                 <br />
             commit-message: |-
-                Bump the bundler at /bundler/multi-dir/foo security update group
+                Bump the bundler group across 2 directories with 3 updates
 
-                Bumps the bundler at /bundler/multi-dir/foo security update group in /bundler/multi-dir/foo with 3 updates: [sinatra](https://github.com/sinatra/sinatra), [nokogiri](https://github.com/sparklemotion/nokogiri) and [rack](https://github.com/rack/rack).
+                Bumps the bundler group across 2 directories with 2 updates: [sinatra](https://github.com/sinatra/sinatra) and [nokogiri](https://github.com/sparklemotion/nokogiri).
+                Bumps the bundler group across 2 directories with 2 updates: [nokogiri](https://github.com/sparklemotion/nokogiri) and [rack](https://github.com/rack/rack).
 
 
                 Updates `sinatra` from 1.2.2 to 1.2.3
@@ -511,7 +513,7 @@ output:
                 - [Changelog](https://github.com/rack/rack/blob/main/CHANGELOG.md)
                 - [Commits](https://github.com/rack/rack/compare/3.0.0...v3.0.7)
             dependency-group:
-                name: bundler at /bundler/multi-dir/foo security update
+                name: bundler group across 2 directories
     - type: mark_as_processed
       expect:
         data:

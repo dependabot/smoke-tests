@@ -6,6 +6,13 @@ input:
               update-type: all
         dependencies:
             - org.springframework.boot:spring-boot-starter-parent
+        ignore-conditions:
+            - dependency-name: org.springframework.boot:spring-boot-starter-parent
+              source: tests/smoke-maven-group-multidir.yaml
+              version-requirement: '>1.5.12.RELEASE'
+            - dependency-name: org.springframework.boot:spring-boot-starter-parent
+              source: tests/smoke-maven-group-multidir.yaml
+              version-requirement: '>1.5.12.RELEASE'
         security-advisories:
             - dependency-name: org.springframework.boot:spring-boot-starter-parent
               affected-versions:
@@ -305,24 +312,26 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the maven at /maven/multi-dir/foo security update group in /maven/multi-dir/foo with 1 update
+            pr-title: Bump the maven group across 2 directories with 1 update
             pr-body: |
-                Bumps the maven at /maven/multi-dir/foo security update group in /maven/multi-dir/foo with 1 update: org.springframework.boot:spring-boot-starter-parent.
+                Bumps the maven group across 2 directories with 1 update: org.springframework.boot:spring-boot-starter-parent.
+                Bumps the maven group across 2 directories with 1 update: org.springframework.boot:spring-boot-starter-parent.
 
                 Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.10.RELEASE to 1.5.12.RELEASE
 
                 Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.9.RELEASE to 1.5.12.RELEASE
             commit-message: |-
-                Bump the maven at /maven/multi-dir/foo security update group
+                Bump the maven group across 2 directories with 1 update
 
-                Bumps the maven at /maven/multi-dir/foo security update group in /maven/multi-dir/foo with 1 update: org.springframework.boot:spring-boot-starter-parent.
+                Bumps the maven group across 2 directories with 1 update: org.springframework.boot:spring-boot-starter-parent.
+                Bumps the maven group across 2 directories with 1 update: org.springframework.boot:spring-boot-starter-parent.
 
 
                 Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.10.RELEASE to 1.5.12.RELEASE
 
                 Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.9.RELEASE to 1.5.12.RELEASE
             dependency-group:
-                name: maven at /maven/multi-dir/foo security update
+                name: maven group across 2 directories
     - type: mark_as_processed
       expect:
         data:
