@@ -64,6 +64,26 @@ Where possible try to add additional ignore_conditions and allowed_updates so ev
 
 For convenience there's a `script/run-all.sh` which will regenerate all of the tests.
 
+### How to add new tests
+
+To create a new test:
+
+1. Add new manifest files, and push the commit to this repo in a branch
+2. Run `dependabot update $ecosystem dependabot/smoke-tests --directory $dir --commit $previous_commit_sha -o tests/smoke-$ecosystem-$testname.yaml` substituting the appropriate values:
+   - $ecosystem is the directory name in dependabot-core for the ecosystem
+   - $dir is the relative path to the manifest files
+   - $previous_commit_sha is the commit SHA that contains the manifest files under test
+   - $testname is a descriptive name for the test
+3. Commit the resulting test
+4. Run the [Cache-One](https://github.com/dependabot/smoke-tests/actions/workflows/cache-one.yml) Workflow to cache the test, so it won't break due to dependency changes before the PR merges 
+5. When merging, be sure to make a merge commit, don't squash or rebase! This will change the $previous_commit_sha.
+
+The reason we do it this way is the commit under test is in the API calls in the `output` section. So we must pin the test to a commit or a change to this repo will break all the tests.
+
+Also, the manifests must be pushed up before the test can be run, because Dependabot will attempt to fetch them.
+
+If you are contributing from a fork, perform the steps above replacing `dependabot/smoke-tests` with your fork, and we can do the rest.
+
 ### Secrets
 
 To keep secrets out of test files, the CLI can use environment variables instead:
