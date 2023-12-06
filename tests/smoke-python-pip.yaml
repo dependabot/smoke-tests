@@ -143,16 +143,16 @@ output:
                     - file: requirements.txt
                       groups:
                         - dependencies
-                      requirement: ==1.24.1
+                      requirement: ==1.26.2
                       source: null
-                  version: 1.24.1
+                  version: 1.26.2
             updated-dependency-files:
                 - content: |
                     Django>=3.1,<4.0
                     requests
                     pyyaml
                     pytest
-                    numpy==1.24.1
+                    numpy==1.26.2
                   content_encoding: utf-8
                   deleted: false
                   directory: /pip
@@ -160,58 +160,60 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump numpy from 1.23.0 to 1.24.1 in /pip
+            pr-title: Bump numpy from 1.23.0 to 1.26.2 in /pip
             pr-body: |
-                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.24.1.
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.26.2.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/numpy/numpy/releases">numpy's releases</a>.</em></p>
                 <blockquote>
-                <h2>v1.24.1</h2>
-                <h1>NumPy 1.24.1 Release Notes</h1>
-                <p>NumPy 1.24.1 is a maintenance release that fixes bugs and regressions
-                discovered after the 1.24.0 release. The Python versions supported by
-                this release are 3.8-3.11.</p>
+                <h2>1.26.2 release</h2>
+                <h1>NumPy 1.26.2 Release Notes</h1>
+                <p>NumPy 1.26.2 is a maintenance release that fixes bugs and regressions
+                discovered after the 1.26.1 release. The 1.26.release series is the last
+                planned minor release series before NumPy 2.0. The Python versions
+                supported by this release are 3.9-3.12.</p>
                 <h2>Contributors</h2>
-                <p>A total of 12 people contributed to this release. People with a &quot;+&quot; by
+                <p>A total of 13 people contributed to this release. People with a &quot;+&quot; by
                 their names contributed a patch for the first time.</p>
                 <ul>
+                <li><a href="https://github.com/stefan6419846"><code>@​stefan6419846</code></a></li>
+                <li><a href="https://github.com/thalassemia"><code>@​thalassemia</code></a> +</li>
                 <li>Andrew Nelson</li>
-                <li>Ben Greiner +</li>
+                <li>Charles Bousseau +</li>
                 <li>Charles Harris</li>
-                <li>Clément Robert</li>
-                <li>Matteo Raso</li>
+                <li>Marcel Bargull +</li>
+                <li>Mark Mentovai +</li>
                 <li>Matti Picus</li>
-                <li>Melissa Weber Mendonça</li>
-                <li>Miles Cranmer</li>
+                <li>Nathan Goldbaum</li>
                 <li>Ralf Gommers</li>
-                <li>Rohit Goswami</li>
                 <li>Sayed Adel</li>
                 <li>Sebastian Berg</li>
+                <li>William Ayd +</li>
                 </ul>
                 <h2>Pull requests merged</h2>
-                <p>A total of 18 pull requests were merged for this release.</p>
+                <p>A total of 25 pull requests were merged for this release.</p>
                 <ul>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22820">#22820</a>: BLD: add workaround in setup.py for newer setuptools</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22830">#22830</a>: BLD: CIRRUS_TAG redux</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22831">#22831</a>: DOC: fix a couple typos in 1.23 notes</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22832">#22832</a>: BUG: Fix refcounting errors found using pytest-leaks</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22834">#22834</a>: BUG, SIMD: Fix invalid value encountered in several ufuncs</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22837">#22837</a>: TST: ignore more np.distutils.log imports</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22839">#22839</a>: BUG: Do not use getdata() in np.ma.masked_invalid</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22847">#22847</a>: BUG: Ensure correct behavior for rows ending in delimiter in...</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22848">#22848</a>: BUG, SIMD: Fix the bitmask of the boolean comparison</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22857">#22857</a>: BLD: Help raspian arm + clang 13 about __builtin_mul_overflow</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22858">#22858</a>: API: Ensure a full mask is returned for masked_invalid</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22866">#22866</a>: BUG: Polynomials now copy properly (<a href="https://redirect.github.com/numpy/numpy/issues/22669">#22669</a>)</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22867">#22867</a>: BUG, SIMD: Fix memory overlap in ufunc comparison loops</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22868">#22868</a>: BUG: Fortify string casts against floating point warnings</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22875">#22875</a>: TST: Ignore nan-warnings in randomized out tests</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22883">#22883</a>: MAINT: restore npymath implementations needed for freebsd</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22884">#22884</a>: BUG: Fix integer overflow in in1d for mixed integer dtypes <a href="https://redirect.github.com/numpy/numpy/issues/22877">#22877</a></li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/22887">#22887</a>: BUG: Use whole file for encoding checks with <code>charset_normalizer</code>.</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24814">#24814</a>: MAINT: align test_dispatcher s390x targets with _umath_tests_mtargets</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24929">#24929</a>: MAINT: prepare 1.26.x for further development</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24955">#24955</a>: ENH: Add Cython enumeration for NPY_FR_GENERIC</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24962">#24962</a>: REL: Remove Python upper version from the release branch</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24971">#24971</a>: BLD: Use the correct Python interpreter when running tempita.py</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24972">#24972</a>: MAINT: Remove unhelpful error replacements from <code>import_array()</code></li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24977">#24977</a>: BLD: use classic linker on macOS, the new one in XCode 15 has...</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25003">#25003</a>: BLD: musllinux_aarch64 [wheel build]</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25043">#25043</a>: MAINT: Update mailmap</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25049">#25049</a>: MAINT: Update meson build infrastructure.</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25071">#25071</a>: MAINT: Split up .github/workflows to match main</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25083">#25083</a>: BUG: Backport fix build on ppc64 when the baseline set to Power9...</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25093">#25093</a>: BLD: Fix features.h detection for Meson builds [1.26.x Backport]</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25095">#25095</a>: BUG: Avoid intp conversion regression in Cython 3 (backport)</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25107">#25107</a>: CI: remove obsolete jobs, and move macOS and conda Azure jobs...</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25108">#25108</a>: CI: Add linux_qemu action and remove travis testing.</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25112">#25112</a>: MAINT: Update .spin/cmds.py from main.</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25113">#25113</a>: DOC: Visually divide main license and bundled licenses in wheels</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25115">#25115</a>: MAINT: Add missing <code>noexcept</code> to shuffle helpers</li>
                 </ul>
-                <h2>Checksums</h2>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -219,27 +221,27 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/numpy/numpy/commit/a28f4f2a472dc826d043abf4442ba258bbd6ade5"><code>a28f4f2</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/22888">#22888</a> from charris/prepare-1.24.1-release</li>
-                <li><a href="https://github.com/numpy/numpy/commit/f8fea39ad76e7a24895af6a59ddd5fbdee466eb3"><code>f8fea39</code></a> REL: Prepare for the NumPY 1.24.1 release.</li>
-                <li><a href="https://github.com/numpy/numpy/commit/6f491e08e8fa84d939f91f1404ea4cc8ccbf9bc1"><code>6f491e0</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/22887">#22887</a> from charris/backport-22872</li>
-                <li><a href="https://github.com/numpy/numpy/commit/48f5fe454fedeea0128857909f2d2fe4aec3d5df"><code>48f5fe4</code></a> BUG: Use whole file for encoding checks with <code>charset_normalizer</code> [f2py] (<a href="https://redirect.github.com/numpy/numpy/issues/22">#22</a>...</li>
-                <li><a href="https://github.com/numpy/numpy/commit/0f3484ac2e4e2113ad33a29372538e48ac78e184"><code>0f3484a</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/22883">#22883</a> from charris/backport-22882</li>
-                <li><a href="https://github.com/numpy/numpy/commit/002c60d1a667357ffdfe35290b1595cc18d5ee4f"><code>002c60d</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/22884">#22884</a> from charris/backport-22878</li>
-                <li><a href="https://github.com/numpy/numpy/commit/38ef9ce08e1cd4e562fbb4578911a1df55e05687"><code>38ef9ce</code></a> BUG: Fix integer overflow in in1d for mixed integer dtypes <a href="https://redirect.github.com/numpy/numpy/issues/22877">#22877</a> (<a href="https://redirect.github.com/numpy/numpy/issues/22878">#22878</a>)</li>
-                <li><a href="https://github.com/numpy/numpy/commit/bb00c689afb052b0556f06bf8e55f79c99901cde"><code>bb00c68</code></a> MAINT: restore npymath implementations needed for freebsd</li>
-                <li><a href="https://github.com/numpy/numpy/commit/64e09c34237a837975cf42e074d3bb55dc955146"><code>64e09c3</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/22875">#22875</a> from charris/backport-22869</li>
-                <li><a href="https://github.com/numpy/numpy/commit/dc7bac6b42b7c695e6d0ef7fdbc534e3f98a90b9"><code>dc7bac6</code></a> TST: Ignore nan-warnings in randomized out tests</li>
-                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.23.0...v1.24.1">compare view</a></li>
+                <li><a href="https://github.com/numpy/numpy/commit/03b62604eead0f7d279a5a4c094743eb29647368"><code>03b6260</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25128">#25128</a> from charris/prepare-1.26.2</li>
+                <li><a href="https://github.com/numpy/numpy/commit/6961f60056be3fce2f4c1c9aa1f8840675135973"><code>6961f60</code></a> REL: Prepare for the NumPy 1.26.2 release</li>
+                <li><a href="https://github.com/numpy/numpy/commit/d81f0aeae67300e5d6f295597a3c53ec204ca077"><code>d81f0ae</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25121">#25121</a> from charris/backport-25042</li>
+                <li><a href="https://github.com/numpy/numpy/commit/766d5a83a2eb5db9a6deca4616a6e32c45955782"><code>766d5a8</code></a> BUG: ensure passing <code>np.dtype</code> to itself doesn't crash</li>
+                <li><a href="https://github.com/numpy/numpy/commit/cefdd34ec2c8b8acb9507b1c01637e9ac0f8f762"><code>cefdd34</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25120">#25120</a> from charris/backport-25063</li>
+                <li><a href="https://github.com/numpy/numpy/commit/ae77d675544ccc772eab73f3316134de99278629"><code>ae77d67</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25119">#25119</a> from charris/backport-25090</li>
+                <li><a href="https://github.com/numpy/numpy/commit/0035b44c4276c0b72e56e52a4cf7a7048f487b70"><code>0035b44</code></a> BLD: change default of the <code>allow-noblas</code> option to true.</li>
+                <li><a href="https://github.com/numpy/numpy/commit/12b7b352020b1e7204430bee82af05c804b32f7d"><code>12b7b35</code></a> BUG: Make n a long int for np.random.multinomial</li>
+                <li><a href="https://github.com/numpy/numpy/commit/9887c9ce4ab45093cd063b3cade971fa98f20030"><code>9887c9c</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25118">#25118</a> from charris/backport-25051</li>
+                <li><a href="https://github.com/numpy/numpy/commit/2359aec3510bd9e8d0e80e91430ebb76291d6069"><code>2359aec</code></a> MAINT: Make bitfield integers unsigned</li>
+                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.23.0...v1.26.2">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump numpy from 1.23.0 to 1.24.1 in /pip
+                Bump numpy from 1.23.0 to 1.26.2 in /pip
 
-                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.24.1.
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.26.2.
                 - [Release notes](https://github.com/numpy/numpy/releases)
                 - [Changelog](https://github.com/numpy/numpy/blob/main/doc/RELEASE_WALKTHROUGH.rst)
-                - [Commits](https://github.com/numpy/numpy/compare/v1.23.0...v1.24.1)
+                - [Commits](https://github.com/numpy/numpy/compare/v1.23.0...v1.26.2)
     - type: mark_as_processed
       expect:
         data:
