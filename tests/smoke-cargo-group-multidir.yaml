@@ -375,8 +375,8 @@ output:
                   type: file
             pr-title: Bump the cargo group across 2 directories with 2 updates
             pr-body: |
-                Bumps the cargo group across 2 directories with 2 updates: [time](https://github.com/time-rs/time) and [regex](https://github.com/rust-lang/regex).
-                Bumps the cargo group across 2 directories with 1 update: [time](https://github.com/time-rs/time).
+                Bumps the cargo group with 2 updates in the /cargo/multi-dir/foo directory: [time](https://github.com/time-rs/time) and [regex](https://github.com/rust-lang/regex).
+                Bumps the cargo group with 1 update in the /cargo/multi-dir/bar directory: [time](https://github.com/time-rs/time).
 
                 Updates `time` from 0.3.0-alpha-1 to 0.3.0
                 <details>
@@ -579,8 +579,8 @@ output:
             commit-message: |-
                 Bump the cargo group across 2 directories with 2 updates
 
-                Bumps the cargo group across 2 directories with 2 updates: [time](https://github.com/time-rs/time) and [regex](https://github.com/rust-lang/regex).
-                Bumps the cargo group across 2 directories with 1 update: [time](https://github.com/time-rs/time).
+                Bumps the cargo group with 2 updates in the /cargo/multi-dir/foo directory: [time](https://github.com/time-rs/time) and [regex](https://github.com/rust-lang/regex).
+                Bumps the cargo group with 1 update in the /cargo/multi-dir/bar directory: [time](https://github.com/time-rs/time).
 
 
                 Updates `time` from 0.3.0-alpha-1 to 0.3.0
@@ -598,7 +598,7 @@ output:
                 - [Changelog](https://github.com/time-rs/time/blob/main/CHANGELOG.md)
                 - [Commits](https://github.com/time-rs/time/compare/v0.3.0-alpha-1...v0.3.0)
             dependency-group:
-                name: cargo group across 2 directories
+                name: cargo group
     - type: mark_as_processed
       expect:
         data:

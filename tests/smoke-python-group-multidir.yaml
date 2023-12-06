@@ -141,8 +141,8 @@ output:
                   type: file
             pr-title: Bump the pip group across 2 directories with 2 updates
             pr-body: |
-                Bumps the pip group across 2 directories with 1 update: [urllib3](https://github.com/urllib3/urllib3).
-                Bumps the pip group across 2 directories with 2 updates: [urllib3](https://github.com/urllib3/urllib3) and [numpy](https://github.com/numpy/numpy).
+                Bumps the pip group with 1 update in the /pip/multi-dir/foo directory: [urllib3](https://github.com/urllib3/urllib3).
+                Bumps the pip group with 2 updates in the /pip/multi-dir/bar directory: [urllib3](https://github.com/urllib3/urllib3) and [numpy](https://github.com/numpy/numpy).
 
                 Updates `urllib3` from 1.0 to 1.0.1
                 <details>
@@ -211,8 +211,8 @@ output:
             commit-message: |-
                 Bump the pip group across 2 directories with 2 updates
 
-                Bumps the pip group across 2 directories with 1 update: [urllib3](https://github.com/urllib3/urllib3).
-                Bumps the pip group across 2 directories with 2 updates: [urllib3](https://github.com/urllib3/urllib3) and [numpy](https://github.com/numpy/numpy).
+                Bumps the pip group with 1 update in the /pip/multi-dir/foo directory: [urllib3](https://github.com/urllib3/urllib3).
+                Bumps the pip group with 2 updates in the /pip/multi-dir/bar directory: [urllib3](https://github.com/urllib3/urllib3) and [numpy](https://github.com/numpy/numpy).
 
 
                 Updates `urllib3` from 1.0 to 1.0.1
@@ -230,7 +230,7 @@ output:
                 - [Changelog](https://github.com/numpy/numpy/blob/main/doc/RELEASE_WALKTHROUGH.rst)
                 - [Commits](https://github.com/numpy/numpy/compare/v1.0...v1.3.0)
             dependency-group:
-                name: pip group across 2 directories
+                name: pip group
     - type: mark_as_processed
       expect:
         data:
