@@ -250,8 +250,8 @@ output:
                   type: file
             pr-title: Bump the npm_and_yarn group across 2 directories with 3 updates
             pr-body: |
-                Bumps the npm_and_yarn group across 2 directories with 2 updates: @dependabot/dummy-pkg-b and [left-pad](https://github.com/stevemao/left-pad).
-                Bumps the npm_and_yarn group across 2 directories with 2 updates: [left-pad](https://github.com/stevemao/left-pad) and @dependabot/dummy-pkg-a.
+                Bumps the npm_and_yarn group with 2 updates in the /npm/multi-dir/foo directory: @dependabot/dummy-pkg-b and [left-pad](https://github.com/stevemao/left-pad).
+                Bumps the npm_and_yarn group with 2 updates in the /npm/multi-dir/bar directory: [left-pad](https://github.com/stevemao/left-pad) and @dependabot/dummy-pkg-a.
 
                 Updates `@dependabot/dummy-pkg-b` from 1.0.0 to 1.1.0
 
@@ -277,8 +277,8 @@ output:
             commit-message: |-
                 Bump the npm_and_yarn group across 2 directories with 3 updates
 
-                Bumps the npm_and_yarn group across 2 directories with 2 updates: @dependabot/dummy-pkg-b and [left-pad](https://github.com/stevemao/left-pad).
-                Bumps the npm_and_yarn group across 2 directories with 2 updates: [left-pad](https://github.com/stevemao/left-pad) and @dependabot/dummy-pkg-a.
+                Bumps the npm_and_yarn group with 2 updates in the /npm/multi-dir/foo directory: @dependabot/dummy-pkg-b and [left-pad](https://github.com/stevemao/left-pad).
+                Bumps the npm_and_yarn group with 2 updates in the /npm/multi-dir/bar directory: [left-pad](https://github.com/stevemao/left-pad) and @dependabot/dummy-pkg-a.
 
 
                 Updates `@dependabot/dummy-pkg-b` from 1.0.0 to 1.1.0
@@ -291,7 +291,7 @@ output:
 
                 Updates `@dependabot/dummy-pkg-a` from 1.0.0 to 1.1.0
             dependency-group:
-                name: npm_and_yarn group across 2 directories
+                name: npm_and_yarn group
     - type: mark_as_processed
       expect:
         data:
