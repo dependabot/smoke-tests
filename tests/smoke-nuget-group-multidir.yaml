@@ -117,6 +117,28 @@ output:
                     </Project>
                   content_encoding: utf-8
                   deleted: false
+                  directory: /nuget/multi-dir/foo
+                  name: project.csproj
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    <Project Sdk="Microsoft.NET.Sdk">
+
+                      <PropertyGroup>
+                        <OutputType>Exe</OutputType>
+                        <TargetFramework>net6.0</TargetFramework>
+                        <ImplicitUsings>enable</ImplicitUsings>
+                        <Nullable>enable</Nullable>
+                      </PropertyGroup>
+
+                      <ItemGroup>
+                        <PackageReference Include="NuGet.Versioning" Version="6.2.4" />
+                      </ItemGroup>
+
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
                   directory: /nuget/multi-dir/bar
                   name: project.csproj
                   operation: update
