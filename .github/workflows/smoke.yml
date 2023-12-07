@@ -32,7 +32,12 @@ jobs:
 
       # Download the Proxy cache. The job is ideally 100% cached so no real calls are made.
       - name: Download artifacts
-        run: script/download-cache.sh ${{ matrix.suite }}
+        run: |
+          script/download-cache.sh ${{ matrix.suite }}
+          # If the previous command failed, and this is a scheduled run, fail the job.
+          if [ $? -ne 0 ] && [ "${{ github.event_name }}" == "schedule" ]; then
+              exit 1
+          fi
 
       - name: ${{ matrix.suite }}
         env:
