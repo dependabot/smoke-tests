@@ -1,0 +1,492 @@
+input:
+    job:
+        package-manager: maven
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        dependency-groups:
+            - name: maven_pkgs
+              rules:
+                patterns:
+                    - org.springframework.boot:spring-boot-starter-parent
+        ignore-conditions:
+            - dependency-name: org.springframework.boot:spring-boot-starter-parent
+              source: tests/smoke-maven-version-multidir.yaml
+              version-requirement: '>3.2.0'
+            - dependency-name: org.springframework.boot:spring-boot-starter-parent
+              source: tests/smoke-maven-version-multidir.yaml
+              version-requirement: '>3.2.0'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /
+            directories:
+                - /maven/multi-dir/foo
+                - /maven/multi-dir/bar
+            branch: main
+            commit: 56600671ab2495ed67614624740292fb5d54e4f4
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: org.springframework.boot:spring-boot-starter-parent
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: pom
+                      requirement: 1.5.10.RELEASE
+                      source: null
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: pom
+                      requirement: 1.5.9.RELEASE
+                      source: null
+                  version: 1.5.9.RELEASE
+                - name: org.springframework.boot:spring-boot-starter-web
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: mysql:mysql-connector-java
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.hibernate:hibernate-java8
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-starter-data-jpa
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-starter-test
+                  requirements:
+                    - file: pom.xml
+                      groups:
+                        - test
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-starter-actuator
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-configuration-processor
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+            dependency_files:
+                - /maven/multi-dir/foo/pom.xml
+                - /maven/multi-dir/bar/pom.xml
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 56600671ab2495ed67614624740292fb5d54e4f4
+            dependencies:
+                - name: org.springframework.boot:spring-boot-starter-parent
+                  previous-requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: pom
+                      requirement: 1.5.10.RELEASE
+                      source: null
+                  previous-version: 1.5.10.RELEASE
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: pom
+                      requirement: 3.2.0
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 3.2.0
+                - name: org.springframework.boot:spring-boot-starter-parent
+                  previous-requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: pom
+                      requirement: 1.5.9.RELEASE
+                      source: null
+                  previous-version: 1.5.9.RELEASE
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: pom
+                      requirement: 3.2.0
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 3.2.0
+            updated-dependency-files:
+                - content: |
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                             xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+                      <modelVersion>4.0.0</modelVersion>
+
+                      <groupId>com.dependabot</groupId>
+                      <artifactId>pom-with-parent</artifactId>
+                      <version>0.0.1-RELEASE</version>
+                      <name>Dependabot POM that inherits from parent POM</name>
+                      <packaging>jar</packaging>
+
+                      <parent>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-parent</artifactId>
+                        <version>3.2.0</version>
+                        <relativePath /> <!-- lookup parent from repository -->
+                      </parent>
+
+                      <properties>
+                        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+                        <java.version>1.8</java.version>
+                      </properties>
+
+                      <dependencies>
+                        <!-- Web -->
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-starter-web</artifactId>
+                        </dependency>
+
+                        <!-- Persistence -->
+                        <dependency>
+                          <groupId>mysql</groupId>
+                          <artifactId>mysql-connector-java</artifactId>
+                        </dependency>
+                        <dependency>
+                          <groupId>org.hibernate</groupId>
+                          <artifactId>hibernate-java8</artifactId>
+                        </dependency>
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-starter-data-jpa</artifactId>
+                        </dependency>
+
+                        <!-- Test -->
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-starter-test</artifactId>
+                          <scope>test</scope>
+                        </dependency>
+
+                        <!-- Ops -->
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-starter-actuator</artifactId>
+                        </dependency>
+
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-configuration-processor</artifactId>
+                          <optional>true</optional>
+                        </dependency>
+                      </dependencies>
+                    </project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /maven/multi-dir/foo
+                  name: pom.xml
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                             xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+                      <modelVersion>4.0.0</modelVersion>
+
+                      <groupId>com.dependabot</groupId>
+                      <artifactId>pom-with-parent</artifactId>
+                      <version>0.0.1-RELEASE</version>
+                      <name>Dependabot POM that inherits from parent POM</name>
+                      <packaging>jar</packaging>
+
+                      <parent>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-parent</artifactId>
+                        <version>3.2.0</version>
+                        <relativePath /> <!-- lookup parent from repository -->
+                      </parent>
+
+                      <properties>
+                        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+                        <java.version>1.8</java.version>
+                      </properties>
+
+                      <dependencies>
+                        <!-- Web -->
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-starter-web</artifactId>
+                        </dependency>
+
+                        <!-- Persistence -->
+                        <dependency>
+                          <groupId>mysql</groupId>
+                          <artifactId>mysql-connector-java</artifactId>
+                        </dependency>
+                        <dependency>
+                          <groupId>org.hibernate</groupId>
+                          <artifactId>hibernate-java8</artifactId>
+                        </dependency>
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-starter-data-jpa</artifactId>
+                        </dependency>
+
+                        <!-- Test -->
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-starter-test</artifactId>
+                          <scope>test</scope>
+                        </dependency>
+
+                        <!-- Ops -->
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-starter-actuator</artifactId>
+                        </dependency>
+
+                        <dependency>
+                          <groupId>org.springframework.boot</groupId>
+                          <artifactId>spring-boot-configuration-processor</artifactId>
+                          <optional>true</optional>
+                        </dependency>
+                      </dependencies>
+                    </project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /maven/multi-dir/bar
+                  name: pom.xml
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump the maven_pkgs across 2 directories with 1 update
+            pr-body: |
+                Bumps the maven_pkgs with 1 update in the /maven/multi-dir/foo directory: [org.springframework.boot:spring-boot-starter-parent](https://github.com/spring-projects/spring-boot).
+                Bumps the maven_pkgs with 1 update in the /maven/multi-dir/bar directory: [org.springframework.boot:spring-boot-starter-parent](https://github.com/spring-projects/spring-boot).
+
+                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.10.RELEASE to 3.2.0
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/spring-projects/spring-boot/releases">org.springframework.boot:spring-boot-starter-parent's releases</a>.</em></p>
+                <blockquote>
+                <h2>v3.2.0</h2>
+                <h2>:star: New Features</h2>
+                <ul>
+                <li>Auto-configure observations for RestClients <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38500">#38500</a></li>
+                <li>Add support for Oracle Free, the replacement for Oracle XE, with Testcontainers and Docker Compose <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38476">#38476</a></li>
+                <li>Provide dependency management for org.crac:crac <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38378">#38378</a></li>
+                <li>Add new properties for Liquibase 4.24.0 <a href="https://redirect.github.com/spring-projects/spring-boot/pull/38274">#38274</a></li>
+                <li>Provide a way to create custom ApplicationContextFactory in SpringBootContextLoader <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38205">#38205</a></li>
+                <li>Report friendly error when failing to find AOT initializer <a href="https://redirect.github.com/spring-projects/spring-boot/pull/38188">#38188</a></li>
+                </ul>
+                <h2>:lady_beetle: Bug Fixes</h2>
+                <ul>
+                <li>Annotation based ConditionalOnBean checks can cause early initialization of FactoryBeans <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38507">#38507</a></li>
+                <li>CRaC restoration fails when Actuator's running on a separate port <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38502">#38502</a></li>
+                <li>App that depends on Tomcat and on Jetty's websocket-server module fails to start with IllegalStateException: WebSocketComponents has not been created <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38286">#38286</a></li>
+                <li>App fails to start with a NoSuchMethodError when using Flyway 10.0.0 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38268">#38268</a></li>
+                <li>MeterRegistry throws BeanCreationNotAllowedException on shutdown <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38240">#38240</a></li>
+                <li>Resolution of productionRuntimeClasspath configuration may select the wrong variant and contain a dependency's source jar <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38233">#38233</a></li>
+                <li>Docker JSON parsing fails on certain locales <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38220">#38220</a></li>
+                <li>FileNotFoundException is thrown serving resources due to JarUrlConnection.getLastModified() returning zero <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38204">#38204</a></li>
+                <li>Failed to extract parameter names exception thrown when binding with non-enumerable property source <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38201">#38201</a></li>
+                <li>Spring Boot 3.2.0-RC1 application fails on JDK with CRaC but without a dependency on org.crac:crac <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38186">#38186</a></li>
+                <li>Missing configuration processing for PartEvent support <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37642">#37642</a></li>
+                </ul>
+                <h2>:notebook_with_decorative_cover: Documentation</h2>
+                <ul>
+                <li>Document supported SQL comment prefixes <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38496">#38496</a></li>
+                <li>Update access log pattern documentation to align with changes in Tomcat 10 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38425">#38425</a></li>
+                <li>Update Dynatrace docs with info about the meter metadata toggle <a href="https://redirect.github.com/spring-projects/spring-boot/pull/38368">#38368</a></li>
+                <li>Improve documentation regarding tracing in tests <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38362">#38362</a></li>
+                <li>Document the accepted inputs when configuring tags on spring-boot:build-image and bootBuildImage <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38354">#38354</a></li>
+                <li>Document how to use cloudfoundry specific actuators with a custom base path for webflux applications <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38353">#38353</a></li>
+                <li>Document Liberica JDK with CRaC <a href="https://redirect.github.com/spring-projects/spring-boot/pull/38350">#38350</a></li>
+                <li>Add a Restarting a stopped or failed Job section to the batch howto <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38341">#38341</a></li>
+                <li>Clarify documentation on importing Testcontainer declarations and using <code>@ServiceConnection</code> or <code>@DynamicPropertySource</code> <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38337">#38337</a></li>
+                <li>Make distinction between Testcontainers for integration tests and development more clear in documentation <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38336">#38336</a></li>
+                <li>When using Testcontainers at development time with <code>@ServiceConnection</code> on a <code>@Bean</code> method, describe when to use the name attribute and why <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38335">#38335</a></li>
+                <li>Fix link to Elasticsearch health indicator <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38334">#38334</a></li>
+                <li>Update Spring Framework documentation links <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38289">#38289</a></li>
+                <li>Code sample in &quot;Developing Your First Spring Boot Application&quot; does not work <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38272">#38272</a></li>
+                <li>Improve --help and documentation for &quot;encodepassword -a/--algorithm&quot; in the Spring Boot CLI <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38249">#38249</a></li>
+                <li>Add how-to documentation for test-only database migrations with Flyway/Liquibase <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38231">#38231</a></li>
+                <li>Document that PEM content can be used directly in application.yaml <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38215">#38215</a></li>
+                <li>Document that TomcatConnectorCustomizers are not applied to additional connectors <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38198">#38198</a></li>
+                </ul>
+                <h2>:hammer: Dependency Upgrades</h2>
+                <ul>
+                <li>Upgrade to AspectJ 1.9.20.1 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38358">#38358</a></li>
+                <li>Upgrade to Byte Buddy 1.14.10 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38407">#38407</a></li>
+                <li>Upgrade to DB2 JDBC 11.5.9.0 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38408">#38408</a></li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/f08a69e610faa92de2300853db71b428accd4dfa"><code>f08a69e</code></a> Release v3.2.0</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/f3d48e64a5f4a310e694d6e83987f6db17af7632"><code>f3d48e6</code></a> Set LATEST_GA to true for Homebrew and SDKMan</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/1514d6fd57c48f2ea1931c023ef9cdf2bf87b006"><code>1514d6f</code></a> Upgrade to Spring Framework 6.1.1</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/0da9c642616a7223b6186eb43d4af03c5ba08249"><code>0da9c64</code></a> Merge branch '3.1.x'</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/9552335c15a92d20a97dff28839809ade1b2ab06"><code>9552335</code></a> Next development version (v3.1.7-SNAPSHOT)</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/f54a539c8690d9429deb739d2c55f92c1aa9da85"><code>f54a539</code></a> Merge branch '3.1.x'</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/11db8c4a46e0786edab62faaeafbaa1d92bbda3a"><code>11db8c4</code></a> Fix final release flag in CI pipeline</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/8f2d7d4ceffa9a09c89e65753d00738da7b8a80a"><code>8f2d7d4</code></a> Merge pull request <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38508">#38508</a> from izeye</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/f9f73aa14684f96b2e6fb699939b1857daeda2f7"><code>f9f73aa</code></a> Polish</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/f613ab89b9cb83ec19bc35fb63068f31e22c86a0"><code>f613ab8</code></a> Auto-configure observations for RestClients</li>
+                <li>Additional commits viewable in <a href="https://github.com/spring-projects/spring-boot/compare/v1.5.10.RELEASE...v3.2.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.9.RELEASE to 3.2.0
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/spring-projects/spring-boot/releases">org.springframework.boot:spring-boot-starter-parent's releases</a>.</em></p>
+                <blockquote>
+                <h2>v3.2.0</h2>
+                <h2>:star: New Features</h2>
+                <ul>
+                <li>Auto-configure observations for RestClients <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38500">#38500</a></li>
+                <li>Add support for Oracle Free, the replacement for Oracle XE, with Testcontainers and Docker Compose <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38476">#38476</a></li>
+                <li>Provide dependency management for org.crac:crac <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38378">#38378</a></li>
+                <li>Add new properties for Liquibase 4.24.0 <a href="https://redirect.github.com/spring-projects/spring-boot/pull/38274">#38274</a></li>
+                <li>Provide a way to create custom ApplicationContextFactory in SpringBootContextLoader <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38205">#38205</a></li>
+                <li>Report friendly error when failing to find AOT initializer <a href="https://redirect.github.com/spring-projects/spring-boot/pull/38188">#38188</a></li>
+                </ul>
+                <h2>:lady_beetle: Bug Fixes</h2>
+                <ul>
+                <li>Annotation based ConditionalOnBean checks can cause early initialization of FactoryBeans <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38507">#38507</a></li>
+                <li>CRaC restoration fails when Actuator's running on a separate port <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38502">#38502</a></li>
+                <li>App that depends on Tomcat and on Jetty's websocket-server module fails to start with IllegalStateException: WebSocketComponents has not been created <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38286">#38286</a></li>
+                <li>App fails to start with a NoSuchMethodError when using Flyway 10.0.0 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38268">#38268</a></li>
+                <li>MeterRegistry throws BeanCreationNotAllowedException on shutdown <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38240">#38240</a></li>
+                <li>Resolution of productionRuntimeClasspath configuration may select the wrong variant and contain a dependency's source jar <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38233">#38233</a></li>
+                <li>Docker JSON parsing fails on certain locales <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38220">#38220</a></li>
+                <li>FileNotFoundException is thrown serving resources due to JarUrlConnection.getLastModified() returning zero <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38204">#38204</a></li>
+                <li>Failed to extract parameter names exception thrown when binding with non-enumerable property source <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38201">#38201</a></li>
+                <li>Spring Boot 3.2.0-RC1 application fails on JDK with CRaC but without a dependency on org.crac:crac <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38186">#38186</a></li>
+                <li>Missing configuration processing for PartEvent support <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37642">#37642</a></li>
+                </ul>
+                <h2>:notebook_with_decorative_cover: Documentation</h2>
+                <ul>
+                <li>Document supported SQL comment prefixes <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38496">#38496</a></li>
+                <li>Update access log pattern documentation to align with changes in Tomcat 10 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38425">#38425</a></li>
+                <li>Update Dynatrace docs with info about the meter metadata toggle <a href="https://redirect.github.com/spring-projects/spring-boot/pull/38368">#38368</a></li>
+                <li>Improve documentation regarding tracing in tests <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38362">#38362</a></li>
+                <li>Document the accepted inputs when configuring tags on spring-boot:build-image and bootBuildImage <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38354">#38354</a></li>
+                <li>Document how to use cloudfoundry specific actuators with a custom base path for webflux applications <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38353">#38353</a></li>
+                <li>Document Liberica JDK with CRaC <a href="https://redirect.github.com/spring-projects/spring-boot/pull/38350">#38350</a></li>
+                <li>Add a Restarting a stopped or failed Job section to the batch howto <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38341">#38341</a></li>
+                <li>Clarify documentation on importing Testcontainer declarations and using <code>@ServiceConnection</code> or <code>@DynamicPropertySource</code> <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38337">#38337</a></li>
+                <li>Make distinction between Testcontainers for integration tests and development more clear in documentation <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38336">#38336</a></li>
+                <li>When using Testcontainers at development time with <code>@ServiceConnection</code> on a <code>@Bean</code> method, describe when to use the name attribute and why <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38335">#38335</a></li>
+                <li>Fix link to Elasticsearch health indicator <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38334">#38334</a></li>
+                <li>Update Spring Framework documentation links <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38289">#38289</a></li>
+                <li>Code sample in &quot;Developing Your First Spring Boot Application&quot; does not work <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38272">#38272</a></li>
+                <li>Improve --help and documentation for &quot;encodepassword -a/--algorithm&quot; in the Spring Boot CLI <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38249">#38249</a></li>
+                <li>Add how-to documentation for test-only database migrations with Flyway/Liquibase <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38231">#38231</a></li>
+                <li>Document that PEM content can be used directly in application.yaml <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38215">#38215</a></li>
+                <li>Document that TomcatConnectorCustomizers are not applied to additional connectors <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38198">#38198</a></li>
+                </ul>
+                <h2>:hammer: Dependency Upgrades</h2>
+                <ul>
+                <li>Upgrade to AspectJ 1.9.20.1 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38358">#38358</a></li>
+                <li>Upgrade to Byte Buddy 1.14.10 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38407">#38407</a></li>
+                <li>Upgrade to DB2 JDBC 11.5.9.0 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38408">#38408</a></li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/f08a69e610faa92de2300853db71b428accd4dfa"><code>f08a69e</code></a> Release v3.2.0</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/f3d48e64a5f4a310e694d6e83987f6db17af7632"><code>f3d48e6</code></a> Set LATEST_GA to true for Homebrew and SDKMan</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/1514d6fd57c48f2ea1931c023ef9cdf2bf87b006"><code>1514d6f</code></a> Upgrade to Spring Framework 6.1.1</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/0da9c642616a7223b6186eb43d4af03c5ba08249"><code>0da9c64</code></a> Merge branch '3.1.x'</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/9552335c15a92d20a97dff28839809ade1b2ab06"><code>9552335</code></a> Next development version (v3.1.7-SNAPSHOT)</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/f54a539c8690d9429deb739d2c55f92c1aa9da85"><code>f54a539</code></a> Merge branch '3.1.x'</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/11db8c4a46e0786edab62faaeafbaa1d92bbda3a"><code>11db8c4</code></a> Fix final release flag in CI pipeline</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/8f2d7d4ceffa9a09c89e65753d00738da7b8a80a"><code>8f2d7d4</code></a> Merge pull request <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38508">#38508</a> from izeye</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/f9f73aa14684f96b2e6fb699939b1857daeda2f7"><code>f9f73aa</code></a> Polish</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/f613ab89b9cb83ec19bc35fb63068f31e22c86a0"><code>f613ab8</code></a> Auto-configure observations for RestClients</li>
+                <li>Additional commits viewable in <a href="https://github.com/spring-projects/spring-boot/compare/v1.5.10.RELEASE...v3.2.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump the maven_pkgs across 2 directories with 1 update
+
+                Bumps the maven_pkgs with 1 update in the /maven/multi-dir/foo directory: [org.springframework.boot:spring-boot-starter-parent](https://github.com/spring-projects/spring-boot).
+                Bumps the maven_pkgs with 1 update in the /maven/multi-dir/bar directory: [org.springframework.boot:spring-boot-starter-parent](https://github.com/spring-projects/spring-boot).
+
+
+                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.10.RELEASE to 3.2.0
+                - [Release notes](https://github.com/spring-projects/spring-boot/releases)
+                - [Commits](https://github.com/spring-projects/spring-boot/compare/v1.5.10.RELEASE...v3.2.0)
+
+                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.9.RELEASE to 3.2.0
+                - [Release notes](https://github.com/spring-projects/spring-boot/releases)
+                - [Commits](https://github.com/spring-projects/spring-boot/compare/v1.5.10.RELEASE...v3.2.0)
+            dependency-group:
+                name: maven_pkgs
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 56600671ab2495ed67614624740292fb5d54e4f4

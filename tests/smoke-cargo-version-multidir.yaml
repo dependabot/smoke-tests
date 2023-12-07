@@ -1,0 +1,917 @@
+input:
+    job:
+        package-manager: cargo
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        dependency-groups:
+            - name: cargo_pkgs
+              rules:
+                patterns:
+                    - time
+                    - regex
+                    - rand
+                    - itoa
+        ignore-conditions:
+            - dependency-name: time
+              source: tests/smoke-cargo-version-multidir.yaml
+              version-requirement: '>0.3.30'
+            - dependency-name: regex
+              source: tests/smoke-cargo-version-multidir.yaml
+              version-requirement: '>1.10.2'
+            - dependency-name: time
+              source: tests/smoke-cargo-version-multidir.yaml
+              version-requirement: '>0.3.30'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /
+            directories:
+                - /cargo/multi-dir/foo
+                - /cargo/multi-dir/bar
+            branch: main
+            commit: f5a4b0925beceaec208805533ac98637967df794
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: time
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: =0.3.0-alpha-1
+                      source: null
+                  version: 0.3.0-alpha-1
+                - name: regex
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: '>=1.6.0, <1.7.0'
+                      source: null
+                  version: 1.6.0
+                - name: itoa
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 1.0.5
+                        type: git
+                        url: https://github.com/dtolnay/itoa.git
+                  version: ef4faeda61024dfb38b3897e46aeda8140828dc6
+                - name: aho-corasick
+                  requirements: []
+                  version: 0.7.20
+                - name: const_fn
+                  requirements: []
+                  version: 0.4.9
+                - name: easy-ext
+                  requirements: []
+                  version: 0.2.9
+                - name: libc
+                  requirements: []
+                  version: 0.2.150
+                - name: memchr
+                  requirements: []
+                  version: 2.6.4
+                - name: regex-syntax
+                  requirements: []
+                  version: 0.6.29
+                - name: standback
+                  requirements: []
+                  version: 0.3.5
+                - name: version_check
+                  requirements: []
+                  version: 0.9.4
+            dependency_files:
+                - /cargo/multi-dir/foo/Cargo.toml
+                - /cargo/multi-dir/foo/Cargo.lock
+                - /cargo/multi-dir/bar/Cargo.toml
+                - /cargo/multi-dir/bar/Cargo.lock
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: f5a4b0925beceaec208805533ac98637967df794
+            dependencies:
+                - name: time
+                  previous-requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: =0.3.0-alpha-1
+                      source: null
+                  previous-version: 0.3.0-alpha-1
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: =0.3.30
+                      source: null
+                  version: 0.3.30
+                - name: regex
+                  previous-requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: '>=1.6.0, <1.7.0'
+                      source: null
+                  previous-version: 1.6.0
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: '>=1.6.0, <1.11.0'
+                      source: null
+                  version: 1.10.2
+                - name: itoa
+                  previous-requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 1.0.5
+                        type: git
+                        url: https://github.com/dtolnay/itoa.git
+                  previous-version: ef4faeda61024dfb38b3897e46aeda8140828dc6
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 1.0.9
+                        type: git
+                        url: https://github.com/dtolnay/itoa.git
+                  version: 81c115b833792b698cbac1af2d37d707c6a641ee
+                - name: time
+                  previous-requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: =0.3.0-alpha-2
+                      source: null
+                  previous-version: 0.3.0-alpha-2
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: =0.3.30
+                      source: null
+                  version: 0.3.30
+            updated-dependency-files:
+                - content: |
+                    [package]
+                    name = "dependabot" # the name of the package
+                    version = "0.1.0"    # the current version, obeying semver
+                    authors = ["support@dependabot.com"]
+
+                    [dependencies]
+                    time = "=0.3.30"
+                    regex = ">=1.6.0, <1.11.0"
+                    itoa = { git = "https://github.com/dtolnay/itoa.git", tag = "1.0.9" }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /cargo/multi-dir/foo
+                  name: Cargo.toml
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    # This file is automatically @generated by Cargo.
+                    # It is not intended for manual editing.
+                    version = 3
+
+                    [[package]]
+                    name = "aho-corasick"
+                    version = "1.1.2"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "b2969dcb958b36655471fc61f7e416fa76033bdd4bfed0678d8fee1e2d07a1f0"
+                    dependencies = [
+                     "memchr",
+                    ]
+
+                    [[package]]
+                    name = "dependabot"
+                    version = "0.1.0"
+                    dependencies = [
+                     "itoa",
+                     "regex",
+                     "time",
+                    ]
+
+                    [[package]]
+                    name = "deranged"
+                    version = "0.3.10"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "8eb30d70a07a3b04884d2677f06bec33509dc67ca60d92949e5535352d3191dc"
+                    dependencies = [
+                     "powerfmt",
+                    ]
+
+                    [[package]]
+                    name = "itoa"
+                    version = "1.0.9"
+                    source = "git+https://github.com/dtolnay/itoa.git?tag=1.0.9#81c115b833792b698cbac1af2d37d707c6a641ee"
+
+                    [[package]]
+                    name = "memchr"
+                    version = "2.6.4"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "f665ee40bc4a3c5590afb1e9677db74a508659dfd71e126420da8274909a0167"
+
+                    [[package]]
+                    name = "powerfmt"
+                    version = "0.2.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "439ee305def115ba05938db6eb1644ff94165c5ab5e9420d1c1bcedbba909391"
+
+                    [[package]]
+                    name = "proc-macro2"
+                    version = "1.0.70"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "39278fbbf5fb4f646ce651690877f89d1c5811a3d4acb27700c1cb3cdb78fd3b"
+                    dependencies = [
+                     "unicode-ident",
+                    ]
+
+                    [[package]]
+                    name = "quote"
+                    version = "1.0.33"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "5267fca4496028628a95160fc423a33e8b2e6af8a5302579e322e4b520293cae"
+                    dependencies = [
+                     "proc-macro2",
+                    ]
+
+                    [[package]]
+                    name = "regex"
+                    version = "1.10.2"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "380b951a9c5e80ddfd6136919eef32310721aa4aacd4889a8d39124b026ab343"
+                    dependencies = [
+                     "aho-corasick",
+                     "memchr",
+                     "regex-automata",
+                     "regex-syntax",
+                    ]
+
+                    [[package]]
+                    name = "regex-automata"
+                    version = "0.4.3"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "5f804c7828047e88b2d32e2d7fe5a105da8ee3264f01902f796c8e067dc2483f"
+                    dependencies = [
+                     "aho-corasick",
+                     "memchr",
+                     "regex-syntax",
+                    ]
+
+                    [[package]]
+                    name = "regex-syntax"
+                    version = "0.8.2"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "c08c74e62047bb2de4ff487b251e4a92e24f48745648451635cec7d591162d9f"
+
+                    [[package]]
+                    name = "serde"
+                    version = "1.0.193"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "25dd9975e68d0cb5aa1120c288333fc98731bd1dd12f561e468ea4728c042b89"
+                    dependencies = [
+                     "serde_derive",
+                    ]
+
+                    [[package]]
+                    name = "serde_derive"
+                    version = "1.0.193"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "43576ca501357b9b071ac53cdc7da8ef0cbd9493d8df094cd821777ea6e894d3"
+                    dependencies = [
+                     "proc-macro2",
+                     "quote",
+                     "syn",
+                    ]
+
+                    [[package]]
+                    name = "syn"
+                    version = "2.0.39"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "23e78b90f2fcf45d3e842032ce32e3f2d1545ba6636271dcbf24fa306d87be7a"
+                    dependencies = [
+                     "proc-macro2",
+                     "quote",
+                     "unicode-ident",
+                    ]
+
+                    [[package]]
+                    name = "time"
+                    version = "0.3.30"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "c4a34ab300f2dee6e562c10a046fc05e358b29f9bf92277f30c3c8d82275f6f5"
+                    dependencies = [
+                     "deranged",
+                     "powerfmt",
+                     "serde",
+                     "time-core",
+                    ]
+
+                    [[package]]
+                    name = "time-core"
+                    version = "0.1.2"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "ef927ca75afb808a4d64dd374f00a2adf8d0fcff8e7b184af886c3c87ec4a3f3"
+
+                    [[package]]
+                    name = "unicode-ident"
+                    version = "1.0.12"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /cargo/multi-dir/foo
+                  name: Cargo.lock
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    [package]
+                    name = "dependabot" # the name of the package
+                    version = "0.1.0"    # the current version, obeying semver
+                    authors = ["support@dependabot.com"]
+
+                    [dependencies]
+                    time = "=0.3.30"
+                    rand = { git = "ssh://git@github.com/rust-random/rand.git", tag = "0.8.4" }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /cargo/multi-dir/bar
+                  name: Cargo.toml
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    # This file is automatically @generated by Cargo.
+                    # It is not intended for manual editing.
+                    version = 3
+
+                    [[package]]
+                    name = "cfg-if"
+                    version = "1.0.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
+
+                    [[package]]
+                    name = "dependabot"
+                    version = "0.1.0"
+                    dependencies = [
+                     "rand",
+                     "time",
+                    ]
+
+                    [[package]]
+                    name = "deranged"
+                    version = "0.3.10"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "8eb30d70a07a3b04884d2677f06bec33509dc67ca60d92949e5535352d3191dc"
+                    dependencies = [
+                     "powerfmt",
+                    ]
+
+                    [[package]]
+                    name = "getrandom"
+                    version = "0.2.11"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "fe9006bed769170c11f845cf00c7c1e9092aeb3f268e007c3e760ac68008070f"
+                    dependencies = [
+                     "cfg-if",
+                     "libc",
+                     "wasi",
+                    ]
+
+                    [[package]]
+                    name = "libc"
+                    version = "0.2.150"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "89d92a4743f9a61002fae18374ed11e7973f530cb3a3255fb354818118b2203c"
+
+                    [[package]]
+                    name = "powerfmt"
+                    version = "0.2.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "439ee305def115ba05938db6eb1644ff94165c5ab5e9420d1c1bcedbba909391"
+
+                    [[package]]
+                    name = "ppv-lite86"
+                    version = "0.2.17"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
+
+                    [[package]]
+                    name = "proc-macro2"
+                    version = "1.0.70"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "39278fbbf5fb4f646ce651690877f89d1c5811a3d4acb27700c1cb3cdb78fd3b"
+                    dependencies = [
+                     "unicode-ident",
+                    ]
+
+                    [[package]]
+                    name = "quote"
+                    version = "1.0.33"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "5267fca4496028628a95160fc423a33e8b2e6af8a5302579e322e4b520293cae"
+                    dependencies = [
+                     "proc-macro2",
+                    ]
+
+                    [[package]]
+                    name = "rand"
+                    version = "0.8.4"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "libc",
+                     "rand_chacha",
+                     "rand_core",
+                     "rand_hc",
+                    ]
+
+                    [[package]]
+                    name = "rand_chacha"
+                    version = "0.3.1"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "ppv-lite86",
+                     "rand_core",
+                    ]
+
+                    [[package]]
+                    name = "rand_core"
+                    version = "0.6.3"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "getrandom",
+                    ]
+
+                    [[package]]
+                    name = "rand_hc"
+                    version = "0.3.1"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "rand_core",
+                    ]
+
+                    [[package]]
+                    name = "serde"
+                    version = "1.0.193"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "25dd9975e68d0cb5aa1120c288333fc98731bd1dd12f561e468ea4728c042b89"
+                    dependencies = [
+                     "serde_derive",
+                    ]
+
+                    [[package]]
+                    name = "serde_derive"
+                    version = "1.0.193"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "43576ca501357b9b071ac53cdc7da8ef0cbd9493d8df094cd821777ea6e894d3"
+                    dependencies = [
+                     "proc-macro2",
+                     "quote",
+                     "syn",
+                    ]
+
+                    [[package]]
+                    name = "syn"
+                    version = "2.0.39"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "23e78b90f2fcf45d3e842032ce32e3f2d1545ba6636271dcbf24fa306d87be7a"
+                    dependencies = [
+                     "proc-macro2",
+                     "quote",
+                     "unicode-ident",
+                    ]
+
+                    [[package]]
+                    name = "time"
+                    version = "0.3.30"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "c4a34ab300f2dee6e562c10a046fc05e358b29f9bf92277f30c3c8d82275f6f5"
+                    dependencies = [
+                     "deranged",
+                     "powerfmt",
+                     "serde",
+                     "time-core",
+                    ]
+
+                    [[package]]
+                    name = "time-core"
+                    version = "0.1.2"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "ef927ca75afb808a4d64dd374f00a2adf8d0fcff8e7b184af886c3c87ec4a3f3"
+
+                    [[package]]
+                    name = "unicode-ident"
+                    version = "1.0.12"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
+
+                    [[package]]
+                    name = "wasi"
+                    version = "0.11.0+wasi-snapshot-preview1"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /cargo/multi-dir/bar
+                  name: Cargo.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump the cargo_pkgs across 2 directories with 3 updates
+            pr-body: |
+                Bumps the cargo_pkgs with 3 updates in the /cargo/multi-dir/foo directory: [time](https://github.com/time-rs/time), [regex](https://github.com/rust-lang/regex) and [itoa](https://github.com/dtolnay/itoa).
+                Bumps the cargo_pkgs with 1 update in the /cargo/multi-dir/bar directory: [time](https://github.com/time-rs/time).
+
+                Updates `time` from 0.3.0-alpha-1 to 0.3.30
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/time-rs/time/releases">time's releases</a>.</em></p>
+                <blockquote>
+                <h2>v0.3.30</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.29</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.28</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.27</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.26</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.25</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.24</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.23</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.22</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.21</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.20</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.19</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.18</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.17</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.16</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.15</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.14</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">time's changelog</a>.</em></p>
+                <blockquote>
+                <h2>0.3.30 [2023-10-13]</h2>
+                <h3>Added</h3>
+                <ul>
+                <li><code>powerfmt::smart_display::SmartDisplay</code> has been added for the main types in the library. These
+                implementations ensure that values follow the requested fill, width, and alignment when using
+                <code>format!</code> or similar macros. <code>Display</code> is implemented in terms of <code>SmartDisplay</code>.</li>
+                </ul>
+                <h3>Fixed</h3>
+                <ul>
+                <li>Large values no longer wrap around in release mode when using <code>NumericalDuration</code> or
+                <code>NumericalStdDuration</code>.</li>
+                </ul>
+                <h2>0.3.29 [2023-09-24]</h2>
+                <h3>Added</h3>
+                <ul>
+                <li>Niche value optimization for <code>Date</code> has been added. Both <code>Date</code> and <code>Option&lt;Date&gt;</code> are four bytes.</li>
+                <li>Unit conversions have been added. It is now possible to write <code>Second::per(Day)</code>, which returns
+                the number of seconds in one day. See the types in the <a href="https://time-rs.github.io/api/time/convert/index.html"><code>time::convert</code> module</a> for more
+                information.</li>
+                </ul>
+                <h3>Changed</h3>
+                <ul>
+                <li>The diagnostic for <code>--cfg unsound_local_offset</code> has been removed.</li>
+                <li><code>#![feature(no_coverage)]</code> was previously used internally for code coverage. It is no longer used,
+                so it has been removed.</li>
+                <li>The default value for <code>modifier::OffsetHour</code> has been changed. This was unintentionally changed in
+                v0.3.17 and went unnoticed until now. The sign is now only present if needed by default, as was
+                the case previously. This does not affect any situation where <code>format_description!</code> or
+                <code>format_description::parse</code> is used.</li>
+                </ul>
+                <h3>Fixed</h3>
+                <ul>
+                <li>Adding or subtracting a <code>std::time::Duration</code> to/from an <code>OffsetDateTime</code> will not result in
+                integer overflow internally. It will still panic if the result is out of range.</li>
+                </ul>
+                <h2>0.3.28 [2023-08-27]</h2>
+                <h3>Added</h3>
+                <ul>
+                <li>More additional constants for the well-known <code>Iso8601</code> format description have been added. This
+                avoids the need to manually configure the format.</li>
+                <li>An <code>[end]</code> component has been added. This is ignored during formatting, but is used to indicate
+                the end of input when parsing. If any input remains after this component, an error is returned.
+                This is useful when using the <code>[first]</code> component, as it avoids the need to reorder variants.</li>
+                </ul>
+                <h3>Changed</h3>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/time-rs/time/commit/72f03e05073621f713dead88f16c227187afd6f9"><code>72f03e0</code></a> v0.3.30 release</li>
+                <li><a href="https://github.com/time-rs/time/commit/08ed41dee5f64173ebf55ed261f3450d208bc662"><code>08ed41d</code></a> Address clippy lints</li>
+                <li><a href="https://github.com/time-rs/time/commit/9564e59114e5164b3df4ab85cfda34f6a94e70e0"><code>9564e59</code></a> Implement <code>SmartDisplay</code> for main types</li>
+                <li><a href="https://github.com/time-rs/time/commit/dec2a2d1e87c5e56ddb56f35549a25b73af8492d"><code>dec2a2d</code></a> Use <code>rstest_reuse</code> to split tests further</li>
+                <li><a href="https://github.com/time-rs/time/commit/1ebc5e3299be1fba2fd411930a74682a84a38773"><code>1ebc5e3</code></a> Added closing markdown tag (<a href="https://redirect.github.com/time-rs/time/issues/628">#628</a>)</li>
+                <li><a href="https://github.com/time-rs/time/commit/75e255dfc988543c0dd027380b4cba4ee08433e4"><code>75e255d</code></a> Avoid wrapping in <code>ext</code> when using <code>--release</code></li>
+                <li><a href="https://github.com/time-rs/time/commit/c96bb1a4474b9af1289edbdf34514fbfe95fa833"><code>c96bb1a</code></a> v0.3.29 release</li>
+                <li><a href="https://github.com/time-rs/time/commit/6d0b341fdcf613c15f22afbcfd4f0678ce7cff3e"><code>6d0b341</code></a> Rework, expose unit conversions</li>
+                <li><a href="https://github.com/time-rs/time/commit/313f98061f0af892a8632fff534014ca82dad8f0"><code>313f980</code></a> Add niche value optimization to <code>Date</code></li>
+                <li><a href="https://github.com/time-rs/time/commit/bcbca6e1531f9435cb810ef33de8971a0b613136"><code>bcbca6e</code></a> Partially move to <code>rstest</code></li>
+                <li>Additional commits viewable in <a href="https://github.com/time-rs/time/compare/v0.3.0-alpha-1...v0.3.30">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `regex` from 1.6.0 to 1.10.2
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/rust-lang/regex/blob/master/CHANGELOG.md">regex's changelog</a>.</em></p>
+                <blockquote>
+                <h1>1.10.2 (2023-10-16)</h1>
+                <p>This is a new patch release that fixes a search regression where incorrect
+                matches could be reported.</p>
+                <p>Bug fixes:</p>
+                <ul>
+                <li>[BUG <a href="https://redirect.github.com/rust-lang/regex/issues/1110">#1110</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/1110">rust-lang/regex#1110</a>):
+                Revert broadening of reverse suffix literal optimization introduced in 1.10.1.</li>
+                </ul>
+                <h1>1.10.1 (2023-10-14)</h1>
+                <p>This is a new patch release with a minor increase in the number of valid
+                patterns and a broadening of some literal optimizations.</p>
+                <p>New features:</p>
+                <ul>
+                <li><a href="https://github.com/rust-lang/regex/commit/04f5d7be4efc542864cc400f5d43fbea4eb9bab6">FEATURE 04f5d7be</a>:
+                Loosen ASCII-compatible rules such that regexes like <code>(?-u:☃)</code> are now allowed.</li>
+                </ul>
+                <p>Performance improvements:</p>
+                <ul>
+                <li><a href="https://github.com/rust-lang/regex/commit/8a8d599f9d2f2d78e9ad84e4084788c2d563afa5">PERF 8a8d599f</a>:
+                Broader the reverse suffix optimization to apply in more cases.</li>
+                </ul>
+                <h1>1.10.0 (2023-10-09)</h1>
+                <p>This is a new minor release of <code>regex</code> that adds support for start and end
+                word boundary assertions. That is, <code>\&lt;</code> and <code>\&gt;</code>. The minimum supported Rust
+                version has also been raised to 1.65, which was released about one year ago.</p>
+                <p>The new word boundary assertions are:</p>
+                <ul>
+                <li><code>\&lt;</code> or <code>\b{start}</code>: a Unicode start-of-word boundary (<code>\W|\A</code> on the left,
+                <code>\w</code> on the right).</li>
+                <li><code>\&gt;</code> or <code>\b{end}</code>: a Unicode end-of-word boundary (<code>\w</code> on the left, <code>\W|\z</code>
+                on the right)).</li>
+                <li><code>\b{start-half}</code>: half of a Unicode start-of-word boundary (<code>\W|\A</code> on the
+                left).</li>
+                <li><code>\b{end-half}</code>: half of a Unicode end-of-word boundary (<code>\W|\z</code> on the
+                right).</li>
+                </ul>
+                <p>The <code>\&lt;</code> and <code>\&gt;</code> are GNU extensions to POSIX regexes. They have been added
+                to the <code>regex</code> crate because they enjoy somewhat broad support in other regex
+                engines as well (for example, vim). The <code>\b{start}</code> and <code>\b{end}</code> assertions
+                are aliases for <code>\&lt;</code> and <code>\&gt;</code>, respectively.</p>
+                <p>The <code>\b{start-half}</code> and <code>\b{end-half}</code> assertions are not found in any</p>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rust-lang/regex/commit/5f1f1c8b6db4d1fd373ef1ab4eab05a8f66c4235"><code>5f1f1c8</code></a> 1.10.2</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/1a54a829ba730257cbb8ed53521db11be318c43e"><code>1a54a82</code></a> deps: bump regex-automata to 0.4.3</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/61242b1e0e9941dadc5ec7c6cd7391db3cca5710"><code>61242b1</code></a> regex-automata-0.4.3</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/50fe7d177db6854ea1a2b1d04d3db75ec544f39c"><code>50fe7d1</code></a> changelog: 1.10.2</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/eb950f65e660a45c7e123f3c6fba9f2c86b4a256"><code>eb950f6</code></a> automata/meta: revert broadening of reverse suffix optimization</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/e7bd19dd3ebf4b1a861275f0353202bf93a39ab1"><code>e7bd19d</code></a> regex-lite-0.1.5</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/0086dec69a77a9e1153e97cd050ab567b5c7f109"><code>0086dec</code></a> lite: fix stack overflow test</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/4ae14720e9599830f653ca1a881b42e620eba11e"><code>4ae1472</code></a> tests: fix compilation of doctests on 32-bit architectures</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/cd79881df40755707ad9f1944b5f34881e1172b0"><code>cd79881</code></a> regex-lite-0.1.4</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/466e42ca2bea2480ff367e0e26e3967435ac3e30"><code>466e42c</code></a> lite: fix stack overflow in NFA compiler</li>
+                <li>Additional commits viewable in <a href="https://github.com/rust-lang/regex/compare/1.6.0...1.10.2">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `itoa` from 1.0.5 to 1.0.9
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/dtolnay/itoa/releases">itoa's releases</a>.</em></p>
+                <blockquote>
+                <h2>1.0.9</h2>
+                <ul>
+                <li>Documentation improvements</li>
+                </ul>
+                <h2>1.0.8</h2>
+                <ul>
+                <li>Add <code>no-alloc</code> category to crates.io metadata</li>
+                </ul>
+                <h2>1.0.7</h2>
+                <ul>
+                <li>Implement Copy for itoa::Buffer</li>
+                </ul>
+                <h2>1.0.6</h2>
+                <ul>
+                <li>Documentation improvements</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/dtolnay/itoa/commit/81c115b833792b698cbac1af2d37d707c6a641ee"><code>81c115b</code></a> Release 1.0.9</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/e3dcf527007c1672384b985a8080093236167bb6"><code>e3dcf52</code></a> Opt in to generate-link-to-definition when building on docs.rs</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/a6af90ff98545f7370f1d52f1d9cc813a224e98f"><code>a6af90f</code></a> Release 1.0.8</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/f834fdb88eb43789aeca57d303b90bbe4d8c4eae"><code>f834fdb</code></a> Add no-std::no-alloc category</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/26259a9a1ada016a6d045b5f0ebeea2089f646a3"><code>26259a9</code></a> Release 1.0.7</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/21ee1ba69749a20a076c15a310612c5b4350d844"><code>21ee1ba</code></a> Suppress incorrect_clone_impl_on_copy_type clippy false positive</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/0dccfa45975264cd0e270854d5debca510b74d7f"><code>0dccfa4</code></a> Ignore expl_impl_clone_on_copy pedantic clippy lint</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/9c8ced9755d940d301ce4b2dba264082d6439bdd"><code>9c8ced9</code></a> impl Copy for Buffer</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/f2d5e2750a39298d9c93ee58cd1203dea2bb3c9b"><code>f2d5e27</code></a> Remove .clippy.toml in favor of respecting rust-version from Cargo.toml</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/97a5102fef76824202bb1a3762dee313e84d3348"><code>97a5102</code></a> Show error details during miri setup in CI</li>
+                <li>Additional commits viewable in <a href="https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...81c115b833792b698cbac1af2d37d707c6a641ee">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `time` from 0.3.0-alpha-2 to 0.3.30
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/time-rs/time/releases">time's releases</a>.</em></p>
+                <blockquote>
+                <h2>v0.3.30</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.29</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.28</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.27</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.26</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.25</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.24</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.23</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.22</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.21</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.20</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.19</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.18</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.17</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.16</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.15</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.14</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">time's changelog</a>.</em></p>
+                <blockquote>
+                <h2>0.3.30 [2023-10-13]</h2>
+                <h3>Added</h3>
+                <ul>
+                <li><code>powerfmt::smart_display::SmartDisplay</code> has been added for the main types in the library. These
+                implementations ensure that values follow the requested fill, width, and alignment when using
+                <code>format!</code> or similar macros. <code>Display</code> is implemented in terms of <code>SmartDisplay</code>.</li>
+                </ul>
+                <h3>Fixed</h3>
+                <ul>
+                <li>Large values no longer wrap around in release mode when using <code>NumericalDuration</code> or
+                <code>NumericalStdDuration</code>.</li>
+                </ul>
+                <h2>0.3.29 [2023-09-24]</h2>
+                <h3>Added</h3>
+                <ul>
+                <li>Niche value optimization for <code>Date</code> has been added. Both <code>Date</code> and <code>Option&lt;Date&gt;</code> are four bytes.</li>
+                <li>Unit conversions have been added. It is now possible to write <code>Second::per(Day)</code>, which returns
+                the number of seconds in one day. See the types in the <a href="https://time-rs.github.io/api/time/convert/index.html"><code>time::convert</code> module</a> for more
+                information.</li>
+                </ul>
+                <h3>Changed</h3>
+                <ul>
+                <li>The diagnostic for <code>--cfg unsound_local_offset</code> has been removed.</li>
+                <li><code>#![feature(no_coverage)]</code> was previously used internally for code coverage. It is no longer used,
+                so it has been removed.</li>
+                <li>The default value for <code>modifier::OffsetHour</code> has been changed. This was unintentionally changed in
+                v0.3.17 and went unnoticed until now. The sign is now only present if needed by default, as was
+                the case previously. This does not affect any situation where <code>format_description!</code> or
+                <code>format_description::parse</code> is used.</li>
+                </ul>
+                <h3>Fixed</h3>
+                <ul>
+                <li>Adding or subtracting a <code>std::time::Duration</code> to/from an <code>OffsetDateTime</code> will not result in
+                integer overflow internally. It will still panic if the result is out of range.</li>
+                </ul>
+                <h2>0.3.28 [2023-08-27]</h2>
+                <h3>Added</h3>
+                <ul>
+                <li>More additional constants for the well-known <code>Iso8601</code> format description have been added. This
+                avoids the need to manually configure the format.</li>
+                <li>An <code>[end]</code> component has been added. This is ignored during formatting, but is used to indicate
+                the end of input when parsing. If any input remains after this component, an error is returned.
+                This is useful when using the <code>[first]</code> component, as it avoids the need to reorder variants.</li>
+                </ul>
+                <h3>Changed</h3>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/time-rs/time/commit/72f03e05073621f713dead88f16c227187afd6f9"><code>72f03e0</code></a> v0.3.30 release</li>
+                <li><a href="https://github.com/time-rs/time/commit/08ed41dee5f64173ebf55ed261f3450d208bc662"><code>08ed41d</code></a> Address clippy lints</li>
+                <li><a href="https://github.com/time-rs/time/commit/9564e59114e5164b3df4ab85cfda34f6a94e70e0"><code>9564e59</code></a> Implement <code>SmartDisplay</code> for main types</li>
+                <li><a href="https://github.com/time-rs/time/commit/dec2a2d1e87c5e56ddb56f35549a25b73af8492d"><code>dec2a2d</code></a> Use <code>rstest_reuse</code> to split tests further</li>
+                <li><a href="https://github.com/time-rs/time/commit/1ebc5e3299be1fba2fd411930a74682a84a38773"><code>1ebc5e3</code></a> Added closing markdown tag (<a href="https://redirect.github.com/time-rs/time/issues/628">#628</a>)</li>
+                <li><a href="https://github.com/time-rs/time/commit/75e255dfc988543c0dd027380b4cba4ee08433e4"><code>75e255d</code></a> Avoid wrapping in <code>ext</code> when using <code>--release</code></li>
+                <li><a href="https://github.com/time-rs/time/commit/c96bb1a4474b9af1289edbdf34514fbfe95fa833"><code>c96bb1a</code></a> v0.3.29 release</li>
+                <li><a href="https://github.com/time-rs/time/commit/6d0b341fdcf613c15f22afbcfd4f0678ce7cff3e"><code>6d0b341</code></a> Rework, expose unit conversions</li>
+                <li><a href="https://github.com/time-rs/time/commit/313f98061f0af892a8632fff534014ca82dad8f0"><code>313f980</code></a> Add niche value optimization to <code>Date</code></li>
+                <li><a href="https://github.com/time-rs/time/commit/bcbca6e1531f9435cb810ef33de8971a0b613136"><code>bcbca6e</code></a> Partially move to <code>rstest</code></li>
+                <li>Additional commits viewable in <a href="https://github.com/time-rs/time/compare/v0.3.0-alpha-1...v0.3.30">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump the cargo_pkgs across 2 directories with 3 updates
+
+                Bumps the cargo_pkgs with 3 updates in the /cargo/multi-dir/foo directory: [time](https://github.com/time-rs/time), [regex](https://github.com/rust-lang/regex) and [itoa](https://github.com/dtolnay/itoa).
+                Bumps the cargo_pkgs with 1 update in the /cargo/multi-dir/bar directory: [time](https://github.com/time-rs/time).
+
+
+                Updates `time` from 0.3.0-alpha-1 to 0.3.30
+                - [Release notes](https://github.com/time-rs/time/releases)
+                - [Changelog](https://github.com/time-rs/time/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/time-rs/time/compare/v0.3.0-alpha-1...v0.3.30)
+
+                Updates `regex` from 1.6.0 to 1.10.2
+                - [Release notes](https://github.com/rust-lang/regex/releases)
+                - [Changelog](https://github.com/rust-lang/regex/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/rust-lang/regex/compare/1.6.0...1.10.2)
+
+                Updates `itoa` from 1.0.5 to 1.0.9
+                - [Release notes](https://github.com/dtolnay/itoa/releases)
+                - [Commits](https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...81c115b833792b698cbac1af2d37d707c6a641ee)
+
+                Updates `time` from 0.3.0-alpha-2 to 0.3.30
+                - [Release notes](https://github.com/time-rs/time/releases)
+                - [Changelog](https://github.com/time-rs/time/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/time-rs/time/compare/v0.3.0-alpha-1...v0.3.30)
+            dependency-group:
+                name: cargo_pkgs
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: f5a4b0925beceaec208805533ac98637967df794
