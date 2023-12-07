@@ -1,0 +1,147 @@
+input:
+    job:
+        package-manager: go_modules
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        dependencies:
+            - rsc.io/quote
+            - rsc.io/qr
+        existing-group-pull-requests:
+            - dependency-group-name: go_modules group
+              dependencies:
+                - dependency-name: rsc.io/quote
+                  dependency-version: 1.5.1
+                - dependency-name: rsc.io/qr
+                  dependency-version: 0.2.0
+        ignore-conditions:
+            - dependency-name: rsc.io/qr
+              source: tests/smoke-go-update-security-multidir.yaml
+              version-requirement: '>0.2.0'
+            - dependency-name: rsc.io/quote
+              source: tests/smoke-go-update-security-multidir.yaml
+              version-requirement: '>1.5.1'
+            - dependency-name: rsc.io/qr
+              source: tests/smoke-go-update-security-multidir.yaml
+              version-requirement: '>0.2.0'
+            - dependency-name: rsc.io/quote
+              source: tests/smoke-go-update-security-multidir.yaml
+              version-requirement: '>1.5.1'
+        security-advisories:
+            - dependency-name: rsc.io/quote
+              affected-versions:
+                - <= 1.5.0
+              patched-versions: []
+              unaffected-versions: []
+            - dependency-name: rsc.io/qr
+              affected-versions:
+                - <= 0.1.0
+              patched-versions: []
+              unaffected-versions: []
+        security-updates-only: true
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /
+            directories:
+                - /go/multi-dir/foo
+                - /go/multi-dir/bar
+            branch: main
+            commit: fb37fe61a7462139c74f2fc7e80400b325d066a0
+        updating-a-pull-request: true
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: rsc.io/qr
+                  requirements:
+                    - file: go.mod
+                      groups: []
+                      requirement: v0.1.0
+                      source:
+                        source: rsc.io/qr
+                        type: default
+                  version: 0.1.0
+                - name: rsc.io/quote
+                  requirements:
+                    - file: go.mod
+                      groups: []
+                      requirement: v1.5.0
+                      source:
+                        source: rsc.io/quote
+                        type: default
+                  version: 1.5.0
+                - name: golang.org/x/text
+                  requirements: []
+                  version: 0.4.0
+                - name: rsc.io/sampler
+                  requirements: []
+                  version: 1.3.0
+            dependency_files:
+                - /go/multi-dir/foo/go.mod
+                - /go/multi-dir/bar/go.mod
+    - type: update_pull_request
+      expect:
+        data:
+            base-commit-sha: fb37fe61a7462139c74f2fc7e80400b325d066a0
+            dependency-names:
+                - rsc.io/qr
+                - rsc.io/quote
+                - rsc.io/qr
+                - rsc.io/quote
+            updated-dependency-files:
+                - content: |
+                    module group-security-update-test
+
+                    go 1.21
+
+                    require (
+                    	rsc.io/qr v0.2.0
+                    	rsc.io/quote v1.5.1
+                    )
+
+                    require (
+                    	golang.org/x/text v0.4.0 // indirect
+                    	rsc.io/sampler v1.3.0 // indirect
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/multi-dir/foo
+                  name: go.mod
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    module group-security-update-test
+
+                    go 1.21
+
+                    require (
+                    	rsc.io/qr v0.2.0
+                    	rsc.io/quote v1.5.1
+                    )
+
+                    require (
+                    	golang.org/x/text v0.4.0 // indirect
+                    	rsc.io/sampler v1.3.0 // indirect
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/multi-dir/bar
+                  name: go.mod
+                  operation: update
+                  support_file: false
+                  type: file
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: fb37fe61a7462139c74f2fc7e80400b325d066a0
