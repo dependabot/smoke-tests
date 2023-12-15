@@ -25,7 +25,7 @@ input:
             provider: github
             repo: dependabot/smoke-tests
             directory: /composer
-            commit: 0dae96b7938dc857a9b8f2a5b0a950735aceb15a
+            commit: 509a98a45a6f933ffd49ca7f2c26815c693b3d76
         credentials-metadata:
             - host: github.com
               type: git_source
@@ -81,7 +81,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 0dae96b7938dc857a9b8f2a5b0a950735aceb15a
+            base-commit-sha: 509a98a45a6f933ffd49ca7f2c26815c693b3d76
             dependencies:
                 - name: phpstan/phpstan
                   previous-requirements:
@@ -130,7 +130,13 @@ output:
                         "require-dev": {
                             "phpstan/phpstan": "1.10.25",
                             "phpstan/phpstan-strict-rules": "1.5.1"
-                        }
+                        },
+                        "repositories": [
+                            {
+                                "type": "artifact",
+                                "url": "artifacts/zips"
+                            }
+                        ]
                     }
                   content_encoding: utf-8
                   deleted: false
@@ -146,7 +152,7 @@ output:
                             "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
                             "This file is @generated automatically"
                         ],
-                        "content-hash": "bef1ede67a31f889005919fa425b8f97",
+                        "content-hash": "1aaf816ee5e12a52caa401c80ed8437d",
                         "packages": [
                             {
                                 "name": "phpmailer/phpmailer",
@@ -352,7 +358,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 0dae96b7938dc857a9b8f2a5b0a950735aceb15a
+            base-commit-sha: 509a98a45a6f933ffd49ca7f2c26815c693b3d76
             dependencies:
                 - name: phpmailer/phpmailer
                   previous-requirements:
@@ -382,7 +388,13 @@ output:
                         "require-dev": {
                             "phpstan/phpstan": "1.10.23",
                             "phpstan/phpstan-strict-rules": "1.5.0"
-                        }
+                        },
+                        "repositories": [
+                            {
+                                "type": "artifact",
+                                "url": "artifacts/zips"
+                            }
+                        ]
                     }
                   content_encoding: utf-8
                   deleted: false
@@ -398,7 +410,7 @@ output:
                             "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
                             "This file is @generated automatically"
                         ],
-                        "content-hash": "e883879a43e9d74f72438a060ea99e6f",
+                        "content-hash": "2de928df1dcd19a218e9b414bab91e9d",
                         "packages": [
                             {
                                 "name": "phpmailer/phpmailer",
@@ -762,4 +774,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 0dae96b7938dc857a9b8f2a5b0a950735aceb15a
+            base-commit-sha: 509a98a45a6f933ffd49ca7f2c26815c693b3d76
