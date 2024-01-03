@@ -117,9 +117,9 @@ output:
                     - file: Gemfile
                       groups:
                         - default
-                      requirement: 1.55.0
+                      requirement: 1.59.0
                       source: null
-                  version: 1.55.0
+                  version: 1.59.0
                 - name: rack
                   previous-requirements:
                     - file: Gemfile
@@ -149,7 +149,7 @@ output:
 
                     source "https://rubygems.org"
 
-                    gem "rubocop", "1.55.0"
+                    gem "rubocop", "1.59.0"
                     gem "toml-rb", "2.2.0"
                     gem 'rack', git: 'git@github.com:rack/rack.git', tag: 'v3.0.8'
                   content_encoding: utf-8
@@ -172,40 +172,40 @@ output:
                       specs:
                         ast (2.4.2)
                         citrus (3.0.2)
-                        json (2.6.3)
+                        json (2.7.1)
                         language_server-protocol (3.17.0.3)
-                        parallel (1.23.0)
-                        parser (3.2.2.3)
+                        parallel (1.24.0)
+                        parser (3.2.2.4)
                           ast (~> 2.4.1)
                           racc
-                        racc (1.7.1)
+                        racc (1.7.3)
                         rainbow (3.1.1)
-                        regexp_parser (2.8.1)
+                        regexp_parser (2.8.3)
                         rexml (3.2.6)
-                        rubocop (1.55.0)
+                        rubocop (1.59.0)
                           json (~> 2.3)
                           language_server-protocol (>= 3.17.0)
                           parallel (~> 1.10)
-                          parser (>= 3.2.2.3)
+                          parser (>= 3.2.2.4)
                           rainbow (>= 2.2.2, < 4.0)
                           regexp_parser (>= 1.8, < 3.0)
                           rexml (>= 3.2.5, < 4.0)
-                          rubocop-ast (>= 1.28.1, < 2.0)
+                          rubocop-ast (>= 1.30.0, < 2.0)
                           ruby-progressbar (~> 1.7)
                           unicode-display_width (>= 2.4.0, < 3.0)
-                        rubocop-ast (1.29.0)
+                        rubocop-ast (1.30.0)
                           parser (>= 3.2.1.0)
                         ruby-progressbar (1.13.0)
                         toml-rb (2.2.0)
                           citrus (~> 3.0, > 3.0)
-                        unicode-display_width (2.4.2)
+                        unicode-display_width (2.5.0)
 
                     PLATFORMS
                       ruby
 
                     DEPENDENCIES
                       rack!
-                      rubocop (= 1.55.0)
+                      rubocop (= 1.59.0)
                       toml-rb (= 2.2.0)
 
                     BUNDLED WITH
@@ -221,48 +221,59 @@ output:
             pr-body: |
                 Bumps the ruleset group in /bundler with 2 updates: [rubocop](https://github.com/rubocop/rubocop) and [rack](https://github.com/rack/rack).
 
-                Updates `rubocop` from 0.76.0 to 1.55.0
+                Updates `rubocop` from 0.76.0 to 1.59.0
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/rubocop/rubocop/releases">rubocop's releases</a>.</em></p>
                 <blockquote>
-                <h2>RuboCop 1.55</h2>
+                <h2>RuboCop 1.59</h2>
                 <h3>New features</h3>
                 <ul>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11794">#11794</a>: Add support to <code>Style/ArgumentsForwarding</code> for anonymous arg/kwarg forwarding in Ruby 3.2. (<a href="https://github.com/owst"><code>@​owst</code></a>)</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12044">#12044</a>: Make LSP server support <code>layoutMode</code> option to run layout cops. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12056">#12056</a>: Make LSP server support <code>lintMode</code> option to run lint cops. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12046">#12046</a>: Make <code>ReturnNilInPredicateMethodDefinition</code> aware of <code>nil</code> at the end of predicate method definition. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12518">#12518</a>: Add new <code>Lint/ItWithoutArgumentsInBlock</code> cop. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
                 </ul>
                 <h3>Bug fixes</h3>
                 <ul>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12055">#12055</a>: Allow parentheses in single-line match patterns when using the <code>omit_parentheses</code> style of <code>Style/MethodCallWithArgsParentheses</code>. (<a href="https://github.com/gsamokovarov"><code>@​gsamokovarov</code></a>)</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12050">#12050</a>: Fix a false positive for <code>Layout/RedundantLineBreak</code> when inspecting the <code>%</code> form string <code>%\n\n</code>. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12063">#12063</a>: Fix <code>Style/CombinableLoops</code> when one of the loops is empty. (<a href="https://github.com/fatkodima"><code>@​fatkodima</code></a>)</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12059">#12059</a>: Fix a false negative for <code>Style/StringLiteralsInInterpolation</code> for symbols with interpolation. (<a href="https://github.com/fatkodima"><code>@​fatkodima</code></a>)</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11834">#11834</a>: Fix false positive for when variable in inside conditional branch in nested node. (<a href="https://github.com/alexeyschepin"><code>@​alexeyschepin</code></a>)</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11802">#11802</a>: Improve handling of <code>[]</code> and <code>()</code> with percent symbol arrays. (<a href="https://github.com/jasondoc3"><code>@​jasondoc3</code></a>)</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12052">#12052</a>: Fix &quot;Subfolders can't include glob special characters&quot;. (<a href="https://github.com/meric426"><code>@​meric426</code></a>, <a href="https://github.com/loveo"><code>@​loveo</code></a>)</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12062">#12062</a>: Fix <code>LoadError</code> when loading RuboCop from a symlinked location on Windows. (<a href="https://github.com/p0deje"><code>@​p0deje</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12434">#12434</a>: Fix a false positive for <code>Lint/LiteralAssignmentInCondition</code> when using interpolated string or xstring literals. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12435">#12435</a>: Fix a false positive for <code>Lint/SelfAssignment</code> when using attribute assignment with method call with arguments. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12444">#12444</a>: Fix false positive for <code>Style/HashEachMethods</code> when receiver literal is not a hash literal. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12524">#12524</a>: Fix a false positive for <code>Style/MethodCallWithArgsParentheses</code> when <code>EnforcedStyle: omit_parentheses</code> and parens in <code>when</code> clause is used to pass an argument. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12505">#12505</a>: Fix a false positive for <code>Style/RedundantParentheses</code> when using parenthesized <code>lambda</code> or <code>proc</code> with <code>do</code>...<code>end</code> block. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12442">#12442</a>: Fix an incorrect autocorrect for <code>Style/CombinableLoops</code> when looping over the same data as previous loop in <code>do</code>...<code>end</code> and <code>{</code>...<code>}</code> blocks. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12432">#12432</a>: Fix a false positive for <code>Lint/LiteralAssignmentInCondition</code> when using parallel assignment with splat operator in block of guard condition. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12441">#12441</a>: Fix false positives for <code>Style/HashEachMethods</code> when using destructed block arguments. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12436">#12436</a>: Fix false positives for <code>Style/RedundantParentheses</code> when a part of range is a parenthesized condition. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12429">#12429</a>: Fix incorrect autocorrect for <code>Style/MapToHash</code> when using dot method calls for <code>to_h</code>. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12488">#12488</a>: Make <code>Lint/HashCompareByIdentity</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12489">#12489</a>: Make <code>Lint/NextWithoutAccumulator</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12490">#12490</a>: Make <code>Lint/NumberConversion</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12491">#12491</a>: Make <code>Lint/RedundantWithIndex</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12492">#12492</a>: Make <code>Lint/RedundantWithObject</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12493">#12493</a>: Make <code>Lint/UnmodifiedReduceAccumulator</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12473">#12473</a>: Make <code>Style/ClassCheck</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12445">#12445</a>: Make <code>Style/CollectionCompact</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12474">#12474</a>: Make <code>Style/ConcatArrayLiterals</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12476">#12476</a>: Make <code>Style/DateTime</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12479">#12479</a>: Make <code>Style/EachWithObject</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12446">#12446</a>: Make <code>Style/HashExcept</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12447">#12447</a>: Make <code>Style/MapCompactWithConditionalBlock</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12484">#12484</a>: Make <code>Style/Next</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12486">#12486</a>: Make <code>Style/RedundantArgument</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12454">#12454</a>: Make <code>Style/RedundantFetchBlock</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12495">#12495</a>: Make <code>Layout/RedundantLineBreak</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12455">#12455</a>: Make <code>Style/RedundantSortBy</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12456">#12456</a>: Make <code>Style/RedundantSortBy</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12480">#12480</a>: Make <code>Style/ExactRegexpMatch</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12457">#12457</a>: Make <code>Style/Sample</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12458">#12458</a>: Make <code>Style/SelectByRegexp</code> cops aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12494">#12494</a>: Make <code>Layout/SingleLineBlockChain</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12461">#12461</a>: Make <code>Style/StringChars</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12468">#12468</a>: Make <code>Style/Strip</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12469">#12469</a>: Make <code>Style/UnpackFirst</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
                 </ul>
                 <h3>Changes</h3>
                 <ul>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12064">#12064</a>: Make <code>Style/RedundantArgument</code> aware of <code>exit</code> and <code>exit!</code>. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12015">#12015</a>: Mark <code>Style/HashConversion</code> as unsafe autocorrection. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
-                </ul>
-                <h2>RuboCop 1.54.2</h2>
-                <h3>Bug fixes</h3>
-                <ul>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12043">#12043</a>: Fix a false negative for <code>Layout/ExtraSpacing</code> when some characters are vertically aligned. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12040">#12040</a>: Fix a false positive for <code>Layout/TrailingEmptyLines</code> to prevent the following incorrect autocorrection when inspecting the <code>%</code> form string <code>%\n\n</code>. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/1867">#1867</a>: Fix an error when <code>AllCops:Exclude</code> is empty in .rubocop.yml. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12034">#12034</a>: Fix invalid byte sequence in UTF-8 error when using an invalid encoding string. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12038">#12038</a>: Output the &quot;server restarting&quot; message to stderr. (<a href="https://github.com/knu"><code>@​knu</code></a>)</li>
-                </ul>
-                <h2>RuboCop 1.54.1</h2>
-                <h3>Bug fixes</h3>
-                <ul>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12024">#12024</a>: Fix a false positive for <code>Lint/RedundantRegexpQuantifiers</code> when interpolation is used in a regexp literal. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12522">#12522</a>: Make <code>Style/MethodCallWithoutArgsParentheses</code> allow the parenthesized <code>it</code> method in a block. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12523">#12523</a>: Make <code>Style/RedundantSelf</code> allow the <code>self.it</code> method in a block. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
                 </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
@@ -272,52 +283,54 @@ output:
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md">rubocop's changelog</a>.</em></p>
                 <blockquote>
-                <h2>1.55.0 (2023-07-25)</h2>
+                <h2>1.59.0 (2023-12-11)</h2>
                 <h3>New features</h3>
                 <ul>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/11794">#11794</a>: Add support to <code>Style/ArgumentsForwarding</code> for anonymous arg/kwarg forwarding in Ruby 3.2. ([<a href="https://github.com/owst"><code>@​owst</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12044">#12044</a>: Make LSP server support <code>layoutMode</code> option to run layout cops. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12056">#12056</a>: Make LSP server support <code>lintMode</code> option to run lint cops. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12046">#12046</a>: Make <code>ReturnNilInPredicateMethodDefinition</code> aware of <code>nil</code> at the end of predicate method definition. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12518">#12518</a>: Add new <code>Lint/ItWithoutArgumentsInBlock</code> cop. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
                 </ul>
                 <h3>Bug fixes</h3>
                 <ul>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12055">#12055</a>: Allow parentheses in single-line match patterns when using the <code>omit_parentheses</code> style of <code>Style/MethodCallWithArgsParentheses</code>. ([<a href="https://github.com/gsamokovarov"><code>@​gsamokovarov</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12050">#12050</a>: Fix a false positive for <code>Layout/RedundantLineBreak</code> when inspecting the <code>%</code> form string <code>%\n\n</code>. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12063">#12063</a>: Fix <code>Style/CombinableLoops</code> when one of the loops is empty. ([<a href="https://github.com/fatkodima"><code>@​fatkodima</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12059">#12059</a>: Fix a false negative for <code>Style/StringLiteralsInInterpolation</code> for symbols with interpolation. ([<a href="https://github.com/fatkodima"><code>@​fatkodima</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11834">#11834</a>: Fix false positive for when variable in inside conditional branch in nested node. ([<a href="https://github.com/alexeyschepin"><code>@​alexeyschepin</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/11802">#11802</a>: Improve handling of <code>[]</code> and <code>()</code> with percent symbol arrays. ([<a href="https://github.com/jasondoc3"><code>@​jasondoc3</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12052">#12052</a>: Fix &quot;Subfolders can't include glob special characters&quot;. ([<a href="https://github.com/meric426"><code>@​meric426</code></a>][], [<a href="https://github.com/loveo"><code>@​loveo</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12062">#12062</a>: Fix <code>LoadError</code> when loading RuboCop from a symlinked location on Windows. ([<a href="https://github.com/p0deje"><code>@​p0deje</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12434">#12434</a>: Fix a false positive for <code>Lint/LiteralAssignmentInCondition</code> when using interpolated string or xstring literals. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12435">#12435</a>: Fix a false positive for <code>Lint/SelfAssignment</code> when using attribute assignment with method call with arguments. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12444">#12444</a>: Fix false positive for <code>Style/HashEachMethods</code> when receiver literal is not a hash literal. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12524">#12524</a>: Fix a false positive for <code>Style/MethodCallWithArgsParentheses</code> when <code>EnforcedStyle: omit_parentheses</code> and parens in <code>when</code> clause is used to pass an argument. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12505">#12505</a>: Fix a false positive for <code>Style/RedundantParentheses</code> when using parenthesized <code>lambda</code> or <code>proc</code> with <code>do</code>...<code>end</code> block. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12442">#12442</a>: Fix an incorrect autocorrect for <code>Style/CombinableLoops</code> when looping over the same data as previous loop in <code>do</code>...<code>end</code> and <code>{</code>...<code>}</code> blocks. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12432">#12432</a>: Fix a false positive for <code>Lint/LiteralAssignmentInCondition</code> when using parallel assignment with splat operator in block of guard condition. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12441">#12441</a>: Fix false positives for <code>Style/HashEachMethods</code> when using destructed block arguments. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12436">#12436</a>: Fix false positives for <code>Style/RedundantParentheses</code> when a part of range is a parenthesized condition. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12429">#12429</a>: Fix incorrect autocorrect for <code>Style/MapToHash</code> when using dot method calls for <code>to_h</code>. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12488">#12488</a>: Make <code>Lint/HashCompareByIdentity</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12489">#12489</a>: Make <code>Lint/NextWithoutAccumulator</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12490">#12490</a>: Make <code>Lint/NumberConversion</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12491">#12491</a>: Make <code>Lint/RedundantWithIndex</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12492">#12492</a>: Make <code>Lint/RedundantWithObject</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12493">#12493</a>: Make <code>Lint/UnmodifiedReduceAccumulator</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12473">#12473</a>: Make <code>Style/ClassCheck</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12445">#12445</a>: Make <code>Style/CollectionCompact</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12474">#12474</a>: Make <code>Style/ConcatArrayLiterals</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12476">#12476</a>: Make <code>Style/DateTime</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12479">#12479</a>: Make <code>Style/EachWithObject</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12446">#12446</a>: Make <code>Style/HashExcept</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12447">#12447</a>: Make <code>Style/MapCompactWithConditionalBlock</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12484">#12484</a>: Make <code>Style/Next</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12486">#12486</a>: Make <code>Style/RedundantArgument</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12454">#12454</a>: Make <code>Style/RedundantFetchBlock</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12495">#12495</a>: Make <code>Layout/RedundantLineBreak</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12455">#12455</a>: Make <code>Style/RedundantSortBy</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12456">#12456</a>: Make <code>Style/RedundantSortBy</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12480">#12480</a>: Make <code>Style/ExactRegexpMatch</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12457">#12457</a>: Make <code>Style/Sample</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12458">#12458</a>: Make <code>Style/SelectByRegexp</code> cops aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12494">#12494</a>: Make <code>Layout/SingleLineBlockChain</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12461">#12461</a>: Make <code>Style/StringChars</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12468">#12468</a>: Make <code>Style/Strip</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12469">#12469</a>: Make <code>Style/UnpackFirst</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
                 </ul>
                 <h3>Changes</h3>
                 <ul>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12064">#12064</a>: Make <code>Style/RedundantArgument</code> aware of <code>exit</code> and <code>exit!</code>. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12015">#12015</a>: Mark <code>Style/HashConversion</code> as unsafe autocorrection. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
-                </ul>
-                <h2>1.54.2 (2023-07-13)</h2>
-                <h3>Bug fixes</h3>
-                <ul>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12043">#12043</a>: Fix a false negative for <code>Layout/ExtraSpacing</code> when some characters are vertically aligned. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12040">#12040</a>: Fix a false positive for <code>Layout/TrailingEmptyLines</code> to prevent the following incorrect autocorrection when inspecting the <code>%</code> form string <code>%\n\n</code>. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/1867">#1867</a>: Fix an error when <code>AllCops:Exclude</code> is empty in .rubocop.yml. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12034">#12034</a>: Fix invalid byte sequence in UTF-8 error when using an invalid encoding string. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12038">#12038</a>: Output the &quot;server restarting&quot; message to stderr. ([<a href="https://github.com/knu"><code>@​knu</code></a>][])</li>
-                </ul>
-                <h2>1.54.1 (2023-07-04)</h2>
-                <h3>Bug fixes</h3>
-                <ul>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12024">#12024</a>: Fix a false positive for <code>Lint/RedundantRegexpQuantifiers</code> when interpolation is used in a regexp literal. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12020">#12020</a>: This PR fixes an infinite loop error for <code>Layout/SpaceAfterComma</code> with <code>Layout/SpaceBeforeSemicolon</code> when autocorrection conflicts. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12014">#12014</a>: Fix an error for <code>Lint/UselessAssignment</code> when part of a multiple assignment is enclosed in parentheses. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12011">#12011</a>: Fix an error for <code>Metrics/MethodLength</code> when using a heredoc in a block without block arguments. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12010">#12010</a>: Fix false negatives for <code>Style/RedundantRegexpArgument</code> when using safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
-                </ul>
-                <h2>1.54.0 (2023-07-01)</h2>
-                <h3>New features</h3>
-                <ul>
-                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12000">#12000</a>: Support safe or unsafe autocorrect config for LSP. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12522">#12522</a>: Make <code>Style/MethodCallWithoutArgsParentheses</code> allow the parenthesized <code>it</code> method in a block. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12523">#12523</a>: Make <code>Style/RedundantSelf</code> allow the <code>self.it</code> method in a block. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
                 </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
@@ -326,17 +339,17 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/rubocop/rubocop/commit/f3790afce259aec75bb94d571803c7e5488f1807"><code>f3790af</code></a> Cut 1.55</li>
-                <li><a href="https://github.com/rubocop/rubocop/commit/6279c5750b6aa3341f38346e08536f7d03712264"><code>6279c57</code></a> Update Changelog</li>
-                <li><a href="https://github.com/rubocop/rubocop/commit/1dfe3862d95d33df31a5d29e3741cf34e4be2a5a"><code>1dfe386</code></a> Merge pull request <a href="https://redirect.github.com/rubocop/rubocop/issues/12067">#12067</a> from p0deje/patch-1</li>
-                <li><a href="https://github.com/rubocop/rubocop/commit/e00f96c2aae979ac140fba48f04e1b264394e51e"><code>e00f96c</code></a> Add changelog entry for <a href="https://redirect.github.com/rubocop/rubocop/issues/12062">#12062</a></li>
-                <li><a href="https://github.com/rubocop/rubocop/commit/d379d8e278ef602f07682546595a96a61946159c"><code>d379d8e</code></a> Fix <code>LoadError</code> on Windows when loading RuboCop from symlinks</li>
-                <li><a href="https://github.com/rubocop/rubocop/commit/a1b302a3bc38703919666057bf0cdca6f753c48d"><code>a1b302a</code></a> Enable anonymous forwarding in Style/ArgumentsForwarding for Ruby 3.2+ (<a href="https://redirect.github.com/rubocop/rubocop/issues/11794">#11794</a>)</li>
-                <li><a href="https://github.com/rubocop/rubocop/commit/80efbc0f8afd95813a5515198ed93b73e3735484"><code>80efbc0</code></a> Merge pull request <a href="https://redirect.github.com/rubocop/rubocop/issues/12065">#12065</a> from alexeyschepin/fix_ebug_for_lint_shadowing_oute...</li>
-                <li><a href="https://github.com/rubocop/rubocop/commit/72ea0856030b398d63d98d9f2bb9e26c304b8f1d"><code>72ea085</code></a> [Fix <a href="https://redirect.github.com/rubocop/rubocop/issues/11834">#11834</a>] Fix false positive for  when variable in inside conditional bran...</li>
-                <li><a href="https://github.com/rubocop/rubocop/commit/9bc0064008f69533e25f4d7c375898c1121f6652"><code>9bc0064</code></a> Make <code>Style/RedundantArgument</code> aware of <code>exit</code> and <code>exit!</code></li>
-                <li><a href="https://github.com/rubocop/rubocop/commit/7989e7d8cc3a924bc65b63a5b0efdc56f5c57e3f"><code>7989e7d</code></a> Make LSP server support <code>lintMode</code> parameter</li>
-                <li>Additional commits viewable in <a href="https://github.com/rubocop/rubocop/compare/v0.76.0...v1.55.0">compare view</a></li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/e5a164a26f8ecba81d44e974e8e3569c550968cd"><code>e5a164a</code></a> Cut 1.59</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/2912b6e9e90831717b004b4e016fd2723fac5e44"><code>2912b6e</code></a> Update Changelog</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/3bcc171fe5d9ee0251b1c22ffec463aaec495bf7"><code>3bcc171</code></a> [Fix <a href="https://redirect.github.com/rubocop/rubocop/issues/12524">#12524</a>] Fix a false positive for <code>Style/MethodCallWithArgsParentheses</code></li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/0daa4aa05977f67b575d126caff716959e60f00f"><code>0daa4aa</code></a> Make <code>Style/MethodCallWithoutArgsParentheses</code> allow parenthesized <code>it</code></li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/b240a093c0539c1f89c60df6b599d2afd4db4f22"><code>b240a09</code></a> Make <code>Style/RedundantSelf</code> allow <code>self.it</code></li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/a0e1042a34d4d0ff855447d6f9059c98b610258f"><code>a0e1042</code></a> [Fix <a href="https://redirect.github.com/rubocop/rubocop/issues/12526">#12526</a>] Fix incorrect rendering typos</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/b1bcb3134d49a60061d08ef168ae996d70d8ce5c"><code>b1bcb31</code></a> [Fix <a href="https://redirect.github.com/rubocop/rubocop/issues/12444">#12444</a>] Fix false positive for <code>Style/HashEachMethods</code></li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/3b0360bb9fcd9c49e09882c2b1780ba7cbbf64a8"><code>3b0360b</code></a> Add new <code>Lint/ItWithoutArgumentsInBlock</code> cop</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/4e9cfcc6ea39b69474eab3e13b551be32d3217ff"><code>4e9cfcc</code></a> Merge pull request <a href="https://redirect.github.com/rubocop/rubocop/issues/12521">#12521</a> from koic/make_style_select_by_regexp_aware_of_safe...</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/037c860c1fe2f8a0512dbe15ff329fee2f7c10f6"><code>037c860</code></a> Merge pull request <a href="https://redirect.github.com/rubocop/rubocop/issues/12438">#12438</a> from koic/fix_a_false_positive_for_lint_literal_ass...</li>
+                <li>Additional commits viewable in <a href="https://github.com/rubocop/rubocop/compare/v0.76.0...v1.59.0">compare view</a></li>
                 </ul>
                 </details>
                 <br />
@@ -470,10 +483,10 @@ output:
                 Bumps the ruleset group in /bundler with 2 updates: [rubocop](https://github.com/rubocop/rubocop) and [rack](https://github.com/rack/rack).
 
 
-                Updates `rubocop` from 0.76.0 to 1.55.0
+                Updates `rubocop` from 0.76.0 to 1.59.0
                 - [Release notes](https://github.com/rubocop/rubocop/releases)
                 - [Changelog](https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md)
-                - [Commits](https://github.com/rubocop/rubocop/compare/v0.76.0...v1.55.0)
+                - [Commits](https://github.com/rubocop/rubocop/compare/v0.76.0...v1.59.0)
 
                 Updates `rack` from 2.1.4 to v3.0.8
                 - [Release notes](https://github.com/rack/rack/releases)
