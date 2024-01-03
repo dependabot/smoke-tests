@@ -1,0 +1,148 @@
+input:
+    job:
+        package-manager: nuget
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: NuGet.Versioning
+              source: tests/smoke-nuget-dirs-proj.yaml
+              version-requirement: '>6.8.0'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /nuget/dirs-proj
+            branch: brbayes/new-nuget-smoke-tests
+            commit: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: NuGet.Versioning
+                  requirements:
+                    - file: project2/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.1.0
+                      source: null
+                    - file: project1/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.1.0
+                      source: null
+                  version: 6.1.0
+            dependency_files:
+                - /nuget/dirs-proj/dirs.proj
+                - /nuget/dirs-proj/project2/project.csproj
+                - /nuget/dirs-proj/project1/project.csproj
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+            dependencies:
+                - name: NuGet.Versioning
+                  previous-requirements:
+                    - file: project2/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.1.0
+                      source: null
+                    - file: project1/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.1.0
+                      source: null
+                  previous-version: 6.1.0
+                  requirements:
+                    - file: project2/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.8.0
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/nuget.versioning/6.8.0/nuget.versioning.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                    - file: project1/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.8.0
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/nuget.versioning/6.8.0/nuget.versioning.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                  version: 6.8.0
+            updated-dependency-files:
+                - content: |-
+                    <Project Sdk="Microsoft.NET.Sdk">
+
+                      <PropertyGroup>
+                        <OutputType>Exe</OutputType>
+                        <TargetFramework>net6.0</TargetFramework>
+                        <ImplicitUsings>enable</ImplicitUsings>
+                        <Nullable>enable</Nullable>
+                      </PropertyGroup>
+
+                      <ItemGroup>
+                        <PackageReference Include="NuGet.Versioning" Version="6.8.0" />
+                      </ItemGroup>
+
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/dirs-proj
+                  name: project2/project.csproj
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |-
+                    <Project Sdk="Microsoft.NET.Sdk">
+
+                      <PropertyGroup>
+                        <OutputType>Exe</OutputType>
+                        <TargetFramework>net6.0</TargetFramework>
+                        <ImplicitUsings>enable</ImplicitUsings>
+                        <Nullable>enable</Nullable>
+                      </PropertyGroup>
+
+                      <ItemGroup>
+                        <PackageReference Include="NuGet.Versioning" Version="6.8.0" />
+                      </ItemGroup>
+
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/dirs-proj
+                  name: project1/project.csproj
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump NuGet.Versioning from 6.1.0 to 6.8.0 in /nuget/dirs-proj
+            pr-body: |
+                Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.8.0.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/NuGet/NuGet.Client/commits">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump NuGet.Versioning from 6.1.0 to 6.8.0 in /nuget/dirs-proj
+
+                Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.8.0.
+                - [Release notes](https://github.com/NuGet/NuGet.Client/releases)
+                - [Commits](https://github.com/NuGet/NuGet.Client/commits)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b

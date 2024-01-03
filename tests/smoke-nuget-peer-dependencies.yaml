@@ -1,0 +1,567 @@
+input:
+    job:
+        package-manager: nuget
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: Microsoft.Extensions.Http
+              source: tests/smoke-nuget-peer-dependencies.yaml
+              version-requirement: '>8.0.0'
+            - dependency-name: Microsoft.Extensions.Logging
+              source: tests/smoke-nuget-peer-dependencies.yaml
+              version-requirement: '>8.0.0'
+            - dependency-name: Microsoft.Extensions.Logging
+              source: tests/smoke-nuget-peer-dependencies.yaml
+              version-requirement: '>8.0.0'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /nuget/peer-dependencies
+            branch: brbayes/new-nuget-smoke-tests
+            commit: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: Microsoft.Extensions.Http
+                  requirements:
+                    - file: project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 2.2.0
+                      source: null
+                  version: 2.2.0
+                - name: Microsoft.Extensions.Logging
+                  requirements:
+                    - file: project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 2.2.0
+                      source: null
+                  version: 2.2.0
+                - name: Microsoft.Extensions.DependencyInjection.Abstractions
+                  requirements: []
+                  version: 2.2.0
+                - name: Microsoft.Extensions.Configuration.Binder
+                  requirements: []
+                  version: 2.2.0
+                - name: Microsoft.Extensions.Configuration
+                  requirements: []
+                  version: 2.2.0
+                - name: Microsoft.Extensions.Configuration.Abstractions
+                  requirements: []
+                  version: 2.2.0
+                - name: Microsoft.Extensions.Primitives
+                  requirements: []
+                  version: 2.2.0
+                - name: System.Memory
+                  requirements: []
+                  version: 4.5.1
+                - name: NETStandard.Library
+                  requirements: []
+                  version: 1.6.1
+                - name: Microsoft.NETCore.Platforms
+                  requirements: []
+                  version: 1.1.0
+                - name: System.Collections
+                  requirements: []
+                  version: 4.3.0
+                - name: Microsoft.NETCore.Targets
+                  requirements: []
+                  version: 1.1.0
+                - name: System.Runtime
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Diagnostics.Debug
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Diagnostics.Tools
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Globalization
+                  requirements: []
+                  version: 4.3.0
+                - name: System.IO
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Text.Encoding
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Threading.Tasks
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Linq
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Linq.Expressions
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Reflection
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Reflection.Primitives
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Net.Primitives
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Runtime.Handles
+                  requirements: []
+                  version: 4.3.0
+                - name: System.ObjectModel
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Reflection.Extensions
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Resources.ResourceManager
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Runtime.Extensions
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Text.Encoding.Extensions
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Text.RegularExpressions
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Threading
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Xml.ReaderWriter
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Xml.XDocument
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Collections.Concurrent
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Diagnostics.Tracing
+                  requirements: []
+                  version: 4.3.0
+                - name: System.IO.Compression
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Net.Http
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Security.Cryptography.X509Certificates
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Security.Cryptography.Algorithms
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Security.Cryptography.Primitives
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Security.Cryptography.Encoding
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Runtime.InteropServices
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Runtime.InteropServices.RuntimeInformation
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Runtime.Numerics
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Threading.Timer
+                  requirements: []
+                  version: 4.3.0
+                - name: Microsoft.Win32.Primitives
+                  requirements: []
+                  version: 4.3.0
+                - name: System.AppContext
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Console
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Globalization.Calendars
+                  requirements: []
+                  version: 4.3.0
+                - name: System.IO.Compression.ZipFile
+                  requirements: []
+                  version: 4.3.0
+                - name: System.IO.FileSystem
+                  requirements: []
+                  version: 4.3.0
+                - name: System.IO.FileSystem.Primitives
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Net.Sockets
+                  requirements: []
+                  version: 4.3.0
+                - name: System.Runtime.CompilerServices.Unsafe
+                  requirements: []
+                  version: 4.5.1
+                - name: Microsoft.Extensions.Logging.Abstractions
+                  requirements: []
+                  version: 2.2.0
+                - name: Microsoft.Extensions.Options
+                  requirements: []
+                  version: 2.2.0
+                - name: System.ComponentModel.Annotations
+                  requirements: []
+                  version: 4.5.0
+                - name: System.ComponentModel
+                  requirements: []
+                  version: 4.3.0
+            dependency_files:
+                - /nuget/peer-dependencies/project.csproj
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+            dependencies:
+                - name: Microsoft.Extensions.Http
+                  previous-requirements:
+                    - file: project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 2.2.0
+                      source: null
+                  previous-version: 2.2.0
+                  requirements:
+                    - file: project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 8.0.0
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.http/8.0.0/microsoft.extensions.http.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                  version: 8.0.0
+                - name: Microsoft.Extensions.Logging
+                  previous-requirements:
+                    - file: project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 2.2.0
+                      source: null
+                  previous-version: 2.2.0
+                  requirements:
+                    - file: project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 8.0.0
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.logging/8.0.0/microsoft.extensions.logging.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                  version: 8.0.0
+            updated-dependency-files:
+                - content: |-
+                    <Project Sdk="Microsoft.NET.Sdk">
+
+                      <PropertyGroup>
+                        <OutputType>Exe</OutputType>
+                        <TargetFramework>net6.0</TargetFramework>
+                        <ImplicitUsings>enable</ImplicitUsings>
+                        <Nullable>enable</Nullable>
+                      </PropertyGroup>
+
+                      <ItemGroup>
+                        <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+                        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+                      </ItemGroup>
+
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/peer-dependencies
+                  name: project.csproj
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump Microsoft.Extensions.Http and Microsoft.Extensions.Logging in /nuget/peer-dependencies
+            pr-body: |
+                Bumps [Microsoft.Extensions.Http](https://github.com/dotnet/runtime) and [Microsoft.Extensions.Logging](https://github.com/dotnet/runtime). These dependencies needed to be updated together.
+                Updates `Microsoft.Extensions.Http` from 2.2.0 to 8.0.0
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/dotnet/runtime/releases">Microsoft.Extensions.Http's releases</a>.</em></p>
+                <blockquote>
+                <h2>.NET 8.0.0</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v8.0.0">Release</a></p>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>[release/8.0-rc1] [release/8.0] Events for IL methods without IL headers by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92317">dotnet/runtime#92317</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/source-build-externals by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92340">dotnet/runtime#92340</a></li>
+                <li>[release/8.0-rc1] [release/8.0] Fix wasi build. by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92368">dotnet/runtime#92368</a></li>
+                <li>[automated] Merge branch 'release/8.0-rc2' =&gt; 'release/8.0' by <a href="https://github.com/dotnet-maestro-bot"><code>@​dotnet-maestro-bot</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92325">dotnet/runtime#92325</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/roslyn by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92303">dotnet/runtime#92303</a></li>
+                <li>[automated] Merge branch 'release/8.0-rc1' =&gt; 'release/8.0' by <a href="https://github.com/dotnet-maestro-bot"><code>@​dotnet-maestro-bot</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92374">dotnet/runtime#92374</a></li>
+                <li>[release/8.0] Bump version to GA by <a href="https://github.com/carlossanlop"><code>@​carlossanlop</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92305">dotnet/runtime#92305</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/source-build-externals by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92476">dotnet/runtime#92476</a></li>
+                <li>[automated] Merge branch 'release/8.0-rc2' =&gt; 'release/8.0' by <a href="https://github.com/dotnet-maestro-bot"><code>@​dotnet-maestro-bot</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92401">dotnet/runtime#92401</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/roslyn by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92418">dotnet/runtime#92418</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/source-build-reference-packages by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92474">dotnet/runtime#92474</a></li>
+                <li>[release/8.0] Update dependencies from dnceng/internal/dotnet-optimization by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92473">dotnet/runtime#92473</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/roslyn by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92488">dotnet/runtime#92488</a></li>
+                <li>[automated] Merge branch 'release/8.0-rc2' =&gt; 'release/8.0' by <a href="https://github.com/dotnet-maestro-bot"><code>@​dotnet-maestro-bot</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92484">dotnet/runtime#92484</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/roslyn-analyzers by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92499">dotnet/runtime#92499</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/emsdk by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92532">dotnet/runtime#92532</a></li>
+                <li>[automated] Merge branch 'release/8.0-rc2' =&gt; 'release/8.0' by <a href="https://github.com/dotnet-maestro-bot"><code>@​dotnet-maestro-bot</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92515">dotnet/runtime#92515</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/source-build-externals by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92641">dotnet/runtime#92641</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/emsdk dotnet/hotreload-utils by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92606">dotnet/runtime#92606</a></li>
+                <li>[release/8.0][wasm] Fix regressed file sizes for blazor by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92627">dotnet/runtime#92627</a></li>
+                <li>[release/8.0] JIT: Fixed containment of STOREIND of HW intrinsics ConvertTo*/Extract* by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92513">dotnet/runtime#92513</a></li>
+                <li>[release/8.0] Define bool as Interop.BOOL to prevent upper bytes setting native bool by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92681">dotnet/runtime#92681</a></li>
+                <li>[release/8.0] Make CoreCLR/NativeAOT assembly compile with .subsections_via_symbols on Apple platforms by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92544">dotnet/runtime#92544</a></li>
+                <li>[release/8.0] Fix LLVMAOT Mono runtime variant official build to produce correctly named runtime packs by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92737">dotnet/runtime#92737</a></li>
+                <li>[release/8.0] Remove all PGO assets except for the runtime PGO archive. by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92735">dotnet/runtime#92735</a></li>
+                <li>[release/8.0] Put HasNativeCodeReJITAware into GetFunctionAddress by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92665">dotnet/runtime#92665</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/cecil dotnet/emsdk by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92702">dotnet/runtime#92702</a></li>
+                <li>[release/8.0][wasm] Fix Wasm.Build.Tests failing due to an old skiasharp reference by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92747">dotnet/runtime#92747</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/installer by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92745">dotnet/runtime#92745</a></li>
+                <li>[release/8.0] Bring back CopyOutputSymbolsToPublishDirectory by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92369">dotnet/runtime#92369</a></li>
+                <li>[release/8.0] Update dependencies from <code>dotnet/installer</code> by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92795">dotnet/runtime#92795</a></li>
+                <li>[release/8.0] Update dependencies from dnceng/internal/dotnet-optimization by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92762">dotnet/runtime#92762</a></li>
+                <li>[release/8.0] Update dependencies from dnceng/internal/dotnet-optimization by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92816">dotnet/runtime#92816</a></li>
+                <li>[release/8.0][wasm][debugger] Support multidimensional indexing of object scheme by <a href="https://github.com/ilonatommy"><code>@​ilonatommy</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92753">dotnet/runtime#92753</a></li>
+                <li>[release/8.0] [browser] Remove duplicated marshaling of return value for JSExport by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92886">dotnet/runtime#92886</a></li>
+                <li>[release/8.0] [browser][nodejs] keep runtime alive for JSExport calls by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92890">dotnet/runtime#92890</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/roslyn by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92503">dotnet/runtime#92503</a></li>
+                <li>[release/8.0] Make config binding gen incremental (<a href="https://redirect.github.com/dotnet/runtime/issues/89587">#89587</a>) by <a href="https://github.com/layomia"><code>@​layomia</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92730">dotnet/runtime#92730</a></li>
+                <li>[release/8.0] [wasm] Endian fix for Webcil by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92495">dotnet/runtime#92495</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/source-build-externals by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92935">dotnet/runtime#92935</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/cecil dotnet/hotreload-utils by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92932">dotnet/runtime#92932</a></li>
+                <li>[release/8.0][wasm] Use intended ports when running <code>DevServer</code> by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92906">dotnet/runtime#92906</a></li>
+                <li>[release/8.0] Fix deadlock in EventPipeEventDispatcher by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92912">dotnet/runtime#92912</a></li>
+                <li>[release/8.0] CI: runtime-wasm-perf: disable for PRs by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92977">dotnet/runtime#92977</a></li>
+                <li>[release/8.0] Throw when applying <code>JsonObjectHandling.Populate</code> to types with parameterized constructors. by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92947">dotnet/runtime#92947</a></li>
+                <li>[release/8.0] Use invariant culture in CBOR date encoding by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92924">dotnet/runtime#92924</a></li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/dotnet/runtime/commits/v8.0.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `Microsoft.Extensions.Logging` from 2.2.0 to 8.0.0
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/dotnet/runtime/releases">Microsoft.Extensions.Logging's releases</a>.</em></p>
+                <blockquote>
+                <h2>.NET 8.0.0</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v8.0.0">Release</a></p>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>[release/8.0-rc1] [release/8.0] Events for IL methods without IL headers by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92317">dotnet/runtime#92317</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/source-build-externals by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92340">dotnet/runtime#92340</a></li>
+                <li>[release/8.0-rc1] [release/8.0] Fix wasi build. by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92368">dotnet/runtime#92368</a></li>
+                <li>[automated] Merge branch 'release/8.0-rc2' =&gt; 'release/8.0' by <a href="https://github.com/dotnet-maestro-bot"><code>@​dotnet-maestro-bot</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92325">dotnet/runtime#92325</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/roslyn by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92303">dotnet/runtime#92303</a></li>
+                <li>[automated] Merge branch 'release/8.0-rc1' =&gt; 'release/8.0' by <a href="https://github.com/dotnet-maestro-bot"><code>@​dotnet-maestro-bot</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92374">dotnet/runtime#92374</a></li>
+                <li>[release/8.0] Bump version to GA by <a href="https://github.com/carlossanlop"><code>@​carlossanlop</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92305">dotnet/runtime#92305</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/source-build-externals by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92476">dotnet/runtime#92476</a></li>
+                <li>[automated] Merge branch 'release/8.0-rc2' =&gt; 'release/8.0' by <a href="https://github.com/dotnet-maestro-bot"><code>@​dotnet-maestro-bot</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92401">dotnet/runtime#92401</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/roslyn by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92418">dotnet/runtime#92418</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/source-build-reference-packages by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92474">dotnet/runtime#92474</a></li>
+                <li>[release/8.0] Update dependencies from dnceng/internal/dotnet-optimization by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92473">dotnet/runtime#92473</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/roslyn by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92488">dotnet/runtime#92488</a></li>
+                <li>[automated] Merge branch 'release/8.0-rc2' =&gt; 'release/8.0' by <a href="https://github.com/dotnet-maestro-bot"><code>@​dotnet-maestro-bot</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92484">dotnet/runtime#92484</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/roslyn-analyzers by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92499">dotnet/runtime#92499</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/emsdk by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92532">dotnet/runtime#92532</a></li>
+                <li>[automated] Merge branch 'release/8.0-rc2' =&gt; 'release/8.0' by <a href="https://github.com/dotnet-maestro-bot"><code>@​dotnet-maestro-bot</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92515">dotnet/runtime#92515</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/source-build-externals by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92641">dotnet/runtime#92641</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/emsdk dotnet/hotreload-utils by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92606">dotnet/runtime#92606</a></li>
+                <li>[release/8.0][wasm] Fix regressed file sizes for blazor by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92627">dotnet/runtime#92627</a></li>
+                <li>[release/8.0] JIT: Fixed containment of STOREIND of HW intrinsics ConvertTo*/Extract* by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92513">dotnet/runtime#92513</a></li>
+                <li>[release/8.0] Define bool as Interop.BOOL to prevent upper bytes setting native bool by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92681">dotnet/runtime#92681</a></li>
+                <li>[release/8.0] Make CoreCLR/NativeAOT assembly compile with .subsections_via_symbols on Apple platforms by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92544">dotnet/runtime#92544</a></li>
+                <li>[release/8.0] Fix LLVMAOT Mono runtime variant official build to produce correctly named runtime packs by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92737">dotnet/runtime#92737</a></li>
+                <li>[release/8.0] Remove all PGO assets except for the runtime PGO archive. by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92735">dotnet/runtime#92735</a></li>
+                <li>[release/8.0] Put HasNativeCodeReJITAware into GetFunctionAddress by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92665">dotnet/runtime#92665</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/cecil dotnet/emsdk by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92702">dotnet/runtime#92702</a></li>
+                <li>[release/8.0][wasm] Fix Wasm.Build.Tests failing due to an old skiasharp reference by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92747">dotnet/runtime#92747</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/installer by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92745">dotnet/runtime#92745</a></li>
+                <li>[release/8.0] Bring back CopyOutputSymbolsToPublishDirectory by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92369">dotnet/runtime#92369</a></li>
+                <li>[release/8.0] Update dependencies from <code>dotnet/installer</code> by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92795">dotnet/runtime#92795</a></li>
+                <li>[release/8.0] Update dependencies from dnceng/internal/dotnet-optimization by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92762">dotnet/runtime#92762</a></li>
+                <li>[release/8.0] Update dependencies from dnceng/internal/dotnet-optimization by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92816">dotnet/runtime#92816</a></li>
+                <li>[release/8.0][wasm][debugger] Support multidimensional indexing of object scheme by <a href="https://github.com/ilonatommy"><code>@​ilonatommy</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92753">dotnet/runtime#92753</a></li>
+                <li>[release/8.0] [browser] Remove duplicated marshaling of return value for JSExport by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92886">dotnet/runtime#92886</a></li>
+                <li>[release/8.0] [browser][nodejs] keep runtime alive for JSExport calls by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92890">dotnet/runtime#92890</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/roslyn by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92503">dotnet/runtime#92503</a></li>
+                <li>[release/8.0] Make config binding gen incremental (<a href="https://redirect.github.com/dotnet/runtime/issues/89587">#89587</a>) by <a href="https://github.com/layomia"><code>@​layomia</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92730">dotnet/runtime#92730</a></li>
+                <li>[release/8.0] [wasm] Endian fix for Webcil by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92495">dotnet/runtime#92495</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/source-build-externals by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92935">dotnet/runtime#92935</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/cecil dotnet/hotreload-utils by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92932">dotnet/runtime#92932</a></li>
+                <li>[release/8.0][wasm] Use intended ports when running <code>DevServer</code> by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92906">dotnet/runtime#92906</a></li>
+                <li>[release/8.0] Fix deadlock in EventPipeEventDispatcher by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92912">dotnet/runtime#92912</a></li>
+                <li>[release/8.0] CI: runtime-wasm-perf: disable for PRs by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92977">dotnet/runtime#92977</a></li>
+                <li>[release/8.0] Throw when applying <code>JsonObjectHandling.Populate</code> to types with parameterized constructors. by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92947">dotnet/runtime#92947</a></li>
+                <li>[release/8.0] Use invariant culture in CBOR date encoding by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92924">dotnet/runtime#92924</a></li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/dotnet/runtime/commits/v8.0.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump Microsoft.Extensions.Http and Microsoft.Extensions.Logging
+
+                Bumps [Microsoft.Extensions.Http](https://github.com/dotnet/runtime) and [Microsoft.Extensions.Logging](https://github.com/dotnet/runtime). These dependencies needed to be updated together.
+
+                Updates `Microsoft.Extensions.Http` from 2.2.0 to 8.0.0
+                - [Release notes](https://github.com/dotnet/runtime/releases)
+                - [Commits](https://github.com/dotnet/runtime/commits/v8.0.0)
+
+                Updates `Microsoft.Extensions.Logging` from 2.2.0 to 8.0.0
+                - [Release notes](https://github.com/dotnet/runtime/releases)
+                - [Commits](https://github.com/dotnet/runtime/commits/v8.0.0)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+            dependencies:
+                - name: Microsoft.Extensions.Logging
+                  previous-requirements:
+                    - file: project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 2.2.0
+                      source: null
+                  previous-version: 2.2.0
+                  requirements:
+                    - file: project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 8.0.0
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.logging/8.0.0/microsoft.extensions.logging.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                  version: 8.0.0
+            updated-dependency-files:
+                - content: |-
+                    <Project Sdk="Microsoft.NET.Sdk">
+
+                      <PropertyGroup>
+                        <OutputType>Exe</OutputType>
+                        <TargetFramework>net6.0</TargetFramework>
+                        <ImplicitUsings>enable</ImplicitUsings>
+                        <Nullable>enable</Nullable>
+                      </PropertyGroup>
+
+                      <ItemGroup>
+                        <PackageReference Include="Microsoft.Extensions.Http" Version="2.2.0" />
+                        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+                      </ItemGroup>
+
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/peer-dependencies
+                  name: project.csproj
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump Microsoft.Extensions.Logging from 2.2.0 to 8.0.0 in /nuget/peer-dependencies
+            pr-body: |
+                Bumps [Microsoft.Extensions.Logging](https://github.com/dotnet/runtime) from 2.2.0 to 8.0.0.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/dotnet/runtime/releases">Microsoft.Extensions.Logging's releases</a>.</em></p>
+                <blockquote>
+                <h2>.NET 8.0.0</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v8.0.0">Release</a></p>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>[release/8.0-rc1] [release/8.0] Events for IL methods without IL headers by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92317">dotnet/runtime#92317</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/source-build-externals by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92340">dotnet/runtime#92340</a></li>
+                <li>[release/8.0-rc1] [release/8.0] Fix wasi build. by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92368">dotnet/runtime#92368</a></li>
+                <li>[automated] Merge branch 'release/8.0-rc2' =&gt; 'release/8.0' by <a href="https://github.com/dotnet-maestro-bot"><code>@​dotnet-maestro-bot</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92325">dotnet/runtime#92325</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/roslyn by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92303">dotnet/runtime#92303</a></li>
+                <li>[automated] Merge branch 'release/8.0-rc1' =&gt; 'release/8.0' by <a href="https://github.com/dotnet-maestro-bot"><code>@​dotnet-maestro-bot</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92374">dotnet/runtime#92374</a></li>
+                <li>[release/8.0] Bump version to GA by <a href="https://github.com/carlossanlop"><code>@​carlossanlop</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92305">dotnet/runtime#92305</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/source-build-externals by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92476">dotnet/runtime#92476</a></li>
+                <li>[automated] Merge branch 'release/8.0-rc2' =&gt; 'release/8.0' by <a href="https://github.com/dotnet-maestro-bot"><code>@​dotnet-maestro-bot</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92401">dotnet/runtime#92401</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/roslyn by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92418">dotnet/runtime#92418</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/source-build-reference-packages by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92474">dotnet/runtime#92474</a></li>
+                <li>[release/8.0] Update dependencies from dnceng/internal/dotnet-optimization by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92473">dotnet/runtime#92473</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/roslyn by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92488">dotnet/runtime#92488</a></li>
+                <li>[automated] Merge branch 'release/8.0-rc2' =&gt; 'release/8.0' by <a href="https://github.com/dotnet-maestro-bot"><code>@​dotnet-maestro-bot</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92484">dotnet/runtime#92484</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/roslyn-analyzers by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92499">dotnet/runtime#92499</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/emsdk by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92532">dotnet/runtime#92532</a></li>
+                <li>[automated] Merge branch 'release/8.0-rc2' =&gt; 'release/8.0' by <a href="https://github.com/dotnet-maestro-bot"><code>@​dotnet-maestro-bot</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92515">dotnet/runtime#92515</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/source-build-externals by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92641">dotnet/runtime#92641</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/emsdk dotnet/hotreload-utils by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92606">dotnet/runtime#92606</a></li>
+                <li>[release/8.0][wasm] Fix regressed file sizes for blazor by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92627">dotnet/runtime#92627</a></li>
+                <li>[release/8.0] JIT: Fixed containment of STOREIND of HW intrinsics ConvertTo*/Extract* by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92513">dotnet/runtime#92513</a></li>
+                <li>[release/8.0] Define bool as Interop.BOOL to prevent upper bytes setting native bool by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92681">dotnet/runtime#92681</a></li>
+                <li>[release/8.0] Make CoreCLR/NativeAOT assembly compile with .subsections_via_symbols on Apple platforms by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92544">dotnet/runtime#92544</a></li>
+                <li>[release/8.0] Fix LLVMAOT Mono runtime variant official build to produce correctly named runtime packs by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92737">dotnet/runtime#92737</a></li>
+                <li>[release/8.0] Remove all PGO assets except for the runtime PGO archive. by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92735">dotnet/runtime#92735</a></li>
+                <li>[release/8.0] Put HasNativeCodeReJITAware into GetFunctionAddress by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92665">dotnet/runtime#92665</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/cecil dotnet/emsdk by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92702">dotnet/runtime#92702</a></li>
+                <li>[release/8.0][wasm] Fix Wasm.Build.Tests failing due to an old skiasharp reference by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92747">dotnet/runtime#92747</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/installer by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92745">dotnet/runtime#92745</a></li>
+                <li>[release/8.0] Bring back CopyOutputSymbolsToPublishDirectory by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92369">dotnet/runtime#92369</a></li>
+                <li>[release/8.0] Update dependencies from <code>dotnet/installer</code> by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92795">dotnet/runtime#92795</a></li>
+                <li>[release/8.0] Update dependencies from dnceng/internal/dotnet-optimization by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92762">dotnet/runtime#92762</a></li>
+                <li>[release/8.0] Update dependencies from dnceng/internal/dotnet-optimization by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92816">dotnet/runtime#92816</a></li>
+                <li>[release/8.0][wasm][debugger] Support multidimensional indexing of object scheme by <a href="https://github.com/ilonatommy"><code>@​ilonatommy</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92753">dotnet/runtime#92753</a></li>
+                <li>[release/8.0] [browser] Remove duplicated marshaling of return value for JSExport by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92886">dotnet/runtime#92886</a></li>
+                <li>[release/8.0] [browser][nodejs] keep runtime alive for JSExport calls by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92890">dotnet/runtime#92890</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/roslyn by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92503">dotnet/runtime#92503</a></li>
+                <li>[release/8.0] Make config binding gen incremental (<a href="https://redirect.github.com/dotnet/runtime/issues/89587">#89587</a>) by <a href="https://github.com/layomia"><code>@​layomia</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92730">dotnet/runtime#92730</a></li>
+                <li>[release/8.0] [wasm] Endian fix for Webcil by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92495">dotnet/runtime#92495</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/source-build-externals by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92935">dotnet/runtime#92935</a></li>
+                <li>[release/8.0] Update dependencies from dotnet/cecil dotnet/hotreload-utils by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92932">dotnet/runtime#92932</a></li>
+                <li>[release/8.0][wasm] Use intended ports when running <code>DevServer</code> by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92906">dotnet/runtime#92906</a></li>
+                <li>[release/8.0] Fix deadlock in EventPipeEventDispatcher by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92912">dotnet/runtime#92912</a></li>
+                <li>[release/8.0] CI: runtime-wasm-perf: disable for PRs by <a href="https://github.com/radical"><code>@​radical</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92977">dotnet/runtime#92977</a></li>
+                <li>[release/8.0] Throw when applying <code>JsonObjectHandling.Populate</code> to types with parameterized constructors. by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92947">dotnet/runtime#92947</a></li>
+                <li>[release/8.0] Use invariant culture in CBOR date encoding by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/92924">dotnet/runtime#92924</a></li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/dotnet/runtime/commits/v8.0.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump Microsoft.Extensions.Logging in /nuget/peer-dependencies
+
+                Bumps [Microsoft.Extensions.Logging](https://github.com/dotnet/runtime) from 2.2.0 to 8.0.0.
+                - [Release notes](https://github.com/dotnet/runtime/releases)
+                - [Commits](https://github.com/dotnet/runtime/commits/v8.0.0)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
