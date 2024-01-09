@@ -20,6 +20,11 @@ input:
               patched-versions: []
               unaffected-versions: []
         security-updates-only: true
+        dependency-groups:
+          - name: nuget group
+            rules:
+              patterns:
+                - "*"
         source:
             provider: github
             repo: dependabot/smoke-tests
