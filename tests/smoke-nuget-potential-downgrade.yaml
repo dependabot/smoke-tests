@@ -22,9 +22,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget/potential-downgrade
             commit: c28157d6e1e0304bbde1ae81227f5a789033fe9d
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -572,6 +569,12 @@ output:
       expect:
         data:
             base-commit-sha: c28157d6e1e0304bbde1ae81227f5a789033fe9d
+            commit-message: |-
+                Bump Microsoft.VisualStudio.Sdk.TestFramework.Xunit
+
+                Bumps [Microsoft.VisualStudio.Sdk.TestFramework.Xunit](https://github.com/microsoft/vssdktestfx) from 17.2.7 to 17.6.16.
+                - [Release notes](https://github.com/microsoft/vssdktestfx/releases)
+                - [Commits](https://github.com/microsoft/vssdktestfx/commits)
             dependencies:
                 - name: Microsoft.VisualStudio.Sdk.TestFramework.Xunit
                   previous-requirements:
@@ -606,6 +609,16 @@ output:
                         type: nuget_repo
                         url: https://api.nuget.org/v3/index.json
                   version: 17.6.16
+            pr-body: |
+                Bumps [Microsoft.VisualStudio.Sdk.TestFramework.Xunit](https://github.com/microsoft/vssdktestfx) from 17.2.7 to 17.6.16.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/microsoft/vssdktestfx/commits">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            pr-title: Bump Microsoft.VisualStudio.Sdk.TestFramework.Xunit from 17.2.7 to 17.6.16 in /nuget/potential-downgrade
             updated-dependency-files:
                 - content: |
                     <Project>
@@ -631,22 +644,6 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump Microsoft.VisualStudio.Sdk.TestFramework.Xunit from 17.2.7 to 17.6.16 in /nuget/potential-downgrade
-            pr-body: |
-                Bumps [Microsoft.VisualStudio.Sdk.TestFramework.Xunit](https://github.com/microsoft/vssdktestfx) from 17.2.7 to 17.6.16.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li>See full diff in <a href="https://github.com/microsoft/vssdktestfx/commits">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump Microsoft.VisualStudio.Sdk.TestFramework.Xunit
-
-                Bumps [Microsoft.VisualStudio.Sdk.TestFramework.Xunit](https://github.com/microsoft/vssdktestfx) from 17.2.7 to 17.6.16.
-                - [Release notes](https://github.com/microsoft/vssdktestfx/releases)
-                - [Commits](https://github.com/microsoft/vssdktestfx/commits)
     - type: mark_as_processed
       expect:
         data:

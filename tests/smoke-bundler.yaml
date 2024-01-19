@@ -18,9 +18,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -105,6 +102,13 @@ output:
       expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            commit-message: |-
+                Bump rubocop from 0.76.0 to 1.32.0
+
+                Bumps [rubocop](https://github.com/rubocop/rubocop) from 0.76.0 to 1.32.0.
+                - [Release notes](https://github.com/rubocop/rubocop/releases)
+                - [Changelog](https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/rubocop/rubocop/compare/v0.76.0...v1.32.0)
             dependencies:
                 - name: rubocop
                   previous-requirements:
@@ -121,91 +125,6 @@ output:
                       requirement: 1.32.0
                       source: null
                   version: 1.32.0
-            updated-dependency-files:
-                - content: |
-                    # frozen_string_literal: true
-
-                    source "https://rubygems.org"
-
-                    gemspec
-
-                    gem "rubocop", "1.32.0"
-                    gem "toml-rb", "2.2.0"
-                    gem 'rack', git: 'git@github.com:rack/rack.git', tag: '2.1.4'
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /
-                  name: Gemfile
-                  operation: update
-                  support_file: false
-                  type: file
-                  mode: "100644"
-                - content: |
-                    GIT
-                      remote: git@github.com:rack/rack.git
-                      revision: f3cf79d6460dc592767941806d1b2b7008f73e01
-                      tag: 2.1.4
-                      specs:
-                        rack (2.1.4)
-
-                    PATH
-                      remote: .
-                      specs:
-                        dependabot-all-updates-test-staging (0.0.0)
-                          netaddr (= 2.0.1)
-
-                    GEM
-                      remote: https://rubygems.org/
-                      specs:
-                        ast (2.4.2)
-                        citrus (3.0.2)
-                        json (2.7.1)
-                        netaddr (2.0.1)
-                        parallel (1.24.0)
-                        parser (3.3.0.0)
-                          ast (~> 2.4.1)
-                          racc
-                        racc (1.7.3)
-                        rainbow (3.1.1)
-                        regexp_parser (2.8.3)
-                        rexml (3.2.6)
-                        rubocop (1.32.0)
-                          json (~> 2.3)
-                          parallel (~> 1.10)
-                          parser (>= 3.1.0.0)
-                          rainbow (>= 2.2.2, < 4.0)
-                          regexp_parser (>= 1.8, < 3.0)
-                          rexml (>= 3.2.5, < 4.0)
-                          rubocop-ast (>= 1.19.1, < 2.0)
-                          ruby-progressbar (~> 1.7)
-                          unicode-display_width (>= 1.4.0, < 3.0)
-                        rubocop-ast (1.30.0)
-                          parser (>= 3.2.1.0)
-                        ruby-progressbar (1.13.0)
-                        toml-rb (2.2.0)
-                          citrus (~> 3.0, > 3.0)
-                        unicode-display_width (2.5.0)
-
-                    PLATFORMS
-                      ruby
-
-                    DEPENDENCIES
-                      dependabot-all-updates-test-staging!
-                      rack!
-                      rubocop (= 1.32.0)
-                      toml-rb (= 2.2.0)
-
-                    BUNDLED WITH
-                       2.1.4
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /
-                  name: Gemfile.lock
-                  operation: update
-                  support_file: false
-                  type: file
-                  mode: "100644"
-            pr-title: Bump rubocop from 0.76.0 to 1.32.0
             pr-body: |
                 Bumps [rubocop](https://github.com/rubocop/rubocop) from 0.76.0 to 1.32.0.
                 <details>
@@ -327,17 +246,100 @@ output:
                 </ul>
                 </details>
                 <br />
-            commit-message: |-
-                Bump rubocop from 0.76.0 to 1.32.0
+            pr-title: Bump rubocop from 0.76.0 to 1.32.0
+            updated-dependency-files:
+                - content: |
+                    # frozen_string_literal: true
 
-                Bumps [rubocop](https://github.com/rubocop/rubocop) from 0.76.0 to 1.32.0.
-                - [Release notes](https://github.com/rubocop/rubocop/releases)
-                - [Changelog](https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md)
-                - [Commits](https://github.com/rubocop/rubocop/compare/v0.76.0...v1.32.0)
+                    source "https://rubygems.org"
+
+                    gemspec
+
+                    gem "rubocop", "1.32.0"
+                    gem "toml-rb", "2.2.0"
+                    gem 'rack', git: 'git@github.com:rack/rack.git', tag: '2.1.4'
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  mode: "100644"
+                  name: Gemfile
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    GIT
+                      remote: git@github.com:rack/rack.git
+                      revision: f3cf79d6460dc592767941806d1b2b7008f73e01
+                      tag: 2.1.4
+                      specs:
+                        rack (2.1.4)
+
+                    PATH
+                      remote: .
+                      specs:
+                        dependabot-all-updates-test-staging (0.0.0)
+                          netaddr (= 2.0.1)
+
+                    GEM
+                      remote: https://rubygems.org/
+                      specs:
+                        ast (2.4.2)
+                        citrus (3.0.2)
+                        json (2.7.1)
+                        netaddr (2.0.1)
+                        parallel (1.24.0)
+                        parser (3.3.0.0)
+                          ast (~> 2.4.1)
+                          racc
+                        racc (1.7.3)
+                        rainbow (3.1.1)
+                        regexp_parser (2.8.3)
+                        rexml (3.2.6)
+                        rubocop (1.32.0)
+                          json (~> 2.3)
+                          parallel (~> 1.10)
+                          parser (>= 3.1.0.0)
+                          rainbow (>= 2.2.2, < 4.0)
+                          regexp_parser (>= 1.8, < 3.0)
+                          rexml (>= 3.2.5, < 4.0)
+                          rubocop-ast (>= 1.19.1, < 2.0)
+                          ruby-progressbar (~> 1.7)
+                          unicode-display_width (>= 1.4.0, < 3.0)
+                        rubocop-ast (1.30.0)
+                          parser (>= 3.2.1.0)
+                        ruby-progressbar (1.13.0)
+                        toml-rb (2.2.0)
+                          citrus (~> 3.0, > 3.0)
+                        unicode-display_width (2.5.0)
+
+                    PLATFORMS
+                      ruby
+
+                    DEPENDENCIES
+                      dependabot-all-updates-test-staging!
+                      rack!
+                      rubocop (= 1.32.0)
+                      toml-rb (= 2.2.0)
+
+                    BUNDLED WITH
+                       2.1.4
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  mode: "100644"
+                  name: Gemfile.lock
+                  operation: update
+                  support_file: false
+                  type: file
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            commit-message: |-
+                Update netaddr requirement from = 2.0.1 to = 2.0.6
+
+                Updates the requirements on [netaddr](https://github.com/dspinhirne/netaddr-rb) to permit the latest version.
+                - [Commits](https://github.com/dspinhirne/netaddr-rb/commits/2.0.6)
             dependencies:
                 - name: netaddr
                   previous-requirements:
@@ -354,6 +356,16 @@ output:
                       requirement: = 2.0.6
                       source: null
                   version: 2.0.6
+            pr-body: |
+                Updates the requirements on [netaddr](https://github.com/dspinhirne/netaddr-rb) to permit the latest version.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/dspinhirne/netaddr-rb/commits/2.0.6">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            pr-title: Update netaddr requirement from = 2.0.1 to = 2.0.6
             updated-dependency-files:
                 - content: |
                     GIT
@@ -406,11 +418,11 @@ output:
                   content_encoding: utf-8
                   deleted: false
                   directory: /
+                  mode: "100644"
                   name: Gemfile.lock
                   operation: update
                   support_file: false
                   type: file
-                  mode: "100644"
                 - content: |
                     Gem::Specification.new do |s|
                       s.name        = 'dependabot-all-updates-test-staging'
@@ -429,21 +441,6 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Update netaddr requirement from = 2.0.1 to = 2.0.6
-            pr-body: |
-                Updates the requirements on [netaddr](https://github.com/dspinhirne/netaddr-rb) to permit the latest version.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li>See full diff in <a href="https://github.com/dspinhirne/netaddr-rb/commits/2.0.6">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Update netaddr requirement from = 2.0.1 to = 2.0.6
-
-                Updates the requirements on [netaddr](https://github.com/dspinhirne/netaddr-rb) to permit the latest version.
-                - [Commits](https://github.com/dspinhirne/netaddr-rb/commits/2.0.6)
     - type: mark_as_processed
       expect:
         data:

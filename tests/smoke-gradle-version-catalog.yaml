@@ -51,9 +51,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /gradle-version-catalog/
             commit: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -206,6 +203,10 @@ output:
       expect:
         data:
             base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            commit-message: |-
+                Bump com.android.application in /gradle-version-catalog
+
+                Bumps com.android.application from 7.3.1 to 7.4.2.
             dependencies:
                 - name: com.android.application
                   previous-requirements:
@@ -224,6 +225,9 @@ output:
                         type: maven_repo
                         url: https://maven.google.com
                   version: 7.4.2
+            pr-body: |
+                Bumps com.android.application from 7.3.1 to 7.4.2.
+            pr-title: Bump com.android.application from 7.3.1 to 7.4.2 in /gradle-version-catalog
             updated-dependency-files:
                 - content: |
                     buildscript {
@@ -249,17 +253,14 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump com.android.application from 7.3.1 to 7.4.2 in /gradle-version-catalog
-            pr-body: |
-                Bumps com.android.application from 7.3.1 to 7.4.2.
-            commit-message: |-
-                Bump com.android.application in /gradle-version-catalog
-
-                Bumps com.android.application from 7.3.1 to 7.4.2.
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            commit-message: |-
+                Bump com.android.library from 7.3.1 to 7.4.2 in /gradle-version-catalog
+
+                Bumps com.android.library from 7.3.1 to 7.4.2.
             dependencies:
                 - name: com.android.library
                   previous-requirements:
@@ -278,6 +279,9 @@ output:
                         type: maven_repo
                         url: https://maven.google.com
                   version: 7.4.2
+            pr-body: |
+                Bumps com.android.library from 7.3.1 to 7.4.2.
+            pr-title: Bump com.android.library from 7.3.1 to 7.4.2 in /gradle-version-catalog
             updated-dependency-files:
                 - content: |
                     buildscript {
@@ -303,17 +307,17 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump com.android.library from 7.3.1 to 7.4.2 in /gradle-version-catalog
-            pr-body: |
-                Bumps com.android.library from 7.3.1 to 7.4.2.
-            commit-message: |-
-                Bump com.android.library from 7.3.1 to 7.4.2 in /gradle-version-catalog
-
-                Bumps com.android.library from 7.3.1 to 7.4.2.
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            commit-message: |-
+                Bump org.jetbrains.kotlin.android in /gradle-version-catalog
+
+                Bumps [org.jetbrains.kotlin.android](https://github.com/JetBrains/kotlin) from 1.7.0 to 1.8.10.
+                - [Release notes](https://github.com/JetBrains/kotlin/releases)
+                - [Changelog](https://github.com/JetBrains/kotlin/blob/master/ChangeLog.md)
+                - [Commits](https://github.com/JetBrains/kotlin/compare/v1.7.0...v1.8.10)
             dependencies:
                 - name: org.jetbrains.kotlin.android
                   previous-requirements:
@@ -332,32 +336,6 @@ output:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
                   version: 1.8.10
-            updated-dependency-files:
-                - content: |
-                    buildscript {
-                        allprojects {
-                            repositories {
-                                google()
-                                mavenCentral()
-                                maven { url 'https://jitpack.io' }
-                            }
-                        }
-                    }
-
-                    plugins {
-                        id 'com.android.application' version '7.3.1' apply false
-                        id 'com.android.library' version '7.3.1' apply false
-                        id 'org.jetbrains.kotlin.android' version '1.8.10' apply false
-                        alias(libs.plugins.kotlinter)
-                    }
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /gradle-version-catalog
-                  name: build.gradle
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump org.jetbrains.kotlin.android from 1.7.0 to 1.8.10 in /gradle-version-catalog
             pr-body: |
                 Bumps [org.jetbrains.kotlin.android](https://github.com/JetBrains/kotlin) from 1.7.0 to 1.8.10.
                 <details>
@@ -502,17 +480,40 @@ output:
                 </ul>
                 </details>
                 <br />
-            commit-message: |-
-                Bump org.jetbrains.kotlin.android in /gradle-version-catalog
+            pr-title: Bump org.jetbrains.kotlin.android from 1.7.0 to 1.8.10 in /gradle-version-catalog
+            updated-dependency-files:
+                - content: |
+                    buildscript {
+                        allprojects {
+                            repositories {
+                                google()
+                                mavenCentral()
+                                maven { url 'https://jitpack.io' }
+                            }
+                        }
+                    }
 
-                Bumps [org.jetbrains.kotlin.android](https://github.com/JetBrains/kotlin) from 1.7.0 to 1.8.10.
-                - [Release notes](https://github.com/JetBrains/kotlin/releases)
-                - [Changelog](https://github.com/JetBrains/kotlin/blob/master/ChangeLog.md)
-                - [Commits](https://github.com/JetBrains/kotlin/compare/v1.7.0...v1.8.10)
+                    plugins {
+                        id 'com.android.application' version '7.3.1' apply false
+                        id 'com.android.library' version '7.3.1' apply false
+                        id 'org.jetbrains.kotlin.android' version '1.8.10' apply false
+                        alias(libs.plugins.kotlinter)
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /gradle-version-catalog
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            commit-message: |-
+                Bump androidx.core:core-ktx in /gradle-version-catalog
+
+                Bumps androidx.core:core-ktx from 1.7.0 to 1.9.0.
             dependencies:
                 - name: androidx.core:core-ktx
                   previous-requirements:
@@ -543,6 +544,9 @@ output:
                         type: maven_repo
                         url: https://maven.google.com
                   version: 1.9.0
+            pr-body: |
+                Bumps androidx.core:core-ktx from 1.7.0 to 1.9.0.
+            pr-title: Bump androidx.core:core-ktx from 1.7.0 to 1.9.0 in /gradle-version-catalog
             updated-dependency-files:
                 - content: |-
                     [versions]
@@ -654,17 +658,14 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump androidx.core:core-ktx from 1.7.0 to 1.9.0 in /gradle-version-catalog
-            pr-body: |
-                Bumps androidx.core:core-ktx from 1.7.0 to 1.9.0.
-            commit-message: |-
-                Bump androidx.core:core-ktx in /gradle-version-catalog
-
-                Bumps androidx.core:core-ktx from 1.7.0 to 1.9.0.
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            commit-message: |-
+                Bump androidx.lifecycle:lifecycle-runtime-ktx in /gradle-version-catalog
+
+                Bumps androidx.lifecycle:lifecycle-runtime-ktx from 2.3.1 to 2.6.0.
             dependencies:
                 - name: androidx.lifecycle:lifecycle-runtime-ktx
                   previous-requirements:
@@ -685,6 +686,9 @@ output:
                         type: maven_repo
                         url: https://maven.google.com
                   version: 2.6.0
+            pr-body: |
+                Bumps androidx.lifecycle:lifecycle-runtime-ktx from 2.3.1 to 2.6.0.
+            pr-title: Bump androidx.lifecycle:lifecycle-runtime-ktx from 2.3.1 to 2.6.0 in /gradle-version-catalog
             updated-dependency-files:
                 - content: |-
                     [versions]
@@ -723,17 +727,14 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump androidx.lifecycle:lifecycle-runtime-ktx from 2.3.1 to 2.6.0 in /gradle-version-catalog
-            pr-body: |
-                Bumps androidx.lifecycle:lifecycle-runtime-ktx from 2.3.1 to 2.6.0.
-            commit-message: |-
-                Bump androidx.lifecycle:lifecycle-runtime-ktx in /gradle-version-catalog
-
-                Bumps androidx.lifecycle:lifecycle-runtime-ktx from 2.3.1 to 2.6.0.
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            commit-message: |-
+                Bump androidx.activity:activity-compose in /gradle-version-catalog
+
+                Bumps androidx.activity:activity-compose from 1.3.1 to 1.6.1.
             dependencies:
                 - name: androidx.activity:activity-compose
                   previous-requirements:
@@ -750,6 +751,9 @@ output:
                         type: maven_repo
                         url: https://maven.google.com
                   version: 1.6.1
+            pr-body: |
+                Bumps androidx.activity:activity-compose from 1.3.1 to 1.6.1.
+            pr-title: Bump androidx.activity:activity-compose from 1.3.1 to 1.6.1 in /gradle-version-catalog
             updated-dependency-files:
                 - content: |-
                     [versions]
@@ -788,17 +792,24 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump androidx.activity:activity-compose from 1.3.1 to 1.6.1 in /gradle-version-catalog
-            pr-body: |
-                Bumps androidx.activity:activity-compose from 1.3.1 to 1.6.1.
-            commit-message: |-
-                Bump androidx.activity:activity-compose in /gradle-version-catalog
-
-                Bumps androidx.activity:activity-compose from 1.3.1 to 1.6.1.
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            commit-message: |-
+                Bump composeUi from 1.2.0 to 1.3.3 in /gradle-version-catalog
+
+                Bumps `composeUi` from 1.2.0 to 1.3.3.
+
+                Updates `androidx.compose.ui:ui` from 1.2.0 to 1.3.3
+
+                Updates `androidx.compose.ui:ui-tooling-preview` from 1.2.0 to 1.3.3
+
+                Updates `androidx.compose.ui:ui-test-junit4` from 1.2.0 to 1.3.3
+
+                Updates `androidx.compose.ui:ui-tooling` from 1.2.0 to 1.3.3
+
+                Updates `androidx.compose.ui:ui-test-manifest` from 1.2.0 to 1.3.3
             dependencies:
                 - name: androidx.compose.ui:ui
                   previous-requirements:
@@ -895,6 +906,18 @@ output:
                         type: maven_repo
                         url: https://maven.google.com
                   version: 1.3.3
+            pr-body: |
+                Bumps `composeUi` from 1.2.0 to 1.3.3.
+                Updates `androidx.compose.ui:ui` from 1.2.0 to 1.3.3
+
+                Updates `androidx.compose.ui:ui-tooling-preview` from 1.2.0 to 1.3.3
+
+                Updates `androidx.compose.ui:ui-test-junit4` from 1.2.0 to 1.3.3
+
+                Updates `androidx.compose.ui:ui-tooling` from 1.2.0 to 1.3.3
+
+                Updates `androidx.compose.ui:ui-test-manifest` from 1.2.0 to 1.3.3
+            pr-title: Bump composeUi from 1.2.0 to 1.3.3 in /gradle-version-catalog
             updated-dependency-files:
                 - content: |-
                     [versions]
@@ -933,36 +956,14 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump composeUi from 1.2.0 to 1.3.3 in /gradle-version-catalog
-            pr-body: |
-                Bumps `composeUi` from 1.2.0 to 1.3.3.
-                Updates `androidx.compose.ui:ui` from 1.2.0 to 1.3.3
-
-                Updates `androidx.compose.ui:ui-tooling-preview` from 1.2.0 to 1.3.3
-
-                Updates `androidx.compose.ui:ui-test-junit4` from 1.2.0 to 1.3.3
-
-                Updates `androidx.compose.ui:ui-tooling` from 1.2.0 to 1.3.3
-
-                Updates `androidx.compose.ui:ui-test-manifest` from 1.2.0 to 1.3.3
-            commit-message: |-
-                Bump composeUi from 1.2.0 to 1.3.3 in /gradle-version-catalog
-
-                Bumps `composeUi` from 1.2.0 to 1.3.3.
-
-                Updates `androidx.compose.ui:ui` from 1.2.0 to 1.3.3
-
-                Updates `androidx.compose.ui:ui-tooling-preview` from 1.2.0 to 1.3.3
-
-                Updates `androidx.compose.ui:ui-test-junit4` from 1.2.0 to 1.3.3
-
-                Updates `androidx.compose.ui:ui-tooling` from 1.2.0 to 1.3.3
-
-                Updates `androidx.compose.ui:ui-test-manifest` from 1.2.0 to 1.3.3
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            commit-message: |-
+                Bump androidx.test.ext:junit in /gradle-version-catalog
+
+                Bumps androidx.test.ext:junit from 1.1.3 to 1.1.5.
             dependencies:
                 - name: androidx.test.ext:junit
                   previous-requirements:
@@ -983,6 +984,9 @@ output:
                         type: maven_repo
                         url: https://maven.google.com
                   version: 1.1.5
+            pr-body: |
+                Bumps androidx.test.ext:junit from 1.1.3 to 1.1.5.
+            pr-title: Bump androidx.test.ext:junit from 1.1.3 to 1.1.5 in /gradle-version-catalog
             updated-dependency-files:
                 - content: |-
                     [versions]
@@ -1021,17 +1025,14 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump androidx.test.ext:junit from 1.1.3 to 1.1.5 in /gradle-version-catalog
-            pr-body: |
-                Bumps androidx.test.ext:junit from 1.1.3 to 1.1.5.
-            commit-message: |-
-                Bump androidx.test.ext:junit in /gradle-version-catalog
-
-                Bumps androidx.test.ext:junit from 1.1.3 to 1.1.5.
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            commit-message: |-
+                Bump androidx.test.espresso:espresso-core in /gradle-version-catalog
+
+                Bumps androidx.test.espresso:espresso-core from 3.5.0 to 3.5.1.
             dependencies:
                 - name: androidx.test.espresso:espresso-core
                   previous-requirements:
@@ -1052,6 +1053,9 @@ output:
                         type: maven_repo
                         url: https://maven.google.com
                   version: 3.5.1
+            pr-body: |
+                Bumps androidx.test.espresso:espresso-core from 3.5.0 to 3.5.1.
+            pr-title: Bump androidx.test.espresso:espresso-core from 3.5.0 to 3.5.1 in /gradle-version-catalog
             updated-dependency-files:
                 - content: |-
                     [versions]
@@ -1090,17 +1094,14 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump androidx.test.espresso:espresso-core from 3.5.0 to 3.5.1 in /gradle-version-catalog
-            pr-body: |
-                Bumps androidx.test.espresso:espresso-core from 3.5.0 to 3.5.1.
-            commit-message: |-
-                Bump androidx.test.espresso:espresso-core in /gradle-version-catalog
-
-                Bumps androidx.test.espresso:espresso-core from 3.5.0 to 3.5.1.
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            commit-message: |-
+                Bump org.jmailen.kotlinter in /gradle-version-catalog
+
+                Bumps org.jmailen.kotlinter from 3.11.0 to 3.13.0.
             dependencies:
                 - name: org.jmailen.kotlinter
                   previous-requirements:
@@ -1119,6 +1120,9 @@ output:
                         type: maven_repo
                         url: https://plugins.gradle.org/m2
                   version: 3.13.0
+            pr-body: |
+                Bumps org.jmailen.kotlinter from 3.11.0 to 3.13.0.
+            pr-title: Bump org.jmailen.kotlinter from 3.11.0 to 3.13.0 in /gradle-version-catalog
             updated-dependency-files:
                 - content: |-
                     [versions]
@@ -1157,13 +1161,6 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump org.jmailen.kotlinter from 3.11.0 to 3.13.0 in /gradle-version-catalog
-            pr-body: |
-                Bumps org.jmailen.kotlinter from 3.11.0 to 3.13.0.
-            commit-message: |-
-                Bump org.jmailen.kotlinter in /gradle-version-catalog
-
-                Bumps org.jmailen.kotlinter from 3.11.0 to 3.13.0.
     - type: mark_as_processed
       expect:
         data:

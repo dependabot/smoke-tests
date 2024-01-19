@@ -25,9 +25,6 @@ input:
             hostname: github.com
             api-endpoint: https://api.github.com/
         commit-message-options: {}
-        credentials-metadata:
-            - host: github.com
-              type: git_source
         max-updater-run-time: 2700
     credentials:
         - host: github.com
@@ -104,6 +101,21 @@ output:
       expect:
         data:
             base-commit-sha: f558406ea0f067dcb5e223e257dcd91c27ea3a85
+            commit-message: |-
+                Bump the ruleset group in /bundler with 2 updates
+
+                Bumps the ruleset group in /bundler with 2 updates: [rubocop](https://github.com/rubocop/rubocop) and [rack](https://github.com/rack/rack).
+
+
+                Updates `rubocop` from 0.76.0 to 1.59.0
+                - [Release notes](https://github.com/rubocop/rubocop/releases)
+                - [Changelog](https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/rubocop/rubocop/compare/v0.76.0...v1.59.0)
+
+                Updates `rack` from 2.1.4 to v3.0.8
+                - [Release notes](https://github.com/rack/rack/releases)
+                - [Changelog](https://github.com/rack/rack/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...c8347eff9ce67c5e0db337f25ef8c7720a716e61)
             dependencies:
                 - name: rubocop
                   previous-requirements:
@@ -143,81 +155,8 @@ output:
                         type: git
                         url: git@github.com:rack/rack.git
                   version: c8347eff9ce67c5e0db337f25ef8c7720a716e61
-            updated-dependency-files:
-                - content: |
-                    # frozen_string_literal: true
-
-                    source "https://rubygems.org"
-
-                    gem "rubocop", "1.59.0"
-                    gem "toml-rb", "2.2.0"
-                    gem 'rack', git: 'git@github.com:rack/rack.git', tag: 'v3.0.8'
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /bundler
-                  name: Gemfile
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    GIT
-                      remote: git@github.com:rack/rack.git
-                      revision: c8347eff9ce67c5e0db337f25ef8c7720a716e61
-                      tag: v3.0.8
-                      specs:
-                        rack (3.0.8)
-
-                    GEM
-                      remote: https://rubygems.org/
-                      specs:
-                        ast (2.4.2)
-                        citrus (3.0.2)
-                        json (2.7.1)
-                        language_server-protocol (3.17.0.3)
-                        parallel (1.24.0)
-                        parser (3.3.0.0)
-                          ast (~> 2.4.1)
-                          racc
-                        racc (1.7.3)
-                        rainbow (3.1.1)
-                        regexp_parser (2.8.3)
-                        rexml (3.2.6)
-                        rubocop (1.59.0)
-                          json (~> 2.3)
-                          language_server-protocol (>= 3.17.0)
-                          parallel (~> 1.10)
-                          parser (>= 3.2.2.4)
-                          rainbow (>= 2.2.2, < 4.0)
-                          regexp_parser (>= 1.8, < 3.0)
-                          rexml (>= 3.2.5, < 4.0)
-                          rubocop-ast (>= 1.30.0, < 2.0)
-                          ruby-progressbar (~> 1.7)
-                          unicode-display_width (>= 2.4.0, < 3.0)
-                        rubocop-ast (1.30.0)
-                          parser (>= 3.2.1.0)
-                        ruby-progressbar (1.13.0)
-                        toml-rb (2.2.0)
-                          citrus (~> 3.0, > 3.0)
-                        unicode-display_width (2.5.0)
-
-                    PLATFORMS
-                      ruby
-
-                    DEPENDENCIES
-                      rack!
-                      rubocop (= 1.59.0)
-                      toml-rb (= 2.2.0)
-
-                    BUNDLED WITH
-                       2.1.4
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /bundler
-                  name: Gemfile.lock
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump the ruleset group in /bundler with 2 updates
+            dependency-group:
+                name: ruleset
             pr-body: |
                 Bumps the ruleset group in /bundler with 2 updates: [rubocop](https://github.com/rubocop/rubocop) and [rack](https://github.com/rack/rack).
 
@@ -477,23 +416,81 @@ output:
                 </ul>
                 </details>
                 <br />
-            commit-message: |-
-                Bump the ruleset group in /bundler with 2 updates
+            pr-title: Bump the ruleset group in /bundler with 2 updates
+            updated-dependency-files:
+                - content: |
+                    # frozen_string_literal: true
 
-                Bumps the ruleset group in /bundler with 2 updates: [rubocop](https://github.com/rubocop/rubocop) and [rack](https://github.com/rack/rack).
+                    source "https://rubygems.org"
 
+                    gem "rubocop", "1.59.0"
+                    gem "toml-rb", "2.2.0"
+                    gem 'rack', git: 'git@github.com:rack/rack.git', tag: 'v3.0.8'
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bundler
+                  name: Gemfile
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    GIT
+                      remote: git@github.com:rack/rack.git
+                      revision: c8347eff9ce67c5e0db337f25ef8c7720a716e61
+                      tag: v3.0.8
+                      specs:
+                        rack (3.0.8)
 
-                Updates `rubocop` from 0.76.0 to 1.59.0
-                - [Release notes](https://github.com/rubocop/rubocop/releases)
-                - [Changelog](https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md)
-                - [Commits](https://github.com/rubocop/rubocop/compare/v0.76.0...v1.59.0)
+                    GEM
+                      remote: https://rubygems.org/
+                      specs:
+                        ast (2.4.2)
+                        citrus (3.0.2)
+                        json (2.7.1)
+                        language_server-protocol (3.17.0.3)
+                        parallel (1.24.0)
+                        parser (3.3.0.0)
+                          ast (~> 2.4.1)
+                          racc
+                        racc (1.7.3)
+                        rainbow (3.1.1)
+                        regexp_parser (2.8.3)
+                        rexml (3.2.6)
+                        rubocop (1.59.0)
+                          json (~> 2.3)
+                          language_server-protocol (>= 3.17.0)
+                          parallel (~> 1.10)
+                          parser (>= 3.2.2.4)
+                          rainbow (>= 2.2.2, < 4.0)
+                          regexp_parser (>= 1.8, < 3.0)
+                          rexml (>= 3.2.5, < 4.0)
+                          rubocop-ast (>= 1.30.0, < 2.0)
+                          ruby-progressbar (~> 1.7)
+                          unicode-display_width (>= 2.4.0, < 3.0)
+                        rubocop-ast (1.30.0)
+                          parser (>= 3.2.1.0)
+                        ruby-progressbar (1.13.0)
+                        toml-rb (2.2.0)
+                          citrus (~> 3.0, > 3.0)
+                        unicode-display_width (2.5.0)
 
-                Updates `rack` from 2.1.4 to v3.0.8
-                - [Release notes](https://github.com/rack/rack/releases)
-                - [Changelog](https://github.com/rack/rack/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...c8347eff9ce67c5e0db337f25ef8c7720a716e61)
-            dependency-group:
-                name: ruleset
+                    PLATFORMS
+                      ruby
+
+                    DEPENDENCIES
+                      rack!
+                      rubocop (= 1.59.0)
+                      toml-rb (= 2.2.0)
+
+                    BUNDLED WITH
+                       2.1.4
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bundler
+                  name: Gemfile.lock
+                  operation: update
+                  support_file: false
+                  type: file
     - type: mark_as_processed
       expect:
         data:

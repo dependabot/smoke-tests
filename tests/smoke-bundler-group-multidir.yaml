@@ -4,6 +4,11 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        dependency-groups:
+            - name: bundler group
+              rules:
+                patterns:
+                    - '*'
         dependencies:
             - rack
             - sinatra
@@ -38,11 +43,6 @@ input:
               patched-versions: []
               unaffected-versions: []
         security-updates-only: true
-        dependency-groups:
-          - name: bundler group
-            rules:
-              patterns:
-                - "*"
         source:
             provider: github
             repo: dependabot/smoke-tests
@@ -50,9 +50,6 @@ input:
                 - /bundler/multi-dir/foo
                 - /bundler/multi-dir/bar
             commit: cd6542cb2b99fce3a1c506446e22e32d79d1b2b7
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -100,6 +97,31 @@ output:
       expect:
         data:
             base-commit-sha: cd6542cb2b99fce3a1c506446e22e32d79d1b2b7
+            commit-message: |-
+                Bump the bundler group across 2 directories with 3 updates
+
+                Bumps the bundler group with 2 updates in the /bundler/multi-dir/foo directory: [sinatra](https://github.com/sinatra/sinatra) and [nokogiri](https://github.com/sparklemotion/nokogiri).
+                Bumps the bundler group with 2 updates in the /bundler/multi-dir/bar directory: [nokogiri](https://github.com/sparklemotion/nokogiri) and [rack](https://github.com/rack/rack).
+
+
+                Updates `sinatra` from 1.2.2 to 1.2.3
+                - [Changelog](https://github.com/sinatra/sinatra/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/sinatra/sinatra/compare/1.2.2...1.2.3)
+
+                Updates `nokogiri` from 1.11.0 to 1.11.1
+                - [Release notes](https://github.com/sparklemotion/nokogiri/releases)
+                - [Changelog](https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/sparklemotion/nokogiri/compare/v1.11.0...v1.11.1)
+
+                Updates `nokogiri` from 1.11.0 to 1.11.1
+                - [Release notes](https://github.com/sparklemotion/nokogiri/releases)
+                - [Changelog](https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/sparklemotion/nokogiri/compare/v1.11.0...v1.11.1)
+
+                Updates `rack` from 3.0.0 to 3.0.7
+                - [Release notes](https://github.com/rack/rack/releases)
+                - [Changelog](https://github.com/rack/rack/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/rack/rack/compare/3.0.0...v3.0.7)
             dependencies:
                 - name: sinatra
                   previous-requirements:
@@ -161,94 +183,8 @@ output:
                       requirement: 3.0.7
                       source: null
                   version: 3.0.7
-            updated-dependency-files:
-                - content: |
-                    # frozen_string_literal: true
-
-                    source 'https://rubygems.org'
-
-                    gem 'sinatra', '1.2.3'
-                    gem 'nokogiri', '1.11.1'
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /bundler/multi-dir/foo
-                  name: Gemfile
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    GEM
-                      remote: https://rubygems.org/
-                      specs:
-                        mini_portile2 (2.5.3)
-                        nokogiri (1.11.1)
-                          mini_portile2 (~> 2.5.0)
-                          racc (~> 1.4)
-                        racc (1.7.3)
-                        rack (1.6.13)
-                        sinatra (1.2.3)
-                          rack (~> 1.1)
-                          tilt (>= 1.2.2, < 2.0)
-                        tilt (1.4.1)
-
-                    PLATFORMS
-                      ruby
-
-                    DEPENDENCIES
-                      nokogiri (= 1.11.1)
-                      sinatra (= 1.2.3)
-
-                    BUNDLED WITH
-                       2.4.18
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /bundler/multi-dir/foo
-                  name: Gemfile.lock
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    # frozen_string_literal: true
-
-                    source 'https://rubygems.org'
-
-                    gem 'rack', '3.0.7'
-                    gem 'nokogiri', '1.11.1'
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /bundler/multi-dir/bar
-                  name: Gemfile
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    GEM
-                      remote: https://rubygems.org/
-                      specs:
-                        mini_portile2 (2.5.3)
-                        nokogiri (1.11.1)
-                          mini_portile2 (~> 2.5.0)
-                          racc (~> 1.4)
-                        racc (1.7.3)
-                        rack (3.0.7)
-
-                    PLATFORMS
-                      ruby
-
-                    DEPENDENCIES
-                      nokogiri (= 1.11.1)
-                      rack (= 3.0.7)
-
-                    BUNDLED WITH
-                       2.4.18
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /bundler/multi-dir/bar
-                  name: Gemfile.lock
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump the bundler group across 2 directories with 3 updates
+            dependency-group:
+                name: bundler group
             pr-body: |
                 Bumps the bundler group with 2 updates in the /bundler/multi-dir/foo directory: [sinatra](https://github.com/sinatra/sinatra) and [nokogiri](https://github.com/sparklemotion/nokogiri).
                 Bumps the bundler group with 2 updates in the /bundler/multi-dir/bar directory: [nokogiri](https://github.com/sparklemotion/nokogiri) and [rack](https://github.com/rack/rack).
@@ -492,33 +428,94 @@ output:
                 </ul>
                 </details>
                 <br />
-            commit-message: |-
-                Bump the bundler group across 2 directories with 3 updates
+            pr-title: Bump the bundler group across 2 directories with 3 updates
+            updated-dependency-files:
+                - content: |
+                    # frozen_string_literal: true
 
-                Bumps the bundler group with 2 updates in the /bundler/multi-dir/foo directory: [sinatra](https://github.com/sinatra/sinatra) and [nokogiri](https://github.com/sparklemotion/nokogiri).
-                Bumps the bundler group with 2 updates in the /bundler/multi-dir/bar directory: [nokogiri](https://github.com/sparklemotion/nokogiri) and [rack](https://github.com/rack/rack).
+                    source 'https://rubygems.org'
 
+                    gem 'sinatra', '1.2.3'
+                    gem 'nokogiri', '1.11.1'
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bundler/multi-dir/foo
+                  name: Gemfile
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    GEM
+                      remote: https://rubygems.org/
+                      specs:
+                        mini_portile2 (2.5.3)
+                        nokogiri (1.11.1)
+                          mini_portile2 (~> 2.5.0)
+                          racc (~> 1.4)
+                        racc (1.7.3)
+                        rack (1.6.13)
+                        sinatra (1.2.3)
+                          rack (~> 1.1)
+                          tilt (>= 1.2.2, < 2.0)
+                        tilt (1.4.1)
 
-                Updates `sinatra` from 1.2.2 to 1.2.3
-                - [Changelog](https://github.com/sinatra/sinatra/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/sinatra/sinatra/compare/1.2.2...1.2.3)
+                    PLATFORMS
+                      ruby
 
-                Updates `nokogiri` from 1.11.0 to 1.11.1
-                - [Release notes](https://github.com/sparklemotion/nokogiri/releases)
-                - [Changelog](https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/sparklemotion/nokogiri/compare/v1.11.0...v1.11.1)
+                    DEPENDENCIES
+                      nokogiri (= 1.11.1)
+                      sinatra (= 1.2.3)
 
-                Updates `nokogiri` from 1.11.0 to 1.11.1
-                - [Release notes](https://github.com/sparklemotion/nokogiri/releases)
-                - [Changelog](https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/sparklemotion/nokogiri/compare/v1.11.0...v1.11.1)
+                    BUNDLED WITH
+                       2.4.18
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bundler/multi-dir/foo
+                  name: Gemfile.lock
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    # frozen_string_literal: true
 
-                Updates `rack` from 3.0.0 to 3.0.7
-                - [Release notes](https://github.com/rack/rack/releases)
-                - [Changelog](https://github.com/rack/rack/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/rack/rack/compare/3.0.0...v3.0.7)
-            dependency-group:
-                name: bundler group
+                    source 'https://rubygems.org'
+
+                    gem 'rack', '3.0.7'
+                    gem 'nokogiri', '1.11.1'
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bundler/multi-dir/bar
+                  name: Gemfile
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    GEM
+                      remote: https://rubygems.org/
+                      specs:
+                        mini_portile2 (2.5.3)
+                        nokogiri (1.11.1)
+                          mini_portile2 (~> 2.5.0)
+                          racc (~> 1.4)
+                        racc (1.7.3)
+                        rack (3.0.7)
+
+                    PLATFORMS
+                      ruby
+
+                    DEPENDENCIES
+                      nokogiri (= 1.11.1)
+                      rack (= 3.0.7)
+
+                    BUNDLED WITH
+                       2.4.18
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bundler/multi-dir/bar
+                  name: Gemfile.lock
+                  operation: update
+                  support_file: false
+                  type: file
     - type: mark_as_processed
       expect:
         data:

@@ -22,9 +22,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget/sdk-implicit-deps
             commit: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -295,12 +292,19 @@ output:
       expect:
         data:
             base-commit-sha: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+            commit-message: |-
+                Bump System.Text.Json from 5.0.1 to 5.0.2 in /nuget/sdk-implicit-deps
+
+                Bumps System.Text.Json from 5.0.1 to 5.0.2.
             dependencies:
                 - name: System.Text.Json
                   previous-requirements: []
                   previous-version: 5.0.1
                   requirements: []
                   version: 5.0.2
+            pr-body: |
+                Bumps System.Text.Json from 5.0.1 to 5.0.2.
+            pr-title: Bump System.Text.Json from 5.0.1 to 5.0.2 in /nuget/sdk-implicit-deps
             updated-dependency-files:
                 - content: |-
                     <Project Sdk="Microsoft.NET.Sdk">
@@ -325,13 +329,6 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump System.Text.Json from 5.0.1 to 5.0.2 in /nuget/sdk-implicit-deps
-            pr-body: |
-                Bumps System.Text.Json from 5.0.1 to 5.0.2.
-            commit-message: |-
-                Bump System.Text.Json from 5.0.1 to 5.0.2 in /nuget/sdk-implicit-deps
-
-                Bumps System.Text.Json from 5.0.1 to 5.0.2.
     - type: mark_as_processed
       expect:
         data:

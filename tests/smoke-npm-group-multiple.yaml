@@ -33,9 +33,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /npm/angular
             commit: 6cc5e623c6cb8284ce363010c05690f4661164dd
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -148,6 +145,62 @@ output:
       expect:
         data:
             base-commit-sha: 6cc5e623c6cb8284ce363010c05690f4661164dd
+            commit-message: |-
+                Bump the major group in /npm/angular with 8 updates
+
+                Bumps the major group in /npm/angular with 8 updates:
+
+                | Package | From | To |
+                | --- | --- | --- |
+                | [@angular/animations](https://github.com/angular/angular/tree/HEAD/packages/animations) | `15.0.0` | `16.2.0` |
+                | [@angular/common](https://github.com/angular/angular/tree/HEAD/packages/common) | `15.0.0` | `16.2.0` |
+                | [@angular/compiler](https://github.com/angular/angular/tree/HEAD/packages/compiler) | `15.0.0` | `16.2.0` |
+                | [@angular/core](https://github.com/angular/angular/tree/HEAD/packages/core) | `15.0.0` | `16.2.0` |
+                | [@angular/forms](https://github.com/angular/angular/tree/HEAD/packages/forms) | `15.0.0` | `16.2.0` |
+                | [@angular/platform-browser](https://github.com/angular/angular/tree/HEAD/packages/platform-browser) | `15.0.0` | `16.2.0` |
+                | [@angular/platform-browser-dynamic](https://github.com/angular/angular/tree/HEAD/packages/platform-browser-dynamic) | `15.0.0` | `16.2.0` |
+                | [@angular/router](https://github.com/angular/angular/tree/HEAD/packages/router) | `15.0.0` | `16.2.0` |
+
+
+                Updates `@angular/animations` from 15.0.0 to 16.2.0
+                - [Release notes](https://github.com/angular/angular/releases)
+                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/angular/angular/commits/16.2.0/packages/animations)
+
+                Updates `@angular/common` from 15.0.0 to 16.2.0
+                - [Release notes](https://github.com/angular/angular/releases)
+                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/angular/angular/commits/16.2.0/packages/common)
+
+                Updates `@angular/compiler` from 15.0.0 to 16.2.0
+                - [Release notes](https://github.com/angular/angular/releases)
+                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/angular/angular/commits/16.2.0/packages/compiler)
+
+                Updates `@angular/core` from 15.0.0 to 16.2.0
+                - [Release notes](https://github.com/angular/angular/releases)
+                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/angular/angular/commits/16.2.0/packages/core)
+
+                Updates `@angular/forms` from 15.0.0 to 16.2.0
+                - [Release notes](https://github.com/angular/angular/releases)
+                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/angular/angular/commits/16.2.0/packages/forms)
+
+                Updates `@angular/platform-browser` from 15.0.0 to 16.2.0
+                - [Release notes](https://github.com/angular/angular/releases)
+                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/angular/angular/commits/16.2.0/packages/platform-browser)
+
+                Updates `@angular/platform-browser-dynamic` from 15.0.0 to 16.2.0
+                - [Release notes](https://github.com/angular/angular/releases)
+                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/angular/angular/commits/16.2.0/packages/platform-browser-dynamic)
+
+                Updates `@angular/router` from 15.0.0 to 16.2.0
+                - [Release notes](https://github.com/angular/angular/releases)
+                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/angular/angular/commits/16.2.0/packages/router)
             dependencies:
                 - name: '@angular/animations'
                   previous-requirements:
@@ -301,226 +354,8 @@ output:
                         type: registry
                         url: https://registry.npmjs.org
                   version: 16.2.0
-            updated-dependency-files:
-                - content: |
-                    {
-                      "name": "my-angular",
-                      "version": "0.0.0",
-                      "scripts": {
-                        "ng": "ng",
-                        "start": "ng serve",
-                        "build": "ng build",
-                        "watch": "ng build --watch --configuration development",
-                        "test": "ng test"
-                      },
-                      "private": true,
-                      "dependencies": {
-                        "@angular/animations": "^16.2.0",
-                        "@angular/common": "^16.2.0",
-                        "@angular/compiler": "^16.2.0",
-                        "@angular/core": "^16.2.0",
-                        "@angular/forms": "^16.2.0",
-                        "@angular/platform-browser": "^16.2.0",
-                        "@angular/platform-browser-dynamic": "^16.2.0",
-                        "@angular/router": "^16.2.0"
-                      }
-                    }
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /npm/angular
-                  name: package.json
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    {
-                      "name": "my-angular",
-                      "version": "0.0.0",
-                      "lockfileVersion": 3,
-                      "requires": true,
-                      "packages": {
-                        "": {
-                          "name": "my-angular",
-                          "version": "0.0.0",
-                          "dependencies": {
-                            "@angular/animations": "^16.2.0",
-                            "@angular/common": "^16.2.0",
-                            "@angular/compiler": "^16.2.0",
-                            "@angular/core": "^16.2.0",
-                            "@angular/forms": "^16.2.0",
-                            "@angular/platform-browser": "^16.2.0",
-                            "@angular/platform-browser-dynamic": "^16.2.0",
-                            "@angular/router": "^16.2.0"
-                          }
-                        },
-                        "node_modules/@angular/animations": {
-                          "version": "16.2.0",
-                          "resolved": "https://registry.npmjs.org/@angular/animations/-/animations-16.2.0.tgz",
-                          "integrity": "sha512-SgOjldgRlU6XL1f6OUmFa+1iiy1OCWXH8i7q7g0yGCeQ4XAlvNRjDj++xxvUwDhE2pLKJLPYDJmCH98mvjKZcA==",
-                          "dependencies": {
-                            "tslib": "^2.3.0"
-                          },
-                          "engines": {
-                            "node": "^16.14.0 || >=18.10.0"
-                          },
-                          "peerDependencies": {
-                            "@angular/core": "16.2.0"
-                          }
-                        },
-                        "node_modules/@angular/common": {
-                          "version": "16.2.0",
-                          "resolved": "https://registry.npmjs.org/@angular/common/-/common-16.2.0.tgz",
-                          "integrity": "sha512-ByrDLsTBarzqRmq4GS841Ku0lvB4L2wfOCfGEIw2ZuiNbZlDA5O/qohQgJnHR5d9meVJnu9NgdbeyMzk90xZNg==",
-                          "dependencies": {
-                            "tslib": "^2.3.0"
-                          },
-                          "engines": {
-                            "node": "^16.14.0 || >=18.10.0"
-                          },
-                          "peerDependencies": {
-                            "@angular/core": "16.2.0",
-                            "rxjs": "^6.5.3 || ^7.4.0"
-                          }
-                        },
-                        "node_modules/@angular/compiler": {
-                          "version": "16.2.0",
-                          "resolved": "https://registry.npmjs.org/@angular/compiler/-/compiler-16.2.0.tgz",
-                          "integrity": "sha512-Ai0CKRUDlMY6iFCeoRsC+soVFTU7eyMDmNzeakdmNvGYMdLdjH8WvgaNukesi6WX7YBIQIKTPJVral8fXBQroQ==",
-                          "dependencies": {
-                            "tslib": "^2.3.0"
-                          },
-                          "engines": {
-                            "node": "^16.14.0 || >=18.10.0"
-                          },
-                          "peerDependencies": {
-                            "@angular/core": "16.2.0"
-                          },
-                          "peerDependenciesMeta": {
-                            "@angular/core": {
-                              "optional": true
-                            }
-                          }
-                        },
-                        "node_modules/@angular/core": {
-                          "version": "16.2.0",
-                          "resolved": "https://registry.npmjs.org/@angular/core/-/core-16.2.0.tgz",
-                          "integrity": "sha512-iwUWFw+JmRxw0chcNoqhXVR8XUTE+Rszhy22iSCkK0Jo8IJqEad1d2dQoFu1QfqOVdPMZtpJDmC/ppQ/f5c5aA==",
-                          "dependencies": {
-                            "tslib": "^2.3.0"
-                          },
-                          "engines": {
-                            "node": "^16.14.0 || >=18.10.0"
-                          },
-                          "peerDependencies": {
-                            "rxjs": "^6.5.3 || ^7.4.0",
-                            "zone.js": "~0.13.0"
-                          }
-                        },
-                        "node_modules/@angular/forms": {
-                          "version": "16.2.0",
-                          "resolved": "https://registry.npmjs.org/@angular/forms/-/forms-16.2.0.tgz",
-                          "integrity": "sha512-Z/IFw319ZSgGbJFkR5Ba0sRIIqDxQDVH4I+vnVoOYqq2NxuHYfLJDHAB9uHln9GWj86b1SrJBZe8qiS7Sxb7yQ==",
-                          "dependencies": {
-                            "tslib": "^2.3.0"
-                          },
-                          "engines": {
-                            "node": "^16.14.0 || >=18.10.0"
-                          },
-                          "peerDependencies": {
-                            "@angular/common": "16.2.0",
-                            "@angular/core": "16.2.0",
-                            "@angular/platform-browser": "16.2.0",
-                            "rxjs": "^6.5.3 || ^7.4.0"
-                          }
-                        },
-                        "node_modules/@angular/platform-browser": {
-                          "version": "16.2.0",
-                          "resolved": "https://registry.npmjs.org/@angular/platform-browser/-/platform-browser-16.2.0.tgz",
-                          "integrity": "sha512-6xjZFnSD0C8ylDbzKpsxCJ4pLJDRvippr9Wj9RCeDQvAzMibsqIjpbesyOccw3hO+jheJQRhM/rZeO1ubZU94w==",
-                          "dependencies": {
-                            "tslib": "^2.3.0"
-                          },
-                          "engines": {
-                            "node": "^16.14.0 || >=18.10.0"
-                          },
-                          "peerDependencies": {
-                            "@angular/animations": "16.2.0",
-                            "@angular/common": "16.2.0",
-                            "@angular/core": "16.2.0"
-                          },
-                          "peerDependenciesMeta": {
-                            "@angular/animations": {
-                              "optional": true
-                            }
-                          }
-                        },
-                        "node_modules/@angular/platform-browser-dynamic": {
-                          "version": "16.2.0",
-                          "resolved": "https://registry.npmjs.org/@angular/platform-browser-dynamic/-/platform-browser-dynamic-16.2.0.tgz",
-                          "integrity": "sha512-kLxgR+ichWb6dNA1JUAh0JB+iSrObkomd10porGQWVxAGmHqg1eiB3bBaSAgcaLftsrmEguIH8O9AEfq+HLfrA==",
-                          "dependencies": {
-                            "tslib": "^2.3.0"
-                          },
-                          "engines": {
-                            "node": "^16.14.0 || >=18.10.0"
-                          },
-                          "peerDependencies": {
-                            "@angular/common": "16.2.0",
-                            "@angular/compiler": "16.2.0",
-                            "@angular/core": "16.2.0",
-                            "@angular/platform-browser": "16.2.0"
-                          }
-                        },
-                        "node_modules/@angular/router": {
-                          "version": "16.2.0",
-                          "resolved": "https://registry.npmjs.org/@angular/router/-/router-16.2.0.tgz",
-                          "integrity": "sha512-bFOaE7PNF0UHgVhl8BvyHiZHizTRZO7w3V29VqsdXUMMugBR4kr1/FXGzXTaz+9/eK7LokUwN9pjKKENNmhdyg==",
-                          "dependencies": {
-                            "tslib": "^2.3.0"
-                          },
-                          "engines": {
-                            "node": "^16.14.0 || >=18.10.0"
-                          },
-                          "peerDependencies": {
-                            "@angular/common": "16.2.0",
-                            "@angular/core": "16.2.0",
-                            "@angular/platform-browser": "16.2.0",
-                            "rxjs": "^6.5.3 || ^7.4.0"
-                          }
-                        },
-                        "node_modules/rxjs": {
-                          "version": "7.8.1",
-                          "resolved": "https://registry.npmjs.org/rxjs/-/rxjs-7.8.1.tgz",
-                          "integrity": "sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==",
-                          "peer": true,
-                          "dependencies": {
-                            "tslib": "^2.1.0"
-                          }
-                        },
-                        "node_modules/tslib": {
-                          "version": "2.6.1",
-                          "resolved": "https://registry.npmjs.org/tslib/-/tslib-2.6.1.tgz",
-                          "integrity": "sha512-t0hLfiEKfMUoqhG+U1oid7Pva4bbDPHYfJNiB7BiIjRkj1pyC++4N3huJfqY6aRH6VTB0rvtzQwjM4K6qpfOig=="
-                        },
-                        "node_modules/zone.js": {
-                          "version": "0.13.1",
-                          "resolved": "https://registry.npmjs.org/zone.js/-/zone.js-0.13.1.tgz",
-                          "integrity": "sha512-+bIeDAFEBYuXRuU3qGQvzdPap+N1zjM4KkBAiiQuVVCrHrhjDuY6VkUhNa5+U27+9w0q3fbKiMCbpJ0XzMmSWA==",
-                          "peer": true,
-                          "dependencies": {
-                            "tslib": "^2.3.0"
-                          }
-                        }
-                      }
-                    }
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /npm/angular
-                  name: package-lock.json
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump the major group in /npm/angular with 8 updates
+            dependency-group:
+                name: major
             pr-body: |-
                 Bumps the major group in /npm/angular with 8 updates:
 
@@ -2099,64 +1934,226 @@ output:
                 <td><a href="https://gith...
 
                 _Description has been truncated_
-            commit-message: |-
-                Bump the major group in /npm/angular with 8 updates
-
-                Bumps the major group in /npm/angular with 8 updates:
-
-                | Package | From | To |
-                | --- | --- | --- |
-                | [@angular/animations](https://github.com/angular/angular/tree/HEAD/packages/animations) | `15.0.0` | `16.2.0` |
-                | [@angular/common](https://github.com/angular/angular/tree/HEAD/packages/common) | `15.0.0` | `16.2.0` |
-                | [@angular/compiler](https://github.com/angular/angular/tree/HEAD/packages/compiler) | `15.0.0` | `16.2.0` |
-                | [@angular/core](https://github.com/angular/angular/tree/HEAD/packages/core) | `15.0.0` | `16.2.0` |
-                | [@angular/forms](https://github.com/angular/angular/tree/HEAD/packages/forms) | `15.0.0` | `16.2.0` |
-                | [@angular/platform-browser](https://github.com/angular/angular/tree/HEAD/packages/platform-browser) | `15.0.0` | `16.2.0` |
-                | [@angular/platform-browser-dynamic](https://github.com/angular/angular/tree/HEAD/packages/platform-browser-dynamic) | `15.0.0` | `16.2.0` |
-                | [@angular/router](https://github.com/angular/angular/tree/HEAD/packages/router) | `15.0.0` | `16.2.0` |
-
-
-                Updates `@angular/animations` from 15.0.0 to 16.2.0
-                - [Release notes](https://github.com/angular/angular/releases)
-                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/angular/angular/commits/16.2.0/packages/animations)
-
-                Updates `@angular/common` from 15.0.0 to 16.2.0
-                - [Release notes](https://github.com/angular/angular/releases)
-                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/angular/angular/commits/16.2.0/packages/common)
-
-                Updates `@angular/compiler` from 15.0.0 to 16.2.0
-                - [Release notes](https://github.com/angular/angular/releases)
-                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/angular/angular/commits/16.2.0/packages/compiler)
-
-                Updates `@angular/core` from 15.0.0 to 16.2.0
-                - [Release notes](https://github.com/angular/angular/releases)
-                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/angular/angular/commits/16.2.0/packages/core)
-
-                Updates `@angular/forms` from 15.0.0 to 16.2.0
-                - [Release notes](https://github.com/angular/angular/releases)
-                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/angular/angular/commits/16.2.0/packages/forms)
-
-                Updates `@angular/platform-browser` from 15.0.0 to 16.2.0
-                - [Release notes](https://github.com/angular/angular/releases)
-                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/angular/angular/commits/16.2.0/packages/platform-browser)
-
-                Updates `@angular/platform-browser-dynamic` from 15.0.0 to 16.2.0
-                - [Release notes](https://github.com/angular/angular/releases)
-                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/angular/angular/commits/16.2.0/packages/platform-browser-dynamic)
-
-                Updates `@angular/router` from 15.0.0 to 16.2.0
-                - [Release notes](https://github.com/angular/angular/releases)
-                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/angular/angular/commits/16.2.0/packages/router)
-            dependency-group:
-                name: major
+            pr-title: Bump the major group in /npm/angular with 8 updates
+            updated-dependency-files:
+                - content: |
+                    {
+                      "name": "my-angular",
+                      "version": "0.0.0",
+                      "scripts": {
+                        "ng": "ng",
+                        "start": "ng serve",
+                        "build": "ng build",
+                        "watch": "ng build --watch --configuration development",
+                        "test": "ng test"
+                      },
+                      "private": true,
+                      "dependencies": {
+                        "@angular/animations": "^16.2.0",
+                        "@angular/common": "^16.2.0",
+                        "@angular/compiler": "^16.2.0",
+                        "@angular/core": "^16.2.0",
+                        "@angular/forms": "^16.2.0",
+                        "@angular/platform-browser": "^16.2.0",
+                        "@angular/platform-browser-dynamic": "^16.2.0",
+                        "@angular/router": "^16.2.0"
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /npm/angular
+                  name: package.json
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    {
+                      "name": "my-angular",
+                      "version": "0.0.0",
+                      "lockfileVersion": 3,
+                      "requires": true,
+                      "packages": {
+                        "": {
+                          "name": "my-angular",
+                          "version": "0.0.0",
+                          "dependencies": {
+                            "@angular/animations": "^16.2.0",
+                            "@angular/common": "^16.2.0",
+                            "@angular/compiler": "^16.2.0",
+                            "@angular/core": "^16.2.0",
+                            "@angular/forms": "^16.2.0",
+                            "@angular/platform-browser": "^16.2.0",
+                            "@angular/platform-browser-dynamic": "^16.2.0",
+                            "@angular/router": "^16.2.0"
+                          }
+                        },
+                        "node_modules/@angular/animations": {
+                          "version": "16.2.0",
+                          "resolved": "https://registry.npmjs.org/@angular/animations/-/animations-16.2.0.tgz",
+                          "integrity": "sha512-SgOjldgRlU6XL1f6OUmFa+1iiy1OCWXH8i7q7g0yGCeQ4XAlvNRjDj++xxvUwDhE2pLKJLPYDJmCH98mvjKZcA==",
+                          "dependencies": {
+                            "tslib": "^2.3.0"
+                          },
+                          "engines": {
+                            "node": "^16.14.0 || >=18.10.0"
+                          },
+                          "peerDependencies": {
+                            "@angular/core": "16.2.0"
+                          }
+                        },
+                        "node_modules/@angular/common": {
+                          "version": "16.2.0",
+                          "resolved": "https://registry.npmjs.org/@angular/common/-/common-16.2.0.tgz",
+                          "integrity": "sha512-ByrDLsTBarzqRmq4GS841Ku0lvB4L2wfOCfGEIw2ZuiNbZlDA5O/qohQgJnHR5d9meVJnu9NgdbeyMzk90xZNg==",
+                          "dependencies": {
+                            "tslib": "^2.3.0"
+                          },
+                          "engines": {
+                            "node": "^16.14.0 || >=18.10.0"
+                          },
+                          "peerDependencies": {
+                            "@angular/core": "16.2.0",
+                            "rxjs": "^6.5.3 || ^7.4.0"
+                          }
+                        },
+                        "node_modules/@angular/compiler": {
+                          "version": "16.2.0",
+                          "resolved": "https://registry.npmjs.org/@angular/compiler/-/compiler-16.2.0.tgz",
+                          "integrity": "sha512-Ai0CKRUDlMY6iFCeoRsC+soVFTU7eyMDmNzeakdmNvGYMdLdjH8WvgaNukesi6WX7YBIQIKTPJVral8fXBQroQ==",
+                          "dependencies": {
+                            "tslib": "^2.3.0"
+                          },
+                          "engines": {
+                            "node": "^16.14.0 || >=18.10.0"
+                          },
+                          "peerDependencies": {
+                            "@angular/core": "16.2.0"
+                          },
+                          "peerDependenciesMeta": {
+                            "@angular/core": {
+                              "optional": true
+                            }
+                          }
+                        },
+                        "node_modules/@angular/core": {
+                          "version": "16.2.0",
+                          "resolved": "https://registry.npmjs.org/@angular/core/-/core-16.2.0.tgz",
+                          "integrity": "sha512-iwUWFw+JmRxw0chcNoqhXVR8XUTE+Rszhy22iSCkK0Jo8IJqEad1d2dQoFu1QfqOVdPMZtpJDmC/ppQ/f5c5aA==",
+                          "dependencies": {
+                            "tslib": "^2.3.0"
+                          },
+                          "engines": {
+                            "node": "^16.14.0 || >=18.10.0"
+                          },
+                          "peerDependencies": {
+                            "rxjs": "^6.5.3 || ^7.4.0",
+                            "zone.js": "~0.13.0"
+                          }
+                        },
+                        "node_modules/@angular/forms": {
+                          "version": "16.2.0",
+                          "resolved": "https://registry.npmjs.org/@angular/forms/-/forms-16.2.0.tgz",
+                          "integrity": "sha512-Z/IFw319ZSgGbJFkR5Ba0sRIIqDxQDVH4I+vnVoOYqq2NxuHYfLJDHAB9uHln9GWj86b1SrJBZe8qiS7Sxb7yQ==",
+                          "dependencies": {
+                            "tslib": "^2.3.0"
+                          },
+                          "engines": {
+                            "node": "^16.14.0 || >=18.10.0"
+                          },
+                          "peerDependencies": {
+                            "@angular/common": "16.2.0",
+                            "@angular/core": "16.2.0",
+                            "@angular/platform-browser": "16.2.0",
+                            "rxjs": "^6.5.3 || ^7.4.0"
+                          }
+                        },
+                        "node_modules/@angular/platform-browser": {
+                          "version": "16.2.0",
+                          "resolved": "https://registry.npmjs.org/@angular/platform-browser/-/platform-browser-16.2.0.tgz",
+                          "integrity": "sha512-6xjZFnSD0C8ylDbzKpsxCJ4pLJDRvippr9Wj9RCeDQvAzMibsqIjpbesyOccw3hO+jheJQRhM/rZeO1ubZU94w==",
+                          "dependencies": {
+                            "tslib": "^2.3.0"
+                          },
+                          "engines": {
+                            "node": "^16.14.0 || >=18.10.0"
+                          },
+                          "peerDependencies": {
+                            "@angular/animations": "16.2.0",
+                            "@angular/common": "16.2.0",
+                            "@angular/core": "16.2.0"
+                          },
+                          "peerDependenciesMeta": {
+                            "@angular/animations": {
+                              "optional": true
+                            }
+                          }
+                        },
+                        "node_modules/@angular/platform-browser-dynamic": {
+                          "version": "16.2.0",
+                          "resolved": "https://registry.npmjs.org/@angular/platform-browser-dynamic/-/platform-browser-dynamic-16.2.0.tgz",
+                          "integrity": "sha512-kLxgR+ichWb6dNA1JUAh0JB+iSrObkomd10porGQWVxAGmHqg1eiB3bBaSAgcaLftsrmEguIH8O9AEfq+HLfrA==",
+                          "dependencies": {
+                            "tslib": "^2.3.0"
+                          },
+                          "engines": {
+                            "node": "^16.14.0 || >=18.10.0"
+                          },
+                          "peerDependencies": {
+                            "@angular/common": "16.2.0",
+                            "@angular/compiler": "16.2.0",
+                            "@angular/core": "16.2.0",
+                            "@angular/platform-browser": "16.2.0"
+                          }
+                        },
+                        "node_modules/@angular/router": {
+                          "version": "16.2.0",
+                          "resolved": "https://registry.npmjs.org/@angular/router/-/router-16.2.0.tgz",
+                          "integrity": "sha512-bFOaE7PNF0UHgVhl8BvyHiZHizTRZO7w3V29VqsdXUMMugBR4kr1/FXGzXTaz+9/eK7LokUwN9pjKKENNmhdyg==",
+                          "dependencies": {
+                            "tslib": "^2.3.0"
+                          },
+                          "engines": {
+                            "node": "^16.14.0 || >=18.10.0"
+                          },
+                          "peerDependencies": {
+                            "@angular/common": "16.2.0",
+                            "@angular/core": "16.2.0",
+                            "@angular/platform-browser": "16.2.0",
+                            "rxjs": "^6.5.3 || ^7.4.0"
+                          }
+                        },
+                        "node_modules/rxjs": {
+                          "version": "7.8.1",
+                          "resolved": "https://registry.npmjs.org/rxjs/-/rxjs-7.8.1.tgz",
+                          "integrity": "sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==",
+                          "peer": true,
+                          "dependencies": {
+                            "tslib": "^2.1.0"
+                          }
+                        },
+                        "node_modules/tslib": {
+                          "version": "2.6.1",
+                          "resolved": "https://registry.npmjs.org/tslib/-/tslib-2.6.1.tgz",
+                          "integrity": "sha512-t0hLfiEKfMUoqhG+U1oid7Pva4bbDPHYfJNiB7BiIjRkj1pyC++4N3huJfqY6aRH6VTB0rvtzQwjM4K6qpfOig=="
+                        },
+                        "node_modules/zone.js": {
+                          "version": "0.13.1",
+                          "resolved": "https://registry.npmjs.org/zone.js/-/zone.js-0.13.1.tgz",
+                          "integrity": "sha512-+bIeDAFEBYuXRuU3qGQvzdPap+N1zjM4KkBAiiQuVVCrHrhjDuY6VkUhNa5+U27+9w0q3fbKiMCbpJ0XzMmSWA==",
+                          "peer": true,
+                          "dependencies": {
+                            "tslib": "^2.3.0"
+                          }
+                        }
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /npm/angular
+                  name: package-lock.json
+                  operation: update
+                  support_file: false
+                  type: file
     - type: mark_as_processed
       expect:
         data:

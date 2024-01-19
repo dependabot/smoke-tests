@@ -26,9 +26,6 @@ input:
             api-endpoint: https://api.github.com/
         vendor-dependencies: true
         commit-message-options: {}
-        credentials-metadata:
-            - host: github.com
-              type: git_source
         max-updater-run-time: 2700
     credentials:
         - host: github.com
@@ -101,6 +98,21 @@ output:
       expect:
         data:
             base-commit-sha: 493bad62d0d3edba2f169f2e080133e8ae60d8de
+            commit-message: |-
+                Bump the ruleset group in /bundler-vendored with 2 updates
+
+                Bumps the ruleset group in /bundler-vendored with 2 updates: [rubocop](https://github.com/rubocop/rubocop) and [rack](https://github.com/rack/rack).
+
+
+                Updates `rubocop` from 0.76.0 to 1.53.1
+                - [Release notes](https://github.com/rubocop/rubocop/releases)
+                - [Changelog](https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/rubocop/rubocop/compare/v0.76.0...v1.53.1)
+
+                Updates `rack` from 2.1.4 to 3.0.8
+                - [Release notes](https://github.com/rack/rack/releases)
+                - [Changelog](https://github.com/rack/rack/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/rack/rack/compare/2.1.4...v3.0.8)
             dependencies:
                 - name: rubocop
                   previous-requirements:
@@ -132,239 +144,8 @@ output:
                       requirement: 3.0.8
                       source: null
                   version: 3.0.8
-            updated-dependency-files:
-                - content: |
-                    # frozen_string_literal: true
-
-                    source "https://rubygems.org"
-
-                    gem "rubocop", "1.53.1"
-                    gem "toml-rb", "2.1.0"
-                    gem 'rack', '3.0.8'
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /bundler-vendored
-                  name: Gemfile
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    GEM
-                      remote: https://rubygems.org/
-                      specs:
-                        ast (2.4.2)
-                        citrus (3.0.2)
-                        json (2.7.1)
-                        language_server-protocol (3.17.0.3)
-                        parallel (1.24.0)
-                        parser (3.3.0.0)
-                          ast (~> 2.4.1)
-                          racc
-                        racc (1.7.3)
-                        rack (3.0.8)
-                        rainbow (3.1.1)
-                        regexp_parser (2.8.3)
-                        rexml (3.2.6)
-                        rubocop (1.53.1)
-                          json (~> 2.3)
-                          language_server-protocol (>= 3.17.0)
-                          parallel (~> 1.10)
-                          parser (>= 3.2.2.3)
-                          rainbow (>= 2.2.2, < 4.0)
-                          regexp_parser (>= 1.8, < 3.0)
-                          rexml (>= 3.2.5, < 4.0)
-                          rubocop-ast (>= 1.28.0, < 2.0)
-                          ruby-progressbar (~> 1.7)
-                          unicode-display_width (>= 2.4.0, < 3.0)
-                        rubocop-ast (1.30.0)
-                          parser (>= 3.2.1.0)
-                        ruby-progressbar (1.13.0)
-                        toml-rb (2.1.0)
-                          citrus (~> 3.0, > 3.0)
-                        unicode-display_width (2.5.0)
-
-                    PLATFORMS
-                      ruby
-
-                    DEPENDENCIES
-                      rack (= 3.0.8)
-                      rubocop (= 1.53.1)
-                      toml-rb (= 2.1.0)
-
-                    BUNDLED WITH
-                       2.1.4
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /bundler-vendored
-                  name: Gemfile.lock
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: ""
-                  content_encoding: ""
-                  deleted: true
-                  directory: /bundler-vendored
-                  name: vendor/cache/jaro_winkler-1.5.4.gem
-                  operation: delete
-                  support_file: false
-                  type: file
-                - content: ""
-                  content_encoding: ""
-                  deleted: true
-                  directory: /bundler-vendored
-                  name: vendor/cache/parallel-1.22.1.gem
-                  operation: delete
-                  support_file: false
-                  type: file
-                - content: ""
-                  content_encoding: ""
-                  deleted: true
-                  directory: /bundler-vendored
-                  name: vendor/cache/parser-3.1.2.0.gem
-                  operation: delete
-                  support_file: false
-                  type: file
-                - content: ""
-                  content_encoding: ""
-                  deleted: true
-                  directory: /bundler-vendored
-                  name: vendor/cache/rubocop-0.76.0.gem
-                  operation: delete
-                  support_file: false
-                  type: file
-                - content: ""
-                  content_encoding: ""
-                  deleted: true
-                  directory: /bundler-vendored
-                  name: vendor/cache/ruby-progressbar-1.11.0.gem
-                  operation: delete
-                  support_file: false
-                  type: file
-                - content: ""
-                  content_encoding: ""
-                  deleted: true
-                  directory: /bundler-vendored
-                  name: vendor/cache/unicode-display_width-1.6.1.gem
-                  operation: delete
-                  support_file: false
-                  type: file
-                - content: 77ff5f999ce5362336c1440b3512eff30a92e95a4d5b7e4745fc7e399c662fb4
-                  content_encoding: sha256
-                  deleted: false
-                  directory: /bundler-vendored
-                  name: vendor/cache/json-2.7.1.gem
-                  operation: create
-                  support_file: false
-                  type: file
-                  mode: "100644"
-                - content: ef4c05b1bb7e25b701d110bc9854410b379710137c6abd93f693754c67c9c249
-                  content_encoding: sha256
-                  deleted: false
-                  directory: /bundler-vendored
-                  name: vendor/cache/language_server-protocol-3.17.0.3.gem
-                  operation: create
-                  support_file: false
-                  type: file
-                  mode: "100644"
-                - content: 70a7bf935f22c6c975e267836ffba4514ad24634847f307d4863fe48a05e935b
-                  content_encoding: sha256
-                  deleted: false
-                  directory: /bundler-vendored
-                  name: vendor/cache/parallel-1.24.0.gem
-                  operation: create
-                  support_file: false
-                  type: file
-                  mode: "100644"
-                - content: 8fc2af5bb5e2cdc83f389d6b64d16f13115dcd573920fef341fbba356a1596c9
-                  content_encoding: sha256
-                  deleted: false
-                  directory: /bundler-vendored
-                  name: vendor/cache/parser-3.3.0.0.gem
-                  operation: create
-                  support_file: false
-                  type: file
-                  mode: "100644"
-                - content: ddba660f5b6b22434f53137760d3fa3f1aea2570a1e6bfe071ee8e6b3dc9eb03
-                  content_encoding: sha256
-                  deleted: false
-                  directory: /bundler-vendored
-                  name: vendor/cache/racc-1.7.3.gem
-                  operation: create
-                  support_file: false
-                  type: file
-                  mode: "100644"
-                - content: 73952cdf6551a21dcf34f2c727ebffa0d0b4bc5f90a76ce7d768e57152ad85d1
-                  content_encoding: sha256
-                  deleted: false
-                  directory: /bundler-vendored
-                  name: vendor/cache/regexp_parser-2.8.3.gem
-                  operation: create
-                  support_file: false
-                  type: file
-                  mode: "100644"
-                - content: 9ce07ca12b35bfbdae26026af1c25c3c7b8ec57742fc57e436bb65aa77a95455
-                  content_encoding: sha256
-                  deleted: false
-                  directory: /bundler-vendored
-                  name: vendor/cache/rexml-3.2.6.gem
-                  operation: create
-                  support_file: false
-                  type: file
-                  mode: "100644"
-                - content: 60848496a7658fd07b0f0a5f29995ae09008b95040656153f20a41827d1a23bd
-                  content_encoding: sha256
-                  deleted: false
-                  directory: /bundler-vendored
-                  name: vendor/cache/rubocop-1.53.1.gem
-                  operation: create
-                  support_file: false
-                  type: file
-                  mode: "100644"
-                - content: d8412614b0d36aa29f67b0bd67fd6bcde9c8cab5704c47b594984c998b475e9b
-                  content_encoding: sha256
-                  deleted: false
-                  directory: /bundler-vendored
-                  name: vendor/cache/rubocop-ast-1.30.0.gem
-                  operation: create
-                  support_file: false
-                  type: file
-                  mode: "100644"
-                - content: 1f1618d0e3aa66095db4df40c476f16286bb74bed481bf0fa8b0c16faf81d151
-                  content_encoding: sha256
-                  deleted: false
-                  directory: /bundler-vendored
-                  name: vendor/cache/ruby-progressbar-1.13.0.gem
-                  operation: create
-                  support_file: false
-                  type: file
-                  mode: "100644"
-                - content: 9b5f8d5cd2589ff74c306ae1e680d8265216702f05b6126b772c59bbbc69ced7
-                  content_encoding: sha256
-                  deleted: false
-                  directory: /bundler-vendored
-                  name: vendor/cache/unicode-display_width-2.5.0.gem
-                  operation: create
-                  support_file: false
-                  type: file
-                  mode: "100644"
-                - content: ""
-                  content_encoding: ""
-                  deleted: true
-                  directory: /bundler-vendored
-                  name: vendor/cache/rack-2.1.4.gem
-                  operation: delete
-                  support_file: false
-                  type: file
-                - content: 8c8f89e545885be30003e70b737293e1d314477465fa4706040bf6b1b859241e
-                  content_encoding: sha256
-                  deleted: false
-                  directory: /bundler-vendored
-                  name: vendor/cache/rack-3.0.8.gem
-                  operation: create
-                  support_file: false
-                  type: file
-                  mode: "100644"
-            pr-title: Bump the ruleset group in /bundler-vendored with 2 updates
+            dependency-group:
+                name: ruleset
             pr-body: |
                 Bumps the ruleset group in /bundler-vendored with 2 updates: [rubocop](https://github.com/rubocop/rubocop) and [rack](https://github.com/rack/rack).
 
@@ -613,27 +394,249 @@ output:
                 </ul>
                 </details>
                 <br />
-            commit-message: |-
-                Bump the ruleset group in /bundler-vendored with 2 updates
+            pr-title: Bump the ruleset group in /bundler-vendored with 2 updates
+            updated-dependency-files:
+                - content: |
+                    # frozen_string_literal: true
 
-                Bumps the ruleset group in /bundler-vendored with 2 updates: [rubocop](https://github.com/rubocop/rubocop) and [rack](https://github.com/rack/rack).
+                    source "https://rubygems.org"
 
+                    gem "rubocop", "1.53.1"
+                    gem "toml-rb", "2.1.0"
+                    gem 'rack', '3.0.8'
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bundler-vendored
+                  name: Gemfile
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    GEM
+                      remote: https://rubygems.org/
+                      specs:
+                        ast (2.4.2)
+                        citrus (3.0.2)
+                        json (2.7.1)
+                        language_server-protocol (3.17.0.3)
+                        parallel (1.24.0)
+                        parser (3.3.0.0)
+                          ast (~> 2.4.1)
+                          racc
+                        racc (1.7.3)
+                        rack (3.0.8)
+                        rainbow (3.1.1)
+                        regexp_parser (2.8.3)
+                        rexml (3.2.6)
+                        rubocop (1.53.1)
+                          json (~> 2.3)
+                          language_server-protocol (>= 3.17.0)
+                          parallel (~> 1.10)
+                          parser (>= 3.2.2.3)
+                          rainbow (>= 2.2.2, < 4.0)
+                          regexp_parser (>= 1.8, < 3.0)
+                          rexml (>= 3.2.5, < 4.0)
+                          rubocop-ast (>= 1.28.0, < 2.0)
+                          ruby-progressbar (~> 1.7)
+                          unicode-display_width (>= 2.4.0, < 3.0)
+                        rubocop-ast (1.30.0)
+                          parser (>= 3.2.1.0)
+                        ruby-progressbar (1.13.0)
+                        toml-rb (2.1.0)
+                          citrus (~> 3.0, > 3.0)
+                        unicode-display_width (2.5.0)
 
-                Updates `rubocop` from 0.76.0 to 1.53.1
-                - [Release notes](https://github.com/rubocop/rubocop/releases)
-                - [Changelog](https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md)
-                - [Commits](https://github.com/rubocop/rubocop/compare/v0.76.0...v1.53.1)
+                    PLATFORMS
+                      ruby
 
-                Updates `rack` from 2.1.4 to 3.0.8
-                - [Release notes](https://github.com/rack/rack/releases)
-                - [Changelog](https://github.com/rack/rack/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/rack/rack/compare/2.1.4...v3.0.8)
-            dependency-group:
-                name: ruleset
+                    DEPENDENCIES
+                      rack (= 3.0.8)
+                      rubocop (= 1.53.1)
+                      toml-rb (= 2.1.0)
+
+                    BUNDLED WITH
+                       2.1.4
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bundler-vendored
+                  name: Gemfile.lock
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: ""
+                  content_encoding: ""
+                  deleted: true
+                  directory: /bundler-vendored
+                  name: vendor/cache/jaro_winkler-1.5.4.gem
+                  operation: delete
+                  support_file: false
+                  type: file
+                - content: ""
+                  content_encoding: ""
+                  deleted: true
+                  directory: /bundler-vendored
+                  name: vendor/cache/parallel-1.22.1.gem
+                  operation: delete
+                  support_file: false
+                  type: file
+                - content: ""
+                  content_encoding: ""
+                  deleted: true
+                  directory: /bundler-vendored
+                  name: vendor/cache/parser-3.1.2.0.gem
+                  operation: delete
+                  support_file: false
+                  type: file
+                - content: ""
+                  content_encoding: ""
+                  deleted: true
+                  directory: /bundler-vendored
+                  name: vendor/cache/rubocop-0.76.0.gem
+                  operation: delete
+                  support_file: false
+                  type: file
+                - content: ""
+                  content_encoding: ""
+                  deleted: true
+                  directory: /bundler-vendored
+                  name: vendor/cache/ruby-progressbar-1.11.0.gem
+                  operation: delete
+                  support_file: false
+                  type: file
+                - content: ""
+                  content_encoding: ""
+                  deleted: true
+                  directory: /bundler-vendored
+                  name: vendor/cache/unicode-display_width-1.6.1.gem
+                  operation: delete
+                  support_file: false
+                  type: file
+                - content: 77ff5f999ce5362336c1440b3512eff30a92e95a4d5b7e4745fc7e399c662fb4
+                  content_encoding: sha256
+                  deleted: false
+                  directory: /bundler-vendored
+                  mode: "100644"
+                  name: vendor/cache/json-2.7.1.gem
+                  operation: create
+                  support_file: false
+                  type: file
+                - content: ef4c05b1bb7e25b701d110bc9854410b379710137c6abd93f693754c67c9c249
+                  content_encoding: sha256
+                  deleted: false
+                  directory: /bundler-vendored
+                  mode: "100644"
+                  name: vendor/cache/language_server-protocol-3.17.0.3.gem
+                  operation: create
+                  support_file: false
+                  type: file
+                - content: 70a7bf935f22c6c975e267836ffba4514ad24634847f307d4863fe48a05e935b
+                  content_encoding: sha256
+                  deleted: false
+                  directory: /bundler-vendored
+                  mode: "100644"
+                  name: vendor/cache/parallel-1.24.0.gem
+                  operation: create
+                  support_file: false
+                  type: file
+                - content: 8fc2af5bb5e2cdc83f389d6b64d16f13115dcd573920fef341fbba356a1596c9
+                  content_encoding: sha256
+                  deleted: false
+                  directory: /bundler-vendored
+                  mode: "100644"
+                  name: vendor/cache/parser-3.3.0.0.gem
+                  operation: create
+                  support_file: false
+                  type: file
+                - content: ddba660f5b6b22434f53137760d3fa3f1aea2570a1e6bfe071ee8e6b3dc9eb03
+                  content_encoding: sha256
+                  deleted: false
+                  directory: /bundler-vendored
+                  mode: "100644"
+                  name: vendor/cache/racc-1.7.3.gem
+                  operation: create
+                  support_file: false
+                  type: file
+                - content: 73952cdf6551a21dcf34f2c727ebffa0d0b4bc5f90a76ce7d768e57152ad85d1
+                  content_encoding: sha256
+                  deleted: false
+                  directory: /bundler-vendored
+                  mode: "100644"
+                  name: vendor/cache/regexp_parser-2.8.3.gem
+                  operation: create
+                  support_file: false
+                  type: file
+                - content: 9ce07ca12b35bfbdae26026af1c25c3c7b8ec57742fc57e436bb65aa77a95455
+                  content_encoding: sha256
+                  deleted: false
+                  directory: /bundler-vendored
+                  mode: "100644"
+                  name: vendor/cache/rexml-3.2.6.gem
+                  operation: create
+                  support_file: false
+                  type: file
+                - content: 60848496a7658fd07b0f0a5f29995ae09008b95040656153f20a41827d1a23bd
+                  content_encoding: sha256
+                  deleted: false
+                  directory: /bundler-vendored
+                  mode: "100644"
+                  name: vendor/cache/rubocop-1.53.1.gem
+                  operation: create
+                  support_file: false
+                  type: file
+                - content: d8412614b0d36aa29f67b0bd67fd6bcde9c8cab5704c47b594984c998b475e9b
+                  content_encoding: sha256
+                  deleted: false
+                  directory: /bundler-vendored
+                  mode: "100644"
+                  name: vendor/cache/rubocop-ast-1.30.0.gem
+                  operation: create
+                  support_file: false
+                  type: file
+                - content: 1f1618d0e3aa66095db4df40c476f16286bb74bed481bf0fa8b0c16faf81d151
+                  content_encoding: sha256
+                  deleted: false
+                  directory: /bundler-vendored
+                  mode: "100644"
+                  name: vendor/cache/ruby-progressbar-1.13.0.gem
+                  operation: create
+                  support_file: false
+                  type: file
+                - content: 9b5f8d5cd2589ff74c306ae1e680d8265216702f05b6126b772c59bbbc69ced7
+                  content_encoding: sha256
+                  deleted: false
+                  directory: /bundler-vendored
+                  mode: "100644"
+                  name: vendor/cache/unicode-display_width-2.5.0.gem
+                  operation: create
+                  support_file: false
+                  type: file
+                - content: ""
+                  content_encoding: ""
+                  deleted: true
+                  directory: /bundler-vendored
+                  name: vendor/cache/rack-2.1.4.gem
+                  operation: delete
+                  support_file: false
+                  type: file
+                - content: 8c8f89e545885be30003e70b737293e1d314477465fa4706040bf6b1b859241e
+                  content_encoding: sha256
+                  deleted: false
+                  directory: /bundler-vendored
+                  mode: "100644"
+                  name: vendor/cache/rack-3.0.8.gem
+                  operation: create
+                  support_file: false
+                  type: file
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 493bad62d0d3edba2f169f2e080133e8ae60d8de
+            commit-message: |-
+                Bump toml-rb from 2.1.0 to 2.2.0 in /bundler-vendored
+
+                Bumps [toml-rb](https://github.com/emancu/toml-rb) from 2.1.0 to 2.2.0.
+                - [Release notes](https://github.com/emancu/toml-rb/releases)
+                - [Commits](https://github.com/emancu/toml-rb/compare/v2.1.0...v2.2.0)
             dependencies:
                 - name: toml-rb
                   previous-requirements:
@@ -650,6 +653,40 @@ output:
                       requirement: 2.2.0
                       source: null
                   version: 2.2.0
+            pr-body: |
+                Bumps [toml-rb](https://github.com/emancu/toml-rb) from 2.1.0 to 2.2.0.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/emancu/toml-rb/releases">toml-rb's releases</a>.</em></p>
+                <blockquote>
+                <h2>Fix failure to parse arrays with newline before comma</h2>
+                <p>Thank you <a href="https://github.com/jakecoffman"><code>@​jakecoffman</code></a> for <a href="https://redirect.github.com/emancu/toml-rb/pull/138">emancu/toml-rb#138</a></p>
+                <h2>Fix Dumper when there are #$ in array elements.</h2>
+                <p>There are special treatments to #$ when dumping string values, but this does not work properly for arrays.
+                Thanks <a href="https://github.com/shanyungyang"><code>@​shanyungyang</code></a></p>
+                <p><a href="https://redirect.github.com/emancu/toml-rb/pull/136">emancu/toml-rb#136</a></p>
+                <h2>Fixing errors caused by frozen-strings</h2>
+                <p>Thanks to <a href="https://github.com/bastelfreak"><code>@​bastelfreak</code></a> and <a href="https://github.com/ekohl"><code>@​ekohl</code></a> for <a href="https://redirect.github.com/emancu/toml-rb/pull/134">fixing this</a>.</p>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/emancu/toml-rb/commit/9f47b27c13317aabc10f7f1bcc2f97103605c5b8"><code>9f47b27</code></a> Bump to v2.2.0</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/3573b65765d6a0beb9062c8e86125c368611bada"><code>3573b65</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/138">#138</a> from jakecoffman/jakecoffman/array-whitespace</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/baae1d155c97c0ee57da5c921302996f996c00cc"><code>baae1d1</code></a> fix arrays with newline before comma fail to parse</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/bcca3a4a0cd863b7e86f47c69d4fd4757eb88ca7"><code>bcca3a4</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/137">#137</a> from kyoshidajp/fix_logo_url</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/512a9c9f4db399202770f25bbffcd9257ce1be09"><code>512a9c9</code></a> Update a logo URL</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/3ab75311107da1f4ef1f467e042e775ff28ad37f"><code>3ab7531</code></a> Bump to v2.1.2</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/c4f141ef72066cd7d1cf0c5089332b599b0b50d3"><code>c4f141e</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/136">#136</a> from shanyungyang/fix-array-dumper-with-sharp-sign</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/b96f176cc1afa11792256815195449a3228a3839"><code>b96f176</code></a> Fix linter and sytle-inconsistency.</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/19613a27af1eb258b6da2403ee944a7f83d0340f"><code>19613a2</code></a> Fix dumping when there are #$ in array elements.</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/252f1f3c542c994216e769987a5342d7a9c4b520"><code>252f1f3</code></a> Bump to v2.1.1</li>
+                <li>Additional commits viewable in <a href="https://github.com/emancu/toml-rb/compare/v2.1.0...v2.2.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            pr-title: Bump toml-rb from 2.1.0 to 2.2.0 in /bundler-vendored
             updated-dependency-files:
                 - content: |
                     # frozen_string_literal: true
@@ -719,51 +756,11 @@ output:
                   content_encoding: sha256
                   deleted: false
                   directory: /bundler-vendored
+                  mode: "100644"
                   name: vendor/cache/toml-rb-2.2.0.gem
                   operation: create
                   support_file: false
                   type: file
-                  mode: "100644"
-            pr-title: Bump toml-rb from 2.1.0 to 2.2.0 in /bundler-vendored
-            pr-body: |
-                Bumps [toml-rb](https://github.com/emancu/toml-rb) from 2.1.0 to 2.2.0.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/emancu/toml-rb/releases">toml-rb's releases</a>.</em></p>
-                <blockquote>
-                <h2>Fix failure to parse arrays with newline before comma</h2>
-                <p>Thank you <a href="https://github.com/jakecoffman"><code>@​jakecoffman</code></a> for <a href="https://redirect.github.com/emancu/toml-rb/pull/138">emancu/toml-rb#138</a></p>
-                <h2>Fix Dumper when there are #$ in array elements.</h2>
-                <p>There are special treatments to #$ when dumping string values, but this does not work properly for arrays.
-                Thanks <a href="https://github.com/shanyungyang"><code>@​shanyungyang</code></a></p>
-                <p><a href="https://redirect.github.com/emancu/toml-rb/pull/136">emancu/toml-rb#136</a></p>
-                <h2>Fixing errors caused by frozen-strings</h2>
-                <p>Thanks to <a href="https://github.com/bastelfreak"><code>@​bastelfreak</code></a> and <a href="https://github.com/ekohl"><code>@​ekohl</code></a> for <a href="https://redirect.github.com/emancu/toml-rb/pull/134">fixing this</a>.</p>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/emancu/toml-rb/commit/9f47b27c13317aabc10f7f1bcc2f97103605c5b8"><code>9f47b27</code></a> Bump to v2.2.0</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/3573b65765d6a0beb9062c8e86125c368611bada"><code>3573b65</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/138">#138</a> from jakecoffman/jakecoffman/array-whitespace</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/baae1d155c97c0ee57da5c921302996f996c00cc"><code>baae1d1</code></a> fix arrays with newline before comma fail to parse</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/bcca3a4a0cd863b7e86f47c69d4fd4757eb88ca7"><code>bcca3a4</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/137">#137</a> from kyoshidajp/fix_logo_url</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/512a9c9f4db399202770f25bbffcd9257ce1be09"><code>512a9c9</code></a> Update a logo URL</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/3ab75311107da1f4ef1f467e042e775ff28ad37f"><code>3ab7531</code></a> Bump to v2.1.2</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/c4f141ef72066cd7d1cf0c5089332b599b0b50d3"><code>c4f141e</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/136">#136</a> from shanyungyang/fix-array-dumper-with-sharp-sign</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/b96f176cc1afa11792256815195449a3228a3839"><code>b96f176</code></a> Fix linter and sytle-inconsistency.</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/19613a27af1eb258b6da2403ee944a7f83d0340f"><code>19613a2</code></a> Fix dumping when there are #$ in array elements.</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/252f1f3c542c994216e769987a5342d7a9c4b520"><code>252f1f3</code></a> Bump to v2.1.1</li>
-                <li>Additional commits viewable in <a href="https://github.com/emancu/toml-rb/compare/v2.1.0...v2.2.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump toml-rb from 2.1.0 to 2.2.0 in /bundler-vendored
-
-                Bumps [toml-rb](https://github.com/emancu/toml-rb) from 2.1.0 to 2.2.0.
-                - [Release notes](https://github.com/emancu/toml-rb/releases)
-                - [Commits](https://github.com/emancu/toml-rb/compare/v2.1.0...v2.2.0)
     - type: mark_as_processed
       expect:
         data:

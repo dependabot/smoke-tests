@@ -23,9 +23,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /cargo
             commit: 3d44220c5ab8e3c592b63373354a596b781f6e09
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -134,6 +131,13 @@ output:
       expect:
         data:
             base-commit-sha: 3d44220c5ab8e3c592b63373354a596b781f6e09
+            commit-message: |-
+                Bump time from 0.3.0-alpha-2 to 0.3.20 in /cargo
+
+                Bumps [time](https://github.com/time-rs/time) from 0.3.0-alpha-2 to 0.3.20.
+                - [Release notes](https://github.com/time-rs/time/releases)
+                - [Changelog](https://github.com/time-rs/time/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/time-rs/time/compare/v0.3.0-alpha-2...v0.3.20)
             dependencies:
                 - name: time
                   previous-requirements:
@@ -150,6 +154,122 @@ output:
                       requirement: =0.3.20
                       source: null
                   version: 0.3.20
+            pr-body: |
+                Bumps [time](https://github.com/time-rs/time) from 0.3.0-alpha-2 to 0.3.20.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/time-rs/time/releases">time's releases</a>.</em></p>
+                <blockquote>
+                <h2>v0.3.20</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.19</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.18</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.17</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.16</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.15</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.14</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.13</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.12</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.11</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.10</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.9</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.7</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.6</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.5</h2>
+                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
+                <h2>v0.3.4</h2>
+                <p>No release notes provided.</p>
+                <h2>v0.3.3</h2>
+                <p>No release notes provided.</p>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">time's changelog</a>.</em></p>
+                <blockquote>
+                <h2>0.3.20 [2023-02-24]</h2>
+                <h3>Changed</h3>
+                <ul>
+                <li>The minimum supported Rust version is now 1.63.0.</li>
+                <li>On Unix-based operating systems with known thread-safe environments, functions obtaining the local
+                offset no longer require a check that the program is single-threaded. This currently includes
+                MacOS, illumos, and NetBSD.</li>
+                </ul>
+                <h3>Added</h3>
+                <ul>
+                <li><code>[ignore]</code> component in format descriptions. A <code>count</code> modifier is required, indicating the number
+                of bytes to ignore when parsing.</li>
+                <li><code>[unix_timestamp]</code> component in format descriptions. This is currently only usable with
+                <code>OffsetDateTime</code>. Users can choose between seconds, milliseconds, microseconds, and nanoseconds,
+                and whether the sign is mandatory or optional.</li>
+                </ul>
+                <h3>Fixed</h3>
+                <ul>
+                <li>The API for declaring soundness now uses stricter atomic orderings internally.</li>
+                </ul>
+                <h2>0.3.19 [2023-02-16]</h2>
+                <h3>Fixed</h3>
+                <p>This includes the update to the <code>format_description!</code> macro, which was supposed to be included in
+                0.3.18.</p>
+                <h2>0.3.18 [2023-02-16]</h2>
+                <h3>Changed</h3>
+                <ul>
+                <li>The minimum supported Rust version is now 1.62.0.</li>
+                </ul>
+                <h3>Added</h3>
+                <ul>
+                <li><code>[first]</code> and <code>[optional]</code> items can now be included in format descriptions. To parse this at
+                runtime, you must use the <code>format_description::parse_owned</code> method.</li>
+                <li><code>format_description::parse_borrowed</code></li>
+                <li>An API has been added to opt out of soundness checks for obtaining the local offset. This replaces
+                the previous, officially unsupported <code>RUSTFLAGS=&quot;--cfg unsound_local_offset&quot;</code>. End users may call
+                <code>time::util::local_offset::set_soundness(time::util::local_offset::Soundness::Unsound)</code>. This
+                method is <code>unsafe</code> because it enables undefined behavior if its safety requirements are not
+                upheld. Note that libraries <strong>must not</strong> set this to <code>Unsound</code>, as it is impossible for a library
+                to guarantee end users uphold the required invariants.</li>
+                </ul>
+                <h3>Fixed</h3>
+                <ul>
+                <li>Correctly parse offset sign when hour is zero. The parse was previously unconditionally positive,
+                even if the sign indicated otherwise.</li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/time-rs/time/commit/d7c725c422e6cb551302601464042d434a91b6da"><code>d7c725c</code></a> v0.3.20 release</li>
+                <li><a href="https://github.com/time-rs/time/commit/91afd542871a7e81bff3fc05cd5e44c976f0d4be"><code>91afd54</code></a> Add lock to another test</li>
+                <li><a href="https://github.com/time-rs/time/commit/8dca98c9469b96e4b984f18bece876f1c20a9ed7"><code>8dca98c</code></a> Implement <code>[unix_timestamp]</code> component</li>
+                <li><a href="https://github.com/time-rs/time/commit/d07b394baf23154cf1d75582479d1967c51c179f"><code>d07b394</code></a> Further split logical and memory offset</li>
+                <li><a href="https://github.com/time-rs/time/commit/02298375180546119e7bb62a74f18a725f1f486f"><code>0229837</code></a> Slightly refactor <code>DateTime</code> internals</li>
+                <li><a href="https://github.com/time-rs/time/commit/1daedfb70518e147e1500ee8dcf4d2b3b60a5925"><code>1daedfb</code></a> Add missing test for new error variant</li>
+                <li><a href="https://github.com/time-rs/time/commit/4edf73a03519b372db35e9bcfd2af7f1b9c312cb"><code>4edf73a</code></a> Use <code>bug!</code> instead of <code>unreachable!</code></li>
+                <li><a href="https://github.com/time-rs/time/commit/0e82474728b6a2204ec8ae5799f73eb711012e09"><code>0e82474</code></a> Use <code>explicit_generic_args_with_impl_trait</code></li>
+                <li><a href="https://github.com/time-rs/time/commit/3b6d77f1dc1064a45bafe046847f19b50cfe79bc"><code>3b6d77f</code></a> Bump MSRV to 1.63</li>
+                <li><a href="https://github.com/time-rs/time/commit/eb7b60e74ea8e2a2b7dd45d6e6012d35fa53e020"><code>eb7b60e</code></a> Always test local offset</li>
+                <li>Additional commits viewable in <a href="https://github.com/time-rs/time/compare/v0.3.0-alpha-2...v0.3.20">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            pr-title: Bump time from 0.3.0-alpha-2 to 0.3.20 in /cargo
             updated-dependency-files:
                 - content: |
                     [package]
@@ -320,133 +440,17 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump time from 0.3.0-alpha-2 to 0.3.20 in /cargo
-            pr-body: |
-                Bumps [time](https://github.com/time-rs/time) from 0.3.0-alpha-2 to 0.3.20.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/time-rs/time/releases">time's releases</a>.</em></p>
-                <blockquote>
-                <h2>v0.3.20</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.19</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.18</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.17</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.16</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.15</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.14</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.13</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.12</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.11</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.10</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.9</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.7</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.6</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.5</h2>
-                <p>See the <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">changelog</a> for details.</p>
-                <h2>v0.3.4</h2>
-                <p>No release notes provided.</p>
-                <h2>v0.3.3</h2>
-                <p>No release notes provided.</p>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/time-rs/time/blob/main/CHANGELOG.md">time's changelog</a>.</em></p>
-                <blockquote>
-                <h2>0.3.20 [2023-02-24]</h2>
-                <h3>Changed</h3>
-                <ul>
-                <li>The minimum supported Rust version is now 1.63.0.</li>
-                <li>On Unix-based operating systems with known thread-safe environments, functions obtaining the local
-                offset no longer require a check that the program is single-threaded. This currently includes
-                MacOS, illumos, and NetBSD.</li>
-                </ul>
-                <h3>Added</h3>
-                <ul>
-                <li><code>[ignore]</code> component in format descriptions. A <code>count</code> modifier is required, indicating the number
-                of bytes to ignore when parsing.</li>
-                <li><code>[unix_timestamp]</code> component in format descriptions. This is currently only usable with
-                <code>OffsetDateTime</code>. Users can choose between seconds, milliseconds, microseconds, and nanoseconds,
-                and whether the sign is mandatory or optional.</li>
-                </ul>
-                <h3>Fixed</h3>
-                <ul>
-                <li>The API for declaring soundness now uses stricter atomic orderings internally.</li>
-                </ul>
-                <h2>0.3.19 [2023-02-16]</h2>
-                <h3>Fixed</h3>
-                <p>This includes the update to the <code>format_description!</code> macro, which was supposed to be included in
-                0.3.18.</p>
-                <h2>0.3.18 [2023-02-16]</h2>
-                <h3>Changed</h3>
-                <ul>
-                <li>The minimum supported Rust version is now 1.62.0.</li>
-                </ul>
-                <h3>Added</h3>
-                <ul>
-                <li><code>[first]</code> and <code>[optional]</code> items can now be included in format descriptions. To parse this at
-                runtime, you must use the <code>format_description::parse_owned</code> method.</li>
-                <li><code>format_description::parse_borrowed</code></li>
-                <li>An API has been added to opt out of soundness checks for obtaining the local offset. This replaces
-                the previous, officially unsupported <code>RUSTFLAGS=&quot;--cfg unsound_local_offset&quot;</code>. End users may call
-                <code>time::util::local_offset::set_soundness(time::util::local_offset::Soundness::Unsound)</code>. This
-                method is <code>unsafe</code> because it enables undefined behavior if its safety requirements are not
-                upheld. Note that libraries <strong>must not</strong> set this to <code>Unsound</code>, as it is impossible for a library
-                to guarantee end users uphold the required invariants.</li>
-                </ul>
-                <h3>Fixed</h3>
-                <ul>
-                <li>Correctly parse offset sign when hour is zero. The parse was previously unconditionally positive,
-                even if the sign indicated otherwise.</li>
-                </ul>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/time-rs/time/commit/d7c725c422e6cb551302601464042d434a91b6da"><code>d7c725c</code></a> v0.3.20 release</li>
-                <li><a href="https://github.com/time-rs/time/commit/91afd542871a7e81bff3fc05cd5e44c976f0d4be"><code>91afd54</code></a> Add lock to another test</li>
-                <li><a href="https://github.com/time-rs/time/commit/8dca98c9469b96e4b984f18bece876f1c20a9ed7"><code>8dca98c</code></a> Implement <code>[unix_timestamp]</code> component</li>
-                <li><a href="https://github.com/time-rs/time/commit/d07b394baf23154cf1d75582479d1967c51c179f"><code>d07b394</code></a> Further split logical and memory offset</li>
-                <li><a href="https://github.com/time-rs/time/commit/02298375180546119e7bb62a74f18a725f1f486f"><code>0229837</code></a> Slightly refactor <code>DateTime</code> internals</li>
-                <li><a href="https://github.com/time-rs/time/commit/1daedfb70518e147e1500ee8dcf4d2b3b60a5925"><code>1daedfb</code></a> Add missing test for new error variant</li>
-                <li><a href="https://github.com/time-rs/time/commit/4edf73a03519b372db35e9bcfd2af7f1b9c312cb"><code>4edf73a</code></a> Use <code>bug!</code> instead of <code>unreachable!</code></li>
-                <li><a href="https://github.com/time-rs/time/commit/0e82474728b6a2204ec8ae5799f73eb711012e09"><code>0e82474</code></a> Use <code>explicit_generic_args_with_impl_trait</code></li>
-                <li><a href="https://github.com/time-rs/time/commit/3b6d77f1dc1064a45bafe046847f19b50cfe79bc"><code>3b6d77f</code></a> Bump MSRV to 1.63</li>
-                <li><a href="https://github.com/time-rs/time/commit/eb7b60e74ea8e2a2b7dd45d6e6012d35fa53e020"><code>eb7b60e</code></a> Always test local offset</li>
-                <li>Additional commits viewable in <a href="https://github.com/time-rs/time/compare/v0.3.0-alpha-2...v0.3.20">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump time from 0.3.0-alpha-2 to 0.3.20 in /cargo
-
-                Bumps [time](https://github.com/time-rs/time) from 0.3.0-alpha-2 to 0.3.20.
-                - [Release notes](https://github.com/time-rs/time/releases)
-                - [Changelog](https://github.com/time-rs/time/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/time-rs/time/compare/v0.3.0-alpha-2...v0.3.20)
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 3d44220c5ab8e3c592b63373354a596b781f6e09
+            commit-message: |-
+                Bump regex from 1.6.0 to 1.7.3 in /cargo
+
+                Bumps [regex](https://github.com/rust-lang/regex) from 1.6.0 to 1.7.3.
+                - [Release notes](https://github.com/rust-lang/regex/releases)
+                - [Changelog](https://github.com/rust-lang/regex/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/rust-lang/regex/compare/1.6.0...1.7.3)
             dependencies:
                 - name: regex
                   previous-requirements:
@@ -463,6 +467,67 @@ output:
                       requirement: '>=1.6.0, <1.8.0'
                       source: null
                   version: 1.7.3
+            pr-body: |
+                Bumps [regex](https://github.com/rust-lang/regex) from 1.6.0 to 1.7.3.
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/rust-lang/regex/blob/master/CHANGELOG.md">regex's changelog</a>.</em></p>
+                <blockquote>
+                <h1>1.7.3 (2023-03-24)</h1>
+                <p>This is a small release that fixes a bug in <code>Regex::shortest_match_at</code> that
+                could cause it to panic, even when the offset given is valid.</p>
+                <p>Bug fixes:</p>
+                <ul>
+                <li>[BUG <a href="https://redirect.github.com/rust-lang/regex/issues/969">#969</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/969">rust-lang/regex#969</a>):
+                Fix a bug in how the reverse DFA was called for <code>Regex::shortest_match_at</code>.</li>
+                </ul>
+                <h1>1.7.2 (2023-03-21)</h1>
+                <p>This is a small release that fixes a failing test on FreeBSD.</p>
+                <p>Bug fixes:</p>
+                <ul>
+                <li>[BUG <a href="https://redirect.github.com/rust-lang/regex/issues/967">#967</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/967">rust-lang/regex#967</a>):
+                Fix &quot;no stack overflow&quot; test which can fail due to the small stack size.</li>
+                </ul>
+                <h1>1.7.1 (2023-01-09)</h1>
+                <p>This release was done principally to try and fix the doc.rs rendering for the
+                regex crate.</p>
+                <p>Performance improvements:</p>
+                <ul>
+                <li>[PERF <a href="https://redirect.github.com/rust-lang/regex/issues/930">#930</a>](<a href="https://redirect.github.com/rust-lang/regex/pull/930">rust-lang/regex#930</a>):
+                Optimize <code>replacen</code>. This also applies to <code>replace</code>, but not <code>replace_all</code>.</li>
+                </ul>
+                <p>Bug fixes:</p>
+                <ul>
+                <li>[BUG <a href="https://redirect.github.com/rust-lang/regex/issues/945">#945</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/945">rust-lang/regex#945</a>):
+                Maybe fix rustdoc rendering by just bumping a new release?</li>
+                </ul>
+                <h1>1.7.0 (2022-11-05)</h1>
+                <p>This release principally includes an upgrade to Unicode 15.</p>
+                <p>New features:</p>
+                <ul>
+                <li>[FEATURE <a href="https://redirect.github.com/rust-lang/regex/issues/832">#832</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/916">rust-lang/regex#916</a>):
+                Upgrade to Unicode 15.</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rust-lang/regex/commit/9582040009820380a16819ca0d1ae262c7d454b0"><code>9582040</code></a> 1.7.3</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/9562ccd1612c3b7b0ca2122b27c3c9768e10f194"><code>9562ccd</code></a> changelog: 1.7.3</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/d94f95523aed7fecc71fc2e082d1458f69dd8de3"><code>d94f955</code></a> dfa: fix bug in how the reverse DFA is called</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/32fed9429eafba0ae92a64b01796a0c5a75b88c8"><code>32fed94</code></a> 1.7.2</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/6a7ba1e5781c90487b8ad9c446eebbb28d6b2c66"><code>6a7ba1e</code></a> deps: bump to regex-syntax 0.6.29</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/72d482f911c4057f9a31f7f434dfe27c929a8913"><code>72d482f</code></a> regex-syntax-0.6.29</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/48b3ba4df73d8917a000e28b7a13bb084a0b6090"><code>48b3ba4</code></a> changelog: 1.7.2</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/d8e22ddf9933c37daf6363837b32290d2961ffdb"><code>d8e22dd</code></a> syntax: tweak the &quot;no stack overflow&quot; test</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/a9b2e02352db92ce1f6e5b7ecd41b8bbffbe161a"><code>a9b2e02</code></a> 1.7.1</li>
+                <li><a href="https://github.com/rust-lang/regex/commit/98c1b63ffe1d4d0c385137cf878e0e959454ce3d"><code>98c1b63</code></a> changelog: 1.7.1</li>
+                <li>Additional commits viewable in <a href="https://github.com/rust-lang/regex/compare/1.6.0...1.7.3">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            pr-title: Bump regex from 1.6.0 to 1.7.3 in /cargo
             updated-dependency-files:
                 - content: |
                     [package]
@@ -650,78 +715,16 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump regex from 1.6.0 to 1.7.3 in /cargo
-            pr-body: |
-                Bumps [regex](https://github.com/rust-lang/regex) from 1.6.0 to 1.7.3.
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/rust-lang/regex/blob/master/CHANGELOG.md">regex's changelog</a>.</em></p>
-                <blockquote>
-                <h1>1.7.3 (2023-03-24)</h1>
-                <p>This is a small release that fixes a bug in <code>Regex::shortest_match_at</code> that
-                could cause it to panic, even when the offset given is valid.</p>
-                <p>Bug fixes:</p>
-                <ul>
-                <li>[BUG <a href="https://redirect.github.com/rust-lang/regex/issues/969">#969</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/969">rust-lang/regex#969</a>):
-                Fix a bug in how the reverse DFA was called for <code>Regex::shortest_match_at</code>.</li>
-                </ul>
-                <h1>1.7.2 (2023-03-21)</h1>
-                <p>This is a small release that fixes a failing test on FreeBSD.</p>
-                <p>Bug fixes:</p>
-                <ul>
-                <li>[BUG <a href="https://redirect.github.com/rust-lang/regex/issues/967">#967</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/967">rust-lang/regex#967</a>):
-                Fix &quot;no stack overflow&quot; test which can fail due to the small stack size.</li>
-                </ul>
-                <h1>1.7.1 (2023-01-09)</h1>
-                <p>This release was done principally to try and fix the doc.rs rendering for the
-                regex crate.</p>
-                <p>Performance improvements:</p>
-                <ul>
-                <li>[PERF <a href="https://redirect.github.com/rust-lang/regex/issues/930">#930</a>](<a href="https://redirect.github.com/rust-lang/regex/pull/930">rust-lang/regex#930</a>):
-                Optimize <code>replacen</code>. This also applies to <code>replace</code>, but not <code>replace_all</code>.</li>
-                </ul>
-                <p>Bug fixes:</p>
-                <ul>
-                <li>[BUG <a href="https://redirect.github.com/rust-lang/regex/issues/945">#945</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/945">rust-lang/regex#945</a>):
-                Maybe fix rustdoc rendering by just bumping a new release?</li>
-                </ul>
-                <h1>1.7.0 (2022-11-05)</h1>
-                <p>This release principally includes an upgrade to Unicode 15.</p>
-                <p>New features:</p>
-                <ul>
-                <li>[FEATURE <a href="https://redirect.github.com/rust-lang/regex/issues/832">#832</a>](<a href="https://redirect.github.com/rust-lang/regex/issues/916">rust-lang/regex#916</a>):
-                Upgrade to Unicode 15.</li>
-                </ul>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/rust-lang/regex/commit/9582040009820380a16819ca0d1ae262c7d454b0"><code>9582040</code></a> 1.7.3</li>
-                <li><a href="https://github.com/rust-lang/regex/commit/9562ccd1612c3b7b0ca2122b27c3c9768e10f194"><code>9562ccd</code></a> changelog: 1.7.3</li>
-                <li><a href="https://github.com/rust-lang/regex/commit/d94f95523aed7fecc71fc2e082d1458f69dd8de3"><code>d94f955</code></a> dfa: fix bug in how the reverse DFA is called</li>
-                <li><a href="https://github.com/rust-lang/regex/commit/32fed9429eafba0ae92a64b01796a0c5a75b88c8"><code>32fed94</code></a> 1.7.2</li>
-                <li><a href="https://github.com/rust-lang/regex/commit/6a7ba1e5781c90487b8ad9c446eebbb28d6b2c66"><code>6a7ba1e</code></a> deps: bump to regex-syntax 0.6.29</li>
-                <li><a href="https://github.com/rust-lang/regex/commit/72d482f911c4057f9a31f7f434dfe27c929a8913"><code>72d482f</code></a> regex-syntax-0.6.29</li>
-                <li><a href="https://github.com/rust-lang/regex/commit/48b3ba4df73d8917a000e28b7a13bb084a0b6090"><code>48b3ba4</code></a> changelog: 1.7.2</li>
-                <li><a href="https://github.com/rust-lang/regex/commit/d8e22ddf9933c37daf6363837b32290d2961ffdb"><code>d8e22dd</code></a> syntax: tweak the &quot;no stack overflow&quot; test</li>
-                <li><a href="https://github.com/rust-lang/regex/commit/a9b2e02352db92ce1f6e5b7ecd41b8bbffbe161a"><code>a9b2e02</code></a> 1.7.1</li>
-                <li><a href="https://github.com/rust-lang/regex/commit/98c1b63ffe1d4d0c385137cf878e0e959454ce3d"><code>98c1b63</code></a> changelog: 1.7.1</li>
-                <li>Additional commits viewable in <a href="https://github.com/rust-lang/regex/compare/1.6.0...1.7.3">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump regex from 1.6.0 to 1.7.3 in /cargo
-
-                Bumps [regex](https://github.com/rust-lang/regex) from 1.6.0 to 1.7.3.
-                - [Release notes](https://github.com/rust-lang/regex/releases)
-                - [Changelog](https://github.com/rust-lang/regex/blob/master/CHANGELOG.md)
-                - [Commits](https://github.com/rust-lang/regex/compare/1.6.0...1.7.3)
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 3d44220c5ab8e3c592b63373354a596b781f6e09
+            commit-message: |-
+                Bump rand from 0.8.4 to 0.8.5 in /cargo
+
+                Bumps [rand](https://github.com/rust-random/rand) from 0.8.4 to 0.8.5.
+                - [Changelog](https://github.com/rust-random/rand/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/rust-random/rand/compare/8792268dfe57e49bb4518190bf4fe66176759a44...937320cbfeebd4352a23086d9c6e68f067f74644)
             dependencies:
                 - name: rand
                   previous-requirements:
@@ -746,6 +749,52 @@ output:
                         type: git
                         url: ssh://git@github.com/rust-random/rand.git
                   version: 937320cbfeebd4352a23086d9c6e68f067f74644
+            pr-body: |
+                Bumps [rand](https://github.com/rust-random/rand) from 0.8.4 to 0.8.5.
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/rust-random/rand/blob/master/CHANGELOG.md">rand's changelog</a>.</em></p>
+                <blockquote>
+                <h2>[0.8.5] - 2021-08-20</h2>
+                <h3>Fixes</h3>
+                <ul>
+                <li>Fix build on non-32/64-bit architectures (<a href="https://redirect.github.com/rust-random/rand/issues/1144">#1144</a>)</li>
+                <li>Fix &quot;min_const_gen&quot; feature for <code>no_std</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1173">#1173</a>)</li>
+                <li>Check <code>libc::pthread_atfork</code> return value with panic on error (<a href="https://redirect.github.com/rust-random/rand/issues/1178">#1178</a>)</li>
+                <li>More robust reseeding in case <code>ReseedingRng</code> is used from a fork handler (<a href="https://redirect.github.com/rust-random/rand/issues/1178">#1178</a>)</li>
+                <li>Fix nightly: remove unused <code>slice_partition_at_index</code> feature (<a href="https://redirect.github.com/rust-random/rand/issues/1215">#1215</a>)</li>
+                <li>Fix nightly + <code>simd_support</code>: update <code>packed_simd</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1216">#1216</a>)</li>
+                </ul>
+                <h3>Rngs</h3>
+                <ul>
+                <li><code>StdRng</code>: Switch from HC128 to ChaCha12 on emscripten (<a href="https://redirect.github.com/rust-random/rand/issues/1142">#1142</a>).
+                We now use ChaCha12 on all platforms.</li>
+                </ul>
+                <h3>Documentation</h3>
+                <ul>
+                <li>Added docs about rand's use of const generics (<a href="https://redirect.github.com/rust-random/rand/issues/1150">#1150</a>)</li>
+                <li>Better random chars example (<a href="https://redirect.github.com/rust-random/rand/issues/1157">#1157</a>)</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rust-random/rand/commit/937320cbfeebd4352a23086d9c6e68f067f74644"><code>937320c</code></a> Update CHANGELOG for 0.8.5 (<a href="https://redirect.github.com/rust-random/rand/issues/1221">#1221</a>)</li>
+                <li><a href="https://github.com/rust-random/rand/commit/2924af688d352b889322870d017356f12651866b"><code>2924af6</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1183">#1183</a> from vks/fill-float-doc</li>
+                <li><a href="https://github.com/rust-random/rand/commit/dbbc1bf3176138c867f3d84c0c4d288119a5a84e"><code>dbbc1bf</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1218">#1218</a> from Will-Low/master</li>
+                <li><a href="https://github.com/rust-random/rand/commit/9f20df04d88698c38515833d6db62d7eb50d8b80"><code>9f20df0</code></a> Making distributions comparable by deriving PartialEq. Tests included</li>
+                <li><a href="https://github.com/rust-random/rand/commit/a407bdfa4563d0cfbf744049242926c8de079d3f"><code>a407bdf</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1216">#1216</a> from rust-random/work5</li>
+                <li><a href="https://github.com/rust-random/rand/commit/d3ca11b0bcc1f42fe34ba4f90f99509b7eb4ff18"><code>d3ca11b</code></a> Update to packed_simd_2 0.3.7</li>
+                <li><a href="https://github.com/rust-random/rand/commit/fa04c15d0bb5842fdbdbb73d7a53ead36f3fcf52"><code>fa04c15</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1215">#1215</a> from Lantern-chat/master</li>
+                <li><a href="https://github.com/rust-random/rand/commit/73f8ffd16379390e624ac53cd6882dd679dd9a6f"><code>73f8ffd</code></a> Remove unused <code>slice_partition_at_index</code> feature</li>
+                <li><a href="https://github.com/rust-random/rand/commit/8f372500f05dfadcff6c35e773e81029ab7debad"><code>8f37250</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1208">#1208</a> from newpavlov/rand_distr/fix_no_std</li>
+                <li><a href="https://github.com/rust-random/rand/commit/9ef737ba5b814f6ab36cebafb59ad29885d68a05"><code>9ef737b</code></a> update changelog</li>
+                <li>Additional commits viewable in <a href="https://github.com/rust-random/rand/compare/8792268dfe57e49bb4518190bf4fe66176759a44...937320cbfeebd4352a23086d9c6e68f067f74644">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            pr-title: Bump rand from 0.8.4 to 0.8.5 in /cargo
             updated-dependency-files:
                 - content: |
                     [package]
@@ -924,62 +973,16 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump rand from 0.8.4 to 0.8.5 in /cargo
-            pr-body: |
-                Bumps [rand](https://github.com/rust-random/rand) from 0.8.4 to 0.8.5.
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/rust-random/rand/blob/master/CHANGELOG.md">rand's changelog</a>.</em></p>
-                <blockquote>
-                <h2>[0.8.5] - 2021-08-20</h2>
-                <h3>Fixes</h3>
-                <ul>
-                <li>Fix build on non-32/64-bit architectures (<a href="https://redirect.github.com/rust-random/rand/issues/1144">#1144</a>)</li>
-                <li>Fix &quot;min_const_gen&quot; feature for <code>no_std</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1173">#1173</a>)</li>
-                <li>Check <code>libc::pthread_atfork</code> return value with panic on error (<a href="https://redirect.github.com/rust-random/rand/issues/1178">#1178</a>)</li>
-                <li>More robust reseeding in case <code>ReseedingRng</code> is used from a fork handler (<a href="https://redirect.github.com/rust-random/rand/issues/1178">#1178</a>)</li>
-                <li>Fix nightly: remove unused <code>slice_partition_at_index</code> feature (<a href="https://redirect.github.com/rust-random/rand/issues/1215">#1215</a>)</li>
-                <li>Fix nightly + <code>simd_support</code>: update <code>packed_simd</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1216">#1216</a>)</li>
-                </ul>
-                <h3>Rngs</h3>
-                <ul>
-                <li><code>StdRng</code>: Switch from HC128 to ChaCha12 on emscripten (<a href="https://redirect.github.com/rust-random/rand/issues/1142">#1142</a>).
-                We now use ChaCha12 on all platforms.</li>
-                </ul>
-                <h3>Documentation</h3>
-                <ul>
-                <li>Added docs about rand's use of const generics (<a href="https://redirect.github.com/rust-random/rand/issues/1150">#1150</a>)</li>
-                <li>Better random chars example (<a href="https://redirect.github.com/rust-random/rand/issues/1157">#1157</a>)</li>
-                </ul>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/rust-random/rand/commit/937320cbfeebd4352a23086d9c6e68f067f74644"><code>937320c</code></a> Update CHANGELOG for 0.8.5 (<a href="https://redirect.github.com/rust-random/rand/issues/1221">#1221</a>)</li>
-                <li><a href="https://github.com/rust-random/rand/commit/2924af688d352b889322870d017356f12651866b"><code>2924af6</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1183">#1183</a> from vks/fill-float-doc</li>
-                <li><a href="https://github.com/rust-random/rand/commit/dbbc1bf3176138c867f3d84c0c4d288119a5a84e"><code>dbbc1bf</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1218">#1218</a> from Will-Low/master</li>
-                <li><a href="https://github.com/rust-random/rand/commit/9f20df04d88698c38515833d6db62d7eb50d8b80"><code>9f20df0</code></a> Making distributions comparable by deriving PartialEq. Tests included</li>
-                <li><a href="https://github.com/rust-random/rand/commit/a407bdfa4563d0cfbf744049242926c8de079d3f"><code>a407bdf</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1216">#1216</a> from rust-random/work5</li>
-                <li><a href="https://github.com/rust-random/rand/commit/d3ca11b0bcc1f42fe34ba4f90f99509b7eb4ff18"><code>d3ca11b</code></a> Update to packed_simd_2 0.3.7</li>
-                <li><a href="https://github.com/rust-random/rand/commit/fa04c15d0bb5842fdbdbb73d7a53ead36f3fcf52"><code>fa04c15</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1215">#1215</a> from Lantern-chat/master</li>
-                <li><a href="https://github.com/rust-random/rand/commit/73f8ffd16379390e624ac53cd6882dd679dd9a6f"><code>73f8ffd</code></a> Remove unused <code>slice_partition_at_index</code> feature</li>
-                <li><a href="https://github.com/rust-random/rand/commit/8f372500f05dfadcff6c35e773e81029ab7debad"><code>8f37250</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1208">#1208</a> from newpavlov/rand_distr/fix_no_std</li>
-                <li><a href="https://github.com/rust-random/rand/commit/9ef737ba5b814f6ab36cebafb59ad29885d68a05"><code>9ef737b</code></a> update changelog</li>
-                <li>Additional commits viewable in <a href="https://github.com/rust-random/rand/compare/8792268dfe57e49bb4518190bf4fe66176759a44...937320cbfeebd4352a23086d9c6e68f067f74644">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump rand from 0.8.4 to 0.8.5 in /cargo
-
-                Bumps [rand](https://github.com/rust-random/rand) from 0.8.4 to 0.8.5.
-                - [Changelog](https://github.com/rust-random/rand/blob/master/CHANGELOG.md)
-                - [Commits](https://github.com/rust-random/rand/compare/8792268dfe57e49bb4518190bf4fe66176759a44...937320cbfeebd4352a23086d9c6e68f067f74644)
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 3d44220c5ab8e3c592b63373354a596b781f6e09
+            commit-message: |-
+                Bump itoa from 1.0.5 to 1.0.6 in /cargo
+
+                Bumps [itoa](https://github.com/dtolnay/itoa) from 1.0.5 to 1.0.6.
+                - [Release notes](https://github.com/dtolnay/itoa/releases)
+                - [Commits](https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...3cab737d59c60014655268a79930861db300023d)
             dependencies:
                 - name: itoa
                   previous-requirements:
@@ -1004,6 +1007,23 @@ output:
                         type: git
                         url: https://github.com/dtolnay/itoa.git
                   version: 3cab737d59c60014655268a79930861db300023d
+            pr-body: |
+                Bumps [itoa](https://github.com/dtolnay/itoa) from 1.0.5 to 1.0.6.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/dtolnay/itoa/commit/3cab737d59c60014655268a79930861db300023d"><code>3cab737</code></a> Release 1.0.6</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/e9573cd99ec1fe0bdf229c0614327c1196946e98"><code>e9573cd</code></a> Enable type layout randomization in CI on nightly</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/320250e56ddf75f3793b7bd448744fef2b501728"><code>320250e</code></a> Support a manual trigger on CI workflow</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/40db9e7ea8c5ccc75aaa6b971bcdbfbc590805f1"><code>40db9e7</code></a> Prevent actions duplication on noop merge commits</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/d79365b257c8d652c4d6ee3641a47209eed88df1"><code>d79365b</code></a> Speed up cargo fuzz CI job</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/5bd582c9654c7eba3d95e87256fc2c929c1745e2"><code>5bd582c</code></a> Opt out -Zrustdoc-scrape-examples on docs.rs</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/a77f3c911f519933f535ad672a98c10e977f77d7"><code>a77f3c9</code></a> Sync license text with rust-lang repos</li>
+                <li>See full diff in <a href="https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...3cab737d59c60014655268a79930861db300023d">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            pr-title: Bump itoa from 1.0.5 to 1.0.6 in /cargo
             updated-dependency-files:
                 - content: |
                     [package]
@@ -1191,39 +1211,74 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump itoa from 1.0.5 to 1.0.6 in /cargo
-            pr-body: |
-                Bumps [itoa](https://github.com/dtolnay/itoa) from 1.0.5 to 1.0.6.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/dtolnay/itoa/commit/3cab737d59c60014655268a79930861db300023d"><code>3cab737</code></a> Release 1.0.6</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/e9573cd99ec1fe0bdf229c0614327c1196946e98"><code>e9573cd</code></a> Enable type layout randomization in CI on nightly</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/320250e56ddf75f3793b7bd448744fef2b501728"><code>320250e</code></a> Support a manual trigger on CI workflow</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/40db9e7ea8c5ccc75aaa6b971bcdbfbc590805f1"><code>40db9e7</code></a> Prevent actions duplication on noop merge commits</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/d79365b257c8d652c4d6ee3641a47209eed88df1"><code>d79365b</code></a> Speed up cargo fuzz CI job</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/5bd582c9654c7eba3d95e87256fc2c929c1745e2"><code>5bd582c</code></a> Opt out -Zrustdoc-scrape-examples on docs.rs</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/a77f3c911f519933f535ad672a98c10e977f77d7"><code>a77f3c9</code></a> Sync license text with rust-lang repos</li>
-                <li>See full diff in <a href="https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...3cab737d59c60014655268a79930861db300023d">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump itoa from 1.0.5 to 1.0.6 in /cargo
-
-                Bumps [itoa](https://github.com/dtolnay/itoa) from 1.0.5 to 1.0.6.
-                - [Release notes](https://github.com/dtolnay/itoa/releases)
-                - [Commits](https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...3cab737d59c60014655268a79930861db300023d)
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 3d44220c5ab8e3c592b63373354a596b781f6e09
+            commit-message: |-
+                Bump libc from 0.2.141 to 0.2.142 in /cargo
+
+                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.141 to 0.2.142.
+                - [Release notes](https://github.com/rust-lang/libc/releases)
+                - [Commits](https://github.com/rust-lang/libc/compare/0.2.141...0.2.142)
             dependencies:
                 - name: libc
                   previous-requirements: []
                   previous-version: 0.2.141
                   requirements: []
                   version: 0.2.142
+            pr-body: |
+                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.141 to 0.2.142.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/rust-lang/libc/releases">libc's releases</a>.</em></p>
+                <blockquote>
+                <h2>0.2.142</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>netbsd add MAP_ALIGNED macro by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3170">rust-lang/libc#3170</a></li>
+                <li>Install libnghttp2 on all FreeBSD jobs by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3192">rust-lang/libc#3192</a></li>
+                <li>freebsd add MAP_ALIGNED macro by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3167">rust-lang/libc#3167</a></li>
+                <li>Add more declarations for AIX by <a href="https://github.com/ecnelises"><code>@​ecnelises</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3144">rust-lang/libc#3144</a></li>
+                <li>Remove AIX specific definition of sigval by <a href="https://github.com/ecnelises"><code>@​ecnelises</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3189">rust-lang/libc#3189</a></li>
+                <li>haiku adding bsd missing constants by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3193">rust-lang/libc#3193</a></li>
+                <li>netbsd,openbsd: add more waitid related constants by <a href="https://github.com/valpackett"><code>@​valpackett</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3188">rust-lang/libc#3188</a></li>
+                <li>Pin FreeBSD 14 version on CI by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3203">rust-lang/libc#3203</a></li>
+                <li>adding getdtablesize on redox by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3199">rust-lang/libc#3199</a></li>
+                <li>Add kexec_file_load system call for arm linux by <a href="https://github.com/ribalda"><code>@​ribalda</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3200">rust-lang/libc#3200</a></li>
+                <li>Upstream a few more constants from rustix. by <a href="https://github.com/sunfishcode"><code>@​sunfishcode</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3173">rust-lang/libc#3173</a></li>
+                <li>freebsd i686 add ucontext/mcontext by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3202">rust-lang/libc#3202</a></li>
+                <li>fuchsia: add definitions for riscv64 by <a href="https://github.com/ComputerDruid"><code>@​ComputerDruid</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3204">rust-lang/libc#3204</a></li>
+                <li>Mention unstable values on PR template by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3207">rust-lang/libc#3207</a></li>
+                <li>fix: CMSG_HEADER_ALIGNMENT was not properly equal to the C Header file in illumos by <a href="https://github.com/Toasterson"><code>@​Toasterson</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3171">rust-lang/libc#3171</a></li>
+                <li>Bump to 0.2.142 by <a href="https://github.com/ComputerDruid"><code>@​ComputerDruid</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3208">rust-lang/libc#3208</a></li>
+                </ul>
+                <h2>New Contributors</h2>
+                <ul>
+                <li><a href="https://github.com/ComputerDruid"><code>@​ComputerDruid</code></a> made their first contribution in <a href="https://redirect.github.com/rust-lang/libc/pull/3204">rust-lang/libc#3204</a></li>
+                <li><a href="https://github.com/Toasterson"><code>@​Toasterson</code></a> made their first contribution in <a href="https://redirect.github.com/rust-lang/libc/pull/3171">rust-lang/libc#3171</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/rust-lang/libc/compare/0.2.141...0.2.142">https://github.com/rust-lang/libc/compare/0.2.141...0.2.142</a></p>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rust-lang/libc/commit/e4cccf92421e5a8a2bf56fed9bd4278eda1f7907"><code>e4cccf9</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3208">#3208</a> - ComputerDruid:bump_142, r=JohnTitor</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/79b7d3c7520a29c98f346285b1184091fd36fff2"><code>79b7d3c</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3171">#3171</a> - Toasterson:master, r=JohnTitor,pfmooney</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/a964608984589fb4190304e7cad14afec993a250"><code>a964608</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3207">#3207</a> - JohnTitor:placeholder-pr-template, r=JohnTitor</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/38702b2623a2acfbf1957263f0c84950ef071aa4"><code>38702b2</code></a> Bump to 0.2.142</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/4e82ee6998753f49f4ac6c08459e8cdc0d0c66a6"><code>4e82ee6</code></a> Mention unstable values on PR template</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/4983ced7004f075672e0663ebbc4e8122302f1e1"><code>4983ced</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3204">#3204</a> - ComputerDruid:riscv64, r=JohnTitor</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/9cc77816fae6b66172798df7bc975e5faae754f2"><code>9cc7781</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3202">#3202</a> - devnexen:fbsd_ucontext_i686, r=JohnTitor</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/157ac25cc09ac65fdcadf02ffd5e797841a68cb3"><code>157ac25</code></a> fuchsia: add definitions for riscv64</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/b811b70f6676a24c16a786a3549eb6b35071c13c"><code>b811b70</code></a> freebsd i686 add ucontext/mcontext</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/8077351f4b28a1b9fc46e2ac11a530d782264273"><code>8077351</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3173">#3173</a> - sunfishcode:sunfishcode/upstream, r=JohnTitor</li>
+                <li>Additional commits viewable in <a href="https://github.com/rust-lang/libc/compare/0.2.141...0.2.142">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            pr-title: Bump libc from 0.2.141 to 0.2.142 in /cargo
             updated-dependency-files:
                 - content: |
                     # This file is automatically @generated by Cargo.
@@ -1393,64 +1448,6 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump libc from 0.2.141 to 0.2.142 in /cargo
-            pr-body: |
-                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.141 to 0.2.142.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/rust-lang/libc/releases">libc's releases</a>.</em></p>
-                <blockquote>
-                <h2>0.2.142</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>netbsd add MAP_ALIGNED macro by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3170">rust-lang/libc#3170</a></li>
-                <li>Install libnghttp2 on all FreeBSD jobs by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3192">rust-lang/libc#3192</a></li>
-                <li>freebsd add MAP_ALIGNED macro by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3167">rust-lang/libc#3167</a></li>
-                <li>Add more declarations for AIX by <a href="https://github.com/ecnelises"><code>@​ecnelises</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3144">rust-lang/libc#3144</a></li>
-                <li>Remove AIX specific definition of sigval by <a href="https://github.com/ecnelises"><code>@​ecnelises</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3189">rust-lang/libc#3189</a></li>
-                <li>haiku adding bsd missing constants by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3193">rust-lang/libc#3193</a></li>
-                <li>netbsd,openbsd: add more waitid related constants by <a href="https://github.com/valpackett"><code>@​valpackett</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3188">rust-lang/libc#3188</a></li>
-                <li>Pin FreeBSD 14 version on CI by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3203">rust-lang/libc#3203</a></li>
-                <li>adding getdtablesize on redox by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3199">rust-lang/libc#3199</a></li>
-                <li>Add kexec_file_load system call for arm linux by <a href="https://github.com/ribalda"><code>@​ribalda</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3200">rust-lang/libc#3200</a></li>
-                <li>Upstream a few more constants from rustix. by <a href="https://github.com/sunfishcode"><code>@​sunfishcode</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3173">rust-lang/libc#3173</a></li>
-                <li>freebsd i686 add ucontext/mcontext by <a href="https://github.com/devnexen"><code>@​devnexen</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3202">rust-lang/libc#3202</a></li>
-                <li>fuchsia: add definitions for riscv64 by <a href="https://github.com/ComputerDruid"><code>@​ComputerDruid</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3204">rust-lang/libc#3204</a></li>
-                <li>Mention unstable values on PR template by <a href="https://github.com/JohnTitor"><code>@​JohnTitor</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3207">rust-lang/libc#3207</a></li>
-                <li>fix: CMSG_HEADER_ALIGNMENT was not properly equal to the C Header file in illumos by <a href="https://github.com/Toasterson"><code>@​Toasterson</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3171">rust-lang/libc#3171</a></li>
-                <li>Bump to 0.2.142 by <a href="https://github.com/ComputerDruid"><code>@​ComputerDruid</code></a> in <a href="https://redirect.github.com/rust-lang/libc/pull/3208">rust-lang/libc#3208</a></li>
-                </ul>
-                <h2>New Contributors</h2>
-                <ul>
-                <li><a href="https://github.com/ComputerDruid"><code>@​ComputerDruid</code></a> made their first contribution in <a href="https://redirect.github.com/rust-lang/libc/pull/3204">rust-lang/libc#3204</a></li>
-                <li><a href="https://github.com/Toasterson"><code>@​Toasterson</code></a> made their first contribution in <a href="https://redirect.github.com/rust-lang/libc/pull/3171">rust-lang/libc#3171</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rust-lang/libc/compare/0.2.141...0.2.142">https://github.com/rust-lang/libc/compare/0.2.141...0.2.142</a></p>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/rust-lang/libc/commit/e4cccf92421e5a8a2bf56fed9bd4278eda1f7907"><code>e4cccf9</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3208">#3208</a> - ComputerDruid:bump_142, r=JohnTitor</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/79b7d3c7520a29c98f346285b1184091fd36fff2"><code>79b7d3c</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3171">#3171</a> - Toasterson:master, r=JohnTitor,pfmooney</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/a964608984589fb4190304e7cad14afec993a250"><code>a964608</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3207">#3207</a> - JohnTitor:placeholder-pr-template, r=JohnTitor</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/38702b2623a2acfbf1957263f0c84950ef071aa4"><code>38702b2</code></a> Bump to 0.2.142</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/4e82ee6998753f49f4ac6c08459e8cdc0d0c66a6"><code>4e82ee6</code></a> Mention unstable values on PR template</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/4983ced7004f075672e0663ebbc4e8122302f1e1"><code>4983ced</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3204">#3204</a> - ComputerDruid:riscv64, r=JohnTitor</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/9cc77816fae6b66172798df7bc975e5faae754f2"><code>9cc7781</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3202">#3202</a> - devnexen:fbsd_ucontext_i686, r=JohnTitor</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/157ac25cc09ac65fdcadf02ffd5e797841a68cb3"><code>157ac25</code></a> fuchsia: add definitions for riscv64</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/b811b70f6676a24c16a786a3549eb6b35071c13c"><code>b811b70</code></a> freebsd i686 add ucontext/mcontext</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/8077351f4b28a1b9fc46e2ac11a530d782264273"><code>8077351</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/libc/issues/3173">#3173</a> - sunfishcode:sunfishcode/upstream, r=JohnTitor</li>
-                <li>Additional commits viewable in <a href="https://github.com/rust-lang/libc/compare/0.2.141...0.2.142">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump libc from 0.2.141 to 0.2.142 in /cargo
-
-                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.141 to 0.2.142.
-                - [Release notes](https://github.com/rust-lang/libc/releases)
-                - [Commits](https://github.com/rust-lang/libc/compare/0.2.141...0.2.142)
     - type: mark_as_processed
       expect:
         data:

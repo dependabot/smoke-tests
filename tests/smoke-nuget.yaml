@@ -12,9 +12,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -39,6 +36,12 @@ output:
       expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            commit-message: |-
+                Bump NuGet.Versioning from 6.1.0 to 6.2.2 in /nuget
+
+                Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.2.2.
+                - [Release notes](https://github.com/NuGet/NuGet.Client/releases)
+                - [Commits](https://github.com/NuGet/NuGet.Client/commits)
             dependencies:
                 - name: NuGet.Versioning
                   previous-requirements:
@@ -59,6 +62,16 @@ output:
                         type: nuget_repo
                         url: https://api.nuget.org/v3/index.json
                   version: 6.2.2
+            pr-body: |
+                Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.2.2.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/NuGet/NuGet.Client/commits">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            pr-title: Bump NuGet.Versioning from 6.1.0 to 6.2.2 in /nuget
             updated-dependency-files:
                 - content: |
                     <Project Sdk="Microsoft.NET.Sdk">
@@ -82,22 +95,6 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump NuGet.Versioning from 6.1.0 to 6.2.2 in /nuget
-            pr-body: |
-                Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.2.2.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li>See full diff in <a href="https://github.com/NuGet/NuGet.Client/commits">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump NuGet.Versioning from 6.1.0 to 6.2.2 in /nuget
-
-                Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.2.2.
-                - [Release notes](https://github.com/NuGet/NuGet.Client/releases)
-                - [Commits](https://github.com/NuGet/NuGet.Client/commits)
     - type: mark_as_processed
       expect:
         data:

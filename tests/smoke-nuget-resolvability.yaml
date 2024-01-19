@@ -15,9 +15,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget/resolvability
             commit: 1204ab6852a4872bbb0ba4fff1343fefb39663d6
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -256,6 +253,20 @@ output:
       expect:
         data:
             base-commit-sha: 1204ab6852a4872bbb0ba4fff1343fefb39663d6
+            commit-message: |-
+                Bump AspNetCore.HealthChecks.Rabbitmq and Microsoft.Extensions.Diagnostics.HealthChecks
+
+                Bumps [AspNetCore.HealthChecks.Rabbitmq](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) and [Microsoft.Extensions.Diagnostics.HealthChecks](https://github.com/dotnet/aspnetcore). These dependencies needed to be updated together.
+
+                Updates `AspNetCore.HealthChecks.Rabbitmq` from 5.0.2 to 7.0.0
+                - [Release notes](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/releases)
+                - [Changelog](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/blob/master/doc/ui-changelog.md)
+                - [Commits](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/commits/preview-all-7.0.0)
+
+                Updates `Microsoft.Extensions.Diagnostics.HealthChecks` from 5.0.17 to 7.0.9
+                - [Release notes](https://github.com/dotnet/aspnetcore/releases)
+                - [Changelog](https://github.com/dotnet/aspnetcore/blob/main/docs/ReleasePlanning.md)
+                - [Commits](https://github.com/dotnet/aspnetcore/compare/v5.0.17...v7.0.9)
             dependencies:
                 - name: AspNetCore.HealthChecks.Rabbitmq
                   previous-requirements:
@@ -337,26 +348,6 @@ output:
                         type: nuget_repo
                         url: https://api.nuget.org/v3/index.json
                   version: 7.0.9
-            updated-dependency-files:
-                - content: |-
-                    <Project>
-                      <!--https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management-->
-                      <PropertyGroup>
-                        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-                      </PropertyGroup>
-                      <ItemGroup>
-                        <PackageVersion Include="AspNetCore.HealthChecks.Rabbitmq" Version="7.0.0" />
-                        <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="7.0.9" />
-                      </ItemGroup>
-                    </Project>
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /nuget/resolvability
-                  name: Directory.Packages.props
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump AspNetCore.HealthChecks.Rabbitmq and Microsoft.Extensions.Diagnostics.HealthChecks in /nuget/resolvability
             pr-body: |
                 Bumps [AspNetCore.HealthChecks.Rabbitmq](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) and [Microsoft.Extensions.Diagnostics.HealthChecks](https://github.com/dotnet/aspnetcore). These dependencies needed to be updated together.
                 Updates `AspNetCore.HealthChecks.Rabbitmq` from 5.0.2 to 7.0.0
@@ -436,24 +427,37 @@ output:
                 </ul>
                 </details>
                 <br />
-            commit-message: |-
-                Bump AspNetCore.HealthChecks.Rabbitmq and Microsoft.Extensions.Diagnostics.HealthChecks
-
-                Bumps [AspNetCore.HealthChecks.Rabbitmq](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) and [Microsoft.Extensions.Diagnostics.HealthChecks](https://github.com/dotnet/aspnetcore). These dependencies needed to be updated together.
-
-                Updates `AspNetCore.HealthChecks.Rabbitmq` from 5.0.2 to 7.0.0
-                - [Release notes](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/releases)
-                - [Changelog](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/blob/master/doc/ui-changelog.md)
-                - [Commits](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/commits/preview-all-7.0.0)
-
-                Updates `Microsoft.Extensions.Diagnostics.HealthChecks` from 5.0.17 to 7.0.9
-                - [Release notes](https://github.com/dotnet/aspnetcore/releases)
-                - [Changelog](https://github.com/dotnet/aspnetcore/blob/main/docs/ReleasePlanning.md)
-                - [Commits](https://github.com/dotnet/aspnetcore/compare/v5.0.17...v7.0.9)
+            pr-title: Bump AspNetCore.HealthChecks.Rabbitmq and Microsoft.Extensions.Diagnostics.HealthChecks in /nuget/resolvability
+            updated-dependency-files:
+                - content: |-
+                    <Project>
+                      <!--https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management-->
+                      <PropertyGroup>
+                        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+                      </PropertyGroup>
+                      <ItemGroup>
+                        <PackageVersion Include="AspNetCore.HealthChecks.Rabbitmq" Version="7.0.0" />
+                        <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="7.0.9" />
+                      </ItemGroup>
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/resolvability
+                  name: Directory.Packages.props
+                  operation: update
+                  support_file: false
+                  type: file
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 1204ab6852a4872bbb0ba4fff1343fefb39663d6
+            commit-message: |-
+                Bump Microsoft.Extensions.Diagnostics.HealthChecks
+
+                Bumps [Microsoft.Extensions.Diagnostics.HealthChecks](https://github.com/dotnet/aspnetcore) from 5.0.17 to 7.0.9.
+                - [Release notes](https://github.com/dotnet/aspnetcore/releases)
+                - [Changelog](https://github.com/dotnet/aspnetcore/blob/main/docs/ReleasePlanning.md)
+                - [Commits](https://github.com/dotnet/aspnetcore/compare/v5.0.17...v7.0.9)
             dependencies:
                 - name: Microsoft.Extensions.Diagnostics.HealthChecks
                   previous-requirements:
@@ -488,26 +492,6 @@ output:
                         type: nuget_repo
                         url: https://api.nuget.org/v3/index.json
                   version: 7.0.9
-            updated-dependency-files:
-                - content: |-
-                    <Project>
-                      <!--https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management-->
-                      <PropertyGroup>
-                        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-                      </PropertyGroup>
-                      <ItemGroup>
-                        <PackageVersion Include="AspNetCore.HealthChecks.Rabbitmq" Version="5.0.2" />
-                        <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="7.0.9" />
-                      </ItemGroup>
-                    </Project>
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /nuget/resolvability
-                  name: Directory.Packages.props
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump Microsoft.Extensions.Diagnostics.HealthChecks from 5.0.17 to 7.0.9 in /nuget/resolvability
             pr-body: |
                 Bumps [Microsoft.Extensions.Diagnostics.HealthChecks](https://github.com/dotnet/aspnetcore) from 5.0.17 to 7.0.9.
                 <details>
@@ -569,13 +553,26 @@ output:
                 </ul>
                 </details>
                 <br />
-            commit-message: |-
-                Bump Microsoft.Extensions.Diagnostics.HealthChecks
-
-                Bumps [Microsoft.Extensions.Diagnostics.HealthChecks](https://github.com/dotnet/aspnetcore) from 5.0.17 to 7.0.9.
-                - [Release notes](https://github.com/dotnet/aspnetcore/releases)
-                - [Changelog](https://github.com/dotnet/aspnetcore/blob/main/docs/ReleasePlanning.md)
-                - [Commits](https://github.com/dotnet/aspnetcore/compare/v5.0.17...v7.0.9)
+            pr-title: Bump Microsoft.Extensions.Diagnostics.HealthChecks from 5.0.17 to 7.0.9 in /nuget/resolvability
+            updated-dependency-files:
+                - content: |-
+                    <Project>
+                      <!--https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management-->
+                      <PropertyGroup>
+                        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+                      </PropertyGroup>
+                      <ItemGroup>
+                        <PackageVersion Include="AspNetCore.HealthChecks.Rabbitmq" Version="5.0.2" />
+                        <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="7.0.9" />
+                      </ItemGroup>
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/resolvability
+                  name: Directory.Packages.props
+                  operation: update
+                  support_file: false
+                  type: file
     - type: mark_as_processed
       expect:
         data:

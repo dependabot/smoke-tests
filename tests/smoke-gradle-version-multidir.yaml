@@ -35,9 +35,6 @@ input:
                 - /gradle/multi-dir/bar
             branch: main
             commit: bdc8fd5e4980081b086bcfcb2c4746c43e4b789d
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -118,6 +115,31 @@ output:
       expect:
         data:
             base-commit-sha: bdc8fd5e4980081b086bcfcb2c4746c43e4b789d
+            commit-message: |-
+                Bump the gradle_pkgs across 2 directories with 5 updates
+
+                Bumps the gradle_pkgs with 2 updates in the /gradle/multi-dir/foo directory: [com.google.inject:guice](https://github.com/google/guice) and com.google.code.findbugs:jsr305.
+                Bumps the gradle_pkgs with 4 updates in the /gradle/multi-dir/bar directory: com.google.code.findbugs:jsr305, [net.kyori:text](https://github.com/KyoriPowered/text), org.eclipse.jgit:org.eclipse.jgit and [org.hibernate:hibernate-core](https://github.com/hibernate/hibernate-orm).
+
+
+                Updates `com.google.inject:guice` from 4.2.0 to 7.0.0
+                - [Release notes](https://github.com/google/guice/releases)
+                - [Commits](https://github.com/google/guice/compare/4.2...7.0.0)
+
+                Updates `com.google.code.findbugs:jsr305` from 3.0.1 to 3.0.2
+
+                Updates `com.google.code.findbugs:jsr305` from 3.0.1 to 3.0.2
+
+                Updates `net.kyori:text` from 1.12-1.4.0 to 1.12-1.6.5
+                - [Release notes](https://github.com/KyoriPowered/text/releases)
+                - [Commits](https://github.com/KyoriPowered/text/commits)
+
+                Updates `org.eclipse.jgit:org.eclipse.jgit` from 4.11.0.201803080745-r to 6.8.0.202311291450-r
+
+                Updates `org.hibernate:hibernate-core` from 5.3.0.CR1 to 6.4.0.Final
+                - [Release notes](https://github.com/hibernate/hibernate-orm/releases)
+                - [Changelog](https://github.com/hibernate/hibernate-orm/blob/main/changelog.txt)
+                - [Commits](https://github.com/hibernate/hibernate-orm/commits/6.4.0)
             dependencies:
                 - name: com.google.inject:guice
                   previous-requirements:
@@ -209,149 +231,8 @@ output:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
                   version: 6.4.0.Final
-            updated-dependency-files:
-                - content: |
-                    group 'me.minidigger'
-
-                    apply plugin: 'com.github.johnrengelman.shadow'
-
-                    task copyToServer(type: Copy) {
-                        from shadowJar
-                        into testServerFolder
-                    }
-
-                    shadowJar {
-                        mergeServiceFiles()
-                        configurations = [project.configurations.compile]
-
-                        //relocate 'org.bstats', 'com.voxelgameslib.voxelgameslib.metrics' TODO relocate bstats
-
-                        manifest {
-                            attributes 'Implementation-Version': project.version + "@" + revision
-                        }
-                    }
-
-                    def devNull = new OutputStream() {
-                      @Override
-                      public void write(int b) {}
-                    }
-
-
-                    build.dependsOn shadowJar
-
-                    dependencies {
-                        compile project(":ChatMenuAPI")
-
-                        // Some details about 'co.aikar:acf-paper', version: '0.5.0-SNAPSHOT'
-                        compile group: 'co.aikar', name: 'acf-paper', version: '0.5.0-SNAPSHOT', changing: true
-                        compile group: 'com.google.inject', name: 'guice', version: '7.0.0'
-                        compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
-                        compile group: 'de.davidbilge', name: 'jskill', version: '1.1-SNAPSHOT'
-
-                        compile(group: 'org.inventivetalent', name: 'menubuilder', version: '1.0.2') {
-                            exclude group: 'org.bukkit'
-                        }
-                        compile(group: 'org.mineskin', name: 'java-client', version: '1.0.1-SNAPSHOT') {
-                            exclude group: 'junit'
-                        }
-                    }
-
-                    task createPom() {
-                        pom {
-                            project {
-                                groupId 'com.voxelgameslib'
-                                artifactId 'dependencies'
-                                version version
-                            }
-                        }.writeTo("pom.xml")
-                    }
-
-                    task debugApp(type: JavaExec, dependsOn: distBin) {
-                      workingDir = 'dist-bin'
-                      classpath = (fileTree(dir: 'dist-bin', includes:['eclipsito.jar']) + files('dist-bin'))
-                      main = 'org.bardsoftware.eclipsito.Boot'
-                      args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
-                      jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
-                    }
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /gradle/multi-dir/foo
-                  name: build.gradle
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    group 'me.minidigger'
-
-                    apply plugin: 'com.github.johnrengelman.shadow'
-
-                    task copyToServer(type: Copy) {
-                        from shadowJar
-                        into testServerFolder
-                    }
-
-                    shadowJar {
-                        mergeServiceFiles()
-                        configurations = [project.configurations.compile]
-
-                        //relocate 'org.bstats', 'com.voxelgameslib.voxelgameslib.metrics' TODO relocate bstats
-
-                        manifest {
-                            attributes 'Implementation-Version': project.version + "@" + revision
-                        }
-                    }
-
-                    def devNull = new OutputStream() {
-                      @Override
-                      public void write(int b) {}
-                    }
-
-
-                    build.dependsOn shadowJar
-
-                    dependencies {
-                        compile project(":ChatMenuAPI")
-
-                        // Some details about 'co.aikar:acf-paper', version: '0.5.0-SNAPSHOT'
-                        compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
-                        compile group: 'de.davidbilge', name: 'jskill', version: '1.1-SNAPSHOT'
-                        compile group: 'net.kyori', name: 'text', version: '1.12-1.6.5'
-                        compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '6.8.0.202311291450-r'
-                        compile group: 'org.hibernate', name: 'hibernate-core', version: '6.4.0.Final'
-
-                        compile(group: 'org.inventivetalent', name: 'menubuilder', version: '1.0.2') {
-                            exclude group: 'org.bukkit'
-                        }
-                        compile(group: 'org.mineskin', name: 'java-client', version: '1.0.1-SNAPSHOT') {
-                            exclude group: 'junit'
-                        }
-                    }
-
-                    task createPom() {
-                        pom {
-                            project {
-                                groupId 'com.voxelgameslib'
-                                artifactId 'dependencies'
-                                version version
-                            }
-                        }.writeTo("pom.xml")
-                    }
-
-                    task debugApp(type: JavaExec, dependsOn: distBin) {
-                      workingDir = 'dist-bin'
-                      classpath = (fileTree(dir: 'dist-bin', includes:['eclipsito.jar']) + files('dist-bin'))
-                      main = 'org.bardsoftware.eclipsito.Boot'
-                      args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
-                      jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
-                    }
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /gradle/multi-dir/bar
-                  name: build.gradle
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump the gradle_pkgs across 2 directories with 5 updates
+            dependency-group:
+                name: gradle_pkgs
             pr-body: |
                 Bumps the gradle_pkgs with 2 updates in the /gradle/multi-dir/foo directory: [com.google.inject:guice](https://github.com/google/guice) and com.google.code.findbugs:jsr305.
                 Bumps the gradle_pkgs with 4 updates in the /gradle/multi-dir/bar directory: com.google.code.findbugs:jsr305, [net.kyori:text](https://github.com/KyoriPowered/text), org.eclipse.jgit:org.eclipse.jgit and [org.hibernate:hibernate-core](https://github.com/hibernate/hibernate-orm).
@@ -520,33 +401,149 @@ output:
                 </ul>
                 </details>
                 <br />
-            commit-message: |-
-                Bump the gradle_pkgs across 2 directories with 5 updates
+            pr-title: Bump the gradle_pkgs across 2 directories with 5 updates
+            updated-dependency-files:
+                - content: |
+                    group 'me.minidigger'
 
-                Bumps the gradle_pkgs with 2 updates in the /gradle/multi-dir/foo directory: [com.google.inject:guice](https://github.com/google/guice) and com.google.code.findbugs:jsr305.
-                Bumps the gradle_pkgs with 4 updates in the /gradle/multi-dir/bar directory: com.google.code.findbugs:jsr305, [net.kyori:text](https://github.com/KyoriPowered/text), org.eclipse.jgit:org.eclipse.jgit and [org.hibernate:hibernate-core](https://github.com/hibernate/hibernate-orm).
+                    apply plugin: 'com.github.johnrengelman.shadow'
+
+                    task copyToServer(type: Copy) {
+                        from shadowJar
+                        into testServerFolder
+                    }
+
+                    shadowJar {
+                        mergeServiceFiles()
+                        configurations = [project.configurations.compile]
+
+                        //relocate 'org.bstats', 'com.voxelgameslib.voxelgameslib.metrics' TODO relocate bstats
+
+                        manifest {
+                            attributes 'Implementation-Version': project.version + "@" + revision
+                        }
+                    }
+
+                    def devNull = new OutputStream() {
+                      @Override
+                      public void write(int b) {}
+                    }
 
 
-                Updates `com.google.inject:guice` from 4.2.0 to 7.0.0
-                - [Release notes](https://github.com/google/guice/releases)
-                - [Commits](https://github.com/google/guice/compare/4.2...7.0.0)
+                    build.dependsOn shadowJar
 
-                Updates `com.google.code.findbugs:jsr305` from 3.0.1 to 3.0.2
+                    dependencies {
+                        compile project(":ChatMenuAPI")
 
-                Updates `com.google.code.findbugs:jsr305` from 3.0.1 to 3.0.2
+                        // Some details about 'co.aikar:acf-paper', version: '0.5.0-SNAPSHOT'
+                        compile group: 'co.aikar', name: 'acf-paper', version: '0.5.0-SNAPSHOT', changing: true
+                        compile group: 'com.google.inject', name: 'guice', version: '7.0.0'
+                        compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
+                        compile group: 'de.davidbilge', name: 'jskill', version: '1.1-SNAPSHOT'
 
-                Updates `net.kyori:text` from 1.12-1.4.0 to 1.12-1.6.5
-                - [Release notes](https://github.com/KyoriPowered/text/releases)
-                - [Commits](https://github.com/KyoriPowered/text/commits)
+                        compile(group: 'org.inventivetalent', name: 'menubuilder', version: '1.0.2') {
+                            exclude group: 'org.bukkit'
+                        }
+                        compile(group: 'org.mineskin', name: 'java-client', version: '1.0.1-SNAPSHOT') {
+                            exclude group: 'junit'
+                        }
+                    }
 
-                Updates `org.eclipse.jgit:org.eclipse.jgit` from 4.11.0.201803080745-r to 6.8.0.202311291450-r
+                    task createPom() {
+                        pom {
+                            project {
+                                groupId 'com.voxelgameslib'
+                                artifactId 'dependencies'
+                                version version
+                            }
+                        }.writeTo("pom.xml")
+                    }
 
-                Updates `org.hibernate:hibernate-core` from 5.3.0.CR1 to 6.4.0.Final
-                - [Release notes](https://github.com/hibernate/hibernate-orm/releases)
-                - [Changelog](https://github.com/hibernate/hibernate-orm/blob/main/changelog.txt)
-                - [Commits](https://github.com/hibernate/hibernate-orm/commits/6.4.0)
-            dependency-group:
-                name: gradle_pkgs
+                    task debugApp(type: JavaExec, dependsOn: distBin) {
+                      workingDir = 'dist-bin'
+                      classpath = (fileTree(dir: 'dist-bin', includes:['eclipsito.jar']) + files('dist-bin'))
+                      main = 'org.bardsoftware.eclipsito.Boot'
+                      args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
+                      jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /gradle/multi-dir/foo
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    group 'me.minidigger'
+
+                    apply plugin: 'com.github.johnrengelman.shadow'
+
+                    task copyToServer(type: Copy) {
+                        from shadowJar
+                        into testServerFolder
+                    }
+
+                    shadowJar {
+                        mergeServiceFiles()
+                        configurations = [project.configurations.compile]
+
+                        //relocate 'org.bstats', 'com.voxelgameslib.voxelgameslib.metrics' TODO relocate bstats
+
+                        manifest {
+                            attributes 'Implementation-Version': project.version + "@" + revision
+                        }
+                    }
+
+                    def devNull = new OutputStream() {
+                      @Override
+                      public void write(int b) {}
+                    }
+
+
+                    build.dependsOn shadowJar
+
+                    dependencies {
+                        compile project(":ChatMenuAPI")
+
+                        // Some details about 'co.aikar:acf-paper', version: '0.5.0-SNAPSHOT'
+                        compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
+                        compile group: 'de.davidbilge', name: 'jskill', version: '1.1-SNAPSHOT'
+                        compile group: 'net.kyori', name: 'text', version: '1.12-1.6.5'
+                        compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '6.8.0.202311291450-r'
+                        compile group: 'org.hibernate', name: 'hibernate-core', version: '6.4.0.Final'
+
+                        compile(group: 'org.inventivetalent', name: 'menubuilder', version: '1.0.2') {
+                            exclude group: 'org.bukkit'
+                        }
+                        compile(group: 'org.mineskin', name: 'java-client', version: '1.0.1-SNAPSHOT') {
+                            exclude group: 'junit'
+                        }
+                    }
+
+                    task createPom() {
+                        pom {
+                            project {
+                                groupId 'com.voxelgameslib'
+                                artifactId 'dependencies'
+                                version version
+                            }
+                        }.writeTo("pom.xml")
+                    }
+
+                    task debugApp(type: JavaExec, dependsOn: distBin) {
+                      workingDir = 'dist-bin'
+                      classpath = (fileTree(dir: 'dist-bin', includes:['eclipsito.jar']) + files('dist-bin'))
+                      main = 'org.bardsoftware.eclipsito.Boot'
+                      args '-app','net.sourceforge.ganttproject.GanttProject','-plugins-dir',"plugins-${semver}"
+                      jvmArgs  '-agentlib:jdwp=transport=dt_socket,address=localhost:9009,server=y,suspend=y'
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /gradle/multi-dir/bar
+                  name: build.gradle
+                  operation: update
+                  support_file: false
+                  type: file
     - type: mark_as_processed
       expect:
         data:

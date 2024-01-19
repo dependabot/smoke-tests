@@ -4,6 +4,11 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        dependency-groups:
+            - name: go_modules group
+              rules:
+                patterns:
+                    - '*'
         dependencies:
             - rsc.io/quote
             - rsc.io/qr
@@ -32,11 +37,6 @@ input:
               patched-versions: []
               unaffected-versions: []
         security-updates-only: true
-        dependency-groups:
-          - name: go_modules group
-            rules:
-              patterns:
-                - "*"
         source:
             provider: github
             repo: dependabot/smoke-tests
@@ -44,9 +44,6 @@ input:
                 - /go/multi-dir/foo
                 - /go/multi-dir/bar
             commit: fb37fe61a7462139c74f2fc7e80400b325d066a0
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -88,6 +85,24 @@ output:
       expect:
         data:
             base-commit-sha: fb37fe61a7462139c74f2fc7e80400b325d066a0
+            commit-message: |-
+                Bump the go_modules group across 2 directories with 2 updates
+
+                Bumps the go_modules group with 2 updates in the /go/multi-dir/foo directory: [rsc.io/qr](https://github.com/rsc/qr) and [rsc.io/quote](https://github.com/rsc/quote).
+                Bumps the go_modules group with 2 updates in the /go/multi-dir/bar directory: [rsc.io/qr](https://github.com/rsc/qr) and [rsc.io/quote](https://github.com/rsc/quote).
+
+
+                Updates `rsc.io/qr` from 0.1.0 to 0.2.0
+                - [Commits](https://github.com/rsc/qr/compare/v0.1.0...v0.2.0)
+
+                Updates `rsc.io/quote` from 1.5.0 to 1.5.1
+                - [Commits](https://github.com/rsc/quote/compare/v1.5.0...v1.5.1)
+
+                Updates `rsc.io/qr` from 0.1.0 to 0.2.0
+                - [Commits](https://github.com/rsc/qr/compare/v0.1.0...v0.2.0)
+
+                Updates `rsc.io/quote` from 1.5.0 to 1.5.1
+                - [Commits](https://github.com/rsc/quote/compare/v1.5.0...v1.5.1)
             dependencies:
                 - name: rsc.io/qr
                   previous-requirements:
@@ -157,50 +172,8 @@ output:
                         source: rsc.io/quote
                         type: default
                   version: 1.5.1
-            updated-dependency-files:
-                - content: |
-                    module group-security-update-test
-
-                    go 1.21
-
-                    require (
-                    	rsc.io/qr v0.2.0
-                    	rsc.io/quote v1.5.1
-                    )
-
-                    require (
-                    	golang.org/x/text v0.4.0 // indirect
-                    	rsc.io/sampler v1.3.0 // indirect
-                    )
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /go/multi-dir/foo
-                  name: go.mod
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    module group-security-update-test
-
-                    go 1.21
-
-                    require (
-                    	rsc.io/qr v0.2.0
-                    	rsc.io/quote v1.5.1
-                    )
-
-                    require (
-                    	golang.org/x/text v0.4.0 // indirect
-                    	rsc.io/sampler v1.3.0 // indirect
-                    )
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /go/multi-dir/bar
-                  name: go.mod
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump the go_modules group across 2 directories with 2 updates
+            dependency-group:
+                name: go_modules group
             pr-body: |
                 Bumps the go_modules group with 2 updates in the /go/multi-dir/foo directory: [rsc.io/qr](https://github.com/rsc/qr) and [rsc.io/quote](https://github.com/rsc/quote).
                 Bumps the go_modules group with 2 updates in the /go/multi-dir/bar directory: [rsc.io/qr](https://github.com/rsc/qr) and [rsc.io/quote](https://github.com/rsc/quote).
@@ -244,26 +217,50 @@ output:
                 </ul>
                 </details>
                 <br />
-            commit-message: |-
-                Bump the go_modules group across 2 directories with 2 updates
+            pr-title: Bump the go_modules group across 2 directories with 2 updates
+            updated-dependency-files:
+                - content: |
+                    module group-security-update-test
 
-                Bumps the go_modules group with 2 updates in the /go/multi-dir/foo directory: [rsc.io/qr](https://github.com/rsc/qr) and [rsc.io/quote](https://github.com/rsc/quote).
-                Bumps the go_modules group with 2 updates in the /go/multi-dir/bar directory: [rsc.io/qr](https://github.com/rsc/qr) and [rsc.io/quote](https://github.com/rsc/quote).
+                    go 1.21
 
+                    require (
+                    	rsc.io/qr v0.2.0
+                    	rsc.io/quote v1.5.1
+                    )
 
-                Updates `rsc.io/qr` from 0.1.0 to 0.2.0
-                - [Commits](https://github.com/rsc/qr/compare/v0.1.0...v0.2.0)
+                    require (
+                    	golang.org/x/text v0.4.0 // indirect
+                    	rsc.io/sampler v1.3.0 // indirect
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/multi-dir/foo
+                  name: go.mod
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    module group-security-update-test
 
-                Updates `rsc.io/quote` from 1.5.0 to 1.5.1
-                - [Commits](https://github.com/rsc/quote/compare/v1.5.0...v1.5.1)
+                    go 1.21
 
-                Updates `rsc.io/qr` from 0.1.0 to 0.2.0
-                - [Commits](https://github.com/rsc/qr/compare/v0.1.0...v0.2.0)
+                    require (
+                    	rsc.io/qr v0.2.0
+                    	rsc.io/quote v1.5.1
+                    )
 
-                Updates `rsc.io/quote` from 1.5.0 to 1.5.1
-                - [Commits](https://github.com/rsc/quote/compare/v1.5.0...v1.5.1)
-            dependency-group:
-                name: go_modules group
+                    require (
+                    	golang.org/x/text v0.4.0 // indirect
+                    	rsc.io/sampler v1.3.0 // indirect
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/multi-dir/bar
+                  name: go.mod
+                  operation: update
+                  support_file: false
+                  type: file
     - type: mark_as_processed
       expect:
         data:

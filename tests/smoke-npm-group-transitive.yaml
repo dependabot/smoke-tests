@@ -32,9 +32,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /npm/transitive
             commit: dde3e21e99b5237377d6e8a4858615e293bfacc4
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -83,6 +80,18 @@ output:
       expect:
         data:
             base-commit-sha: dde3e21e99b5237377d6e8a4858615e293bfacc4
+            commit-message: |-
+                Bump the ruleset group in /npm/transitive with 2 updates
+
+                Bumps the ruleset group in /npm/transitive with 2 updates: [@hapi/hoek](https://github.com/hapijs/hoek) and [@hapi/topo](https://github.com/hapijs/topo).
+
+
+                Updates `@hapi/hoek` from 9.2.0 to 9.3.0
+                - [Release notes](https://github.com/hapijs/hoek/releases)
+                - [Commits](https://github.com/hapijs/hoek/compare/v9.2.0...v9.3.0)
+
+                Updates `@hapi/topo` from 5.0.0 to 5.1.0
+                - [Commits](https://github.com/hapijs/topo/compare/v5.0.0...v5.1.0)
             dependencies:
                 - name: '@hapi/hoek'
                   previous-requirements: []
@@ -94,6 +103,48 @@ output:
                   previous-version: 5.0.0
                   requirements: []
                   version: 5.1.0
+            dependency-group:
+                name: ruleset
+            pr-body: |
+                Bumps the ruleset group in /npm/transitive with 2 updates: [@hapi/hoek](https://github.com/hapijs/hoek) and [@hapi/topo](https://github.com/hapijs/topo).
+
+                Updates `@hapi/hoek` from 9.2.0 to 9.3.0
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/hapijs/hoek/commit/24467c98a471a23c0b1901098948b6662e516173"><code>24467c9</code></a> 9.3.0</li>
+                <li><a href="https://github.com/hapijs/hoek/commit/71250a0d187bafe3b31cc3a86a3ce306e0d99734"><code>71250a0</code></a> Handle very long waits (<a href="https://redirect.github.com/hapijs/hoek/issues/373">#373</a>)</li>
+                <li><a href="https://github.com/hapijs/hoek/commit/3964633be1b756e5d0b8449af7fc517a43004e13"><code>3964633</code></a> Cleanup (<a href="https://redirect.github.com/hapijs/hoek/issues/372">#372</a>)</li>
+                <li><a href="https://github.com/hapijs/hoek/commit/e3210f281d8278b1da6f22d8c2854e1b9f106edd"><code>e3210f2</code></a> add dispatcher and use shared config</li>
+                <li><a href="https://github.com/hapijs/hoek/commit/8b57d38a55b690d91d0fa886be17d1b462e43d1e"><code>8b57d38</code></a> Fix Hoek.reach() docs formatting issue (<a href="https://redirect.github.com/hapijs/hoek/issues/376">#376</a>)</li>
+                <li><a href="https://github.com/hapijs/hoek/commit/0d614977a23e30e344a34d4539952ccd1ea71306"><code>0d61497</code></a> 9.2.1</li>
+                <li><a href="https://github.com/hapijs/hoek/commit/82504b720922f73300d7e9fd75e98a48863edccf"><code>82504b7</code></a> Fix reach template regex for timing (<a href="https://redirect.github.com/hapijs/hoek/issues/371">#371</a>)</li>
+                <li><a href="https://github.com/hapijs/hoek/commit/4c05eeeaf6116861d0477f74a024066aa098122f"><code>4c05eee</code></a> Update reach template documentation (<a href="https://redirect.github.com/hapijs/hoek/issues/370">#370</a>)</li>
+                <li><a href="https://github.com/hapijs/hoek/commit/fcc7ba60f686e909f63a4ed9939c512c61e17bf0"><code>fcc7ba6</code></a> add IDE linting</li>
+                <li>See full diff in <a href="https://github.com/hapijs/hoek/compare/v9.2.0...v9.3.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `@hapi/topo` from 5.0.0 to 5.1.0
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/hapijs/topo/commit/0e8fe262b06f9d2b258a0c796beb104b54b206f3"><code>0e8fe26</code></a> 5.1.0</li>
+                <li><a href="https://github.com/hapijs/topo/commit/3173aa038c8216e6f4a413f61b2b717701e0718e"><code>3173aa0</code></a> Support manual sorting (performance) (<a href="https://redirect.github.com/hapijs/topo/issues/66">#66</a>)</li>
+                <li><a href="https://github.com/hapijs/topo/commit/ce16fb2a09b9033592b610cfe11c99833f5af3d7"><code>ce16fb2</code></a> Create ci-module.yml (<a href="https://redirect.github.com/hapijs/topo/issues/65">#65</a>)</li>
+                <li><a href="https://github.com/hapijs/topo/commit/af760661f79af0a4905c85483087d1e89412a4cf"><code>af76066</code></a> upgrade lab to v24 and devDependency of typescript (<a href="https://redirect.github.com/hapijs/topo/issues/64">#64</a>)</li>
+                <li><a href="https://github.com/hapijs/topo/commit/e578c19e885d6131d190a7616bf4e9df423475a3"><code>e578c19</code></a> migrate to new travis format (<a href="https://redirect.github.com/hapijs/topo/issues/63">#63</a>)</li>
+                <li><a href="https://github.com/hapijs/topo/commit/642c3a20098d593bfc1cd34a02ce0a55eff22532"><code>642c3a2</code></a> test on node 14</li>
+                <li>See full diff in <a href="https://github.com/hapijs/topo/compare/v5.0.0...v5.1.0">compare view</a></li>
+                </ul>
+                </details>
+                <details>
+                <summary>Maintainer changes</summary>
+                <p>This version was pushed to npm by <a href="https://www.npmjs.com/~devinivy">devinivy</a>, a new releaser for <code>@​hapi/topo</code> since your current version.</p>
+                </details>
+                <br />
+            pr-title: Bump the ruleset group in /npm/transitive with 2 updates
             updated-dependency-files:
                 - content: |
                     {
@@ -162,70 +213,39 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the ruleset group in /npm/transitive with 2 updates
-            pr-body: |
-                Bumps the ruleset group in /npm/transitive with 2 updates: [@hapi/hoek](https://github.com/hapijs/hoek) and [@hapi/topo](https://github.com/hapijs/topo).
-
-                Updates `@hapi/hoek` from 9.2.0 to 9.3.0
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/hapijs/hoek/commit/24467c98a471a23c0b1901098948b6662e516173"><code>24467c9</code></a> 9.3.0</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/71250a0d187bafe3b31cc3a86a3ce306e0d99734"><code>71250a0</code></a> Handle very long waits (<a href="https://redirect.github.com/hapijs/hoek/issues/373">#373</a>)</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/3964633be1b756e5d0b8449af7fc517a43004e13"><code>3964633</code></a> Cleanup (<a href="https://redirect.github.com/hapijs/hoek/issues/372">#372</a>)</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/e3210f281d8278b1da6f22d8c2854e1b9f106edd"><code>e3210f2</code></a> add dispatcher and use shared config</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/8b57d38a55b690d91d0fa886be17d1b462e43d1e"><code>8b57d38</code></a> Fix Hoek.reach() docs formatting issue (<a href="https://redirect.github.com/hapijs/hoek/issues/376">#376</a>)</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/0d614977a23e30e344a34d4539952ccd1ea71306"><code>0d61497</code></a> 9.2.1</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/82504b720922f73300d7e9fd75e98a48863edccf"><code>82504b7</code></a> Fix reach template regex for timing (<a href="https://redirect.github.com/hapijs/hoek/issues/371">#371</a>)</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/4c05eeeaf6116861d0477f74a024066aa098122f"><code>4c05eee</code></a> Update reach template documentation (<a href="https://redirect.github.com/hapijs/hoek/issues/370">#370</a>)</li>
-                <li><a href="https://github.com/hapijs/hoek/commit/fcc7ba60f686e909f63a4ed9939c512c61e17bf0"><code>fcc7ba6</code></a> add IDE linting</li>
-                <li>See full diff in <a href="https://github.com/hapijs/hoek/compare/v9.2.0...v9.3.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-
-                Updates `@hapi/topo` from 5.0.0 to 5.1.0
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/hapijs/topo/commit/0e8fe262b06f9d2b258a0c796beb104b54b206f3"><code>0e8fe26</code></a> 5.1.0</li>
-                <li><a href="https://github.com/hapijs/topo/commit/3173aa038c8216e6f4a413f61b2b717701e0718e"><code>3173aa0</code></a> Support manual sorting (performance) (<a href="https://redirect.github.com/hapijs/topo/issues/66">#66</a>)</li>
-                <li><a href="https://github.com/hapijs/topo/commit/ce16fb2a09b9033592b610cfe11c99833f5af3d7"><code>ce16fb2</code></a> Create ci-module.yml (<a href="https://redirect.github.com/hapijs/topo/issues/65">#65</a>)</li>
-                <li><a href="https://github.com/hapijs/topo/commit/af760661f79af0a4905c85483087d1e89412a4cf"><code>af76066</code></a> upgrade lab to v24 and devDependency of typescript (<a href="https://redirect.github.com/hapijs/topo/issues/64">#64</a>)</li>
-                <li><a href="https://github.com/hapijs/topo/commit/e578c19e885d6131d190a7616bf4e9df423475a3"><code>e578c19</code></a> migrate to new travis format (<a href="https://redirect.github.com/hapijs/topo/issues/63">#63</a>)</li>
-                <li><a href="https://github.com/hapijs/topo/commit/642c3a20098d593bfc1cd34a02ce0a55eff22532"><code>642c3a2</code></a> test on node 14</li>
-                <li>See full diff in <a href="https://github.com/hapijs/topo/compare/v5.0.0...v5.1.0">compare view</a></li>
-                </ul>
-                </details>
-                <details>
-                <summary>Maintainer changes</summary>
-                <p>This version was pushed to npm by <a href="https://www.npmjs.com/~devinivy">devinivy</a>, a new releaser for <code>@​hapi/topo</code> since your current version.</p>
-                </details>
-                <br />
-            commit-message: |-
-                Bump the ruleset group in /npm/transitive with 2 updates
-
-                Bumps the ruleset group in /npm/transitive with 2 updates: [@hapi/hoek](https://github.com/hapijs/hoek) and [@hapi/topo](https://github.com/hapijs/topo).
-
-
-                Updates `@hapi/hoek` from 9.2.0 to 9.3.0
-                - [Release notes](https://github.com/hapijs/hoek/releases)
-                - [Commits](https://github.com/hapijs/hoek/compare/v9.2.0...v9.3.0)
-
-                Updates `@hapi/topo` from 5.0.0 to 5.1.0
-                - [Commits](https://github.com/hapijs/topo/compare/v5.0.0...v5.1.0)
-            dependency-group:
-                name: ruleset
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: dde3e21e99b5237377d6e8a4858615e293bfacc4
+            commit-message: |-
+                Bump @sideway/formula from 3.0.0 to 3.0.1 in /npm/transitive
+
+                Bumps [@sideway/formula](https://github.com/sideway/formula) from 3.0.0 to 3.0.1.
+                - [Commits](https://github.com/sideway/formula/compare/v3.0.0...v3.0.1)
             dependencies:
                 - name: '@sideway/formula'
                   previous-requirements: []
                   previous-version: 3.0.0
                   requirements: []
                   version: 3.0.1
+            pr-body: |
+                Bumps [@sideway/formula](https://github.com/sideway/formula) from 3.0.0 to 3.0.1.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/hapijs/formula/commit/5b44c1bffc38135616fb91d5ad46eaf64f03d23b"><code>5b44c1b</code></a> 3.0.1</li>
+                <li><a href="https://github.com/hapijs/formula/commit/9fbc20a02d75ae809c37a610a57802cd1b41b3fe"><code>9fbc20a</code></a> chore: better number regex</li>
+                <li><a href="https://github.com/hapijs/formula/commit/41ae98e0421913b100886adb0107a25d552d9e1a"><code>41ae98e</code></a> Cleanup</li>
+                <li><a href="https://github.com/hapijs/formula/commit/c59f35ec401e18cead10e0cedfb44291517610b1"><code>c59f35e</code></a> Move to Sideway</li>
+                <li>See full diff in <a href="https://github.com/sideway/formula/compare/v3.0.0...v3.0.1">compare view</a></li>
+                </ul>
+                </details>
+                <details>
+                <summary>Maintainer changes</summary>
+                <p>This version was pushed to npm by <a href="https://www.npmjs.com/~marsup">marsup</a>, a new releaser for <code>@​sideway/formula</code> since your current version.</p>
+                </details>
+                <br />
+            pr-title: Bump @sideway/formula from 3.0.0 to 3.0.1 in /npm/transitive
             updated-dependency-files:
                 - content: |
                     {
@@ -294,29 +314,6 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump @sideway/formula from 3.0.0 to 3.0.1 in /npm/transitive
-            pr-body: |
-                Bumps [@sideway/formula](https://github.com/sideway/formula) from 3.0.0 to 3.0.1.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/hapijs/formula/commit/5b44c1bffc38135616fb91d5ad46eaf64f03d23b"><code>5b44c1b</code></a> 3.0.1</li>
-                <li><a href="https://github.com/hapijs/formula/commit/9fbc20a02d75ae809c37a610a57802cd1b41b3fe"><code>9fbc20a</code></a> chore: better number regex</li>
-                <li><a href="https://github.com/hapijs/formula/commit/41ae98e0421913b100886adb0107a25d552d9e1a"><code>41ae98e</code></a> Cleanup</li>
-                <li><a href="https://github.com/hapijs/formula/commit/c59f35ec401e18cead10e0cedfb44291517610b1"><code>c59f35e</code></a> Move to Sideway</li>
-                <li>See full diff in <a href="https://github.com/sideway/formula/compare/v3.0.0...v3.0.1">compare view</a></li>
-                </ul>
-                </details>
-                <details>
-                <summary>Maintainer changes</summary>
-                <p>This version was pushed to npm by <a href="https://www.npmjs.com/~marsup">marsup</a>, a new releaser for <code>@​sideway/formula</code> since your current version.</p>
-                </details>
-                <br />
-            commit-message: |-
-                Bump @sideway/formula from 3.0.0 to 3.0.1 in /npm/transitive
-
-                Bumps [@sideway/formula](https://github.com/sideway/formula) from 3.0.0 to 3.0.1.
-                - [Commits](https://github.com/sideway/formula/compare/v3.0.0...v3.0.1)
     - type: mark_as_processed
       expect:
         data:

@@ -12,9 +12,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget/central-package-management
             commit: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -210,6 +207,12 @@ output:
       expect:
         data:
             base-commit-sha: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+            commit-message: |-
+                Bump Newtonsoft.Json in /nuget/central-package-management
+
+                Bumps [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) from 13.0.1 to 13.0.3.
+                - [Release notes](https://github.com/JamesNK/Newtonsoft.Json/releases)
+                - [Commits](https://github.com/JamesNK/Newtonsoft.Json/compare/13.0.1...13.0.3)
             dependencies:
                 - name: Newtonsoft.Json
                   previous-requirements:
@@ -244,24 +247,6 @@ output:
                         type: nuget_repo
                         url: https://api.nuget.org/v3/index.json
                   version: 13.0.3
-            updated-dependency-files:
-                - content: |-
-                    <Project>
-                      <PropertyGroup>
-                        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-                      </PropertyGroup>
-                      <ItemGroup>
-                        <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
-                      </ItemGroup>
-                    </Project>
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /nuget/central-package-management
-                  name: Directory.Packages.props
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump Newtonsoft.Json from 13.0.1 to 13.0.3 in /nuget/central-package-management
             pr-body: |
                 Bumps [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) from 13.0.1 to 13.0.3.
                 <details>
@@ -309,12 +294,24 @@ output:
                 </ul>
                 </details>
                 <br />
-            commit-message: |-
-                Bump Newtonsoft.Json in /nuget/central-package-management
-
-                Bumps [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) from 13.0.1 to 13.0.3.
-                - [Release notes](https://github.com/JamesNK/Newtonsoft.Json/releases)
-                - [Commits](https://github.com/JamesNK/Newtonsoft.Json/compare/13.0.1...13.0.3)
+            pr-title: Bump Newtonsoft.Json from 13.0.1 to 13.0.3 in /nuget/central-package-management
+            updated-dependency-files:
+                - content: |-
+                    <Project>
+                      <PropertyGroup>
+                        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+                      </PropertyGroup>
+                      <ItemGroup>
+                        <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
+                      </ItemGroup>
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/central-package-management
+                  name: Directory.Packages.props
+                  operation: update
+                  support_file: false
+                  type: file
     - type: mark_as_processed
       expect:
         data:

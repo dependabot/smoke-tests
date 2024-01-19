@@ -26,9 +26,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /npm/removed
             commit: 4e5e081d77a06dd5092a65e161c1142fbec372bd
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -65,13 +62,23 @@ output:
       expect:
         data:
             base-commit-sha: 4e5e081d77a06dd5092a65e161c1142fbec372bd
+            commit-message: |-
+                Bump @dependabot-fixtures/npm-transitive-dependency and @dependabot-fixtures/npm-remove-dependency
+
+                Removes [@dependabot-fixtures/npm-transitive-dependency](https://github.com/dependabot-fixtures/npm-transitive-dependency). It's no longer used after updating ancestor dependency [@dependabot-fixtures/npm-remove-dependency](https://github.com/dependabot-fixtures/npm-remove-dependency). These dependencies need to be updated together.
+
+
+                Removes `@dependabot-fixtures/npm-transitive-dependency`
+
+                Updates `@dependabot-fixtures/npm-remove-dependency` from 10.0.0 to 10.0.1
+                - [Commits](https://github.com/dependabot-fixtures/npm-remove-dependency/compare/v10.0.0...v10.0.1)
             dependencies:
                 - name: '@dependabot-fixtures/npm-transitive-dependency'
                   previous-requirements: []
                   previous-version: 1.0.0
+                  removed: true
                   requirements: []
                   version: null
-                  removed: true
                 - name: '@dependabot-fixtures/npm-remove-dependency'
                   previous-requirements:
                     - file: package.json
@@ -91,6 +98,21 @@ output:
                         type: registry
                         url: https://registry.npmjs.org
                   version: 10.0.1
+            pr-body: |
+                Removes [@dependabot-fixtures/npm-transitive-dependency](https://github.com/dependabot-fixtures/npm-transitive-dependency). It's no longer used after updating ancestor dependency [@dependabot-fixtures/npm-remove-dependency](https://github.com/dependabot-fixtures/npm-remove-dependency). These dependencies need to be updated together.
+
+                Removes `@dependabot-fixtures/npm-transitive-dependency`
+
+                Updates `@dependabot-fixtures/npm-remove-dependency` from 10.0.0 to 10.0.1
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/dependabot-fixtures/npm-remove-dependency/commit/84218f3c75c252017a921e0cbd9c7ec8cb91df51"><code>84218f3</code></a> Remove dependencies</li>
+                <li>See full diff in <a href="https://github.com/dependabot-fixtures/npm-remove-dependency/compare/v10.0.0...v10.0.1">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            pr-title: Bump @dependabot-fixtures/npm-transitive-dependency and @dependabot-fixtures/npm-remove-dependency in /npm/removed
             updated-dependency-files:
                 - content: |
                     {
@@ -151,31 +173,6 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump @dependabot-fixtures/npm-transitive-dependency and @dependabot-fixtures/npm-remove-dependency in /npm/removed
-            pr-body: |
-                Removes [@dependabot-fixtures/npm-transitive-dependency](https://github.com/dependabot-fixtures/npm-transitive-dependency). It's no longer used after updating ancestor dependency [@dependabot-fixtures/npm-remove-dependency](https://github.com/dependabot-fixtures/npm-remove-dependency). These dependencies need to be updated together.
-
-                Removes `@dependabot-fixtures/npm-transitive-dependency`
-
-                Updates `@dependabot-fixtures/npm-remove-dependency` from 10.0.0 to 10.0.1
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/dependabot-fixtures/npm-remove-dependency/commit/84218f3c75c252017a921e0cbd9c7ec8cb91df51"><code>84218f3</code></a> Remove dependencies</li>
-                <li>See full diff in <a href="https://github.com/dependabot-fixtures/npm-remove-dependency/compare/v10.0.0...v10.0.1">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump @dependabot-fixtures/npm-transitive-dependency and @dependabot-fixtures/npm-remove-dependency
-
-                Removes [@dependabot-fixtures/npm-transitive-dependency](https://github.com/dependabot-fixtures/npm-transitive-dependency). It's no longer used after updating ancestor dependency [@dependabot-fixtures/npm-remove-dependency](https://github.com/dependabot-fixtures/npm-remove-dependency). These dependencies need to be updated together.
-
-
-                Removes `@dependabot-fixtures/npm-transitive-dependency`
-
-                Updates `@dependabot-fixtures/npm-remove-dependency` from 10.0.0 to 10.0.1
-                - [Commits](https://github.com/dependabot-fixtures/npm-remove-dependency/compare/v10.0.0...v10.0.1)
     - type: mark_as_processed
       expect:
         data:

@@ -13,9 +13,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /pip/
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -72,6 +69,11 @@ output:
       expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            commit-message: |-
+                Update django requirement from <4.0,>=3.1 to >=3.1,<5.0 in /pip
+
+                Updates the requirements on [django](https://github.com/django/django) to permit the latest version.
+                - [Commits](https://github.com/django/django/compare/3.1...4.0.6)
             dependencies:
                 - name: django
                   previous-requirements:
@@ -87,21 +89,6 @@ output:
                       requirement: '>=3.1,<5.0'
                       source: null
                   version: 4.0.6
-            updated-dependency-files:
-                - content: |
-                    Django>=3.1,<5.0
-                    requests
-                    pyyaml
-                    pytest
-                    numpy==1.23.0
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /pip
-                  name: requirements.txt
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Update django requirement from <4.0,>=3.1 to >=3.1,<5.0 in /pip
             pr-body: |
                 Updates the requirements on [django](https://github.com/django/django) to permit the latest version.
                 <details>
@@ -121,15 +108,32 @@ output:
                 </ul>
                 </details>
                 <br />
-            commit-message: |-
-                Update django requirement from <4.0,>=3.1 to >=3.1,<5.0 in /pip
-
-                Updates the requirements on [django](https://github.com/django/django) to permit the latest version.
-                - [Commits](https://github.com/django/django/compare/3.1...4.0.6)
+            pr-title: Update django requirement from <4.0,>=3.1 to >=3.1,<5.0 in /pip
+            updated-dependency-files:
+                - content: |
+                    Django>=3.1,<5.0
+                    requests
+                    pyyaml
+                    pytest
+                    numpy==1.23.0
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /pip
+                  name: requirements.txt
+                  operation: update
+                  support_file: false
+                  type: file
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            commit-message: |-
+                Bump numpy from 1.23.0 to 1.26.2 in /pip
+
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.26.2.
+                - [Release notes](https://github.com/numpy/numpy/releases)
+                - [Changelog](https://github.com/numpy/numpy/blob/main/doc/RELEASE_WALKTHROUGH.rst)
+                - [Commits](https://github.com/numpy/numpy/compare/v1.23.0...v1.26.2)
             dependencies:
                 - name: numpy
                   previous-requirements:
@@ -146,21 +150,6 @@ output:
                       requirement: ==1.26.2
                       source: null
                   version: 1.26.2
-            updated-dependency-files:
-                - content: |
-                    Django>=3.1,<4.0
-                    requests
-                    pyyaml
-                    pytest
-                    numpy==1.26.2
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /pip
-                  name: requirements.txt
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump numpy from 1.23.0 to 1.26.2 in /pip
             pr-body: |
                 Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.26.2.
                 <details>
@@ -235,13 +224,21 @@ output:
                 </ul>
                 </details>
                 <br />
-            commit-message: |-
-                Bump numpy from 1.23.0 to 1.26.2 in /pip
-
-                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.26.2.
-                - [Release notes](https://github.com/numpy/numpy/releases)
-                - [Changelog](https://github.com/numpy/numpy/blob/main/doc/RELEASE_WALKTHROUGH.rst)
-                - [Commits](https://github.com/numpy/numpy/compare/v1.23.0...v1.26.2)
+            pr-title: Bump numpy from 1.23.0 to 1.26.2 in /pip
+            updated-dependency-files:
+                - content: |
+                    Django>=3.1,<4.0
+                    requests
+                    pyyaml
+                    pytest
+                    numpy==1.26.2
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /pip
+                  name: requirements.txt
+                  operation: update
+                  support_file: false
+                  type: file
     - type: mark_as_processed
       expect:
         data:

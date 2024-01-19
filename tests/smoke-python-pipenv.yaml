@@ -11,9 +11,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /pipenv/
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -56,6 +53,11 @@ output:
       expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            commit-message: |-
+                Bump django from 3.2.10 to 4.0.6 in /pipenv
+
+                Bumps [django](https://github.com/django/django) from 3.2.10 to 4.0.6.
+                - [Commits](https://github.com/django/django/compare/3.2.10...4.0.6)
             dependencies:
                 - name: django
                   previous-requirements:
@@ -72,6 +74,26 @@ output:
                       requirement: ==4.0.6
                       source: null
                   version: 4.0.6
+            pr-body: |
+                Bumps [django](https://github.com/django/django) from 3.2.10 to 4.0.6.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/django/django/commit/caad462feaa84ba78ed658a9595a4a4363dad2db"><code>caad462</code></a> [4.0.x] Bumped version for 4.0.6 release.</li>
+                <li><a href="https://github.com/django/django/commit/c73215272a723b939548fe22c607a732530ce04f"><code>c732152</code></a> [4.0.x] Updated man page for Django 4.0.6.</li>
+                <li><a href="https://github.com/django/django/commit/0dc9c016fadb71a067e5a42be30164e3f96c0492"><code>0dc9c01</code></a> [4.0.x] Fixed CVE-2022-34265 -- Protected Trunc(kind)/Extract(lookup_name) ag...</li>
+                <li><a href="https://github.com/django/django/commit/a2b88d7be6fc9b443794518d2f75fd2f3d9e677a"><code>a2b88d7</code></a> [4.0.x] Fixed typo in docs/topics/signals.txt.</li>
+                <li><a href="https://github.com/django/django/commit/2b901c1be462a12cad39af40a57a454ffe185406"><code>2b901c1</code></a> [4.0.x] Fixed GEOSTest.test_emptyCollections() on GEOS 3.8.0.</li>
+                <li><a href="https://github.com/django/django/commit/4d20d2f7c2b8e74c3e85bd0716ebdcb3b35a70e6"><code>4d20d2f</code></a> [4.0.x] Fixed docs build with sphinxcontrib-spelling 7.5.0+.</li>
+                <li><a href="https://github.com/django/django/commit/8a294ee2e0e30f073f764310c74899e385a302ec"><code>8a294ee</code></a> [4.0.x] Added stub release notes and release date for 4.0.6 and 3.2.14.</li>
+                <li><a href="https://github.com/django/django/commit/1c28443fc92e57588fb9b37b700f97be9fde5982"><code>1c28443</code></a> [4.0.x] Fixed CoveringIndexTests.test_covering_partial_index() when DEFAULT_I...</li>
+                <li><a href="https://github.com/django/django/commit/0f3b25044c34fd17b6fcde0cb53db0181f212b20"><code>0f3b250</code></a> [4.0.x] Fixed <a href="https://redirect.github.com/django/django/issues/33789">#33789</a> -- Doc'd changes in quoting table/column names on Oracle...</li>
+                <li><a href="https://github.com/django/django/commit/6661c48a20d788dc76397ab4ec334b28b51db872"><code>6661c48</code></a> [4.0.x] Updated OWASP Top 10 link in security topic.</li>
+                <li>Additional commits viewable in <a href="https://github.com/django/django/compare/3.2.10...4.0.6">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            pr-title: Bump django from 3.2.10 to 4.0.6 in /pipenv
             updated-dependency-files:
                 - content: |
                     [[source]]
@@ -219,31 +241,6 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump django from 3.2.10 to 4.0.6 in /pipenv
-            pr-body: |
-                Bumps [django](https://github.com/django/django) from 3.2.10 to 4.0.6.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/django/django/commit/caad462feaa84ba78ed658a9595a4a4363dad2db"><code>caad462</code></a> [4.0.x] Bumped version for 4.0.6 release.</li>
-                <li><a href="https://github.com/django/django/commit/c73215272a723b939548fe22c607a732530ce04f"><code>c732152</code></a> [4.0.x] Updated man page for Django 4.0.6.</li>
-                <li><a href="https://github.com/django/django/commit/0dc9c016fadb71a067e5a42be30164e3f96c0492"><code>0dc9c01</code></a> [4.0.x] Fixed CVE-2022-34265 -- Protected Trunc(kind)/Extract(lookup_name) ag...</li>
-                <li><a href="https://github.com/django/django/commit/a2b88d7be6fc9b443794518d2f75fd2f3d9e677a"><code>a2b88d7</code></a> [4.0.x] Fixed typo in docs/topics/signals.txt.</li>
-                <li><a href="https://github.com/django/django/commit/2b901c1be462a12cad39af40a57a454ffe185406"><code>2b901c1</code></a> [4.0.x] Fixed GEOSTest.test_emptyCollections() on GEOS 3.8.0.</li>
-                <li><a href="https://github.com/django/django/commit/4d20d2f7c2b8e74c3e85bd0716ebdcb3b35a70e6"><code>4d20d2f</code></a> [4.0.x] Fixed docs build with sphinxcontrib-spelling 7.5.0+.</li>
-                <li><a href="https://github.com/django/django/commit/8a294ee2e0e30f073f764310c74899e385a302ec"><code>8a294ee</code></a> [4.0.x] Added stub release notes and release date for 4.0.6 and 3.2.14.</li>
-                <li><a href="https://github.com/django/django/commit/1c28443fc92e57588fb9b37b700f97be9fde5982"><code>1c28443</code></a> [4.0.x] Fixed CoveringIndexTests.test_covering_partial_index() when DEFAULT_I...</li>
-                <li><a href="https://github.com/django/django/commit/0f3b25044c34fd17b6fcde0cb53db0181f212b20"><code>0f3b250</code></a> [4.0.x] Fixed <a href="https://redirect.github.com/django/django/issues/33789">#33789</a> -- Doc'd changes in quoting table/column names on Oracle...</li>
-                <li><a href="https://github.com/django/django/commit/6661c48a20d788dc76397ab4ec334b28b51db872"><code>6661c48</code></a> [4.0.x] Updated OWASP Top 10 link in security topic.</li>
-                <li>Additional commits viewable in <a href="https://github.com/django/django/compare/3.2.10...4.0.6">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump django from 3.2.10 to 4.0.6 in /pipenv
-
-                Bumps [django](https://github.com/django/django) from 3.2.10 to 4.0.6.
-                - [Commits](https://github.com/django/django/compare/3.2.10...4.0.6)
     - type: mark_as_processed
       expect:
         data:

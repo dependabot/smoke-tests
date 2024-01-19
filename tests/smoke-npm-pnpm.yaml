@@ -14,9 +14,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /pnpm/
             commit: a2579c0ace294be0332276ea32db3da71fa253cc
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -348,6 +345,13 @@ output:
       expect:
         data:
             base-commit-sha: a2579c0ace294be0332276ea32db3da71fa253cc
+            commit-message: |-
+                Bump eslint-plugin-yml from 1.5.0 to 1.7.0 in /pnpm
+
+                Bumps [eslint-plugin-yml](https://github.com/ota-meshi/eslint-plugin-yml) from 1.5.0 to 1.7.0.
+                - [Release notes](https://github.com/ota-meshi/eslint-plugin-yml/releases)
+                - [Changelog](https://github.com/ota-meshi/eslint-plugin-yml/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/ota-meshi/eslint-plugin-yml/compare/v1.5.0...v1.7.0)
             dependencies:
                 - name: eslint-plugin-yml
                   previous-requirements:
@@ -364,6 +368,58 @@ output:
                       requirement: 1.7.0
                       source: null
                   version: 1.7.0
+            pr-body: |
+                Bumps [eslint-plugin-yml](https://github.com/ota-meshi/eslint-plugin-yml) from 1.5.0 to 1.7.0.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/ota-meshi/eslint-plugin-yml/releases">eslint-plugin-yml's releases</a>.</em></p>
+                <blockquote>
+                <h2>v1.7.0</h2>
+                <h3>Minor Changes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/pull/238">#238</a> <a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/6033d9c6130f08ff5667ffa712a63b74244a4b48"><code>6033d9c</code></a> Thanks <a href="https://github.com/ota-meshi"><code>@​ota-meshi</code></a>! - feat: export meta object</li>
+                </ul>
+                <h2>v1.6.0</h2>
+                <h3>Minor Changes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/pull/236">#236</a> <a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/7e34b7748a4e3663ab56dc504214ba613b3f8347"><code>7e34b77</code></a> Thanks <a href="https://github.com/sxyazi"><code>@​sxyazi</code></a>! - feat: add <code>yml/no-trailing-zeros</code> rule</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/ota-meshi/eslint-plugin-yml/blob/master/CHANGELOG.md">eslint-plugin-yml's changelog</a>.</em></p>
+                <blockquote>
+                <h2>1.7.0</h2>
+                <h3>Minor Changes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/pull/238">#238</a> <a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/6033d9c6130f08ff5667ffa712a63b74244a4b48"><code>6033d9c</code></a> Thanks <a href="https://github.com/ota-meshi"><code>@​ota-meshi</code></a>! - feat: export meta object</li>
+                </ul>
+                <h2>1.6.0</h2>
+                <h3>Minor Changes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/pull/236">#236</a> <a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/7e34b7748a4e3663ab56dc504214ba613b3f8347"><code>7e34b77</code></a> Thanks <a href="https://github.com/sxyazi"><code>@​sxyazi</code></a>! - feat: add <code>yml/no-trailing-zeros</code> rule</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/7cc11ebc45402ed7275dcbbef69a93d9e841951a"><code>7cc11eb</code></a> chore: release eslint-plugin-yml (<a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/issues/239">#239</a>)</li>
+                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/545b362f9905c7cabbea2400d8ac3deca2c92257"><code>545b362</code></a> test: fix</li>
+                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/6033d9c6130f08ff5667ffa712a63b74244a4b48"><code>6033d9c</code></a> feat: export meta object (<a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/issues/238">#238</a>)</li>
+                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/7c2e179d1f62a73e083d5e0acbce74878d15f0ed"><code>7c2e179</code></a> chore: release eslint-plugin-yml (<a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/issues/237">#237</a>)</li>
+                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/829d9cf4f38bdca0d5bd6264d7c07a8e0b71dec4"><code>829d9cf</code></a> test: add more testcases for no-trailing-zeros</li>
+                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/7e34b7748a4e3663ab56dc504214ba613b3f8347"><code>7e34b77</code></a> feat: add <code>no-trailing-zeros</code> rule (<a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/issues/236">#236</a>)</li>
+                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/dc9edb1956cd6a3021ba603e6929654aa52356c4"><code>dc9edb1</code></a> chore(deps): update dependency monaco-editor to ^0.38.0</li>
+                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/694d94487c1f931692f70ac05df640c5d724c70e"><code>694d944</code></a> chore(deps): update coverallsapp/github-action action to v2.1.2</li>
+                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/8d46f065e8b8a8c1f2a5d3479a2d7d9939b1ac7d"><code>8d46f06</code></a> chore(deps): update coverallsapp/github-action action to v2.1.1</li>
+                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/29e6634da253e32834fc066357b379ccf93bde22"><code>29e6634</code></a> chore(deps): update dependency stylelint-config-standard to v33 (<a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/issues/232">#232</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/ota-meshi/eslint-plugin-yml/compare/v1.5.0...v1.7.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            pr-title: Bump eslint-plugin-yml from 1.5.0 to 1.7.0 in /pnpm
             updated-dependency-files:
                 - content: |
                     {
@@ -1084,65 +1140,6 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump eslint-plugin-yml from 1.5.0 to 1.7.0 in /pnpm
-            pr-body: |
-                Bumps [eslint-plugin-yml](https://github.com/ota-meshi/eslint-plugin-yml) from 1.5.0 to 1.7.0.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/ota-meshi/eslint-plugin-yml/releases">eslint-plugin-yml's releases</a>.</em></p>
-                <blockquote>
-                <h2>v1.7.0</h2>
-                <h3>Minor Changes</h3>
-                <ul>
-                <li><a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/pull/238">#238</a> <a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/6033d9c6130f08ff5667ffa712a63b74244a4b48"><code>6033d9c</code></a> Thanks <a href="https://github.com/ota-meshi"><code>@​ota-meshi</code></a>! - feat: export meta object</li>
-                </ul>
-                <h2>v1.6.0</h2>
-                <h3>Minor Changes</h3>
-                <ul>
-                <li><a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/pull/236">#236</a> <a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/7e34b7748a4e3663ab56dc504214ba613b3f8347"><code>7e34b77</code></a> Thanks <a href="https://github.com/sxyazi"><code>@​sxyazi</code></a>! - feat: add <code>yml/no-trailing-zeros</code> rule</li>
-                </ul>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/ota-meshi/eslint-plugin-yml/blob/master/CHANGELOG.md">eslint-plugin-yml's changelog</a>.</em></p>
-                <blockquote>
-                <h2>1.7.0</h2>
-                <h3>Minor Changes</h3>
-                <ul>
-                <li><a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/pull/238">#238</a> <a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/6033d9c6130f08ff5667ffa712a63b74244a4b48"><code>6033d9c</code></a> Thanks <a href="https://github.com/ota-meshi"><code>@​ota-meshi</code></a>! - feat: export meta object</li>
-                </ul>
-                <h2>1.6.0</h2>
-                <h3>Minor Changes</h3>
-                <ul>
-                <li><a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/pull/236">#236</a> <a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/7e34b7748a4e3663ab56dc504214ba613b3f8347"><code>7e34b77</code></a> Thanks <a href="https://github.com/sxyazi"><code>@​sxyazi</code></a>! - feat: add <code>yml/no-trailing-zeros</code> rule</li>
-                </ul>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/7cc11ebc45402ed7275dcbbef69a93d9e841951a"><code>7cc11eb</code></a> chore: release eslint-plugin-yml (<a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/issues/239">#239</a>)</li>
-                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/545b362f9905c7cabbea2400d8ac3deca2c92257"><code>545b362</code></a> test: fix</li>
-                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/6033d9c6130f08ff5667ffa712a63b74244a4b48"><code>6033d9c</code></a> feat: export meta object (<a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/issues/238">#238</a>)</li>
-                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/7c2e179d1f62a73e083d5e0acbce74878d15f0ed"><code>7c2e179</code></a> chore: release eslint-plugin-yml (<a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/issues/237">#237</a>)</li>
-                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/829d9cf4f38bdca0d5bd6264d7c07a8e0b71dec4"><code>829d9cf</code></a> test: add more testcases for no-trailing-zeros</li>
-                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/7e34b7748a4e3663ab56dc504214ba613b3f8347"><code>7e34b77</code></a> feat: add <code>no-trailing-zeros</code> rule (<a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/issues/236">#236</a>)</li>
-                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/dc9edb1956cd6a3021ba603e6929654aa52356c4"><code>dc9edb1</code></a> chore(deps): update dependency monaco-editor to ^0.38.0</li>
-                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/694d94487c1f931692f70ac05df640c5d724c70e"><code>694d944</code></a> chore(deps): update coverallsapp/github-action action to v2.1.2</li>
-                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/8d46f065e8b8a8c1f2a5d3479a2d7d9939b1ac7d"><code>8d46f06</code></a> chore(deps): update coverallsapp/github-action action to v2.1.1</li>
-                <li><a href="https://github.com/ota-meshi/eslint-plugin-yml/commit/29e6634da253e32834fc066357b379ccf93bde22"><code>29e6634</code></a> chore(deps): update dependency stylelint-config-standard to v33 (<a href="https://redirect.github.com/ota-meshi/eslint-plugin-yml/issues/232">#232</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/ota-meshi/eslint-plugin-yml/compare/v1.5.0...v1.7.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump eslint-plugin-yml from 1.5.0 to 1.7.0 in /pnpm
-
-                Bumps [eslint-plugin-yml](https://github.com/ota-meshi/eslint-plugin-yml) from 1.5.0 to 1.7.0.
-                - [Release notes](https://github.com/ota-meshi/eslint-plugin-yml/releases)
-                - [Changelog](https://github.com/ota-meshi/eslint-plugin-yml/blob/master/CHANGELOG.md)
-                - [Commits](https://github.com/ota-meshi/eslint-plugin-yml/compare/v1.5.0...v1.7.0)
     - type: mark_as_processed
       expect:
         data:

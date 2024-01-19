@@ -23,9 +23,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /.
             commit: 9e96615658c7e573f451797088c5d078cb496c8a
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -194,6 +191,19 @@ output:
       expect:
         data:
             base-commit-sha: 9e96615658c7e573f451797088c5d078cb496c8a
+            commit-message: |-
+                Bump the setup group with 2 updates
+
+                Bumps the setup group with 2 updates: [actions/setup-ruby](https://github.com/actions/setup-ruby) and [actions/setup-node](https://github.com/actions/setup-node).
+
+
+                Updates `actions/setup-ruby` from 1.1.2 to 1.1.3
+                - [Release notes](https://github.com/actions/setup-ruby/releases)
+                - [Commits](https://github.com/actions/setup-ruby/compare/5f29a1cd8dfebf420691c4c9a0e832e2fae5a526...e932e7af67fc4a8fc77bd86b744acd4e42fe3543)
+
+                Updates `actions/setup-node` from 1 to 2
+                - [Release notes](https://github.com/actions/setup-node/releases)
+                - [Commits](https://github.com/actions/setup-node/compare/v1...v2)
             dependencies:
                 - name: actions/setup-ruby
                   previous-requirements:
@@ -245,33 +255,8 @@ output:
                         type: git
                         url: https://github.com/actions/setup-node
                   version: "2"
-            updated-dependency-files:
-                - content: |
-                    name: Smoke test manifest
-                    on: workflow_dispatch
-
-                    permissions:
-                      contents: read
-
-                    jobs:
-                      body-moving:
-                        name: This is a smoke test
-                        runs-on: ubuntu-latest
-                        steps:
-                          - name: Setup Go
-                            uses: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9
-                          - name: Setup Ruby
-                            uses: actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543
-                          - name: Setup Node
-                            uses: actions/setup-node@v2
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /
-                  name: .github/workflows/i-am-a-smoke-test.yml
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump the setup group with 2 updates
+            dependency-group:
+                name: setup
             pr-body: |
                 Bumps the setup group with 2 updates: [actions/setup-ruby](https://github.com/actions/setup-ruby) and [actions/setup-node](https://github.com/actions/setup-node).
 
@@ -331,25 +316,43 @@ output:
                 </ul>
                 </details>
                 <br />
-            commit-message: |-
-                Bump the setup group with 2 updates
+            pr-title: Bump the setup group with 2 updates
+            updated-dependency-files:
+                - content: |
+                    name: Smoke test manifest
+                    on: workflow_dispatch
 
-                Bumps the setup group with 2 updates: [actions/setup-ruby](https://github.com/actions/setup-ruby) and [actions/setup-node](https://github.com/actions/setup-node).
+                    permissions:
+                      contents: read
 
-
-                Updates `actions/setup-ruby` from 1.1.2 to 1.1.3
-                - [Release notes](https://github.com/actions/setup-ruby/releases)
-                - [Commits](https://github.com/actions/setup-ruby/compare/5f29a1cd8dfebf420691c4c9a0e832e2fae5a526...e932e7af67fc4a8fc77bd86b744acd4e42fe3543)
-
-                Updates `actions/setup-node` from 1 to 2
-                - [Release notes](https://github.com/actions/setup-node/releases)
-                - [Commits](https://github.com/actions/setup-node/compare/v1...v2)
-            dependency-group:
-                name: setup
+                    jobs:
+                      body-moving:
+                        name: This is a smoke test
+                        runs-on: ubuntu-latest
+                        steps:
+                          - name: Setup Go
+                            uses: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9
+                          - name: Setup Ruby
+                            uses: actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543
+                          - name: Setup Node
+                            uses: actions/setup-node@v2
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: .github/workflows/i-am-a-smoke-test.yml
+                  operation: update
+                  support_file: false
+                  type: file
     - type: create_pull_request
       expect:
         data:
             base-commit-sha: 9e96615658c7e573f451797088c5d078cb496c8a
+            commit-message: |-
+                Bump actions/setup-go from 4.0.0 to 4.1.0
+
+                Bumps [actions/setup-go](https://github.com/actions/setup-go) from 4.0.0 to 4.1.0.
+                - [Release notes](https://github.com/actions/setup-go/releases)
+                - [Commits](https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...93397bea11091df50f3d7e59dc26a7711a8bcfbe)
             dependencies:
                 - name: actions/setup-go
                   previous-requirements:
@@ -376,33 +379,6 @@ output:
                         type: git
                         url: https://github.com/actions/setup-go
                   version: 4.1.0
-            updated-dependency-files:
-                - content: |
-                    name: Smoke test manifest
-                    on: workflow_dispatch
-
-                    permissions:
-                      contents: read
-
-                    jobs:
-                      body-moving:
-                        name: This is a smoke test
-                        runs-on: ubuntu-latest
-                        steps:
-                          - name: Setup Go
-                            uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe
-                          - name: Setup Ruby
-                            uses: actions/setup-ruby@5f29a1cd8dfebf420691c4c9a0e832e2fae5a526
-                          - name: Setup Node
-                            uses: actions/setup-node@v1
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /
-                  name: .github/workflows/i-am-a-smoke-test.yml
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump actions/setup-go from 4.0.0 to 4.1.0
             pr-body: |
                 Bumps [actions/setup-go](https://github.com/actions/setup-go) from 4.0.0 to 4.1.0.
                 <details>
@@ -461,12 +437,33 @@ output:
                 </ul>
                 </details>
                 <br />
-            commit-message: |-
-                Bump actions/setup-go from 4.0.0 to 4.1.0
+            pr-title: Bump actions/setup-go from 4.0.0 to 4.1.0
+            updated-dependency-files:
+                - content: |
+                    name: Smoke test manifest
+                    on: workflow_dispatch
 
-                Bumps [actions/setup-go](https://github.com/actions/setup-go) from 4.0.0 to 4.1.0.
-                - [Release notes](https://github.com/actions/setup-go/releases)
-                - [Commits](https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...93397bea11091df50f3d7e59dc26a7711a8bcfbe)
+                    permissions:
+                      contents: read
+
+                    jobs:
+                      body-moving:
+                        name: This is a smoke test
+                        runs-on: ubuntu-latest
+                        steps:
+                          - name: Setup Go
+                            uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe
+                          - name: Setup Ruby
+                            uses: actions/setup-ruby@5f29a1cd8dfebf420691c4c9a0e832e2fae5a526
+                          - name: Setup Node
+                            uses: actions/setup-node@v1
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: .github/workflows/i-am-a-smoke-test.yml
+                  operation: update
+                  support_file: false
+                  type: file
     - type: mark_as_processed
       expect:
         data:

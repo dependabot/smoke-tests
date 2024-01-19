@@ -25,9 +25,6 @@ input:
                 - /nuget/multi-dir/bar
             branch: main
             commit: 015a266f4472fe15631f6e0d77517e7a9d471023
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -58,6 +55,20 @@ output:
       expect:
         data:
             base-commit-sha: 015a266f4472fe15631f6e0d77517e7a9d471023
+            commit-message: |-
+                Bump the nuget_pkgs across 2 directories with 1 update
+
+                Bumps the nuget_pkgs with 1 update in the /nuget/multi-dir/foo directory: [NuGet.Versioning](https://github.com/NuGet/NuGet.Client).
+                Bumps the nuget_pkgs with 1 update in the /nuget/multi-dir/bar directory: [NuGet.Versioning](https://github.com/NuGet/NuGet.Client).
+
+
+                Updates `NuGet.Versioning` from 6.1.0 to 6.8.0
+                - [Release notes](https://github.com/NuGet/NuGet.Client/releases)
+                - [Commits](https://github.com/NuGet/NuGet.Client/commits)
+
+                Updates `NuGet.Versioning` from 6.2.2 to 6.8.0
+                - [Release notes](https://github.com/NuGet/NuGet.Client/releases)
+                - [Commits](https://github.com/NuGet/NuGet.Client/commits)
             dependencies:
                 - name: NuGet.Versioning
                   previous-requirements:
@@ -97,6 +108,30 @@ output:
                         type: nuget_repo
                         url: https://api.nuget.org/v3/index.json
                   version: 6.8.0
+            dependency-group:
+                name: nuget_pkgs
+            pr-body: |
+                Bumps the nuget_pkgs with 1 update in the /nuget/multi-dir/foo directory: [NuGet.Versioning](https://github.com/NuGet/NuGet.Client).
+                Bumps the nuget_pkgs with 1 update in the /nuget/multi-dir/bar directory: [NuGet.Versioning](https://github.com/NuGet/NuGet.Client).
+
+                Updates `NuGet.Versioning` from 6.1.0 to 6.8.0
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/NuGet/NuGet.Client/commits">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `NuGet.Versioning` from 6.2.2 to 6.8.0
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/NuGet/NuGet.Client/commits">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            pr-title: Bump the nuget_pkgs across 2 directories with 1 update
             updated-dependency-files:
                 - content: |
                     <Project Sdk="Microsoft.NET.Sdk">
@@ -142,44 +177,6 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the nuget_pkgs across 2 directories with 1 update
-            pr-body: |
-                Bumps the nuget_pkgs with 1 update in the /nuget/multi-dir/foo directory: [NuGet.Versioning](https://github.com/NuGet/NuGet.Client).
-                Bumps the nuget_pkgs with 1 update in the /nuget/multi-dir/bar directory: [NuGet.Versioning](https://github.com/NuGet/NuGet.Client).
-
-                Updates `NuGet.Versioning` from 6.1.0 to 6.8.0
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li>See full diff in <a href="https://github.com/NuGet/NuGet.Client/commits">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-
-                Updates `NuGet.Versioning` from 6.2.2 to 6.8.0
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li>See full diff in <a href="https://github.com/NuGet/NuGet.Client/commits">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump the nuget_pkgs across 2 directories with 1 update
-
-                Bumps the nuget_pkgs with 1 update in the /nuget/multi-dir/foo directory: [NuGet.Versioning](https://github.com/NuGet/NuGet.Client).
-                Bumps the nuget_pkgs with 1 update in the /nuget/multi-dir/bar directory: [NuGet.Versioning](https://github.com/NuGet/NuGet.Client).
-
-
-                Updates `NuGet.Versioning` from 6.1.0 to 6.8.0
-                - [Release notes](https://github.com/NuGet/NuGet.Client/releases)
-                - [Commits](https://github.com/NuGet/NuGet.Client/commits)
-
-                Updates `NuGet.Versioning` from 6.2.2 to 6.8.0
-                - [Release notes](https://github.com/NuGet/NuGet.Client/releases)
-                - [Commits](https://github.com/NuGet/NuGet.Client/commits)
-            dependency-group:
-                name: nuget_pkgs
     - type: mark_as_processed
       expect:
         data:

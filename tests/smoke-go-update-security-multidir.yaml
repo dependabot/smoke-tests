@@ -4,9 +4,15 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        dependency-groups:
+            - name: go_modules group
+              rules:
+                patterns:
+                    - '*'
         dependencies:
             - rsc.io/quote
             - rsc.io/qr
+        dependency-group-to-refresh: go_modules group
         existing-group-pull-requests:
             - dependency-group-name: go_modules group
               dependencies:
@@ -39,11 +45,6 @@ input:
               patched-versions: []
               unaffected-versions: []
         security-updates-only: true
-        dependency-groups:
-          - name: go_modules group
-            rules:
-              patterns:
-                - "*"
         source:
             provider: github
             repo: dependabot/smoke-tests
@@ -54,10 +55,6 @@ input:
             branch: main
             commit: fb37fe61a7462139c74f2fc7e80400b325d066a0
         updating-a-pull-request: true
-        dependency-group-to-refresh: go_modules group
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN

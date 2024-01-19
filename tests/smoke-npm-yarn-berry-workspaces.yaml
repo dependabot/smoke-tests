@@ -18,11 +18,6 @@ input:
             hostname: github.com
             api-endpoint: https://api.github.com/
         commit-message-options: {}
-        credentials-metadata:
-            - host: github.com
-              type: git_source
-            - host: github.com
-              type: git_source
         max-updater-run-time: 2700
     credentials:
         - host: github.com
@@ -1438,6 +1433,12 @@ output:
       expect:
         data:
             base-commit-sha: e9421fd1c3e40d8b357b0b493fd976b36fbed953
+            commit-message: |-
+                Bump @types/lodash from 4.14.189 to 4.14.191
+
+                Bumps [@types/lodash](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/lodash) from 4.14.189 to 4.14.191.
+                - [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)
+                - [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/lodash)
             dependencies:
                 - name: '@types/lodash'
                   previous-requirements:
@@ -1454,6 +1455,16 @@ output:
                       requirement: ^4.14.191
                       source: null
                   version: 4.14.191
+            pr-body: |
+                Bumps [@types/lodash](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/lodash) from 4.14.189 to 4.14.191.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/lodash">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            pr-title: Bump @types/lodash from 4.14.189 to 4.14.191
             updated-dependency-files:
                 - content: |
                     {
@@ -6531,22 +6542,6 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump @types/lodash from 4.14.189 to 4.14.191
-            pr-body: |
-                Bumps [@types/lodash](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/lodash) from 4.14.189 to 4.14.191.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li>See full diff in <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/lodash">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump @types/lodash from 4.14.189 to 4.14.191
-
-                Bumps [@types/lodash](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/lodash) from 4.14.189 to 4.14.191.
-                - [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)
-                - [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/lodash)
     - type: mark_as_processed
       expect:
         data:

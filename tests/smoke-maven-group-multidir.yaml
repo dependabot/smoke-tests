@@ -4,6 +4,11 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        dependency-groups:
+            - name: maven group
+              rules:
+                patterns:
+                    - '*'
         dependencies:
             - org.springframework.boot:spring-boot-starter-parent
         ignore-conditions:
@@ -20,11 +25,6 @@ input:
               patched-versions: []
               unaffected-versions: []
         security-updates-only: true
-        dependency-groups:
-          - name: maven group
-            rules:
-              patterns:
-                - "*"
         source:
             provider: github
             repo: dependabot/smoke-tests
@@ -32,9 +32,6 @@ input:
                 - /maven/multi-dir/foo
                 - /maven/multi-dir/bar
             commit: 56600671ab2495ed67614624740292fb5d54e4f4
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -131,6 +128,16 @@ output:
       expect:
         data:
             base-commit-sha: 56600671ab2495ed67614624740292fb5d54e4f4
+            commit-message: |-
+                Bump the maven group across 2 directories with 1 update
+
+                Bumps the maven group with 1 update in the /maven/multi-dir/foo directory: org.springframework.boot:spring-boot-starter-parent.
+                Bumps the maven group with 1 update in the /maven/multi-dir/bar directory: org.springframework.boot:spring-boot-starter-parent.
+
+
+                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.10.RELEASE to 1.5.12.RELEASE
+
+                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.9.RELEASE to 1.5.12.RELEASE
             dependencies:
                 - name: org.springframework.boot:spring-boot-starter-parent
                   previous-requirements:
@@ -170,6 +177,16 @@ output:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
                   version: 1.5.12.RELEASE
+            dependency-group:
+                name: maven group
+            pr-body: |
+                Bumps the maven group with 1 update in the /maven/multi-dir/foo directory: org.springframework.boot:spring-boot-starter-parent.
+                Bumps the maven group with 1 update in the /maven/multi-dir/bar directory: org.springframework.boot:spring-boot-starter-parent.
+
+                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.10.RELEASE to 1.5.12.RELEASE
+
+                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.9.RELEASE to 1.5.12.RELEASE
+            pr-title: Bump the maven group across 2 directories with 1 update
             updated-dependency-files:
                 - content: |
                     <?xml version="1.0" encoding="UTF-8"?>
@@ -317,26 +334,6 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the maven group across 2 directories with 1 update
-            pr-body: |
-                Bumps the maven group with 1 update in the /maven/multi-dir/foo directory: org.springframework.boot:spring-boot-starter-parent.
-                Bumps the maven group with 1 update in the /maven/multi-dir/bar directory: org.springframework.boot:spring-boot-starter-parent.
-
-                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.10.RELEASE to 1.5.12.RELEASE
-
-                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.9.RELEASE to 1.5.12.RELEASE
-            commit-message: |-
-                Bump the maven group across 2 directories with 1 update
-
-                Bumps the maven group with 1 update in the /maven/multi-dir/foo directory: org.springframework.boot:spring-boot-starter-parent.
-                Bumps the maven group with 1 update in the /maven/multi-dir/bar directory: org.springframework.boot:spring-boot-starter-parent.
-
-
-                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.10.RELEASE to 1.5.12.RELEASE
-
-                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.9.RELEASE to 1.5.12.RELEASE
-            dependency-group:
-                name: maven group
     - type: mark_as_processed
       expect:
         data:

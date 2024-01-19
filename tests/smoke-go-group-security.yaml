@@ -4,6 +4,11 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        dependency-groups:
+            - name: go_modules group
+              rules:
+                patterns:
+                    - '*'
         dependencies:
             - rsc.io/quote
             - rsc.io/qr
@@ -24,19 +29,11 @@ input:
               patched-versions: []
               unaffected-versions: []
         security-updates-only: true
-        dependency-groups:
-          - name: go_modules group
-            rules:
-              patterns:
-                - "*"
         source:
             provider: github
             repo: dependabot/smoke-tests
             directory: /go/grouped-security-update
             commit: 6842b44b55335f744d2e382218229a007e696f46
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -84,6 +81,17 @@ output:
       expect:
         data:
             base-commit-sha: 6842b44b55335f744d2e382218229a007e696f46
+            commit-message: |-
+                Bump the go_modules group group
+
+                Bumps the go_modules group group in /go/grouped-security-update with 2 updates: [rsc.io/qr](https://github.com/rsc/qr) and [rsc.io/quote](https://github.com/rsc/quote).
+
+
+                Updates `rsc.io/qr` from 0.1.0 to 0.2.0
+                - [Commits](https://github.com/rsc/qr/compare/v0.1.0...v0.2.0)
+
+                Updates `rsc.io/quote` from 1.5.0 to 1.5.1
+                - [Commits](https://github.com/rsc/quote/compare/v1.5.0...v1.5.1)
             dependencies:
                 - name: rsc.io/qr
                   previous-requirements:
@@ -119,6 +127,31 @@ output:
                         source: rsc.io/quote
                         type: default
                   version: 1.5.1
+            dependency-group:
+                name: go_modules group
+            pr-body: |
+                Bumps the go_modules group group in /go/grouped-security-update with 2 updates: [rsc.io/qr](https://github.com/rsc/qr) and [rsc.io/quote](https://github.com/rsc/quote).
+
+                Updates `rsc.io/qr` from 0.1.0 to 0.2.0
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rsc/qr/commit/ca9a01fc2f9505024045632c50e5e8cd6142fafe"><code>ca9a01f</code></a> qr: add import comments, go.mod</li>
+                <li>See full diff in <a href="https://github.com/rsc/qr/compare/v0.1.0...v0.2.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `rsc.io/quote` from 1.5.0 to 1.5.1
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rsc/quote/commit/23179ee8a569bb05d896ae05c6503ec69a19f99f"><code>23179ee</code></a> quote: fix test for new rsc.io/sampler</li>
+                <li>See full diff in <a href="https://github.com/rsc/quote/compare/v1.5.0...v1.5.1">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            pr-title: Bump the go_modules group group in /go/grouped-security-update with 2 updates
             updated-dependency-files:
                 - content: |
                     module group-security-update-test
@@ -158,42 +191,6 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the go_modules group group in /go/grouped-security-update with 2 updates
-            pr-body: |
-                Bumps the go_modules group group in /go/grouped-security-update with 2 updates: [rsc.io/qr](https://github.com/rsc/qr) and [rsc.io/quote](https://github.com/rsc/quote).
-
-                Updates `rsc.io/qr` from 0.1.0 to 0.2.0
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/rsc/qr/commit/ca9a01fc2f9505024045632c50e5e8cd6142fafe"><code>ca9a01f</code></a> qr: add import comments, go.mod</li>
-                <li>See full diff in <a href="https://github.com/rsc/qr/compare/v0.1.0...v0.2.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-
-                Updates `rsc.io/quote` from 1.5.0 to 1.5.1
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/rsc/quote/commit/23179ee8a569bb05d896ae05c6503ec69a19f99f"><code>23179ee</code></a> quote: fix test for new rsc.io/sampler</li>
-                <li>See full diff in <a href="https://github.com/rsc/quote/compare/v1.5.0...v1.5.1">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump the go_modules group group
-
-                Bumps the go_modules group group in /go/grouped-security-update with 2 updates: [rsc.io/qr](https://github.com/rsc/qr) and [rsc.io/quote](https://github.com/rsc/quote).
-
-
-                Updates `rsc.io/qr` from 0.1.0 to 0.2.0
-                - [Commits](https://github.com/rsc/qr/compare/v0.1.0...v0.2.0)
-
-                Updates `rsc.io/quote` from 1.5.0 to 1.5.1
-                - [Commits](https://github.com/rsc/quote/compare/v1.5.0...v1.5.1)
-            dependency-group:
-                name: go_modules group
     - type: mark_as_processed
       expect:
         data:

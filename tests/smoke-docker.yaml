@@ -12,9 +12,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -39,6 +36,10 @@ output:
       expect:
         data:
             base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            commit-message: |-
+                Bump ubuntu from 17.04 to 22.04
+
+                Bumps ubuntu from 17.04 to 22.04.
             dependencies:
                 - name: ubuntu
                   previous-requirements:
@@ -55,6 +56,9 @@ output:
                       source:
                         tag: "22.04"
                   version: "22.04"
+            pr-body: |
+                Bumps ubuntu from 17.04 to 22.04.
+            pr-title: Bump ubuntu from 17.04 to 22.04
             updated-dependency-files:
                 - content: |
                     FROM ubuntu:22.04
@@ -83,13 +87,6 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump ubuntu from 17.04 to 22.04
-            pr-body: |
-                Bumps ubuntu from 17.04 to 22.04.
-            commit-message: |-
-                Bump ubuntu from 17.04 to 22.04
-
-                Bumps ubuntu from 17.04 to 22.04.
     - type: mark_as_processed
       expect:
         data:
