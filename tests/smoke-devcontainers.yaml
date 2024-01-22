@@ -1,0 +1,235 @@
+input:
+    job:
+        package-manager: devcontainers
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: ghcr.io/codspace/versioning/foo
+              source: tests/smoke-devcontainers.yaml
+              version-requirement: '>2.11.1'
+            - dependency-name: ghcr.io/codspace/versioning/baz
+              source: tests/smoke-devcontainers.yaml
+              version-requirement: '>2.0.0'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: devcontainers
+            commit: 41b3d15a9446b434656bc5d8ed4a84066553d5aa
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: ghcr.io/codspace/versioning/foo
+                  requirements:
+                    - file: .devcontainer.json
+                      groups:
+                        - feature
+                      requirement: "1"
+                      source: null
+                    - file: .devcontainer/devcontainer.json
+                      groups:
+                        - feature
+                      requirement: "1"
+                      source: null
+                  version: 1.1.0
+                - name: ghcr.io/codspace/versioning/bar
+                  requirements:
+                    - file: .devcontainer.json
+                      groups:
+                        - feature
+                      requirement: "1"
+                      source: null
+                    - file: .devcontainer/devcontainer.json
+                      groups:
+                        - feature
+                      requirement: "1"
+                      source: null
+                  version: 1.0.0
+                - name: ghcr.io/codspace/versioning/baz
+                  requirements:
+                    - file: .devcontainer/devcontainer.json
+                      groups:
+                        - feature
+                      requirement: "1.0"
+                      source: null
+                  version: 1.0.0
+            dependency_files:
+                - /devcontainers/.devcontainer.json
+                - /devcontainers/.devcontainer/devcontainer.json
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 41b3d15a9446b434656bc5d8ed4a84066553d5aa
+            dependencies:
+                - name: ghcr.io/codspace/versioning/foo
+                  previous-requirements:
+                    - file: .devcontainer.json
+                      groups:
+                        - feature
+                      requirement: "1"
+                      source: null
+                    - file: .devcontainer/devcontainer.json
+                      groups:
+                        - feature
+                      requirement: "1"
+                      source: null
+                  previous-version: 1.1.0
+                  requirements:
+                    - file: .devcontainer.json
+                      groups:
+                        - feature
+                      requirement: "2"
+                      source: null
+                    - file: .devcontainer/devcontainer.json
+                      groups:
+                        - feature
+                      requirement: "2"
+                      source: null
+                  version: 2.11.1
+            updated-dependency-files:
+                - content: |-
+                    {
+                        "image": "mcr.microsoft.com/devcontainers/typescript-node:18",
+                        "features": {
+                            "ghcr.io/codspace/versioning/foo:2": {},
+                            "ghcr.io/codspace/versioning/bar:1": {}
+                        }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /devcontainers
+                  name: .devcontainer.json
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    {
+                        "image": "mcr.microsoft.com/devcontainers/typescript-node:18",
+                        "features": {
+                            "ghcr.io/codspace/versioning/foo:2": {},
+                            "ghcr.io/codspace/versioning/bar:1": {},
+                            "ghcr.io/codspace/versioning/baz:1.0": {}
+                        }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /devcontainers
+                  name: .devcontainer/devcontainer.json
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |-
+                    {
+                      "features": {
+                        "ghcr.io/codspace/versioning/bar:1": {
+                          "version": "1.0.0",
+                          "resolved": "ghcr.io/codspace/versioning/bar@sha256:0eb80a7a45ea6ac6d2057798608be4cacb3d3667d4818118e17acc5037d687d4",
+                          "integrity": "sha256:0eb80a7a45ea6ac6d2057798608be4cacb3d3667d4818118e17acc5037d687d4"
+                        },
+                        "ghcr.io/codspace/versioning/baz:1.0": {
+                          "version": "1.0.0",
+                          "resolved": "ghcr.io/codspace/versioning/baz@sha256:37f36051adf6da0a43764b9669b945e0f06e11973e02c57ad261b03bb1057cb7",
+                          "integrity": "sha256:37f36051adf6da0a43764b9669b945e0f06e11973e02c57ad261b03bb1057cb7"
+                        },
+                        "ghcr.io/codspace/versioning/foo:2": {
+                          "version": "2.11.1",
+                          "resolved": "ghcr.io/codspace/versioning/foo@sha256:e98cdc5066cff85c5076dfec32058d53e5b9bbc75b125d84adcdf295674c14ee",
+                          "integrity": "sha256:e98cdc5066cff85c5076dfec32058d53e5b9bbc75b125d84adcdf295674c14ee"
+                        }
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /devcontainers
+                  name: .devcontainer/devcontainer-lock.json
+                  operation: update
+                  support_file: true
+                  type: file
+            pr-title: Bump ghcr.io/codspace/versioning/foo from 1.1.0 to 2.11.1 in /devcontainers
+            pr-body: |
+                Bumps ghcr.io/codspace/versioning/foo from 1.1.0 to 2.11.1.
+            commit-message: |-
+                Bump ghcr.io/codspace/versioning/foo in /devcontainers
+
+                Bumps ghcr.io/codspace/versioning/foo from 1.1.0 to 2.11.1.
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 41b3d15a9446b434656bc5d8ed4a84066553d5aa
+            dependencies:
+                - name: ghcr.io/codspace/versioning/baz
+                  previous-requirements:
+                    - file: .devcontainer/devcontainer.json
+                      groups:
+                        - feature
+                      requirement: "1.0"
+                      source: null
+                  previous-version: 1.0.0
+                  requirements:
+                    - file: .devcontainer/devcontainer.json
+                      groups:
+                        - feature
+                      requirement: "2.0"
+                      source: null
+                  version: 2.0.0
+            updated-dependency-files:
+                - content: |
+                    {
+                        "image": "mcr.microsoft.com/devcontainers/typescript-node:18",
+                        "features": {
+                            "ghcr.io/codspace/versioning/foo:1": {},
+                            "ghcr.io/codspace/versioning/bar:1": {},
+                            "ghcr.io/codspace/versioning/baz:2.0": {}
+                        }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /devcontainers
+                  name: .devcontainer/devcontainer.json
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |-
+                    {
+                      "features": {
+                        "ghcr.io/codspace/versioning/bar:1": {
+                          "version": "1.0.0",
+                          "resolved": "ghcr.io/codspace/versioning/bar@sha256:0eb80a7a45ea6ac6d2057798608be4cacb3d3667d4818118e17acc5037d687d4",
+                          "integrity": "sha256:0eb80a7a45ea6ac6d2057798608be4cacb3d3667d4818118e17acc5037d687d4"
+                        },
+                        "ghcr.io/codspace/versioning/baz:2.0": {
+                          "version": "2.0.0",
+                          "resolved": "ghcr.io/codspace/versioning/baz@sha256:3420e9d222352d5bee4d7f2c99dd7492295f5518041650ade9e8ecd0d6ce49d8",
+                          "integrity": "sha256:3420e9d222352d5bee4d7f2c99dd7492295f5518041650ade9e8ecd0d6ce49d8"
+                        },
+                        "ghcr.io/codspace/versioning/foo:1": {
+                          "version": "1.1.0",
+                          "resolved": "ghcr.io/codspace/versioning/foo@sha256:80d2d7b58afeaf907451c6f4e24de47b09a327a24a21a2d3323b7abf76d14be5",
+                          "integrity": "sha256:80d2d7b58afeaf907451c6f4e24de47b09a327a24a21a2d3323b7abf76d14be5"
+                        }
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /devcontainers
+                  name: .devcontainer/devcontainer-lock.json
+                  operation: update
+                  support_file: true
+                  type: file
+            pr-title: Bump ghcr.io/codspace/versioning/baz from 1.0.0 to 2.0.0 in /devcontainers
+            pr-body: |
+                Bumps ghcr.io/codspace/versioning/baz from 1.0.0 to 2.0.0.
+            commit-message: |-
+                Bump ghcr.io/codspace/versioning/baz in /devcontainers
+
+                Bumps ghcr.io/codspace/versioning/baz from 1.0.0 to 2.0.0.
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 41b3d15a9446b434656bc5d8ed4a84066553d5aa
