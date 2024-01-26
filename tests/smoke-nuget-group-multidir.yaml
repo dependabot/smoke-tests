@@ -4,6 +4,11 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        dependency-groups:
+            - name: nuget group
+              rules:
+                patterns:
+                    - '*'
         dependencies:
             - NuGet.Versioning
         ignore-conditions:
@@ -20,11 +25,6 @@ input:
               patched-versions: []
               unaffected-versions: []
         security-updates-only: true
-        dependency-groups:
-          - name: nuget group
-            rules:
-              patterns:
-                - "*"
         source:
             provider: github
             repo: dependabot/smoke-tests
@@ -32,9 +32,6 @@ input:
                 - /nuget/multi-dir/foo
                 - /nuget/multi-dir/bar
             commit: 015a266f4472fe15631f6e0d77517e7a9d471023
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
