@@ -15,9 +15,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget/props-and-targets
             commit: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -28,14 +25,6 @@ output:
       expect:
         data:
             dependencies:
-                - name: NuGet.Versioning
-                  requirements:
-                    - file: Directory.Build.props
-                      groups:
-                        - dependencies
-                      requirement: 6.1.0
-                      source: null
-                  version: 6.1.0
                 - name: Microsoft.CodeAnalysis.Analyzers
                   requirements:
                     - file: Directory.Build.targets
@@ -44,71 +33,18 @@ output:
                       requirement: 3.3.0
                       source: null
                   version: 3.3.0
-            dependency_files:
-                - /nuget/props-and-targets/project.csproj
-                - /nuget/props-and-targets/Directory.Build.props
-                - /nuget/props-and-targets/Directory.Build.targets
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
-            dependencies:
                 - name: NuGet.Versioning
-                  previous-requirements:
+                  requirements:
                     - file: Directory.Build.props
                       groups:
                         - dependencies
                       requirement: 6.1.0
                       source: null
-                  previous-version: 6.1.0
-                  requirements:
-                    - file: Directory.Build.props
-                      groups:
-                        - dependencies
-                      requirement: 6.8.0
-                      source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/nuget.versioning/6.8.0/nuget.versioning.nuspec
-                        source_url: null
-                        type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
-                  version: 6.8.0
-            updated-dependency-files:
-                - content: |-
-                    <!--
-                    This build configuration file will be automatically imported by MSBuild in all projects in the
-                    solution, because it's placed in the root directory.
-                    See https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2019
-                    -->
-                    <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-
-                      <ItemGroup>
-                        <PackageReference Include="NuGet.Versioning" Version="6.8.0" />
-                      </ItemGroup>
-
-                    </Project>
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /nuget/props-and-targets
-                  name: Directory.Build.props
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump NuGet.Versioning from 6.1.0 to 6.8.0 in /nuget/props-and-targets
-            pr-body: |
-                Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.8.0.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li>See full diff in <a href="https://github.com/NuGet/NuGet.Client/commits">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump NuGet.Versioning from 6.1.0 to 6.8.0 in /nuget/props-and-targets
-
-                Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.8.0.
-                - [Release notes](https://github.com/NuGet/NuGet.Client/releases)
-                - [Commits](https://github.com/NuGet/NuGet.Client/commits)
+                  version: 6.1.0
+            dependency_files:
+                - /nuget/props-and-targets/project.csproj
+                - /nuget/props-and-targets/Directory.Build.targets
+                - /nuget/props-and-targets/Directory.Build.props
     - type: create_pull_request
       expect:
         data:
@@ -240,6 +176,67 @@ output:
                 - [Release notes](https://github.com/dotnet/roslyn-analyzers/releases)
                 - [Changelog](https://github.com/dotnet/roslyn-analyzers/blob/main/PostReleaseActivities.md)
                 - [Commits](https://github.com/dotnet/roslyn-analyzers/compare/v3.3.0...v3.3.4)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+            dependencies:
+                - name: NuGet.Versioning
+                  previous-requirements:
+                    - file: Directory.Build.props
+                      groups:
+                        - dependencies
+                      requirement: 6.1.0
+                      source: null
+                  previous-version: 6.1.0
+                  requirements:
+                    - file: Directory.Build.props
+                      groups:
+                        - dependencies
+                      requirement: 6.8.0
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/nuget.versioning/6.8.0/nuget.versioning.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                  version: 6.8.0
+            updated-dependency-files:
+                - content: |-
+                    <!--
+                    This build configuration file will be automatically imported by MSBuild in all projects in the
+                    solution, because it's placed in the root directory.
+                    See https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2019
+                    -->
+                    <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+                      <ItemGroup>
+                        <PackageReference Include="NuGet.Versioning" Version="6.8.0" />
+                      </ItemGroup>
+
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/props-and-targets
+                  name: Directory.Build.props
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump NuGet.Versioning from 6.1.0 to 6.8.0 in /nuget/props-and-targets
+            pr-body: |
+                Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.8.0.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/NuGet/NuGet.Client/commits">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump NuGet.Versioning from 6.1.0 to 6.8.0 in /nuget/props-and-targets
+
+                Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.8.0.
+                - [Release notes](https://github.com/NuGet/NuGet.Client/releases)
+                - [Commits](https://github.com/NuGet/NuGet.Client/commits)
     - type: mark_as_processed
       expect:
         data:
