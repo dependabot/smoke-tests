@@ -1,0 +1,166 @@
+input:
+    job:
+        package-manager: nuget
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: Microsoft.CodeAnalysis.Analyzers
+              source: tests/smoke-nuget-targets.yaml
+              version-requirement: '>3.3.4'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /nuget/targets
+            commit: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: Microsoft.CodeAnalysis.Analyzers
+                  requirements:
+                    - file: Directory.Build.targets
+                      groups:
+                        - dependencies
+                      requirement: 3.3.0
+                      source: null
+                  version: 3.3.0
+            dependency_files:
+                - /nuget/targets/project.csproj
+                - /nuget/targets/Directory.Build.targets
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+            dependencies:
+                - name: Microsoft.CodeAnalysis.Analyzers
+                  previous-requirements:
+                    - file: Directory.Build.targets
+                      groups:
+                        - dependencies
+                      requirement: 3.3.0
+                      source: null
+                  previous-version: 3.3.0
+                  requirements:
+                    - file: Directory.Build.targets
+                      groups:
+                        - dependencies
+                      requirement: 3.3.4
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.analyzers/3.3.4/microsoft.codeanalysis.analyzers.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                  version: 3.3.4
+            updated-dependency-files:
+                - content: |-
+                    <!--
+                    This build configuration file will be automatically imported by MSBuild in all projects in the
+                    solution, because it's placed in the root directory.
+                    See https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2019
+                    -->
+                    <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+                      <ItemGroup>
+                        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4">
+                          <PrivateAssets>all</PrivateAssets>
+                          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+                        </PackageReference>
+                      </ItemGroup>
+
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/targets
+                  name: Directory.Build.targets
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump Microsoft.CodeAnalysis.Analyzers from 3.3.0 to 3.3.4 in /nuget/targets
+            pr-body: |
+                Bumps [Microsoft.CodeAnalysis.Analyzers](https://github.com/dotnet/roslyn-analyzers) from 3.3.0 to 3.3.4.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/dotnet/roslyn-analyzers/releases">Microsoft.CodeAnalysis.Analyzers's releases</a>.</em></p>
+                <blockquote>
+                <h2>v3.3.4</h2>
+                <p>Release build of Roslyn-analyzers based on Microsoft.CodeAnalysis 3.3.1 NuGet packages. Works with VS 2019 16.9 or later.</p>
+                <ul>
+                <li>Contains important functionality and performance bug fixes on top of v3.3.3 release</li>
+                </ul>
+                <h2>v3.3.3</h2>
+                <p>Release build of Roslyn-analyzers based on Microsoft.CodeAnalysis 3.3.0 NuGet packages. Works with VS 2019 16.9 or later.</p>
+                <ul>
+                <li>Contains important functionality and performance bug fixes on top of v3.3.2 release</li>
+                </ul>
+                <h2>v3.3.2</h2>
+                <p>Release build of Roslyn-analyzers based on Microsoft.CodeAnalysis 3.3.0 NuGet packages. Works with VS 2019 16.3 or later.</p>
+                <ul>
+                <li>Contains important functionality and performance bug fixes on top of v3.3.1 release</li>
+                <li>New deprecation warning <strong><a href="https://docs.microsoft.com/visualstudio/code-quality/migrate-from-fxcop-analyzers-to-net-analyzers">CA9998</a></strong> for <code>Microsoft.CodeAnalysis.FxCopAnalyzers</code> package:
+                <code>FxCopAnalyzers package has been deprecated in favor of 'Microsoft.CodeAnalysis.NetAnalyzers', that ships with the .NET SDK. Please refer to https://docs.microsoft.com/visualstudio/code-quality/migrate-from-fxcop-analyzers-to-net-analyzers to migrate to .NET analyzers.</code></li>
+                </ul>
+                <h2>v3.3.1</h2>
+                <p>Release build of Roslyn-analyzers based on Microsoft.CodeAnalysis 3.3.0 NuGet packages. Works with VS 2019 16.3 or later.</p>
+                <p>Contains following important changes on top of v3.3.0 release:</p>
+                <h2>Bug Fixes</h2>
+                <ul>
+                <li>Functionality and performance bug fixes</li>
+                <li>Tainted data rules improvements</li>
+                <li><a href="https://docs.microsoft.com/visualstudio/code-quality/ca5377">CA5377</a>: Don't warn when unable to get the control flow graph for dataflow analysis</li>
+                <li><a href="https://docs.microsoft.com/visualstudio/code-quality/ca3075">CA3075</a>: Fix false positive on XmlReader.Create(string) invocations</li>
+                <li>Optimizing error list refresh times for full compilation analyzers in Visual Studio 2019 16.9</li>
+                </ul>
+                <h2>Additional analyzers/fixers</h2>
+                <h3>Added</h3>
+                <ul>
+                <li>Globalization
+                <ul>
+                <li><a href="https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1310">CA1310</a>: Specify StringComparison for correctness -- <strong>Enabled by default</strong></li>
+                </ul>
+                </li>
+                <li>Interoperability
+                <ul>
+                <li><a href="https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1416">CA1416</a>: Validate platform compatibility -- <strong>Enabled by default</strong></li>
+                </ul>
+                </li>
+                </ul>
+                <h3>Changed</h3>
+                <ul>
+                <li>Globalization
+                <ul>
+                <li><a href="https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1307">CA1307</a>: Specify StringComparison for clarity -- Now disabled by default</li>
+                </ul>
+                </li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/dotnet/roslyn-analyzers/commit/22ea6422f85b05ca0793cc3b76375487be407f5d"><code>22ea642</code></a> Merge pull request <a href="https://redirect.github.com/dotnet/roslyn-analyzers/issues/6436">#6436</a> from ViktorHofer/patch-1</li>
+                <li><a href="https://github.com/dotnet/roslyn-analyzers/commit/90180719ef9e1cfb4379e15edeba5ec2e29001ea"><code>9018071</code></a> Fix buildtransitive vs buildTransitive difference</li>
+                <li><a href="https://github.com/dotnet/roslyn-analyzers/commit/afa566573b7b1a2129d78a26f238a2ac3f8e58ef"><code>afa5665</code></a> [main] Update dependencies from dotnet/arcade (<a href="https://redirect.github.com/dotnet/roslyn-analyzers/issues/6423">#6423</a>)</li>
+                <li><a href="https://github.com/dotnet/roslyn-analyzers/commit/afee469c0c862c6af3670d30a4b4e5ff6f8fe45c"><code>afee469</code></a> Merge pull request <a href="https://redirect.github.com/dotnet/roslyn-analyzers/issues/6427">#6427</a> from mavasani/CodeAnalysisTreatWarningsAsErrors_Glob...</li>
+                <li><a href="https://github.com/dotnet/roslyn-analyzers/commit/b8589999feee4ce70459fbdbd3003f24512fc522"><code>b858999</code></a> Merge pull request <a href="https://redirect.github.com/dotnet/roslyn-analyzers/issues/6430">#6430</a> from dotnet/locfiles/be3abf9f-1f22-469b-b26d-7648587...</li>
+                <li><a href="https://github.com/dotnet/roslyn-analyzers/commit/0cbc3c5e5235e49f5ecdce6ed2c14ce3e14a495f"><code>0cbc3c5</code></a> Localized file check-in by OneLocBuild Task: Build definition ID 830: Build I...</li>
+                <li><a href="https://github.com/dotnet/roslyn-analyzers/commit/113dadcb587b1938d260575c0290e8475142eda0"><code>113dadc</code></a> Merge pull request <a href="https://redirect.github.com/dotnet/roslyn-analyzers/issues/6429">#6429</a> from dotnet/revert-6364-net7-tests</li>
+                <li><a href="https://github.com/dotnet/roslyn-analyzers/commit/356147f02e8f68039e184d0293a4e8277825866f"><code>356147f</code></a> Revert &quot;Move tests to target .NET 7&quot;</li>
+                <li><a href="https://github.com/dotnet/roslyn-analyzers/commit/1d7244a005436d15874e96b1d625292c4a7ae40f"><code>1d7244a</code></a> Update documentation for <code>CodeAnalysisTreatWarningsAsErrors</code> implementation</li>
+                <li><a href="https://github.com/dotnet/roslyn-analyzers/commit/6c028d32f46d5a7a88dcad3cdf3513e83c26c1a5"><code>6c028d3</code></a> Re-implement CodeAnalysisTreatWarningsAsErrors with globalconfig files</li>
+                <li>Additional commits viewable in <a href="https://github.com/dotnet/roslyn-analyzers/compare/v3.3.0...v3.3.4">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump Microsoft.CodeAnalysis.Analyzers in /nuget/targets
+
+                Bumps [Microsoft.CodeAnalysis.Analyzers](https://github.com/dotnet/roslyn-analyzers) from 3.3.0 to 3.3.4.
+                - [Release notes](https://github.com/dotnet/roslyn-analyzers/releases)
+                - [Changelog](https://github.com/dotnet/roslyn-analyzers/blob/main/PostReleaseActivities.md)
+                - [Commits](https://github.com/dotnet/roslyn-analyzers/compare/v3.3.0...v3.3.4)
