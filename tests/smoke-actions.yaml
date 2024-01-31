@@ -23,9 +23,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /.
             commit: 9e96615658c7e573f451797088c5d078cb496c8a
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -38,27 +35,7 @@ output:
             dependencies:
                 - name: actions/checkout
                   requirements:
-                    - file: .github/workflows/cache-all.yml
-                      groups: []
-                      metadata:
-                        declaration_string: actions/checkout@v4
-                      requirement: null
-                      source:
-                        branch: null
-                        ref: v4
-                        type: git
-                        url: https://github.com/actions/checkout
-                    - file: .github/workflows/cache-one.yml
-                      groups: []
-                      metadata:
-                        declaration_string: actions/checkout@v4
-                      requirement: null
-                      source:
-                        branch: null
-                        ref: v4
-                        type: git
-                        url: https://github.com/actions/checkout
-                    - file: .github/workflows/dry-run.yml
+                    - file: .github/workflows/yamllint.yml
                       groups: []
                       metadata:
                         declaration_string: actions/checkout@v4
@@ -88,6 +65,26 @@ output:
                         ref: v4
                         type: git
                         url: https://github.com/actions/checkout
+                    - file: .github/workflows/cache-one.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/checkout@v4
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v4
+                        type: git
+                        url: https://github.com/actions/checkout
+                    - file: .github/workflows/dry-run.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/checkout@v4
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v4
+                        type: git
+                        url: https://github.com/actions/checkout
                     - file: .github/workflows/smoke.yml
                       groups: []
                       metadata:
@@ -98,7 +95,7 @@ output:
                         ref: v4
                         type: git
                         url: https://github.com/actions/checkout
-                    - file: .github/workflows/yamllint.yml
+                    - file: .github/workflows/cache-all.yml
                       groups: []
                       metadata:
                         declaration_string: actions/checkout@v4
@@ -111,7 +108,7 @@ output:
                   version: "4"
                 - name: actions/upload-artifact
                   requirements:
-                    - file: .github/workflows/cache-all.yml
+                    - file: .github/workflows/refresh-artifacts.yml
                       groups: []
                       metadata:
                         declaration_string: actions/upload-artifact@v3
@@ -131,7 +128,7 @@ output:
                         ref: v3
                         type: git
                         url: https://github.com/actions/upload-artifact
-                    - file: .github/workflows/refresh-artifacts.yml
+                    - file: .github/workflows/cache-all.yml
                       groups: []
                       metadata:
                         declaration_string: actions/upload-artifact@v3
@@ -182,14 +179,14 @@ output:
                         url: https://github.com/actions/setup-node
                   version: "1"
             dependency_files:
-                - /.github/workflows/cache-all.yml
-                - /.github/workflows/cache-one.yml
-                - /.github/workflows/dry-run.yml
-                - /.github/workflows/i-am-a-smoke-test.yml
+                - /.github/workflows/yamllint.yml
                 - /.github/workflows/list-suites.yml
                 - /.github/workflows/refresh-artifacts.yml
+                - /.github/workflows/cache-one.yml
+                - /.github/workflows/i-am-a-smoke-test.yml
+                - /.github/workflows/dry-run.yml
                 - /.github/workflows/smoke.yml
-                - /.github/workflows/yamllint.yml
+                - /.github/workflows/cache-all.yml
     - type: create_pull_request
       expect:
         data:
@@ -372,10 +369,10 @@ output:
                       requirement: null
                       source:
                         branch: null
-                        ref: 93397bea11091df50f3d7e59dc26a7711a8bcfbe
+                        ref: 0c52d547c9bc32b1aa3301fd7a9cb496313a4491
                         type: git
                         url: https://github.com/actions/setup-go
-                  version: 4.1.0
+                  version: 5.0.0
             updated-dependency-files:
                 - content: |
                     name: Smoke test manifest
@@ -390,7 +387,7 @@ output:
                         runs-on: ubuntu-latest
                         steps:
                           - name: Setup Go
-                            uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe
+                            uses: actions/setup-go@0c52d547c9bc32b1aa3301fd7a9cb496313a4491
                           - name: Setup Ruby
                             uses: actions/setup-ruby@5f29a1cd8dfebf420691c4c9a0e832e2fae5a526
                           - name: Setup Node
@@ -402,13 +399,28 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump actions/setup-go from 4.0.0 to 4.1.0
+            pr-title: Bump actions/setup-go from 4.0.0 to 5.0.0
             pr-body: |
-                Bumps [actions/setup-go](https://github.com/actions/setup-go) from 4.0.0 to 4.1.0.
+                Bumps [actions/setup-go](https://github.com/actions/setup-go) from 4.0.0 to 5.0.0.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/actions/setup-go/releases">actions/setup-go's releases</a>.</em></p>
                 <blockquote>
+                <h2>v5.0.0</h2>
+                <h2>What's Changed</h2>
+                <p>In scope of this release, we change Nodejs runtime from node16 to node20 (<a href="https://redirect.github.com/actions/setup-go/pull/421">actions/setup-go#421</a>). Moreover, we update some dependencies to the latest versions (<a href="https://redirect.github.com/actions/setup-go/pull/445">actions/setup-go#445</a>).</p>
+                <p>Besides, this release contains such changes as:</p>
+                <ul>
+                <li>Fix hosted tool cache usage on windows by <a href="https://github.com/galargh"><code>@​galargh</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/411">actions/setup-go#411</a></li>
+                <li>Improve documentation regarding dependencies caching by <a href="https://github.com/artemgavrilov"><code>@​artemgavrilov</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/417">actions/setup-go#417</a></li>
+                </ul>
+                <h2>New Contributors</h2>
+                <ul>
+                <li><a href="https://github.com/galargh"><code>@​galargh</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/411">actions/setup-go#411</a></li>
+                <li><a href="https://github.com/artemgavrilov"><code>@​artemgavrilov</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/417">actions/setup-go#417</a></li>
+                <li><a href="https://github.com/chenrui333"><code>@​chenrui333</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/421">actions/setup-go#421</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/setup-go/compare/v4...v5.0.0">https://github.com/actions/setup-go/compare/v4...v5.0.0</a></p>
                 <h2>v4.1.0</h2>
                 <h2>What's Changed</h2>
                 <p>In scope of this release, slow installation on Windows was fixed by <a href="https://github.com/dsame"><code>@​dsame</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/393">actions/setup-go#393</a> and OS version was added to <code>primaryKey</code> for Ubuntu runners to avoid conflicts (<a href="https://redirect.github.com/actions/setup-go/pull/383">actions/setup-go#383</a>)</p>
@@ -447,26 +459,26 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/actions/setup-go/commit/93397bea11091df50f3d7e59dc26a7711a8bcfbe"><code>93397be</code></a> Fix Install on Windows is very slow (<a href="https://redirect.github.com/actions/setup-go/issues/393">#393</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/27eec5b9827114de74a8fbddada57bd21221d79b"><code>27eec5b</code></a> Merge pull request <a href="https://redirect.github.com/actions/setup-go/issues/396">#396</a> from actions/dependabot/npm_and_yarn/semver-6.3.1</li>
-                <li><a href="https://github.com/actions/setup-go/commit/ecfc77a56f4c58db46b8f45d9b67e080f4401156"><code>ecfc77a</code></a> Merge pull request <a href="https://redirect.github.com/actions/setup-go/issues/397">#397</a> from actions/dependabot/npm_and_yarn/word-wrap-1.2.4</li>
-                <li><a href="https://github.com/actions/setup-go/commit/1b80a11e05ba624fe146ccc39f322912e3d38ae9"><code>1b80a11</code></a> Bump word-wrap from 1.2.3 to 1.2.4</li>
-                <li><a href="https://github.com/actions/setup-go/commit/b1c343484c992a921dd0d7653785a43167f35458"><code>b1c3434</code></a> Fix licensing for Semver 6.3.1</li>
-                <li><a href="https://github.com/actions/setup-go/commit/0bb97b1c5c1e1494619bc2a90dccc029bba36753"><code>0bb97b1</code></a> Rebuild after updating Semver</li>
-                <li><a href="https://github.com/actions/setup-go/commit/4220624b80315b7394cd9b9edc82b5c50411a023"><code>4220624</code></a> Bump semver from 6.3.0 to 6.3.1</li>
-                <li><a href="https://github.com/actions/setup-go/commit/db8764c1e24b94e6bf86c7b9195ce862c97a4090"><code>db8764c</code></a> Bump tough-cookie and <code>@​azure/ms-rest-js</code> (<a href="https://redirect.github.com/actions/setup-go/issues/392">#392</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/08b314a5730da00e95d0394603ed798406886596"><code>08b314a</code></a> Merge pull request <a href="https://redirect.github.com/actions/setup-go/issues/383">#383</a> from akv-platform/issue-368</li>
-                <li><a href="https://github.com/actions/setup-go/commit/4e0b6c77c6448caafaff5eed51516cad78e7639a"><code>4e0b6c7</code></a> Limit to Linux only</li>
-                <li>Additional commits viewable in <a href="https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...93397bea11091df50f3d7e59dc26a7711a8bcfbe">compare view</a></li>
+                <li><a href="https://github.com/actions/setup-go/commit/0c52d547c9bc32b1aa3301fd7a9cb496313a4491"><code>0c52d54</code></a> Update dependencies for node20 (<a href="https://redirect.github.com/actions/setup-go/issues/445">#445</a>)</li>
+                <li><a href="https://github.com/actions/setup-go/commit/bfd2fb341f32be7281829126376a12a780ca79fc"><code>bfd2fb3</code></a> Merge pull request <a href="https://redirect.github.com/actions/setup-go/issues/421">#421</a> from chenrui333/node20-runtime</li>
+                <li><a href="https://github.com/actions/setup-go/commit/3d65fa57fcbfe4a359b6b71a6c65e6eec12984eb"><code>3d65fa5</code></a> feat: bump to use actions/checkout@v4</li>
+                <li><a href="https://github.com/actions/setup-go/commit/8a505c9cf2e2726eda7f3268d6992e386a12da52"><code>8a505c9</code></a> feat: bump to use node20 runtime</li>
+                <li><a href="https://github.com/actions/setup-go/commit/883490dfd06f396ebe0b738bc313a53cf9d851e5"><code>883490d</code></a> Merge pull request <a href="https://redirect.github.com/actions/setup-go/issues/417">#417</a> from artemgavrilov/main</li>
+                <li><a href="https://github.com/actions/setup-go/commit/d45ebba0ce181dc5604aaf69ce5a0bdcbd3b1807"><code>d45ebba</code></a> Rephrase sentence</li>
+                <li><a href="https://github.com/actions/setup-go/commit/317c6617fa9e4e67f1e5e20ad8bc98bf298a0f8f"><code>317c661</code></a> Replace <code>wildcards</code> term with <code>globs</code>.</li>
+                <li><a href="https://github.com/actions/setup-go/commit/f90673ad641a19d0689fba58b5c79adc54be5d81"><code>f90673a</code></a> Merge pull request <a href="https://redirect.github.com/actions/setup-go/issues/1">#1</a> from artemgavrilov/caching-docs-improvement</li>
+                <li><a href="https://github.com/actions/setup-go/commit/801823434715e45aa48743a38182d33b33675d02"><code>8018234</code></a> Improve documentation regarding dependencies cachin</li>
+                <li><a href="https://github.com/actions/setup-go/commit/d085b4fe57b6e17262cbebc67b4d2d341d8938c2"><code>d085b4f</code></a> Merge pull request <a href="https://redirect.github.com/actions/setup-go/issues/411">#411</a> from galargh/fix/windows-hostedtoolcache</li>
+                <li>Additional commits viewable in <a href="https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...0c52d547c9bc32b1aa3301fd7a9cb496313a4491">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump actions/setup-go from 4.0.0 to 4.1.0
+                Bump actions/setup-go from 4.0.0 to 5.0.0
 
-                Bumps [actions/setup-go](https://github.com/actions/setup-go) from 4.0.0 to 4.1.0.
+                Bumps [actions/setup-go](https://github.com/actions/setup-go) from 4.0.0 to 5.0.0.
                 - [Release notes](https://github.com/actions/setup-go/releases)
-                - [Commits](https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...93397bea11091df50f3d7e59dc26a7711a8bcfbe)
+                - [Commits](https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...0c52d547c9bc32b1aa3301fd7a9cb496313a4491)
     - type: mark_as_processed
       expect:
         data:
