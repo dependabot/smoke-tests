@@ -4,6 +4,11 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        dependency-groups:
+            - name: go_modules group
+              rules:
+                patterns:
+                    - '*'
         dependencies:
             - rsc.io/quote
             - rsc.io/qr
@@ -24,19 +29,12 @@ input:
               patched-versions: []
               unaffected-versions: []
         security-updates-only: true
-        dependency-groups:
-          - name: go_modules group
-            rules:
-              patterns:
-                - "*"
         source:
             provider: github
             repo: dependabot/smoke-tests
-            directory: /go/grouped-security-update
+            directories:
+                - /go/grouped-security-update
             commit: 6842b44b55335f744d2e382218229a007e696f46
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -158,9 +156,9 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the go_modules group group in /go/grouped-security-update with 2 updates
+            pr-title: Bump the go_modules group across 1 directories with 2 updates
             pr-body: |
-                Bumps the go_modules group group in /go/grouped-security-update with 2 updates: [rsc.io/qr](https://github.com/rsc/qr) and [rsc.io/quote](https://github.com/rsc/quote).
+                Bumps the go_modules group with 2 updates in the /go/grouped-security-update directory: [rsc.io/qr](https://github.com/rsc/qr) and [rsc.io/quote](https://github.com/rsc/quote).
 
                 Updates `rsc.io/qr` from 0.1.0 to 0.2.0
                 <details>
@@ -182,9 +180,9 @@ output:
                 </details>
                 <br />
             commit-message: |-
-                Bump the go_modules group group
+                Bump the go_modules group across 1 directories with 2 updates
 
-                Bumps the go_modules group group in /go/grouped-security-update with 2 updates: [rsc.io/qr](https://github.com/rsc/qr) and [rsc.io/quote](https://github.com/rsc/quote).
+                Bumps the go_modules group with 2 updates in the /go/grouped-security-update directory: [rsc.io/qr](https://github.com/rsc/qr) and [rsc.io/quote](https://github.com/rsc/quote).
 
 
                 Updates `rsc.io/qr` from 0.1.0 to 0.2.0

@@ -16,7 +16,7 @@ input:
         ignore-conditions:
             - dependency-name: rubocop
               source: tests/smoke-bundler-group-rules.yaml
-              version-requirement: = 1.55.1
+              version-requirement: '>1.59.0'
         source:
             provider: github
             repo: dependabot/smoke-tests
@@ -25,9 +25,6 @@ input:
             hostname: github.com
             api-endpoint: https://api.github.com/
         commit-message-options: {}
-        credentials-metadata:
-            - host: github.com
-              type: git_source
         max-updater-run-time: 2700
     credentials:
         - host: github.com
