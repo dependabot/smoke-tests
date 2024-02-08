@@ -4,6 +4,7 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        grouped-update: true
         dependency-groups:
             - name: python_pkgs
               rules:
@@ -24,7 +25,6 @@ input:
         source:
             provider: github
             repo: dependabot/smoke-tests
-            directory: /
             directories:
                 - /pip/multi-dir/foo
                 - /pip/multi-dir/bar

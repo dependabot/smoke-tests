@@ -26,6 +26,7 @@ input:
               patched-versions: []
               unaffected-versions: []
         security-updates-only: true
+        grouped-update: true
         dependency-groups:
           - name: go_modules group
             rules:
@@ -38,9 +39,6 @@ input:
                 - /go/multi-dir/foo
                 - /go/multi-dir/bar
             commit: fb37fe61a7462139c74f2fc7e80400b325d066a0
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
