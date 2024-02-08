@@ -20,6 +20,7 @@ input:
               patched-versions: []
               unaffected-versions: []
         security-updates-only: true
+        grouped-update: true
         dependency-groups:
           - name: maven group
             rules:
@@ -32,9 +33,6 @@ input:
                 - /maven/multi-dir/foo
                 - /maven/multi-dir/bar
             commit: 56600671ab2495ed67614624740292fb5d54e4f4
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN

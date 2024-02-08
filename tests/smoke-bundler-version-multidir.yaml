@@ -4,6 +4,7 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        grouped-update: true
         dependency-groups:
             - name: bundler_pkgs
               rules:
@@ -24,15 +25,10 @@ input:
         source:
             provider: github
             repo: dependabot/smoke-tests
-            directory: /
             directories:
                 - /bundler/multi-dir/foo
                 - /bundler/multi-dir/bar
-            branch: main
             commit: cd6542cb2b99fce3a1c506446e22e32d79d1b2b7
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN

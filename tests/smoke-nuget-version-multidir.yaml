@@ -4,6 +4,7 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        grouped-update: true
         dependency-groups:
             - name: nuget_pkgs
               rules:
@@ -19,7 +20,6 @@ input:
         source:
             provider: github
             repo: dependabot/smoke-tests
-            directory: /
             directories:
                 - /nuget/multi-dir/foo
                 - /nuget/multi-dir/bar

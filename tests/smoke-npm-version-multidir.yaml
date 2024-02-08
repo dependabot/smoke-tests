@@ -4,6 +4,7 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        grouped-update: true
         dependency-groups:
             - name: npm_pkgs
               rules:
@@ -24,15 +25,10 @@ input:
         source:
             provider: github
             repo: dependabot/smoke-tests
-            directory: /
             directories:
                 - /npm/multi-dir/foo
                 - /npm/multi-dir/bar
-            branch: main
             commit: b430c0e13597246f5e81d6c4adab35602c1ddf3d
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
