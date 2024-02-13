@@ -4,7 +4,9 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        grouped-update: true
         dependencies:
+            - org.springframework.boot:spring-boot-starter-parent
             - org.springframework.boot:spring-boot-starter-parent
         ignore-conditions:
             - dependency-name: org.springframework.boot:spring-boot-starter-parent
@@ -20,7 +22,6 @@ input:
               patched-versions: []
               unaffected-versions: []
         security-updates-only: true
-        grouped-update: true
         source:
             provider: github
             repo: dependabot/smoke-tests
