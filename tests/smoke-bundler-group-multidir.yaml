@@ -108,6 +108,51 @@ output:
                       requirement: 1.2.3
                       source: null
                   version: 1.2.3
+                - name: nokogiri
+                  previous-requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: "1.11"
+                      source: null
+                  previous-version: 1.11.0
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: 1.11.1
+                      source: null
+                  version: 1.11.1
+                - name: nokogiri
+                  previous-requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: "1.11"
+                      source: null
+                  previous-version: 1.11.0
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: 1.11.1
+                      source: null
+                  version: 1.11.1
+                - name: rack
+                  previous-requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: 3.0.0
+                      source: null
+                  previous-version: 3.0.0
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: 3.0.7
+                      source: null
+                  version: 3.0.7
             updated-dependency-files:
                 - content: |
                     # frozen_string_literal: true
@@ -115,7 +160,7 @@ output:
                     source 'https://rubygems.org'
 
                     gem 'sinatra', '1.2.3'
-                    gem 'nokogiri', '1.11'
+                    gem 'nokogiri', '1.11.1'
                   content_encoding: utf-8
                   deleted: false
                   directory: /bundler/multi-dir/foo
@@ -128,10 +173,10 @@ output:
                       remote: https://rubygems.org/
                       specs:
                         mini_portile2 (2.5.3)
-                        nokogiri (1.11.0)
+                        nokogiri (1.11.1)
                           mini_portile2 (~> 2.5.0)
                           racc (~> 1.4)
-                        racc (1.7.2)
+                        racc (1.7.3)
                         rack (1.6.13)
                         sinatra (1.2.3)
                           rack (~> 1.1)
@@ -142,7 +187,7 @@ output:
                       ruby
 
                     DEPENDENCIES
-                      nokogiri (= 1.11)
+                      nokogiri (= 1.11.1)
                       sinatra (= 1.2.3)
 
                     BUNDLED WITH
@@ -154,9 +199,53 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump sinatra from 1.2.2 to 1.2.3 in /bundler/multi-dir/foo
+                - content: |
+                    # frozen_string_literal: true
+
+                    source 'https://rubygems.org'
+
+                    gem 'rack', '3.0.7'
+                    gem 'nokogiri', '1.11.1'
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bundler/multi-dir/bar
+                  name: Gemfile
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    GEM
+                      remote: https://rubygems.org/
+                      specs:
+                        mini_portile2 (2.5.3)
+                        nokogiri (1.11.1)
+                          mini_portile2 (~> 2.5.0)
+                          racc (~> 1.4)
+                        racc (1.7.3)
+                        rack (3.0.7)
+
+                    PLATFORMS
+                      ruby
+
+                    DEPENDENCIES
+                      nokogiri (= 1.11.1)
+                      rack (= 3.0.7)
+
+                    BUNDLED WITH
+                       2.4.18
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bundler/multi-dir/bar
+                  name: Gemfile.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump the bundler group across 2 directories with 3 updates
             pr-body: |
-                Bumps [sinatra](https://github.com/sinatra/sinatra) from 1.2.2 to 1.2.3.
+                Bumps the bundler group with 2 updates in the /bundler/multi-dir/foo directory: [sinatra](https://github.com/sinatra/sinatra) and [nokogiri](https://github.com/sparklemotion/nokogiri).
+                Bumps the bundler group with 2 updates in the /bundler/multi-dir/bar directory: [nokogiri](https://github.com/sparklemotion/nokogiri) and [rack](https://github.com/rack/rack).
+
+                Updates `sinatra` from 1.2.2 to 1.2.3
                 <details>
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/sinatra/sinatra/blob/main/CHANGELOG.md">sinatra's changelog</a>.</em></p>
@@ -192,81 +281,8 @@ output:
                 </ul>
                 </details>
                 <br />
-            commit-message: |-
-                Bump sinatra from 1.2.2 to 1.2.3 in /bundler/multi-dir/foo
 
-                Bumps [sinatra](https://github.com/sinatra/sinatra) from 1.2.2 to 1.2.3.
-                - [Changelog](https://github.com/sinatra/sinatra/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/sinatra/sinatra/compare/1.2.2...1.2.3)
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: cd6542cb2b99fce3a1c506446e22e32d79d1b2b7
-            dependencies:
-                - name: nokogiri
-                  previous-requirements:
-                    - file: Gemfile
-                      groups:
-                        - default
-                      requirement: "1.11"
-                      source: null
-                  previous-version: 1.11.0
-                  requirements:
-                    - file: Gemfile
-                      groups:
-                        - default
-                      requirement: 1.11.1
-                      source: null
-                  version: 1.11.1
-            updated-dependency-files:
-                - content: |
-                    # frozen_string_literal: true
-
-                    source 'https://rubygems.org'
-
-                    gem 'sinatra', '1.2.2'
-                    gem 'nokogiri', '1.11.1'
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /bundler/multi-dir/foo
-                  name: Gemfile
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    GEM
-                      remote: https://rubygems.org/
-                      specs:
-                        mini_portile2 (2.5.3)
-                        nokogiri (1.11.1)
-                          mini_portile2 (~> 2.5.0)
-                          racc (~> 1.4)
-                        racc (1.7.3)
-                        rack (1.6.13)
-                        sinatra (1.2.2)
-                          rack (~> 1.1)
-                          tilt (>= 1.2.2, < 2.0)
-                        tilt (1.4.1)
-
-                    PLATFORMS
-                      ruby
-
-                    DEPENDENCIES
-                      nokogiri (= 1.11.1)
-                      sinatra (= 1.2.2)
-
-                    BUNDLED WITH
-                       2.4.18
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /bundler/multi-dir/foo
-                  name: Gemfile.lock
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump nokogiri from 1.11.0 to 1.11.1 in /bundler/multi-dir/foo
-            pr-body: |
-                Bumps [nokogiri](https://github.com/sparklemotion/nokogiri) from 1.11.0 to 1.11.1.
+                Updates `nokogiri` from 1.11.0 to 1.11.1
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/sparklemotion/nokogiri/releases">nokogiri's releases</a>.</em></p>
@@ -316,104 +332,8 @@ output:
                 </ul>
                 </details>
                 <br />
-            commit-message: |-
-                Bump nokogiri from 1.11.0 to 1.11.1 in /bundler/multi-dir/foo
 
-                Bumps [nokogiri](https://github.com/sparklemotion/nokogiri) from 1.11.0 to 1.11.1.
-                - [Release notes](https://github.com/sparklemotion/nokogiri/releases)
-                - [Changelog](https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/sparklemotion/nokogiri/compare/v1.11.0...v1.11.1)
-    - type: record_update_job_error
-      expect:
-        data:
-            error-type: dependency_file_not_resolvable
-            error-details:
-                message: |-
-                    Could not find compatible versions
-
-                    Because sinatra >= 1.1.a, < 1.2.9 depends on rack ~> 1.1
-                      and Gemfile depends on sinatra = 1.2.2,
-                      rack ~> 1.1 is required.
-                    So, because Gemfile depends on rack = 3.0.7,
-                      version solving has failed.
-    - type: record_update_job_error
-      expect:
-        data:
-            error-type: dependency_file_not_resolvable
-            error-details:
-                message: |-
-                    Could not find compatible versions
-
-                    Because sinatra >= 1.1.a, < 1.2.9 depends on rack ~> 1.1
-                      and Gemfile depends on rack = 3.0.0,
-                      sinatra >= 1.1.a, < 1.2.9 cannot be used.
-                    So, because Gemfile depends on sinatra = 1.2.3,
-                      version solving has failed.
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: cd6542cb2b99fce3a1c506446e22e32d79d1b2b7
-            dependencies:
-                - name: nokogiri
-                  previous-requirements:
-                    - file: Gemfile
-                      groups:
-                        - default
-                      requirement: "1.11"
-                      source: null
-                  previous-version: 1.11.0
-                  requirements:
-                    - file: Gemfile
-                      groups:
-                        - default
-                      requirement: 1.11.1
-                      source: null
-                  version: 1.11.1
-            updated-dependency-files:
-                - content: |
-                    # frozen_string_literal: true
-
-                    source 'https://rubygems.org'
-
-                    gem 'rack', '3.0.0'
-                    gem 'nokogiri', '1.11.1'
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /bundler/multi-dir/bar
-                  name: Gemfile
-                  operation: update
-                  support_file: false
-                  type: file
-                - content: |
-                    GEM
-                      remote: https://rubygems.org/
-                      specs:
-                        mini_portile2 (2.5.3)
-                        nokogiri (1.11.1)
-                          mini_portile2 (~> 2.5.0)
-                          racc (~> 1.4)
-                        racc (1.7.3)
-                        rack (3.0.0)
-
-                    PLATFORMS
-                      ruby
-
-                    DEPENDENCIES
-                      nokogiri (= 1.11.1)
-                      rack (= 3.0.0)
-
-                    BUNDLED WITH
-                       2.4.18
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /bundler/multi-dir/bar
-                  name: Gemfile.lock
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump nokogiri from 1.11.0 to 1.11.1 in /bundler/multi-dir/bar
-            pr-body: |
-                Bumps [nokogiri](https://github.com/sparklemotion/nokogiri) from 1.11.0 to 1.11.1.
+                Updates `nokogiri` from 1.11.0 to 1.11.1
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/sparklemotion/nokogiri/releases">nokogiri's releases</a>.</em></p>
@@ -463,54 +383,8 @@ output:
                 </ul>
                 </details>
                 <br />
-            commit-message: |-
-                Bump nokogiri from 1.11.0 to 1.11.1 in /bundler/multi-dir/bar
 
-                Bumps [nokogiri](https://github.com/sparklemotion/nokogiri) from 1.11.0 to 1.11.1.
-                - [Release notes](https://github.com/sparklemotion/nokogiri/releases)
-                - [Changelog](https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/sparklemotion/nokogiri/compare/v1.11.0...v1.11.1)
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: cd6542cb2b99fce3a1c506446e22e32d79d1b2b7
-            dependencies:
-                - name: rack
-                  previous-requirements: []
-                  previous-version: 1.6.13
-                  requirements: []
-                  version: 3.0.7
-            updated-dependency-files:
-                - content: |
-                    GEM
-                      remote: https://rubygems.org/
-                      specs:
-                        mini_portile2 (2.5.3)
-                        nokogiri (1.11.0)
-                          mini_portile2 (~> 2.5.0)
-                          racc (~> 1.4)
-                        racc (1.7.2)
-                        rack (3.0.7)
-
-                    PLATFORMS
-                      ruby
-
-                    DEPENDENCIES
-                      nokogiri (= 1.11)
-                      rack (= 3.0.0)
-
-                    BUNDLED WITH
-                       2.4.18
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /bundler/multi-dir/bar
-                  name: Gemfile.lock
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump rack from 1.6.13 to 3.0.7 in /bundler/multi-dir/bar
-            pr-body: |
-                Bumps [rack](https://github.com/rack/rack) from 1.6.13 to 3.0.7.
+                Updates `rack` from 3.0.0 to 3.0.7
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/rack/rack/releases">rack's releases</a>.</em></p>
@@ -535,34 +409,7 @@ output:
                 <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.2...v3.0.3">https://github.com/rack/rack/compare/v3.0.2...v3.0.3</a></p>
                 <h2>v3.0.2</h2>
                 <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.1...v3.0.2">https://github.com/rack/rack/compare/v3.0.1...v3.0.2</a></p>
-                <h2>v2.2.8.1</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Fixed ReDoS in Accept header parsing [CVE-2024-26146]</li>
-                <li>Fixed ReDoS in Content Type header parsing [CVE-2024-25126]</li>
-                <li>Reject Range headers which are too large [CVE-2024-26141]</li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v2.2.8...v2.2.8.1">https://github.com/rack/rack/compare/v2.2.8...v2.2.8.1</a></p>
-                <h2>v2.2.8</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Limit file extension length of multipart tempfiles (2.2 backport) by <a href="https://github.com/dentarg"><code>@​dentarg</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2075">rack/rack#2075</a></li>
-                <li>CHANGELOG: Add missing 2.2.7 by <a href="https://github.com/tisba"><code>@​tisba</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2081">rack/rack#2081</a></li>
-                <li>Update cookie.rb by <a href="https://github.com/dchandekstark"><code>@​dchandekstark</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2092">rack/rack#2092</a></li>
-                <li>Prefer ubuntu-latest for testing. by <a href="https://github.com/ioquatix"><code>@​ioquatix</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2095">rack/rack#2095</a></li>
-                <li>Fix inefficient assert pattern in Rack::Lint [2-2-stable] by <a href="https://github.com/skipkayhil"><code>@​skipkayhil</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2101">rack/rack#2101</a></li>
-                <li>Regenerate SPEC [2-2-stable] by <a href="https://github.com/skipkayhil"><code>@​skipkayhil</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2102">rack/rack#2102</a></li>
-                </ul>
-                <h2>New Contributors</h2>
-                <ul>
-                <li><a href="https://github.com/tisba"><code>@​tisba</code></a> made their first contribution in <a href="https://redirect.github.com/rack/rack/pull/2081">rack/rack#2081</a></li>
-                <li><a href="https://github.com/dchandekstark"><code>@​dchandekstark</code></a> made their first contribution in <a href="https://redirect.github.com/rack/rack/pull/2092">rack/rack#2092</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v2.2.7...v2.2.8">https://github.com/rack/rack/compare/v2.2.7...v2.2.8</a></p>
-                <h2>v2.2.7</h2>
-                <!-- raw HTML omitted -->
                 </blockquote>
-                <p>... (truncated)</p>
                 </details>
                 <details>
                 <summary>Changelog</summary>
@@ -633,17 +480,37 @@ output:
                 <li><a href="https://github.com/rack/rack/commit/e9e9ae663d83f142d7666aee49622287828fa06f"><code>e9e9ae6</code></a> Bump patch version.</li>
                 <li><a href="https://github.com/rack/rack/commit/848c9c00562edbe54e72f83fcf253fcdc9449f74"><code>848c9c0</code></a> Add <code>QueryParser#missing_value</code> for handling missing values + tests. (<a href="https://redirect.github.com/rack/rack/issues/2052">#2052</a>)</li>
                 <li><a href="https://github.com/rack/rack/commit/9f8ba5e1fdf860338af7a65519278b32de00f516"><code>9f8ba5e</code></a> Bump patch version.</li>
-                <li>Additional commits viewable in <a href="https://github.com/rack/rack/compare/1.6.13...v3.0.7">compare view</a></li>
+                <li>Additional commits viewable in <a href="https://github.com/rack/rack/compare/3.0.0...v3.0.7">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump rack from 1.6.13 to 3.0.7 in /bundler/multi-dir/bar
+                Bump the bundler group across 2 directories with 3 updates
 
-                Bumps [rack](https://github.com/rack/rack) from 1.6.13 to 3.0.7.
+                Bumps the bundler group with 2 updates in the /bundler/multi-dir/foo directory: [sinatra](https://github.com/sinatra/sinatra) and [nokogiri](https://github.com/sparklemotion/nokogiri).
+                Bumps the bundler group with 2 updates in the /bundler/multi-dir/bar directory: [nokogiri](https://github.com/sparklemotion/nokogiri) and [rack](https://github.com/rack/rack).
+
+
+                Updates `sinatra` from 1.2.2 to 1.2.3
+                - [Changelog](https://github.com/sinatra/sinatra/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/sinatra/sinatra/compare/1.2.2...1.2.3)
+
+                Updates `nokogiri` from 1.11.0 to 1.11.1
+                - [Release notes](https://github.com/sparklemotion/nokogiri/releases)
+                - [Changelog](https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/sparklemotion/nokogiri/compare/v1.11.0...v1.11.1)
+
+                Updates `nokogiri` from 1.11.0 to 1.11.1
+                - [Release notes](https://github.com/sparklemotion/nokogiri/releases)
+                - [Changelog](https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/sparklemotion/nokogiri/compare/v1.11.0...v1.11.1)
+
+                Updates `rack` from 3.0.0 to 3.0.7
                 - [Release notes](https://github.com/rack/rack/releases)
                 - [Changelog](https://github.com/rack/rack/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/rack/rack/compare/1.6.13...v3.0.7)
+                - [Commits](https://github.com/rack/rack/compare/3.0.0...v3.0.7)
+            dependency-group:
+                name: bundler group
     - type: mark_as_processed
       expect:
         data:
