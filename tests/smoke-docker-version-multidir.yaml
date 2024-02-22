@@ -19,15 +19,11 @@ input:
         source:
             provider: github
             repo: dependabot/smoke-tests
-            directory: /
             directories:
                 - /docker/multi-dir/dotnet6/
                 - /docker/multi-dir/dotnet7/
             branch: main
             commit: ddc5e5b3b87ac2534d882168044bf970158b31bd
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN

@@ -11,7 +11,6 @@ input:
                     - fetch-factory
                     - lodash
         experiments:
-            grouped-updates-prototype: true
             record-ecosystem-versions: true
         ignore-conditions:
             - dependency-name: axios
@@ -31,9 +30,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /npm
             commit: d15ce2f331fa91f5ebb82da530dc7f3d69c64e6e
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN

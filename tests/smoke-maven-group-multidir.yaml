@@ -6,6 +6,7 @@ input:
               update-type: all
         dependencies:
             - org.springframework.boot:spring-boot-starter-parent
+            - org.springframework.boot:spring-boot-starter-parent
         ignore-conditions:
             - dependency-name: org.springframework.boot:spring-boot-starter-parent
               source: tests/smoke-maven-group-multidir.yaml
@@ -20,11 +21,6 @@ input:
               patched-versions: []
               unaffected-versions: []
         security-updates-only: true
-        dependency-groups:
-          - name: maven group
-            rules:
-              patterns:
-                - "*"
         source:
             provider: github
             repo: dependabot/smoke-tests
@@ -32,9 +28,6 @@ input:
                 - /maven/multi-dir/foo
                 - /maven/multi-dir/bar
             commit: 56600671ab2495ed67614624740292fb5d54e4f4
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN

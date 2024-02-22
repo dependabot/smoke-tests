@@ -9,7 +9,6 @@ input:
                 patterns:
                     - '@hapi/*'
         experiments:
-            grouped-updates-prototype: true
             record-ecosystem-versions: true
         ignore-conditions:
             - dependency-name: '@hapi/hoek'
@@ -32,9 +31,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /npm/transitive
             commit: dde3e21e99b5237377d6e8a4858615e293bfacc4
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN

@@ -41,11 +41,6 @@ input:
               patched-versions: []
               unaffected-versions: []
         security-updates-only: true
-        dependency-groups:
-          - name: cargo group
-            rules:
-              patterns:
-                - "*"
         source:
             provider: github
             repo: dependabot/smoke-tests
@@ -53,9 +48,6 @@ input:
                 - /cargo/multi-dir/foo
                 - /cargo/multi-dir/bar
             commit: f5a4b0925beceaec208805533ac98637967df794
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN

@@ -25,15 +25,11 @@ input:
         source:
             provider: github
             repo: dependabot/smoke-tests
-            directory: /
             directories:
                 - /cargo/multi-dir/foo
                 - /cargo/multi-dir/bar
             branch: main
             commit: f5a4b0925beceaec208805533ac98637967df794
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN

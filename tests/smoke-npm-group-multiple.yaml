@@ -23,8 +23,6 @@ input:
                 update-types:
                     - major
         experiments:
-            grouped-updates-experimental-rules: true
-            grouped-updates-prototype: true
             record-ecosystem-versions: true
         ignore-conditions:
             - dependency-name: none
@@ -33,9 +31,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /npm/angular
             commit: 6cc5e623c6cb8284ce363010c05690f4661164dd
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN

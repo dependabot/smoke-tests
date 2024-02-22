@@ -39,15 +39,9 @@ input:
               patched-versions: []
               unaffected-versions: []
         security-updates-only: true
-        dependency-groups:
-          - name: go_modules group
-            rules:
-              patterns:
-                - "*"
         source:
             provider: github
             repo: dependabot/smoke-tests
-            directory: /
             directories:
                 - /go/multi-dir/foo
                 - /go/multi-dir/bar

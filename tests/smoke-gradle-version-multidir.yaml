@@ -29,15 +29,11 @@ input:
         source:
             provider: github
             repo: dependabot/smoke-tests
-            directory: /
             directories:
                 - /gradle/multi-dir/foo
                 - /gradle/multi-dir/bar
             branch: main
             commit: bdc8fd5e4980081b086bcfcb2c4746c43e4b789d
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN

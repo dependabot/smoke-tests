@@ -4,12 +4,8 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
-        dependency-groups:
-            - name: nuget group
-              rules:
-                patterns:
-                    - '*'
         dependencies:
+            - NuGet.Versioning
             - NuGet.Versioning
         ignore-conditions:
             - dependency-name: NuGet.Versioning

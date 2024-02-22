@@ -38,11 +38,6 @@ input:
               patched-versions: []
               unaffected-versions: []
         security-updates-only: true
-        dependency-groups:
-          - name: bundler group
-            rules:
-              patterns:
-                - "*"
         source:
             provider: github
             repo: dependabot/smoke-tests
@@ -50,9 +45,6 @@ input:
                 - /bundler/multi-dir/foo
                 - /bundler/multi-dir/bar
             commit: cd6542cb2b99fce3a1c506446e22e32d79d1b2b7
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
