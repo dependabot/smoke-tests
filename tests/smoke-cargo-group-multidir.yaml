@@ -110,6 +110,62 @@ output:
                 - name: version_check
                   requirements: []
                   version: 0.9.4
+                - name: time
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: =0.3.0-alpha-2
+                      source: null
+                  version: 0.3.0-alpha-2
+                - name: rand
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 0.8.4
+                        type: git
+                        url: ssh://git@github.com/rust-random/rand.git
+                  version: 8792268dfe57e49bb4518190bf4fe66176759a44
+                - name: cfg-if
+                  requirements: []
+                  version: 1.0.0
+                - name: const_fn
+                  requirements: []
+                  version: 0.4.9
+                - name: easy-ext
+                  requirements: []
+                  version: 0.2.9
+                - name: getrandom
+                  requirements: []
+                  version: 0.2.11
+                - name: libc
+                  requirements: []
+                  version: 0.2.150
+                - name: ppv-lite86
+                  requirements: []
+                  version: 0.2.17
+                - name: rand_chacha
+                  requirements: []
+                  version: 8792268dfe57e49bb4518190bf4fe66176759a44
+                - name: rand_core
+                  requirements: []
+                  version: 8792268dfe57e49bb4518190bf4fe66176759a44
+                - name: rand_hc
+                  requirements: []
+                  version: 8792268dfe57e49bb4518190bf4fe66176759a44
+                - name: standback
+                  requirements: []
+                  version: 0.3.5
+                - name: version_check
+                  requirements: []
+                  version: 0.9.4
+                - name: wasi
+                  requirements: []
+                  version: 0.11.0+wasi-snapshot-preview1
             dependency_files:
                 - /cargo/multi-dir/foo/Cargo.toml
                 - /cargo/multi-dir/foo/Cargo.lock
@@ -165,6 +221,29 @@ output:
                       requirement: =0.3.0
                       source: null
                   version: 0.3.0
+                - name: rand
+                  previous-requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 0.8.4
+                        type: git
+                        url: ssh://git@github.com/rust-random/rand.git
+                  previous-version: 8792268dfe57e49bb4518190bf4fe66176759a44
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 0.8.5
+                        type: git
+                        url: ssh://git@github.com/rust-random/rand.git
+                  version: 937320cbfeebd4352a23086d9c6e68f067f74644
             updated-dependency-files:
                 - content: |
                     [package]
@@ -263,7 +342,7 @@ output:
 
                     [dependencies]
                     time = "=0.3.0"
-                    rand = { git = "ssh://git@github.com/rust-random/rand.git", tag = "0.8.4" }
+                    rand = { git = "ssh://git@github.com/rust-random/rand.git", tag = "0.8.5" }
                   content_encoding: utf-8
                   deleted: false
                   directory: /cargo/multi-dir/bar
@@ -315,19 +394,18 @@ output:
 
                     [[package]]
                     name = "rand"
-                    version = "0.8.4"
-                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    version = "0.8.5"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.5#937320cbfeebd4352a23086d9c6e68f067f74644"
                     dependencies = [
                      "libc",
                      "rand_chacha",
                      "rand_core",
-                     "rand_hc",
                     ]
 
                     [[package]]
                     name = "rand_chacha"
                     version = "0.3.1"
-                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.5#937320cbfeebd4352a23086d9c6e68f067f74644"
                     dependencies = [
                      "ppv-lite86",
                      "rand_core",
@@ -335,18 +413,10 @@ output:
 
                     [[package]]
                     name = "rand_core"
-                    version = "0.6.3"
-                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    version = "0.6.4"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.5#937320cbfeebd4352a23086d9c6e68f067f74644"
                     dependencies = [
                      "getrandom",
-                    ]
-
-                    [[package]]
-                    name = "rand_hc"
-                    version = "0.3.1"
-                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
-                    dependencies = [
-                     "rand_core",
                     ]
 
                     [[package]]
@@ -370,10 +440,10 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the cargo group across 2 directories with 2 updates
+            pr-title: Bump the cargo group across 2 directories with 3 updates
             pr-body: |
                 Bumps the cargo group with 2 updates in the /cargo/multi-dir/foo directory: [time](https://github.com/time-rs/time) and [regex](https://github.com/rust-lang/regex).
-                Bumps the cargo group with 1 update in the /cargo/multi-dir/bar directory: [time](https://github.com/time-rs/time).
+                Bumps the cargo group with 2 updates in the /cargo/multi-dir/bar directory: [time](https://github.com/time-rs/time) and [rand](https://github.com/rust-random/rand).
 
                 Updates `time` from 0.3.0-alpha-1 to 0.3.0
                 <details>
@@ -573,11 +643,56 @@ output:
                 </ul>
                 </details>
                 <br />
+
+                Updates `rand` from 0.8.4 to 0.8.5
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/rust-random/rand/blob/master/CHANGELOG.md">rand's changelog</a>.</em></p>
+                <blockquote>
+                <h2>[0.8.5] - 2021-08-20</h2>
+                <h3>Fixes</h3>
+                <ul>
+                <li>Fix build on non-32/64-bit architectures (<a href="https://redirect.github.com/rust-random/rand/issues/1144">#1144</a>)</li>
+                <li>Fix &quot;min_const_gen&quot; feature for <code>no_std</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1173">#1173</a>)</li>
+                <li>Check <code>libc::pthread_atfork</code> return value with panic on error (<a href="https://redirect.github.com/rust-random/rand/issues/1178">#1178</a>)</li>
+                <li>More robust reseeding in case <code>ReseedingRng</code> is used from a fork handler (<a href="https://redirect.github.com/rust-random/rand/issues/1178">#1178</a>)</li>
+                <li>Fix nightly: remove unused <code>slice_partition_at_index</code> feature (<a href="https://redirect.github.com/rust-random/rand/issues/1215">#1215</a>)</li>
+                <li>Fix nightly + <code>simd_support</code>: update <code>packed_simd</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1216">#1216</a>)</li>
+                </ul>
+                <h3>Rngs</h3>
+                <ul>
+                <li><code>StdRng</code>: Switch from HC128 to ChaCha12 on emscripten (<a href="https://redirect.github.com/rust-random/rand/issues/1142">#1142</a>).
+                We now use ChaCha12 on all platforms.</li>
+                </ul>
+                <h3>Documentation</h3>
+                <ul>
+                <li>Added docs about rand's use of const generics (<a href="https://redirect.github.com/rust-random/rand/issues/1150">#1150</a>)</li>
+                <li>Better random chars example (<a href="https://redirect.github.com/rust-random/rand/issues/1157">#1157</a>)</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rust-random/rand/commit/937320cbfeebd4352a23086d9c6e68f067f74644"><code>937320c</code></a> Update CHANGELOG for 0.8.5 (<a href="https://redirect.github.com/rust-random/rand/issues/1221">#1221</a>)</li>
+                <li><a href="https://github.com/rust-random/rand/commit/2924af688d352b889322870d017356f12651866b"><code>2924af6</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1183">#1183</a> from vks/fill-float-doc</li>
+                <li><a href="https://github.com/rust-random/rand/commit/dbbc1bf3176138c867f3d84c0c4d288119a5a84e"><code>dbbc1bf</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1218">#1218</a> from Will-Low/master</li>
+                <li><a href="https://github.com/rust-random/rand/commit/9f20df04d88698c38515833d6db62d7eb50d8b80"><code>9f20df0</code></a> Making distributions comparable by deriving PartialEq. Tests included</li>
+                <li><a href="https://github.com/rust-random/rand/commit/a407bdfa4563d0cfbf744049242926c8de079d3f"><code>a407bdf</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1216">#1216</a> from rust-random/work5</li>
+                <li><a href="https://github.com/rust-random/rand/commit/d3ca11b0bcc1f42fe34ba4f90f99509b7eb4ff18"><code>d3ca11b</code></a> Update to packed_simd_2 0.3.7</li>
+                <li><a href="https://github.com/rust-random/rand/commit/fa04c15d0bb5842fdbdbb73d7a53ead36f3fcf52"><code>fa04c15</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1215">#1215</a> from Lantern-chat/master</li>
+                <li><a href="https://github.com/rust-random/rand/commit/73f8ffd16379390e624ac53cd6882dd679dd9a6f"><code>73f8ffd</code></a> Remove unused <code>slice_partition_at_index</code> feature</li>
+                <li><a href="https://github.com/rust-random/rand/commit/8f372500f05dfadcff6c35e773e81029ab7debad"><code>8f37250</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1208">#1208</a> from newpavlov/rand_distr/fix_no_std</li>
+                <li><a href="https://github.com/rust-random/rand/commit/9ef737ba5b814f6ab36cebafb59ad29885d68a05"><code>9ef737b</code></a> update changelog</li>
+                <li>Additional commits viewable in <a href="https://github.com/rust-random/rand/compare/8792268dfe57e49bb4518190bf4fe66176759a44...937320cbfeebd4352a23086d9c6e68f067f74644">compare view</a></li>
+                </ul>
+                </details>
+                <br />
             commit-message: |-
-                Bump the cargo group across 2 directories with 2 updates
+                Bump the cargo group across 2 directories with 3 updates
 
                 Bumps the cargo group with 2 updates in the /cargo/multi-dir/foo directory: [time](https://github.com/time-rs/time) and [regex](https://github.com/rust-lang/regex).
-                Bumps the cargo group with 1 update in the /cargo/multi-dir/bar directory: [time](https://github.com/time-rs/time).
+                Bumps the cargo group with 2 updates in the /cargo/multi-dir/bar directory: [time](https://github.com/time-rs/time) and [rand](https://github.com/rust-random/rand).
 
 
                 Updates `time` from 0.3.0-alpha-1 to 0.3.0
@@ -594,6 +709,11 @@ output:
                 - [Release notes](https://github.com/time-rs/time/releases)
                 - [Changelog](https://github.com/time-rs/time/blob/main/CHANGELOG.md)
                 - [Commits](https://github.com/time-rs/time/compare/v0.3.0-alpha-1...v0.3.0)
+
+                Updates `rand` from 0.8.4 to 0.8.5
+                - [Release notes](https://github.com/rust-random/rand/releases)
+                - [Changelog](https://github.com/rust-random/rand/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/rust-random/rand/compare/8792268dfe57e49bb4518190bf4fe66176759a44...937320cbfeebd4352a23086d9c6e68f067f74644)
             dependency-group:
                 name: cargo group
     - type: mark_as_processed

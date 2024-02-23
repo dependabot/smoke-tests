@@ -4,6 +4,12 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        dependency-groups:
+            - name: go_modules group
+              applies-to: security-updates
+              rules:
+                patterns:
+                    - rsc.io/qr
         dependencies:
             - rsc.io/quote
             - rsc.io/qr
@@ -26,12 +32,6 @@ input:
               patched-versions: []
               unaffected-versions: []
         security-updates-only: true
-        dependency-groups:
-          - name: go_modules group
-            applies-to: security-updates
-            rules:
-              patterns:
-                - rsc.io/qr
         source:
             provider: github
             repo: dependabot/smoke-tests
@@ -49,6 +49,30 @@ output:
       expect:
         data:
             dependencies:
+                - name: rsc.io/qr
+                  requirements:
+                    - file: go.mod
+                      groups: []
+                      requirement: v0.1.0
+                      source:
+                        source: rsc.io/qr
+                        type: default
+                  version: 0.1.0
+                - name: rsc.io/quote
+                  requirements:
+                    - file: go.mod
+                      groups: []
+                      requirement: v1.5.0
+                      source:
+                        source: rsc.io/quote
+                        type: default
+                  version: 1.5.0
+                - name: golang.org/x/text
+                  requirements: []
+                  version: 0.4.0
+                - name: rsc.io/sampler
+                  requirements: []
+                  version: 1.3.0
                 - name: rsc.io/qr
                   requirements:
                     - file: go.mod
