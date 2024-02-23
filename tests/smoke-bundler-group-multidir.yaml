@@ -83,6 +83,28 @@ output:
                 - name: tilt
                   requirements: []
                   version: 1.4.1
+                - name: rack
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: 3.0.0
+                      source: null
+                  version: 3.0.0
+                - name: nokogiri
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: "1.11"
+                      source: null
+                  version: 1.11.0
+                - name: mini_portile2
+                  requirements: []
+                  version: 2.5.3
+                - name: racc
+                  requirements: []
+                  version: 1.7.2
             dependency_files:
                 - /bundler/multi-dir/foo/Gemfile
                 - /bundler/multi-dir/foo/Gemfile.lock
