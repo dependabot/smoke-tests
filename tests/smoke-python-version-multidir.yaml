@@ -29,9 +29,6 @@ input:
                 - /pip/multi-dir/bar
             branch: main
             commit: 7b8e1971f18f6a47430796ec0e430e005d2d97f3
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -42,6 +39,22 @@ output:
       expect:
         data:
             dependencies:
+                - name: urllib3
+                  requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==1.0
+                      source: null
+                  version: "1.0"
+                - name: flask
+                  requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==2.0.0
+                      source: null
+                  version: 2.0.0
                 - name: urllib3
                   requirements:
                     - file: requirements.txt
@@ -81,6 +94,21 @@ output:
                       requirement: ==2.1.0
                       source: null
                   version: 2.1.0
+                - name: flask
+                  previous-requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==2.0.0
+                      source: null
+                  previous-version: 2.0.0
+                  requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==3.0.2
+                      source: null
+                  version: 3.0.2
                 - name: urllib3
                   previous-requirements:
                     - file: requirements.txt
@@ -114,7 +142,7 @@ output:
             updated-dependency-files:
                 - content: |
                     urllib3==2.1.0
-                    Flask==2.0.0
+                    Flask==3.0.2
                   content_encoding: utf-8
                   deleted: false
                   directory: /pip/multi-dir/foo
@@ -132,9 +160,9 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the python_pkgs across 2 directories with 2 updates
+            pr-title: Bump the python_pkgs across 2 directories with 3 updates
             pr-body: |
-                Bumps the python_pkgs with 1 update in the /pip/multi-dir/foo directory: [urllib3](https://github.com/urllib3/urllib3).
+                Bumps the python_pkgs with 2 updates in the /pip/multi-dir/foo directory: [urllib3](https://github.com/urllib3/urllib3) and [flask](https://github.com/pallets/flask).
                 Bumps the python_pkgs with 2 updates in the /pip/multi-dir/bar directory: [urllib3](https://github.com/urllib3/urllib3) and [numpy](https://github.com/numpy/numpy).
 
                 Updates `urllib3` from 1.0 to 2.1.0
@@ -206,15 +234,10 @@ output:
                 <p><em>Sourced from <a href="https://github.com/urllib3/urllib3/blob/main/CHANGES.rst">urllib3's changelog</a>.</em></p>
                 <blockquote>
                 <h1>2.1.0 (2023-11-13)</h1>
-                <p>Read the <code>v2 migration guide &lt;https://urllib3.readthedocs.io/en/latest/v2-migration-guide.html&gt;</code>__ for help upgrading to the latest version of urllib3.</p>
-                <h2>Removals</h2>
                 <ul>
                 <li>Removed support for the deprecated urllib3[secure] extra. (<code>[#2680](https://github.com/urllib3/urllib3/issues/2680) &lt;https://github.com/urllib3/urllib3/issues/2680&gt;</code>__)</li>
                 <li>Removed support for the deprecated SecureTransport TLS implementation. (<code>[#2681](https://github.com/urllib3/urllib3/issues/2681) &lt;https://github.com/urllib3/urllib3/issues/2681&gt;</code>__)</li>
                 <li>Removed support for the end-of-life Python 3.7. (<code>[#3143](https://github.com/urllib3/urllib3/issues/3143) &lt;https://github.com/urllib3/urllib3/issues/3143&gt;</code>__)</li>
-                </ul>
-                <h2>Bugfixes</h2>
-                <ul>
                 <li>Allowed loading CA certificates from memory for proxies. (<code>[#3065](https://github.com/urllib3/urllib3/issues/3065) &lt;https://github.com/urllib3/urllib3/issues/3065&gt;</code>__)</li>
                 <li>Fixed decoding Gzip-encoded responses which specified <code>x-gzip</code> content-encoding. (<code>[#3174](https://github.com/urllib3/urllib3/issues/3174) &lt;https://github.com/urllib3/urllib3/issues/3174&gt;</code>__)</li>
                 </ul>
@@ -241,7 +264,11 @@ output:
                 <h1>2.0.3 (2023-06-07)</h1>
                 <ul>
                 <li>Allowed alternative SSL libraries such as LibreSSL, while still issuing a warning as we cannot help users facing issues with implementations other than OpenSSL. (<code>[#3020](https://github.com/urllib3/urllib3/issues/3020) &lt;https://github.com/urllib3/urllib3/issues/3020&gt;</code>__)</li>
+                <li>Deprecated URLs which don't have an explicit scheme (<code>[#2950](https://github.com/urllib3/urllib3/issues/2950) &lt;https://github.com/urllib3/urllib3/pull/2950&gt;</code>_)</li>
+                <li>Fixed response decoding with Zstandard when compressed data is made of several frames. (<code>[#3008](https://github.com/urllib3/urllib3/issues/3008) &lt;https://github.com/urllib3/urllib3/issues/3008&gt;</code>__)</li>
+                <li>Fixed <code>assert_hostname=False</code> to correctly skip hostname check. (<code>[#3051](https://github.com/urllib3/urllib3/issues/3051) &lt;https://github.com/urllib3/urllib3/issues/3051&gt;</code>__)</li>
                 </ul>
+                <h1>2.0.2 (2023-05-03)</h1>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -260,6 +287,126 @@ output:
                 <li><a href="https://github.com/urllib3/urllib3/commit/ff764a01499203a7c6fbe2e6c0a5a670cf26745c"><code>ff764a0</code></a> Allow loading CA certificates from memory for proxies (<a href="https://redirect.github.com/urllib3/urllib3/issues/3150">#3150</a>)</li>
                 <li><a href="https://github.com/urllib3/urllib3/commit/b99cc396b2b760362469796d086fae118aec7fb7"><code>b99cc39</code></a> Replace deprecated set-output in GitHub Actions</li>
                 <li>Additional commits viewable in <a href="https://github.com/urllib3/urllib3/compare/1.0...2.1.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `flask` from 2.0.0 to 3.0.2
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/pallets/flask/releases">flask's releases</a>.</em></p>
+                <blockquote>
+                <h2>3.0.2</h2>
+                <p>This is a fix release for the 3.0.x feature release branch. It fixes bugs but does not otherwise change behavior and should not result in breaking changes.</p>
+                <ul>
+                <li>Changes: <a href="https://flask.palletsprojects.com/en/3.0.x/changes/#version-3.0.2">https://flask.palletsprojects.com/en/3.0.x/changes/#version-3.0.2</a></li>
+                <li>Milestone: <a href="https://github.com/pallets/flask/milestone/34?closed=1">https://github.com/pallets/flask/milestone/34?closed=1</a></li>
+                <li>PyPI: <a href="https://pypi.org/project/Flask/3.0.2/">https://pypi.org/project/Flask/3.0.2/</a></li>
+                </ul>
+                <h2>3.0.1</h2>
+                <p>This is a fix release for the 3.0.x feature release branch.</p>
+                <p>Fixes an issue where using other JSON providers, such as <code>flask-orjson</code>, previously caused loaded session data to have an incorrect format in some cases.</p>
+                <ul>
+                <li>Changes: <a href="https://flask.palletsprojects.com/en/3.0.x/changes/#version-3-0-1">https://flask.palletsprojects.com/en/3.0.x/changes/#version-3-0-1</a></li>
+                <li>Milestone: <a href="https://github.com/pallets/flask/milestone/32?closed=1">https://github.com/pallets/flask/milestone/32?closed=1</a></li>
+                <li>PyPI: <a href="https://pypi.org/project/Flask/3.0.1/">https://pypi.org/project/Flask/3.0.1/</a></li>
+                </ul>
+                <h2>3.0.0</h2>
+                <p>This is a feature release, which includes new features, removes previously deprecated code, and adds new deprecations. The 3.0.x branch is now the supported fix branch, the 2.3.x branch will become a tag marking the end of support for that branch. We encourage everyone to upgrade, and to use a tool such as <a href="https://pypi.org/project/pip-tools/">pip-tools</a> to pin all dependencies and control upgrades. Test with warnings treated as errors to be able to adapt to deprecation warnings early.</p>
+                <ul>
+                <li>Changes: <a href="https://flask.palletsprojects.com/en/3.0.x/changes/#version-3-0-0">https://flask.palletsprojects.com/en/3.0.x/changes/#version-3-0-0</a></li>
+                <li>Milestone: <a href="https://github.com/pallets/flask/milestone/20?closed=1">https://github.com/pallets/flask/milestone/20?closed=1</a></li>
+                </ul>
+                <h2>2.3.3</h2>
+                <p>This is a fix release for the 2.3.x feature branch.</p>
+                <ul>
+                <li>Changes: <a href="https://flask.palletsprojects.com/en/2.3.x/changes/#version-2-3-3">https://flask.palletsprojects.com/en/2.3.x/changes/#version-2-3-3</a></li>
+                <li>Milestone: <a href="https://github.com/pallets/flask/milestone/31?closed=1">https://github.com/pallets/flask/milestone/31?closed=1</a></li>
+                </ul>
+                <h2>2.3.2</h2>
+                <p>This is a security fix release for the 2.3.x release branch.</p>
+                <ul>
+                <li>Security advisory: <a href="https://github.com/pallets/flask/security/advisories/GHSA-m2qf-hxjv-5gpq">https://github.com/pallets/flask/security/advisories/GHSA-m2qf-hxjv-5gpq</a>, CVE-2023-30861</li>
+                <li>Changes: <a href="https://flask.palletsprojects.com/en/2.3.x/changes/#version-2-3-2">https://flask.palletsprojects.com/en/2.3.x/changes/#version-2-3-2</a></li>
+                <li>Milestone: <a href="https://github.com/pallets/flask/milestone/29?closed=1">https://github.com/pallets/flask/milestone/29?closed=1</a></li>
+                </ul>
+                <h2>2.3.1</h2>
+                <p>This is a fix release for the 2.3.x release branch.</p>
+                <ul>
+                <li>Changes: <a href="https://flask.palletsprojects.com/en/2.3.x/changes/#version-2-3-1">https://flask.palletsprojects.com/en/2.3.x/changes/#version-2-3-1</a></li>
+                <li>Milestone: <a href="https://github.com/pallets/flask/milestone/28?closed=1">https://github.com/pallets/flask/milestone/28?closed=1</a></li>
+                </ul>
+                <h2>2.3.0</h2>
+                <p>This is a feature release, which includes new features, removes previously deprecated code, and adds new deprecations. The 2.3.x branch is now the supported fix branch, the 2.2.x branch will become a tag marking the end of support for that branch. We encourage everyone to upgrade, and to use a tool such as <a href="https://pypi.org/project/pip-tools/">pip-tools</a> to pin all dependencies and control upgrades. Test with warnings treated as errors to be able to adapt to deprecation warnings early.</p>
+                <ul>
+                <li>Changes: <a href="https://flask.palletsprojects.com/en/2.3.x/changes/#version-2-3-0">https://flask.palletsprojects.com/en/2.3.x/changes/#version-2-3-0</a></li>
+                <li>Milestone: <a href="https://github.com/pallets/flask/milestone/24?closed=1">https://github.com/pallets/flask/milestone/24?closed=1</a></li>
+                </ul>
+                <h2>2.2.5</h2>
+                <p>This is a security fix release for the 2.2.x release branch. Note that 2.3.x is the currently supported release branch; please upgrade to the latest version if possible.</p>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/pallets/flask/blob/main/CHANGES.rst">flask's changelog</a>.</em></p>
+                <blockquote>
+                <h2>Version 3.0.2</h2>
+                <p>Released 2024-02-03</p>
+                <ul>
+                <li>Correct type for <code>jinja_loader</code> property. :issue:<code>5388</code></li>
+                <li>Fix error with <code>--extra-files</code> and <code>--exclude-patterns</code> CLI options.
+                :issue:<code>5391</code></li>
+                </ul>
+                <h2>Version 3.0.1</h2>
+                <p>Released 2024-01-18</p>
+                <ul>
+                <li>Correct type for <code>path</code> argument to <code>send_file</code>. :issue:<code>5230</code></li>
+                <li>Fix a typo in an error message for the <code>flask run --key</code> option. :pr:<code>5344</code></li>
+                <li>Session data is untagged without relying on the built-in <code>json.loads</code>
+                <code>object_hook</code>. This allows other JSON providers that don't implement that.
+                :issue:<code>5381</code></li>
+                <li>Address more type findings when using mypy strict mode. :pr:<code>5383</code></li>
+                </ul>
+                <h2>Version 3.0.0</h2>
+                <p>Released 2023-09-30</p>
+                <ul>
+                <li>Remove previously deprecated code. :pr:<code>5223</code></li>
+                <li>Deprecate the <code>__version__</code> attribute. Use feature detection, or
+                <code>importlib.metadata.version(&quot;flask&quot;)</code>, instead. :issue:<code>5230</code></li>
+                <li>Restructure the code such that the Flask (app) and Blueprint
+                classes have Sans-IO bases. :pr:<code>5127</code></li>
+                <li>Allow self as an argument to url_for. :pr:<code>5264</code></li>
+                <li>Require Werkzeug &gt;= 3.0.0.</li>
+                </ul>
+                <h2>Version 2.3.3</h2>
+                <p>Released 2023-08-21</p>
+                <ul>
+                <li>Python 3.12 compatibility.</li>
+                <li>Require Werkzeug &gt;= 2.3.7.</li>
+                <li>Use <code>flit_core</code> instead of <code>setuptools</code> as build backend.</li>
+                <li>Refactor how an app's root and instance paths are determined. :issue:<code>5160</code></li>
+                </ul>
+                <h2>Version 2.3.2</h2>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/pallets/flask/commit/d2030595dcdc8ca5701504f00255360fb12a3a2b"><code>d203059</code></a> release version 3.0.2</li>
+                <li><a href="https://github.com/pallets/flask/commit/d7209a957004d4758f32fd8b2f89da11f5fe5718"><code>d7209a9</code></a> fix super call in list comprehension (<a href="https://redirect.github.com/pallets/flask/issues/5393">#5393</a>)</li>
+                <li><a href="https://github.com/pallets/flask/commit/1af8f95785b85d0937153ee63d504c0b51934d80"><code>1af8f95</code></a> fix super call in list comprehension</li>
+                <li><a href="https://github.com/pallets/flask/commit/3435d2ff1589eb0c1a85cc294a20985910a1a606"><code>3435d2f</code></a> Fix jinja_loader typehint (<a href="https://redirect.github.com/pallets/flask/issues/5389">#5389</a>)</li>
+                <li><a href="https://github.com/pallets/flask/commit/ecc057dd4857e655f0844b781899a917852042a4"><code>ecc057d</code></a> fix jinja_loader annotation</li>
+                <li><a href="https://github.com/pallets/flask/commit/3207af8827d4162ef5841249c46fbb9da043c551"><code>3207af8</code></a> start version 3.0.2</li>
+                <li><a href="https://github.com/pallets/flask/commit/233be7a0fa8b2a77189ae9a2fc47c579245a2f3d"><code>233be7a</code></a> release version 3.0.1 (<a href="https://redirect.github.com/pallets/flask/issues/5386">#5386</a>)</li>
+                <li><a href="https://github.com/pallets/flask/commit/f622b1cadea2bed4ea4cc476695e9c181ec5da11"><code>f622b1c</code></a> release version 3.0.1</li>
+                <li><a href="https://github.com/pallets/flask/commit/5fcc999b7df0f5cc71cfd9b74ea494b96486f84f"><code>5fcc999</code></a> fix create release action</li>
+                <li><a href="https://github.com/pallets/flask/commit/da3a0ddfe2de5be718a2d7cb3021f350bf04c402"><code>da3a0dd</code></a> fix slsa generator version</li>
+                <li>Additional commits viewable in <a href="https://github.com/pallets/flask/compare/2.0.0...3.0.2">compare view</a></li>
                 </ul>
                 </details>
                 <br />
@@ -333,15 +480,10 @@ output:
                 <p><em>Sourced from <a href="https://github.com/urllib3/urllib3/blob/main/CHANGES.rst">urllib3's changelog</a>.</em></p>
                 <blockquote>
                 <h1>2.1.0 (2023-11-13)</h1>
-                <p>Read the <code>v2 migration guide &lt;https://urllib3.readthedocs.io/en/latest/v2-migration-guide.html&gt;</code>__ for help upgrading to the latest version of urllib3.</p>
-                <h2>Removals</h2>
                 <ul>
                 <li>Removed support for the deprecated urllib3[secure] extra. (<code>[#2680](https://github.com/urllib3/urllib3/issues/2680) &lt;https://github.com/urllib3/urllib3/issues/2680&gt;</code>__)</li>
                 <li>Removed support for the deprecated SecureTransport TLS implementation. (<code>[#2681](https://github.com/urllib3/urllib3/issues/2681) &lt;https://github.com/urllib3/urllib3/issues/2681&gt;</code>__)</li>
                 <li>Removed support for the end-of-life Python 3.7. (<code>[#3143](https://github.com/urllib3/urllib3/issues/3143) &lt;https://github.com/urllib3/urllib3/issues/3143&gt;</code>__)</li>
-                </ul>
-                <h2>Bugfixes</h2>
-                <ul>
                 <li>Allowed loading CA certificates from memory for proxies. (<code>[#3065](https://github.com/urllib3/urllib3/issues/3065) &lt;https://github.com/urllib3/urllib3/issues/3065&gt;</code>__)</li>
                 <li>Fixed decoding Gzip-encoded responses which specified <code>x-gzip</code> content-encoding. (<code>[#3174](https://github.com/urllib3/urllib3/issues/3174) &lt;https://github.com/urllib3/urllib3/issues/3174&gt;</code>__)</li>
                 </ul>
@@ -368,7 +510,11 @@ output:
                 <h1>2.0.3 (2023-06-07)</h1>
                 <ul>
                 <li>Allowed alternative SSL libraries such as LibreSSL, while still issuing a warning as we cannot help users facing issues with implementations other than OpenSSL. (<code>[#3020](https://github.com/urllib3/urllib3/issues/3020) &lt;https://github.com/urllib3/urllib3/issues/3020&gt;</code>__)</li>
+                <li>Deprecated URLs which don't have an explicit scheme (<code>[#2950](https://github.com/urllib3/urllib3/issues/2950) &lt;https://github.com/urllib3/urllib3/pull/2950&gt;</code>_)</li>
+                <li>Fixed response decoding with Zstandard when compressed data is made of several frames. (<code>[#3008](https://github.com/urllib3/urllib3/issues/3008) &lt;https://github.com/urllib3/urllib3/issues/3008&gt;</code>__)</li>
+                <li>Fixed <code>assert_hostname=False</code> to correctly skip hostname check. (<code>[#3051](https://github.com/urllib3/urllib3/issues/3051) &lt;https://github.com/urllib3/urllib3/issues/3051&gt;</code>__)</li>
                 </ul>
+                <h1>2.0.2 (2023-05-03)</h1>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -465,9 +611,9 @@ output:
                 </details>
                 <br />
             commit-message: |-
-                Bump the python_pkgs across 2 directories with 2 updates
+                Bump the python_pkgs across 2 directories with 3 updates
 
-                Bumps the python_pkgs with 1 update in the /pip/multi-dir/foo directory: [urllib3](https://github.com/urllib3/urllib3).
+                Bumps the python_pkgs with 2 updates in the /pip/multi-dir/foo directory: [urllib3](https://github.com/urllib3/urllib3) and [flask](https://github.com/pallets/flask).
                 Bumps the python_pkgs with 2 updates in the /pip/multi-dir/bar directory: [urllib3](https://github.com/urllib3/urllib3) and [numpy](https://github.com/numpy/numpy).
 
 
@@ -475,6 +621,11 @@ output:
                 - [Release notes](https://github.com/urllib3/urllib3/releases)
                 - [Changelog](https://github.com/urllib3/urllib3/blob/main/CHANGES.rst)
                 - [Commits](https://github.com/urllib3/urllib3/compare/1.0...2.1.0)
+
+                Updates `flask` from 2.0.0 to 3.0.2
+                - [Release notes](https://github.com/pallets/flask/releases)
+                - [Changelog](https://github.com/pallets/flask/blob/main/CHANGES.rst)
+                - [Commits](https://github.com/pallets/flask/compare/2.0.0...3.0.2)
 
                 Updates `urllib3` from 1.0 to 2.1.0
                 - [Release notes](https://github.com/urllib3/urllib3/releases)

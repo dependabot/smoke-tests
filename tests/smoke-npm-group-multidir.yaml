@@ -78,6 +78,26 @@ output:
                 - name: '@dependabot/dummy-pkg-a'
                   requirements: []
                   version: 1.1.0
+                - name: '@dependabot/dummy-pkg-a'
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 1.0.0
+                - name: left-pad
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 1.0.0
             dependency_files:
                 - /npm/multi-dir/foo/package.json
                 - /npm/multi-dir/foo/package-lock.json

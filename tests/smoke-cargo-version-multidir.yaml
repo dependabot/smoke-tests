@@ -92,6 +92,62 @@ output:
                 - name: version_check
                   requirements: []
                   version: 0.9.4
+                - name: time
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: =0.3.0-alpha-2
+                      source: null
+                  version: 0.3.0-alpha-2
+                - name: rand
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 0.8.4
+                        type: git
+                        url: ssh://git@github.com/rust-random/rand.git
+                  version: 8792268dfe57e49bb4518190bf4fe66176759a44
+                - name: cfg-if
+                  requirements: []
+                  version: 1.0.0
+                - name: const_fn
+                  requirements: []
+                  version: 0.4.9
+                - name: easy-ext
+                  requirements: []
+                  version: 0.2.9
+                - name: getrandom
+                  requirements: []
+                  version: 0.2.11
+                - name: libc
+                  requirements: []
+                  version: 0.2.150
+                - name: ppv-lite86
+                  requirements: []
+                  version: 0.2.17
+                - name: rand_chacha
+                  requirements: []
+                  version: 8792268dfe57e49bb4518190bf4fe66176759a44
+                - name: rand_core
+                  requirements: []
+                  version: 8792268dfe57e49bb4518190bf4fe66176759a44
+                - name: rand_hc
+                  requirements: []
+                  version: 8792268dfe57e49bb4518190bf4fe66176759a44
+                - name: standback
+                  requirements: []
+                  version: 0.3.5
+                - name: version_check
+                  requirements: []
+                  version: 0.9.4
+                - name: wasi
+                  requirements: []
+                  version: 0.11.0+wasi-snapshot-preview1
             dependency_files:
                 - /cargo/multi-dir/foo/Cargo.toml
                 - /cargo/multi-dir/foo/Cargo.lock
@@ -151,10 +207,10 @@ output:
                       requirement: null
                       source:
                         branch: null
-                        ref: 1.0.9
+                        ref: 1.0.10
                         type: git
                         url: https://github.com/dtolnay/itoa.git
-                  version: 81c115b833792b698cbac1af2d37d707c6a641ee
+                  version: 547c143d503f4624ff11ee13fd3a5b0274f4c27f
                 - name: time
                   previous-requirements:
                     - file: Cargo.toml
@@ -170,6 +226,29 @@ output:
                       requirement: =0.3.30
                       source: null
                   version: 0.3.30
+                - name: rand
+                  previous-requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 0.8.4
+                        type: git
+                        url: ssh://git@github.com/rust-random/rand.git
+                  previous-version: 8792268dfe57e49bb4518190bf4fe66176759a44
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 0.8.5
+                        type: git
+                        url: ssh://git@github.com/rust-random/rand.git
+                  version: 937320cbfeebd4352a23086d9c6e68f067f74644
             updated-dependency-files:
                 - content: |
                     [package]
@@ -180,7 +259,7 @@ output:
                     [dependencies]
                     time = "=0.3.30"
                     regex = ">=1.6.0, <1.11.0"
-                    itoa = { git = "https://github.com/dtolnay/itoa.git", tag = "1.0.9" }
+                    itoa = { git = "https://github.com/dtolnay/itoa.git", tag = "1.0.10" }
                   content_encoding: utf-8
                   deleted: false
                   directory: /cargo/multi-dir/foo
@@ -213,17 +292,17 @@ output:
 
                     [[package]]
                     name = "deranged"
-                    version = "0.3.10"
+                    version = "0.3.11"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "8eb30d70a07a3b04884d2677f06bec33509dc67ca60d92949e5535352d3191dc"
+                    checksum = "b42b6fa04a440b495c8b04d0e71b707c585f83cb9cb28cf8cd0d976c315e31b4"
                     dependencies = [
                      "powerfmt",
                     ]
 
                     [[package]]
                     name = "itoa"
-                    version = "1.0.9"
-                    source = "git+https://github.com/dtolnay/itoa.git?tag=1.0.9#81c115b833792b698cbac1af2d37d707c6a641ee"
+                    version = "1.0.10"
+                    source = "git+https://github.com/dtolnay/itoa.git?tag=1.0.10#547c143d503f4624ff11ee13fd3a5b0274f4c27f"
 
                     [[package]]
                     name = "memchr"
@@ -239,18 +318,18 @@ output:
 
                     [[package]]
                     name = "proc-macro2"
-                    version = "1.0.70"
+                    version = "1.0.78"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "39278fbbf5fb4f646ce651690877f89d1c5811a3d4acb27700c1cb3cdb78fd3b"
+                    checksum = "e2422ad645d89c99f8f3e6b88a9fdeca7fabeac836b1002371c4367c8f984aae"
                     dependencies = [
                      "unicode-ident",
                     ]
 
                     [[package]]
                     name = "quote"
-                    version = "1.0.33"
+                    version = "1.0.35"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "5267fca4496028628a95160fc423a33e8b2e6af8a5302579e322e4b520293cae"
+                    checksum = "291ec9ab5efd934aaf503a6466c5d5251535d108ee747472c3977cc5acc868ef"
                     dependencies = [
                      "proc-macro2",
                     ]
@@ -269,9 +348,9 @@ output:
 
                     [[package]]
                     name = "regex-automata"
-                    version = "0.4.3"
+                    version = "0.4.5"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "5f804c7828047e88b2d32e2d7fe5a105da8ee3264f01902f796c8e067dc2483f"
+                    checksum = "5bb987efffd3c6d0d8f5f89510bb458559eab11e4f869acb20bf845e016259cd"
                     dependencies = [
                      "aho-corasick",
                      "memchr",
@@ -286,18 +365,18 @@ output:
 
                     [[package]]
                     name = "serde"
-                    version = "1.0.193"
+                    version = "1.0.197"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "25dd9975e68d0cb5aa1120c288333fc98731bd1dd12f561e468ea4728c042b89"
+                    checksum = "3fb1c873e1b9b056a4dc4c0c198b24c3ffa059243875552b2bd0933b1aee4ce2"
                     dependencies = [
                      "serde_derive",
                     ]
 
                     [[package]]
                     name = "serde_derive"
-                    version = "1.0.193"
+                    version = "1.0.197"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "43576ca501357b9b071ac53cdc7da8ef0cbd9493d8df094cd821777ea6e894d3"
+                    checksum = "7eb0b34b42edc17f6b7cac84a52a1c5f0e1bb2227e997ca9011ea3dd34e8610b"
                     dependencies = [
                      "proc-macro2",
                      "quote",
@@ -306,9 +385,9 @@ output:
 
                     [[package]]
                     name = "syn"
-                    version = "2.0.39"
+                    version = "2.0.50"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "23e78b90f2fcf45d3e842032ce32e3f2d1545ba6636271dcbf24fa306d87be7a"
+                    checksum = "74f1bdc9872430ce9b75da68329d1c1746faf50ffac5f19e02b71e37ff881ffb"
                     dependencies = [
                      "proc-macro2",
                      "quote",
@@ -353,7 +432,7 @@ output:
 
                     [dependencies]
                     time = "=0.3.30"
-                    rand = { git = "ssh://git@github.com/rust-random/rand.git", tag = "0.8.4" }
+                    rand = { git = "ssh://git@github.com/rust-random/rand.git", tag = "0.8.5" }
                   content_encoding: utf-8
                   deleted: false
                   directory: /cargo/multi-dir/bar
@@ -382,9 +461,9 @@ output:
 
                     [[package]]
                     name = "deranged"
-                    version = "0.3.10"
+                    version = "0.3.11"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "8eb30d70a07a3b04884d2677f06bec33509dc67ca60d92949e5535352d3191dc"
+                    checksum = "b42b6fa04a440b495c8b04d0e71b707c585f83cb9cb28cf8cd0d976c315e31b4"
                     dependencies = [
                      "powerfmt",
                     ]
@@ -420,37 +499,36 @@ output:
 
                     [[package]]
                     name = "proc-macro2"
-                    version = "1.0.70"
+                    version = "1.0.78"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "39278fbbf5fb4f646ce651690877f89d1c5811a3d4acb27700c1cb3cdb78fd3b"
+                    checksum = "e2422ad645d89c99f8f3e6b88a9fdeca7fabeac836b1002371c4367c8f984aae"
                     dependencies = [
                      "unicode-ident",
                     ]
 
                     [[package]]
                     name = "quote"
-                    version = "1.0.33"
+                    version = "1.0.35"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "5267fca4496028628a95160fc423a33e8b2e6af8a5302579e322e4b520293cae"
+                    checksum = "291ec9ab5efd934aaf503a6466c5d5251535d108ee747472c3977cc5acc868ef"
                     dependencies = [
                      "proc-macro2",
                     ]
 
                     [[package]]
                     name = "rand"
-                    version = "0.8.4"
-                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    version = "0.8.5"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.5#937320cbfeebd4352a23086d9c6e68f067f74644"
                     dependencies = [
                      "libc",
                      "rand_chacha",
                      "rand_core",
-                     "rand_hc",
                     ]
 
                     [[package]]
                     name = "rand_chacha"
                     version = "0.3.1"
-                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.5#937320cbfeebd4352a23086d9c6e68f067f74644"
                     dependencies = [
                      "ppv-lite86",
                      "rand_core",
@@ -458,34 +536,26 @@ output:
 
                     [[package]]
                     name = "rand_core"
-                    version = "0.6.3"
-                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    version = "0.6.4"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.5#937320cbfeebd4352a23086d9c6e68f067f74644"
                     dependencies = [
                      "getrandom",
                     ]
 
                     [[package]]
-                    name = "rand_hc"
-                    version = "0.3.1"
-                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
-                    dependencies = [
-                     "rand_core",
-                    ]
-
-                    [[package]]
                     name = "serde"
-                    version = "1.0.193"
+                    version = "1.0.197"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "25dd9975e68d0cb5aa1120c288333fc98731bd1dd12f561e468ea4728c042b89"
+                    checksum = "3fb1c873e1b9b056a4dc4c0c198b24c3ffa059243875552b2bd0933b1aee4ce2"
                     dependencies = [
                      "serde_derive",
                     ]
 
                     [[package]]
                     name = "serde_derive"
-                    version = "1.0.193"
+                    version = "1.0.197"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "43576ca501357b9b071ac53cdc7da8ef0cbd9493d8df094cd821777ea6e894d3"
+                    checksum = "7eb0b34b42edc17f6b7cac84a52a1c5f0e1bb2227e997ca9011ea3dd34e8610b"
                     dependencies = [
                      "proc-macro2",
                      "quote",
@@ -494,9 +564,9 @@ output:
 
                     [[package]]
                     name = "syn"
-                    version = "2.0.39"
+                    version = "2.0.50"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "23e78b90f2fcf45d3e842032ce32e3f2d1545ba6636271dcbf24fa306d87be7a"
+                    checksum = "74f1bdc9872430ce9b75da68329d1c1746faf50ffac5f19e02b71e37ff881ffb"
                     dependencies = [
                      "proc-macro2",
                      "quote",
@@ -539,10 +609,10 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the cargo_pkgs across 2 directories with 3 updates
+            pr-title: Bump the cargo_pkgs across 2 directories with 4 updates
             pr-body: |
                 Bumps the cargo_pkgs with 3 updates in the /cargo/multi-dir/foo directory: [time](https://github.com/time-rs/time), [regex](https://github.com/rust-lang/regex) and [itoa](https://github.com/dtolnay/itoa).
-                Bumps the cargo_pkgs with 1 update in the /cargo/multi-dir/bar directory: [time](https://github.com/time-rs/time).
+                Bumps the cargo_pkgs with 2 updates in the /cargo/multi-dir/bar directory: [time](https://github.com/time-rs/time) and [rand](https://github.com/rust-random/rand).
 
                 Updates `time` from 0.3.0-alpha-1 to 0.3.30
                 <details>
@@ -726,11 +796,15 @@ output:
                 </details>
                 <br />
 
-                Updates `itoa` from 1.0.5 to 1.0.9
+                Updates `itoa` from 1.0.5 to 1.0.10
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/dtolnay/itoa/releases">itoa's releases</a>.</em></p>
                 <blockquote>
+                <h2>1.0.10</h2>
+                <ul>
+                <li>Improve test coverage (<a href="https://redirect.github.com/dtolnay/itoa/issues/41">#41</a>, thanks <a href="https://github.com/CXWorks"><code>@​CXWorks</code></a>)</li>
+                </ul>
                 <h2>1.0.9</h2>
                 <ul>
                 <li>Documentation improvements</li>
@@ -752,17 +826,17 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/dtolnay/itoa/commit/81c115b833792b698cbac1af2d37d707c6a641ee"><code>81c115b</code></a> Release 1.0.9</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/e3dcf527007c1672384b985a8080093236167bb6"><code>e3dcf52</code></a> Opt in to generate-link-to-definition when building on docs.rs</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/a6af90ff98545f7370f1d52f1d9cc813a224e98f"><code>a6af90f</code></a> Release 1.0.8</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/f834fdb88eb43789aeca57d303b90bbe4d8c4eae"><code>f834fdb</code></a> Add no-std::no-alloc category</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/26259a9a1ada016a6d045b5f0ebeea2089f646a3"><code>26259a9</code></a> Release 1.0.7</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/21ee1ba69749a20a076c15a310612c5b4350d844"><code>21ee1ba</code></a> Suppress incorrect_clone_impl_on_copy_type clippy false positive</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/0dccfa45975264cd0e270854d5debca510b74d7f"><code>0dccfa4</code></a> Ignore expl_impl_clone_on_copy pedantic clippy lint</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/9c8ced9755d940d301ce4b2dba264082d6439bdd"><code>9c8ced9</code></a> impl Copy for Buffer</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/f2d5e2750a39298d9c93ee58cd1203dea2bb3c9b"><code>f2d5e27</code></a> Remove .clippy.toml in favor of respecting rust-version from Cargo.toml</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/97a5102fef76824202bb1a3762dee313e84d3348"><code>97a5102</code></a> Show error details during miri setup in CI</li>
-                <li>Additional commits viewable in <a href="https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...81c115b833792b698cbac1af2d37d707c6a641ee">compare view</a></li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/547c143d503f4624ff11ee13fd3a5b0274f4c27f"><code>547c143</code></a> Release 1.0.10</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/ba20a60b10cb32eeb00a0da72ca0dea5364cbe79"><code>ba20a60</code></a> Touch up PR 41</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/adecb79816706250048bcc23c525a0c58352153e"><code>adecb79</code></a> Merge pull request <a href="https://redirect.github.com/dtolnay/itoa/issues/41">#41</a> from CXWorks/master</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/84bffa9c1e5cc247aca25d55f3b043baeba8cc9d"><code>84bffa9</code></a> fix CI error</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/cefacdbb276f261c49ece860e9f82eab886abca1"><code>cefacdb</code></a> add missing unit test for i128</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/0d040f46648901e7af47f96168f1e851868d91f9"><code>0d040f4</code></a> Remove 'remember to update' reminder from Cargo.toml</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/2763105d390d1dd509c7a6c9e6013b2a1fce4c97"><code>2763105</code></a> Test docs.rs documentation build in CI</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/e999a5a689de980d501e0b5aca6049d63a94d7da"><code>e999a5a</code></a> Update name of clippy clone impl lint</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/633b6ae6b279eaa9d6713dd90fd9eaecb3563ba4"><code>633b6ae</code></a> Ignore needless_doctest_main clippy lint</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/03549a22a1586140b92c8ff8f0978136aeb9897d"><code>03549a2</code></a> Update actions/checkout@v3 -&gt; v4</li>
+                <li>Additional commits viewable in <a href="https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...547c143d503f4624ff11ee13fd3a5b0274f4c27f">compare view</a></li>
                 </ul>
                 </details>
                 <br />
@@ -880,11 +954,56 @@ output:
                 </ul>
                 </details>
                 <br />
+
+                Updates `rand` from 0.8.4 to 0.8.5
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/rust-random/rand/blob/master/CHANGELOG.md">rand's changelog</a>.</em></p>
+                <blockquote>
+                <h2>[0.8.5] - 2021-08-20</h2>
+                <h3>Fixes</h3>
+                <ul>
+                <li>Fix build on non-32/64-bit architectures (<a href="https://redirect.github.com/rust-random/rand/issues/1144">#1144</a>)</li>
+                <li>Fix &quot;min_const_gen&quot; feature for <code>no_std</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1173">#1173</a>)</li>
+                <li>Check <code>libc::pthread_atfork</code> return value with panic on error (<a href="https://redirect.github.com/rust-random/rand/issues/1178">#1178</a>)</li>
+                <li>More robust reseeding in case <code>ReseedingRng</code> is used from a fork handler (<a href="https://redirect.github.com/rust-random/rand/issues/1178">#1178</a>)</li>
+                <li>Fix nightly: remove unused <code>slice_partition_at_index</code> feature (<a href="https://redirect.github.com/rust-random/rand/issues/1215">#1215</a>)</li>
+                <li>Fix nightly + <code>simd_support</code>: update <code>packed_simd</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1216">#1216</a>)</li>
+                </ul>
+                <h3>Rngs</h3>
+                <ul>
+                <li><code>StdRng</code>: Switch from HC128 to ChaCha12 on emscripten (<a href="https://redirect.github.com/rust-random/rand/issues/1142">#1142</a>).
+                We now use ChaCha12 on all platforms.</li>
+                </ul>
+                <h3>Documentation</h3>
+                <ul>
+                <li>Added docs about rand's use of const generics (<a href="https://redirect.github.com/rust-random/rand/issues/1150">#1150</a>)</li>
+                <li>Better random chars example (<a href="https://redirect.github.com/rust-random/rand/issues/1157">#1157</a>)</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rust-random/rand/commit/937320cbfeebd4352a23086d9c6e68f067f74644"><code>937320c</code></a> Update CHANGELOG for 0.8.5 (<a href="https://redirect.github.com/rust-random/rand/issues/1221">#1221</a>)</li>
+                <li><a href="https://github.com/rust-random/rand/commit/2924af688d352b889322870d017356f12651866b"><code>2924af6</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1183">#1183</a> from vks/fill-float-doc</li>
+                <li><a href="https://github.com/rust-random/rand/commit/dbbc1bf3176138c867f3d84c0c4d288119a5a84e"><code>dbbc1bf</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1218">#1218</a> from Will-Low/master</li>
+                <li><a href="https://github.com/rust-random/rand/commit/9f20df04d88698c38515833d6db62d7eb50d8b80"><code>9f20df0</code></a> Making distributions comparable by deriving PartialEq. Tests included</li>
+                <li><a href="https://github.com/rust-random/rand/commit/a407bdfa4563d0cfbf744049242926c8de079d3f"><code>a407bdf</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1216">#1216</a> from rust-random/work5</li>
+                <li><a href="https://github.com/rust-random/rand/commit/d3ca11b0bcc1f42fe34ba4f90f99509b7eb4ff18"><code>d3ca11b</code></a> Update to packed_simd_2 0.3.7</li>
+                <li><a href="https://github.com/rust-random/rand/commit/fa04c15d0bb5842fdbdbb73d7a53ead36f3fcf52"><code>fa04c15</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1215">#1215</a> from Lantern-chat/master</li>
+                <li><a href="https://github.com/rust-random/rand/commit/73f8ffd16379390e624ac53cd6882dd679dd9a6f"><code>73f8ffd</code></a> Remove unused <code>slice_partition_at_index</code> feature</li>
+                <li><a href="https://github.com/rust-random/rand/commit/8f372500f05dfadcff6c35e773e81029ab7debad"><code>8f37250</code></a> Merge pull request <a href="https://redirect.github.com/rust-random/rand/issues/1208">#1208</a> from newpavlov/rand_distr/fix_no_std</li>
+                <li><a href="https://github.com/rust-random/rand/commit/9ef737ba5b814f6ab36cebafb59ad29885d68a05"><code>9ef737b</code></a> update changelog</li>
+                <li>Additional commits viewable in <a href="https://github.com/rust-random/rand/compare/8792268dfe57e49bb4518190bf4fe66176759a44...937320cbfeebd4352a23086d9c6e68f067f74644">compare view</a></li>
+                </ul>
+                </details>
+                <br />
             commit-message: |-
-                Bump the cargo_pkgs across 2 directories with 3 updates
+                Bump the cargo_pkgs across 2 directories with 4 updates
 
                 Bumps the cargo_pkgs with 3 updates in the /cargo/multi-dir/foo directory: [time](https://github.com/time-rs/time), [regex](https://github.com/rust-lang/regex) and [itoa](https://github.com/dtolnay/itoa).
-                Bumps the cargo_pkgs with 1 update in the /cargo/multi-dir/bar directory: [time](https://github.com/time-rs/time).
+                Bumps the cargo_pkgs with 2 updates in the /cargo/multi-dir/bar directory: [time](https://github.com/time-rs/time) and [rand](https://github.com/rust-random/rand).
 
 
                 Updates `time` from 0.3.0-alpha-1 to 0.3.30
@@ -897,14 +1016,19 @@ output:
                 - [Changelog](https://github.com/rust-lang/regex/blob/master/CHANGELOG.md)
                 - [Commits](https://github.com/rust-lang/regex/compare/1.6.0...1.10.2)
 
-                Updates `itoa` from 1.0.5 to 1.0.9
+                Updates `itoa` from 1.0.5 to 1.0.10
                 - [Release notes](https://github.com/dtolnay/itoa/releases)
-                - [Commits](https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...81c115b833792b698cbac1af2d37d707c6a641ee)
+                - [Commits](https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...547c143d503f4624ff11ee13fd3a5b0274f4c27f)
 
                 Updates `time` from 0.3.0-alpha-2 to 0.3.30
                 - [Release notes](https://github.com/time-rs/time/releases)
                 - [Changelog](https://github.com/time-rs/time/blob/main/CHANGELOG.md)
                 - [Commits](https://github.com/time-rs/time/compare/v0.3.0-alpha-1...v0.3.30)
+
+                Updates `rand` from 0.8.4 to 0.8.5
+                - [Release notes](https://github.com/rust-random/rand/releases)
+                - [Changelog](https://github.com/rust-random/rand/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/rust-random/rand/compare/8792268dfe57e49bb4518190bf4fe66176759a44...937320cbfeebd4352a23086d9c6e68f067f74644)
             dependency-group:
                 name: cargo_pkgs
     - type: mark_as_processed
