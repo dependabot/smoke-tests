@@ -41,34 +41,34 @@ input:
             record-update-job-unknown-error: true
         ignore-conditions:
             - dependency-name: fast-jwt
-              source: output.txt
+              source: tests/smoke-npm-update-security-multidir.yaml
               version-requirement: '>3.3.2'
             - dependency-name: follow-redirects
-              source: output.txt
+              source: tests/smoke-npm-update-security-multidir.yaml
               version-requirement: '>1.15.6'
             - dependency-name: payload
-              source: output.txt
+              source: tests/smoke-npm-update-security-multidir.yaml
               version-requirement: '>1.7.0'
             - dependency-name: yaml
-              source: output.txt
+              source: tests/smoke-npm-update-security-multidir.yaml
               version-requirement: '>2.2.2'
             - dependency-name: payload
-              source: output.txt
+              source: tests/smoke-npm-update-security-multidir.yaml
               version-requirement: '>2.11.2'
             - dependency-name: nodemailer
-              source: output.txt
+              source: tests/smoke-npm-update-security-multidir.yaml
               version-requirement: '>6.9.8'
             - dependency-name: follow-redirects
-              source: output.txt
+              source: tests/smoke-npm-update-security-multidir.yaml
               version-requirement: '>1.15.6'
             - dependency-name: next
-              source: output.txt
+              source: tests/smoke-npm-update-security-multidir.yaml
               version-requirement: '>14.1.4'
             - dependency-name: jquery
-              source: output.txt
+              source: tests/smoke-npm-update-security-multidir.yaml
               version-requirement: '>3.5.0'
             - dependency-name: next
-              source: output.txt
+              source: tests/smoke-npm-update-security-multidir.yaml
               version-requirement: '>14.1.4'
         security-advisories:
             - dependency-name: braces
@@ -360,10 +360,10 @@ input:
         security-updates-only: true
         source:
             provider: github
-            repo: dsp-testing/dependabot-gsu-multi-directory-tests
+            repo: dependabot/smoke-tests
             directories:
-                - /backend
-                - /frontend
+                - /npm/multi-dir/grouped-security-update/frontend
+                - /npm/multi-dir/grouped-security-update/backend
             commit: 9de96dc06e46b1fd2196c4d2116808b3b4b571af
             hostname: github.com
             api-endpoint: https://api.github.com/
@@ -371,9 +371,6 @@ input:
         commit-message-options: {}
         max-updater-run-time: 2700
     credentials:
-        - registry: https://npm.pkg.github.com/
-          token: $LOCAL_GITHUB_ACCESS_TOKEN
-          type: npm_registry
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
           type: git_source
