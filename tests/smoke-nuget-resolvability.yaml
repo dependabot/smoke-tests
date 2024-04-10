@@ -37,10 +37,26 @@ output:
                         - dependencies
                       requirement: 5.0.2
                       source: null
+                    - file: Directory.Packages.props
+                      groups:
+                        - dependencies
+                      requirement: 5.0.2
+                      source: null
                   version: 5.0.2
+                - name: Microsoft.Extensions.Configuration.Abstractions
+                  requirements: []
+                  version: 5.0.0
+                - name: Microsoft.Extensions.DependencyInjection.Abstractions
+                  requirements: []
+                  version: 5.0.0
                 - name: Microsoft.Extensions.Diagnostics.HealthChecks
                   requirements:
                     - file: B/B.csproj
+                      groups:
+                        - dependencies
+                      requirement: 5.0.17
+                      source: null
+                    - file: Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 5.0.17
@@ -49,178 +65,10 @@ output:
                 - name: Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions
                   requirements: []
                   version: 5.0.1
-                - name: Microsoft.Extensions.Hosting.Abstractions
-                  requirements: []
-                  version: 5.0.0
-                - name: Microsoft.Bcl.AsyncInterfaces
-                  requirements: []
-                  version: 5.0.0
-                - name: System.Threading.Tasks.Extensions
-                  requirements: []
-                  version: 4.5.4
-                - name: System.Runtime.CompilerServices.Unsafe
-                  requirements: []
-                  version: 5.0.0
-                - name: System.Runtime
-                  requirements: []
-                  version: 4.3.0
-                - name: Microsoft.NETCore.Platforms
-                  requirements: []
-                  version: 1.1.0
-                - name: Microsoft.NETCore.Targets
-                  requirements: []
-                  version: 1.1.0
-                - name: System.Collections
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Threading.Tasks
-                  requirements: []
-                  version: 4.3.0
-                - name: Microsoft.Extensions.Configuration.Abstractions
-                  requirements: []
-                  version: 5.0.0
-                - name: Microsoft.Extensions.Primitives
-                  requirements: []
-                  version: 5.0.0
-                - name: System.Buffers
-                  requirements: []
-                  version: 4.5.1
-                - name: System.Memory
-                  requirements: []
-                  version: 4.5.4
-                - name: System.Numerics.Vectors
-                  requirements: []
-                  version: 4.5.0
-                - name: NETStandard.Library
-                  requirements: []
-                  version: 1.6.1
-                - name: System.Diagnostics.Debug
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Diagnostics.Tools
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Globalization
-                  requirements: []
-                  version: 4.3.0
-                - name: System.IO
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Text.Encoding
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Linq
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Linq.Expressions
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Reflection
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Reflection.Primitives
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Net.Primitives
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Runtime.Handles
-                  requirements: []
-                  version: 4.3.0
-                - name: System.ObjectModel
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Reflection.Extensions
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Resources.ResourceManager
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Runtime.Extensions
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Text.Encoding.Extensions
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Text.RegularExpressions
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Threading
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Xml.ReaderWriter
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Xml.XDocument
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Collections.Concurrent
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Diagnostics.Tracing
-                  requirements: []
-                  version: 4.3.0
-                - name: System.IO.Compression
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Net.Http
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Security.Cryptography.X509Certificates
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Security.Cryptography.Algorithms
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Security.Cryptography.Primitives
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Security.Cryptography.Encoding
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Runtime.InteropServices
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Runtime.InteropServices.RuntimeInformation
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Runtime.Numerics
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Threading.Timer
-                  requirements: []
-                  version: 4.3.0
-                - name: Microsoft.Win32.Primitives
-                  requirements: []
-                  version: 4.3.0
-                - name: System.AppContext
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Console
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Globalization.Calendars
-                  requirements: []
-                  version: 4.3.0
-                - name: System.IO.Compression.ZipFile
-                  requirements: []
-                  version: 4.3.0
-                - name: System.IO.FileSystem
-                  requirements: []
-                  version: 4.3.0
-                - name: System.IO.FileSystem.Primitives
-                  requirements: []
-                  version: 4.3.0
-                - name: System.Net.Sockets
-                  requirements: []
-                  version: 4.3.0
-                - name: System.ValueTuple
-                  requirements: []
-                  version: 4.5.0
-                - name: Microsoft.Extensions.DependencyInjection.Abstractions
-                  requirements: []
-                  version: 5.0.0
                 - name: Microsoft.Extensions.FileProviders.Abstractions
+                  requirements: []
+                  version: 5.0.0
+                - name: Microsoft.Extensions.Hosting.Abstractions
                   requirements: []
                   version: 5.0.0
                 - name: Microsoft.Extensions.Logging.Abstractions
@@ -229,12 +77,12 @@ output:
                 - name: Microsoft.Extensions.Options
                   requirements: []
                   version: 5.0.0
+                - name: Microsoft.Extensions.Primitives
+                  requirements: []
+                  version: 5.0.0
                 - name: RabbitMQ.Client
                   requirements: []
                   version: 6.2.1
-                - name: System.Threading.Channels
-                  requirements: []
-                  version: 4.7.1
             dependency_files:
                 - /nuget/resolvability/A/A.csproj
                 - /nuget/resolvability/B/B.csproj
@@ -252,6 +100,11 @@ output:
                       requirement: 5.0.2
                       source: null
                     - file: B/B.csproj
+                      groups:
+                        - dependencies
+                      requirement: 5.0.2
+                      source: null
+                    - file: Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 5.0.2
@@ -276,6 +129,15 @@ output:
                         source_url: null
                         type: nuget_repo
                         url: https://api.nuget.org/v3/index.json
+                    - file: Directory.Packages.props
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/aspnetcore.healthchecks.rabbitmq/7.0.0/aspnetcore.healthchecks.rabbitmq.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
                   version: 7.0.0
                 - name: Microsoft.Extensions.Diagnostics.HealthChecks
                   previous-requirements:
@@ -284,9 +146,23 @@ output:
                         - dependencies
                       requirement: 5.0.17
                       source: null
+                    - file: Directory.Packages.props
+                      groups:
+                        - dependencies
+                      requirement: 5.0.17
+                      source: null
                   previous-version: 5.0.17
                   requirements:
                     - file: B/B.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.9
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.diagnostics.healthchecks/7.0.9/microsoft.extensions.diagnostics.healthchecks.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                    - file: Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 7.0.9
@@ -421,9 +297,23 @@ output:
                         - dependencies
                       requirement: 5.0.17
                       source: null
+                    - file: Directory.Packages.props
+                      groups:
+                        - dependencies
+                      requirement: 5.0.17
+                      source: null
                   previous-version: 5.0.17
                   requirements:
                     - file: B/B.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.9
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.diagnostics.healthchecks/7.0.9/microsoft.extensions.diagnostics.healthchecks.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                    - file: Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 7.0.9

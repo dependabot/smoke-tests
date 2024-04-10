@@ -24,12 +24,12 @@ output:
             dependencies:
                 - name: NuGet.Versioning
                   requirements:
-                    - file: project2/project.csproj
+                    - file: project1/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.1.0
                       source: null
-                    - file: project1/project.csproj
+                    - file: project2/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.1.0
@@ -46,19 +46,19 @@ output:
             dependencies:
                 - name: NuGet.Versioning
                   previous-requirements:
-                    - file: project2/project.csproj
+                    - file: project1/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.1.0
                       source: null
-                    - file: project1/project.csproj
+                    - file: project2/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.1.0
                       source: null
                   previous-version: 6.1.0
                   requirements:
-                    - file: project2/project.csproj
+                    - file: project1/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.8.0
@@ -67,7 +67,7 @@ output:
                         source_url: null
                         type: nuget_repo
                         url: https://api.nuget.org/v3/index.json
-                    - file: project1/project.csproj
+                    - file: project2/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.8.0
