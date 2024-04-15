@@ -4,6 +4,12 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        dependency-groups:
+          - name: nuget
+            applies-to: security-updates
+            rules:
+              patterns:
+                - '*'
         dependencies:
             - NuGet.Versioning
             - NuGet.Versioning

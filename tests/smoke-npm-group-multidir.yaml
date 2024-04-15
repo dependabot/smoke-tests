@@ -4,6 +4,12 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        dependency-groups:
+          - name: npm_and_yarn
+            applies-to: security-updates
+            rules:
+              patterns:
+                - '*'
         dependencies:
             - '@dependabot/dummy-pkg-a'
             - '@dependabot/dummy-pkg-b'

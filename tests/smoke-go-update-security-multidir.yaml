@@ -4,6 +4,12 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        dependency-groups:
+          - name: go_modules
+            applies-to: security-updates
+            rules:
+              patterns:
+                - '*'
         dependencies:
             - rsc.io/quote
             - rsc.io/qr
