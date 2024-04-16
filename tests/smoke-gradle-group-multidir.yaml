@@ -4,6 +4,12 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        dependency-groups:
+          - name: gradle
+            applies-to: security-updates
+            rules:
+              patterns:
+                - '*'
         dependencies:
             - com.google.code.findbugs:jsr305
             - org.hibernate:hibernate-core

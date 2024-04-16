@@ -4,6 +4,12 @@ input:
         allowed-updates:
             - dependency-type: direct
               update-type: all
+        dependency-groups:
+          - name: cargo
+            applies-to: security-updates
+            rules:
+              patterns:
+                - '*'
         dependencies:
             - time
             - regex
