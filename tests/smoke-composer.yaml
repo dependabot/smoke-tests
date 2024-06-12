@@ -26,252 +26,56 @@ input:
             repo: dependabot/smoke-tests
             directory: /composer
             commit: 509a98a45a6f933ffd49ca7f2c26815c693b3d76
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
           type: git_source
           username: x-access-token
 output:
+  - type: record_ecosystem_versions
+    expect:
+      data:
+          ecosystem_versions:
+              package_managers:
+                  composer: "2"
   - type: update_dependency_list
     expect:
       data:
-        dependencies:
-          - name: actions/checkout
-            requirements:
-              - file: .github/workflows/docs.yaml
-                groups: []
-                metadata:
-                  declaration_string: actions/checkout@v4
-                requirement: null
-                source:
-                  branch: null
-                  ref: v4
-                  type: git
-                  url: https://github.com/actions/checkout
-              - file: .github/workflows/scorecards.yml
-                groups: []
-                metadata:
-                  declaration_string: actions/checkout@v4
-                requirement: null
-                source:
-                  branch: null
-                  ref: v4
-                  type: git
-                  url: https://github.com/actions/checkout
-              - file: .github/workflows/tests.yml
-                groups: []
-                metadata:
-                  declaration_string: actions/checkout@v4
-                requirement: null
-                source:
-                  branch: null
-                  ref: v4
-                  type: git
-                  url: https://github.com/actions/checkout
-            version: "4"
-          - name: JamesIves/github-pages-deploy-action
-            requirements:
-              - file: .github/workflows/docs.yaml
-                groups: []
-                metadata:
-                  declaration_string: JamesIves/github-pages-deploy-action@v4
-                requirement: null
-                source:
-                  branch: null
-                  ref: v4
-                  type: git
-                  url: https://github.com/jamesives/github-pages-deploy-action
-            version: "4"
-          - name: ossf/scorecard-action
-            requirements:
-              - file: .github/workflows/scorecards.yml
-                groups: []
-                metadata:
-                  declaration_string: ossf/scorecard-action@0864cf19026789058feabb7e87baa5f140aac736
-                requirement: null
-                source:
-                  branch: null
-                  ref: 0864cf19026789058feabb7e87baa5f140aac736
-                  type: git
-                  url: https://github.com/ossf/scorecard-action
-            version: 2.3.1
-          - name: actions/upload-artifact
-            requirements:
-              - file: .github/workflows/scorecards.yml
-                groups: []
-                metadata:
-                  declaration_string: actions/upload-artifact@v4
-                requirement: null
-                source:
-                  branch: null
-                  ref: v4
-                  type: git
-                  url: https://github.com/actions/upload-artifact
-            version: "4"
-          - name: github/codeql-action
-            requirements:
-              - file: .github/workflows/scorecards.yml
-                groups: []
-                metadata:
-                  declaration_string: github/codeql-action/upload-sarif@v3
-                requirement: null
-                source:
-                  branch: null
-                  ref: v3
-                  type: git
-                  url: https://github.com/github/codeql-action
-            version: "3"
-          - name: shivammathur/setup-php
-            requirements:
-              - file: .github/workflows/tests.yml
-                groups: []
-                metadata:
-                  declaration_string: shivammathur/setup-php@v2
-                requirement: null
-                source:
-                  branch: null
-                  ref: v2
-                  type: git
-                  url: https://github.com/shivammathur/setup-php
-            version: "2"
-          - name: ramsey/composer-install
-            requirements:
-              - file: .github/workflows/tests.yml
-                groups: []
-                metadata:
-                  declaration_string: ramsey/composer-install@v3
-                requirement: null
-                source:
-                  branch: null
-                  ref: v3
-                  type: git
-                  url: https://github.com/ramsey/composer-install
-            version: "3"
-          - name: nick-invision/retry
-            requirements:
-              - file: .github/workflows/tests.yml
-                groups: []
-                metadata:
-                  declaration_string: nick-invision/retry@v3
-                requirement: null
-                source:
-                  branch: null
-                  ref: v3
-                  type: git
-                  url: https://github.com/nick-invision/retry
-            version: "3"
-          - name: codecov/codecov-action
-            requirements:
-              - file: .github/workflows/tests.yml
-                groups: []
-                metadata:
-                  declaration_string: codecov/codecov-action@v4
-                requirement: null
-                source:
-                  branch: null
-                  ref: v4
-                  type: git
-                  url: https://github.com/codecov/codecov-action
-            version: "4"
-        dependency_files:
-          - /.github/workflows/docs.yaml
-          - /.github/workflows/scorecards.yml
-          - /.github/workflows/tests.yml
-  - type: create_pull_request
-    expect:
-      data:
-        base-commit-sha: 829def33886c827e1622f965a8813d7bf453f15a
-        dependencies:
-          - name: ossf/scorecard-action
-            previous-requirements:
-              - file: .github/workflows/scorecards.yml
-                groups: []
-                metadata:
-                  declaration_string: ossf/scorecard-action@0864cf19026789058feabb7e87baa5f140aac736
-                requirement: null
-                source:
-                  branch: null
-                  ref: 0864cf19026789058feabb7e87baa5f140aac736
-                  type: git
-                  url: https://github.com/ossf/scorecard-action
-            previous-version: 2.3.1
-            requirements:
-              - file: .github/workflows/scorecards.yml
-                groups: []
-                metadata:
-                  declaration_string: ossf/scorecard-action@0864cf19026789058feabb7e87baa5f140aac736
-                requirement: null
-                source:
-                  branch: null
-                  ref: dc50aa9510b46c811795eb24b2f1ba02a914e534
-                  type: git
-                  url: https://github.com/ossf/scorecard-action
-            version: 2.3.3
-        updated-dependency-files:
-          - content: "name: Scorecards supply-chain security\non:\n  # Only the default branch is supported.\n  branch_protection_rule:\n  schedule:\n    - cron: '39 20 * * 1'\n  push:\n    branches: [ \"master\" ]\n\n# Declare default permissions as read only.\npermissions: read-all\n\njobs:\n  analysis:\n    name: Scorecards analysis\n    runs-on: ubuntu-latest\n    permissions:\n      # Needed to upload the results to code-scanning dashboard.\n      security-events: write\n      # Used to receive a badge. (Upcoming feature)\n      id-token: write\n      # Needs for private repositories.\n      contents: read\n      actions: read\n    \n    steps:\n      - name: \"Checkout code\"\n        uses: actions/checkout@v4\n        with:\n          persist-credentials: false\n\n      - name: \"Run analysis\"\n        uses: ossf/scorecard-action@dc50aa9510b46c811795eb24b2f1ba02a914e534\n        with:\n          results_file: results.sarif\n          results_format: sarif\n          # (Optional) Read-only PAT token. Uncomment the `repo_token` line below if:\n          # - you want to enable the Branch-Protection check on a *public* repository, or\n          # - you are installing Scorecards on a *private* repository\n          # To create the PAT, follow the steps in https://github.com/ossf/scorecard-action#authentication-with-pat.\n          # repo_token: ${{ secrets.SCORECARD_READ_TOKEN }}\n\n          # Publish the results for public repositories to enable scorecard badges. For more details, see\n          # https://github.com/ossf/scorecard-action#publishing-results. \n          # For private repositories, `publish_results` will automatically be set to `false`, regardless \n          # of the value entered here.\n          publish_results: true\n\n      # Upload the results as artifacts (optional). Commenting out will disable uploads of run results in SARIF\n      # format to the repository Actions tab.\n      - name: \"Upload artifact\"\n        uses: actions/upload-artifact@v4\n        with:\n          name: SARIF file\n          path: results.sarif\n          retention-days: 5\n      \n      # Upload the results to GitHub's code scanning dashboard.\n      - name: \"Upload to code-scanning\"\n        uses: github/codeql-action/upload-sarif@v3\n        with:\n          sarif_file: results.sarif\n"
-            content_encoding: utf-8
-            deleted: false
-            directory: /
-            name: .github/workflows/scorecards.yml
-            operation: update
-            support_file: false
-            type: file
-        pr-title: 'GH Actions: Bump ossf/scorecard-action from 2.3.1 to 2.3.3'
-        pr-body: |
-          Bumps [ossf/scorecard-action](https://github.com/ossf/scorecard-action) from 2.3.1 to 2.3.3.
-          <details>
-          <summary>Release notes</summary>
-          <p><em>Sourced from <a href="https://github.com/ossf/scorecard-action/releases">ossf/scorecard-action's releases</a>.</em></p>
-          <blockquote>
-          <h2>v2.3.3</h2>
-          <blockquote>
-          <p>[!NOTE]<br />
-          There is no v2.3.2 release as a step was skipped in the release process. This was fixed and re-released under the v2.3.3 tag</p>
-          </blockquote>
-          <h2>What's Changed</h2>
-          <ul>
-          <li>:seedling: Bump github.com/ossf/scorecard/v4 (v4.13.1) to github.com/ossf/scorecard/v5 (v5.0.0-rc1) by <a href="https://github.com/spencerschrock"><code>@​spencerschrock</code></a> in <a href="https://redirect.github.com/ossf/scorecard-action/pull/1366">ossf/scorecard-action#1366</a></li>
-          <li>:seedling: Bump github.com/ossf/scorecard/v5 from v5.0.0-rc1 to v5.0.0-rc2 by <a href="https://github.com/spencerschrock"><code>@​spencerschrock</code></a> in <a href="https://redirect.github.com/ossf/scorecard-action/pull/1374">ossf/scorecard-action#1374</a></li>
-          <li>:seedling: Bump github.com/ossf/scorecard/v5 from v5.0.0-rc2 to v5.0.0-rc2.0.20240509182734-7ce860946928 by <a href="https://github.com/spencerschrock"><code>@​spencerschrock</code></a> in <a href="https://redirect.github.com/ossf/scorecard-action/pull/1377">ossf/scorecard-action#1377</a></li>
-          </ul>
-          <p>For a full changelist of what these include, see the <a href="https://github.com/ossf/scorecard/releases/tag/v5.0.0-rc1">v5.0.0-rc1</a> and <a href="https://github.com/ossf/scorecard/releases/tag/v5.0.0-rc2">v5.0.0-rc2</a> release notes.</p>
-          <h3>Documentation</h3>
-          <ul>
-          <li>:book: Move token discussion out of main README. by <a href="https://github.com/spencerschrock"><code>@​spencerschrock</code></a> in <a href="https://redirect.github.com/ossf/scorecard-action/pull/1279">ossf/scorecard-action#1279</a></li>
-          <li>:book: link to <code>ossf/scorecard</code> workflow instead of maintaining an example by <a href="https://github.com/spencerschrock"><code>@​spencerschrock</code></a> in <a href="https://redirect.github.com/ossf/scorecard-action/pull/1352">ossf/scorecard-action#1352</a></li>
-          <li>:book: update api links to new scorecard.dev site by <a href="https://github.com/spencerschrock"><code>@​spencerschrock</code></a> in <a href="https://redirect.github.com/ossf/scorecard-action/pull/1376">ossf/scorecard-action#1376</a></li>
-          </ul>
-          <p><strong>Full Changelog</strong>: <a href="https://github.com/ossf/scorecard-action/compare/v2.3.1...v2.3.3">https://github.com/ossf/scorecard-action/compare/v2.3.1...v2.3.3</a></p>
-          </blockquote>
-          </details>
-          <details>
-          <summary>Commits</summary>
-          <ul>
-          <li><a href="https://github.com/ossf/scorecard-action/commit/dc50aa9510b46c811795eb24b2f1ba02a914e534"><code>dc50aa9</code></a> :seedling: Bump docker tag for v2.3.3 release (<a href="https://redirect.github.com/ossf/scorecard-action/issues/1368">#1368</a>)</li>
-          <li><a href="https://github.com/ossf/scorecard-action/commit/8ff570017382a0ef795f21f71e519b27a9b5f29e"><code>8ff5700</code></a> :seedling: Bump github.com/ossf/scorecard/v5 from v5.0.0-rc2 to v5.0.0-rc2.0....</li>
-          <li><a href="https://github.com/ossf/scorecard-action/commit/8ba5e73d11a5fd0917494d02ab01dfd7866d2191"><code>8ba5e73</code></a> update api links to new scorecard.dev site (<a href="https://redirect.github.com/ossf/scorecard-action/issues/1376">#1376</a>)</li>
-          <li><a href="https://github.com/ossf/scorecard-action/commit/92ddde3eaffd7e147638317c023642a6adc8a874"><code>92ddde3</code></a> Bump github.com/ossf/scorecard/v5 from v5.0.0-rc1 to v5.0.0-rc2 (<a href="https://redirect.github.com/ossf/scorecard-action/issues/1374">#1374</a>)</li>
-          <li><a href="https://github.com/ossf/scorecard-action/commit/6c55905542a1ce814c7ec177a96904f5bc74aab5"><code>6c55905</code></a> :seedling: Bump golang.org/x/net from 0.24.0 to 0.25.0 (<a href="https://redirect.github.com/ossf/scorecard-action/issues/1373">#1373</a>)</li>
-          <li><a href="https://github.com/ossf/scorecard-action/commit/09bb953b6a0e34c84fb453985435a07cc2baa3a3"><code>09bb953</code></a> :seedling: Bump distroless/base in the docker-images group (<a href="https://redirect.github.com/ossf/scorecard-action/issues/1372">#1372</a>)</li>
-          <li><a href="https://github.com/ossf/scorecard-action/commit/1511e1305b9d7e51245388421563264573c77bc7"><code>1511e13</code></a> :seedling: Bump the github-actions group across 1 directory with 6 updates (#...</li>
-          <li><a href="https://github.com/ossf/scorecard-action/commit/df66cd8fd834fab4483ac0031b8d8ff819b62422"><code>df66cd8</code></a> :seedling: Bump the docker-images group with 2 updates (<a href="https://redirect.github.com/ossf/scorecard-action/issues/1370">#1370</a>)</li>
-          <li><a href="https://github.com/ossf/scorecard-action/commit/fad9a3cc533bb069b1f01f272f1f630895cd690a"><code>fad9a3c</code></a> :seedling: Bump distroless/base in the docker-images group (<a href="https://redirect.github.com/ossf/scorecard-action/issues/1364">#1364</a>)</li>
-          <li><a href="https://github.com/ossf/scorecard-action/commit/1e01a309c1de65b6221c25768bcfc322bac8ccee"><code>1e01a30</code></a> :seedling: Bump the github-actions group with 3 updates (<a href="https://redirect.github.com/ossf/scorecard-action/issues/1365">#1365</a>)</li>
-          <li>Additional commits viewable in <a href="https://github.com/ossf/scorecard-action/compare/0864cf19026789058feabb7e87baa5f140aac736...dc50aa9510b46c811795eb24b2f1ba02a914e534">compare view</a></li>
-          </ul>
-          </details>
-          <br />
-        commit-message: |-
-          GH Actions: Bump ossf/scorecard-action from 2.3.1 to 2.3.3
-          
-          Bumps [ossf/scorecard-action](https://github.com/ossf/scorecard-action) from 2.3.1 to 2.3.3.
-          - [Release notes](https://github.com/ossf/scorecard-action/releases)
-          - [Changelog](https://github.com/ossf/scorecard-action/blob/main/RELEASE.md)
-          - [Commits](https://github.com/ossf/scorecard-action/compare/0864cf19026789058feabb7e87baa5f140aac736...dc50aa9510b46c811795eb24b2f1ba02a914e534)
+          dependencies:
+              - name: phpmailer/phpmailer
+                requirements:
+                  - file: composer.json
+                    groups:
+                        - runtime
+                    requirement: 5.2.2
+                    source:
+                      type: git
+                      url: https://github.com/PHPMailer/PHPMailer.git
+                version: 5.2.2
+              - name: phpstan/phpstan
+                requirements:
+                  - file: composer.json
+                    groups:
+                        - development
+                    requirement: 1.10.23
+                    source:
+                      type: git
+                      url: https://github.com/phpstan/phpstan.git
+                version: 1.10.23
+              - name: phpstan/phpstan-strict-rules
+                requirements:
+                  - file: composer.json
+                    groups:
+                        - development
+                    requirement: 1.5.0
+                    source:
+                      type: git
+                      url: https://github.com/phpstan/phpstan-strict-rules.git
+                version: 1.5.0
+          dependency_files:
+                - /composer/composer.json
+                - /composer/composer.lock
   - type: mark_as_processed
     expect:
       data:
-        base-commit-sha: 829def33886c827e1622f965a8813d7bf453f15a
+          base-commit-sha: 509a98a45a6f933ffd49ca7f2c26815c693b3d76
