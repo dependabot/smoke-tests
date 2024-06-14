@@ -1,0 +1,33 @@
+input:
+    job:
+        package-manager: nuget
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: NuGet.Versioning
+              source: tests/smoke-nuget-directory-packages-props.yaml
+              version-requirement: '>6.2.2'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /nuget/directory-packages-props
+            commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: dependency_file_not_found
+            error-details:
+                file-path: /nuget/directory-packages-props/<anything>.(cs|vb|fs)proj
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
