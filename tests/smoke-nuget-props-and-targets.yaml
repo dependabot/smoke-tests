@@ -27,12 +27,12 @@ output:
             dependencies:
                 - name: NuGet.Versioning
                   requirements:
-                    - file: Directory.Build.props
+                    - file: /nuget/props-and-targets/Directory.Build.props
                       groups:
                         - dependencies
                       requirement: 6.1.0
                       source: null
-                    - file: project.csproj
+                    - file: /nuget/props-and-targets/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.1.0
@@ -40,12 +40,12 @@ output:
                   version: 6.1.0
                 - name: Microsoft.CodeAnalysis.Analyzers
                   requirements:
-                    - file: Directory.Build.targets
+                    - file: /nuget/props-and-targets/Directory.Build.targets
                       groups:
                         - dependencies
                       requirement: 3.3.0
                       source: null
-                    - file: project.csproj
+                    - file: /nuget/props-and-targets/project.csproj
                       groups:
                         - dependencies
                       requirement: 3.3.0
@@ -62,36 +62,32 @@ output:
             dependencies:
                 - name: NuGet.Versioning
                   previous-requirements:
-                    - file: Directory.Build.props
+                    - file: /nuget/props-and-targets/Directory.Build.props
                       groups:
                         - dependencies
                       requirement: 6.1.0
                       source: null
-                    - file: project.csproj
+                    - file: /nuget/props-and-targets/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.1.0
                       source: null
                   previous-version: 6.1.0
                   requirements:
-                    - file: Directory.Build.props
+                    - file: /nuget/props-and-targets/Directory.Build.props
                       groups:
                         - dependencies
                       requirement: 6.8.0
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/nuget.versioning/6.8.0/nuget.versioning.nuspec
-                        source_url: null
+                        source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
-                    - file: project.csproj
+                    - file: /nuget/props-and-targets/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.8.0
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/nuget.versioning/6.8.0/nuget.versioning.nuspec
-                        source_url: null
+                        source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
                   version: 6.8.0
             updated-dependency-files:
                 - content: |-
@@ -137,36 +133,32 @@ output:
             dependencies:
                 - name: Microsoft.CodeAnalysis.Analyzers
                   previous-requirements:
-                    - file: Directory.Build.targets
+                    - file: /nuget/props-and-targets/Directory.Build.targets
                       groups:
                         - dependencies
                       requirement: 3.3.0
                       source: null
-                    - file: project.csproj
+                    - file: /nuget/props-and-targets/project.csproj
                       groups:
                         - dependencies
                       requirement: 3.3.0
                       source: null
                   previous-version: 3.3.0
                   requirements:
-                    - file: Directory.Build.targets
+                    - file: /nuget/props-and-targets/Directory.Build.targets
                       groups:
                         - dependencies
                       requirement: 3.3.4
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.analyzers/3.3.4/microsoft.codeanalysis.analyzers.nuspec
-                        source_url: null
+                        source_url: https://github.com/dotnet/roslyn-analyzers
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
-                    - file: project.csproj
+                    - file: /nuget/props-and-targets/project.csproj
                       groups:
                         - dependencies
                       requirement: 3.3.4
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.analyzers/3.3.4/microsoft.codeanalysis.analyzers.nuspec
-                        source_url: null
+                        source_url: https://github.com/dotnet/roslyn-analyzers
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
                   version: 3.3.4
             updated-dependency-files:
                 - content: |-

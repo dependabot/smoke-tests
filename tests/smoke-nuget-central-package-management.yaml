@@ -24,12 +24,12 @@ output:
             dependencies:
                 - name: Newtonsoft.Json
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/central-package-management/project.csproj
                       groups:
                         - dependencies
                       requirement: 13.0.1
                       source: null
-                    - file: Directory.Packages.props
+                    - file: /nuget/central-package-management/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 13.0.1
@@ -45,36 +45,32 @@ output:
             dependencies:
                 - name: Newtonsoft.Json
                   previous-requirements:
-                    - file: project.csproj
+                    - file: /nuget/central-package-management/project.csproj
                       groups:
                         - dependencies
                       requirement: 13.0.1
                       source: null
-                    - file: Directory.Packages.props
+                    - file: /nuget/central-package-management/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 13.0.1
                       source: null
                   previous-version: 13.0.1
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/central-package-management/project.csproj
                       groups:
                         - dependencies
                       requirement: 13.0.3
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/newtonsoft.json/13.0.3/newtonsoft.json.nuspec
-                        source_url: null
+                        source_url: https://github.com/JamesNK/Newtonsoft.Json
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
-                    - file: Directory.Packages.props
+                    - file: /nuget/central-package-management/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 13.0.3
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/newtonsoft.json/13.0.3/newtonsoft.json.nuspec
-                        source_url: null
+                        source_url: https://github.com/JamesNK/Newtonsoft.Json
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
                   version: 13.0.3
             updated-dependency-files:
                 - content: |-

@@ -27,7 +27,7 @@ output:
                   version: 2.0.3
                 - name: Newtonsoft.Json
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/version-property/project.csproj
                       groups:
                         - dependencies
                       metadata:
@@ -45,7 +45,7 @@ output:
             dependencies:
                 - name: Newtonsoft.Json
                   previous-requirements:
-                    - file: project.csproj
+                    - file: /nuget/version-property/project.csproj
                       groups:
                         - dependencies
                       metadata:
@@ -54,17 +54,15 @@ output:
                       source: null
                   previous-version: 13.0.1
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/version-property/project.csproj
                       groups:
                         - dependencies
                       metadata:
                         property_name: NewtonsoftJsonPackageVersion
                       requirement: 13.0.3
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/newtonsoft.json/13.0.3/newtonsoft.json.nuspec
-                        source_url: null
+                        source_url: https://github.com/JamesNK/Newtonsoft.Json
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
                   version: 13.0.3
             updated-dependency-files:
                 - content: |-
