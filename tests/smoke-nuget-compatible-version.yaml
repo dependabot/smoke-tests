@@ -27,7 +27,7 @@ output:
                   version: 2.0.3
                 - name: Microsoft.AspNetCore.Authentication.JwtBearer
                   requirements:
-                    - file: project/project.csproj
+                    - file: /nuget/compatible-version/project/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.0.0
@@ -61,22 +61,20 @@ output:
             dependencies:
                 - name: Microsoft.AspNetCore.Authentication.JwtBearer
                   previous-requirements:
-                    - file: project/project.csproj
+                    - file: /nuget/compatible-version/project/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.0.0
                       source: null
                   previous-version: 6.0.0
                   requirements:
-                    - file: project/project.csproj
+                    - file: /nuget/compatible-version/project/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.0.25
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.authentication.jwtbearer/6.0.25/microsoft.aspnetcore.authentication.jwtbearer.nuspec
-                        source_url: null
+                        source_url: https://github.com/dotnet/aspnetcore
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
                   version: 6.0.25
             updated-dependency-files:
                 - content: |-

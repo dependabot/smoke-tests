@@ -5,11 +5,11 @@ input:
             - dependency-type: direct
               update-type: all
         dependency-groups:
-          - name: nuget
-            applies-to: security-updates
-            rules:
-              patterns:
-                - '*'
+            - name: nuget
+              applies-to: security-updates
+              rules:
+                patterns:
+                  - '*'
         dependencies:
             - NuGet.Versioning
             - NuGet.Versioning
@@ -46,7 +46,7 @@ output:
             dependencies:
                 - name: NuGet.Versioning
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/multi-dir/foo/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.1.0
@@ -54,7 +54,7 @@ output:
                   version: 6.1.0
                 - name: NuGet.Versioning
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/multi-dir/bar/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.2.2
@@ -70,41 +70,37 @@ output:
             dependencies:
                 - name: NuGet.Versioning
                   previous-requirements:
-                    - file: project.csproj
+                    - file: /nuget/multi-dir/foo/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.1.0
                       source: null
                   previous-version: 6.1.0
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/multi-dir/foo/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.2.4
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/nuget.versioning/6.2.4/nuget.versioning.nuspec
-                        source_url: null
+                        source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
                   version: 6.2.4
                 - name: NuGet.Versioning
                   previous-requirements:
-                    - file: project.csproj
+                    - file: /nuget/multi-dir/bar/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.2.2
                       source: null
                   previous-version: 6.2.2
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/multi-dir/bar/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.2.4
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/nuget.versioning/6.2.4/nuget.versioning.nuspec
-                        source_url: null
+                        source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
                   version: 6.2.4
             updated-dependency-files:
                 - content: |

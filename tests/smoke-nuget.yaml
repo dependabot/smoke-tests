@@ -24,7 +24,7 @@ output:
             dependencies:
                 - name: NuGet.Versioning
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.1.0
@@ -39,22 +39,20 @@ output:
             dependencies:
                 - name: NuGet.Versioning
                   previous-requirements:
-                    - file: project.csproj
+                    - file: /nuget/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.1.0
                       source: null
                   previous-version: 6.1.0
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.2.2
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/nuget.versioning/6.2.2/nuget.versioning.nuspec
-                        source_url: null
+                        source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
                   version: 6.2.2
             updated-dependency-files:
                 - content: |
