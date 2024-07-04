@@ -12,6 +12,8 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget/dirs-proj
             commit: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+        experiments:
+            nuget_native_analysis: true
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -24,12 +26,12 @@ output:
             dependencies:
                 - name: NuGet.Versioning
                   requirements:
-                    - file: project1/project.csproj
+                    - file: /nuget/dirs-proj/project1/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.1.0
                       source: null
-                    - file: project2/project.csproj
+                    - file: /nuget/dirs-proj/project2/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.1.0
@@ -46,36 +48,32 @@ output:
             dependencies:
                 - name: NuGet.Versioning
                   previous-requirements:
-                    - file: project1/project.csproj
+                    - file: /nuget/dirs-proj/project1/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.1.0
                       source: null
-                    - file: project2/project.csproj
+                    - file: /nuget/dirs-proj/project2/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.1.0
                       source: null
                   previous-version: 6.1.0
                   requirements:
-                    - file: project1/project.csproj
+                    - file: /nuget/dirs-proj/project1/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.8.0
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/nuget.versioning/6.8.0/nuget.versioning.nuspec
-                        source_url: null
+                        source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
-                    - file: project2/project.csproj
+                    - file: /nuget/dirs-proj/project2/project.csproj
                       groups:
                         - dependencies
                       requirement: 6.8.0
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/nuget.versioning/6.8.0/nuget.versioning.nuspec
-                        source_url: null
+                        source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
                   version: 6.8.0
             updated-dependency-files:
                 - content: |-

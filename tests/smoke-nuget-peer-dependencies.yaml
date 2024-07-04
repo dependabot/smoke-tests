@@ -18,6 +18,8 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget/peer-dependencies
             commit: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+        experiments:
+            nuget_native_analysis: true
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -42,7 +44,7 @@ output:
                   version: 2.2.0
                 - name: Microsoft.Extensions.Http
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/peer-dependencies/project.csproj
                       groups:
                         - dependencies
                       requirement: 2.2.0
@@ -50,7 +52,7 @@ output:
                   version: 2.2.0
                 - name: Microsoft.Extensions.Logging
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/peer-dependencies/project.csproj
                       groups:
                         - dependencies
                       requirement: 2.2.0
@@ -74,41 +76,37 @@ output:
             dependencies:
                 - name: Microsoft.Extensions.Http
                   previous-requirements:
-                    - file: project.csproj
+                    - file: /nuget/peer-dependencies/project.csproj
                       groups:
                         - dependencies
                       requirement: 2.2.0
                       source: null
                   previous-version: 2.2.0
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/peer-dependencies/project.csproj
                       groups:
                         - dependencies
                       requirement: 8.0.0
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.http/8.0.0/microsoft.extensions.http.nuspec
-                        source_url: null
+                        source_url: https://github.com/dotnet/runtime
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
                   version: 8.0.0
                 - name: Microsoft.Extensions.Logging
                   previous-requirements:
-                    - file: project.csproj
+                    - file: /nuget/peer-dependencies/project.csproj
                       groups:
                         - dependencies
                       requirement: 2.2.0
                       source: null
                   previous-version: 2.2.0
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/peer-dependencies/project.csproj
                       groups:
                         - dependencies
                       requirement: 8.0.0
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.logging/8.0.0/microsoft.extensions.logging.nuspec
-                        source_url: null
+                        source_url: https://github.com/dotnet/runtime
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
                   version: 8.0.0
             updated-dependency-files:
                 - content: |-
@@ -291,22 +289,20 @@ output:
             dependencies:
                 - name: Microsoft.Extensions.Logging
                   previous-requirements:
-                    - file: project.csproj
+                    - file: /nuget/peer-dependencies/project.csproj
                       groups:
                         - dependencies
                       requirement: 2.2.0
                       source: null
                   previous-version: 2.2.0
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/peer-dependencies/project.csproj
                       groups:
                         - dependencies
                       requirement: 8.0.0
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.logging/8.0.0/microsoft.extensions.logging.nuspec
-                        source_url: null
+                        source_url: https://github.com/dotnet/runtime
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
                   version: 8.0.0
             updated-dependency-files:
                 - content: |-

@@ -22,6 +22,8 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget/potential-downgrade
             commit: c28157d6e1e0304bbde1ae81227f5a789033fe9d
+        experiments:
+            nuget_native_analysis: true
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -55,12 +57,12 @@ output:
                   version: 17.6.3
                 - name: Microsoft.NET.Test.Sdk
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/potential-downgrade/project.csproj
                       groups:
                         - dependencies
                       requirement: 17.6.3
                       source: null
-                    - file: Directory.Packages.props
+                    - file: /nuget/potential-downgrade/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 17.6.3
@@ -122,12 +124,12 @@ output:
                   version: 16.10.10
                 - name: Microsoft.VisualStudio.Sdk.TestFramework
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/potential-downgrade/project.csproj
                       groups:
                         - dependencies
                       requirement: 17.2.7
                       source: null
-                    - file: Directory.Packages.props
+                    - file: /nuget/potential-downgrade/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 17.2.7
@@ -135,12 +137,12 @@ output:
                   version: 17.2.7
                 - name: Microsoft.VisualStudio.Sdk.TestFramework.Xunit
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/potential-downgrade/project.csproj
                       groups:
                         - dependencies
                       requirement: 17.2.7
                       source: null
-                    - file: Directory.Packages.props
+                    - file: /nuget/potential-downgrade/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 17.2.7
@@ -148,7 +150,7 @@ output:
                   version: 17.2.7
                 - name: Microsoft.VisualStudio.Shell.15.0
                   requirements:
-                    - file: Directory.Packages.props
+                    - file: /nuget/potential-downgrade/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 17.6.36389
@@ -183,12 +185,12 @@ output:
                   version: 5.0.0
                 - name: Moq
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/potential-downgrade/project.csproj
                       groups:
                         - dependencies
                       requirement: 4.18.2
                       source: null
-                    - file: Directory.Packages.props
+                    - file: /nuget/potential-downgrade/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 4.18.2
@@ -265,12 +267,12 @@ output:
                   version: 2.4.18
                 - name: xunit
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/potential-downgrade/project.csproj
                       groups:
                         - dependencies
                       requirement: 2.5.0
                       source: null
-                    - file: Directory.Packages.props
+                    - file: /nuget/potential-downgrade/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 2.5.0
@@ -293,12 +295,12 @@ output:
                   version: 2.5.0
                 - name: xunit.runner.visualstudio
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/potential-downgrade/project.csproj
                       groups:
                         - dependencies
                       requirement: 2.5.0
                       source: null
-                    - file: Directory.Packages.props
+                    - file: /nuget/potential-downgrade/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 2.5.0
@@ -309,7 +311,7 @@ output:
                   version: 1.4.13
                 - name: Microsoft.VisualStudio.Text.Data
                   requirements:
-                    - file: Directory.Packages.props
+                    - file: /nuget/potential-downgrade/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 17.6.268
@@ -326,36 +328,32 @@ output:
             dependencies:
                 - name: Microsoft.VisualStudio.Sdk.TestFramework.Xunit
                   previous-requirements:
-                    - file: project.csproj
+                    - file: /nuget/potential-downgrade/project.csproj
                       groups:
                         - dependencies
                       requirement: 17.2.7
                       source: null
-                    - file: Directory.Packages.props
+                    - file: /nuget/potential-downgrade/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 17.2.7
                       source: null
                   previous-version: 17.2.7
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/potential-downgrade/project.csproj
                       groups:
                         - dependencies
                       requirement: 17.6.16
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.sdk.testframework.xunit/17.6.16/microsoft.visualstudio.sdk.testframework.xunit.nuspec
-                        source_url: null
+                        source_url: https://github.com/microsoft/vssdktestfx
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
-                    - file: Directory.Packages.props
+                    - file: /nuget/potential-downgrade/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 17.6.16
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.sdk.testframework.xunit/17.6.16/microsoft.visualstudio.sdk.testframework.xunit.nuspec
-                        source_url: null
+                        source_url: https://github.com/microsoft/vssdktestfx
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
                   version: 17.6.16
             updated-dependency-files:
                 - content: |

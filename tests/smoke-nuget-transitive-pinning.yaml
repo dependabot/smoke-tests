@@ -22,6 +22,8 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget/transitive-pinning
             commit: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+        experiments:
+            nuget_native_analysis: true
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -40,12 +42,12 @@ output:
                   version: 5.0.0
                 - name: Mongo2Go
                   requirements:
-                    - file: project.csproj
+                    - file: /nuget/transitive-pinning/project.csproj
                       groups:
                         - dependencies
                       requirement: 3.1.3
                       source: null
-                    - file: Directory.Packages.props
+                    - file: /nuget/transitive-pinning/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 3.1.3

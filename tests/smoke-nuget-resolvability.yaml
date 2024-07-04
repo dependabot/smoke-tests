@@ -15,6 +15,8 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget/resolvability
             commit: 1204ab6852a4872bbb0ba4fff1343fefb39663d6
+        experiments:
+            nuget_native_analysis: true
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -27,17 +29,17 @@ output:
             dependencies:
                 - name: AspNetCore.HealthChecks.Rabbitmq
                   requirements:
-                    - file: A/A.csproj
+                    - file: /nuget/resolvability/A/A.csproj
                       groups:
                         - dependencies
                       requirement: 5.0.2
                       source: null
-                    - file: B/B.csproj
+                    - file: /nuget/resolvability/B/B.csproj
                       groups:
                         - dependencies
                       requirement: 5.0.2
                       source: null
-                    - file: Directory.Packages.props
+                    - file: /nuget/resolvability/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 5.0.2
@@ -51,12 +53,12 @@ output:
                   version: 5.0.0
                 - name: Microsoft.Extensions.Diagnostics.HealthChecks
                   requirements:
-                    - file: B/B.csproj
+                    - file: /nuget/resolvability/B/B.csproj
                       groups:
                         - dependencies
                       requirement: 5.0.17
                       source: null
-                    - file: Directory.Packages.props
+                    - file: /nuget/resolvability/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 5.0.17
@@ -94,83 +96,73 @@ output:
             dependencies:
                 - name: AspNetCore.HealthChecks.Rabbitmq
                   previous-requirements:
-                    - file: A/A.csproj
+                    - file: /nuget/resolvability/A/A.csproj
                       groups:
                         - dependencies
                       requirement: 5.0.2
                       source: null
-                    - file: B/B.csproj
+                    - file: /nuget/resolvability/B/B.csproj
                       groups:
                         - dependencies
                       requirement: 5.0.2
                       source: null
-                    - file: Directory.Packages.props
+                    - file: /nuget/resolvability/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 5.0.2
                       source: null
                   previous-version: 5.0.2
                   requirements:
-                    - file: A/A.csproj
+                    - file: /nuget/resolvability/A/A.csproj
                       groups:
                         - dependencies
                       requirement: 7.0.0
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/aspnetcore.healthchecks.rabbitmq/7.0.0/aspnetcore.healthchecks.rabbitmq.nuspec
-                        source_url: null
+                        source_url: https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
-                    - file: B/B.csproj
+                    - file: /nuget/resolvability/B/B.csproj
                       groups:
                         - dependencies
                       requirement: 7.0.0
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/aspnetcore.healthchecks.rabbitmq/7.0.0/aspnetcore.healthchecks.rabbitmq.nuspec
-                        source_url: null
+                        source_url: https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
-                    - file: Directory.Packages.props
+                    - file: /nuget/resolvability/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 7.0.0
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/aspnetcore.healthchecks.rabbitmq/7.0.0/aspnetcore.healthchecks.rabbitmq.nuspec
-                        source_url: null
+                        source_url: https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
                   version: 7.0.0
                 - name: Microsoft.Extensions.Diagnostics.HealthChecks
                   previous-requirements:
-                    - file: B/B.csproj
+                    - file: /nuget/resolvability/B/B.csproj
                       groups:
                         - dependencies
                       requirement: 5.0.17
                       source: null
-                    - file: Directory.Packages.props
+                    - file: /nuget/resolvability/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 5.0.17
                       source: null
                   previous-version: 5.0.17
                   requirements:
-                    - file: B/B.csproj
+                    - file: /nuget/resolvability/B/B.csproj
                       groups:
                         - dependencies
                       requirement: 7.0.9
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.diagnostics.healthchecks/7.0.9/microsoft.extensions.diagnostics.healthchecks.nuspec
-                        source_url: null
+                        source_url: https://github.com/dotnet/aspnetcore
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
-                    - file: Directory.Packages.props
+                    - file: /nuget/resolvability/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 7.0.9
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.diagnostics.healthchecks/7.0.9/microsoft.extensions.diagnostics.healthchecks.nuspec
-                        source_url: null
+                        source_url: https://github.com/dotnet/aspnetcore
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
                   version: 7.0.9
             updated-dependency-files:
                 - content: |-
@@ -292,36 +284,32 @@ output:
             dependencies:
                 - name: Microsoft.Extensions.Diagnostics.HealthChecks
                   previous-requirements:
-                    - file: B/B.csproj
+                    - file: /nuget/resolvability/B/B.csproj
                       groups:
                         - dependencies
                       requirement: 5.0.17
                       source: null
-                    - file: Directory.Packages.props
+                    - file: /nuget/resolvability/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 5.0.17
                       source: null
                   previous-version: 5.0.17
                   requirements:
-                    - file: B/B.csproj
+                    - file: /nuget/resolvability/B/B.csproj
                       groups:
                         - dependencies
                       requirement: 7.0.9
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.diagnostics.healthchecks/7.0.9/microsoft.extensions.diagnostics.healthchecks.nuspec
-                        source_url: null
+                        source_url: https://github.com/dotnet/aspnetcore
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
-                    - file: Directory.Packages.props
+                    - file: /nuget/resolvability/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 7.0.9
                       source:
-                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.extensions.diagnostics.healthchecks/7.0.9/microsoft.extensions.diagnostics.healthchecks.nuspec
-                        source_url: null
+                        source_url: https://github.com/dotnet/aspnetcore
                         type: nuget_repo
-                        url: https://api.nuget.org/v3/index.json
                   version: 7.0.9
             updated-dependency-files:
                 - content: |-
