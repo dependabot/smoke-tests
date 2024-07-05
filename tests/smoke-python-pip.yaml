@@ -84,12 +84,12 @@ output:
                     - file: requirements.txt
                       groups:
                         - dependencies
-                      requirement: '>=4.0.6,<5.0'
+                      requirement: '>=3.1,<5.0'
                       source: null
                   version: 4.0.6
             updated-dependency-files:
                 - content: |
-                    Django>=4.0.6,<5.0
+                    Django>=3.1,<5.0
                     requests
                     pyyaml
                     pytest
@@ -101,7 +101,7 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Update django requirement from <4.0,>=3.1 to >=4.0.6,<5.0 in /pip
+            pr-title: Update django requirement from <4.0,>=3.1 to >=3.1,<5.0 in /pip
             pr-body: |
                 Updates the requirements on [django](https://github.com/django/django) to permit the latest version.
                 <details>
@@ -122,7 +122,7 @@ output:
                 </details>
                 <br />
             commit-message: |-
-                Update django requirement from <4.0,>=3.1 to >=4.0.6,<5.0 in /pip
+                Update django requirement from <4.0,>=3.1 to >=3.1,<5.0 in /pip
 
                 Updates the requirements on [django](https://github.com/django/django) to permit the latest version.
                 - [Commits](https://github.com/django/django/compare/3.1...4.0.6)
