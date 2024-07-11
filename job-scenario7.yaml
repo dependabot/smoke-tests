@@ -1,0 +1,25 @@
+job:
+  package-manager: nuget
+  allowed-updates:
+      - update-type: all
+  dependencies:
+      - Buildalyzer
+  ignore-conditions:
+      - dependency-name: Buildalyzer
+        source: ./nuget/tests/transitive-pinning.yaml
+        version-requirement: '>7.0.1'
+  security-advisories:
+      - dependency-name: Buildalyzer
+        affected-versions:
+          - < 7.0.1
+        patched-versions:
+          - 7.0.1
+        unaffected-versions: []
+  security-updates-only: true
+  source:
+      provider: github
+      repo: dependabot/smoke-tests
+      directory: /nuget-dependency-resolution/scenario7/
+      commit: bda8c9a5ed6e02a03b9b94d57fe0d38f35c07149
+  experiments:
+      nuget_native_analysis: true

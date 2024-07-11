@@ -1,0 +1,25 @@
+job:
+  package-manager: nuget
+  allowed-updates:
+      - update-type: all
+  dependencies:
+      - CS-Script.Core
+  ignore-conditions:
+      - dependency-name: CS-Script.Core
+        source: ./nuget/tests/transitive-pinning.yaml
+        version-requirement: '>2.0.0'
+  security-advisories:
+      - dependency-name: CS-Script.Core
+        affected-versions:
+          - < 2.0.0
+        patched-versions:
+          - 2.0.0
+        unaffected-versions: []
+  security-updates-only: true
+  source:
+      provider: github
+      repo: dependabot/smoke-tests
+      directory: /nuget-dependency-resolution/scenario1/
+      commit: bda8c9a5ed6e02a03b9b94d57fe0d38f35c07149
+  experiments:
+      nuget_native_analysis: true

@@ -1,0 +1,25 @@
+job:
+  package-manager: nuget
+  allowed-updates:
+      - update-type: all
+  dependencies:
+      - Newtonsoft.Json
+  ignore-conditions:
+      - dependency-name: Newtonsoft.Json
+        source: ./nuget/tests/transitive-pinning.yaml
+        version-requirement: '>13.0.1'
+  security-advisories:
+      - dependency-name: Newtonsoft.Json
+        affected-versions:
+          - < 13.0.1
+        patched-versions:
+          - 13.0.1
+        unaffected-versions: []
+  security-updates-only: true
+  source:
+      provider: github
+      repo: dependabot/smoke-tests
+      directory: /nuget-dependency-resolution/scenario3/
+      commit: bda8c9a5ed6e02a03b9b94d57fe0d38f35c07149
+  experiments:
+      nuget_native_analysis: true
