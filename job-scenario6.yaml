@@ -1,0 +1,36 @@
+job:
+  package-manager: nuget
+  allowed-updates:
+      - update-type: all
+  dependencies:
+      - Microsoft.CodeAnalysis.Common
+      - Newtonsoft.Json
+  ignore-conditions:
+      - dependency-name: Microsoft.CodeAnalysis.Common
+        source: ./nuget/tests/transitive-pinning.yaml
+        version-requirement: '>4.10.0'
+      - dependency-name: Newtonsoft.Json
+        source: ./nuget/tests/transitive-pinning.yaml
+        version-requirement: '>13.0.1'
+
+  security-advisories:
+      - dependency-name: Microsoft.CodeAnalysis.Common
+        affected-versions:
+          - < 4.10.0
+        patched-versions:
+          - 4.10.0
+        unaffected-versions: []
+      - dependency-name: Newtonsoft.Json
+        affected-versions:
+          - < 13.0.1
+        patched-versions:
+          - 13.0.1
+        unaffected-versions: []
+  security-updates-only: true
+  source:
+      provider: github
+      repo: dependabot/smoke-tests
+      directory: /nuget-dependency-resolution/scenario6/
+      commit: aa5bb20dada2bf8140ebf897f5f6000bbb87e02e
+  experiments:
+      nuget_native_analysis: true

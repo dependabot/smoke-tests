@@ -3,17 +3,17 @@ job:
   allowed-updates:
       - update-type: all
   dependencies:
-      - System.Text.Json
+      - Microsoft.Bcl.AsyncInterfaces
   ignore-conditions:
-      - dependency-name: System.Text.Json
+      - dependency-name: Microsoft.Bcl.AsyncInterfaces
         source: ./nuget/tests/transitive-pinning.yaml
-        version-requirement: '>4.7.2'
+        version-requirement: '>1.1.1'
   security-advisories:
-      - dependency-name: System.Text.Json
+      - dependency-name: Microsoft.Bcl.AsyncInterfaces
         affected-versions:
-          - < 4.7.2
+          - < 1.1.1
         patched-versions:
-          - 4.7.2
+          - 1.1.1
         unaffected-versions: []
   security-updates-only: true
   source:

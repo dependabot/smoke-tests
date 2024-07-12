@@ -1,0 +1,35 @@
+job:
+  package-manager: nuget
+  allowed-updates:
+    - update-type: all
+  dependencies:
+    - Microsoft.CodeAnalysis.Common
+    - Azure.Core
+  ignore-conditions:
+    - dependency-name: Microsoft.CodeAnalysis.Common
+      source: ./nuget/tests/transitive-pinning.yaml
+      version-requirement: '>4.10.0'
+    - dependency-name: Azure.Core
+      source: ./nuget/tests/transitive-pinning.yaml
+      version-requirement: '>1.22.0'
+  security-advisories:
+    - dependency-name: Microsoft.CodeAnalysis.Common
+      affected-versions:
+        - < 4.10.0
+      patched-versions:
+        - 4.10.0
+      unaffected-versions: []
+    - dependency-name: Azure.Core
+      affected-versions:
+        - < 1.22.0
+      patched-versions:
+        - 1.22.0
+      unaffected-versions: []
+  security-updates-only: true
+  source:
+    provider: github
+    repo: dependabot/smoke-tests
+    directory: /nuget-dependency-resolution/scenario9/
+    commit: b138e57bd2936c213fa71ef4a0dd430719da45e9
+  experiments:
+    nuget_native_analysis: true
