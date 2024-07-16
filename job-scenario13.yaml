@@ -1,0 +1,25 @@
+job:
+  package-manager: nuget
+  allowed-updates:
+      - update-type: all
+  dependencies:
+      - Microsoft.EntityFrameworkCore.Analyzers
+  ignore-conditions:
+      - dependency-name: Microsoft.EntityFrameworkCore.Analyzers
+        source: ./nuget/tests/transitive-pinning.yaml
+        version-requirement: '>8.0.0'
+  security-advisories:
+      - dependency-name: Microsoft.EntityFrameworkCore.Analyzers
+        affected-versions:
+          - < 8.0.0
+        patched-versions:
+          - 8.0.0
+        unaffected-versions: []
+  security-updates-only: true
+  source:
+      provider: github
+      repo: dependabot/smoke-tests
+      directory: /nuget-dependency-resolution/scenario13/
+      commit: a4c3fd74ef712ee0748379e4f882e4950f4fd926
+  experiments:
+      nuget_native_analysis: true
