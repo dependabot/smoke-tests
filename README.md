@@ -9,9 +9,6 @@
 This repo contains manifest files for various package managers
 and is used to perform end-to-end tests for Dependabot.
 
-You're welcome to use this repo to test Dependabot functionality.
-However, we aren't accepting contributions at this time.
-
 ## How does this work?
 
 Dependabot CLI has the capability to generate and consume test files.
