@@ -14,6 +14,9 @@ input:
             repo: dependabot/smoke-tests
             directory: /pnpm/
             commit: a2579c0ace294be0332276ea32db3da71fa253cc
+        credentials-metadata:
+            - host: github.com
+              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -361,7 +364,6 @@ output:
                       requirement: 1.7.0
                       source: null
                   version: 1.7.0
-                  directory: /pnpm
             updated-dependency-files:
                 - content: |
                     {
@@ -444,7 +446,6 @@ output:
                       /@humanwhocodes/config-array@0.11.8:
                         resolution: {integrity: sha512-UybHIJzJnR5Qc/MsD9Kr+RpO2h+/P1GhOwdiLPXK5TWk5sgTdu88bTD9UP+CKbPPh5Rni1u0GjAdYQLemG8g+g==}
                         engines: {node: '>=10.10.0'}
-                        deprecated: Use @eslint/config-array instead
                         dependencies:
                           '@humanwhocodes/object-schema': 1.2.1
                           debug: 4.3.4
@@ -460,7 +461,6 @@ output:
 
                       /@humanwhocodes/object-schema@1.2.1:
                         resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
-                        deprecated: Use @eslint/object-schema instead
                         dev: true
 
                       /@nodelib/fs.scandir@2.1.5:
@@ -609,7 +609,7 @@ output:
                           eslint: 8.39.0
                           lodash: 4.17.21
                           natural-compare: 1.4.0
-                          yaml-eslint-parser: 1.2.3
+                          yaml-eslint-parser: 1.2.2
                         transitivePeerDependencies:
                           - supports-color
                         dev: true
@@ -767,7 +767,6 @@ output:
 
                       /glob@7.2.3:
                         resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
-                        deprecated: Glob versions prior to v9 are no longer supported
                         dependencies:
                           fs.realpath: 1.0.0
                           inflight: 1.0.6
@@ -813,7 +812,6 @@ output:
 
                       /inflight@1.0.6:
                         resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
-                        deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
                         dependencies:
                           once: 1.4.0
                           wrappy: 1.0.2
@@ -980,7 +978,6 @@ output:
 
                       /rimraf@3.0.2:
                         resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
-                        deprecated: Rimraf versions prior to v4 are no longer supported
                         hasBin: true
                         dependencies:
                           glob: 7.2.3
@@ -1062,8 +1059,8 @@ output:
                         resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
                         dev: true
 
-                      /yaml-eslint-parser@1.2.3:
-                        resolution: {integrity: sha512-4wZWvE398hCP7O8n3nXKu/vdq1HcH01ixYlCREaJL5NUMwQ0g3MaGFUBNSlmBtKmhbtVG/Cm6lyYmSVTEVil8A==}
+                      /yaml-eslint-parser@1.2.2:
+                        resolution: {integrity: sha512-pEwzfsKbTrB8G3xc/sN7aw1v6A6c/pKxLAkjclnAyo5g5qOh6eL9WGu0o3cSDQZKrTNk4KL4lQSwZW+nBkANEg==}
                         engines: {node: ^14.17.0 || >=16.0.0}
                         dependencies:
                           eslint-visitor-keys: 3.4.0

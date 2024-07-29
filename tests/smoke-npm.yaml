@@ -23,6 +23,9 @@ input:
             repo: dependabot/smoke-tests
             directory: /npm
             commit: d15ce2f331fa91f5ebb82da530dc7f3d69c64e6e
+        credentials-metadata:
+            - host: github.com
+              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -148,7 +151,6 @@ output:
                         type: registry
                         url: https://registry.npmjs.org
                   version: 1.4.0
-                  directory: /npm
             updated-dependency-files:
                 - content: |
                     {
@@ -517,7 +519,131 @@ output:
                   support_file: false
                   type: file
             pr-title: Bump axios from 0.27.2 to 1.4.0 in /npm
-            pr-body: "Bumps [axios](https://github.com/axios/axios) from 0.27.2 to 1.4.0.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/axios/axios/releases\">axios's releases</a>.</em></p>\n<blockquote>\n<h2>Release v1.4.0</h2>\n<h2>Release notes:</h2>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href=\"https://redirect.github.com/axios/axios/issues/5678\">#5678</a>) (<a href=\"https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1\">bbb61e7</a>)</li>\n<li><strong>package:</strong> export package internals with unsafe path prefix; (<a href=\"https://redirect.github.com/axios/axios/issues/5677\">#5677</a>) (<a href=\"https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09\">df38c94</a>)</li>\n</ul>\n<h3>Features</h3>\n<ul>\n<li><strong>dns:</strong> added support for a custom lookup function; (<a href=\"https://redirect.github.com/axios/axios/issues/5339\">#5339</a>) (<a href=\"https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb\">2701911</a>)</li>\n<li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href=\"https://redirect.github.com/axios/axios/issues/5525\">#5525</a>) (<a href=\"https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf\">726f1c8</a>)</li>\n</ul>\n<h3>Performance Improvements</h3>\n<ul>\n<li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href=\"https://redirect.github.com/axios/axios/issues/5679\">#5679</a>) (<a href=\"https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e\">e6f7053</a>)</li>\n</ul>\n<h3>Contributors to this release</h3>\n<ul>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/DigitalBrainJS\" title=\"+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )\">Dmitriy Mozgovoy</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/arthurfiorette\" title=\"+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )\">Arthur Fiorette</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/npiyush97\" title=\"+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )\">PIYUSH NEGI</a></li>\n</ul>\n<h2>Release v1.3.6</h2>\n<h2>Release notes:</h2>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href=\"https://redirect.github.com/axios/axios/issues/5445\">#5445</a>) (<a href=\"https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2\">6f360a2</a>)</li>\n<li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href=\"https://redirect.github.com/axios/axios/issues/5661\">#5661</a>) (<a href=\"https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76\">aa372f7</a>)</li>\n</ul>\n<h3>Contributors to this release</h3>\n<ul>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/DigitalBrainJS\" title=\"+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )\">Dmitriy Mozgovoy</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/Cadienvan\" title=\"+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )\">Michael Di Prisco</a></li>\n</ul>\n<h2>Release v1.3.5</h2>\n<h2>Release notes:</h2>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>headers:</strong> fixed isValidHeaderName to support full list of allowed characters; (<a href=\"https://redirect.github.com/axios/axios/issues/5584\">#5584</a>) (<a href=\"https://github.com/axios/axios/commit/e7decef6a99f4627e27ed9ea5b00ce8e201c3841\">e7decef</a>)</li>\n<li><strong>params:</strong> re-added the ability to set the function as <code>paramsSerializer</code> config; (<a href=\"https://redirect.github.com/axios/axios/issues/5633\">#5633</a>) (<a href=\"https://github.com/axios/axios/commit/a56c8661209d5ce5a645a05f294a0e08a6c1f6b3\">a56c866</a>)</li>\n</ul>\n<h3>Contributors to this release</h3>\n<ul>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/DigitalBrainJS\" title=\"+28/-10 ([#5633](https://github.com/axios/axios/issues/5633) [#5584](https://github.com/axios/axios/issues/5584) )\">Dmitriy Mozgovoy</a></li>\n</ul>\n<h2>Release v1.3.4</h2>\n<h2>Release notes:</h2>\n<h3>Bug Fixes</h3>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a href=\"https://github.com/axios/axios/blob/v1.x/CHANGELOG.md\">axios's changelog</a>.</em></p>\n<blockquote>\n<h1><a href=\"https://github.com/axios/axios/compare/v1.3.6...v1.4.0\">1.4.0</a> (2023-04-27)</h1>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href=\"https://redirect.github.com/axios/axios/issues/5678\">#5678</a>) (<a href=\"https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1\">bbb61e7</a>)</li>\n<li><strong>package:</strong> export package internals with unsafe path prefix; (<a href=\"https://redirect.github.com/axios/axios/issues/5677\">#5677</a>) (<a href=\"https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09\">df38c94</a>)</li>\n</ul>\n<h3>Features</h3>\n<ul>\n<li><strong>dns:</strong> added support for a custom lookup function; (<a href=\"https://redirect.github.com/axios/axios/issues/5339\">#5339</a>) (<a href=\"https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb\">2701911</a>)</li>\n<li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href=\"https://redirect.github.com/axios/axios/issues/5525\">#5525</a>) (<a href=\"https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf\">726f1c8</a>)</li>\n</ul>\n<h3>Performance Improvements</h3>\n<ul>\n<li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href=\"https://redirect.github.com/axios/axios/issues/5679\">#5679</a>) (<a href=\"https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e\">e6f7053</a>)</li>\n</ul>\n<h3>Contributors to this release</h3>\n<ul>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/DigitalBrainJS\" title=\"+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )\">Dmitriy Mozgovoy</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/arthurfiorette\" title=\"+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )\">Arthur Fiorette</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/npiyush97\" title=\"+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )\">PIYUSH NEGI</a></li>\n</ul>\n<h3>PRs</h3>\n<ul>\n<li>CVE 2023 45857 ( <a href=\"https://api.github.com/repos/axios/axios/pulls/6028\">#6028</a> )</li>\n</ul>\n<pre><code>\n⚠️ Critical vulnerability fix. See https://security.snyk.io/vuln/SNYK-JS-AXIOS-6032459\n</code></pre>\n<h2><a href=\"https://github.com/axios/axios/compare/v1.3.5...v1.3.6\">1.3.6</a> (2023-04-19)</h2>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href=\"https://redirect.github.com/axios/axios/issues/5445\">#5445</a>) (<a href=\"https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2\">6f360a2</a>)</li>\n<li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href=\"https://redirect.github.com/axios/axios/issues/5661\">#5661</a>) (<a href=\"https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76\">aa372f7</a>)</li>\n</ul>\n<h3>Contributors to this release</h3>\n<ul>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/DigitalBrainJS\" title=\"+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )\">Dmitriy Mozgovoy</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/Cadienvan\" title=\"+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )\">Michael Di Prisco</a></li>\n</ul>\n<h3>PRs</h3>\n<ul>\n<li>CVE 2023 45857 ( <a href=\"https://api.github.com/repos/axios/axios/pulls/6028\">#6028</a> )</li>\n</ul>\n<pre><code>\n⚠️ Critical vulnerability fix. See https://security.snyk.io/vuln/SNYK-JS-AXIOS-6032459\n&lt;/tr&gt;&lt;/table&gt; \n</code></pre>\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/axios/axios/commit/21a5ad34c4a5956d81d338059ac0dd34a19ed094\"><code>21a5ad3</code></a> chore(release): v1.4.0 (<a href=\"https://redirect.github.com/axios/axios/issues/5683\">#5683</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/d627610d0c427de57c10618b36fa97814e2a75f0\"><code>d627610</code></a> chore(utils): refactored isAsyncFn util to avoid inlining additional Babel he...</li>\n<li><a href=\"https://github.com/axios/axios/commit/e18fdd893dfc67630c33fb6744d1b99d72857d92\"><code>e18fdd8</code></a> refactor: remove deprecated url-search-params polyfill for URLSearchParams (#...</li>\n<li><a href=\"https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf\"><code>726f1c8</code></a> feat(types): export <code>AxiosHeaderValue</code> type. (<a href=\"https://redirect.github.com/axios/axios/issues/5525\">#5525</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb\"><code>2701911</code></a> feat(dns): added support for a custom lookup function; (<a href=\"https://redirect.github.com/axios/axios/issues/5339\">#5339</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e\"><code>e6f7053</code></a> perf(merge-config): optimize mergeConfig performance by avoiding duplicate ke...</li>\n<li><a href=\"https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1\"><code>bbb61e7</code></a> fix(formdata): add <code>multipart/form-data</code> content type for FormData payload on...</li>\n<li><a href=\"https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09\"><code>df38c94</code></a> fix(package): export package internals with unsafe path prefix; (<a href=\"https://redirect.github.com/axios/axios/issues/5677\">#5677</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/59eb99183546d822bc27e881f5dcd748daa04173\"><code>59eb991</code></a> chore(release): v1.3.6 (<a href=\"https://redirect.github.com/axios/axios/issues/5666\">#5666</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/1b8cc3b02b13f5d16ad988460edbda463113177e\"><code>1b8cc3b</code></a> chore(template): improve issue template; (<a href=\"https://redirect.github.com/axios/axios/issues/5665\">#5665</a>)</li>\n<li>Additional commits viewable in <a href=\"https://github.com/axios/axios/compare/v0.27.2...v1.4.0\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
+            pr-body: |
+                Bumps [axios](https://github.com/axios/axios) from 0.27.2 to 1.4.0.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/axios/axios/releases">axios's releases</a>.</em></p>
+                <blockquote>
+                <h2>Release v1.4.0</h2>
+                <h2>Release notes:</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href="https://redirect.github.com/axios/axios/issues/5678">#5678</a>) (<a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1">bbb61e7</a>)</li>
+                <li><strong>package:</strong> export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>) (<a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09">df38c94</a>)</li>
+                </ul>
+                <h3>Features</h3>
+                <ul>
+                <li><strong>dns:</strong> added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>) (<a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb">2701911</a>)</li>
+                <li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>) (<a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf">726f1c8</a>)</li>
+                </ul>
+                <h3>Performance Improvements</h3>
+                <ul>
+                <li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href="https://redirect.github.com/axios/axios/issues/5679">#5679</a>) (<a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e">e6f7053</a>)</li>
+                </ul>
+                <h3>Contributors to this release</h3>
+                <ul>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )">Dmitriy Mozgovoy</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/arthurfiorette" title="+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )">Arthur Fiorette</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/npiyush97" title="+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )">PIYUSH NEGI</a></li>
+                </ul>
+                <h2>Release v1.3.6</h2>
+                <h2>Release notes:</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href="https://redirect.github.com/axios/axios/issues/5445">#5445</a>) (<a href="https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2">6f360a2</a>)</li>
+                <li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href="https://redirect.github.com/axios/axios/issues/5661">#5661</a>) (<a href="https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76">aa372f7</a>)</li>
+                </ul>
+                <h3>Contributors to this release</h3>
+                <ul>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )">Dmitriy Mozgovoy</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/Cadienvan" title="+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )">Michael Di Prisco</a></li>
+                </ul>
+                <h2>Release v1.3.5</h2>
+                <h2>Release notes:</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li><strong>headers:</strong> fixed isValidHeaderName to support full list of allowed characters; (<a href="https://redirect.github.com/axios/axios/issues/5584">#5584</a>) (<a href="https://github.com/axios/axios/commit/e7decef6a99f4627e27ed9ea5b00ce8e201c3841">e7decef</a>)</li>
+                <li><strong>params:</strong> re-added the ability to set the function as <code>paramsSerializer</code> config; (<a href="https://redirect.github.com/axios/axios/issues/5633">#5633</a>) (<a href="https://github.com/axios/axios/commit/a56c8661209d5ce5a645a05f294a0e08a6c1f6b3">a56c866</a>)</li>
+                </ul>
+                <h3>Contributors to this release</h3>
+                <ul>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+28/-10 ([#5633](https://github.com/axios/axios/issues/5633) [#5584](https://github.com/axios/axios/issues/5584) )">Dmitriy Mozgovoy</a></li>
+                </ul>
+                <h2>Release v1.3.4</h2>
+                <h2>Release notes:</h2>
+                <h3>Bug Fixes</h3>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/axios/axios/blob/v1.x/CHANGELOG.md">axios's changelog</a>.</em></p>
+                <blockquote>
+                <h1><a href="https://github.com/axios/axios/compare/v1.3.6...v1.4.0">1.4.0</a> (2023-04-27)</h1>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href="https://redirect.github.com/axios/axios/issues/5678">#5678</a>) (<a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1">bbb61e7</a>)</li>
+                <li><strong>package:</strong> export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>) (<a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09">df38c94</a>)</li>
+                </ul>
+                <h3>Features</h3>
+                <ul>
+                <li><strong>dns:</strong> added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>) (<a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb">2701911</a>)</li>
+                <li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>) (<a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf">726f1c8</a>)</li>
+                </ul>
+                <h3>Performance Improvements</h3>
+                <ul>
+                <li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href="https://redirect.github.com/axios/axios/issues/5679">#5679</a>) (<a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e">e6f7053</a>)</li>
+                </ul>
+                <h3>Contributors to this release</h3>
+                <ul>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )">Dmitriy Mozgovoy</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/arthurfiorette" title="+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )">Arthur Fiorette</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/npiyush97" title="+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )">PIYUSH NEGI</a></li>
+                </ul>
+                <h2><a href="https://github.com/axios/axios/compare/v1.3.5...v1.3.6">1.3.6</a> (2023-04-19)</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href="https://redirect.github.com/axios/axios/issues/5445">#5445</a>) (<a href="https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2">6f360a2</a>)</li>
+                <li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href="https://redirect.github.com/axios/axios/issues/5661">#5661</a>) (<a href="https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76">aa372f7</a>)</li>
+                </ul>
+                <h3>Contributors to this release</h3>
+                <ul>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )">Dmitriy Mozgovoy</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/Cadienvan" title="+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )">Michael Di Prisco</a></li>
+                </ul>
+                <h2><a href="https://github.com/axios/axios/compare/v1.3.4...v1.3.5">1.3.5</a> (2023-04-05)</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li><strong>headers:</strong> fixed isValidHeaderName to support full list of allowed characters; (<a href="https://redirect.github.com/axios/axios/issues/5584">#5584</a>) (<a href="https://github.com/axios/axios/commit/e7decef6a99f4627e27ed9ea5b00ce8e201c3841">e7decef</a>)</li>
+                <li><strong>params:</strong> re-added the ability to set the function as <code>paramsSerializer</code> config; (<a href="https://redirect.github.com/axios/axios/issues/5633">#5633</a>) (<a href="https://github.com/axios/axios/commit/a56c8661209d5ce5a645a05f294a0e08a6c1f6b3">a56c866</a>)</li>
+                </ul>
+                <h3>Contributors to this release</h3>
+                <ul>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+28/-10 ([#5633](https://github.com/axios/axios/issues/5633) [#5584](https://github.com/axios/axios/issues/5584) )">Dmitriy Mozgovoy</a></li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/axios/axios/commit/21a5ad34c4a5956d81d338059ac0dd34a19ed094"><code>21a5ad3</code></a> chore(release): v1.4.0 (<a href="https://redirect.github.com/axios/axios/issues/5683">#5683</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/d627610d0c427de57c10618b36fa97814e2a75f0"><code>d627610</code></a> chore(utils): refactored isAsyncFn util to avoid inlining additional Babel he...</li>
+                <li><a href="https://github.com/axios/axios/commit/e18fdd893dfc67630c33fb6744d1b99d72857d92"><code>e18fdd8</code></a> refactor: remove deprecated url-search-params polyfill for URLSearchParams (#...</li>
+                <li><a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf"><code>726f1c8</code></a> feat(types): export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb"><code>2701911</code></a> feat(dns): added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e"><code>e6f7053</code></a> perf(merge-config): optimize mergeConfig performance by avoiding duplicate ke...</li>
+                <li><a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1"><code>bbb61e7</code></a> fix(formdata): add <code>multipart/form-data</code> content type for FormData payload on...</li>
+                <li><a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09"><code>df38c94</code></a> fix(package): export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/59eb99183546d822bc27e881f5dcd748daa04173"><code>59eb991</code></a> chore(release): v1.3.6 (<a href="https://redirect.github.com/axios/axios/issues/5666">#5666</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/1b8cc3b02b13f5d16ad988460edbda463113177e"><code>1b8cc3b</code></a> chore(template): improve issue template; (<a href="https://redirect.github.com/axios/axios/issues/5665">#5665</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/axios/axios/compare/v0.27.2...v1.4.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
             commit-message: |-
                 Bump axios from 0.27.2 to 1.4.0 in /npm
 
@@ -549,7 +675,6 @@ output:
                         type: registry
                         url: https://registry.npmjs.org
                   version: 0.2.1
-                  directory: /npm
             updated-dependency-files:
                 - content: |
                     {
@@ -626,18 +751,12 @@ output:
                           }
                         },
                         "node_modules/call-bind": {
-                          "version": "1.0.7",
-                          "resolved": "https://registry.npmjs.org/call-bind/-/call-bind-1.0.7.tgz",
-                          "integrity": "sha512-GHTSNSYICQ7scH7sZ+M2rFopRoLh8t2bLSW6BbgrtLsahOIB5iyAVJf9GjWK3cYTDaMj4XdBpM1cA6pIS0Kv2w==",
+                          "version": "1.0.2",
+                          "resolved": "https://registry.npmjs.org/call-bind/-/call-bind-1.0.2.tgz",
+                          "integrity": "sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==",
                           "dependencies": {
-                            "es-define-property": "^1.0.0",
-                            "es-errors": "^1.3.0",
-                            "function-bind": "^1.1.2",
-                            "get-intrinsic": "^1.2.4",
-                            "set-function-length": "^1.2.1"
-                          },
-                          "engines": {
-                            "node": ">= 0.4"
+                            "function-bind": "^1.1.1",
+                            "get-intrinsic": "^1.0.2"
                           },
                           "funding": {
                             "url": "https://github.com/sponsors/ljharb"
@@ -695,38 +814,32 @@ output:
                           }
                         },
                         "node_modules/deep-equal": {
-                          "version": "1.1.2",
-                          "resolved": "https://registry.npmjs.org/deep-equal/-/deep-equal-1.1.2.tgz",
-                          "integrity": "sha512-5tdhKF6DbU7iIzrIOa1AOUt39ZRm13cmL1cGEh//aqR8x9+tNfbywRf0n5FD/18OKMdo7DNEtrX2t22ZAkI+eg==",
+                          "version": "1.1.1",
+                          "resolved": "https://registry.npmjs.org/deep-equal/-/deep-equal-1.1.1.tgz",
+                          "integrity": "sha512-yd9c5AdiqVcR+JjcwUQb9DkhJc8ngNr0MahEBGvDiJw8puWab2yZlh+nkasOnZP+EGTAP6rRp2JzJhJZzvNF8g==",
                           "dependencies": {
-                            "is-arguments": "^1.1.1",
-                            "is-date-object": "^1.0.5",
-                            "is-regex": "^1.1.4",
-                            "object-is": "^1.1.5",
+                            "is-arguments": "^1.0.4",
+                            "is-date-object": "^1.0.1",
+                            "is-regex": "^1.0.4",
+                            "object-is": "^1.0.1",
                             "object-keys": "^1.1.1",
-                            "regexp.prototype.flags": "^1.5.1"
-                          },
-                          "engines": {
-                            "node": ">= 0.4"
+                            "regexp.prototype.flags": "^1.2.0"
                           },
                           "funding": {
                             "url": "https://github.com/sponsors/ljharb"
                           }
                         },
                         "node_modules/define-data-property": {
-                          "version": "1.1.4",
-                          "resolved": "https://registry.npmjs.org/define-data-property/-/define-data-property-1.1.4.tgz",
-                          "integrity": "sha512-rBMvIzlpA8v6E+SJZoo++HAYqsLrkg7MSfIinMPFhmkorw7X+dOXVJQs+QT69zGkzMyfDnIMN2Wid1+NbL3T+A==",
+                          "version": "1.1.0",
+                          "resolved": "https://registry.npmjs.org/define-data-property/-/define-data-property-1.1.0.tgz",
+                          "integrity": "sha512-UzGwzcjyv3OtAvolTj1GoyNYzfFR+iqbGjcnBEENZVCpM4/Ng1yhGNvS3lR/xDS74Tb2wGG9WzNSNIOS9UVb2g==",
                           "dependencies": {
-                            "es-define-property": "^1.0.0",
-                            "es-errors": "^1.3.0",
-                            "gopd": "^1.0.1"
+                            "get-intrinsic": "^1.2.1",
+                            "gopd": "^1.0.1",
+                            "has-property-descriptors": "^1.0.0"
                           },
                           "engines": {
                             "node": ">= 0.4"
-                          },
-                          "funding": {
-                            "url": "https://github.com/sponsors/ljharb"
                           }
                         },
                         "node_modules/define-properties": {
@@ -759,25 +872,6 @@ output:
                           "integrity": "sha1-U4tm8+5izRq1HsMjgp0flIDHS+s=",
                           "dependencies": {
                             "iconv-lite": "0.4.19"
-                          }
-                        },
-                        "node_modules/es-define-property": {
-                          "version": "1.0.0",
-                          "resolved": "https://registry.npmjs.org/es-define-property/-/es-define-property-1.0.0.tgz",
-                          "integrity": "sha512-jxayLKShrEqqzJ0eumQbVhTYQM27CfT1T35+gCgDFoL82JLsXqTJ76zv6A0YLOgEnLUMvLzsDsGIrl8NFpT2gQ==",
-                          "dependencies": {
-                            "get-intrinsic": "^1.2.4"
-                          },
-                          "engines": {
-                            "node": ">= 0.4"
-                          }
-                        },
-                        "node_modules/es-errors": {
-                          "version": "1.3.0",
-                          "resolved": "https://registry.npmjs.org/es-errors/-/es-errors-1.3.0.tgz",
-                          "integrity": "sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==",
-                          "engines": {
-                            "node": ">= 0.4"
                           }
                         },
                         "node_modules/es6-promise": {
@@ -842,12 +936,9 @@ output:
                           }
                         },
                         "node_modules/function-bind": {
-                          "version": "1.1.2",
-                          "resolved": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz",
-                          "integrity": "sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==",
-                          "funding": {
-                            "url": "https://github.com/sponsors/ljharb"
-                          }
+                          "version": "1.1.1",
+                          "resolved": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz",
+                          "integrity": "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
                         },
                         "node_modules/functions-have-names": {
                           "version": "1.2.3",
@@ -858,18 +949,14 @@ output:
                           }
                         },
                         "node_modules/get-intrinsic": {
-                          "version": "1.2.4",
-                          "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.2.4.tgz",
-                          "integrity": "sha512-5uYhsJH8VJBTv7oslg4BznJYhDoRI6waYCxMmCdnTrcCrHA/fCFKoTFz2JKKE0HdDFUF7/oQuhzumXJK7paBRQ==",
+                          "version": "1.2.1",
+                          "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.2.1.tgz",
+                          "integrity": "sha512-2DcsyfABl+gVHEfCOaTrWgyt+tb6MSEGmKq+kI5HwLbIYgjgmMcV8KQ41uaKz1xxUcn9tJtgFbQUEVcEbd0FYw==",
                           "dependencies": {
-                            "es-errors": "^1.3.0",
-                            "function-bind": "^1.1.2",
+                            "function-bind": "^1.1.1",
+                            "has": "^1.0.3",
                             "has-proto": "^1.0.1",
-                            "has-symbols": "^1.0.3",
-                            "hasown": "^2.0.0"
-                          },
-                          "engines": {
-                            "node": ">= 0.4"
+                            "has-symbols": "^1.0.3"
                           },
                           "funding": {
                             "url": "https://github.com/sponsors/ljharb"
@@ -886,21 +973,32 @@ output:
                             "url": "https://github.com/sponsors/ljharb"
                           }
                         },
-                        "node_modules/has-property-descriptors": {
-                          "version": "1.0.2",
-                          "resolved": "https://registry.npmjs.org/has-property-descriptors/-/has-property-descriptors-1.0.2.tgz",
-                          "integrity": "sha512-55JNKuIW+vq4Ke1BjOTjM2YctQIvCT7GFzHwmfZPGo5wnrgkid0YQtnAleFSqumZm4az3n2BS+erby5ipJdgrg==",
+                        "node_modules/has": {
+                          "version": "1.0.3",
+                          "resolved": "https://registry.npmjs.org/has/-/has-1.0.3.tgz",
+                          "integrity": "sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==",
                           "dependencies": {
-                            "es-define-property": "^1.0.0"
+                            "function-bind": "^1.1.1"
+                          },
+                          "engines": {
+                            "node": ">= 0.4.0"
+                          }
+                        },
+                        "node_modules/has-property-descriptors": {
+                          "version": "1.0.0",
+                          "resolved": "https://registry.npmjs.org/has-property-descriptors/-/has-property-descriptors-1.0.0.tgz",
+                          "integrity": "sha512-62DVLZGoiEBDHQyqG4w9xCuZ7eJEwNmJRWw2VY84Oedb7WFcA27fiEVe8oUQx9hAUJ4ekurquucTGwsyO1XGdQ==",
+                          "dependencies": {
+                            "get-intrinsic": "^1.1.1"
                           },
                           "funding": {
                             "url": "https://github.com/sponsors/ljharb"
                           }
                         },
                         "node_modules/has-proto": {
-                          "version": "1.0.3",
-                          "resolved": "https://registry.npmjs.org/has-proto/-/has-proto-1.0.3.tgz",
-                          "integrity": "sha512-SJ1amZAJUiZS+PhsVLf5tGydlaVB8EdFpaSO4gmiUKUOxk8qzn5AIy4ZeJUmh22znIdk/uMAUT2pl3FxzVUH+Q==",
+                          "version": "1.0.1",
+                          "resolved": "https://registry.npmjs.org/has-proto/-/has-proto-1.0.1.tgz",
+                          "integrity": "sha512-7qE+iP+O+bgF9clE5+UoBFzE65mlBiVj3tKCrlNQ0Ogwm0BjpT/gK4SlLYDMybDh5I3TCTKnPPa0oMG7JDYrhg==",
                           "engines": {
                             "node": ">= 0.4"
                           },
@@ -920,28 +1018,17 @@ output:
                           }
                         },
                         "node_modules/has-tostringtag": {
-                          "version": "1.0.2",
-                          "resolved": "https://registry.npmjs.org/has-tostringtag/-/has-tostringtag-1.0.2.tgz",
-                          "integrity": "sha512-NqADB8VjPFLM2V0VvHUewwwsw0ZWBaIdgo+ieHtK3hasLz4qeCRjYcqfB6AQrBggRKppKF8L52/VqdVsO47Dlw==",
+                          "version": "1.0.0",
+                          "resolved": "https://registry.npmjs.org/has-tostringtag/-/has-tostringtag-1.0.0.tgz",
+                          "integrity": "sha512-kFjcSNhnlGV1kyoGk7OXKSawH5JOb/LzUc5w9B02hOTO0dfFRjbHQKvg1d6cf3HbeUmtU9VbbV3qzZ2Teh97WQ==",
                           "dependencies": {
-                            "has-symbols": "^1.0.3"
+                            "has-symbols": "^1.0.2"
                           },
                           "engines": {
                             "node": ">= 0.4"
                           },
                           "funding": {
                             "url": "https://github.com/sponsors/ljharb"
-                          }
-                        },
-                        "node_modules/hasown": {
-                          "version": "2.0.2",
-                          "resolved": "https://registry.npmjs.org/hasown/-/hasown-2.0.2.tgz",
-                          "integrity": "sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==",
-                          "dependencies": {
-                            "function-bind": "^1.1.2"
-                          },
-                          "engines": {
-                            "node": ">= 0.4"
                           }
                         },
                         "node_modules/iconv-lite": {
@@ -1096,12 +1183,12 @@ output:
                           }
                         },
                         "node_modules/object-is": {
-                          "version": "1.1.6",
-                          "resolved": "https://registry.npmjs.org/object-is/-/object-is-1.1.6.tgz",
-                          "integrity": "sha512-F8cZ+KfGlSGi09lJT7/Nd6KJZ9ygtvYC0/UYYLI9nmQKLMnydpB9yvbv9K1uSkEu7FU9vYPmVwLg328tX+ot3Q==",
+                          "version": "1.1.5",
+                          "resolved": "https://registry.npmjs.org/object-is/-/object-is-1.1.5.tgz",
+                          "integrity": "sha512-3cyDsyHgtmi7I7DfSSI2LDp6SK2lwvtbg0p0R1e0RvTqF5ceGx+K2dfSjm1bKDMVCFEDAQvy+o8c6a7VujOddw==",
                           "dependencies": {
-                            "call-bind": "^1.0.7",
-                            "define-properties": "^1.2.1"
+                            "call-bind": "^1.0.2",
+                            "define-properties": "^1.1.3"
                           },
                           "engines": {
                             "node": ">= 0.4"
@@ -1138,14 +1225,13 @@ output:
                           }
                         },
                         "node_modules/regexp.prototype.flags": {
-                          "version": "1.5.2",
-                          "resolved": "https://registry.npmjs.org/regexp.prototype.flags/-/regexp.prototype.flags-1.5.2.tgz",
-                          "integrity": "sha512-NcDiDkTLuPR+++OCKB0nWafEmhg/Da8aUPLPMQbK+bxKKCm1/S5he+AqYa4PlMCVBalb4/yxIRub6qkEx5yJbw==",
+                          "version": "1.5.1",
+                          "resolved": "https://registry.npmjs.org/regexp.prototype.flags/-/regexp.prototype.flags-1.5.1.tgz",
+                          "integrity": "sha512-sy6TXMN+hnP/wMy+ISxg3krXx7BAtWVO4UouuCN/ziM9UEne0euamVNafDfvC83bRNr95y0V5iijeDQFUNpvrg==",
                           "dependencies": {
-                            "call-bind": "^1.0.6",
-                            "define-properties": "^1.2.1",
-                            "es-errors": "^1.3.0",
-                            "set-function-name": "^2.0.1"
+                            "call-bind": "^1.0.2",
+                            "define-properties": "^1.2.0",
+                            "set-function-name": "^2.0.0"
                           },
                           "engines": {
                             "node": ">= 0.4"
@@ -1154,31 +1240,14 @@ output:
                             "url": "https://github.com/sponsors/ljharb"
                           }
                         },
-                        "node_modules/set-function-length": {
-                          "version": "1.2.2",
-                          "resolved": "https://registry.npmjs.org/set-function-length/-/set-function-length-1.2.2.tgz",
-                          "integrity": "sha512-pgRc4hJ4/sNjWCSS9AmnS40x3bNMDTknHgL5UaMBTMyJnU90EgWh1Rz+MC9eFu4BuN/UwZjKQuY/1v3rM7HMfg==",
-                          "dependencies": {
-                            "define-data-property": "^1.1.4",
-                            "es-errors": "^1.3.0",
-                            "function-bind": "^1.1.2",
-                            "get-intrinsic": "^1.2.4",
-                            "gopd": "^1.0.1",
-                            "has-property-descriptors": "^1.0.2"
-                          },
-                          "engines": {
-                            "node": ">= 0.4"
-                          }
-                        },
                         "node_modules/set-function-name": {
-                          "version": "2.0.2",
-                          "resolved": "https://registry.npmjs.org/set-function-name/-/set-function-name-2.0.2.tgz",
-                          "integrity": "sha512-7PGFlmtwsEADb0WYyvCMa1t+yke6daIG4Wirafur5kcf+MhUnPms1UeR0CKQdTZD81yESwMHbtn+TR+dMviakQ==",
+                          "version": "2.0.1",
+                          "resolved": "https://registry.npmjs.org/set-function-name/-/set-function-name-2.0.1.tgz",
+                          "integrity": "sha512-tMNCiqYVkXIZgc2Hnoy2IvC/f8ezc5koaRFkCjrpWzGpCd3qbZXPzVy9MAZzK1ch/X0jvSkojys3oqJN0qCmdA==",
                           "dependencies": {
-                            "define-data-property": "^1.1.4",
-                            "es-errors": "^1.3.0",
+                            "define-data-property": "^1.0.1",
                             "functions-have-names": "^1.2.3",
-                            "has-property-descriptors": "^1.0.2"
+                            "has-property-descriptors": "^1.0.0"
                           },
                           "engines": {
                             "node": ">= 0.4"
@@ -1235,15 +1304,12 @@ output:
                           }
                         },
                         "call-bind": {
-                          "version": "1.0.7",
-                          "resolved": "https://registry.npmjs.org/call-bind/-/call-bind-1.0.7.tgz",
-                          "integrity": "sha512-GHTSNSYICQ7scH7sZ+M2rFopRoLh8t2bLSW6BbgrtLsahOIB5iyAVJf9GjWK3cYTDaMj4XdBpM1cA6pIS0Kv2w==",
+                          "version": "1.0.2",
+                          "resolved": "https://registry.npmjs.org/call-bind/-/call-bind-1.0.2.tgz",
+                          "integrity": "sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==",
                           "requires": {
-                            "es-define-property": "^1.0.0",
-                            "es-errors": "^1.3.0",
-                            "function-bind": "^1.1.2",
-                            "get-intrinsic": "^1.2.4",
-                            "set-function-length": "^1.2.1"
+                            "function-bind": "^1.1.1",
+                            "get-intrinsic": "^1.0.2"
                           }
                         },
                         "chai": {
@@ -1288,26 +1354,26 @@ output:
                           }
                         },
                         "deep-equal": {
-                          "version": "1.1.2",
-                          "resolved": "https://registry.npmjs.org/deep-equal/-/deep-equal-1.1.2.tgz",
-                          "integrity": "sha512-5tdhKF6DbU7iIzrIOa1AOUt39ZRm13cmL1cGEh//aqR8x9+tNfbywRf0n5FD/18OKMdo7DNEtrX2t22ZAkI+eg==",
+                          "version": "1.1.1",
+                          "resolved": "https://registry.npmjs.org/deep-equal/-/deep-equal-1.1.1.tgz",
+                          "integrity": "sha512-yd9c5AdiqVcR+JjcwUQb9DkhJc8ngNr0MahEBGvDiJw8puWab2yZlh+nkasOnZP+EGTAP6rRp2JzJhJZzvNF8g==",
                           "requires": {
-                            "is-arguments": "^1.1.1",
-                            "is-date-object": "^1.0.5",
-                            "is-regex": "^1.1.4",
-                            "object-is": "^1.1.5",
+                            "is-arguments": "^1.0.4",
+                            "is-date-object": "^1.0.1",
+                            "is-regex": "^1.0.4",
+                            "object-is": "^1.0.1",
                             "object-keys": "^1.1.1",
-                            "regexp.prototype.flags": "^1.5.1"
+                            "regexp.prototype.flags": "^1.2.0"
                           }
                         },
                         "define-data-property": {
-                          "version": "1.1.4",
-                          "resolved": "https://registry.npmjs.org/define-data-property/-/define-data-property-1.1.4.tgz",
-                          "integrity": "sha512-rBMvIzlpA8v6E+SJZoo++HAYqsLrkg7MSfIinMPFhmkorw7X+dOXVJQs+QT69zGkzMyfDnIMN2Wid1+NbL3T+A==",
+                          "version": "1.1.0",
+                          "resolved": "https://registry.npmjs.org/define-data-property/-/define-data-property-1.1.0.tgz",
+                          "integrity": "sha512-UzGwzcjyv3OtAvolTj1GoyNYzfFR+iqbGjcnBEENZVCpM4/Ng1yhGNvS3lR/xDS74Tb2wGG9WzNSNIOS9UVb2g==",
                           "requires": {
-                            "es-define-property": "^1.0.0",
-                            "es-errors": "^1.3.0",
-                            "gopd": "^1.0.1"
+                            "get-intrinsic": "^1.2.1",
+                            "gopd": "^1.0.1",
+                            "has-property-descriptors": "^1.0.0"
                           }
                         },
                         "define-properties": {
@@ -1332,19 +1398,6 @@ output:
                           "requires": {
                             "iconv-lite": "0.4.19"
                           }
-                        },
-                        "es-define-property": {
-                          "version": "1.0.0",
-                          "resolved": "https://registry.npmjs.org/es-define-property/-/es-define-property-1.0.0.tgz",
-                          "integrity": "sha512-jxayLKShrEqqzJ0eumQbVhTYQM27CfT1T35+gCgDFoL82JLsXqTJ76zv6A0YLOgEnLUMvLzsDsGIrl8NFpT2gQ==",
-                          "requires": {
-                            "get-intrinsic": "^1.2.4"
-                          }
-                        },
-                        "es-errors": {
-                          "version": "1.3.0",
-                          "resolved": "https://registry.npmjs.org/es-errors/-/es-errors-1.3.0.tgz",
-                          "integrity": "sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw=="
                         },
                         "es6-promise": {
                           "version": "3.3.1",
@@ -1393,9 +1446,9 @@ output:
                           }
                         },
                         "function-bind": {
-                          "version": "1.1.2",
-                          "resolved": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz",
-                          "integrity": "sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA=="
+                          "version": "1.1.1",
+                          "resolved": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz",
+                          "integrity": "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
                         },
                         "functions-have-names": {
                           "version": "1.2.3",
@@ -1403,15 +1456,14 @@ output:
                           "integrity": "sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ=="
                         },
                         "get-intrinsic": {
-                          "version": "1.2.4",
-                          "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.2.4.tgz",
-                          "integrity": "sha512-5uYhsJH8VJBTv7oslg4BznJYhDoRI6waYCxMmCdnTrcCrHA/fCFKoTFz2JKKE0HdDFUF7/oQuhzumXJK7paBRQ==",
+                          "version": "1.2.1",
+                          "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.2.1.tgz",
+                          "integrity": "sha512-2DcsyfABl+gVHEfCOaTrWgyt+tb6MSEGmKq+kI5HwLbIYgjgmMcV8KQ41uaKz1xxUcn9tJtgFbQUEVcEbd0FYw==",
                           "requires": {
-                            "es-errors": "^1.3.0",
-                            "function-bind": "^1.1.2",
+                            "function-bind": "^1.1.1",
+                            "has": "^1.0.3",
                             "has-proto": "^1.0.1",
-                            "has-symbols": "^1.0.3",
-                            "hasown": "^2.0.0"
+                            "has-symbols": "^1.0.3"
                           }
                         },
                         "gopd": {
@@ -1422,18 +1474,26 @@ output:
                             "get-intrinsic": "^1.1.3"
                           }
                         },
-                        "has-property-descriptors": {
-                          "version": "1.0.2",
-                          "resolved": "https://registry.npmjs.org/has-property-descriptors/-/has-property-descriptors-1.0.2.tgz",
-                          "integrity": "sha512-55JNKuIW+vq4Ke1BjOTjM2YctQIvCT7GFzHwmfZPGo5wnrgkid0YQtnAleFSqumZm4az3n2BS+erby5ipJdgrg==",
+                        "has": {
+                          "version": "1.0.3",
+                          "resolved": "https://registry.npmjs.org/has/-/has-1.0.3.tgz",
+                          "integrity": "sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==",
                           "requires": {
-                            "es-define-property": "^1.0.0"
+                            "function-bind": "^1.1.1"
+                          }
+                        },
+                        "has-property-descriptors": {
+                          "version": "1.0.0",
+                          "resolved": "https://registry.npmjs.org/has-property-descriptors/-/has-property-descriptors-1.0.0.tgz",
+                          "integrity": "sha512-62DVLZGoiEBDHQyqG4w9xCuZ7eJEwNmJRWw2VY84Oedb7WFcA27fiEVe8oUQx9hAUJ4ekurquucTGwsyO1XGdQ==",
+                          "requires": {
+                            "get-intrinsic": "^1.1.1"
                           }
                         },
                         "has-proto": {
-                          "version": "1.0.3",
-                          "resolved": "https://registry.npmjs.org/has-proto/-/has-proto-1.0.3.tgz",
-                          "integrity": "sha512-SJ1amZAJUiZS+PhsVLf5tGydlaVB8EdFpaSO4gmiUKUOxk8qzn5AIy4ZeJUmh22znIdk/uMAUT2pl3FxzVUH+Q=="
+                          "version": "1.0.1",
+                          "resolved": "https://registry.npmjs.org/has-proto/-/has-proto-1.0.1.tgz",
+                          "integrity": "sha512-7qE+iP+O+bgF9clE5+UoBFzE65mlBiVj3tKCrlNQ0Ogwm0BjpT/gK4SlLYDMybDh5I3TCTKnPPa0oMG7JDYrhg=="
                         },
                         "has-symbols": {
                           "version": "1.0.3",
@@ -1441,19 +1501,11 @@ output:
                           "integrity": "sha512-l3LCuF6MgDNwTDKkdYGEihYjt5pRPbEg46rtlmnSPlUbgmB8LOIrKJbYYFBSbnPaJexMKtiPO8hmeRjRz2Td+A=="
                         },
                         "has-tostringtag": {
-                          "version": "1.0.2",
-                          "resolved": "https://registry.npmjs.org/has-tostringtag/-/has-tostringtag-1.0.2.tgz",
-                          "integrity": "sha512-NqADB8VjPFLM2V0VvHUewwwsw0ZWBaIdgo+ieHtK3hasLz4qeCRjYcqfB6AQrBggRKppKF8L52/VqdVsO47Dlw==",
+                          "version": "1.0.0",
+                          "resolved": "https://registry.npmjs.org/has-tostringtag/-/has-tostringtag-1.0.0.tgz",
+                          "integrity": "sha512-kFjcSNhnlGV1kyoGk7OXKSawH5JOb/LzUc5w9B02hOTO0dfFRjbHQKvg1d6cf3HbeUmtU9VbbV3qzZ2Teh97WQ==",
                           "requires": {
-                            "has-symbols": "^1.0.3"
-                          }
-                        },
-                        "hasown": {
-                          "version": "2.0.2",
-                          "resolved": "https://registry.npmjs.org/hasown/-/hasown-2.0.2.tgz",
-                          "integrity": "sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==",
-                          "requires": {
-                            "function-bind": "^1.1.2"
+                            "has-symbols": "^1.0.2"
                           }
                         },
                         "iconv-lite": {
@@ -1567,12 +1619,12 @@ output:
                           }
                         },
                         "object-is": {
-                          "version": "1.1.6",
-                          "resolved": "https://registry.npmjs.org/object-is/-/object-is-1.1.6.tgz",
-                          "integrity": "sha512-F8cZ+KfGlSGi09lJT7/Nd6KJZ9ygtvYC0/UYYLI9nmQKLMnydpB9yvbv9K1uSkEu7FU9vYPmVwLg328tX+ot3Q==",
+                          "version": "1.1.5",
+                          "resolved": "https://registry.npmjs.org/object-is/-/object-is-1.1.5.tgz",
+                          "integrity": "sha512-3cyDsyHgtmi7I7DfSSI2LDp6SK2lwvtbg0p0R1e0RvTqF5ceGx+K2dfSjm1bKDMVCFEDAQvy+o8c6a7VujOddw==",
                           "requires": {
-                            "call-bind": "^1.0.7",
-                            "define-properties": "^1.2.1"
+                            "call-bind": "^1.0.2",
+                            "define-properties": "^1.1.3"
                           }
                         },
                         "object-keys": {
@@ -1594,38 +1646,23 @@ output:
                           }
                         },
                         "regexp.prototype.flags": {
-                          "version": "1.5.2",
-                          "resolved": "https://registry.npmjs.org/regexp.prototype.flags/-/regexp.prototype.flags-1.5.2.tgz",
-                          "integrity": "sha512-NcDiDkTLuPR+++OCKB0nWafEmhg/Da8aUPLPMQbK+bxKKCm1/S5he+AqYa4PlMCVBalb4/yxIRub6qkEx5yJbw==",
+                          "version": "1.5.1",
+                          "resolved": "https://registry.npmjs.org/regexp.prototype.flags/-/regexp.prototype.flags-1.5.1.tgz",
+                          "integrity": "sha512-sy6TXMN+hnP/wMy+ISxg3krXx7BAtWVO4UouuCN/ziM9UEne0euamVNafDfvC83bRNr95y0V5iijeDQFUNpvrg==",
                           "requires": {
-                            "call-bind": "^1.0.6",
-                            "define-properties": "^1.2.1",
-                            "es-errors": "^1.3.0",
-                            "set-function-name": "^2.0.1"
-                          }
-                        },
-                        "set-function-length": {
-                          "version": "1.2.2",
-                          "resolved": "https://registry.npmjs.org/set-function-length/-/set-function-length-1.2.2.tgz",
-                          "integrity": "sha512-pgRc4hJ4/sNjWCSS9AmnS40x3bNMDTknHgL5UaMBTMyJnU90EgWh1Rz+MC9eFu4BuN/UwZjKQuY/1v3rM7HMfg==",
-                          "requires": {
-                            "define-data-property": "^1.1.4",
-                            "es-errors": "^1.3.0",
-                            "function-bind": "^1.1.2",
-                            "get-intrinsic": "^1.2.4",
-                            "gopd": "^1.0.1",
-                            "has-property-descriptors": "^1.0.2"
+                            "call-bind": "^1.0.2",
+                            "define-properties": "^1.2.0",
+                            "set-function-name": "^2.0.0"
                           }
                         },
                         "set-function-name": {
-                          "version": "2.0.2",
-                          "resolved": "https://registry.npmjs.org/set-function-name/-/set-function-name-2.0.2.tgz",
-                          "integrity": "sha512-7PGFlmtwsEADb0WYyvCMa1t+yke6daIG4Wirafur5kcf+MhUnPms1UeR0CKQdTZD81yESwMHbtn+TR+dMviakQ==",
+                          "version": "2.0.1",
+                          "resolved": "https://registry.npmjs.org/set-function-name/-/set-function-name-2.0.1.tgz",
+                          "integrity": "sha512-tMNCiqYVkXIZgc2Hnoy2IvC/f8ezc5koaRFkCjrpWzGpCd3qbZXPzVy9MAZzK1ch/X0jvSkojys3oqJN0qCmdA==",
                           "requires": {
-                            "define-data-property": "^1.1.4",
-                            "es-errors": "^1.3.0",
+                            "define-data-property": "^1.0.1",
                             "functions-have-names": "^1.2.3",
-                            "has-property-descriptors": "^1.0.2"
+                            "has-property-descriptors": "^1.0.0"
                           }
                         },
                         "strict-uri-encode": {
@@ -1688,7 +1725,6 @@ output:
                         type: registry
                         url: https://registry.npmjs.org
                   version: 4.17.21
-                  directory: /npm
             updated-dependency-files:
                 - content: |
                     {
@@ -2066,7 +2102,6 @@ output:
                         type: registry
                         url: https://registry.npmjs.org
                   version: 1.8.1
-                  directory: /npm
             updated-dependency-files:
                 - content: |
                     {
@@ -2557,366 +2592,6 @@ output:
                 - [Release notes](https://github.com/jshttp/etag/releases)
                 - [Changelog](https://github.com/jshttp/etag/blob/master/HISTORY.md)
                 - [Commits](https://github.com/jshttp/etag/compare/v1.0.0...v1.8.1)
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: d15ce2f331fa91f5ebb82da530dc7f3d69c64e6e
-            dependencies:
-                - name: follow-redirects
-                  previous-requirements: []
-                  previous-version: 1.15.2
-                  requirements: []
-                  version: 1.15.6
-                  directory: /npm
-            updated-dependency-files:
-                - content: |
-                    {
-                      "name": "npm-test",
-                      "version": "1.0.0",
-                      "lockfileVersion": 2,
-                      "requires": true,
-                      "packages": {
-                        "": {
-                          "name": "npm-test",
-                          "version": "1.0.0",
-                          "license": "ISC",
-                          "dependencies": {
-                            "axios": "^0.27.2",
-                            "fetch-factory": "^0.0.1",
-                            "lodash": "^4.17.15"
-                          },
-                          "devDependencies": {
-                            "etag": "^1.0.0"
-                          }
-                        },
-                        "node_modules/asynckit": {
-                          "version": "0.4.0",
-                          "resolved": "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz",
-                          "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
-                        },
-                        "node_modules/axios": {
-                          "version": "0.27.2",
-                          "resolved": "https://registry.npmjs.org/axios/-/axios-0.27.2.tgz",
-                          "integrity": "sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==",
-                          "dependencies": {
-                            "follow-redirects": "^1.14.9",
-                            "form-data": "^4.0.0"
-                          }
-                        },
-                        "node_modules/combined-stream": {
-                          "version": "1.0.8",
-                          "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz",
-                          "integrity": "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==",
-                          "dependencies": {
-                            "delayed-stream": "~1.0.0"
-                          },
-                          "engines": {
-                            "node": ">= 0.8"
-                          }
-                        },
-                        "node_modules/delayed-stream": {
-                          "version": "1.0.0",
-                          "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz",
-                          "integrity": "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==",
-                          "engines": {
-                            "node": ">=0.4.0"
-                          }
-                        },
-                        "node_modules/encoding": {
-                          "version": "0.1.12",
-                          "resolved": "https://registry.npmjs.org/encoding/-/encoding-0.1.12.tgz",
-                          "integrity": "sha1-U4tm8+5izRq1HsMjgp0flIDHS+s=",
-                          "dependencies": {
-                            "iconv-lite": "0.4.19"
-                          }
-                        },
-                        "node_modules/es6-promise": {
-                          "version": "3.3.1",
-                          "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.3.1.tgz",
-                          "integrity": "sha1-oIzd6EzNvzTQJ6FFG8kdS80ophM="
-                        },
-                        "node_modules/etag": {
-                          "version": "1.0.0",
-                          "resolved": "https://registry.npmjs.org/etag/-/etag-1.0.0.tgz",
-                          "integrity": "sha512-IHsJ/pkALbMcdzbAC0hbN2dpoMFFQMP/TxEe8emE5cjanh9Lh053UdfeNyrlNW9vJaJWVoSk3mgo/MdOcNmtQQ==",
-                          "dev": true
-                        },
-                        "node_modules/fetch-factory": {
-                          "version": "0.0.1",
-                          "resolved": "https://registry.npmjs.org/fetch-factory/-/fetch-factory-0.0.1.tgz",
-                          "integrity": "sha1-4AdgWb2zHjFHx1s7jAQTO6jH4HE=",
-                          "dependencies": {
-                            "es6-promise": "3.3.1",
-                            "isomorphic-fetch": "2.2.1",
-                            "lodash": "3.10.1"
-                          }
-                        },
-                        "node_modules/fetch-factory/node_modules/lodash": {
-                          "version": "3.10.1",
-                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz",
-                          "integrity": "sha1-W/Rejkm6QYnhfUgnid/RW9FAt7Y="
-                        },
-                        "node_modules/follow-redirects": {
-                          "version": "1.15.6",
-                          "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.6.tgz",
-                          "integrity": "sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==",
-                          "funding": [
-                            {
-                              "type": "individual",
-                              "url": "https://github.com/sponsors/RubenVerborgh"
-                            }
-                          ],
-                          "engines": {
-                            "node": ">=4.0"
-                          },
-                          "peerDependenciesMeta": {
-                            "debug": {
-                              "optional": true
-                            }
-                          }
-                        },
-                        "node_modules/form-data": {
-                          "version": "4.0.0",
-                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz",
-                          "integrity": "sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==",
-                          "dependencies": {
-                            "asynckit": "^0.4.0",
-                            "combined-stream": "^1.0.8",
-                            "mime-types": "^2.1.12"
-                          },
-                          "engines": {
-                            "node": ">= 6"
-                          }
-                        },
-                        "node_modules/iconv-lite": {
-                          "version": "0.4.19",
-                          "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.19.tgz",
-                          "integrity": "sha512-oTZqweIP51xaGPI4uPa56/Pri/480R+mo7SeU+YETByQNhDG55ycFyNLIgta9vXhILrxXDmF7ZGhqZIcuN0gJQ==",
-                          "engines": {
-                            "node": ">=0.10.0"
-                          }
-                        },
-                        "node_modules/is-stream": {
-                          "version": "1.1.0",
-                          "resolved": "https://registry.npmjs.org/is-stream/-/is-stream-1.1.0.tgz",
-                          "integrity": "sha1-EtSj3U5o4Lec6428hBc66A2RykQ=",
-                          "engines": {
-                            "node": ">=0.10.0"
-                          }
-                        },
-                        "node_modules/isomorphic-fetch": {
-                          "version": "2.2.1",
-                          "resolved": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
-                          "integrity": "sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=",
-                          "dependencies": {
-                            "node-fetch": "1.7.3",
-                            "whatwg-fetch": "2.0.3"
-                          }
-                        },
-                        "node_modules/lodash": {
-                          "version": "4.17.15",
-                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
-                          "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
-                        },
-                        "node_modules/mime-db": {
-                          "version": "1.52.0",
-                          "resolved": "https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz",
-                          "integrity": "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==",
-                          "engines": {
-                            "node": ">= 0.6"
-                          }
-                        },
-                        "node_modules/mime-types": {
-                          "version": "2.1.35",
-                          "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz",
-                          "integrity": "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==",
-                          "dependencies": {
-                            "mime-db": "1.52.0"
-                          },
-                          "engines": {
-                            "node": ">= 0.6"
-                          }
-                        },
-                        "node_modules/node-fetch": {
-                          "version": "1.7.3",
-                          "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.7.3.tgz",
-                          "integrity": "sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==",
-                          "dependencies": {
-                            "encoding": "0.1.12",
-                            "is-stream": "1.1.0"
-                          }
-                        },
-                        "node_modules/whatwg-fetch": {
-                          "version": "2.0.3",
-                          "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz",
-                          "integrity": "sha1-nITsLc9oGH/wC8ZOEnS0QhduHIQ="
-                        }
-                      },
-                      "dependencies": {
-                        "asynckit": {
-                          "version": "0.4.0",
-                          "resolved": "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz",
-                          "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
-                        },
-                        "axios": {
-                          "version": "0.27.2",
-                          "resolved": "https://registry.npmjs.org/axios/-/axios-0.27.2.tgz",
-                          "integrity": "sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==",
-                          "requires": {
-                            "follow-redirects": "^1.14.9",
-                            "form-data": "^4.0.0"
-                          }
-                        },
-                        "combined-stream": {
-                          "version": "1.0.8",
-                          "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz",
-                          "integrity": "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==",
-                          "requires": {
-                            "delayed-stream": "~1.0.0"
-                          }
-                        },
-                        "delayed-stream": {
-                          "version": "1.0.0",
-                          "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz",
-                          "integrity": "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ=="
-                        },
-                        "encoding": {
-                          "version": "0.1.12",
-                          "resolved": "https://registry.npmjs.org/encoding/-/encoding-0.1.12.tgz",
-                          "integrity": "sha1-U4tm8+5izRq1HsMjgp0flIDHS+s=",
-                          "requires": {
-                            "iconv-lite": "0.4.19"
-                          }
-                        },
-                        "es6-promise": {
-                          "version": "3.3.1",
-                          "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.3.1.tgz",
-                          "integrity": "sha1-oIzd6EzNvzTQJ6FFG8kdS80ophM="
-                        },
-                        "etag": {
-                          "version": "1.0.0",
-                          "resolved": "https://registry.npmjs.org/etag/-/etag-1.0.0.tgz",
-                          "integrity": "sha512-IHsJ/pkALbMcdzbAC0hbN2dpoMFFQMP/TxEe8emE5cjanh9Lh053UdfeNyrlNW9vJaJWVoSk3mgo/MdOcNmtQQ==",
-                          "dev": true
-                        },
-                        "fetch-factory": {
-                          "version": "0.0.1",
-                          "resolved": "https://registry.npmjs.org/fetch-factory/-/fetch-factory-0.0.1.tgz",
-                          "integrity": "sha1-4AdgWb2zHjFHx1s7jAQTO6jH4HE=",
-                          "requires": {
-                            "es6-promise": "3.3.1",
-                            "isomorphic-fetch": "2.2.1",
-                            "lodash": "3.10.1"
-                          },
-                          "dependencies": {
-                            "lodash": {
-                              "version": "3.10.1",
-                              "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz",
-                              "integrity": "sha1-W/Rejkm6QYnhfUgnid/RW9FAt7Y="
-                            }
-                          }
-                        },
-                        "follow-redirects": {
-                          "version": "1.15.6",
-                          "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.6.tgz",
-                          "integrity": "sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA=="
-                        },
-                        "form-data": {
-                          "version": "4.0.0",
-                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz",
-                          "integrity": "sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==",
-                          "requires": {
-                            "asynckit": "^0.4.0",
-                            "combined-stream": "^1.0.8",
-                            "mime-types": "^2.1.12"
-                          }
-                        },
-                        "iconv-lite": {
-                          "version": "0.4.19",
-                          "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.19.tgz",
-                          "integrity": "sha512-oTZqweIP51xaGPI4uPa56/Pri/480R+mo7SeU+YETByQNhDG55ycFyNLIgta9vXhILrxXDmF7ZGhqZIcuN0gJQ=="
-                        },
-                        "is-stream": {
-                          "version": "1.1.0",
-                          "resolved": "https://registry.npmjs.org/is-stream/-/is-stream-1.1.0.tgz",
-                          "integrity": "sha1-EtSj3U5o4Lec6428hBc66A2RykQ="
-                        },
-                        "isomorphic-fetch": {
-                          "version": "2.2.1",
-                          "resolved": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
-                          "integrity": "sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=",
-                          "requires": {
-                            "node-fetch": "1.7.3",
-                            "whatwg-fetch": "2.0.3"
-                          }
-                        },
-                        "lodash": {
-                          "version": "4.17.15",
-                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
-                          "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
-                        },
-                        "mime-db": {
-                          "version": "1.52.0",
-                          "resolved": "https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz",
-                          "integrity": "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg=="
-                        },
-                        "mime-types": {
-                          "version": "2.1.35",
-                          "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz",
-                          "integrity": "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==",
-                          "requires": {
-                            "mime-db": "1.52.0"
-                          }
-                        },
-                        "node-fetch": {
-                          "version": "1.7.3",
-                          "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.7.3.tgz",
-                          "integrity": "sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==",
-                          "requires": {
-                            "encoding": "0.1.12",
-                            "is-stream": "1.1.0"
-                          }
-                        },
-                        "whatwg-fetch": {
-                          "version": "2.0.3",
-                          "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz",
-                          "integrity": "sha1-nITsLc9oGH/wC8ZOEnS0QhduHIQ="
-                        }
-                      }
-                    }
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /npm
-                  name: package-lock.json
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump follow-redirects from 1.15.2 to 1.15.6 in /npm
-            pr-body: |
-                Bumps [follow-redirects](https://github.com/follow-redirects/follow-redirects) from 1.15.2 to 1.15.6.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/35a517c5861d79dc8bff7db8626013d20b711b06"><code>35a517c</code></a> Release version 1.15.6 of the npm package.</li>
-                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/c4f847f85176991f95ab9c88af63b1294de8649b"><code>c4f847f</code></a> Drop Proxy-Authorization across hosts.</li>
-                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/8526b4a1b2ab3a2e4044299377df623a661caa76"><code>8526b4a</code></a> Use GitHub for disclosure.</li>
-                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/b1677ce00110ee50dc5da576751d39b281fc4944"><code>b1677ce</code></a> Release version 1.15.5 of the npm package.</li>
-                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/d8914f7982403ea096b39bd594a00ee9d3b7e224"><code>d8914f7</code></a> Preserve fragment in responseUrl.</li>
-                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/65858205e59f1e23c9bf173348a7a7cbb8ac47f5"><code>6585820</code></a> Release version 1.15.4 of the npm package.</li>
-                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/7a6567e16dfa9ad18a70bfe91784c28653fbf19d"><code>7a6567e</code></a> Disallow bracketed hostnames.</li>
-                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/05629af696588b90d64e738bc2e809a97a5f92fc"><code>05629af</code></a> Prefer native URL instead of deprecated url.parse.</li>
-                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/1cba8e85fa73f563a439fe460cf028688e4358df"><code>1cba8e8</code></a> Prefer native URL instead of legacy url.resolve.</li>
-                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/72bc2a4229bc18dc9fbd57c60579713e6264cb92"><code>72bc2a4</code></a> Simplify _processResponse error handling.</li>
-                <li>Additional commits viewable in <a href="https://github.com/follow-redirects/follow-redirects/compare/v1.15.2...v1.15.6">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump follow-redirects from 1.15.2 to 1.15.6 in /npm
-
-                Bumps [follow-redirects](https://github.com/follow-redirects/follow-redirects) from 1.15.2 to 1.15.6.
-                - [Release notes](https://github.com/follow-redirects/follow-redirects/releases)
-                - [Commits](https://github.com/follow-redirects/follow-redirects/compare/v1.15.2...v1.15.6)
     - type: mark_as_processed
       expect:
         data:

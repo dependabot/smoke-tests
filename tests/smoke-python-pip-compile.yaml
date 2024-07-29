@@ -19,6 +19,9 @@ input:
             repo: dependabot/smoke-tests
             directory: /pip-compile/
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+        credentials-metadata:
+            - host: github.com
+              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -67,7 +70,6 @@ output:
                   previous-version: 3.5.2
                   requirements: []
                   version: 3.6.0
-                  directory: /pip-compile
             updated-dependency-files:
                 - content: |
                     #
@@ -176,7 +178,6 @@ output:
                       requirement: '>=3.1,<5.0'
                       source: null
                   version: 4.0.6
-                  directory: /pip-compile
             updated-dependency-files:
                 - content: |
                     django>=3.1,<5.0
@@ -255,7 +256,6 @@ output:
                       requirement: ==1.24.1
                       source: null
                   version: 1.24.1
-                  directory: /pip-compile
             updated-dependency-files:
                 - content: |
                     django>=3.1,<4.0
@@ -381,7 +381,6 @@ output:
                   previous-version: "2022.1"
                   requirements: []
                   version: "2022.7"
-                  directory: /pip-compile
             updated-dependency-files:
                 - content: |
                     #
@@ -431,7 +430,6 @@ output:
                 Bump pytz from 2022.1 to 2022.7 in /pip-compile
 
                 Bumps [pytz](https://github.com/stub42/pytz) from 2022.1 to 2022.7.
-                - [Release notes](https://github.com/stub42/pytz/releases)
                 - [Commits](https://github.com/stub42/pytz/compare/release_2022.1...release_2022.7)
     - type: create_pull_request
       expect:
@@ -443,7 +441,6 @@ output:
                   previous-version: 0.4.2
                   requirements: []
                   version: 0.4.3
-                  directory: /pip-compile
             updated-dependency-files:
                 - content: |
                     #
