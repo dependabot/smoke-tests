@@ -5,11 +5,11 @@ input:
             - dependency-type: direct
               update-type: all
         dependency-groups:
-          - name: npm_and_yarn
-            applies-to: security-updates
-            rules:
-              patterns:
-                - '*'
+            - name: npm_and_yarn
+              applies-to: security-updates
+              rules:
+                patterns:
+                    - '*'
         dependencies:
             - '@dependabot/dummy-pkg-a'
             - '@dependabot/dummy-pkg-b'
@@ -133,6 +133,7 @@ output:
                         type: registry
                         url: https://registry.npmjs.org
                   version: 1.1.0
+                  directory: /npm/multi-dir/foo
                 - name: left-pad
                   previous-requirements:
                     - file: package.json
@@ -152,11 +153,13 @@ output:
                         type: registry
                         url: https://registry.npmjs.org
                   version: 1.3.0
+                  directory: /npm/multi-dir/foo
                 - name: '@dependabot/dummy-pkg-a'
                   previous-requirements: []
                   previous-version: 1.1.0
                   requirements: []
                   version: 2.0.0
+                  directory: /npm/multi-dir/foo
                 - name: left-pad
                   previous-requirements:
                     - file: package.json
@@ -176,6 +179,7 @@ output:
                         type: registry
                         url: https://registry.npmjs.org
                   version: 1.3.0
+                  directory: /npm/multi-dir/bar
                 - name: '@dependabot/dummy-pkg-a'
                   previous-requirements:
                     - file: package.json
@@ -195,6 +199,7 @@ output:
                         type: registry
                         url: https://registry.npmjs.org
                   version: 1.1.0
+                  directory: /npm/multi-dir/bar
             updated-dependency-files:
                 - content: |
                     {

@@ -3,6 +3,8 @@ input:
         package-manager: nuget
         allowed-updates:
             - update-type: all
+        experiments:
+            nuget_native_analysis: true
         ignore-conditions:
             - dependency-name: Newtonsoft.Json
               source: tests/smoke-nuget-version-property.yaml
@@ -12,8 +14,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget/version-property
             commit: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
-        experiments:
-            nuget_native_analysis: true
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -66,6 +66,7 @@ output:
                         source_url: https://github.com/JamesNK/Newtonsoft.Json
                         type: nuget_repo
                   version: 13.0.3
+                  directory: /nuget/version-property
             updated-dependency-files:
                 - content: |-
                     <Project>

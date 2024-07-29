@@ -173,6 +173,7 @@ output:
                       requirement: =0.3.30
                       source: null
                   version: 0.3.30
+                  directory: /cargo/multi-dir/foo
                 - name: regex
                   previous-requirements:
                     - file: Cargo.toml
@@ -188,6 +189,7 @@ output:
                       requirement: '>=1.6.0, <1.11.0'
                       source: null
                   version: 1.10.2
+                  directory: /cargo/multi-dir/foo
                 - name: itoa
                   previous-requirements:
                     - file: Cargo.toml
@@ -211,6 +213,7 @@ output:
                         type: git
                         url: https://github.com/dtolnay/itoa.git
                   version: 81c115b833792b698cbac1af2d37d707c6a641ee
+                  directory: /cargo/multi-dir/foo
                 - name: time
                   previous-requirements:
                     - file: Cargo.toml
@@ -226,6 +229,7 @@ output:
                       requirement: =0.3.30
                       source: null
                   version: 0.3.30
+                  directory: /cargo/multi-dir/bar
                 - name: rand
                   previous-requirements:
                     - file: Cargo.toml
@@ -249,6 +253,7 @@ output:
                         type: git
                         url: ssh://git@github.com/rust-random/rand.git
                   version: 937320cbfeebd4352a23086d9c6e68f067f74644
+                  directory: /cargo/multi-dir/bar
             updated-dependency-files:
                 - content: |
                     [package]

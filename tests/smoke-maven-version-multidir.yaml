@@ -202,11 +202,12 @@ output:
                       groups: []
                       metadata:
                         packaging_type: pom
-                      requirement: 3.2.0
+                      requirement: 3.1.5
                       source:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
-                  version: 3.2.0
+                  version: 3.1.5
+                  directory: /maven/multi-dir/foo
                 - name: org.springframework.boot:spring-boot-starter-parent
                   previous-requirements:
                     - file: pom.xml
@@ -221,11 +222,12 @@ output:
                       groups: []
                       metadata:
                         packaging_type: pom
-                      requirement: 3.2.0
+                      requirement: 3.1.5
                       source:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
-                  version: 3.2.0
+                  version: 3.1.5
+                  directory: /maven/multi-dir/bar
             updated-dependency-files:
                 - content: |
                     <?xml version="1.0" encoding="UTF-8"?>
@@ -242,7 +244,7 @@ output:
                       <parent>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-starter-parent</artifactId>
-                        <version>3.2.0</version>
+                        <version>3.1.5</version>
                         <relativePath /> <!-- lookup parent from repository -->
                       </parent>
 
@@ -315,7 +317,7 @@ output:
                       <parent>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-starter-parent</artifactId>
-                        <version>3.2.0</version>
+                        <version>3.1.5</version>
                         <relativePath /> <!-- lookup parent from repository -->
                       </parent>
 
@@ -378,61 +380,61 @@ output:
                 Bumps the maven_pkgs group with 1 update in the /maven/multi-dir/foo directory: [org.springframework.boot:spring-boot-starter-parent](https://github.com/spring-projects/spring-boot).
                 Bumps the maven_pkgs group with 1 update in the /maven/multi-dir/bar directory: [org.springframework.boot:spring-boot-starter-parent](https://github.com/spring-projects/spring-boot).
 
-                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.10.RELEASE to 3.2.0
+                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.10.RELEASE to 3.1.5
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/spring-projects/spring-boot/releases">org.springframework.boot:spring-boot-starter-parent's releases</a>.</em></p>
                 <blockquote>
-                <h2>v3.2.0</h2>
-                <h2>:star: New Features</h2>
+                <h2>v3.1.5</h2>
+                <h2>:warning: Noteworthy Changes</h2>
                 <ul>
-                <li>Auto-configure observations for RestClients <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38500">#38500</a></li>
-                <li>Add support for Oracle Free, the replacement for Oracle XE, with Testcontainers and Docker Compose <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38476">#38476</a></li>
-                <li>Provide dependency management for org.crac:crac <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38378">#38378</a></li>
-                <li>Add new properties for Liquibase 4.24.0 <a href="https://redirect.github.com/spring-projects/spring-boot/pull/38274">#38274</a></li>
-                <li>Provide a way to create custom ApplicationContextFactory in SpringBootContextLoader <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38205">#38205</a></li>
-                <li>Report friendly error when failing to find AOT initializer <a href="https://redirect.github.com/spring-projects/spring-boot/pull/38188">#38188</a></li>
+                <li>The behavior of <code>spring.jms.listener.concurrency</code> has been corrected to match the documentation (<a href="https://redirect.github.com/spring-projects/spring-boot/pull/37180">#37180</a>). If you were setting <code>spring.jms.listener.concurrency</code> without also setting <code>spring.jms.listener.max-concurrency</code>, please review your configuration when upgrading.</li>
                 </ul>
                 <h2>:lady_beetle: Bug Fixes</h2>
                 <ul>
-                <li>Annotation based ConditionalOnBean checks can cause early initialization of FactoryBeans <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38507">#38507</a></li>
-                <li>CRaC restoration fails when Actuator's running on a separate port <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38502">#38502</a></li>
-                <li>App that depends on Tomcat and on Jetty's websocket-server module fails to start with IllegalStateException: WebSocketComponents has not been created <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38286">#38286</a></li>
-                <li>App fails to start with a NoSuchMethodError when using Flyway 10.0.0 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38268">#38268</a></li>
-                <li>MeterRegistry throws BeanCreationNotAllowedException on shutdown <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38240">#38240</a></li>
-                <li>Resolution of productionRuntimeClasspath configuration may select the wrong variant and contain a dependency's source jar <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38233">#38233</a></li>
-                <li>Docker JSON parsing fails on certain locales <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38220">#38220</a></li>
-                <li>FileNotFoundException is thrown serving resources due to JarUrlConnection.getLastModified() returning zero <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38204">#38204</a></li>
-                <li>Failed to extract parameter names exception thrown when binding with non-enumerable property source <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38201">#38201</a></li>
-                <li>Spring Boot 3.2.0-RC1 application fails on JDK with CRaC but without a dependency on org.crac:crac <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38186">#38186</a></li>
-                <li>Missing configuration processing for PartEvent support <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37642">#37642</a></li>
+                <li>Constructor binding with a custom collection type does not work <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37941">#37941</a></li>
+                <li><code>@Order</code> does not work on (CommandLine|Application)Runner <code>@Bean</code> methods <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37938">#37938</a></li>
+                <li><code>@ComponentScan</code> on a test class is processed when creating a test context but is not included in the context's cache key <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37924">#37924</a></li>
+                <li>Restarter creates memory leak in tests <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37920">#37920</a></li>
+                <li>AOT processing fails when a <code>@WebServlet</code> found by scanning is annotated with <code>@MultipartConfig</code> <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37883">#37883</a></li>
+                <li>Gradle plugin uses to-be-deprecated API for getting and setting file permissions <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37881">#37881</a></li>
+                <li>Task executor metrics are not registered when using lazy initialization <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37838">#37838</a></li>
+                <li>Gradle AOT processing tasks do not use project's Java toolchain <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37826">#37826</a></li>
+                <li><code>@ServiceConnection</code> is not found when used in an interface implemented by a test class <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37671">#37671</a></li>
+                <li>Image building can fail when using GraalVM compilation and a remote Docker daemon <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37665">#37665</a></li>
+                <li>NPE from Jetty's WebSocketUpgradeFilter when testing with <code>@SpringBootTest</code>, <code>@AutoConfigureMockMvc</code>, and MockMvc <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37663">#37663</a></li>
+                <li><code>@WebListener</code> does not work in a native image without additional reflection hints <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37635">#37635</a></li>
+                <li>AspectJ transaction management with compile-time weaving does not work with spring.main.lazy-initialization=true <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37632">#37632</a></li>
+                <li>IPv6 IP addresses cannot be used with RabbitMQ <a href="https://redirect.github.com/spring-projects/spring-boot/pull/37619">#37619</a></li>
+                <li>Unwanted Logback status messages are sometimes logged during startup <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37600">#37600</a></li>
+                <li>Managed types for Neo4j are not used in Neo4j Data auto configuration <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37594">#37594</a></li>
+                <li>fileMode and dirMode are not applied to all entries in an archive produced by BootJar <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37588">#37588</a></li>
+                <li>Application fails to start when an optional config import cannot be resolved <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37570">#37570</a></li>
+                <li>Contrary to the documentation, setting spring.jms.listener.concurrency alone configures the maximum concurrency <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37553">#37553</a></li>
+                <li>Dependency management for kafka-server-common with a test classifier is missing <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37542">#37542</a></li>
+                <li>RepackageMojo doesn't support 1 digit numerical values for project.build.outputTimestamp <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37535">#37535</a></li>
                 </ul>
                 <h2>:notebook_with_decorative_cover: Documentation</h2>
                 <ul>
-                <li>Document supported SQL comment prefixes <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38496">#38496</a></li>
-                <li>Update access log pattern documentation to align with changes in Tomcat 10 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38425">#38425</a></li>
-                <li>Update Dynatrace docs with info about the meter metadata toggle <a href="https://redirect.github.com/spring-projects/spring-boot/pull/38368">#38368</a></li>
-                <li>Improve documentation regarding tracing in tests <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38362">#38362</a></li>
-                <li>Document the accepted inputs when configuring tags on spring-boot:build-image and bootBuildImage <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38354">#38354</a></li>
-                <li>Document how to use cloudfoundry specific actuators with a custom base path for webflux applications <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38353">#38353</a></li>
-                <li>Document Liberica JDK with CRaC <a href="https://redirect.github.com/spring-projects/spring-boot/pull/38350">#38350</a></li>
-                <li>Add a Restarting a stopped or failed Job section to the batch howto <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38341">#38341</a></li>
-                <li>Clarify documentation on importing Testcontainer declarations and using <code>@ServiceConnection</code> or <code>@DynamicPropertySource</code> <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38337">#38337</a></li>
-                <li>Make distinction between Testcontainers for integration tests and development more clear in documentation <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38336">#38336</a></li>
-                <li>When using Testcontainers at development time with <code>@ServiceConnection</code> on a <code>@Bean</code> method, describe when to use the name attribute and why <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38335">#38335</a></li>
-                <li>Fix link to Elasticsearch health indicator <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38334">#38334</a></li>
-                <li>Update Spring Framework documentation links <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38289">#38289</a></li>
-                <li>Code sample in &quot;Developing Your First Spring Boot Application&quot; does not work <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38272">#38272</a></li>
-                <li>Improve --help and documentation for &quot;encodepassword -a/--algorithm&quot; in the Spring Boot CLI <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38249">#38249</a></li>
-                <li>Add how-to documentation for test-only database migrations with Flyway/Liquibase <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38231">#38231</a></li>
-                <li>Document that PEM content can be used directly in application.yaml <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38215">#38215</a></li>
-                <li>Document that TomcatConnectorCustomizers are not applied to additional connectors <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38198">#38198</a></li>
+                <li>Document that 'spring.docker.compose.file' can be used to share Docker Compose configuration between applications <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37886">#37886</a></li>
+                <li>Remove link to LiveReload website due to timeout <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37691">#37691</a></li>
+                <li>Refer to ActiveMQ as ActiveMQ &quot;Classic&quot; <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37615">#37615</a></li>
+                <li>Removal of spring.webflux.multipart.streaming is not documented <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37609">#37609</a></li>
+                <li>Default value of spring.jmx.registration-policy is not documented <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37596">#37596</a></li>
+                <li>Update documentation to align with Mockito 5 using the inline mock maker by default <a href="https://redirect.github.com/spring-projects/spring-boot/pull/37561">#37561</a></li>
+                <li>Add Javadoc since for AbstractAotMojo.getSession() <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37547">#37547</a></li>
+                <li>Document support for Java 21 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37532">#37532</a></li>
+                <li>Use more idiomatic Kotlin in example for &quot;Map Health Indicators to Micrometer Metrics&quot; <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37510">#37510</a></li>
                 </ul>
                 <h2>:hammer: Dependency Upgrades</h2>
                 <ul>
-                <li>Upgrade to AspectJ 1.9.20.1 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38358">#38358</a></li>
-                <li>Upgrade to Byte Buddy 1.14.10 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38407">#38407</a></li>
-                <li>Upgrade to DB2 JDBC 11.5.9.0 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38408">#38408</a></li>
+                <li>Upgrade to Byte Buddy 1.14.9 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37853">#37853</a></li>
+                <li>Upgrade to Couchbase Client 3.4.11 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37759">#37759</a></li>
+                <li>Upgrade to Dropwizard Metrics 4.2.21 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37897">#37897</a></li>
+                <li>Upgrade to Hibernate 6.2.13.Final <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37854">#37854</a></li>
+                <li>Upgrade to HttpCore5 5.2.3 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37762">#37762</a></li>
+                <li>Upgrade to Infinispan 14.0.19.Final <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37855">#37855</a></li>
+                <li>Upgrade to Jackson Bom 2.15.3 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37898">#37898</a></li>
                 </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
@@ -441,76 +443,76 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/f08a69e610faa92de2300853db71b428accd4dfa"><code>f08a69e</code></a> Release v3.2.0</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/f3d48e64a5f4a310e694d6e83987f6db17af7632"><code>f3d48e6</code></a> Set LATEST_GA to true for Homebrew and SDKMan</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/1514d6fd57c48f2ea1931c023ef9cdf2bf87b006"><code>1514d6f</code></a> Upgrade to Spring Framework 6.1.1</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/0da9c642616a7223b6186eb43d4af03c5ba08249"><code>0da9c64</code></a> Merge branch '3.1.x'</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/9552335c15a92d20a97dff28839809ade1b2ab06"><code>9552335</code></a> Next development version (v3.1.7-SNAPSHOT)</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/f54a539c8690d9429deb739d2c55f92c1aa9da85"><code>f54a539</code></a> Merge branch '3.1.x'</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/11db8c4a46e0786edab62faaeafbaa1d92bbda3a"><code>11db8c4</code></a> Fix final release flag in CI pipeline</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/8f2d7d4ceffa9a09c89e65753d00738da7b8a80a"><code>8f2d7d4</code></a> Merge pull request <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38508">#38508</a> from izeye</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/f9f73aa14684f96b2e6fb699939b1857daeda2f7"><code>f9f73aa</code></a> Polish</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/f613ab89b9cb83ec19bc35fb63068f31e22c86a0"><code>f613ab8</code></a> Auto-configure observations for RestClients</li>
-                <li>Additional commits viewable in <a href="https://github.com/spring-projects/spring-boot/compare/v1.5.10.RELEASE...v3.2.0">compare view</a></li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/b2663ab76ae151f51c411ebc6ba8a3904517a5bf"><code>b2663ab</code></a> Release v3.1.5</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/e9201f1a667ebcca42eda60de642cab28997a600"><code>e9201f1</code></a> Merge branch '3.0.x' into 3.1.x</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/c16f9dda96fe5863a10240d2b6f02bb69b9e6811"><code>c16f9dd</code></a> Next development version (v3.0.13-SNAPSHOT)</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/343046d30ccdd9ee3612b6915a3bc0235bef25ce"><code>343046d</code></a> Polish</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/fcb75b6a1e61dd1772eda2b8a5e40671314c8ff5"><code>fcb75b6</code></a> Search implemented interfaces on superclass for <a href="https://github.com/ServiceConnection"><code>@​ServiceConnection</code></a></li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/5fc1d319531f64881c1ec1124653d7f870d23582"><code>5fc1d31</code></a> Merge branch '3.0.x' into 3.1.x</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/18267be47dda1a79f91fa0d68fad2d489db08a2d"><code>18267be</code></a> Merge branch '2.7.x' into 3.0.x</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/fe69930ac7c9947bd45d6016d13819797339df12"><code>fe69930</code></a> Correct configuration of Sonatype credentials used for promotion</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/64cf3b0712e11d25db5671bdb4a5c676d7afac59"><code>64cf3b0</code></a> Document how to share services with Docker Compose</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/8b6b6378f53cef91f310063d2e7ce810c0dcc8f9"><code>8b6b637</code></a> Polish CI pipeline</li>
+                <li>Additional commits viewable in <a href="https://github.com/spring-projects/spring-boot/compare/v1.5.10.RELEASE...v3.1.5">compare view</a></li>
                 </ul>
                 </details>
                 <br />
 
-                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.9.RELEASE to 3.2.0
+                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.9.RELEASE to 3.1.5
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/spring-projects/spring-boot/releases">org.springframework.boot:spring-boot-starter-parent's releases</a>.</em></p>
                 <blockquote>
-                <h2>v3.2.0</h2>
-                <h2>:star: New Features</h2>
+                <h2>v3.1.5</h2>
+                <h2>:warning: Noteworthy Changes</h2>
                 <ul>
-                <li>Auto-configure observations for RestClients <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38500">#38500</a></li>
-                <li>Add support for Oracle Free, the replacement for Oracle XE, with Testcontainers and Docker Compose <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38476">#38476</a></li>
-                <li>Provide dependency management for org.crac:crac <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38378">#38378</a></li>
-                <li>Add new properties for Liquibase 4.24.0 <a href="https://redirect.github.com/spring-projects/spring-boot/pull/38274">#38274</a></li>
-                <li>Provide a way to create custom ApplicationContextFactory in SpringBootContextLoader <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38205">#38205</a></li>
-                <li>Report friendly error when failing to find AOT initializer <a href="https://redirect.github.com/spring-projects/spring-boot/pull/38188">#38188</a></li>
+                <li>The behavior of <code>spring.jms.listener.concurrency</code> has been corrected to match the documentation (<a href="https://redirect.github.com/spring-projects/spring-boot/pull/37180">#37180</a>). If you were setting <code>spring.jms.listener.concurrency</code> without also setting <code>spring.jms.listener.max-concurrency</code>, please review your configuration when upgrading.</li>
                 </ul>
                 <h2>:lady_beetle: Bug Fixes</h2>
                 <ul>
-                <li>Annotation based ConditionalOnBean checks can cause early initialization of FactoryBeans <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38507">#38507</a></li>
-                <li>CRaC restoration fails when Actuator's running on a separate port <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38502">#38502</a></li>
-                <li>App that depends on Tomcat and on Jetty's websocket-server module fails to start with IllegalStateException: WebSocketComponents has not been created <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38286">#38286</a></li>
-                <li>App fails to start with a NoSuchMethodError when using Flyway 10.0.0 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38268">#38268</a></li>
-                <li>MeterRegistry throws BeanCreationNotAllowedException on shutdown <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38240">#38240</a></li>
-                <li>Resolution of productionRuntimeClasspath configuration may select the wrong variant and contain a dependency's source jar <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38233">#38233</a></li>
-                <li>Docker JSON parsing fails on certain locales <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38220">#38220</a></li>
-                <li>FileNotFoundException is thrown serving resources due to JarUrlConnection.getLastModified() returning zero <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38204">#38204</a></li>
-                <li>Failed to extract parameter names exception thrown when binding with non-enumerable property source <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38201">#38201</a></li>
-                <li>Spring Boot 3.2.0-RC1 application fails on JDK with CRaC but without a dependency on org.crac:crac <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38186">#38186</a></li>
-                <li>Missing configuration processing for PartEvent support <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37642">#37642</a></li>
+                <li>Constructor binding with a custom collection type does not work <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37941">#37941</a></li>
+                <li><code>@Order</code> does not work on (CommandLine|Application)Runner <code>@Bean</code> methods <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37938">#37938</a></li>
+                <li><code>@ComponentScan</code> on a test class is processed when creating a test context but is not included in the context's cache key <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37924">#37924</a></li>
+                <li>Restarter creates memory leak in tests <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37920">#37920</a></li>
+                <li>AOT processing fails when a <code>@WebServlet</code> found by scanning is annotated with <code>@MultipartConfig</code> <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37883">#37883</a></li>
+                <li>Gradle plugin uses to-be-deprecated API for getting and setting file permissions <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37881">#37881</a></li>
+                <li>Task executor metrics are not registered when using lazy initialization <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37838">#37838</a></li>
+                <li>Gradle AOT processing tasks do not use project's Java toolchain <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37826">#37826</a></li>
+                <li><code>@ServiceConnection</code> is not found when used in an interface implemented by a test class <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37671">#37671</a></li>
+                <li>Image building can fail when using GraalVM compilation and a remote Docker daemon <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37665">#37665</a></li>
+                <li>NPE from Jetty's WebSocketUpgradeFilter when testing with <code>@SpringBootTest</code>, <code>@AutoConfigureMockMvc</code>, and MockMvc <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37663">#37663</a></li>
+                <li><code>@WebListener</code> does not work in a native image without additional reflection hints <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37635">#37635</a></li>
+                <li>AspectJ transaction management with compile-time weaving does not work with spring.main.lazy-initialization=true <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37632">#37632</a></li>
+                <li>IPv6 IP addresses cannot be used with RabbitMQ <a href="https://redirect.github.com/spring-projects/spring-boot/pull/37619">#37619</a></li>
+                <li>Unwanted Logback status messages are sometimes logged during startup <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37600">#37600</a></li>
+                <li>Managed types for Neo4j are not used in Neo4j Data auto configuration <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37594">#37594</a></li>
+                <li>fileMode and dirMode are not applied to all entries in an archive produced by BootJar <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37588">#37588</a></li>
+                <li>Application fails to start when an optional config import cannot be resolved <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37570">#37570</a></li>
+                <li>Contrary to the documentation, setting spring.jms.listener.concurrency alone configures the maximum concurrency <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37553">#37553</a></li>
+                <li>Dependency management for kafka-server-common with a test classifier is missing <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37542">#37542</a></li>
+                <li>RepackageMojo doesn't support 1 digit numerical values for project.build.outputTimestamp <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37535">#37535</a></li>
                 </ul>
                 <h2>:notebook_with_decorative_cover: Documentation</h2>
                 <ul>
-                <li>Document supported SQL comment prefixes <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38496">#38496</a></li>
-                <li>Update access log pattern documentation to align with changes in Tomcat 10 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38425">#38425</a></li>
-                <li>Update Dynatrace docs with info about the meter metadata toggle <a href="https://redirect.github.com/spring-projects/spring-boot/pull/38368">#38368</a></li>
-                <li>Improve documentation regarding tracing in tests <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38362">#38362</a></li>
-                <li>Document the accepted inputs when configuring tags on spring-boot:build-image and bootBuildImage <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38354">#38354</a></li>
-                <li>Document how to use cloudfoundry specific actuators with a custom base path for webflux applications <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38353">#38353</a></li>
-                <li>Document Liberica JDK with CRaC <a href="https://redirect.github.com/spring-projects/spring-boot/pull/38350">#38350</a></li>
-                <li>Add a Restarting a stopped or failed Job section to the batch howto <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38341">#38341</a></li>
-                <li>Clarify documentation on importing Testcontainer declarations and using <code>@ServiceConnection</code> or <code>@DynamicPropertySource</code> <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38337">#38337</a></li>
-                <li>Make distinction between Testcontainers for integration tests and development more clear in documentation <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38336">#38336</a></li>
-                <li>When using Testcontainers at development time with <code>@ServiceConnection</code> on a <code>@Bean</code> method, describe when to use the name attribute and why <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38335">#38335</a></li>
-                <li>Fix link to Elasticsearch health indicator <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38334">#38334</a></li>
-                <li>Update Spring Framework documentation links <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38289">#38289</a></li>
-                <li>Code sample in &quot;Developing Your First Spring Boot Application&quot; does not work <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38272">#38272</a></li>
-                <li>Improve --help and documentation for &quot;encodepassword -a/--algorithm&quot; in the Spring Boot CLI <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38249">#38249</a></li>
-                <li>Add how-to documentation for test-only database migrations with Flyway/Liquibase <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38231">#38231</a></li>
-                <li>Document that PEM content can be used directly in application.yaml <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38215">#38215</a></li>
-                <li>Document that TomcatConnectorCustomizers are not applied to additional connectors <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38198">#38198</a></li>
+                <li>Document that 'spring.docker.compose.file' can be used to share Docker Compose configuration between applications <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37886">#37886</a></li>
+                <li>Remove link to LiveReload website due to timeout <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37691">#37691</a></li>
+                <li>Refer to ActiveMQ as ActiveMQ &quot;Classic&quot; <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37615">#37615</a></li>
+                <li>Removal of spring.webflux.multipart.streaming is not documented <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37609">#37609</a></li>
+                <li>Default value of spring.jmx.registration-policy is not documented <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37596">#37596</a></li>
+                <li>Update documentation to align with Mockito 5 using the inline mock maker by default <a href="https://redirect.github.com/spring-projects/spring-boot/pull/37561">#37561</a></li>
+                <li>Add Javadoc since for AbstractAotMojo.getSession() <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37547">#37547</a></li>
+                <li>Document support for Java 21 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37532">#37532</a></li>
+                <li>Use more idiomatic Kotlin in example for &quot;Map Health Indicators to Micrometer Metrics&quot; <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37510">#37510</a></li>
                 </ul>
                 <h2>:hammer: Dependency Upgrades</h2>
                 <ul>
-                <li>Upgrade to AspectJ 1.9.20.1 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38358">#38358</a></li>
-                <li>Upgrade to Byte Buddy 1.14.10 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38407">#38407</a></li>
-                <li>Upgrade to DB2 JDBC 11.5.9.0 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38408">#38408</a></li>
+                <li>Upgrade to Byte Buddy 1.14.9 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37853">#37853</a></li>
+                <li>Upgrade to Couchbase Client 3.4.11 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37759">#37759</a></li>
+                <li>Upgrade to Dropwizard Metrics 4.2.21 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37897">#37897</a></li>
+                <li>Upgrade to Hibernate 6.2.13.Final <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37854">#37854</a></li>
+                <li>Upgrade to HttpCore5 5.2.3 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37762">#37762</a></li>
+                <li>Upgrade to Infinispan 14.0.19.Final <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37855">#37855</a></li>
+                <li>Upgrade to Jackson Bom 2.15.3 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/37898">#37898</a></li>
                 </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
@@ -519,17 +521,17 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/f08a69e610faa92de2300853db71b428accd4dfa"><code>f08a69e</code></a> Release v3.2.0</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/f3d48e64a5f4a310e694d6e83987f6db17af7632"><code>f3d48e6</code></a> Set LATEST_GA to true for Homebrew and SDKMan</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/1514d6fd57c48f2ea1931c023ef9cdf2bf87b006"><code>1514d6f</code></a> Upgrade to Spring Framework 6.1.1</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/0da9c642616a7223b6186eb43d4af03c5ba08249"><code>0da9c64</code></a> Merge branch '3.1.x'</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/9552335c15a92d20a97dff28839809ade1b2ab06"><code>9552335</code></a> Next development version (v3.1.7-SNAPSHOT)</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/f54a539c8690d9429deb739d2c55f92c1aa9da85"><code>f54a539</code></a> Merge branch '3.1.x'</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/11db8c4a46e0786edab62faaeafbaa1d92bbda3a"><code>11db8c4</code></a> Fix final release flag in CI pipeline</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/8f2d7d4ceffa9a09c89e65753d00738da7b8a80a"><code>8f2d7d4</code></a> Merge pull request <a href="https://redirect.github.com/spring-projects/spring-boot/issues/38508">#38508</a> from izeye</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/f9f73aa14684f96b2e6fb699939b1857daeda2f7"><code>f9f73aa</code></a> Polish</li>
-                <li><a href="https://github.com/spring-projects/spring-boot/commit/f613ab89b9cb83ec19bc35fb63068f31e22c86a0"><code>f613ab8</code></a> Auto-configure observations for RestClients</li>
-                <li>Additional commits viewable in <a href="https://github.com/spring-projects/spring-boot/compare/v1.5.10.RELEASE...v3.2.0">compare view</a></li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/b2663ab76ae151f51c411ebc6ba8a3904517a5bf"><code>b2663ab</code></a> Release v3.1.5</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/e9201f1a667ebcca42eda60de642cab28997a600"><code>e9201f1</code></a> Merge branch '3.0.x' into 3.1.x</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/c16f9dda96fe5863a10240d2b6f02bb69b9e6811"><code>c16f9dd</code></a> Next development version (v3.0.13-SNAPSHOT)</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/343046d30ccdd9ee3612b6915a3bc0235bef25ce"><code>343046d</code></a> Polish</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/fcb75b6a1e61dd1772eda2b8a5e40671314c8ff5"><code>fcb75b6</code></a> Search implemented interfaces on superclass for <a href="https://github.com/ServiceConnection"><code>@​ServiceConnection</code></a></li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/5fc1d319531f64881c1ec1124653d7f870d23582"><code>5fc1d31</code></a> Merge branch '3.0.x' into 3.1.x</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/18267be47dda1a79f91fa0d68fad2d489db08a2d"><code>18267be</code></a> Merge branch '2.7.x' into 3.0.x</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/fe69930ac7c9947bd45d6016d13819797339df12"><code>fe69930</code></a> Correct configuration of Sonatype credentials used for promotion</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/64cf3b0712e11d25db5671bdb4a5c676d7afac59"><code>64cf3b0</code></a> Document how to share services with Docker Compose</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/8b6b6378f53cef91f310063d2e7ce810c0dcc8f9"><code>8b6b637</code></a> Polish CI pipeline</li>
+                <li>Additional commits viewable in <a href="https://github.com/spring-projects/spring-boot/compare/v1.5.10.RELEASE...v3.1.5">compare view</a></li>
                 </ul>
                 </details>
                 <br />
@@ -540,13 +542,13 @@ output:
                 Bumps the maven_pkgs group with 1 update in the /maven/multi-dir/bar directory: [org.springframework.boot:spring-boot-starter-parent](https://github.com/spring-projects/spring-boot).
 
 
-                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.10.RELEASE to 3.2.0
+                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.10.RELEASE to 3.1.5
                 - [Release notes](https://github.com/spring-projects/spring-boot/releases)
-                - [Commits](https://github.com/spring-projects/spring-boot/compare/v1.5.10.RELEASE...v3.2.0)
+                - [Commits](https://github.com/spring-projects/spring-boot/compare/v1.5.10.RELEASE...v3.1.5)
 
-                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.9.RELEASE to 3.2.0
+                Updates `org.springframework.boot:spring-boot-starter-parent` from 1.5.9.RELEASE to 3.1.5
                 - [Release notes](https://github.com/spring-projects/spring-boot/releases)
-                - [Commits](https://github.com/spring-projects/spring-boot/compare/v1.5.10.RELEASE...v3.2.0)
+                - [Commits](https://github.com/spring-projects/spring-boot/compare/v1.5.10.RELEASE...v3.1.5)
             dependency-group:
                 name: maven_pkgs
     - type: mark_as_processed

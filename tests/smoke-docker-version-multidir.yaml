@@ -95,6 +95,7 @@ output:
                         registry: mcr.microsoft.com
                         tag: "8.0"
                   version: "8.0"
+                  directory: /docker/multi-dir/dotnet6
                 - name: dotnet/sdk
                   previous-requirements:
                     - file: Dockerfile
@@ -112,6 +113,7 @@ output:
                         registry: mcr.microsoft.com
                         tag: "8.0"
                   version: "8.0"
+                  directory: /docker/multi-dir/dotnet6
                 - name: dotnet/aspnet
                   previous-requirements:
                     - file: Dockerfile
@@ -129,6 +131,7 @@ output:
                         registry: mcr.microsoft.com
                         tag: 8.0-cbl-mariner2.0
                   version: 8.0-cbl-mariner2.0
+                  directory: /docker/multi-dir/dotnet7
                 - name: dotnet/sdk
                   previous-requirements:
                     - file: Dockerfile
@@ -146,6 +149,7 @@ output:
                         registry: mcr.microsoft.com
                         tag: "8.0"
                   version: "8.0"
+                  directory: /docker/multi-dir/dotnet7
             updated-dependency-files:
                 - content: "# syntax=docker/dockerfile:1.3\n\n# The first image is used by Visual Studio in container fast mode - this should be the base for the final image \n# See https://aka.ms/containerfastmode to understand how Visual Studio uses the first image for faster debugging.\nFROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base\n\nFROM mcr.microsoft.com/dotnet/sdk:8.0 AS build\n\nFROM base AS final\n\nRUN apt-get update && \\\n    apt-get upgrade -y\n"
                   content_encoding: utf-8

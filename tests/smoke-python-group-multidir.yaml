@@ -5,11 +5,11 @@ input:
             - dependency-type: direct
               update-type: all
         dependency-groups:
-          - name: pip
-            applies-to: security-updates
-            rules:
-              patterns:
-                - '*'
+            - name: pip
+              applies-to: security-updates
+              rules:
+                patterns:
+                    - '*'
         dependencies:
             - urllib3
             - numpy
@@ -107,6 +107,7 @@ output:
                       requirement: ==1.0.1
                       source: null
                   version: 1.0.1
+                  directory: /pip/multi-dir/foo
                 - name: urllib3
                   previous-requirements:
                     - file: requirements.txt
@@ -122,6 +123,7 @@ output:
                       requirement: ==1.0.1
                       source: null
                   version: 1.0.1
+                  directory: /pip/multi-dir/bar
                 - name: numpy
                   previous-requirements:
                     - file: requirements.txt
@@ -137,6 +139,7 @@ output:
                       requirement: ==1.3.0
                       source: null
                   version: 1.3.0
+                  directory: /pip/multi-dir/bar
             updated-dependency-files:
                 - content: |
                     urllib3==1.0.1

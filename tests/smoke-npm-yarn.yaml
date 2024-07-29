@@ -17,9 +17,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /yarn/subdir
             commit: 689859ec8625145882baf9dc1d407ece646392ae
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -110,6 +107,7 @@ output:
                         type: registry
                         url: https://registry.yarnpkg.com
                   version: 0.2.1
+                  directory: /yarn/subdir
             updated-dependency-files:
                 - content: |
                     {
@@ -151,14 +149,16 @@ output:
                       resolved "https://registry.yarnpkg.com/assertion-error/-/assertion-error-1.1.0.tgz#e60b6b0e8f301bd97e5375215bda406c85118c0b"
                       integrity sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==
 
-                    call-bind@^1.0.2:
-                      version "1.0.5"
-                      resolved "https://registry.yarnpkg.com/call-bind/-/call-bind-1.0.5.tgz#6fa2b7845ce0ea49bf4d8b9ef64727a2c2e2e513"
-                      integrity sha512-C3nQxfFZxFRVoJoGKKI8y3MOEo129NQ+FgQ08iye+Mk4zNZZGdjfs06bVTr+DBSlA66Q2VEcMki/cUCP4SercQ==
+                    call-bind@^1.0.2, call-bind@^1.0.6, call-bind@^1.0.7:
+                      version "1.0.7"
+                      resolved "https://registry.yarnpkg.com/call-bind/-/call-bind-1.0.7.tgz#06016599c40c56498c18769d2730be242b6fa3b9"
+                      integrity sha512-GHTSNSYICQ7scH7sZ+M2rFopRoLh8t2bLSW6BbgrtLsahOIB5iyAVJf9GjWK3cYTDaMj4XdBpM1cA6pIS0Kv2w==
                       dependencies:
+                        es-define-property "^1.0.0"
+                        es-errors "^1.3.0"
                         function-bind "^1.1.2"
-                        get-intrinsic "^1.2.1"
-                        set-function-length "^1.1.1"
+                        get-intrinsic "^1.2.4"
+                        set-function-length "^1.2.1"
 
                     "chai@>=1.9.2 <4.0.0":
                       version "3.5.0"
@@ -195,16 +195,16 @@ output:
                         object-keys "^1.1.1"
                         regexp.prototype.flags "^1.5.1"
 
-                    define-data-property@^1.0.1, define-data-property@^1.1.1:
-                      version "1.1.1"
-                      resolved "https://registry.yarnpkg.com/define-data-property/-/define-data-property-1.1.1.tgz#c35f7cd0ab09883480d12ac5cb213715587800b3"
-                      integrity sha512-E7uGkTzkk1d0ByLeSc6ZsFS79Axg+m1P/VsgYsxHgiuc3tFSj+MjMIwe90FC4lOAZzNBdY7kkO2P2wKdsQ1vgQ==
+                    define-data-property@^1.0.1, define-data-property@^1.1.4:
+                      version "1.1.4"
+                      resolved "https://registry.yarnpkg.com/define-data-property/-/define-data-property-1.1.4.tgz#894dc141bb7d3060ae4366f6a0107e68fbe48c5e"
+                      integrity sha512-rBMvIzlpA8v6E+SJZoo++HAYqsLrkg7MSfIinMPFhmkorw7X+dOXVJQs+QT69zGkzMyfDnIMN2Wid1+NbL3T+A==
                       dependencies:
-                        get-intrinsic "^1.2.1"
+                        es-define-property "^1.0.0"
+                        es-errors "^1.3.0"
                         gopd "^1.0.1"
-                        has-property-descriptors "^1.0.0"
 
-                    define-properties@^1.1.3, define-properties@^1.2.0:
+                    define-properties@^1.2.1:
                       version "1.2.1"
                       resolved "https://registry.yarnpkg.com/define-properties/-/define-properties-1.2.1.tgz#10781cc616eb951a80a034bafcaa7377f6af2b6c"
                       integrity sha512-8QmQKqEASLd5nx0U1B1okLElbUuuttJ/AnYmRXbbbGDWh6uS208EjD4Xqq/I9wK7u0v6O08XhTWnt5XtEbR6Dg==
@@ -219,6 +219,18 @@ output:
                       integrity sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==
                       dependencies:
                         iconv-lite "^0.6.2"
+
+                    es-define-property@^1.0.0:
+                      version "1.0.0"
+                      resolved "https://registry.yarnpkg.com/es-define-property/-/es-define-property-1.0.0.tgz#c7faefbdff8b2696cf5f46921edfb77cc4ba3845"
+                      integrity sha512-jxayLKShrEqqzJ0eumQbVhTYQM27CfT1T35+gCgDFoL82JLsXqTJ76zv6A0YLOgEnLUMvLzsDsGIrl8NFpT2gQ==
+                      dependencies:
+                        get-intrinsic "^1.2.4"
+
+                    es-errors@^1.3.0:
+                      version "1.3.0"
+                      resolved "https://registry.yarnpkg.com/es-errors/-/es-errors-1.3.0.tgz#05f75a25dab98e4fb1dcd5e1472c0546d5057c8f"
+                      integrity sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==
 
                     es6-promise@^3.0.2:
                       version "3.3.1"
@@ -252,11 +264,12 @@ output:
                       resolved "https://registry.yarnpkg.com/functions-have-names/-/functions-have-names-1.2.3.tgz#0404fe4ee2ba2f607f0e0ec3c80bae994133b834"
                       integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
 
-                    get-intrinsic@^1.1.3, get-intrinsic@^1.2.1, get-intrinsic@^1.2.2:
-                      version "1.2.2"
-                      resolved "https://registry.yarnpkg.com/get-intrinsic/-/get-intrinsic-1.2.2.tgz#281b7622971123e1ef4b3c90fd7539306da93f3b"
-                      integrity sha512-0gSo4ml/0j98Y3lngkFEot/zhiCeWsbYIlZ+uZOVgzLyLaUw7wxUL+nCTP0XJvJg1AXulJRI3UJi8GsbDuxdGA==
+                    get-intrinsic@^1.1.3, get-intrinsic@^1.2.4:
+                      version "1.2.4"
+                      resolved "https://registry.yarnpkg.com/get-intrinsic/-/get-intrinsic-1.2.4.tgz#e385f5a4b5227d449c3eabbad05494ef0abbeadd"
+                      integrity sha512-5uYhsJH8VJBTv7oslg4BznJYhDoRI6waYCxMmCdnTrcCrHA/fCFKoTFz2JKKE0HdDFUF7/oQuhzumXJK7paBRQ==
                       dependencies:
+                        es-errors "^1.3.0"
                         function-bind "^1.1.2"
                         has-proto "^1.0.1"
                         has-symbols "^1.0.3"
@@ -269,34 +282,34 @@ output:
                       dependencies:
                         get-intrinsic "^1.1.3"
 
-                    has-property-descriptors@^1.0.0:
-                      version "1.0.1"
-                      resolved "https://registry.yarnpkg.com/has-property-descriptors/-/has-property-descriptors-1.0.1.tgz#52ba30b6c5ec87fd89fa574bc1c39125c6f65340"
-                      integrity sha512-VsX8eaIewvas0xnvinAe9bw4WfIeODpGYikiWYLH+dma0Jw6KHYqWiWfhQlgOVK8D6PvjubK5Uc4P0iIhIcNVg==
+                    has-property-descriptors@^1.0.0, has-property-descriptors@^1.0.2:
+                      version "1.0.2"
+                      resolved "https://registry.yarnpkg.com/has-property-descriptors/-/has-property-descriptors-1.0.2.tgz#963ed7d071dc7bf5f084c5bfbe0d1b6222586854"
+                      integrity sha512-55JNKuIW+vq4Ke1BjOTjM2YctQIvCT7GFzHwmfZPGo5wnrgkid0YQtnAleFSqumZm4az3n2BS+erby5ipJdgrg==
                       dependencies:
-                        get-intrinsic "^1.2.2"
+                        es-define-property "^1.0.0"
 
                     has-proto@^1.0.1:
-                      version "1.0.1"
-                      resolved "https://registry.yarnpkg.com/has-proto/-/has-proto-1.0.1.tgz#1885c1305538958aff469fef37937c22795408e0"
-                      integrity sha512-7qE+iP+O+bgF9clE5+UoBFzE65mlBiVj3tKCrlNQ0Ogwm0BjpT/gK4SlLYDMybDh5I3TCTKnPPa0oMG7JDYrhg==
+                      version "1.0.3"
+                      resolved "https://registry.yarnpkg.com/has-proto/-/has-proto-1.0.3.tgz#b31ddfe9b0e6e9914536a6ab286426d0214f77fd"
+                      integrity sha512-SJ1amZAJUiZS+PhsVLf5tGydlaVB8EdFpaSO4gmiUKUOxk8qzn5AIy4ZeJUmh22znIdk/uMAUT2pl3FxzVUH+Q==
 
-                    has-symbols@^1.0.2, has-symbols@^1.0.3:
+                    has-symbols@^1.0.3:
                       version "1.0.3"
                       resolved "https://registry.yarnpkg.com/has-symbols/-/has-symbols-1.0.3.tgz#bb7b2c4349251dce87b125f7bdf874aa7c8b39f8"
                       integrity sha512-l3LCuF6MgDNwTDKkdYGEihYjt5pRPbEg46rtlmnSPlUbgmB8LOIrKJbYYFBSbnPaJexMKtiPO8hmeRjRz2Td+A==
 
                     has-tostringtag@^1.0.0:
-                      version "1.0.0"
-                      resolved "https://registry.yarnpkg.com/has-tostringtag/-/has-tostringtag-1.0.0.tgz#7e133818a7d394734f941e73c3d3f9291e658b25"
-                      integrity sha512-kFjcSNhnlGV1kyoGk7OXKSawH5JOb/LzUc5w9B02hOTO0dfFRjbHQKvg1d6cf3HbeUmtU9VbbV3qzZ2Teh97WQ==
+                      version "1.0.2"
+                      resolved "https://registry.yarnpkg.com/has-tostringtag/-/has-tostringtag-1.0.2.tgz#2cdc42d40bef2e5b4eeab7c01a73c54ce7ab5abc"
+                      integrity sha512-NqADB8VjPFLM2V0VvHUewwwsw0ZWBaIdgo+ieHtK3hasLz4qeCRjYcqfB6AQrBggRKppKF8L52/VqdVsO47Dlw==
                       dependencies:
-                        has-symbols "^1.0.2"
+                        has-symbols "^1.0.3"
 
                     hasown@^2.0.0:
-                      version "2.0.0"
-                      resolved "https://registry.yarnpkg.com/hasown/-/hasown-2.0.0.tgz#f4c513d454a57b7c7e1650778de226b11700546c"
-                      integrity sha512-vUptKVTpIJhcczKBbgnS+RtcuYMB8+oNzPK2/Hp3hanz8JmpATdmmgLgSaadVREkDm+e2giHwY3ZRkyjSIDDFA==
+                      version "2.0.2"
+                      resolved "https://registry.yarnpkg.com/hasown/-/hasown-2.0.2.tgz#003eaf91be7adc372e84ec59dc37252cedb80003"
+                      integrity sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==
                       dependencies:
                         function-bind "^1.1.2"
 
@@ -391,12 +404,12 @@ output:
                         is-stream "^1.0.1"
 
                     object-is@^1.1.5:
-                      version "1.1.5"
-                      resolved "https://registry.yarnpkg.com/object-is/-/object-is-1.1.5.tgz#b9deeaa5fc7f1846a0faecdceec138e5778f53ac"
-                      integrity sha512-3cyDsyHgtmi7I7DfSSI2LDp6SK2lwvtbg0p0R1e0RvTqF5ceGx+K2dfSjm1bKDMVCFEDAQvy+o8c6a7VujOddw==
+                      version "1.1.6"
+                      resolved "https://registry.yarnpkg.com/object-is/-/object-is-1.1.6.tgz#1a6a53aed2dd8f7e6775ff870bea58545956ab07"
+                      integrity sha512-F8cZ+KfGlSGi09lJT7/Nd6KJZ9ygtvYC0/UYYLI9nmQKLMnydpB9yvbv9K1uSkEu7FU9vYPmVwLg328tX+ot3Q==
                       dependencies:
-                        call-bind "^1.0.2"
-                        define-properties "^1.1.3"
+                        call-bind "^1.0.7"
+                        define-properties "^1.2.1"
 
                     object-keys@^1.1.1:
                       version "1.1.1"
@@ -416,37 +429,41 @@ output:
                         strict-uri-encode "^1.0.0"
 
                     regexp.prototype.flags@^1.5.1:
-                      version "1.5.1"
-                      resolved "https://registry.yarnpkg.com/regexp.prototype.flags/-/regexp.prototype.flags-1.5.1.tgz#90ce989138db209f81492edd734183ce99f9677e"
-                      integrity sha512-sy6TXMN+hnP/wMy+ISxg3krXx7BAtWVO4UouuCN/ziM9UEne0euamVNafDfvC83bRNr95y0V5iijeDQFUNpvrg==
+                      version "1.5.2"
+                      resolved "https://registry.yarnpkg.com/regexp.prototype.flags/-/regexp.prototype.flags-1.5.2.tgz#138f644a3350f981a858c44f6bb1a61ff59be334"
+                      integrity sha512-NcDiDkTLuPR+++OCKB0nWafEmhg/Da8aUPLPMQbK+bxKKCm1/S5he+AqYa4PlMCVBalb4/yxIRub6qkEx5yJbw==
                       dependencies:
-                        call-bind "^1.0.2"
-                        define-properties "^1.2.0"
-                        set-function-name "^2.0.0"
+                        call-bind "^1.0.6"
+                        define-properties "^1.2.1"
+                        es-errors "^1.3.0"
+                        set-function-name "^2.0.1"
 
                     "safer-buffer@>= 2.1.2 < 3.0.0":
                       version "2.1.2"
                       resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
                       integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-                    set-function-length@^1.1.1:
-                      version "1.1.1"
-                      resolved "https://registry.yarnpkg.com/set-function-length/-/set-function-length-1.1.1.tgz#4bc39fafb0307224a33e106a7d35ca1218d659ed"
-                      integrity sha512-VoaqjbBJKiWtg4yRcKBQ7g7wnGnLV3M8oLvVWwOk2PdYY6PEFegR1vezXR0tw6fZGF9csVakIRjrJiy2veSBFQ==
+                    set-function-length@^1.2.1:
+                      version "1.2.2"
+                      resolved "https://registry.yarnpkg.com/set-function-length/-/set-function-length-1.2.2.tgz#aac72314198eaed975cf77b2c3b6b880695e5449"
+                      integrity sha512-pgRc4hJ4/sNjWCSS9AmnS40x3bNMDTknHgL5UaMBTMyJnU90EgWh1Rz+MC9eFu4BuN/UwZjKQuY/1v3rM7HMfg==
                       dependencies:
-                        define-data-property "^1.1.1"
-                        get-intrinsic "^1.2.1"
+                        define-data-property "^1.1.4"
+                        es-errors "^1.3.0"
+                        function-bind "^1.1.2"
+                        get-intrinsic "^1.2.4"
                         gopd "^1.0.1"
-                        has-property-descriptors "^1.0.0"
+                        has-property-descriptors "^1.0.2"
 
-                    set-function-name@^2.0.0:
-                      version "2.0.1"
-                      resolved "https://registry.yarnpkg.com/set-function-name/-/set-function-name-2.0.1.tgz#12ce38b7954310b9f61faa12701620a0c882793a"
-                      integrity sha512-tMNCiqYVkXIZgc2Hnoy2IvC/f8ezc5koaRFkCjrpWzGpCd3qbZXPzVy9MAZzK1ch/X0jvSkojys3oqJN0qCmdA==
+                    set-function-name@^2.0.1:
+                      version "2.0.2"
+                      resolved "https://registry.yarnpkg.com/set-function-name/-/set-function-name-2.0.2.tgz#16a705c5a0dc2f5e638ca96d8a8cd4e1c2b90985"
+                      integrity sha512-7PGFlmtwsEADb0WYyvCMa1t+yke6daIG4Wirafur5kcf+MhUnPms1UeR0CKQdTZD81yESwMHbtn+TR+dMviakQ==
                       dependencies:
-                        define-data-property "^1.0.1"
+                        define-data-property "^1.1.4"
+                        es-errors "^1.3.0"
                         functions-have-names "^1.2.3"
-                        has-property-descriptors "^1.0.0"
+                        has-property-descriptors "^1.0.2"
 
                     strict-uri-encode@^1.0.0:
                       version "1.1.0"
@@ -510,6 +527,7 @@ output:
                         type: registry
                         url: https://registry.yarnpkg.com
                   version: 1.8.1
+                  directory: /yarn/subdir
             updated-dependency-files:
                 - content: |
                     {

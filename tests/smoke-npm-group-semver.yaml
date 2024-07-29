@@ -138,6 +138,7 @@ output:
                         type: registry
                         url: https://registry.npmjs.org
                   version: 0.2.1
+                  directory: /npm/semver
                 - name: lodash
                   previous-requirements:
                     - file: package.json
@@ -157,6 +158,19 @@ output:
                         type: registry
                         url: https://registry.npmjs.org
                   version: 4.17.21
+                  directory: /npm/semver
+                - name: follow-redirects
+                  previous-requirements: []
+                  previous-version: 1.15.2
+                  requirements: []
+                  version: 1.15.6
+                  directory: /npm/semver
+                - name: whatwg-fetch
+                  previous-requirements: []
+                  previous-version: 3.6.17
+                  requirements: []
+                  version: 3.6.20
+                  directory: /npm/semver
             updated-dependency-files:
                 - content: |
                     {
@@ -228,12 +242,18 @@ output:
                           }
                         },
                         "node_modules/call-bind": {
-                          "version": "1.0.2",
-                          "resolved": "https://registry.npmjs.org/call-bind/-/call-bind-1.0.2.tgz",
-                          "integrity": "sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==",
+                          "version": "1.0.7",
+                          "resolved": "https://registry.npmjs.org/call-bind/-/call-bind-1.0.7.tgz",
+                          "integrity": "sha512-GHTSNSYICQ7scH7sZ+M2rFopRoLh8t2bLSW6BbgrtLsahOIB5iyAVJf9GjWK3cYTDaMj4XdBpM1cA6pIS0Kv2w==",
                           "dependencies": {
-                            "function-bind": "^1.1.1",
-                            "get-intrinsic": "^1.0.2"
+                            "es-define-property": "^1.0.0",
+                            "es-errors": "^1.3.0",
+                            "function-bind": "^1.1.2",
+                            "get-intrinsic": "^1.2.4",
+                            "set-function-length": "^1.2.1"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
                           },
                           "funding": {
                             "url": "https://github.com/sponsors/ljharb"
@@ -291,26 +311,46 @@ output:
                           }
                         },
                         "node_modules/deep-equal": {
-                          "version": "1.1.1",
-                          "resolved": "https://registry.npmjs.org/deep-equal/-/deep-equal-1.1.1.tgz",
-                          "integrity": "sha512-yd9c5AdiqVcR+JjcwUQb9DkhJc8ngNr0MahEBGvDiJw8puWab2yZlh+nkasOnZP+EGTAP6rRp2JzJhJZzvNF8g==",
+                          "version": "1.1.2",
+                          "resolved": "https://registry.npmjs.org/deep-equal/-/deep-equal-1.1.2.tgz",
+                          "integrity": "sha512-5tdhKF6DbU7iIzrIOa1AOUt39ZRm13cmL1cGEh//aqR8x9+tNfbywRf0n5FD/18OKMdo7DNEtrX2t22ZAkI+eg==",
                           "dependencies": {
-                            "is-arguments": "^1.0.4",
-                            "is-date-object": "^1.0.1",
-                            "is-regex": "^1.0.4",
-                            "object-is": "^1.0.1",
+                            "is-arguments": "^1.1.1",
+                            "is-date-object": "^1.0.5",
+                            "is-regex": "^1.1.4",
+                            "object-is": "^1.1.5",
                             "object-keys": "^1.1.1",
-                            "regexp.prototype.flags": "^1.2.0"
+                            "regexp.prototype.flags": "^1.5.1"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
+                          },
+                          "funding": {
+                            "url": "https://github.com/sponsors/ljharb"
+                          }
+                        },
+                        "node_modules/define-data-property": {
+                          "version": "1.1.4",
+                          "resolved": "https://registry.npmjs.org/define-data-property/-/define-data-property-1.1.4.tgz",
+                          "integrity": "sha512-rBMvIzlpA8v6E+SJZoo++HAYqsLrkg7MSfIinMPFhmkorw7X+dOXVJQs+QT69zGkzMyfDnIMN2Wid1+NbL3T+A==",
+                          "dependencies": {
+                            "es-define-property": "^1.0.0",
+                            "es-errors": "^1.3.0",
+                            "gopd": "^1.0.1"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
                           },
                           "funding": {
                             "url": "https://github.com/sponsors/ljharb"
                           }
                         },
                         "node_modules/define-properties": {
-                          "version": "1.2.0",
-                          "resolved": "https://registry.npmjs.org/define-properties/-/define-properties-1.2.0.tgz",
-                          "integrity": "sha512-xvqAVKGfT1+UAvPwKTVw/njhdQ8ZhXK4lI0bCIuCMrp2up9nPnaDftrLtmpTazqd1o+UY4zgzU+avtMbDP+ldA==",
+                          "version": "1.2.1",
+                          "resolved": "https://registry.npmjs.org/define-properties/-/define-properties-1.2.1.tgz",
+                          "integrity": "sha512-8QmQKqEASLd5nx0U1B1okLElbUuuttJ/AnYmRXbbbGDWh6uS208EjD4Xqq/I9wK7u0v6O08XhTWnt5XtEbR6Dg==",
                           "dependencies": {
+                            "define-data-property": "^1.0.1",
                             "has-property-descriptors": "^1.0.0",
                             "object-keys": "^1.1.1"
                           },
@@ -337,6 +377,25 @@ output:
                             "iconv-lite": "^0.6.2"
                           }
                         },
+                        "node_modules/es-define-property": {
+                          "version": "1.0.0",
+                          "resolved": "https://registry.npmjs.org/es-define-property/-/es-define-property-1.0.0.tgz",
+                          "integrity": "sha512-jxayLKShrEqqzJ0eumQbVhTYQM27CfT1T35+gCgDFoL82JLsXqTJ76zv6A0YLOgEnLUMvLzsDsGIrl8NFpT2gQ==",
+                          "dependencies": {
+                            "get-intrinsic": "^1.2.4"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
+                        "node_modules/es-errors": {
+                          "version": "1.3.0",
+                          "resolved": "https://registry.npmjs.org/es-errors/-/es-errors-1.3.0.tgz",
+                          "integrity": "sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==",
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
                         "node_modules/es6-promise": {
                           "version": "3.3.1",
                           "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.3.1.tgz",
@@ -361,9 +420,9 @@ output:
                           "integrity": "sha512-9mDDwqVIma6OZX79ZlDACZl8sBm0TEnkf99zV3iMA4GzkIT/9hiqP5mY0HoT1iNLCrKc/R1HByV+yJfRWVJryQ=="
                         },
                         "node_modules/follow-redirects": {
-                          "version": "1.15.2",
-                          "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz",
-                          "integrity": "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==",
+                          "version": "1.15.6",
+                          "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.6.tgz",
+                          "integrity": "sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==",
                           "funding": [
                             {
                               "type": "individual",
@@ -393,9 +452,12 @@ output:
                           }
                         },
                         "node_modules/function-bind": {
-                          "version": "1.1.1",
-                          "resolved": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz",
-                          "integrity": "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
+                          "version": "1.1.2",
+                          "resolved": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz",
+                          "integrity": "sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==",
+                          "funding": {
+                            "url": "https://github.com/sponsors/ljharb"
+                          }
                         },
                         "node_modules/functions-have-names": {
                           "version": "1.2.3",
@@ -406,45 +468,49 @@ output:
                           }
                         },
                         "node_modules/get-intrinsic": {
-                          "version": "1.2.1",
-                          "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.2.1.tgz",
-                          "integrity": "sha512-2DcsyfABl+gVHEfCOaTrWgyt+tb6MSEGmKq+kI5HwLbIYgjgmMcV8KQ41uaKz1xxUcn9tJtgFbQUEVcEbd0FYw==",
+                          "version": "1.2.4",
+                          "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.2.4.tgz",
+                          "integrity": "sha512-5uYhsJH8VJBTv7oslg4BznJYhDoRI6waYCxMmCdnTrcCrHA/fCFKoTFz2JKKE0HdDFUF7/oQuhzumXJK7paBRQ==",
                           "dependencies": {
-                            "function-bind": "^1.1.1",
-                            "has": "^1.0.3",
+                            "es-errors": "^1.3.0",
+                            "function-bind": "^1.1.2",
                             "has-proto": "^1.0.1",
-                            "has-symbols": "^1.0.3"
+                            "has-symbols": "^1.0.3",
+                            "hasown": "^2.0.0"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
                           },
                           "funding": {
                             "url": "https://github.com/sponsors/ljharb"
                           }
                         },
-                        "node_modules/has": {
-                          "version": "1.0.3",
-                          "resolved": "https://registry.npmjs.org/has/-/has-1.0.3.tgz",
-                          "integrity": "sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==",
+                        "node_modules/gopd": {
+                          "version": "1.0.1",
+                          "resolved": "https://registry.npmjs.org/gopd/-/gopd-1.0.1.tgz",
+                          "integrity": "sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==",
                           "dependencies": {
-                            "function-bind": "^1.1.1"
+                            "get-intrinsic": "^1.1.3"
                           },
-                          "engines": {
-                            "node": ">= 0.4.0"
+                          "funding": {
+                            "url": "https://github.com/sponsors/ljharb"
                           }
                         },
                         "node_modules/has-property-descriptors": {
-                          "version": "1.0.0",
-                          "resolved": "https://registry.npmjs.org/has-property-descriptors/-/has-property-descriptors-1.0.0.tgz",
-                          "integrity": "sha512-62DVLZGoiEBDHQyqG4w9xCuZ7eJEwNmJRWw2VY84Oedb7WFcA27fiEVe8oUQx9hAUJ4ekurquucTGwsyO1XGdQ==",
+                          "version": "1.0.2",
+                          "resolved": "https://registry.npmjs.org/has-property-descriptors/-/has-property-descriptors-1.0.2.tgz",
+                          "integrity": "sha512-55JNKuIW+vq4Ke1BjOTjM2YctQIvCT7GFzHwmfZPGo5wnrgkid0YQtnAleFSqumZm4az3n2BS+erby5ipJdgrg==",
                           "dependencies": {
-                            "get-intrinsic": "^1.1.1"
+                            "es-define-property": "^1.0.0"
                           },
                           "funding": {
                             "url": "https://github.com/sponsors/ljharb"
                           }
                         },
                         "node_modules/has-proto": {
-                          "version": "1.0.1",
-                          "resolved": "https://registry.npmjs.org/has-proto/-/has-proto-1.0.1.tgz",
-                          "integrity": "sha512-7qE+iP+O+bgF9clE5+UoBFzE65mlBiVj3tKCrlNQ0Ogwm0BjpT/gK4SlLYDMybDh5I3TCTKnPPa0oMG7JDYrhg==",
+                          "version": "1.0.3",
+                          "resolved": "https://registry.npmjs.org/has-proto/-/has-proto-1.0.3.tgz",
+                          "integrity": "sha512-SJ1amZAJUiZS+PhsVLf5tGydlaVB8EdFpaSO4gmiUKUOxk8qzn5AIy4ZeJUmh22znIdk/uMAUT2pl3FxzVUH+Q==",
                           "engines": {
                             "node": ">= 0.4"
                           },
@@ -464,17 +530,28 @@ output:
                           }
                         },
                         "node_modules/has-tostringtag": {
-                          "version": "1.0.0",
-                          "resolved": "https://registry.npmjs.org/has-tostringtag/-/has-tostringtag-1.0.0.tgz",
-                          "integrity": "sha512-kFjcSNhnlGV1kyoGk7OXKSawH5JOb/LzUc5w9B02hOTO0dfFRjbHQKvg1d6cf3HbeUmtU9VbbV3qzZ2Teh97WQ==",
+                          "version": "1.0.2",
+                          "resolved": "https://registry.npmjs.org/has-tostringtag/-/has-tostringtag-1.0.2.tgz",
+                          "integrity": "sha512-NqADB8VjPFLM2V0VvHUewwwsw0ZWBaIdgo+ieHtK3hasLz4qeCRjYcqfB6AQrBggRKppKF8L52/VqdVsO47Dlw==",
                           "dependencies": {
-                            "has-symbols": "^1.0.2"
+                            "has-symbols": "^1.0.3"
                           },
                           "engines": {
                             "node": ">= 0.4"
                           },
                           "funding": {
                             "url": "https://github.com/sponsors/ljharb"
+                          }
+                        },
+                        "node_modules/hasown": {
+                          "version": "2.0.2",
+                          "resolved": "https://registry.npmjs.org/hasown/-/hasown-2.0.2.tgz",
+                          "integrity": "sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==",
+                          "dependencies": {
+                            "function-bind": "^1.1.2"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
                           }
                         },
                         "node_modules/iconv-lite": {
@@ -632,12 +709,12 @@ output:
                           }
                         },
                         "node_modules/object-is": {
-                          "version": "1.1.5",
-                          "resolved": "https://registry.npmjs.org/object-is/-/object-is-1.1.5.tgz",
-                          "integrity": "sha512-3cyDsyHgtmi7I7DfSSI2LDp6SK2lwvtbg0p0R1e0RvTqF5ceGx+K2dfSjm1bKDMVCFEDAQvy+o8c6a7VujOddw==",
+                          "version": "1.1.6",
+                          "resolved": "https://registry.npmjs.org/object-is/-/object-is-1.1.6.tgz",
+                          "integrity": "sha512-F8cZ+KfGlSGi09lJT7/Nd6KJZ9ygtvYC0/UYYLI9nmQKLMnydpB9yvbv9K1uSkEu7FU9vYPmVwLg328tX+ot3Q==",
                           "dependencies": {
-                            "call-bind": "^1.0.2",
-                            "define-properties": "^1.1.3"
+                            "call-bind": "^1.0.7",
+                            "define-properties": "^1.2.1"
                           },
                           "engines": {
                             "node": ">= 0.4"
@@ -674,13 +751,14 @@ output:
                           }
                         },
                         "node_modules/regexp.prototype.flags": {
-                          "version": "1.5.0",
-                          "resolved": "https://registry.npmjs.org/regexp.prototype.flags/-/regexp.prototype.flags-1.5.0.tgz",
-                          "integrity": "sha512-0SutC3pNudRKgquxGoRGIz946MZVHqbNfPjBdxeOhBrdgDKlRoXmYLQN9xRbrR09ZXWeGAdPuif7egofn6v5LA==",
+                          "version": "1.5.2",
+                          "resolved": "https://registry.npmjs.org/regexp.prototype.flags/-/regexp.prototype.flags-1.5.2.tgz",
+                          "integrity": "sha512-NcDiDkTLuPR+++OCKB0nWafEmhg/Da8aUPLPMQbK+bxKKCm1/S5he+AqYa4PlMCVBalb4/yxIRub6qkEx5yJbw==",
                           "dependencies": {
-                            "call-bind": "^1.0.2",
-                            "define-properties": "^1.2.0",
-                            "functions-have-names": "^1.2.3"
+                            "call-bind": "^1.0.6",
+                            "define-properties": "^1.2.1",
+                            "es-errors": "^1.3.0",
+                            "set-function-name": "^2.0.1"
                           },
                           "engines": {
                             "node": ">= 0.4"
@@ -693,6 +771,36 @@ output:
                           "version": "2.1.2",
                           "resolved": "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz",
                           "integrity": "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg=="
+                        },
+                        "node_modules/set-function-length": {
+                          "version": "1.2.2",
+                          "resolved": "https://registry.npmjs.org/set-function-length/-/set-function-length-1.2.2.tgz",
+                          "integrity": "sha512-pgRc4hJ4/sNjWCSS9AmnS40x3bNMDTknHgL5UaMBTMyJnU90EgWh1Rz+MC9eFu4BuN/UwZjKQuY/1v3rM7HMfg==",
+                          "dependencies": {
+                            "define-data-property": "^1.1.4",
+                            "es-errors": "^1.3.0",
+                            "function-bind": "^1.1.2",
+                            "get-intrinsic": "^1.2.4",
+                            "gopd": "^1.0.1",
+                            "has-property-descriptors": "^1.0.2"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
+                        "node_modules/set-function-name": {
+                          "version": "2.0.2",
+                          "resolved": "https://registry.npmjs.org/set-function-name/-/set-function-name-2.0.2.tgz",
+                          "integrity": "sha512-7PGFlmtwsEADb0WYyvCMa1t+yke6daIG4Wirafur5kcf+MhUnPms1UeR0CKQdTZD81yESwMHbtn+TR+dMviakQ==",
+                          "dependencies": {
+                            "define-data-property": "^1.1.4",
+                            "es-errors": "^1.3.0",
+                            "functions-have-names": "^1.2.3",
+                            "has-property-descriptors": "^1.0.2"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
                         },
                         "node_modules/strict-uri-encode": {
                           "version": "1.1.0",
@@ -719,9 +827,9 @@ output:
                           }
                         },
                         "node_modules/whatwg-fetch": {
-                          "version": "3.6.17",
-                          "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-3.6.17.tgz",
-                          "integrity": "sha512-c4ghIvG6th0eudYwKZY5keb81wtFz9/WeAHAoy8+r18kcWlitUIrmGFQ2rWEl4UCKUilD3zCLHOIPheHx5ypRQ=="
+                          "version": "3.6.20",
+                          "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-3.6.20.tgz",
+                          "integrity": "sha512-EqhiFU6daOA8kpjOWTL0olhVOF3i7OrFzSYiGsEMB8GcXS+RrzauAERX65xMeNWVqxA6HXH2m69Z9LaKKdisfg=="
                         }
                       }
                     }
@@ -732,9 +840,9 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the not major group in /npm/semver with 2 updates
+            pr-title: Bump the not major group in /npm/semver with 4 updates
             pr-body: |
-                Bumps the not major group in /npm/semver with 2 updates: fetch-factory and [lodash](https://github.com/lodash/lodash).
+                Bumps the not major group in /npm/semver with 4 updates: fetch-factory, [lodash](https://github.com/lodash/lodash), [follow-redirects](https://github.com/follow-redirects/follow-redirects) and [whatwg-fetch](https://github.com/github/fetch).
 
                 Updates `fetch-factory` from 0.0.1 to 0.2.1
 
@@ -760,10 +868,98 @@ output:
                 <p>This version was pushed to npm by <a href="https://www.npmjs.com/~bnjmnt4n">bnjmnt4n</a>, a new releaser for lodash since your current version.</p>
                 </details>
                 <br />
-            commit-message: |-
-                Bump the not major group in /npm/semver with 2 updates
 
-                Bumps the not major group in /npm/semver with 2 updates: fetch-factory and [lodash](https://github.com/lodash/lodash).
+                Updates `follow-redirects` from 1.15.2 to 1.15.6
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/35a517c5861d79dc8bff7db8626013d20b711b06"><code>35a517c</code></a> Release version 1.15.6 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/c4f847f85176991f95ab9c88af63b1294de8649b"><code>c4f847f</code></a> Drop Proxy-Authorization across hosts.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/8526b4a1b2ab3a2e4044299377df623a661caa76"><code>8526b4a</code></a> Use GitHub for disclosure.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/b1677ce00110ee50dc5da576751d39b281fc4944"><code>b1677ce</code></a> Release version 1.15.5 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/d8914f7982403ea096b39bd594a00ee9d3b7e224"><code>d8914f7</code></a> Preserve fragment in responseUrl.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/65858205e59f1e23c9bf173348a7a7cbb8ac47f5"><code>6585820</code></a> Release version 1.15.4 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/7a6567e16dfa9ad18a70bfe91784c28653fbf19d"><code>7a6567e</code></a> Disallow bracketed hostnames.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/05629af696588b90d64e738bc2e809a97a5f92fc"><code>05629af</code></a> Prefer native URL instead of deprecated url.parse.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/1cba8e85fa73f563a439fe460cf028688e4358df"><code>1cba8e8</code></a> Prefer native URL instead of legacy url.resolve.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/72bc2a4229bc18dc9fbd57c60579713e6264cb92"><code>72bc2a4</code></a> Simplify _processResponse error handling.</li>
+                <li>Additional commits viewable in <a href="https://github.com/follow-redirects/follow-redirects/compare/v1.15.2...v1.15.6">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `whatwg-fetch` from 3.6.17 to 3.6.20
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/github/fetch/releases">whatwg-fetch's releases</a>.</em></p>
+                <blockquote>
+                <h2>v3.6.20</h2>
+                <h2><a href="https://github.com/JakeChampion/fetch/compare/v3.6.19...v3.6.20">3.6.20</a> (2023-12-13)</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li>Response.error().ok === false (<a href="https://redirect.github.com/JakeChampion/fetch/issues/1412">#1412</a>) (<a href="https://github.com/JakeChampion/fetch/commit/27e1c75f830f0b70a40b511e03652776951aca75">27e1c75</a>)</li>
+                </ul>
+                <h2>v3.6.19</h2>
+                <h2><a href="https://github.com/JakeChampion/fetch/compare/v3.6.18...v3.6.19">3.6.19</a> (2023-09-11)</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li>Have unique error messages for xhr timeouts and errors (<a href="https://redirect.github.com/JakeChampion/fetch/issues/1380">#1380</a>) (<a href="https://github.com/JakeChampion/fetch/commit/7170f0b127d16c5895aba61c9168482834809046">7170f0b</a>)</li>
+                </ul>
+                <h2>v3.6.18</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Fix - File fetching broken since commit 0c1d2b9 by <a href="https://github.com/mercpls"><code>@​mercpls</code></a> in <a href="https://redirect.github.com/JakeChampion/fetch/pull/1375">JakeChampion/fetch#1375</a></li>
+                </ul>
+                <h2>New Contributors</h2>
+                <ul>
+                <li><a href="https://github.com/mercpls"><code>@​mercpls</code></a> made their first contribution in <a href="https://redirect.github.com/JakeChampion/fetch/pull/1375">JakeChampion/fetch#1375</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/JakeChampion/fetch/compare/v3.6.17...v3.6.18">https://github.com/JakeChampion/fetch/compare/v3.6.17...v3.6.18</a></p>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/JakeChampion/fetch/blob/main/CHANGELOG.md">whatwg-fetch's changelog</a>.</em></p>
+                <blockquote>
+                <h2><a href="https://github.com/JakeChampion/fetch/compare/v3.6.19...v3.6.20">3.6.20</a> (2023-12-13)</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li>Response.error().ok === false (<a href="https://redirect.github.com/JakeChampion/fetch/issues/1412">#1412</a>) (<a href="https://github.com/JakeChampion/fetch/commit/27e1c75f830f0b70a40b511e03652776951aca75">27e1c75</a>)</li>
+                </ul>
+                <h2><a href="https://github.com/JakeChampion/fetch/compare/v3.6.18...v3.6.19">3.6.19</a> (2023-09-11)</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li>Have unique error messages for xhr timeouts and errors (<a href="https://redirect.github.com/JakeChampion/fetch/issues/1380">#1380</a>) (<a href="https://github.com/JakeChampion/fetch/commit/7170f0b127d16c5895aba61c9168482834809046">7170f0b</a>)</li>
+                </ul>
+                <h2><a href="https://github.com/JakeChampion/fetch/compare/v3.6.17...v3.6.18">v3.6.18</a></h2>
+                <ul>
+                <li>Fix - File fetching broken since commit 0c1d2b9 <a href="https://redirect.github.com/JakeChampion/fetch/pull/1375"><code>[#1375](https://github.com/github/fetch/issues/1375)</code></a></li>
+                <li>Remove broken links <a href="https://github.com/JakeChampion/fetch/commit/1dc07c6064a32e989306fb2324204c56c93140fe"><code>1dc07c6</code></a></li>
+                <li>automatically generate a changelog <a href="https://github.com/JakeChampion/fetch/commit/0e7d1dd95826b3b76510f0832784207f2609145e"><code>0e7d1dd</code></a></li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/a0aea1004830a1976c0c70d2f23c42a71da21cc7"><code>a0aea10</code></a> chore(main): release 3.6.20 (<a href="https://redirect.github.com/github/fetch/issues/1417">#1417</a>)</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/7d1998d211736ec49fc151eb4205d8d5790c58cb"><code>7d1998d</code></a> remove umd section from readme</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/27e1c75f830f0b70a40b511e03652776951aca75"><code>27e1c75</code></a> Fix: Response.error().ok === false (<a href="https://redirect.github.com/github/fetch/issues/1412">#1412</a>)</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/84256c8d91de08d6bf7a53e7798f7ae05b1d2f77"><code>84256c8</code></a> Bump the github-actions group with 1 update (<a href="https://redirect.github.com/github/fetch/issues/1416">#1416</a>)</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/806ea66b1c42a0cbc252957c03f33b6f1fe35d37"><code>806ea66</code></a> Bump the github-actions group with 2 updates (<a href="https://redirect.github.com/github/fetch/issues/1414">#1414</a>)</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/af519560bea0f7906d2aa6904f7c76298dcfb55c"><code>af51956</code></a> Bump the github-actions group with 1 update (<a href="https://redirect.github.com/github/fetch/issues/1413">#1413</a>)</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/a71a60df483dcbd13ad5b5b5f7434d47e7b85c86"><code>a71a60d</code></a> Bump the github-actions group with 2 updates (<a href="https://redirect.github.com/github/fetch/issues/1410">#1410</a>)</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/af5cf4b3b017c5821c48bc62d26e6a6236616820"><code>af5cf4b</code></a> Bump the github-actions group with 2 updates (<a href="https://redirect.github.com/github/fetch/issues/1407">#1407</a>)</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/a686358611c631a8846e61683eccde75c30b487b"><code>a686358</code></a> enhance: replaced str.startsWith with str.indexOf (<a href="https://redirect.github.com/github/fetch/issues/1404">#1404</a>)</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/b5cee5093bb4929239b74b9394e51355b231c460"><code>b5cee50</code></a> Bump the github-actions group with 1 update (<a href="https://redirect.github.com/github/fetch/issues/1402">#1402</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/github/fetch/compare/v3.6.17...v3.6.20">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump the not major group in /npm/semver with 4 updates
+
+                Bumps the not major group in /npm/semver with 4 updates: fetch-factory, [lodash](https://github.com/lodash/lodash), [follow-redirects](https://github.com/follow-redirects/follow-redirects) and [whatwg-fetch](https://github.com/github/fetch).
 
 
                 Updates `fetch-factory` from 0.0.1 to 0.2.1
@@ -771,6 +967,15 @@ output:
                 Updates `lodash` from 4.16.6 to 4.17.21
                 - [Release notes](https://github.com/lodash/lodash/releases)
                 - [Commits](https://github.com/lodash/lodash/compare/4.16.6...4.17.21)
+
+                Updates `follow-redirects` from 1.15.2 to 1.15.6
+                - [Release notes](https://github.com/follow-redirects/follow-redirects/releases)
+                - [Commits](https://github.com/follow-redirects/follow-redirects/compare/v1.15.2...v1.15.6)
+
+                Updates `whatwg-fetch` from 3.6.17 to 3.6.20
+                - [Release notes](https://github.com/github/fetch/releases)
+                - [Changelog](https://github.com/JakeChampion/fetch/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/github/fetch/compare/v3.6.17...v3.6.20)
             dependency-group:
                 name: not major
     - type: create_pull_request
@@ -792,11 +997,12 @@ output:
                     - file: package.json
                       groups:
                         - dependencies
-                      requirement: 1.4.0
+                      requirement: 1.7.2
                       source:
                         type: registry
                         url: https://registry.npmjs.org
-                  version: 1.4.0
+                  version: 1.7.2
+                  directory: /npm/semver
             updated-dependency-files:
                 - content: |
                     {
@@ -815,7 +1021,7 @@ output:
                       },
                       "homepage": "https://github.com/dsp-testing/dependabot-all-updates-test",
                       "dependencies": {
-                        "axios": "1.4.0",
+                        "axios": "1.7.2",
                         "fetch-factory": "0.0.1",
                         "lodash": "4.16.6"
                       }
@@ -839,7 +1045,7 @@ output:
                           "version": "1.0.0",
                           "license": "ISC",
                           "dependencies": {
-                            "axios": "1.4.0",
+                            "axios": "1.7.2",
                             "fetch-factory": "0.0.1",
                             "lodash": "4.16.6"
                           }
@@ -850,11 +1056,11 @@ output:
                           "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
                         },
                         "node_modules/axios": {
-                          "version": "1.4.0",
-                          "resolved": "https://registry.npmjs.org/axios/-/axios-1.4.0.tgz",
-                          "integrity": "sha512-S4XCWMEmzvo64T9GfvQDOXgYRDJ/wsSZc7Jvdgx5u1sd0JwsuPLqb3SYmusag+edF6ziyMensPVqLTSc1PiSEA==",
+                          "version": "1.7.2",
+                          "resolved": "https://registry.npmjs.org/axios/-/axios-1.7.2.tgz",
+                          "integrity": "sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==",
                           "dependencies": {
-                            "follow-redirects": "^1.15.0",
+                            "follow-redirects": "^1.15.6",
                             "form-data": "^4.0.0",
                             "proxy-from-env": "^1.1.0"
                           }
@@ -907,9 +1113,9 @@ output:
                           "integrity": "sha512-9mDDwqVIma6OZX79ZlDACZl8sBm0TEnkf99zV3iMA4GzkIT/9hiqP5mY0HoT1iNLCrKc/R1HByV+yJfRWVJryQ=="
                         },
                         "node_modules/follow-redirects": {
-                          "version": "1.15.2",
-                          "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz",
-                          "integrity": "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==",
+                          "version": "1.15.6",
+                          "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.6.tgz",
+                          "integrity": "sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==",
                           "funding": [
                             {
                               "type": "individual",
@@ -1023,61 +1229,63 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump axios from 0.27.1 to 1.4.0 in /npm/semver
+            pr-title: Bump axios from 0.27.1 to 1.7.2 in /npm/semver
             pr-body: |
-                Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.4.0.
+                Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.7.2.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/axios/axios/releases">axios's releases</a>.</em></p>
                 <blockquote>
-                <h2>Release v1.4.0</h2>
+                <h2>Release v1.7.2</h2>
                 <h2>Release notes:</h2>
                 <h3>Bug Fixes</h3>
                 <ul>
-                <li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href="https://redirect.github.com/axios/axios/issues/5678">#5678</a>) (<a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1">bbb61e7</a>)</li>
-                <li><strong>package:</strong> export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>) (<a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09">df38c94</a>)</li>
+                <li><strong>fetch:</strong> enhance fetch API detection; (<a href="https://redirect.github.com/axios/axios/issues/6413">#6413</a>) (<a href="https://github.com/axios/axios/commit/4f79aef81b7c4644328365bfc33acf0a9ef595bc">4f79aef</a>)</li>
                 </ul>
+                <h3>Contributors to this release</h3>
+                <ul>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+3/-3 ([#6413](https://github.com/axios/axios/issues/6413) )">Dmitriy Mozgovoy</a></li>
+                </ul>
+                <h2>Release v1.7.1</h2>
+                <h2>Release notes:</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li><strong>fetch:</strong> fixed ReferenceError issue when TextEncoder is not available in the environment; (<a href="https://redirect.github.com/axios/axios/issues/6410">#6410</a>) (<a href="https://github.com/axios/axios/commit/733f15fe5bd2d67e1fadaee82e7913b70d45dc5e">733f15f</a>)</li>
+                </ul>
+                <h3>Contributors to this release</h3>
+                <ul>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+14/-9 ([#6410](https://github.com/axios/axios/issues/6410) )">Dmitriy Mozgovoy</a></li>
+                </ul>
+                <h2>Release v1.7.0</h2>
+                <h2>Release notes:</h2>
                 <h3>Features</h3>
                 <ul>
-                <li><strong>dns:</strong> added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>) (<a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb">2701911</a>)</li>
-                <li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>) (<a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf">726f1c8</a>)</li>
+                <li><strong>adapter:</strong> add fetch adapter; (<a href="https://redirect.github.com/axios/axios/issues/6371">#6371</a>) (<a href="https://github.com/axios/axios/commit/a3ff99b59d8ec2ab5dd049e68c043617a4072e42">a3ff99b</a>)</li>
                 </ul>
-                <h3>Performance Improvements</h3>
+                <h3>Bug Fixes</h3>
                 <ul>
-                <li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href="https://redirect.github.com/axios/axios/issues/5679">#5679</a>) (<a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e">e6f7053</a>)</li>
+                <li><strong>core/axios:</strong> handle un-writable error stack (<a href="https://redirect.github.com/axios/axios/issues/6362">#6362</a>) (<a href="https://github.com/axios/axios/commit/81e0455b7b57fbaf2be16a73ebe0e6591cc6d8f9">81e0455</a>)</li>
                 </ul>
                 <h3>Contributors to this release</h3>
                 <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/arthurfiorette" title="+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )">Arthur Fiorette</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/npiyush97" title="+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )">PIYUSH NEGI</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+1015/-127 ([#6371](https://github.com/axios/axios/issues/6371) )">Dmitriy Mozgovoy</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/jasonsaayman" title="+30/-14 ()">Jay</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/alexandre-abrioux" title="+56/-6 ([#6362](https://github.com/axios/axios/issues/6362) )">Alexandre ABRIOUX</a></li>
                 </ul>
-                <h2>Release v1.3.6</h2>
+                <h2>Release v1.7.0-beta.2</h2>
                 <h2>Release notes:</h2>
                 <h3>Bug Fixes</h3>
                 <ul>
-                <li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href="https://redirect.github.com/axios/axios/issues/5445">#5445</a>) (<a href="https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2">6f360a2</a>)</li>
-                <li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href="https://redirect.github.com/axios/axios/issues/5661">#5661</a>) (<a href="https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76">aa372f7</a>)</li>
+                <li><strong>fetch:</strong> capitalize HTTP method names; (<a href="https://redirect.github.com/axios/axios/issues/6395">#6395</a>) (<a href="https://github.com/axios/axios/commit/ad3174a3515c3c2573f4bcb94818d582826f3914">ad3174a</a>)</li>
+                <li><strong>fetch:</strong> fix &amp; optimize progress capturing for cases when the request data has a nullish value or zero data length (<a href="https://redirect.github.com/axios/axios/issues/6400">#6400</a>) (<a href="https://github.com/axios/axios/commit/95a3e8e346cfd6a5548e171f2341df3235d0e26b">95a3e8e</a>)</li>
+                <li><strong>fetch:</strong> fix headers getting from a stream response; (<a href="https://redirect.github.com/axios/axios/issues/6401">#6401</a>) (<a href="https://github.com/axios/axios/commit/870e0a76f60d0094774a6a63fa606eec52a381af">870e0a7</a>)</li>
                 </ul>
                 <h3>Contributors to this release</h3>
                 <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/Cadienvan" title="+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )">Michael Di Prisco</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+99/-46 ([#6405](https://github.com/axios/axios/issues/6405) [#6404](https://github.com/axios/axios/issues/6404) [#6401](https://github.com/axios/axios/issues/6401) [#6400](https://github.com/axios/axios/issues/6400) [#6395](https://github.com/axios/axios/issues/6395) )">Dmitriy Mozgovoy</a></li>
                 </ul>
-                <h2>Release v1.3.5</h2>
+                <h2>Release v1.7.0-beta.1</h2>
                 <h2>Release notes:</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>headers:</strong> fixed isValidHeaderName to support full list of allowed characters; (<a href="https://redirect.github.com/axios/axios/issues/5584">#5584</a>) (<a href="https://github.com/axios/axios/commit/e7decef6a99f4627e27ed9ea5b00ce8e201c3841">e7decef</a>)</li>
-                <li><strong>params:</strong> re-added the ability to set the function as <code>paramsSerializer</code> config; (<a href="https://redirect.github.com/axios/axios/issues/5633">#5633</a>) (<a href="https://github.com/axios/axios/commit/a56c8661209d5ce5a645a05f294a0e08a6c1f6b3">a56c866</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+28/-10 ([#5633](https://github.com/axios/axios/issues/5633) [#5584](https://github.com/axios/axios/issues/5584) )">Dmitriy Mozgovoy</a></li>
-                </ul>
-                <h2>Release v1.3.4</h2>
-                <h2>Release notes:</h2>
-                <h3>Bug Fixes</h3>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -1086,48 +1294,47 @@ output:
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/axios/axios/blob/v1.x/CHANGELOG.md">axios's changelog</a>.</em></p>
                 <blockquote>
-                <h1><a href="https://github.com/axios/axios/compare/v1.3.6...v1.4.0">1.4.0</a> (2023-04-27)</h1>
+                <h2><a href="https://github.com/axios/axios/compare/v1.7.1...v1.7.2">1.7.2</a> (2024-05-21)</h2>
                 <h3>Bug Fixes</h3>
                 <ul>
-                <li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href="https://redirect.github.com/axios/axios/issues/5678">#5678</a>) (<a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1">bbb61e7</a>)</li>
-                <li><strong>package:</strong> export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>) (<a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09">df38c94</a>)</li>
+                <li><strong>fetch:</strong> enhance fetch API detection; (<a href="https://redirect.github.com/axios/axios/issues/6413">#6413</a>) (<a href="https://github.com/axios/axios/commit/4f79aef81b7c4644328365bfc33acf0a9ef595bc">4f79aef</a>)</li>
                 </ul>
+                <h3>Contributors to this release</h3>
+                <ul>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+3/-3 ([#6413](https://github.com/axios/axios/issues/6413) )">Dmitriy Mozgovoy</a></li>
+                </ul>
+                <h2><a href="https://github.com/axios/axios/compare/v1.7.0...v1.7.1">1.7.1</a> (2024-05-20)</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li><strong>fetch:</strong> fixed ReferenceError issue when TextEncoder is not available in the environment; (<a href="https://redirect.github.com/axios/axios/issues/6410">#6410</a>) (<a href="https://github.com/axios/axios/commit/733f15fe5bd2d67e1fadaee82e7913b70d45dc5e">733f15f</a>)</li>
+                </ul>
+                <h3>Contributors to this release</h3>
+                <ul>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+14/-9 ([#6410](https://github.com/axios/axios/issues/6410) )">Dmitriy Mozgovoy</a></li>
+                </ul>
+                <h1><a href="https://github.com/axios/axios/compare/v1.7.0-beta.2...v1.7.0">1.7.0</a> (2024-05-19)</h1>
                 <h3>Features</h3>
                 <ul>
-                <li><strong>dns:</strong> added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>) (<a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb">2701911</a>)</li>
-                <li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>) (<a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf">726f1c8</a>)</li>
+                <li><strong>adapter:</strong> add fetch adapter; (<a href="https://redirect.github.com/axios/axios/issues/6371">#6371</a>) (<a href="https://github.com/axios/axios/commit/a3ff99b59d8ec2ab5dd049e68c043617a4072e42">a3ff99b</a>)</li>
                 </ul>
-                <h3>Performance Improvements</h3>
-                <ul>
-                <li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href="https://redirect.github.com/axios/axios/issues/5679">#5679</a>) (<a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e">e6f7053</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/arthurfiorette" title="+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )">Arthur Fiorette</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/npiyush97" title="+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )">PIYUSH NEGI</a></li>
-                </ul>
-                <h2><a href="https://github.com/axios/axios/compare/v1.3.5...v1.3.6">1.3.6</a> (2023-04-19)</h2>
                 <h3>Bug Fixes</h3>
                 <ul>
-                <li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href="https://redirect.github.com/axios/axios/issues/5445">#5445</a>) (<a href="https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2">6f360a2</a>)</li>
-                <li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href="https://redirect.github.com/axios/axios/issues/5661">#5661</a>) (<a href="https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76">aa372f7</a>)</li>
+                <li><strong>core/axios:</strong> handle un-writable error stack (<a href="https://redirect.github.com/axios/axios/issues/6362">#6362</a>) (<a href="https://github.com/axios/axios/commit/81e0455b7b57fbaf2be16a73ebe0e6591cc6d8f9">81e0455</a>)</li>
                 </ul>
                 <h3>Contributors to this release</h3>
                 <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/Cadienvan" title="+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )">Michael Di Prisco</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+1015/-127 ([#6371](https://github.com/axios/axios/issues/6371) )">Dmitriy Mozgovoy</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/jasonsaayman" title="+30/-14 ()">Jay</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/alexandre-abrioux" title="+56/-6 ([#6362](https://github.com/axios/axios/issues/6362) )">Alexandre ABRIOUX</a></li>
                 </ul>
-                <h2><a href="https://github.com/axios/axios/compare/v1.3.4...v1.3.5">1.3.5</a> (2023-04-05)</h2>
+                <h1><a href="https://github.com/axios/axios/compare/v1.7.0-beta.1...v1.7.0-beta.2">1.7.0-beta.2</a> (2024-05-19)</h1>
                 <h3>Bug Fixes</h3>
                 <ul>
-                <li><strong>headers:</strong> fixed isValidHeaderName to support full list of allowed characters; (<a href="https://redirect.github.com/axios/axios/issues/5584">#5584</a>) (<a href="https://github.com/axios/axios/commit/e7decef6a99f4627e27ed9ea5b00ce8e201c3841">e7decef</a>)</li>
-                <li><strong>params:</strong> re-added the ability to set the function as <code>paramsSerializer</code> config; (<a href="https://redirect.github.com/axios/axios/issues/5633">#5633</a>) (<a href="https://github.com/axios/axios/commit/a56c8661209d5ce5a645a05f294a0e08a6c1f6b3">a56c866</a>)</li>
+                <li><strong>fetch:</strong> capitalize HTTP method names; (<a href="https://redirect.github.com/axios/axios/issues/6395">#6395</a>) (<a href="https://github.com/axios/axios/commit/ad3174a3515c3c2573f4bcb94818d582826f3914">ad3174a</a>)</li>
+                <li><strong>fetch:</strong> fix &amp; optimize progress capturing for cases when the request data has a nullish value or zero data length (<a href="https://redirect.github.com/axios/axios/issues/6400">#6400</a>) (<a href="https://github.com/axios/axios/commit/95a3e8e346cfd6a5548e171f2341df3235d0e26b">95a3e8e</a>)</li>
+                <li><strong>fetch:</strong> fix headers getting from a stream response; (<a href="https://redirect.github.com/axios/axios/issues/6401">#6401</a>) (<a href="https://github.com/axios/axios/commit/870e0a76f60d0094774a6a63fa606eec52a381af">870e0a7</a>)</li>
                 </ul>
                 <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+28/-10 ([#5633](https://github.com/axios/axios/issues/5633) [#5584](https://github.com/axios/axios/issues/5584) )">Dmitriy Mozgovoy</a></li>
-                </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -1135,27 +1342,27 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/axios/axios/commit/21a5ad34c4a5956d81d338059ac0dd34a19ed094"><code>21a5ad3</code></a> chore(release): v1.4.0 (<a href="https://redirect.github.com/axios/axios/issues/5683">#5683</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/d627610d0c427de57c10618b36fa97814e2a75f0"><code>d627610</code></a> chore(utils): refactored isAsyncFn util to avoid inlining additional Babel he...</li>
-                <li><a href="https://github.com/axios/axios/commit/e18fdd893dfc67630c33fb6744d1b99d72857d92"><code>e18fdd8</code></a> refactor: remove deprecated url-search-params polyfill for URLSearchParams (#...</li>
-                <li><a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf"><code>726f1c8</code></a> feat(types): export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb"><code>2701911</code></a> feat(dns): added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e"><code>e6f7053</code></a> perf(merge-config): optimize mergeConfig performance by avoiding duplicate ke...</li>
-                <li><a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1"><code>bbb61e7</code></a> fix(formdata): add <code>multipart/form-data</code> content type for FormData payload on...</li>
-                <li><a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09"><code>df38c94</code></a> fix(package): export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/59eb99183546d822bc27e881f5dcd748daa04173"><code>59eb991</code></a> chore(release): v1.3.6 (<a href="https://redirect.github.com/axios/axios/issues/5666">#5666</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/1b8cc3b02b13f5d16ad988460edbda463113177e"><code>1b8cc3b</code></a> chore(template): improve issue template; (<a href="https://redirect.github.com/axios/axios/issues/5665">#5665</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/axios/axios/compare/v0.27.1...v1.4.0">compare view</a></li>
+                <li><a href="https://github.com/axios/axios/commit/0e4f9fa29077ebee4499facea6be1492b42e8a26"><code>0e4f9fa</code></a> chore(release): v1.7.2 (<a href="https://redirect.github.com/axios/axios/issues/6414">#6414</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/4f79aef81b7c4644328365bfc33acf0a9ef595bc"><code>4f79aef</code></a> fix(fetch): enhance fetch API detection; (<a href="https://redirect.github.com/axios/axios/issues/6413">#6413</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/67d1373131962d1f1f5b8d91f9a2f80ed3923bc8"><code>67d1373</code></a> chore(release): v1.7.1 (<a href="https://redirect.github.com/axios/axios/issues/6411">#6411</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/733f15fe5bd2d67e1fadaee82e7913b70d45dc5e"><code>733f15f</code></a> fix(fetch): fixed ReferenceError issue when TextEncoder is not available in t...</li>
+                <li><a href="https://github.com/axios/axios/commit/3041c61adaaac6d2c43eba28c134e7f4d43ab012"><code>3041c61</code></a> [Release] v1.7.0 (<a href="https://redirect.github.com/axios/axios/issues/6408">#6408</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/18b13cbaef66d8c266cf681165afe31787420100"><code>18b13cb</code></a> chore(docs): add fetch adapter docs; (<a href="https://redirect.github.com/axios/axios/issues/6407">#6407</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/e62099bc8b640acf47fba639366bbcd3bf87f831"><code>e62099b</code></a> fix(fetch): fixed a possible memory leak in the AbortController for the strea...</li>
+                <li><a href="https://github.com/axios/axios/commit/b49aa8e3d837c36e4728a9fa8a5e23a1162e96ec"><code>b49aa8e</code></a> chore(release): v1.7.0-beta.2 (<a href="https://redirect.github.com/axios/axios/issues/6403">#6403</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/d57f03a77fef1eb3cd9a17e2973c4305e105a42e"><code>d57f03a</code></a> chore(ci): bump create-pull-request version to fix a bug; (<a href="https://redirect.github.com/axios/axios/issues/6405">#6405</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/097b0d18e93d12c53b77741d6bfdc8a1fc11828b"><code>097b0d1</code></a> chore(ci): add tag resolution for npm releases based on package version; (<a href="https://redirect.github.com/axios/axios/issues/6404">#6404</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/axios/axios/compare/v0.27.1...v1.7.2">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump axios from 0.27.1 to 1.4.0 in /npm/semver
+                Bump axios from 0.27.1 to 1.7.2 in /npm/semver
 
-                Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.4.0.
+                Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.7.2.
                 - [Release notes](https://github.com/axios/axios/releases)
                 - [Changelog](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
-                - [Commits](https://github.com/axios/axios/compare/v0.27.1...v1.4.0)
+                - [Commits](https://github.com/axios/axios/compare/v0.27.1...v1.7.2)
     - type: mark_as_processed
       expect:
         data:

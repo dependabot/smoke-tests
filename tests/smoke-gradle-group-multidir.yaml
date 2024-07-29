@@ -5,11 +5,11 @@ input:
             - dependency-type: direct
               update-type: all
         dependency-groups:
-          - name: gradle
-            applies-to: security-updates
-            rules:
-              patterns:
-                - '*'
+            - name: gradle
+              applies-to: security-updates
+              rules:
+                patterns:
+                    - '*'
         dependencies:
             - com.google.code.findbugs:jsr305
             - org.hibernate:hibernate-core
@@ -169,6 +169,7 @@ output:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
                   version: 4.2.1
+                  directory: /gradle/multi-dir/foo
                 - name: com.google.code.findbugs:jsr305
                   previous-requirements:
                     - file: build.gradle
@@ -184,6 +185,7 @@ output:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
                   version: 3.0.2
+                  directory: /gradle/multi-dir/foo
                 - name: com.google.code.findbugs:jsr305
                   previous-requirements:
                     - file: build.gradle
@@ -199,6 +201,7 @@ output:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
                   version: 3.0.2
+                  directory: /gradle/multi-dir/bar
                 - name: org.hibernate:hibernate-core
                   previous-requirements:
                     - file: build.gradle
@@ -214,6 +217,7 @@ output:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
                   version: 5.3.0.Final
+                  directory: /gradle/multi-dir/bar
             updated-dependency-files:
                 - content: |
                     group 'me.minidigger'

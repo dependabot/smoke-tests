@@ -197,6 +197,7 @@ output:
                       requirement: =0.3.0
                       source: null
                   version: 0.3.0
+                  directory: /cargo/multi-dir/foo
                 - name: regex
                   previous-requirements:
                     - file: Cargo.toml
@@ -212,6 +213,7 @@ output:
                       requirement: '>=1.6.0, <1.8.0'
                       source: null
                   version: 1.7.1
+                  directory: /cargo/multi-dir/foo
                 - name: time
                   previous-requirements:
                     - file: Cargo.toml
@@ -227,6 +229,7 @@ output:
                       requirement: =0.3.0
                       source: null
                   version: 0.3.0
+                  directory: /cargo/multi-dir/bar
                 - name: rand
                   previous-requirements:
                     - file: Cargo.toml
@@ -250,6 +253,7 @@ output:
                         type: git
                         url: ssh://git@github.com/rust-random/rand.git
                   version: 937320cbfeebd4352a23086d9c6e68f067f74644
+                  directory: /cargo/multi-dir/bar
             updated-dependency-files:
                 - content: |
                     [package]

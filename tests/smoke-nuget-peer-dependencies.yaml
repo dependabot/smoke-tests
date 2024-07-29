@@ -3,6 +3,8 @@ input:
         package-manager: nuget
         allowed-updates:
             - update-type: all
+        experiments:
+            nuget_native_analysis: true
         ignore-conditions:
             - dependency-name: Microsoft.Extensions.Http
               source: tests/smoke-nuget-peer-dependencies.yaml
@@ -18,8 +20,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget/peer-dependencies
             commit: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
-        experiments:
-            nuget_native_analysis: true
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -91,6 +91,7 @@ output:
                         source_url: https://github.com/dotnet/runtime
                         type: nuget_repo
                   version: 8.0.0
+                  directory: /nuget/peer-dependencies
                 - name: Microsoft.Extensions.Logging
                   previous-requirements:
                     - file: /nuget/peer-dependencies/project.csproj
@@ -108,6 +109,7 @@ output:
                         source_url: https://github.com/dotnet/runtime
                         type: nuget_repo
                   version: 8.0.0
+                  directory: /nuget/peer-dependencies
             updated-dependency-files:
                 - content: |-
                     <Project Sdk="Microsoft.NET.Sdk">
@@ -304,6 +306,7 @@ output:
                         source_url: https://github.com/dotnet/runtime
                         type: nuget_repo
                   version: 8.0.0
+                  directory: /nuget/peer-dependencies
             updated-dependency-files:
                 - content: |-
                     <Project Sdk="Microsoft.NET.Sdk">

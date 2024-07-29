@@ -9,6 +9,8 @@ input:
               rules:
                 patterns:
                     - '*'
+        experiments:
+            nuget_native_analysis: true
         ignore-conditions:
             - dependency-name: NuGet.Versioning
               source: tests/smoke-nuget-version-multidir.yaml
@@ -23,8 +25,6 @@ input:
                 - /nuget/multi-dir/foo
                 - /nuget/multi-dir/bar
             commit: 2c4f15887b3829988403e4bbe7fcb4c222ad0f72
-        experiments:
-            nuget_native_analysis: true
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -137,6 +137,7 @@ output:
                         source_url: https://github.com/dotnet/runtime
                         type: nuget_repo
                   version: 8.0.0
+                  directory: /nuget/multi-dir/foo
                 - name: NuGet.Versioning
                   previous-requirements:
                     - file: /nuget/multi-dir/foo/project.csproj
@@ -154,6 +155,7 @@ output:
                         source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
                   version: 6.8.0
+                  directory: /nuget/multi-dir/foo
                 - name: NuGet.Versioning
                   previous-requirements:
                     - file: /nuget/multi-dir/bar/project.csproj
@@ -171,6 +173,7 @@ output:
                         source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
                   version: 6.8.0
+                  directory: /nuget/multi-dir/bar
                 - name: Microsoft.Extensions.Http
                   previous-requirements:
                     - file: /nuget/multi-dir/bar/project.csproj
@@ -188,6 +191,7 @@ output:
                         source_url: https://github.com/dotnet/runtime
                         type: nuget_repo
                   version: 8.0.0
+                  directory: /nuget/multi-dir/bar
             updated-dependency-files:
                 - content: |
                     <Project Sdk="Microsoft.NET.Sdk">

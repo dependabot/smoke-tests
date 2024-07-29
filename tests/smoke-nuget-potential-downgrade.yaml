@@ -5,6 +5,8 @@ input:
             - update-type: all
         dependencies:
             - Microsoft.VisualStudio.Sdk.TestFramework.Xunit
+        experiments:
+            nuget_native_analysis: true
         ignore-conditions:
             - dependency-name: Microsoft.VisualStudio.Sdk.TestFramework.Xunit
               source: tests/potential-downgrade.yaml
@@ -22,8 +24,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget/potential-downgrade
             commit: c28157d6e1e0304bbde1ae81227f5a789033fe9d
-        experiments:
-            nuget_native_analysis: true
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -355,6 +355,7 @@ output:
                         source_url: https://github.com/microsoft/vssdktestfx
                         type: nuget_repo
                   version: 17.6.16
+                  directory: /nuget/potential-downgrade
             updated-dependency-files:
                 - content: |
                     <Project>

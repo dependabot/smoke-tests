@@ -3,6 +3,8 @@ input:
         package-manager: nuget
         allowed-updates:
             - update-type: all
+        experiments:
+            nuget_native_analysis: true
         ignore-conditions:
             - dependency-name: AspNetCore.HealthChecks.Rabbitmq
               source: ../smoke-tests/tests/smoke-nuget-resolvability.yaml
@@ -15,8 +17,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget/resolvability
             commit: 1204ab6852a4872bbb0ba4fff1343fefb39663d6
-        experiments:
-            nuget_native_analysis: true
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -135,6 +135,7 @@ output:
                         source_url: https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
                         type: nuget_repo
                   version: 7.0.0
+                  directory: /nuget/resolvability
                 - name: Microsoft.Extensions.Diagnostics.HealthChecks
                   previous-requirements:
                     - file: /nuget/resolvability/B/B.csproj
@@ -164,6 +165,7 @@ output:
                         source_url: https://github.com/dotnet/aspnetcore
                         type: nuget_repo
                   version: 7.0.9
+                  directory: /nuget/resolvability
             updated-dependency-files:
                 - content: |-
                     <Project>
@@ -311,6 +313,7 @@ output:
                         source_url: https://github.com/dotnet/aspnetcore
                         type: nuget_repo
                   version: 7.0.9
+                  directory: /nuget/resolvability
             updated-dependency-files:
                 - content: |-
                     <Project>

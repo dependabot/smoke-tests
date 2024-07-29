@@ -13,9 +13,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /yarn-berry/
             commit: 6cf39d141962f97109e53c210db1a77639155e77
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -1071,6 +1068,7 @@ output:
                       requirement: ^3.6.3
                       source: null
                   version: 3.6.3
+                  directory: /yarn-berry
             updated-dependency-files:
                 - content: |
                     {
@@ -19659,6 +19657,7 @@ output:
 
                 Bumps [jquery](https://github.com/jquery/jquery) from 3.5.0 to 3.6.3.
                 - [Release notes](https://github.com/jquery/jquery/releases)
+                - [Changelog](https://github.com/jquery/jquery/blob/main/changelog.md)
                 - [Commits](https://github.com/jquery/jquery/compare/3.5.0...3.6.3)
     - type: mark_as_processed
       expect:

@@ -94,6 +94,7 @@ output:
                       requirement: ==2.1.0
                       source: null
                   version: 2.1.0
+                  directory: /pip/multi-dir/foo
                 - name: flask
                   previous-requirements:
                     - file: requirements.txt
@@ -109,6 +110,7 @@ output:
                       requirement: ==3.0.2
                       source: null
                   version: 3.0.2
+                  directory: /pip/multi-dir/foo
                 - name: urllib3
                   previous-requirements:
                     - file: requirements.txt
@@ -124,6 +126,7 @@ output:
                       requirement: ==2.1.0
                       source: null
                   version: 2.1.0
+                  directory: /pip/multi-dir/bar
                 - name: numpy
                   previous-requirements:
                     - file: requirements.txt
@@ -139,6 +142,7 @@ output:
                       requirement: ==1.26.2
                       source: null
                   version: 1.26.2
+                  directory: /pip/multi-dir/bar
             updated-dependency-files:
                 - content: |
                     urllib3==2.1.0
@@ -214,16 +218,15 @@ output:
                 <ul>
                 <li>Fixed <code>HTTPResponse.stream()</code> to continue yielding bytes if buffered decompressed data was still available to be read even if the underlying socket is closed. This prevents a compressed response from being truncated. (<a href="https://redirect.github.com/urllib3/urllib3/issues/3009">urllib3/urllib3#3009</a>)</li>
                 </ul>
-                <h2>2.0.1</h2>
-                <ul>
-                <li>Fixed a socket leak when fingerprint or hostname verifications fail. (<a href="https://redirect.github.com/urllib3/urllib3/issues/2991">#2991</a>)</li>
-                <li>Fixed an error when <code>HTTPResponse.read(0)</code> was the first <code>read</code> call or when the internal response body buffer was otherwise empty. (<a href="https://redirect.github.com/urllib3/urllib3/issues/2998">#2998</a>)</li>
-                </ul>
                 <h2>2.0.0</h2>
                 <p>Read the <a href="https://urllib3.readthedocs.io/en/latest/v2-migration-guide.html">v2.0 migration guide</a> for help upgrading to the latest version of urllib3.</p>
                 <h1>Removed</h1>
                 <ul>
                 <li>Removed support for Python 2.7, 3.5, and 3.6 (<a href="https://redirect.github.com/urllib3/urllib3/issues/883">#883</a>, <a href="https://redirect.github.com/urllib3/urllib3/issues/2336">#2336</a>).</li>
+                <li>Removed fallback on certificate <code>commonName</code> in <code>match_hostname()</code> function. This behavior was deprecated in May 2000 in RFC 2818. Instead only <code>subjectAltName</code> is used to verify the hostname by default. To enable verifying the hostname against <code>commonName</code> use <code>SSLContext.hostname_checks_common_name = True</code> (<a href="https://redirect.github.com/urllib3/urllib3/issues/2113">#2113</a>).</li>
+                <li>Removed support for Python with an <code>ssl</code> module compiled with LibreSSL, CiscoSSL, wolfSSL, and all other OpenSSL alternatives. Python is moving to require OpenSSL with PEP 644 (<a href="https://redirect.github.com/urllib3/urllib3/issues/2168">#2168</a>).</li>
+                <li>Removed support for OpenSSL versions earlier than 1.1.1 or that don't have SNI support. When an incompatible OpenSSL version is detected an <code>ImportError</code> is raised (<a href="https://redirect.github.com/urllib3/urllib3/issues/2168">#2168</a>).</li>
+                <li>Removed the list of default ciphers for OpenSSL 1.1.1+ and SecureTransport as their own defaults are already secure (<a href="https://redirect.github.com/urllib3/urllib3/issues/2082">#2082</a>).</li>
                 </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
@@ -461,16 +464,15 @@ output:
                 <ul>
                 <li>Fixed <code>HTTPResponse.stream()</code> to continue yielding bytes if buffered decompressed data was still available to be read even if the underlying socket is closed. This prevents a compressed response from being truncated. (<a href="https://redirect.github.com/urllib3/urllib3/issues/3009">urllib3/urllib3#3009</a>)</li>
                 </ul>
-                <h2>2.0.1</h2>
-                <ul>
-                <li>Fixed a socket leak when fingerprint or hostname verifications fail. (<a href="https://redirect.github.com/urllib3/urllib3/issues/2991">#2991</a>)</li>
-                <li>Fixed an error when <code>HTTPResponse.read(0)</code> was the first <code>read</code> call or when the internal response body buffer was otherwise empty. (<a href="https://redirect.github.com/urllib3/urllib3/issues/2998">#2998</a>)</li>
-                </ul>
                 <h2>2.0.0</h2>
                 <p>Read the <a href="https://urllib3.readthedocs.io/en/latest/v2-migration-guide.html">v2.0 migration guide</a> for help upgrading to the latest version of urllib3.</p>
                 <h1>Removed</h1>
                 <ul>
                 <li>Removed support for Python 2.7, 3.5, and 3.6 (<a href="https://redirect.github.com/urllib3/urllib3/issues/883">#883</a>, <a href="https://redirect.github.com/urllib3/urllib3/issues/2336">#2336</a>).</li>
+                <li>Removed fallback on certificate <code>commonName</code> in <code>match_hostname()</code> function. This behavior was deprecated in May 2000 in RFC 2818. Instead only <code>subjectAltName</code> is used to verify the hostname by default. To enable verifying the hostname against <code>commonName</code> use <code>SSLContext.hostname_checks_common_name = True</code> (<a href="https://redirect.github.com/urllib3/urllib3/issues/2113">#2113</a>).</li>
+                <li>Removed support for Python with an <code>ssl</code> module compiled with LibreSSL, CiscoSSL, wolfSSL, and all other OpenSSL alternatives. Python is moving to require OpenSSL with PEP 644 (<a href="https://redirect.github.com/urllib3/urllib3/issues/2168">#2168</a>).</li>
+                <li>Removed support for OpenSSL versions earlier than 1.1.1 or that don't have SNI support. When an incompatible OpenSSL version is detected an <code>ImportError</code> is raised (<a href="https://redirect.github.com/urllib3/urllib3/issues/2168">#2168</a>).</li>
+                <li>Removed the list of default ciphers for OpenSSL 1.1.1+ and SecureTransport as their own defaults are already secure (<a href="https://redirect.github.com/urllib3/urllib3/issues/2082">#2082</a>).</li>
                 </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>

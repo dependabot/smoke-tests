@@ -13,9 +13,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /pip/
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -87,6 +84,7 @@ output:
                       requirement: '>=3.1,<5.0'
                       source: null
                   version: 4.0.6
+                  directory: /pip
             updated-dependency-files:
                 - content: |
                     Django>=3.1,<5.0
@@ -146,6 +144,7 @@ output:
                       requirement: ==1.26.2
                       source: null
                   version: 1.26.2
+                  directory: /pip
             updated-dependency-files:
                 - content: |
                     Django>=3.1,<4.0

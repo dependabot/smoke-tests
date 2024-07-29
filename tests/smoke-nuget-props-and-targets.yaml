@@ -3,6 +3,8 @@ input:
         package-manager: nuget
         allowed-updates:
             - update-type: all
+        experiments:
+            nuget_native_analysis: true
         ignore-conditions:
             - dependency-name: Microsoft.CodeAnalysis.Analyzers
               source: tests/smoke-nuget-props-and-targets.yaml
@@ -15,8 +17,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget/props-and-targets
             commit: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
-        experiments:
-            nuget_native_analysis: true
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -91,6 +91,7 @@ output:
                         source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
                   version: 6.8.0
+                  directory: /nuget/props-and-targets
             updated-dependency-files:
                 - content: |-
                     <!--
@@ -162,6 +163,7 @@ output:
                         source_url: https://github.com/dotnet/roslyn-analyzers
                         type: nuget_repo
                   version: 3.3.4
+                  directory: /nuget/props-and-targets
             updated-dependency-files:
                 - content: |-
                     <!--

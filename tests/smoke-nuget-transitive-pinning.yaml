@@ -5,6 +5,8 @@ input:
             - update-type: all
         dependencies:
             - System.Text.Json
+        experiments:
+            nuget_native_analysis: true
         ignore-conditions:
             - dependency-name: System.Text.Json
               source: ./nuget/tests/transitive-pinning.yaml
@@ -22,8 +24,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /nuget/transitive-pinning
             commit: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
-        experiments:
-            nuget_native_analysis: true
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -87,6 +87,7 @@ output:
                   previous-version: 5.0.1
                   requirements: []
                   version: 5.0.2
+                  directory: /nuget/transitive-pinning
             updated-dependency-files:
                 - content: |-
                     <Project>

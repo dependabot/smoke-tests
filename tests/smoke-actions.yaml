@@ -220,6 +220,7 @@ output:
                         type: git
                         url: https://github.com/actions/setup-ruby
                   version: 1.1.3
+                  directory: /
                 - name: actions/setup-node
                   previous-requirements:
                     - file: .github/workflows/i-am-a-smoke-test.yml
@@ -245,6 +246,7 @@ output:
                         type: git
                         url: https://github.com/actions/setup-node
                   version: "2"
+                  directory: /
             updated-dependency-files:
                 - content: |
                     name: Smoke test manifest
@@ -376,6 +378,7 @@ output:
                         type: git
                         url: https://github.com/actions/setup-go
                   version: 4.1.0
+                  directory: /
             updated-dependency-files:
                 - content: |
                     name: Smoke test manifest

@@ -85,11 +85,13 @@ output:
                   previous-version: 9.2.0
                   requirements: []
                   version: 9.3.0
+                  directory: /npm/transitive
                 - name: '@hapi/topo'
                   previous-requirements: []
                   previous-version: 5.0.0
                   requirements: []
                   version: 5.1.0
+                  directory: /npm/transitive
             updated-dependency-files:
                 - content: |
                     {
@@ -217,11 +219,130 @@ output:
         data:
             base-commit-sha: dde3e21e99b5237377d6e8a4858615e293bfacc4
             dependencies:
+                - name: joi
+                  previous-requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^17.9.2
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  previous-version: 17.9.2
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^17.9.2
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 17.13.3
+                  directory: /npm/transitive
+            updated-dependency-files:
+                - content: |
+                    {
+                      "name": "transitive",
+                      "version": "1.0.0",
+                      "lockfileVersion": 3,
+                      "requires": true,
+                      "packages": {
+                        "": {
+                          "name": "transitive",
+                          "version": "1.0.0",
+                          "license": "ISC",
+                          "dependencies": {
+                            "joi": "^17.9.2"
+                          }
+                        },
+                        "node_modules/@hapi/hoek": {
+                          "version": "9.3.0",
+                          "resolved": "https://registry.npmjs.org/@hapi/hoek/-/hoek-9.3.0.tgz",
+                          "integrity": "sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ=="
+                        },
+                        "node_modules/@hapi/topo": {
+                          "version": "5.1.0",
+                          "resolved": "https://registry.npmjs.org/@hapi/topo/-/topo-5.1.0.tgz",
+                          "integrity": "sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==",
+                          "dependencies": {
+                            "@hapi/hoek": "^9.0.0"
+                          }
+                        },
+                        "node_modules/@sideway/address": {
+                          "version": "4.1.5",
+                          "resolved": "https://registry.npmjs.org/@sideway/address/-/address-4.1.5.tgz",
+                          "integrity": "sha512-IqO/DUQHUkPeixNQ8n0JA6102hT9CmaljNTPmQ1u8MEhBo/R4Q8eKLN/vGZxuebwOroDB4cbpjheD4+/sKFK4Q==",
+                          "dependencies": {
+                            "@hapi/hoek": "^9.0.0"
+                          }
+                        },
+                        "node_modules/@sideway/pinpoint": {
+                          "version": "2.0.0",
+                          "resolved": "https://registry.npmjs.org/@sideway/pinpoint/-/pinpoint-2.0.0.tgz",
+                          "integrity": "sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ=="
+                        },
+                        "node_modules/joi": {
+                          "version": "17.13.3",
+                          "resolved": "https://registry.npmjs.org/joi/-/joi-17.13.3.tgz",
+                          "integrity": "sha512-otDA4ldcIx+ZXsKHWmp0YizCweVRZG96J10b0FevjfuncLO1oX59THoAmHkNubYJ+9gWsYsp5k8v4ib6oDv1fA==",
+                          "dependencies": {
+                            "@hapi/hoek": "^9.3.0",
+                            "@hapi/topo": "^5.1.0",
+                            "@sideway/address": "^4.1.5",
+                            "@sideway/formula": "^3.0.1",
+                            "@sideway/pinpoint": "^2.0.0"
+                          }
+                        },
+                        "node_modules/joi/node_modules/@sideway/formula": {
+                          "version": "3.0.1",
+                          "resolved": "https://registry.npmjs.org/@sideway/formula/-/formula-3.0.1.tgz",
+                          "integrity": "sha512-/poHZJJVjx3L+zVD6g9KgHfYnb443oi7wLu/XKojDviHy6HOEOA6z1Trk5aR1dGcmPenJEgb2sK2I80LeS3MIg=="
+                        }
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /npm/transitive
+                  name: package-lock.json
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump joi from 17.9.2 to 17.13.3 in /npm/transitive
+            pr-body: |
+                Bumps [joi](https://github.com/hapijs/joi) from 17.9.2 to 17.13.3.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/hapijs/joi/commit/3cb73d6cded39fa49a46069b64d638a0ba0f7d14"><code>3cb73d6</code></a> 17.13.3</li>
+                <li><a href="https://github.com/hapijs/joi/commit/1653c478486227728942ebd8544bb068448cb814"><code>1653c47</code></a> fix: correct function type in alternatives error (<a href="https://redirect.github.com/hapijs/joi/issues/3043">#3043</a>)</li>
+                <li><a href="https://github.com/hapijs/joi/commit/7373136d149be0cc727096325f22f748d22aef46"><code>7373136</code></a> 17.13.2</li>
+                <li><a href="https://github.com/hapijs/joi/commit/add65979a3d2f93a08e60824ed1a02e56536fa69"><code>add6597</code></a> <code>strictUnknown</code> should honor local explicit <code>.unknown(false)</code></li>
+                <li><a href="https://github.com/hapijs/joi/commit/0066a4ef16706b722b81818a8608aea1129f4cc7"><code>0066a4e</code></a> 17.13.1</li>
+                <li><a href="https://github.com/hapijs/joi/commit/2d260302e75ed50e1f2658887dcd11fcc5b5e05c"><code>2d26030</code></a> fix: label false should also hide explicit labels (<a href="https://redirect.github.com/hapijs/joi/issues/3034">#3034</a>)</li>
+                <li><a href="https://github.com/hapijs/joi/commit/f02df4c011253d3573be19261a45c6765157d054"><code>f02df4c</code></a> 17.13.0</li>
+                <li><a href="https://github.com/hapijs/joi/commit/1ed2d4e615920c57d78ad139b6d53f62c1dec489"><code>1ed2d4e</code></a> feat: support encoding uri (follow-up to <a href="https://redirect.github.com/hapijs/joi/issues/3027">#3027</a>) (<a href="https://redirect.github.com/hapijs/joi/issues/3032">#3032</a>)</li>
+                <li><a href="https://github.com/hapijs/joi/commit/9af6f1f2347a4ffa4a131231b74978e1242fd585"><code>9af6f1f</code></a> feat: Support encoding uri (<a href="https://redirect.github.com/hapijs/joi/issues/3027">#3027</a>)</li>
+                <li><a href="https://github.com/hapijs/joi/commit/554a437a5569015479887f69033bcd1357fb55d6"><code>554a437</code></a> 17.12.3</li>
+                <li>Additional commits viewable in <a href="https://github.com/hapijs/joi/compare/v17.9.2...v17.13.3">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump joi from 17.9.2 to 17.13.3 in /npm/transitive
+
+                Bumps [joi](https://github.com/hapijs/joi) from 17.9.2 to 17.13.3.
+                - [Commits](https://github.com/hapijs/joi/compare/v17.9.2...v17.13.3)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: dde3e21e99b5237377d6e8a4858615e293bfacc4
+            dependencies:
                 - name: '@sideway/formula'
                   previous-requirements: []
                   previous-version: 3.0.0
                   requirements: []
                   version: 3.0.1
+                  directory: /npm/transitive
             updated-dependency-files:
                 - content: |
                     {
