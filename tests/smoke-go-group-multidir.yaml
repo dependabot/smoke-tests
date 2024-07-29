@@ -122,6 +122,7 @@ output:
                         source: rsc.io/qr
                         type: default
                   version: 0.2.0
+                  directory: /go/multi-dir/foo
                 - name: rsc.io/qr
                   previous-requirements:
                     - file: go.mod
@@ -139,6 +140,7 @@ output:
                         source: rsc.io/qr
                         type: default
                   version: 0.2.0
+                  directory: /go/multi-dir/bar
             updated-dependency-files:
                 - content: |
                     module group-security-update-test
@@ -242,6 +244,7 @@ output:
                         source: rsc.io/quote
                         type: default
                   version: 1.5.1
+                  directory: /go/multi-dir/foo
             updated-dependency-files:
                 - content: |
                     module group-security-update-test
@@ -302,6 +305,7 @@ output:
                         source: rsc.io/quote
                         type: default
                   version: 1.5.1
+                  directory: /go/multi-dir/bar
             updated-dependency-files:
                 - content: |
                     module group-security-update-test

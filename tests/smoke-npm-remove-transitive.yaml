@@ -26,9 +26,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /npm/removed
             commit: 4e5e081d77a06dd5092a65e161c1142fbec372bd
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -72,6 +69,7 @@ output:
                   requirements: []
                   version: null
                   removed: true
+                  directory: /npm/removed
                 - name: '@dependabot-fixtures/npm-remove-dependency'
                   previous-requirements:
                     - file: package.json
@@ -91,6 +89,7 @@ output:
                         type: registry
                         url: https://registry.npmjs.org
                   version: 10.0.1
+                  directory: /npm/removed
             updated-dependency-files:
                 - content: |
                     {

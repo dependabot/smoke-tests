@@ -9,10 +9,12 @@ input:
               applies-to: security-updates
               rules:
                 patterns:
-                  - '*'
+                    - '*'
         dependencies:
             - NuGet.Versioning
             - NuGet.Versioning
+        experiments:
+            nuget_native_analysis: true
         ignore-conditions:
             - dependency-name: NuGet.Versioning
               source: ../smoke-tests/tests/smoke-nuget-group-multidir.yaml
@@ -34,8 +36,6 @@ input:
                 - /nuget/multi-dir/foo
                 - /nuget/multi-dir/bar
             commit: 015a266f4472fe15631f6e0d77517e7a9d471023
-        experiments:
-            nuget_native_analysis: true
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -87,6 +87,7 @@ output:
                         source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
                   version: 6.2.4
+                  directory: /nuget/multi-dir/foo
                 - name: NuGet.Versioning
                   previous-requirements:
                     - file: /nuget/multi-dir/bar/project.csproj
@@ -104,6 +105,7 @@ output:
                         source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
                   version: 6.2.4
+                  directory: /nuget/multi-dir/bar
             updated-dependency-files:
                 - content: |
                     <Project Sdk="Microsoft.NET.Sdk">

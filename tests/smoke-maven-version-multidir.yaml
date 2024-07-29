@@ -207,6 +207,7 @@ output:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
                   version: 3.2.0
+                  directory: /maven/multi-dir/foo
                 - name: org.springframework.boot:spring-boot-starter-parent
                   previous-requirements:
                     - file: pom.xml
@@ -226,6 +227,7 @@ output:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
                   version: 3.2.0
+                  directory: /maven/multi-dir/bar
             updated-dependency-files:
                 - content: |
                     <?xml version="1.0" encoding="UTF-8"?>
