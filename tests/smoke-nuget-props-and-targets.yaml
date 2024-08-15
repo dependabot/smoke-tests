@@ -32,11 +32,15 @@ output:
                     - file: /nuget/props-and-targets/Directory.Build.props
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
                       requirement: 6.1.0
                       source: null
                     - file: /nuget/props-and-targets/project.csproj
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
                       requirement: 6.1.0
                       source: null
                   version: 6.1.0
@@ -45,11 +49,15 @@ output:
                     - file: /nuget/props-and-targets/Directory.Build.targets
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
                       requirement: 3.3.0
                       source: null
                     - file: /nuget/props-and-targets/project.csproj
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
                       requirement: 3.3.0
                       source: null
                   version: 3.3.0
@@ -67,11 +75,17 @@ output:
                     - file: /nuget/props-and-targets/Directory.Build.props
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
+                        previous_requirement: 6.1.0
                       requirement: 6.1.0
                       source: null
                     - file: /nuget/props-and-targets/project.csproj
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
+                        previous_requirement: 6.1.0
                       requirement: 6.1.0
                       source: null
                   previous-version: 6.1.0
@@ -79,6 +93,9 @@ output:
                     - file: /nuget/props-and-targets/Directory.Build.props
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
+                        previous_requirement: 6.1.0
                       requirement: 6.8.0
                       source:
                         source_url: https://github.com/NuGet/NuGet.Client
@@ -86,6 +103,9 @@ output:
                     - file: /nuget/props-and-targets/project.csproj
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
+                        previous_requirement: 6.1.0
                       requirement: 6.8.0
                       source:
                         source_url: https://github.com/NuGet/NuGet.Client
@@ -139,11 +159,17 @@ output:
                     - file: /nuget/props-and-targets/Directory.Build.targets
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
+                        previous_requirement: 3.3.0
                       requirement: 3.3.0
                       source: null
                     - file: /nuget/props-and-targets/project.csproj
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
+                        previous_requirement: 3.3.0
                       requirement: 3.3.0
                       source: null
                   previous-version: 3.3.0
@@ -151,6 +177,9 @@ output:
                     - file: /nuget/props-and-targets/Directory.Build.targets
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
+                        previous_requirement: 3.3.0
                       requirement: 3.3.4
                       source:
                         source_url: https://github.com/dotnet/roslyn-analyzers
@@ -158,6 +187,9 @@ output:
                     - file: /nuget/props-and-targets/project.csproj
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
+                        previous_requirement: 3.3.0
                       requirement: 3.3.4
                       source:
                         source_url: https://github.com/dotnet/roslyn-analyzers
