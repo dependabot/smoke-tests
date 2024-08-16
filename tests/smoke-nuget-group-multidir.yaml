@@ -51,6 +51,8 @@ output:
                     - file: /nuget/multi-dir/foo/project.csproj
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
                       requirement: 6.1.0
                       source: null
                   version: 6.1.0
@@ -59,6 +61,8 @@ output:
                     - file: /nuget/multi-dir/bar/project.csproj
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
                       requirement: 6.2.2
                       source: null
                   version: 6.2.2
@@ -75,6 +79,9 @@ output:
                     - file: /nuget/multi-dir/foo/project.csproj
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
+                        previous_requirement: 6.1.0
                       requirement: 6.1.0
                       source: null
                   previous-version: 6.1.0
@@ -82,6 +89,9 @@ output:
                     - file: /nuget/multi-dir/foo/project.csproj
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
+                        previous_requirement: 6.1.0
                       requirement: 6.2.4
                       source:
                         source_url: https://github.com/NuGet/NuGet.Client
@@ -93,6 +103,9 @@ output:
                     - file: /nuget/multi-dir/bar/project.csproj
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
+                        previous_requirement: 6.2.2
                       requirement: 6.2.2
                       source: null
                   previous-version: 6.2.2
@@ -100,6 +113,9 @@ output:
                     - file: /nuget/multi-dir/bar/project.csproj
                       groups:
                         - dependencies
+                      metadata:
+                        is_transitive: false
+                        previous_requirement: 6.2.2
                       requirement: 6.2.4
                       source:
                         source_url: https://github.com/NuGet/NuGet.Client
