@@ -1,0 +1,174 @@
+input:
+    job:
+        package-manager: nuget
+        allowed-updates:
+            - update-type: all
+        experiments:
+            nuget_native_analysis: true
+        ignore-conditions:
+            - dependency-name: Newtonsoft.Json
+              source: tests/smoke-nuget-transitive-and-top-level-deps.yaml
+              version-requirement: '> 13.0.1'
+            - dependency-name: Newtonsoft.Json.Bson
+              source: tests/smoke-nuget-transitive-and-top-level-deps.yaml
+              version-requirement: '> 1.0.2'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /nuget/top-level-only
+            commit: 7e63e776218e21339f8ef9b3b69a51879c97c2b0
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: Newtonsoft.Json
+                  requirements:
+                    - file: /nuget/top-level-only/dep-is-top-level/dep-is-top-level.csproj
+                      groups:
+                        - dependencies
+                      requirement: 12.0.1
+                      source: null
+                  version: 12.0.1
+                - name: Newtonsoft.Json.Bson
+                  requirements:
+                    - file: /nuget/top-level-only/dep-is-top-level/dep-is-top-level.csproj
+                      groups:
+                        - dependencies
+                      requirement: 1.0.2
+                      source: null
+                    - file: /nuget/top-level-only/dep-is-transitive/dep-is-transitive.csproj
+                      groups:
+                        - dependencies
+                      requirement: 1.0.2
+                      source: null
+                  version: 1.0.2
+            dependency_files:
+                - /nuget/top-level-only/dep-is-top-level/dep-is-top-level.csproj
+                - /nuget/top-level-only/dep-is-transitive/dep-is-transitive.csproj
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 7e63e776218e21339f8ef9b3b69a51879c97c2b0
+            dependencies:
+                - name: Newtonsoft.Json
+                  previous-requirements:
+                    - file: /nuget/top-level-only/dep-is-top-level/dep-is-top-level.csproj
+                      groups:
+                        - dependencies
+                      requirement: 12.0.1
+                      source: null
+                  previous-version: 12.0.1
+                  requirements:
+                    - file: /nuget/top-level-only/dep-is-top-level/dep-is-top-level.csproj
+                      groups:
+                        - dependencies
+                      requirement: 13.0.1
+                      source:
+                        source_url: https://github.com/JamesNK/Newtonsoft.Json
+                        type: nuget_repo
+                  version: 13.0.1
+                  directory: /nuget/top-level-only
+            updated-dependency-files:
+                - content: |-
+                    <Project Sdk="Microsoft.NET.Sdk">
+                      <PropertyGroup>
+                        <TargetFramework>net8.0</TargetFramework>
+                      </PropertyGroup>
+                      <ItemGroup>
+                        <!-- Newtonsoft.Json/12.0.1 is a top-level dependency and will be updated -->
+                        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+                        <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
+                      </ItemGroup>
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/top-level-only
+                  name: dep-is-top-level/dep-is-top-level.csproj
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump Newtonsoft.Json from 12.0.1 to 13.0.1 in /nuget/top-level-only
+            pr-body: |
+                Bumps [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) from 12.0.1 to 13.0.1.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/JamesNK/Newtonsoft.Json/releases">Newtonsoft.Json's releases</a>.</em></p>
+                <blockquote>
+                <h2>13.0.1</h2>
+                <ul>
+                <li>New feature - Add JsonSelectSettings with configuration for a regex timeout</li>
+                <li>Change - Remove portable assemblies from NuGet package</li>
+                <li>Change - JsonReader and JsonSerializer MaxDepth defaults to 64</li>
+                <li>Change - Change InvalidCastException to JsonSerializationException on mismatched JToken</li>
+                <li>Fix - Fixed throwing missing member error on ignored fields</li>
+                <li>Fix - Fixed various nullable annotations</li>
+                <li>Fix - Fixed annotations not being copied when tokens are cloned</li>
+                <li>Fix - Fixed naming strategy not being used when deserializing dictionary enum keys</li>
+                <li>Fix - Fixed serializing nullable struct dictionaries</li>
+                <li>Fix - Fixed JsonWriter.WriteToken to allow null with string token</li>
+                <li>Fix - Fixed missing error when deserializing JToken with a contract type mismatch</li>
+                <li>Fix - Fixed JTokenWriter when writing comment to an object</li>
+                </ul>
+                <h2>12.0.3</h2>
+                <ul>
+                <li>New feature - Added support for nullable reference types</li>
+                <li>New feature - Added KebabCaseNamingStrategy</li>
+                <li>Change - Package now uses embedded package icon</li>
+                <li>Fix - Fixed bug when merging JToken with itself</li>
+                <li>Fix - Fixed performance of calling ICustomTypeDescriptor.GetProperties</li>
+                <li>Fix - Fixed serializing Enumerable.Empty and empty arrays on .NET Core 3.0</li>
+                <li>Fix - Fixed deserializing some collection types with constructor</li>
+                <li>Fix - Fixed deserializing IImmutableSet to ImmutableHashSet instead of ImmutableSortedSet</li>
+                <li>Fix - Fixed deserializing IImmutableDictionary to ImmutableDictionary instead of ImmutableSortedDictionary</li>
+                <li>Fix - Fixed deserializing into constructors with more than 256 parameters</li>
+                <li>Fix - Fixed hang when deserializing JTokenReader with preceding comment</li>
+                <li>Fix - Fixed JSONPath scanning with nested indexer</li>
+                <li>Fix - Fixed deserializing incomplete JSON object to JObject</li>
+                <li>Fix - Fixed using StringEnumConverter with naming strategy and specified values</li>
+                </ul>
+                <h2>12.0.2</h2>
+                <ul>
+                <li>New feature - Added MissingMemberHandling to JsonObjectAttribute and JsonObjectContract</li>
+                <li>New feature - Added constructor to JTokenReader to specify initial path</li>
+                <li>New feature - Added JsonProperty.IsRequiredSpecified</li>
+                <li>New feature - Added JsonContract.InternalConverter</li>
+                <li>Change - Moved embedded debug symbols in NuGet package to a symbol package on NuGet.org</li>
+                <li>Fix - Fixed deserializing nullable struct collections</li>
+                <li>Fix - Fixed memory link when serializing enums to named values</li>
+                <li>Fix - Fixed error when setting JsonLoadSettings.DuplicatePropertyNameHandling to Replace</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/ae9fe44e1323e91bcbd185ca1a14099fba7c021f"><code>ae9fe44</code></a> Remove compiler package and update sourcelink (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json/issues/2498">#2498</a>)</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/8ef662189dd7fc890c8fcd832d3e283edb90ef31"><code>8ef6621</code></a> Remove prerelease for 13.0.1</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/11331f50fd1c09dc1f44fe17ef26aba7c460b42c"><code>11331f5</code></a> Update SDK to 5.0.200 (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json/issues/2495">#2495</a>)</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/c7e8abc09de751785355e3f972150f8a72379b02"><code>c7e8abc</code></a> Update to 13.0.1-beta2</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/1745d7c14ec7e4244a5ca1c7ddf5d955cf7d1f43"><code>1745d7c</code></a> Fix JTokenWriter when writing comment to an object (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json/issues/2493">#2493</a>)</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/583eb120152f8b6332df2fe3d4b9f4c947c944d0"><code>583eb12</code></a> Fix missing error when deserializing JToken with a contract type mismatch (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json/issues/2">#2</a>...</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/b6dc05be5a0f4808f06ec430f3bb59b24d3fbc3e"><code>b6dc05b</code></a> Change MaxDepth default to 64 (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json/issues/2473">#2473</a>)</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/15525f1c44e0d99ef8fdee73430853e22239181d"><code>15525f1</code></a> Fix JsonWriter.WriteToken to allow null with string token (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json/issues/2472">#2472</a>)</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/926d2f0f42292cfcdf07cdadeb501b73fd5b1d52"><code>926d2f0</code></a> Enable embed untracked sources (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json/issues/2471">#2471</a>)</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/0a56633b6cd4fccc860a8486260ee67636f3fe90"><code>0a56633</code></a> Fixes <a href="https://redirect.github.com/JamesNK/Newtonsoft.Json/issues/2372">#2372</a> - variable typos (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json/issues/2465">#2465</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/JamesNK/Newtonsoft.Json/compare/12.0.1...13.0.1">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump Newtonsoft.Json from 12.0.1 to 13.0.1 in /nuget/top-level-only
+
+                Bumps [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) from 12.0.1 to 13.0.1.
+                - [Release notes](https://github.com/JamesNK/Newtonsoft.Json/releases)
+                - [Commits](https://github.com/JamesNK/Newtonsoft.Json/compare/12.0.1...13.0.1)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 7e63e776218e21339f8ef9b3b69a51879c97c2b0
