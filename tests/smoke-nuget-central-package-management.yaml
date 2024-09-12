@@ -5,6 +5,7 @@ input:
             - update-type: all
         experiments:
             nuget_native_analysis: true
+            nuget_use_direct_discovery: true
         ignore-conditions:
             - dependency-name: Newtonsoft.Json
               source: tests/smoke-nuget-central-package-management.yaml
@@ -31,11 +32,6 @@ output:
                         - dependencies
                       requirement: 13.0.1
                       source: null
-                    - file: /nuget/central-package-management/Directory.Packages.props
-                      groups:
-                        - dependencies
-                      requirement: 13.0.1
-                      source: null
                   version: 13.0.1
             dependency_files:
                 - /nuget/central-package-management/project.csproj
@@ -52,21 +48,9 @@ output:
                         - dependencies
                       requirement: 13.0.1
                       source: null
-                    - file: /nuget/central-package-management/Directory.Packages.props
-                      groups:
-                        - dependencies
-                      requirement: 13.0.1
-                      source: null
                   previous-version: 13.0.1
                   requirements:
                     - file: /nuget/central-package-management/project.csproj
-                      groups:
-                        - dependencies
-                      requirement: 13.0.3
-                      source:
-                        source_url: https://github.com/JamesNK/Newtonsoft.Json
-                        type: nuget_repo
-                    - file: /nuget/central-package-management/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 13.0.3
