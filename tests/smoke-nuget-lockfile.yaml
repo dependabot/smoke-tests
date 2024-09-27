@@ -1,0 +1,154 @@
+input:
+    job:
+        package-manager: nuget
+        allowed-updates:
+            - update-type: all
+        experiments:
+            nuget_native_analysis: true
+        ignore-conditions:
+            - dependency-name: Newtonsoft.Json.Bson
+              source: tests/smoke-nuget-lockfile.yaml
+              version-requirement: '>1.0.2'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /nuget/lock-file
+            commit: ccba02222e66c9752d85607501e1a042cea90792
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: Newtonsoft.Json
+                  requirements: []
+                  version: 10.0.1
+                - name: Newtonsoft.Json.Bson
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 1.0.1
+                      source: null
+                  version: 1.0.1
+            dependency_files:
+                - /nuget/lock-file/project.csproj
+                - /nuget/lock-file/packages.lock.json
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: ccba02222e66c9752d85607501e1a042cea90792
+            dependencies:
+                - name: Newtonsoft.Json.Bson
+                  previous-requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 1.0.1
+                      source: null
+                  previous-version: 1.0.1
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 1.0.2
+                      source:
+                        source_url: https://github.com/JamesNK/Newtonsoft.Json.Bson
+                        type: nuget_repo
+                  version: 1.0.2
+                  directory: /nuget/lock-file
+            updated-dependency-files:
+                - content: |-
+                    <Project Sdk="Microsoft.NET.Sdk">
+                      <PropertyGroup>
+                        <TargetFramework>net8.0</TargetFramework>
+                      </PropertyGroup>
+                      <ItemGroup>
+                        <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
+                      </ItemGroup>
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/lock-file
+                  name: project.csproj
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |-
+                    {
+                      "version": 1,
+                      "dependencies": {
+                        "net8.0": {
+                          "Newtonsoft.Json.Bson": {
+                            "type": "Direct",
+                            "requested": "[1.0.2, )",
+                            "resolved": "1.0.2",
+                            "contentHash": "QYFyxhaABwmq3p/21VrZNYvCg3DaEoN/wUuw5nmfAf0X3HLjgupwhkEWdgfb9nvGAUIv3osmZoD3kKl4jxEmYQ==",
+                            "dependencies": {
+                              "Newtonsoft.Json": "12.0.1"
+                            }
+                          },
+                          "Newtonsoft.Json": {
+                            "type": "Transitive",
+                            "resolved": "12.0.1",
+                            "contentHash": "pBR3wCgYWZGiaZDYP+HHYnalVnPJlpP1q55qvVb+adrDHmFMDc1NAKio61xTwftK3Pw5h7TZJPJEEVMd6ty8rg=="
+                          }
+                        }
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/lock-file
+                  name: packages.lock.json
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump Newtonsoft.Json.Bson from 1.0.1 to 1.0.2 in /nuget/lock-file
+            pr-body: |
+                Bumps [Newtonsoft.Json.Bson](https://github.com/JamesNK/Newtonsoft.Json.Bson) from 1.0.1 to 1.0.2.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/releases">Newtonsoft.Json.Bson's releases</a>.</em></p>
+                <blockquote>
+                <h2>1.0.2</h2>
+                <ul>
+                <li>New feature - Added netstandard2.0 target</li>
+                <li>New feature - Added NuGet package signing</li>
+                <li>New feature - Added Authenticode assembly signing</li>
+                <li>New feature - Added SourceLink support</li>
+                <li>New feature - Updated to Newtonsoft.Json 12.0.1</li>
+                <li>Fix - Fixed BsonDataReader when reading multiple content</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/a1db92678e7e72eb733f37079f3a93bfb6215338"><code>a1db926</code></a> Update zip filename in build</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/af9c864a303a67591871c5c4da326d9b034c4088"><code>af9c864</code></a> Use package license expression (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json.Bson/issues/24">#24</a>)</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/5d6e2ffe166e5bf5078f228716892e0ede6f3bd7"><code>5d6e2ff</code></a> Update to 1.0.2</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/8de6b17cba63fe94839f4aac3eeacd85d4cbf894"><code>8de6b17</code></a> Update to Newtonsoft.Json 12.0.1-beta1 (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json.Bson/issues/22">#22</a>)</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/18d0b588795eeabb641d2df408a0370e009fd648"><code>18d0b58</code></a> Update build to deploy to NuGet (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json.Bson/issues/21">#21</a>)</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/0271d98980940d8ca90e7dee717801fd3168e242"><code>0271d98</code></a> Add code and package signing (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json.Bson/issues/20">#20</a>)</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/82996791d73c1c969d08236300585138fb1bffa6"><code>8299679</code></a> Add single multiple content test (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json.Bson/issues/19">#19</a>)</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/7c7ee2202236143f80f36576413cb39ec09de6f1"><code>7c7ee22</code></a> Add DevOps build badge (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json.Bson/issues/18">#18</a>)</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/09af7443d12a3059ddabbd4e637157aa84ade79a"><code>09af744</code></a> Add .NET Standard 2.0 target (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json.Bson/issues/17">#17</a>)</li>
+                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/c410aa2e40c005e27c97e62f516378ccdf7789a8"><code>c410aa2</code></a> Build NuGet package in CI (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json.Bson/issues/16">#16</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/compare/1.0.1...1.0.2">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump Newtonsoft.Json.Bson from 1.0.1 to 1.0.2 in /nuget/lock-file
+
+                Bumps [Newtonsoft.Json.Bson](https://github.com/JamesNK/Newtonsoft.Json.Bson) from 1.0.1 to 1.0.2.
+                - [Release notes](https://github.com/JamesNK/Newtonsoft.Json.Bson/releases)
+                - [Commits](https://github.com/JamesNK/Newtonsoft.Json.Bson/compare/1.0.1...1.0.2)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: ccba02222e66c9752d85607501e1a042cea90792
