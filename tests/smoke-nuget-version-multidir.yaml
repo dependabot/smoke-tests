@@ -12,9 +12,12 @@ input:
         experiments:
             nuget_native_analysis: true
         ignore-conditions:
-            - dependency-name: NuGet.Versioning
+            - dependency-name: Microsoft.Extensions.Http
               source: tests/smoke-nuget-version-multidir.yaml
-              version-requirement: '>6.8.0'
+              version-requirement: '>8.0.0'
+            - dependency-name: Microsoft.Extensions.Logging
+              source: tests/smoke-nuget-version-multidir.yaml
+              version-requirement: '>8.0.0'
             - dependency-name: NuGet.Versioning
               source: tests/smoke-nuget-version-multidir.yaml
               version-requirement: '>6.8.0'
