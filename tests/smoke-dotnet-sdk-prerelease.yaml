@@ -1,0 +1,125 @@
+input:
+    job:
+        package-manager: dotnet_sdk
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: dotnet-sdk
+              source: smoke-dotnet-sdk.yaml
+              version-requirement: '>9.0.100.pre.rc.2.24474.11'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: dotnet-sdk/allow-prerelease
+            commit: 366835275fdabbd856e7fdf91d450cc9fc81db84
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: dotnet-sdk
+                  requirements:
+                    - file: global.json
+                      groups: []
+                      requirement: 8.0.300
+                      source: null
+                  version: 8.0.300
+            dependency_files:
+                - /dotnet-sdk/allow-prerelease/global.json
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 366835275fdabbd856e7fdf91d450cc9fc81db84
+            dependencies:
+                - name: dotnet-sdk
+                  previous-requirements:
+                    - file: global.json
+                      groups: []
+                      requirement: 8.0.300
+                      source: null
+                  previous-version: 8.0.300
+                  requirements:
+                    - file: global.json
+                      groups: []
+                      requirement: 9.0.100.pre.rc.2.24474.11
+                      source: null
+                  version: 9.0.100.pre.rc.2.24474.11
+                  directory: /dotnet-sdk/allow-prerelease
+            updated-dependency-files:
+                - content: |
+                    {
+                      "sdk": {
+                        "version": "9.0.100.pre.rc.2.24474.11",
+                        "allowPrerelease": true
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /dotnet-sdk/allow-prerelease
+                  name: global.json
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump dotnet-sdk from 8.0.300 to 9.0.100.pre.rc.2.24474.11 in /dotnet-sdk/allow-prerelease
+            pr-body: |
+                Bumps [dotnet-sdk](https://github.com/dotnet/sdk) from 8.0.300 to 9.0.100.pre.rc.2.24474.11.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/dotnet/sdk/releases">dotnet-sdk's releases</a>.</em></p>
+                <blockquote>
+                <h2>.NET 9.0 RC 2</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v9.0.0-rc.2">Release</a></p>
+                <h2>.NET 9.0 RC 1</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v9.0.0-rc.1">Release</a></p>
+                <h2>.NET 9.0 Preview 7</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v9.0.0-preview.7">Release</a></p>
+                <h2>.NET 9.0 Preview 6</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v9.0.0-preview.6">Release</a></p>
+                <h2>.NET 9.0 Preview 5</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v9.0.0-preview.5">Release</a></p>
+                <h2>.NET 9.0 Preview 4</h2>
+                <p><a href="https://github.com/dotnet/core/releases">Release</a></p>
+                <h2>.NET 9.0 Preview 3</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v9.0.0-preview.3">Release</a></p>
+                <h2>.NET 9.0 Preview 2</h2>
+                <p>[Release[(https://github.com/dotnet/core/releases/tag/v9.0.0-preview.2)</p>
+                <h2>.NET 9 Preview 1</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v9.0.0-preview.1">Release</a></p>
+                <h2>.NET 8.0.8</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v8.0.8">Release</a></p>
+                <h2>.NET 8.0.7</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v8.0.7">Release</a></p>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/dotnet/sdk/commit/315e1305dbe1a5ef5870faab5dc12d3a375f61eb"><code>315e130</code></a> Merged PR 43090: [internal/release/9.0.1xx-rc2] Update dependencies from dnce...</li>
+                <li><a href="https://github.com/dotnet/sdk/commit/9276de522fb71c82eb5ecf09aa507010c007119a"><code>9276de5</code></a> Merged PR 43060: [internal/release/9.0.1xx-rc2] Update dependencies from dnce...</li>
+                <li><a href="https://github.com/dotnet/sdk/commit/14fe462924c2c161d7855a9574265601c438043b"><code>14fe462</code></a> Merged PR 43035: [internal/release/9.0.1xx-rc2] Update dependencies from dnce...</li>
+                <li><a href="https://github.com/dotnet/sdk/commit/24f444daa7400c47987ce7636f61b85ec3988e15"><code>24f444d</code></a> Merge commit '368bc6543c9d6175d9a58ba13b2cf28c69672672'</li>
+                <li><a href="https://github.com/dotnet/sdk/commit/368bc6543c9d6175d9a58ba13b2cf28c69672672"><code>368bc65</code></a> [release/9.0.1xx-rc2] Exclude false positive license ref for fsharp patch (<a href="https://redirect.github.com/dotnet/sdk/issues/4">#4</a>...</li>
+                <li><a href="https://github.com/dotnet/sdk/commit/9906402eca6800ae0c996ae07abbc220b4213317"><code>9906402</code></a> Merge commit '12d9e79db3b6189cc54806e69b365c7831d9bedf'</li>
+                <li><a href="https://github.com/dotnet/sdk/commit/12d9e79db3b6189cc54806e69b365c7831d9bedf"><code>12d9e79</code></a> [release/9.0.1xx-rc2] Update dependencies from nuget/nuget.client (<a href="https://redirect.github.com/dotnet/sdk/issues/43643">#43643</a>)</li>
+                <li><a href="https://github.com/dotnet/sdk/commit/3f42bee3619464ff105335f3bdf11d0e2c5e4dd4"><code>3f42bee</code></a> Merge commit 'fad9d0f2bd71daec2d16ba4137878158986a2c9f'</li>
+                <li><a href="https://github.com/dotnet/sdk/commit/fad9d0f2bd71daec2d16ba4137878158986a2c9f"><code>fad9d0f</code></a> [release/9.0.1xx-rc2] Update dependencies from dotnet/roslyn (<a href="https://redirect.github.com/dotnet/sdk/issues/43640">#43640</a>)</li>
+                <li><a href="https://github.com/dotnet/sdk/commit/08ed73b3ebe21148ff9a901d4ab8b96d0e408d86"><code>08ed73b</code></a> Merge commit 'cd55fe26dc4f4795c452446b94e0b5d80a6cdd1b'</li>
+                <li>Additional commits viewable in <a href="https://github.com/dotnet/sdk/compare/v8.0.300...v9.0.100-rc.2.24474.11">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump dotnet-sdk in /dotnet-sdk/allow-prerelease
+
+                Bumps [dotnet-sdk](https://github.com/dotnet/sdk) from 8.0.300 to 9.0.100.pre.rc.2.24474.11.
+                - [Release notes](https://github.com/dotnet/sdk/releases)
+                - [Commits](https://github.com/dotnet/sdk/compare/v8.0.300...v9.0.100-rc.2.24474.11)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 366835275fdabbd856e7fdf91d450cc9fc81db84
