@@ -1,0 +1,77 @@
+input:
+    job:
+        package-manager: dotnet_sdk
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: dotnet-sdk
+              source: smoke-dotnet-sdk.yaml
+              version-requirement: '>8.0.403'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: dotnet-sdk/basic
+            commit: 366835275fdabbd856e7fdf91d450cc9fc81db84
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: dotnet-sdk
+                  requirements:
+                    - file: global.json
+                      groups: []
+                      requirement: 8.0.300
+                      source: null
+                  version: 8.0.300
+            dependency_files:
+                - /dotnet-sdk/basic/global.json
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 366835275fdabbd856e7fdf91d450cc9fc81db84
+            dependencies:
+                - name: dotnet-sdk
+                  previous-requirements:
+                    - file: global.json
+                      groups: []
+                      requirement: 8.0.300
+                      source: null
+                  previous-version: 8.0.300
+                  requirements:
+                    - file: global.json
+                      groups: []
+                      requirement: 8.0.403
+                      source: null
+                  version: 8.0.403
+                  directory: /dotnet-sdk/basic
+            updated-dependency-files:
+                - content: |-
+                    {
+                      "sdk": {
+                        "version": "8.0.403"
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /dotnet-sdk/basic
+                  name: global.json
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump dotnet-sdk from 8.0.300 to 8.0.403 in /dotnet-sdk/basic
+            pr-body: |
+                Bumps dotnet-sdk from 8.0.300 to 8.0.403.
+            commit-message: |-
+                Bump dotnet-sdk from 8.0.300 to 8.0.403 in /dotnet-sdk/basic
+
+                Bumps dotnet-sdk from 8.0.300 to 8.0.403.
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 366835275fdabbd856e7fdf91d450cc9fc81db84
