@@ -238,15 +238,10 @@ output:
                 <p><em>Sourced from <a href="https://github.com/urllib3/urllib3/blob/main/CHANGES.rst">urllib3's changelog</a>.</em></p>
                 <blockquote>
                 <h1>2.1.0 (2023-11-13)</h1>
-                <p>Read the <code>v2 migration guide &lt;https://urllib3.readthedocs.io/en/latest/v2-migration-guide.html&gt;</code>__ for help upgrading to the latest version of urllib3.</p>
-                <h2>Removals</h2>
                 <ul>
                 <li>Removed support for the deprecated urllib3[secure] extra. (<code>[#2680](https://github.com/urllib3/urllib3/issues/2680) &lt;https://github.com/urllib3/urllib3/issues/2680&gt;</code>__)</li>
                 <li>Removed support for the deprecated SecureTransport TLS implementation. (<code>[#2681](https://github.com/urllib3/urllib3/issues/2681) &lt;https://github.com/urllib3/urllib3/issues/2681&gt;</code>__)</li>
                 <li>Removed support for the end-of-life Python 3.7. (<code>[#3143](https://github.com/urllib3/urllib3/issues/3143) &lt;https://github.com/urllib3/urllib3/issues/3143&gt;</code>__)</li>
-                </ul>
-                <h2>Bugfixes</h2>
-                <ul>
                 <li>Allowed loading CA certificates from memory for proxies. (<code>[#3065](https://github.com/urllib3/urllib3/issues/3065) &lt;https://github.com/urllib3/urllib3/issues/3065&gt;</code>__)</li>
                 <li>Fixed decoding Gzip-encoded responses which specified <code>x-gzip</code> content-encoding. (<code>[#3174](https://github.com/urllib3/urllib3/issues/3174) &lt;https://github.com/urllib3/urllib3/issues/3174&gt;</code>__)</li>
                 </ul>
@@ -273,7 +268,11 @@ output:
                 <h1>2.0.3 (2023-06-07)</h1>
                 <ul>
                 <li>Allowed alternative SSL libraries such as LibreSSL, while still issuing a warning as we cannot help users facing issues with implementations other than OpenSSL. (<code>[#3020](https://github.com/urllib3/urllib3/issues/3020) &lt;https://github.com/urllib3/urllib3/issues/3020&gt;</code>__)</li>
+                <li>Deprecated URLs which don't have an explicit scheme (<code>[#2950](https://github.com/urllib3/urllib3/issues/2950) &lt;https://github.com/urllib3/urllib3/pull/2950&gt;</code>_)</li>
+                <li>Fixed response decoding with Zstandard when compressed data is made of several frames. (<code>[#3008](https://github.com/urllib3/urllib3/issues/3008) &lt;https://github.com/urllib3/urllib3/issues/3008&gt;</code>__)</li>
+                <li>Fixed <code>assert_hostname=False</code> to correctly skip hostname check. (<code>[#3051](https://github.com/urllib3/urllib3/issues/3051) &lt;https://github.com/urllib3/urllib3/issues/3051&gt;</code>__)</li>
                 </ul>
+                <h1>2.0.2 (2023-05-03)</h1>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -367,7 +366,7 @@ output:
                 <h2>Version 3.0.1</h2>
                 <p>Released 2024-01-18</p>
                 <ul>
-                <li>Correct type for <code>path</code> argument to <code>send_file</code>. :issue:<code>5230</code></li>
+                <li>Correct type for <code>path</code> argument to <code>send_file</code>. :issue:<code>5336</code></li>
                 <li>Fix a typo in an error message for the <code>flask run --key</code> option. :pr:<code>5344</code></li>
                 <li>Session data is untagged without relying on the built-in <code>json.loads</code>
                 <code>object_hook</code>. This allows other JSON providers that don't implement that.
@@ -485,15 +484,10 @@ output:
                 <p><em>Sourced from <a href="https://github.com/urllib3/urllib3/blob/main/CHANGES.rst">urllib3's changelog</a>.</em></p>
                 <blockquote>
                 <h1>2.1.0 (2023-11-13)</h1>
-                <p>Read the <code>v2 migration guide &lt;https://urllib3.readthedocs.io/en/latest/v2-migration-guide.html&gt;</code>__ for help upgrading to the latest version of urllib3.</p>
-                <h2>Removals</h2>
                 <ul>
                 <li>Removed support for the deprecated urllib3[secure] extra. (<code>[#2680](https://github.com/urllib3/urllib3/issues/2680) &lt;https://github.com/urllib3/urllib3/issues/2680&gt;</code>__)</li>
                 <li>Removed support for the deprecated SecureTransport TLS implementation. (<code>[#2681](https://github.com/urllib3/urllib3/issues/2681) &lt;https://github.com/urllib3/urllib3/issues/2681&gt;</code>__)</li>
                 <li>Removed support for the end-of-life Python 3.7. (<code>[#3143](https://github.com/urllib3/urllib3/issues/3143) &lt;https://github.com/urllib3/urllib3/issues/3143&gt;</code>__)</li>
-                </ul>
-                <h2>Bugfixes</h2>
-                <ul>
                 <li>Allowed loading CA certificates from memory for proxies. (<code>[#3065](https://github.com/urllib3/urllib3/issues/3065) &lt;https://github.com/urllib3/urllib3/issues/3065&gt;</code>__)</li>
                 <li>Fixed decoding Gzip-encoded responses which specified <code>x-gzip</code> content-encoding. (<code>[#3174](https://github.com/urllib3/urllib3/issues/3174) &lt;https://github.com/urllib3/urllib3/issues/3174&gt;</code>__)</li>
                 </ul>
@@ -520,7 +514,11 @@ output:
                 <h1>2.0.3 (2023-06-07)</h1>
                 <ul>
                 <li>Allowed alternative SSL libraries such as LibreSSL, while still issuing a warning as we cannot help users facing issues with implementations other than OpenSSL. (<code>[#3020](https://github.com/urllib3/urllib3/issues/3020) &lt;https://github.com/urllib3/urllib3/issues/3020&gt;</code>__)</li>
+                <li>Deprecated URLs which don't have an explicit scheme (<code>[#2950](https://github.com/urllib3/urllib3/issues/2950) &lt;https://github.com/urllib3/urllib3/pull/2950&gt;</code>_)</li>
+                <li>Fixed response decoding with Zstandard when compressed data is made of several frames. (<code>[#3008](https://github.com/urllib3/urllib3/issues/3008) &lt;https://github.com/urllib3/urllib3/issues/3008&gt;</code>__)</li>
+                <li>Fixed <code>assert_hostname=False</code> to correctly skip hostname check. (<code>[#3051](https://github.com/urllib3/urllib3/issues/3051) &lt;https://github.com/urllib3/urllib3/issues/3051&gt;</code>__)</li>
                 </ul>
+                <h1>2.0.2 (2023-05-03)</h1>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
