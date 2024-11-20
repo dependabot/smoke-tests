@@ -5,6 +5,7 @@ input:
             - update-type: all
         experiments:
             nuget_native_analysis: true
+            nuget_use_direct_discovery: true
         ignore-conditions:
             - dependency-name: Newtonsoft.Json
               source: tests/smoke-nuget-version-property.yaml
@@ -24,16 +25,11 @@ output:
       expect:
         data:
             dependencies:
-                - name: NETStandard.Library
-                  requirements: []
-                  version: 2.0.3
                 - name: Newtonsoft.Json
                   requirements:
                     - file: /nuget/version-property/project.csproj
                       groups:
                         - dependencies
-                      metadata:
-                        property_name: NewtonsoftJsonPackageVersion
                       requirement: 13.0.1
                       source: null
                   version: 13.0.1
@@ -50,8 +46,6 @@ output:
                     - file: /nuget/version-property/project.csproj
                       groups:
                         - dependencies
-                      metadata:
-                        property_name: NewtonsoftJsonPackageVersion
                       requirement: 13.0.1
                       source: null
                   previous-version: 13.0.1
@@ -59,8 +53,6 @@ output:
                     - file: /nuget/version-property/project.csproj
                       groups:
                         - dependencies
-                      metadata:
-                        property_name: NewtonsoftJsonPackageVersion
                       requirement: 13.0.3
                       source:
                         source_url: https://github.com/JamesNK/Newtonsoft.Json

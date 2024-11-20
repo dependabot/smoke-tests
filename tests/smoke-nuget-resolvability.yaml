@@ -5,6 +5,7 @@ input:
             - update-type: all
         experiments:
             nuget_native_analysis: true
+            nuget_use_direct_discovery: true
         ignore-conditions:
             - dependency-name: AspNetCore.HealthChecks.Rabbitmq
               source: ../smoke-tests/tests/smoke-nuget-resolvability.yaml
@@ -39,11 +40,6 @@ output:
                         - dependencies
                       requirement: 5.0.2
                       source: null
-                    - file: /nuget/resolvability/Directory.Packages.props
-                      groups:
-                        - dependencies
-                      requirement: 5.0.2
-                      source: null
                   version: 5.0.2
                 - name: Microsoft.Extensions.Configuration.Abstractions
                   requirements: []
@@ -54,11 +50,6 @@ output:
                 - name: Microsoft.Extensions.Diagnostics.HealthChecks
                   requirements:
                     - file: /nuget/resolvability/B/B.csproj
-                      groups:
-                        - dependencies
-                      requirement: 5.0.17
-                      source: null
-                    - file: /nuget/resolvability/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 5.0.17
@@ -106,11 +97,6 @@ output:
                         - dependencies
                       requirement: 5.0.2
                       source: null
-                    - file: /nuget/resolvability/Directory.Packages.props
-                      groups:
-                        - dependencies
-                      requirement: 5.0.2
-                      source: null
                   previous-version: 5.0.2
                   requirements:
                     - file: /nuget/resolvability/A/A.csproj
@@ -127,13 +113,6 @@ output:
                       source:
                         source_url: https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
                         type: nuget_repo
-                    - file: /nuget/resolvability/Directory.Packages.props
-                      groups:
-                        - dependencies
-                      requirement: 7.0.0
-                      source:
-                        source_url: https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
-                        type: nuget_repo
                   version: 7.0.0
                   directory: /nuget/resolvability
                 - name: Microsoft.Extensions.Diagnostics.HealthChecks
@@ -143,21 +122,9 @@ output:
                         - dependencies
                       requirement: 5.0.17
                       source: null
-                    - file: /nuget/resolvability/Directory.Packages.props
-                      groups:
-                        - dependencies
-                      requirement: 5.0.17
-                      source: null
                   previous-version: 5.0.17
                   requirements:
                     - file: /nuget/resolvability/B/B.csproj
-                      groups:
-                        - dependencies
-                      requirement: 7.0.9
-                      source:
-                        source_url: https://github.com/dotnet/aspnetcore
-                        type: nuget_repo
-                    - file: /nuget/resolvability/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 7.0.9

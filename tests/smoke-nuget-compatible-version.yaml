@@ -5,6 +5,7 @@ input:
             - update-type: all
         experiments:
             nuget_native_analysis: true
+            nuget_use_direct_discovery: true
         ignore-conditions:
             - dependency-name: Microsoft.AspNetCore.Authentication.JwtBearer
               source: tests/smoke-nuget-compatible-version.yaml
@@ -24,9 +25,6 @@ output:
       expect:
         data:
             dependencies:
-                - name: NETStandard.Library
-                  requirements: []
-                  version: 2.0.3
                 - name: Microsoft.AspNetCore.Authentication.JwtBearer
                   requirements:
                     - file: /nuget/compatible-version/project/project.csproj

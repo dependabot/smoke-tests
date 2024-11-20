@@ -7,6 +7,7 @@ input:
             - Microsoft.VisualStudio.Sdk.TestFramework.Xunit
         experiments:
             nuget_native_analysis: true
+            nuget_use_direct_discovery: true
         ignore-conditions:
             - dependency-name: Microsoft.VisualStudio.Sdk.TestFramework.Xunit
               source: tests/potential-downgrade.yaml
@@ -39,20 +40,26 @@ output:
                   version: 5.1.0
                 - name: MessagePack
                   requirements: []
-                  version: 2.3.85
+                  version: 2.5.108
                 - name: MessagePack.Annotations
                   requirements: []
-                  version: 2.3.85
+                  version: 2.5.108
                 - name: Microsoft.Bcl.AsyncInterfaces
                   requirements: []
-                  version: 6.0.0
+                  version: 7.0.0
                 - name: Microsoft.Build.Framework
                   requirements: []
-                  version: 17.1.0
+                  version: 17.6.3
                 - name: Microsoft.CodeAnalysis.BannedApiAnalyzers
                   requirements: []
                   version: 3.3.2
                 - name: Microsoft.CodeCoverage
+                  requirements: []
+                  version: 17.6.3
+                - name: Microsoft.IO.Redist
+                  requirements: []
+                  version: 6.0.0
+                - name: Microsoft.NET.StringTools
                   requirements: []
                   version: 17.6.3
                 - name: Microsoft.NET.Test.Sdk
@@ -62,24 +69,16 @@ output:
                         - dependencies
                       requirement: 17.6.3
                       source: null
-                    - file: /nuget/potential-downgrade/Directory.Packages.props
-                      groups:
-                        - dependencies
-                      requirement: 17.6.3
-                      source: null
                   version: 17.6.3
                 - name: Microsoft.ServiceHub.Analyzers
                   requirements: []
-                  version: 3.1.4097
-                - name: Microsoft.ServiceHub.Client
-                  requirements: []
-                  version: 3.1.4097
+                  version: 4.2.102
                 - name: Microsoft.ServiceHub.Framework
                   requirements: []
-                  version: 3.1.4097
+                  version: 4.2.102
                 - name: Microsoft.ServiceHub.Resources
                   requirements: []
-                  version: 3.1.4097
+                  version: 4.2.8
                 - name: Microsoft.TestPlatform.ObjectModel
                   requirements: []
                   version: 17.6.3
@@ -88,48 +87,43 @@ output:
                   version: 17.6.3
                 - name: Microsoft.VisualStudio.ComponentModelHost
                   requirements: []
-                  version: 17.2.3194
+                  version: 17.6.268
                 - name: Microsoft.VisualStudio.Composition
                   requirements: []
-                  version: 17.2.41
+                  version: 17.6.17
                 - name: Microsoft.VisualStudio.Composition.Analyzers
                   requirements: []
-                  version: 17.2.41
+                  version: 17.6.17
                 - name: Microsoft.VisualStudio.GraphModel
                   requirements: []
-                  version: 17.2.32505.113
+                  version: 17.6.36389
                 - name: Microsoft.VisualStudio.ImageCatalog
                   requirements: []
-                  version: 17.2.32505.113
+                  version: 17.6.36389
                 - name: Microsoft.VisualStudio.Imaging
                   requirements: []
-                  version: 17.2.32505.113
+                  version: 17.6.36389
                 - name: Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime
                   requirements: []
-                  version: 17.2.32505.113
+                  version: 17.6.36387
                 - name: Microsoft.VisualStudio.Interop
                   requirements: []
-                  version: 17.2.32505.113
+                  version: 17.6.36389
                 - name: Microsoft.VisualStudio.ProjectAggregator
                   requirements: []
-                  version: 17.2.32505.113
+                  version: 17.6.36387
                 - name: Microsoft.VisualStudio.RemoteControl
                   requirements: []
-                  version: 16.3.44
+                  version: 16.3.52
                 - name: Microsoft.VisualStudio.RpcContracts
                   requirements: []
-                  version: 17.2.31
+                  version: 17.6.13
                 - name: Microsoft.VisualStudio.SDK.Analyzers
                   requirements: []
                   version: 16.10.10
                 - name: Microsoft.VisualStudio.Sdk.TestFramework
                   requirements:
                     - file: /nuget/potential-downgrade/project.csproj
-                      groups:
-                        - dependencies
-                      requirement: 17.2.7
-                      source: null
-                    - file: /nuget/potential-downgrade/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 17.2.7
@@ -142,47 +136,40 @@ output:
                         - dependencies
                       requirement: 17.2.7
                       source: null
-                    - file: /nuget/potential-downgrade/Directory.Packages.props
-                      groups:
-                        - dependencies
-                      requirement: 17.2.7
-                      source: null
                   version: 17.2.7
+                - name: Microsoft.VisualStudio.Setup.Configuration.Interop
+                  requirements: []
+                  version: 3.6.2115
                 - name: Microsoft.VisualStudio.Shell.15.0
-                  requirements:
-                    - file: /nuget/potential-downgrade/Directory.Packages.props
-                      groups:
-                        - dependencies
-                      requirement: 17.6.36389
-                      source: null
+                  requirements: []
                   version: 17.6.36389
                 - name: Microsoft.VisualStudio.Shell.Framework
                   requirements: []
-                  version: 17.2.32505.113
+                  version: 17.6.36389
                 - name: Microsoft.VisualStudio.Telemetry
                   requirements: []
-                  version: 16.4.56
+                  version: 17.6.46
                 - name: Microsoft.VisualStudio.Threading
                   requirements: []
-                  version: 17.2.32
+                  version: 17.6.40
                 - name: Microsoft.VisualStudio.Threading.Analyzers
                   requirements: []
-                  version: 17.2.32
+                  version: 17.6.40
                 - name: Microsoft.VisualStudio.Utilities
                   requirements: []
-                  version: 17.2.32505.113
+                  version: 17.6.36389
                 - name: Microsoft.VisualStudio.Utilities.Internal
                   requirements: []
-                  version: 16.3.36
+                  version: 16.3.42
                 - name: Microsoft.VisualStudio.Utilities.Testing
                   requirements: []
                   version: 17.2.32505.113
                 - name: Microsoft.VisualStudio.Validation
                   requirements: []
-                  version: 17.0.53
+                  version: 17.6.11
                 - name: Microsoft.Win32.SystemEvents
                   requirements: []
-                  version: 5.0.0
+                  version: 7.0.0
                 - name: Moq
                   requirements:
                     - file: /nuget/potential-downgrade/project.csproj
@@ -190,89 +177,76 @@ output:
                         - dependencies
                       requirement: 4.18.2
                       source: null
-                    - file: /nuget/potential-downgrade/Directory.Packages.props
-                      groups:
-                        - dependencies
-                      requirement: 4.18.2
-                      source: null
                   version: 4.18.2
                 - name: Nerdbank.Streams
                   requirements: []
-                  version: 2.8.57
+                  version: 2.9.112
                 - name: Newtonsoft.Json
                   requirements: []
-                  version: 13.0.1
+                  version: 13.0.3
                 - name: NuGet.Frameworks
                   requirements: []
                   version: 6.5.0
                 - name: StreamJsonRpc
                   requirements: []
-                  version: 2.11.35
+                  version: 2.15.29
                 - name: System.CodeDom
                   requirements: []
                   version: 5.0.0
                 - name: System.ComponentModel.Composition
                   requirements: []
-                  version: 6.0.0
+                  version: 7.0.0
                 - name: System.Composition.AttributedModel
                   requirements: []
-                  version: 6.0.0
+                  version: 7.0.0
                 - name: System.Composition.Convention
                   requirements: []
-                  version: 6.0.0
+                  version: 7.0.0
                 - name: System.Composition.Hosting
                   requirements: []
-                  version: 6.0.0
+                  version: 7.0.0
                 - name: System.Composition.Runtime
                   requirements: []
-                  version: 6.0.0
+                  version: 7.0.0
                 - name: System.Composition.TypedParts
                   requirements: []
-                  version: 6.0.0
+                  version: 7.0.0
                 - name: System.Configuration.ConfigurationManager
                   requirements: []
-                  version: 5.0.0
+                  version: 7.0.0
                 - name: System.Diagnostics.EventLog
                   requirements: []
-                  version: 6.0.0
+                  version: 7.0.0
                 - name: System.Diagnostics.PerformanceCounter
                   requirements: []
-                  version: 5.0.1
+                  version: 7.0.0
                 - name: System.Drawing.Common
                   requirements: []
-                  version: 5.0.0
+                  version: 7.0.0
                 - name: System.IO.Pipelines
                   requirements: []
-                  version: 6.0.1
+                  version: 7.0.0
                 - name: System.Management
                   requirements: []
                   version: 5.0.0
                 - name: System.Security.Cryptography.ProtectedData
                   requirements: []
-                  version: 5.0.0
+                  version: 7.0.0
                 - name: System.Security.Permissions
                   requirements: []
-                  version: 5.0.0
-                - name: System.Text.Json
-                  requirements: []
-                  version: 6.0.0
+                  version: 7.0.0
                 - name: System.Threading.AccessControl
                   requirements: []
-                  version: 6.0.0
+                  version: 7.0.0
                 - name: System.Windows.Extensions
                   requirements: []
-                  version: 5.0.0
+                  version: 7.0.0
                 - name: Validation
                   requirements: []
                   version: 2.4.18
                 - name: xunit
                   requirements:
                     - file: /nuget/potential-downgrade/project.csproj
-                      groups:
-                        - dependencies
-                      requirement: 2.5.0
-                      source: null
-                    - file: /nuget/potential-downgrade/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 2.5.0
@@ -300,23 +274,10 @@ output:
                         - dependencies
                       requirement: 2.5.0
                       source: null
-                    - file: /nuget/potential-downgrade/Directory.Packages.props
-                      groups:
-                        - dependencies
-                      requirement: 2.5.0
-                      source: null
                   version: 2.5.0
                 - name: Xunit.SkippableFact
                   requirements: []
                   version: 1.4.13
-                - name: Microsoft.VisualStudio.Text.Data
-                  requirements:
-                    - file: /nuget/potential-downgrade/Directory.Packages.props
-                      groups:
-                        - dependencies
-                      requirement: 17.6.268
-                      source: null
-                  version: 17.6.268
             dependency_files:
                 - /nuget/potential-downgrade/project.csproj
                 - /nuget/potential-downgrade/Directory.Packages.props
@@ -333,21 +294,9 @@ output:
                         - dependencies
                       requirement: 17.2.7
                       source: null
-                    - file: /nuget/potential-downgrade/Directory.Packages.props
-                      groups:
-                        - dependencies
-                      requirement: 17.2.7
-                      source: null
                   previous-version: 17.2.7
                   requirements:
                     - file: /nuget/potential-downgrade/project.csproj
-                      groups:
-                        - dependencies
-                      requirement: 17.6.16
-                      source:
-                        source_url: https://github.com/microsoft/vssdktestfx
-                        type: nuget_repo
-                    - file: /nuget/potential-downgrade/Directory.Packages.props
                       groups:
                         - dependencies
                       requirement: 17.6.16
