@@ -37,8 +37,8 @@ output:
                       source: null
                   version: 1.0.1
             dependency_files:
-                - /nuget/lock-file/project.csproj
                 - /nuget/lock-file/packages.lock.json
+                - /nuget/lock-file/project.csproj
     - type: create_pull_request
       expect:
         data:
@@ -63,22 +63,6 @@ output:
                   version: 1.0.2
                   directory: /nuget/lock-file
             updated-dependency-files:
-                - content: |-
-                    <Project Sdk="Microsoft.NET.Sdk">
-                      <PropertyGroup>
-                        <TargetFramework>net8.0</TargetFramework>
-                      </PropertyGroup>
-                      <ItemGroup>
-                        <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
-                      </ItemGroup>
-                    </Project>
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /nuget/lock-file
-                  name: project.csproj
-                  operation: update
-                  support_file: false
-                  type: file
                 - content: |-
                     {
                       "version": 1,
@@ -105,6 +89,22 @@ output:
                   deleted: false
                   directory: /nuget/lock-file
                   name: packages.lock.json
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |-
+                    <Project Sdk="Microsoft.NET.Sdk">
+                      <PropertyGroup>
+                        <TargetFramework>net8.0</TargetFramework>
+                      </PropertyGroup>
+                      <ItemGroup>
+                        <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
+                      </ItemGroup>
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/lock-file
+                  name: project.csproj
                   operation: update
                   support_file: false
                   type: file
