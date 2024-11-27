@@ -12,17 +12,12 @@ input:
               version-requirement: '>4.14.191'
         source:
             provider: github
-            repo: dsp-testing/dependabot-core-6432
+            repo: dsp-testing/dependabot-core-smoke-yarn-monorepo
             directory: /.
-            commit: e9421fd1c3e40d8b357b0b493fd976b36fbed953
+            commit: d864e3910a2a5a237efa2733ec287db2ef4a8344
             hostname: github.com
             api-endpoint: https://api.github.com/
         commit-message-options: {}
-        credentials-metadata:
-            - host: github.com
-              type: git_source
-            - host: github.com
-              type: git_source
         max-updater-run-time: 2700
     credentials:
         - host: github.com
@@ -394,7 +389,7 @@ output:
                   version: 1.1.3
                 - name: colors
                   requirements: []
-                  version: 1.3.3
+                  version: 1.4.0
                 - name: combined-stream
                   requirements: []
                   version: 1.0.8
@@ -1437,7 +1432,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: e9421fd1c3e40d8b357b0b493fd976b36fbed953
+            base-commit-sha: d864e3910a2a5a237efa2733ec287db2ef4a8344
             dependencies:
                 - name: '@types/lodash'
                   previous-requirements:
@@ -1748,7 +1743,7 @@ output:
                         dockerode: 2.5.8
                         fs-extra: 9.0.0
                         glob: 7.1.6
-                        gluegun: "git+https://github.com/edgeandnode/gluegun.git#v4.3.1-pin-colors-dep"
+                        gluegun: 4.3.1
                         graphql: 15.5.0
                         immutable: 3.8.2
                         ipfs-http-client: 34.0.0
@@ -2739,14 +2734,7 @@ output:
                       languageName: node
                       linkType: hard
 
-                    "colors@npm:1.3.3":
-                      version: 1.3.3
-                      resolution: "colors@npm:1.3.3"
-                      checksum: c57f0aa2b71a836435fb0cd8ac4b9f4025ff5411cb027ffcbaa2274347fd00ed52b9d66904f46be73086c27ac31bad9500da675250c95182568454b392f87ee5
-                      languageName: node
-                      linkType: hard
-
-                    "colors@npm:^1.1.2":
+                    "colors@npm:^1.1.2, colors@npm:^1.3.3":
                       version: 1.4.0
                       resolution: "colors@npm:1.4.0"
                       checksum: 98aa2c2418ad87dedf25d781be69dc5fc5908e279d9d30c34d8b702e586a0474605b3a189511482b9d5ed0d20c867515d22749537f7bc546256c6014f3ebdcec
@@ -2776,9 +2764,9 @@ output:
                       languageName: node
                       linkType: hard
 
-                    "concat-stream@github:hugomrdias/concat-stream#feat/smaller":
+                    "concat-stream@github:max-mapper/concat-stream#feat/smaller":
                       version: 2.0.0
-                      resolution: "concat-stream@https://github.com/hugomrdias/concat-stream.git#commit=057bc7b5d6d8df26c8cf00a3f151b6721a0a8034"
+                      resolution: "concat-stream@https://github.com/max-mapper/concat-stream.git#commit=057bc7b5d6d8df26c8cf00a3f151b6721a0a8034"
                       dependencies:
                         inherits: ^2.0.3
                         readable-stream: ^3.0.2
@@ -3515,14 +3503,14 @@ output:
                       languageName: node
                       linkType: hard
 
-                    "gluegun@git+https://github.com/edgeandnode/gluegun.git#v4.3.1-pin-colors-dep":
+                    "gluegun@npm:4.3.1":
                       version: 4.3.1
-                      resolution: "gluegun@https://github.com/edgeandnode/gluegun.git#commit=b34b9003d7bf556836da41b57ef36eb21570620a"
+                      resolution: "gluegun@npm:4.3.1"
                       dependencies:
                         apisauce: ^1.0.1
                         app-module-path: ^2.2.0
                         cli-table3: ~0.5.0
-                        colors: 1.3.3
+                        colors: ^1.3.3
                         cosmiconfig: 6.0.0
                         cross-spawn: ^7.0.0
                         ejs: ^2.6.1
@@ -3552,7 +3540,7 @@ output:
                         yargs-parser: ^16.1.0
                       bin:
                         gluegun: bin/gluegun
-                      checksum: 7a45a5a606a1e651c891467a693552b5237f8e90410f9c9daad4621ff0693d1c92b69aa35fc30eccf7c3b92ee724f15fc297e054086cfb312717ef01f48d2290
+                      checksum: afd580921c89d9e72c103cebe8d5db90ff4ecd5ebcdb2a133a893beb704967aa4b50eb81229da0f8b9bdcbb94af381284f0be510dbb94e58f29f17df0d070674
                       languageName: node
                       linkType: hard
 
@@ -3859,7 +3847,7 @@ output:
                         bs58: ^4.0.1
                         buffer: ^5.4.2
                         cids: ~0.7.1
-                        concat-stream: "github:hugomrdias/concat-stream#feat/smaller"
+                        concat-stream: "github:max-mapper/concat-stream#feat/smaller"
                         debug: ^4.1.0
                         detect-node: ^2.0.4
                         end-of-stream: ^1.4.1
@@ -3888,7 +3876,7 @@ output:
                         multibase: ~0.6.0
                         multicodec: ~0.5.1
                         multihashes: ~0.4.14
-                        ndjson: "github:hugomrdias/ndjson#feat/readable-stream3"
+                        ndjson: "github:max-mapper/ndjson#feat/readable-stream3"
                         once: ^1.4.0
                         peer-id: ~0.12.3
                         peer-info: ~0.15.1
@@ -5008,9 +4996,9 @@ output:
                       languageName: node
                       linkType: hard
 
-                    "ndjson@github:hugomrdias/ndjson#feat/readable-stream3":
+                    "ndjson@github:max-mapper/ndjson#feat/readable-stream3":
                       version: 1.5.0
-                      resolution: "ndjson@https://github.com/hugomrdias/ndjson.git#commit=4db16da6b42e5b39bf300c3a7cde62abb3fa3a11"
+                      resolution: "ndjson@https://github.com/max-mapper/ndjson.git#commit=4db16da6b42e5b39bf300c3a7cde62abb3fa3a11"
                       dependencies:
                         json-stringify-safe: ^5.0.1
                         minimist: ^1.2.0
@@ -6551,4 +6539,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: e9421fd1c3e40d8b357b0b493fd976b36fbed953
+            base-commit-sha: d864e3910a2a5a237efa2733ec287db2ef4a8344
