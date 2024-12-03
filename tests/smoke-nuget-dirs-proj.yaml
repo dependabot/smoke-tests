@@ -39,9 +39,8 @@ output:
                       source: null
                   version: 6.1.0
             dependency_files:
-                - /nuget/dirs-proj/dirs.proj
-                - /nuget/dirs-proj/project2/project.csproj
                 - /nuget/dirs-proj/project1/project.csproj
+                - /nuget/dirs-proj/project2/project.csproj
     - type: create_pull_request
       expect:
         data:
@@ -96,7 +95,7 @@ output:
                   content_encoding: utf-8
                   deleted: false
                   directory: /nuget/dirs-proj
-                  name: project2/project.csproj
+                  name: project1/project.csproj
                   operation: update
                   support_file: false
                   type: file
@@ -118,7 +117,7 @@ output:
                   content_encoding: utf-8
                   deleted: false
                   directory: /nuget/dirs-proj
-                  name: project1/project.csproj
+                  name: project2/project.csproj
                   operation: update
                   support_file: false
                   type: file
