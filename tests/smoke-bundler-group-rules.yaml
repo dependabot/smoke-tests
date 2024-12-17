@@ -137,10 +137,10 @@ output:
                       requirement: '>= 0'
                       source:
                         branch: null
-                        ref: v3.0.9.1
+                        ref: v3.1.8
                         type: git
                         url: git@github.com:rack/rack.git
-                  version: cc95b0db910b58c0ebb7aafa957400218ffbf500
+                  version: 09f2f66ac1bb392ae58fd531dcb0acd01c9680be
                   directory: /bundler
             updated-dependency-files:
                 - content: |
@@ -150,7 +150,7 @@ output:
 
                     gem "rubocop", "1.59.0"
                     gem "toml-rb", "2.2.0"
-                    gem 'rack', git: 'git@github.com:rack/rack.git', tag: 'v3.0.9.1'
+                    gem 'rack', git: 'git@github.com:rack/rack.git', tag: 'v3.1.8'
                   content_encoding: utf-8
                   deleted: false
                   directory: /bundler
@@ -161,26 +161,26 @@ output:
                 - content: |
                     GIT
                       remote: git@github.com:rack/rack.git
-                      revision: cc95b0db910b58c0ebb7aafa957400218ffbf500
-                      tag: v3.0.9.1
+                      revision: 09f2f66ac1bb392ae58fd531dcb0acd01c9680be
+                      tag: v3.1.8
                       specs:
-                        rack (3.0.9.1)
+                        rack (3.1.8)
 
                     GEM
                       remote: https://rubygems.org/
                       specs:
                         ast (2.4.2)
                         citrus (3.0.2)
-                        json (2.7.1)
+                        json (2.9.1)
                         language_server-protocol (3.17.0.3)
-                        parallel (1.24.0)
-                        parser (3.3.0.5)
+                        parallel (1.26.3)
+                        parser (3.3.6.0)
                           ast (~> 2.4.1)
                           racc
-                        racc (1.7.3)
+                        racc (1.8.1)
                         rainbow (3.1.1)
-                        regexp_parser (2.9.0)
-                        rexml (3.2.6)
+                        regexp_parser (2.9.3)
+                        rexml (3.4.0)
                         rubocop (1.59.0)
                           json (~> 2.3)
                           language_server-protocol (>= 3.17.0)
@@ -192,12 +192,12 @@ output:
                           rubocop-ast (>= 1.30.0, < 2.0)
                           ruby-progressbar (~> 1.7)
                           unicode-display_width (>= 2.4.0, < 3.0)
-                        rubocop-ast (1.30.0)
-                          parser (>= 3.2.1.0)
+                        rubocop-ast (1.37.0)
+                          parser (>= 3.3.1.0)
                         ruby-progressbar (1.13.0)
                         toml-rb (2.2.0)
                           citrus (~> 3.0, > 3.0)
-                        unicode-display_width (2.5.0)
+                        unicode-display_width (2.6.0)
 
                     PLATFORMS
                       ruby
@@ -353,110 +353,54 @@ output:
                 </details>
                 <br />
 
-                Updates `rack` from 2.1.4 to v3.0.9.1
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/rack/rack/releases">rack's releases</a>.</em></p>
-                <blockquote>
-                <h2>v3.0.9.1</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Fixed ReDoS in Accept header parsing [CVE-2024-26146]</li>
-                <li>Fixed ReDoS in Content Type header parsing [CVE-2024-25126]</li>
-                <li>Reject Range headers which are too large [CVE-2024-26141]</li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.9...v3.0.9.1">https://github.com/rack/rack/compare/v3.0.9...v3.0.9.1</a></p>
-                <h2>v3.0.9</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Fix content-length calcuation in Rack:Response#write <a href="https://redirect.github.com/rack/rack/issues/2150">#2150</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.8...v3.0.9">https://github.com/rack/rack/compare/v3.0.8...v3.0.9</a></p>
-                <h2>v3.0.8</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Backport &quot;Fix some unused variable verbose warnings&quot; by <a href="https://github.com/skipkayhil"><code>@​skipkayhil</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2084">rack/rack#2084</a></li>
-                </ul>
-                <h2>New Contributors</h2>
-                <ul>
-                <li><a href="https://github.com/skipkayhil"><code>@​skipkayhil</code></a> made their first contribution in <a href="https://redirect.github.com/rack/rack/pull/2084">rack/rack#2084</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.7...v3.0.8">https://github.com/rack/rack/compare/v3.0.7...v3.0.8</a></p>
-                <h2>v3.0.7</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Backport &quot;Make query parameters without = have nil values&quot;. by <a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2060">rack/rack#2060</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.6.1...v3.0.7">https://github.com/rack/rack/compare/v3.0.6.1...v3.0.7</a></p>
-                <h2>v3.0.6.1</h2>
-                <p>No release notes provided.</p>
-                <h2>v3.0.4.1</h2>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.4...v3.0.4.1">https://github.com/rack/rack/compare/v3.0.4...v3.0.4.1</a></p>
-                <h2>v3.0.4</h2>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.3...v3.0.4">https://github.com/rack/rack/compare/v3.0.3...v3.0.4</a></p>
-                <h2>v3.0.3</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Release v3.0.3 by <a href="https://github.com/ioquatix"><code>@​ioquatix</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2000">rack/rack#2000</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.2...v3.0.3">https://github.com/rack/rack/compare/v3.0.2...v3.0.3</a></p>
-                <h2>v3.0.2</h2>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.1...v3.0.2">https://github.com/rack/rack/compare/v3.0.1...v3.0.2</a></p>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
+                Updates `rack` from 2.1.4 to v3.1.8
                 <details>
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/rack/rack/blob/main/CHANGELOG.md">rack's changelog</a>.</em></p>
                 <blockquote>
-                <h1>Changelog</h1>
-                <p>All notable changes to this project will be documented in this file. For info on how to format all future additions to this file please reference <a href="https://keepachangelog.com/en/1.0.0/">Keep A Changelog</a>.</p>
-                <h2>Unreleased</h2>
-                <h3>SPEC Changes</h3>
+                <h2>[3.1.8] - 2024-10-14</h2>
+                <h3>Fixed</h3>
                 <ul>
-                <li><code>rack.input</code> is now optional. (<a href="https://redirect.github.com/rack/rack/pull/1997">#1997</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
-                <li><code>Rack::Utils.escape_html</code> is now delegated to <code>CGI.escapeHTML</code>. <code>'</code> is escaped to <code>[#39](https://github.com/rack/rack/issues/39);</code> instead of <code>#x27;</code>. (decimal vs hexadecimal) (<a href="https://redirect.github.com/rack/rack/pull/2099">#2099</a>, <a href="https://github.com/JunichiIto"><code>@​JunichiIto</code></a>)</li>
+                <li>Resolve deprecation warnings about uri <code>DEFAULT_PARSER</code>. (<a href="https://redirect.github.com/rack/rack/pull/2249">#2249</a>, [<a href="https://github.com/earlopain"><code>@​earlopain</code></a>])</li>
                 </ul>
-                <h3>Changed</h3>
+                <h2>[3.1.7] - 2024-07-11</h2>
+                <h3>Fixed</h3>
                 <ul>
-                <li><code>rack.input</code> is now optional, and if missing, will raise an error. Use this to fail on multipart parsing a request without an input body. (<a href="https://redirect.github.com/rack/rack/pull/2018">#2018</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
-                <li>Introduce <code>module Rack::BadRequest</code> which is included in multipart and query parser errors. (<a href="https://redirect.github.com/rack/rack/pull/2019">#2019</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
-                <li>MIME type for JavaScript files (<code>.js</code>) changed from <code>application/javascript</code> to <code>text/javascript</code> (<a href="https://github.com/rack/rack/commit/1bd0f1597d8f4a90d47115f3e156a8ce7870c9c8"><code>1bd0f15</code></a>)</li>
-                <li>Add <code>.mjs</code> MIME type (<a href="https://redirect.github.com/rack/rack/pull/2057">#2057</a>, [<a href="https://github.com/axilleas"><code>@​axilleas</code></a>])</li>
-                <li>Update MIME types associated to <code>.ttf</code>, <code>.woff</code>, <code>.woff2</code> and <code>.otf</code> extensions to use mondern <code>font/*</code> types. (<a href="https://redirect.github.com/rack/rack/pull/2065">#2065</a>, [<a href="https://github.com/davidstosik"><code>@​davidstosik</code></a>])</li>
-                <li><code>set_cookie_header</code> utility now supports the <code>partitioned</code> cookie attribute. This is required by Chrome in some embedded contexts. (<a href="https://redirect.github.com/rack/rack/pull/2131">#2131</a>, [<a href="https://github.com/flavio-b"><code>@​flavio-b</code></a>])</li>
-                <li>Remove non-standard status codes 306, 509, &amp; 510 and update descriptions for 413, 422, &amp; 451. (<a href="https://redirect.github.com/rack/rack/pull/2137">#2137</a>, [<a href="https://github.com/wtn"><code>@​wtn</code></a>])</li>
-                <li>Add fallback lookup and deprecation warning for obsolete status symbols. (<a href="https://redirect.github.com/rack/rack/pull/2137">#2137</a>, [<a href="https://github.com/wtn"><code>@​wtn</code></a>])</li>
+                <li>Do not remove escaped opening/closing quotes for content-disposition filenames. (<a href="https://redirect.github.com/rack/rack/pull/2229">#2229</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
+                <li>Fix encoding setting for non-binary IO-like objects in MockRequest#env_for. (<a href="https://redirect.github.com/rack/rack/pull/2227">#2227</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
+                <li><code>Rack::Response</code> should not generate invalid <code>content-length</code> header. (<a href="https://redirect.github.com/rack/rack/pull/2219">#2219</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
+                <li>Allow empty PATH_INFO. (<a href="https://redirect.github.com/rack/rack/pull/2214">#2214</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
                 </ul>
-                <h2>[3.0.9] - 2024-01-31</h2>
+                <h2>[3.1.6] - 2024-07-03</h2>
+                <h3>Fixed</h3>
                 <ul>
-                <li>Fix incorrect content-length header that was emitted when <code>Rack::Response#write</code> was used in some situations. (<a href="https://redirect.github.com/rack/rack/pull/2150">#2150</a>, [<a href="https://github.com/mattbrictson"><code>@​mattbrictson</code></a>])</li>
+                <li>Fix several edge cases in <code>Rack::Request#parse_http_accept_header</code>'s implementation. (<a href="https://redirect.github.com/rack/rack/pull/2226">#2226</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
                 </ul>
-                <h2>[3.0.8] - 2023-06-14</h2>
+                <h2>[3.1.5] - 2024-07-02</h2>
+                <h3>Security</h3>
                 <ul>
-                <li>Fix some unused variable verbose warnings. (<a href="https://redirect.github.com/rack/rack/pull/2084">#2084</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>], <a href="https://github.com/skipkayhil"><code>@​skipkayhil</code></a>)</li>
+                <li>Fix potential ReDoS attack in <code>Rack::Request#parse_http_accept_header</code>. (<a href="https://github.com/rack/rack/security/advisories/GHSA-cj83-2ww7-mvq7">GHSA-cj83-2ww7-mvq7</a>, <a href="https://github.com/dwisiswant0"><code>@​dwisiswant0</code></a>)</li>
                 </ul>
-                <h2>[3.0.7] - 2023-03-16</h2>
+                <h2>[3.1.4] - 2024-06-22</h2>
+                <h3>Fixed</h3>
                 <ul>
-                <li>Make query parameters without <code>=</code> have <code>nil</code> values. (<a href="https://redirect.github.com/rack/rack/pull/2059">#2059</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
+                <li>Fix <code>Rack::Lint</code> matching some paths incorrectly as authority form. (<a href="https://redirect.github.com/rack/rack/pull/2220">#2220</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
                 </ul>
-                <h2>[3.0.6.1] - 2023-03-13</h2>
+                <h2>[3.1.3] - 2024-06-12</h2>
+                <h3>Fixed</h3>
                 <ul>
-                <li>[CVE-2023-27539] Avoid ReDoS in header parsing</li>
+                <li>Fix passing non-strings to <code>Rack::Utils.escape_html</code>. (<a href="https://redirect.github.com/rack/rack/pull/2202">#2202</a>, [<a href="https://github.com/earlopain"><code>@​earlopain</code></a>])</li>
+                <li><code>Rack::MockResponse</code> gracefully handles empty cookies (<a href="https://redirect.github.com/rack/rack/pull/2203">#2203</a> [<a href="https://github.com/wynksaiddestroy"><code>@​wynksaiddestroy</code></a>])</li>
                 </ul>
-                <h2>[3.0.6] - 2023-03-13</h2>
+                <h2>[3.1.2] - 2024-06-11</h2>
                 <ul>
-                <li>Add <code>QueryParser#missing_value</code> for handling missing values + tests. (<a href="https://redirect.github.com/rack/rack/pull/2052">#2052</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
+                <li><code>Rack::Response</code> will take in to consideration chunked encoding responses (<a href="https://redirect.github.com/rack/rack/pull/2204">#2204</a>, [<a href="https://github.com/tenderlove"><code>@​tenderlove</code></a>])</li>
                 </ul>
-                <h2>[3.0.5] - 2023-03-13</h2>
+                <h2>[3.1.1] - 2024-06-11</h2>
                 <ul>
-                <li>Split form/query parsing into two steps. (<a href="https://redirect.github.com/rack/rack/pull/2038">#2038</a>, <a href="https://github.com/matthewd"><code>@​matthewd</code></a>)</li>
+                <li>Oops! I shouldn't have shipped that</li>
                 </ul>
-                <h2>[3.0.4.2] - 2023-03-02</h2>
-                <ul>
-                <li>[CVE-2023-27530] Introduce multipart_total_part_limit to limit total parts</li>
-                </ul>
+                <h2>[3.1.0] - 2024-06-11</h2>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -464,17 +408,17 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/rack/rack/commit/a4bc5e0f41c750135969ceece8772ab112dc8f17"><code>a4bc5e0</code></a> bump version</li>
-                <li><a href="https://github.com/rack/rack/commit/6efb2ceea003c4b195815a614e00438cbd543462"><code>6efb2ce</code></a> Avoid 2nd degree polynomial regexp in MediaType</li>
-                <li><a href="https://github.com/rack/rack/commit/4849132bef471adb21131980df745f4bb84de2d9"><code>4849132</code></a> Return an empty array when ranges are too large</li>
-                <li><a href="https://github.com/rack/rack/commit/a227cd793778c7c3a827d32808058571569cda6f"><code>a227cd7</code></a> Fixing ReDoS in header parsing</li>
-                <li><a href="https://github.com/rack/rack/commit/0b3f997e7bb14c1dc42130e1eb50e62797d8c039"><code>0b3f997</code></a> Bump patch version.</li>
-                <li><a href="https://github.com/rack/rack/commit/d3d415ed68fe9471f04bafe4a299eb099330fcb1"><code>d3d415e</code></a> Update Ruby versions for external tests: drop v2.7 and add v3.2 and v3.3. (<a href="https://redirect.github.com/rack/rack/issues/2">#2</a>...</li>
-                <li><a href="https://github.com/rack/rack/commit/c8b977f6c3a002b6e6f395ce8b5c14f21dad7f39"><code>c8b977f</code></a> Fix content-length calcuation in Rack:Response#write (<a href="https://redirect.github.com/rack/rack/issues/2150">#2150</a>)</li>
-                <li><a href="https://github.com/rack/rack/commit/8d1bf996e30897f740c54669d891eeda8036113d"><code>8d1bf99</code></a> Update CHANGELOG for 3.0.8 (<a href="https://redirect.github.com/rack/rack/issues/2086">#2086</a>)</li>
-                <li><a href="https://github.com/rack/rack/commit/d28c464bcb55a9e26b9a9656e4ba484d327515ed"><code>d28c464</code></a> Bump patch verison.</li>
-                <li><a href="https://github.com/rack/rack/commit/32736d2f6326ed8da776ae4709504134f27dbf78"><code>32736d2</code></a> Fix some unused variable verbose warnings (<a href="https://redirect.github.com/rack/rack/issues/2084">#2084</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...cc95b0db910b58c0ebb7aafa957400218ffbf500">compare view</a></li>
+                <li><a href="https://github.com/rack/rack/commit/0eabeb73b3fb590e187dacfd9a890fbb7ffb9477"><code>0eabeb7</code></a> Bump patch version.</li>
+                <li><a href="https://github.com/rack/rack/commit/f4f71031585647a0e76cc5e1a6b343f78475716d"><code>f4f7103</code></a> Resolve deprecation warnings about uri <code>DEFAULT_PARSER</code> (<a href="https://redirect.github.com/rack/rack/issues/2242">#2242</a>) (<a href="https://redirect.github.com/rack/rack/issues/2249">#2249</a>)</li>
+                <li><a href="https://github.com/rack/rack/commit/4bb2f723fa103de1351acd6a53d1889fd5578848"><code>4bb2f72</code></a> Bump patch version.</li>
+                <li><a href="https://github.com/rack/rack/commit/1c1e4136b6436bf582ae4b67c244e12612230d7d"><code>1c1e413</code></a> Ignore external tests directory.</li>
+                <li><a href="https://github.com/rack/rack/commit/b4a10369921a632ba25da7ad7c8eba0579c63146"><code>b4a1036</code></a> Prepare for 3.1.7 release.</li>
+                <li><a href="https://github.com/rack/rack/commit/d0da91bef014161dc4881447d32480386617c3ca"><code>d0da91b</code></a> Add more external tests.</li>
+                <li><a href="https://github.com/rack/rack/commit/f6f15103ab9962cea6a07c666b9421ebcde878dc"><code>f6f1510</code></a> Improve <code>Rack::Response</code> content-length header generation. (<a href="https://redirect.github.com/rack/rack/issues/2219">#2219</a>)</li>
+                <li><a href="https://github.com/rack/rack/commit/fb339e03391181432ae5000b26e3bbc21e7ab5e7"><code>fb339e0</code></a> Fix encoding setting for non-binary IO-like objects in MockRequest#env_for</li>
+                <li><a href="https://github.com/rack/rack/commit/e21872d0eaea5eea9815bb2e3edf6a51e1f93cc3"><code>e21872d</code></a> Do not remove escaped opening/closing quotes for content-disposition filenames</li>
+                <li><a href="https://github.com/rack/rack/commit/5c3d79fb8abdf48107a9b8adbba19ebf6ad240de"><code>5c3d79f</code></a> Synchronize changelog with HEAD.</li>
+                <li>Additional commits viewable in <a href="https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...09f2f66ac1bb392ae58fd531dcb0acd01c9680be">compare view</a></li>
                 </ul>
                 </details>
                 <br />
@@ -489,10 +433,10 @@ output:
                 - [Changelog](https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md)
                 - [Commits](https://github.com/rubocop/rubocop/compare/v0.76.0...v1.59.0)
 
-                Updates `rack` from 2.1.4 to v3.0.9.1
+                Updates `rack` from 2.1.4 to v3.1.8
                 - [Release notes](https://github.com/rack/rack/releases)
                 - [Changelog](https://github.com/rack/rack/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...cc95b0db910b58c0ebb7aafa957400218ffbf500)
+                - [Commits](https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...09f2f66ac1bb392ae58fd531dcb0acd01c9680be)
             dependency-group:
                 name: ruleset
     - type: create_pull_request
@@ -549,7 +493,7 @@ output:
                         parallel (1.22.1)
                         parser (3.1.2.0)
                           ast (~> 2.4.1)
-                        racc (1.7.3)
+                        racc (1.8.1)
                         rainbow (3.1.1)
                         rubocop (0.76.0)
                           jaro_winkler (~> 1.5.1)
