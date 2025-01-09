@@ -1,0 +1,181 @@
+input:
+    job:
+        package-manager: nuget
+        allowed-updates:
+            - update-type: all
+        dependencies:
+            - System.Text.Json
+        experiments:
+            nuget_install_dotnet_sdks: true
+            nuget_native_analysis: true
+            nuget_use_direct_discovery: true
+        ignore-conditions:
+            - dependency-name: System.Text.Json
+              source: tests/smoke-nuget-sdk-replacement-packages.yaml
+              version-requirement: '>8.0.5'
+        security-advisories:
+            - dependency-name: System.Text.Json
+              affected-versions:
+                - '>= 8.0.0, < 8.0.5'
+              patched-versions: []
+              unaffected-versions: []
+        security-updates-only: true
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /nuget/sdk-replacement-packages
+            commit: 5be15d5493766923b409f269ea8ca7864301845f
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: System.Text.Encodings.Web
+                  requirements: []
+                  version: 8.0.0
+                - name: System.Text.Json
+                  requirements:
+                    - file: /nuget/sdk-replacement-packages/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 8.0.4
+                      source: null
+                  version: 8.0.4
+            dependency_files:
+                - /nuget/sdk-replacement-packages/project.csproj
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 5be15d5493766923b409f269ea8ca7864301845f
+            dependencies:
+                - name: System.Text.Json
+                  previous-requirements:
+                    - file: /nuget/sdk-replacement-packages/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 8.0.4
+                      source: null
+                  previous-version: 8.0.4
+                  requirements:
+                    - file: /nuget/sdk-replacement-packages/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 8.0.5
+                      source:
+                        source_url: https://github.com/dotnet/runtime
+                        type: nuget_repo
+                  version: 8.0.5
+                  directory: /nuget/sdk-replacement-packages
+            updated-dependency-files:
+                - content: |
+                    <Project Sdk="Microsoft.NET.Sdk">
+                      <PropertyGroup>
+                        <TargetFramework>net8.0</TargetFramework>
+                      </PropertyGroup>
+
+                      <ItemGroup>
+                        <!-- because of the SDK 8.0.304 specified in `global.json`, this reference will be replaced with version `8.0.4` then updated to `8.0.5` -->
+                        <PackageReference Include="System.Text.Json" Version="8.0.5" />
+                      </ItemGroup>
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/sdk-replacement-packages
+                  name: project.csproj
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump System.Text.Json from 8.0.4 to 8.0.5 in /nuget/sdk-replacement-packages
+            pr-body: |
+                Bumps [System.Text.Json](https://github.com/dotnet/runtime) from 8.0.4 to 8.0.5.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/dotnet/runtime/releases">System.Text.Json's releases</a>.</em></p>
+                <blockquote>
+                <h2>.NET 8.0.5</h2>
+                <p><a href="https://github.com/dotnet/core/releases/tag/v8.0.5">Release</a></p>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>[release/8.0-staging] Fix AsyncVoidMethodBuilder race condition around SynchronizationContext by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99640">dotnet/runtime#99640</a></li>
+                <li>[release/8.0-staging] Always keep global symbols on ApplePlatforms by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99650">dotnet/runtime#99650</a></li>
+                <li>[release/8.0-staging] Delete Decrypt_Pkcs1_ErrorsForInvalidPadding by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99653">dotnet/runtime#99653</a></li>
+                <li>[8.0] Rename MSBuild property MicrosoftNativeQuicMsQuicVersion -&gt; MicrosoftNativeQuicMsQuicSchannelVersion by <a href="https://github.com/carlossanlop"><code>@​carlossanlop</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99714">dotnet/runtime#99714</a></li>
+                <li>[release/8.0] Fixing SignedXml.CheckSignature for enveloped signature with <code>#xpointer(/)</code> Reference by <a href="https://github.com/bartonjs"><code>@​bartonjs</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99651">dotnet/runtime#99651</a></li>
+                <li>[release/8.0-staging] disable optimizations for PopCount by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99832">dotnet/runtime#99832</a></li>
+                <li>[release/8.0-staging] Handle NativeOverlapped* coming from both the Windows or Portable thread pool in NativeRuntimeEventSource by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99656">dotnet/runtime#99656</a></li>
+                <li>[release/8.0-staging] Fix exporting certificate keys on macOS 14.4. by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99776">dotnet/runtime#99776</a></li>
+                <li>[release/8.0] Upgrade zlib to 1.3.1 by <a href="https://github.com/carlossanlop"><code>@​carlossanlop</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99473">dotnet/runtime#99473</a></li>
+                <li>[release/8.0] Fix failing CertificateValidationRemoteServer.ConnectWithRevocation_WithCallback test (<a href="https://redirect.github.com/dotnet/runtime/issues/99915">#99915</a>) by <a href="https://github.com/rzikm"><code>@​rzikm</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99950">dotnet/runtime#99950</a></li>
+                <li>[mono] Stop exporting ICU symbols from Mono by <a href="https://github.com/matouskozak"><code>@​matouskozak</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99449">dotnet/runtime#99449</a></li>
+                <li>[release/8.0-staging] Fix AV in HttpTelemetry.WriteEvent by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99607">dotnet/runtime#99607</a></li>
+                <li>[release/8.0-staging] [HTTP/2] Fix handling of effectively empty DATA frame (<a href="https://redirect.github.com/dotnet/runtime/issues/99502">#99502</a>) by <a href="https://github.com/ManickaP"><code>@​ManickaP</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99677">dotnet/runtime#99677</a></li>
+                <li>[release/8.0-staging] [HttpStress] [SslStress] Workaround image bug in 1es-windows-2022-open by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100303">dotnet/runtime#100303</a></li>
+                <li>[release/8.0-staging] Support building against clang 18 by <a href="https://github.com/omajid"><code>@​omajid</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100258">dotnet/runtime#100258</a></li>
+                <li>[release/8.0][browser] WebSocket works differently depending on if we look up its state or not by <a href="https://github.com/ilonatommy"><code>@​ilonatommy</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99673">dotnet/runtime#99673</a></li>
+                <li>[release/8.0-staging] Call the Copy Constructor for stack arguments in C++/CLI on x86 by <a href="https://github.com/AaronRobinsonMSFT"><code>@​AaronRobinsonMSFT</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100221">dotnet/runtime#100221</a></li>
+                <li>[release/8.0] Don't unset ALPN list pointer during ALPN selection callback. by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99670">dotnet/runtime#99670</a></li>
+                <li>[release/8.0-staging][mono][debugger] Fix inspect Span<!-- raw HTML omitted --> by <a href="https://github.com/thaystg"><code>@​thaystg</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99844">dotnet/runtime#99844</a></li>
+                <li>Update branding to 8.0.5 by <a href="https://github.com/vseanreesermsft"><code>@​vseanreesermsft</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100547">dotnet/runtime#100547</a></li>
+                <li>[release/8.0-staging] Ensure that Sse3.MoveAndDuplicate correctly tracks supporting SIMD scalar loads by <a href="https://github.com/tannergooding"><code>@​tannergooding</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100417">dotnet/runtime#100417</a></li>
+                <li>[release/8.0] Avoid allocating collectible instances in the frozen heap (<a href="https://redirect.github.com/dotnet/runtime/issues/100444">#100444</a>) by <a href="https://github.com/jkotas"><code>@​jkotas</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100509">dotnet/runtime#100509</a></li>
+                <li>[release/8.0-staging] Use clang --version to get Apple toolset version by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100199">dotnet/runtime#100199</a></li>
+                <li>[release/8.0-staging] Azure Linux 3.0 deps package by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100684">dotnet/runtime#100684</a></li>
+                <li>[release/8.0-staging] Fix Http2 deadlock by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100086">dotnet/runtime#100086</a></li>
+                <li>Merging internal commits for release/8.0 by <a href="https://github.com/vseanreesermsft"><code>@​vseanreesermsft</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100835">dotnet/runtime#100835</a></li>
+                <li>[release/8.0-staging] Update CI builds to not use VS Previews by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100622">dotnet/runtime#100622</a></li>
+                <li>[release/8.0-staging] Update dependencies from dotnet/hotreload-utils by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100892">dotnet/runtime#100892</a></li>
+                <li>[release/8.0-staging] Update dependencies from dotnet/runtime-assets by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100073">dotnet/runtime#100073</a></li>
+                <li>[automated] Merge branch 'release/8.0' =&gt; 'release/8.0-staging' by <a href="https://github.com/dotnet-maestro-bot"><code>@​dotnet-maestro-bot</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99585">dotnet/runtime#99585</a></li>
+                <li>[release/8.0-staging] Update dependencies from dotnet/source-build-externals by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99601">dotnet/runtime#99601</a></li>
+                <li>[release/8.0-staging] Update dependencies from dotnet/xharness by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100883">dotnet/runtime#100883</a></li>
+                <li>[release/8.0-staging] Update dependencies from dotnet/source-build-reference-packages by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99902">dotnet/runtime#99902</a></li>
+                <li>[release/8.0-staging] Update dependencies from dotnet/source-build-externals by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100015">dotnet/runtime#100015</a></li>
+                <li>[release/8.0-staging] Update dependencies from dotnet/runtime-assets by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100958">dotnet/runtime#100958</a></li>
+                <li>[release/8.0-staging] Update dependencies from dotnet/arcade by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100885">dotnet/runtime#100885</a></li>
+                <li>[release/8.0-staging] Fix native leak in CryptoNative_GetX509nameInfo by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100793">dotnet/runtime#100793</a></li>
+                <li>[release/8.0-staging] Update dependencies from dotnet/emsdk by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99696">dotnet/runtime#99696</a></li>
+                <li>[release/8.0-staging] [mono][debugger] Search for seqpoints directly from jitinfo if it's not find on get_default_jit_mm by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100978">dotnet/runtime#100978</a></li>
+                <li>[release/8.0][browser] fix emscripten out/err overrides by <a href="https://github.com/pavelsavara"><code>@​pavelsavara</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100818">dotnet/runtime#100818</a></li>
+                <li>[release/8.0-staging] [mono][eventpipe] Fix firing dynamic method wrappers crash by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99712">dotnet/runtime#99712</a></li>
+                <li>Update Alpine versions for <code>release/8.0-staging</code> by <a href="https://github.com/richlander"><code>@​richlander</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99849">dotnet/runtime#99849</a></li>
+                <li>[release/8.0-staging] Guard against -1 Returned from sysconf for the Cache Sizes Causing Large Gen0 Sizes and Budgets for Certain Linux Distributions. by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100575">dotnet/runtime#100575</a></li>
+                <li>[Release/8.0] Remove preventing EH at shutdown by <a href="https://github.com/janvorli"><code>@​janvorli</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100836">dotnet/runtime#100836</a></li>
+                <li>[release/8.8] Add metadata for workload automation by <a href="https://github.com/joeloff"><code>@​joeloff</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/100649">dotnet/runtime#100649</a></li>
+                <li>[8.0] Reset OOB packages enabled in the April release by <a href="https://github.com/carlossanlop"><code>@​carlossanlop</code></a> in <a href="https://redirect.github.com/dotnet/runtime/pull/99583">dotnet/runtime#99583</a></li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/dotnet/runtime/commit/087e15321bb712ef6fe8b0ba6f8bd12facf92629"><code>087e153</code></a> Merge in 'release/8.0' changes</li>
+                <li><a href="https://github.com/dotnet/runtime/commit/ca4f0fe37455882baa00c75b1ef30a7ff1494457"><code>ca4f0fe</code></a> [release/8.0] Update MicrosoftBuildVersion to latest (<a href="https://redirect.github.com/dotnet/runtime/issues/100595">#100595</a>) (<a href="https://redirect.github.com/dotnet/runtime/issues/101145">#101145</a>)</li>
+                <li><a href="https://github.com/dotnet/runtime/commit/dfd075b97471bd97ea70066a299d1fe92af90352"><code>dfd075b</code></a> Merge in 'release/8.0' changes</li>
+                <li><a href="https://github.com/dotnet/runtime/commit/b55fd6fcea3be63f8c2fb6addba63cbfcde01a8f"><code>b55fd6f</code></a> Merge pull request <a href="https://redirect.github.com/dotnet/runtime/issues/101091">#101091</a> from directhex/release/8.0-staging</li>
+                <li><a href="https://github.com/dotnet/runtime/commit/befe7adc9b6f4eed32c95e78cdca9c23e0369e81"><code>befe7ad</code></a> Merge branch 'release/8.0' into release/8.0-staging</li>
+                <li><a href="https://github.com/dotnet/runtime/commit/aa7c7ff6cf1d4e8f4b5dd750ded601f379e1c9b2"><code>aa7c7ff</code></a> [release/8.0-staging] JIT: Fixed incorrect reversed condition for GT (<a href="https://redirect.github.com/dotnet/runtime/issues/100372">#100372</a>)</li>
+                <li><a href="https://github.com/dotnet/runtime/commit/88be910936b852ede1a5e50c2962ddf9ed6f5331"><code>88be910</code></a> Always zero-init if object contains pointers (<a href="https://redirect.github.com/dotnet/runtime/issues/100265">#100265</a>) (<a href="https://redirect.github.com/dotnet/runtime/issues/100426">#100426</a>)</li>
+                <li><a href="https://github.com/dotnet/runtime/commit/2d7642d0514dc0d391ee41ff924de1e7870ce7ab"><code>2d7642d</code></a> System.Diagnostics.DiagnosticSource (<a href="https://redirect.github.com/dotnet/runtime/issues/99583">#99583</a>)</li>
+                <li><a href="https://github.com/dotnet/runtime/commit/3c5a0af402aee0f9e71d38dee9f0c0f1763b8331"><code>3c5a0af</code></a> Add workload metadata (<a href="https://redirect.github.com/dotnet/runtime/issues/100649">#100649</a>)</li>
+                <li><a href="https://github.com/dotnet/runtime/commit/a494d22d2b50bf7811549ac26ee459aed0af6c4f"><code>a494d22</code></a> [Release/8.0] Remove preventing EH at shutdown (<a href="https://redirect.github.com/dotnet/runtime/issues/100836">#100836</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/dotnet/runtime/compare/v8.0.4...v8.0.5">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump System.Text.Json in /nuget/sdk-replacement-packages
+
+                Bumps [System.Text.Json](https://github.com/dotnet/runtime) from 8.0.4 to 8.0.5.
+                - [Release notes](https://github.com/dotnet/runtime/releases)
+                - [Commits](https://github.com/dotnet/runtime/compare/v8.0.4...v8.0.5)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 5be15d5493766923b409f269ea8ca7864301845f
