@@ -24,7 +24,7 @@ input:
             provider: github
             repo: dependabot/smoke-tests
             directory: /nuget/sdk-implicit-deps
-            commit: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+            commit: 2224a306d80d5a0adf274916bd8f7d8b2bd2c563
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -38,6 +38,9 @@ output:
                 - name: DnsClient
                   requirements: []
                   version: 1.4.0
+                - name: Microsoft.Bcl.AsyncInterfaces
+                  requirements: []
+                  version: 5.0.0
                 - name: Microsoft.Extensions.Logging.Abstractions
                   requirements: []
                   version: 5.0.0
@@ -64,18 +67,36 @@ output:
                 - name: SharpCompress
                   requirements: []
                   version: 0.23.0
+                - name: System.Buffers
+                  requirements: []
+                  version: 4.5.1
+                - name: System.Memory
+                  requirements: []
+                  version: 4.5.4
+                - name: System.Numerics.Vectors
+                  requirements: []
+                  version: 4.5.0
                 - name: System.Runtime.CompilerServices.Unsafe
+                  requirements: []
+                  version: 5.0.0
+                - name: System.Text.Encoding.CodePages
+                  requirements: []
+                  version: 4.5.1
+                - name: System.Text.Encodings.Web
                   requirements: []
                   version: 5.0.0
                 - name: System.Text.Json
                   requirements: []
                   version: 5.0.1
+                - name: System.Threading.Tasks.Extensions
+                  requirements: []
+                  version: 4.5.4
             dependency_files:
                 - /nuget/sdk-implicit-deps/project.csproj
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+            base-commit-sha: 2224a306d80d5a0adf274916bd8f7d8b2bd2c563
             dependencies:
                 - name: System.Text.Json
                   previous-requirements: []
@@ -88,7 +109,7 @@ output:
                     <Project Sdk="Microsoft.NET.Sdk">
 
                       <PropertyGroup>
-                        <TargetFramework>netcoreapp3.1</TargetFramework>
+                        <TargetFramework>netstandard2.0</TargetFramework>
                         <ImplicitUsings>enable</ImplicitUsings>
                         <Nullable>enable</Nullable>
                         <NoWarn>$(NoWarn);NU1701</NoWarn>
@@ -117,4 +138,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+            base-commit-sha: 2224a306d80d5a0adf274916bd8f7d8b2bd2c563
