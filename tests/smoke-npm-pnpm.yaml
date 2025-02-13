@@ -14,11 +14,7 @@ input:
             repo: dependabot/smoke-tests
             directory: /pnpm/
             commit: a2579c0ace294be0332276ea32db3da71fa253cc
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
-        - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
           type: git_source
           username: x-access-token
@@ -403,34 +399,39 @@ output:
                     devDependencies:
                       eslint-plugin-yml:
                         specifier: 1.7.0
-                        version: 1.7.0(eslint@8.39.0)
+                        version: 1.7.0(eslint@8.57.0)
 
                     packages:
 
-                      /@eslint-community/eslint-utils@4.4.0(eslint@8.39.0):
+                      /@aashutoshrathi/word-wrap@1.2.6:
+                        resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
+                        engines: {node: '>=0.10.0'}
+                        dev: true
+
+                      /@eslint-community/eslint-utils@4.4.0(eslint@8.57.0):
                         resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
                         engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
                         peerDependencies:
                           eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
                         dependencies:
-                          eslint: 8.39.0
+                          eslint: 8.57.0
                           eslint-visitor-keys: 3.4.3
                         dev: true
 
-                      /@eslint-community/regexpp@4.5.0:
-                        resolution: {integrity: sha512-vITaYzIcNmjn5tF5uxcZ/ft7/RXGrMUIS9HalWckEOF6ESiwXKoMzAQf2UW0aVd6rnOeExTJVd5hmWXucBKGXQ==}
+                      /@eslint-community/regexpp@4.10.0:
+                        resolution: {integrity: sha512-Cu96Sd2By9mCNTx2iyKOmq10v22jUVQv0lQnlGNy16oE9589yE+QADPbrMGCkA51cKZSg3Pu/aTJVTGfL/qjUA==}
                         engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
                         dev: true
 
-                      /@eslint/eslintrc@2.0.2:
-                        resolution: {integrity: sha512-3W4f5tDUra+pA+FzgugqL2pRimUTDJWKr7BINqOpkZrC0uYI0NIc0/JFgBROCU07HR6GieA5m3/rsPIhDmCXTQ==}
+                      /@eslint/eslintrc@2.1.4:
+                        resolution: {integrity: sha512-269Z39MS6wVJtsoUl10L60WdkhJVdPG24Q4eZTH3nnF6lpvSShEK3wQjDX9JRWAUPvPh7COouPpU9IrqaZFvtQ==}
                         engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
                         dependencies:
                           ajv: 6.12.6
                           debug: 4.3.4
-                          espree: 9.5.1
-                          globals: 13.20.0
-                          ignore: 5.2.4
+                          espree: 9.6.1
+                          globals: 13.24.0
+                          ignore: 5.3.1
                           import-fresh: 3.3.0
                           js-yaml: 4.1.0
                           minimatch: 3.1.2
@@ -439,16 +440,16 @@ output:
                           - supports-color
                         dev: true
 
-                      /@eslint/js@8.39.0:
-                        resolution: {integrity: sha512-kf9RB0Fg7NZfap83B3QOqOGg9QmD9yBudqQXzzOtn3i4y7ZUXe5ONeW34Gwi+TxhH4mvj72R1Zc300KUMa9Bng==}
+                      /@eslint/js@8.57.0:
+                        resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
                         engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
                         dev: true
 
-                      /@humanwhocodes/config-array@0.11.8:
-                        resolution: {integrity: sha512-UybHIJzJnR5Qc/MsD9Kr+RpO2h+/P1GhOwdiLPXK5TWk5sgTdu88bTD9UP+CKbPPh5Rni1u0GjAdYQLemG8g+g==}
+                      /@humanwhocodes/config-array@0.11.14:
+                        resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
                         engines: {node: '>=10.10.0'}
                         dependencies:
-                          '@humanwhocodes/object-schema': 1.2.1
+                          '@humanwhocodes/object-schema': 2.0.2
                           debug: 4.3.4
                           minimatch: 3.1.2
                         transitivePeerDependencies:
@@ -460,8 +461,8 @@ output:
                         engines: {node: '>=12.22'}
                         dev: true
 
-                      /@humanwhocodes/object-schema@1.2.1:
-                        resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+                      /@humanwhocodes/object-schema@2.0.2:
+                        resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
                         dev: true
 
                       /@nodelib/fs.scandir@2.1.5:
@@ -482,7 +483,11 @@ output:
                         engines: {node: '>= 8'}
                         dependencies:
                           '@nodelib/fs.scandir': 2.1.5
-                          fastq: 1.15.0
+                          fastq: 1.17.1
+                        dev: true
+
+                      /@ungap/structured-clone@1.2.0:
+                        resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
                         dev: true
 
                       /acorn-jsx@5.3.2(acorn@8.11.3):
