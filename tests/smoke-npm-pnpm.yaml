@@ -14,7 +14,11 @@ input:
             repo: dependabot/smoke-tests
             directory: /pnpm/
             commit: a2579c0ace294be0332276ea32db3da71fa253cc
+        credentials-metadata:
+            - host: github.com
+              type: git_source
     credentials:
+        - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
           type: git_source
           username: x-access-token
