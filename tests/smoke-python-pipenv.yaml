@@ -11,9 +11,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /pipenv/
             commit: 113644b5dc5b87f8858cc256153815a69f2e18f5
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -21,4 +18,217 @@ input:
           username: x-access-token
 output:
     - type: update_dependency_list
-      
+      expect:
+        data:
+            dependencies:
+                - name: numpy
+                  requirements:
+                    - file: Pipfile
+                      groups:
+                        - default
+                      requirement: 1.25.0
+                      source: null
+                  version: 1.25.0
+            dependency_files:
+                - /pipenv/Pipfile
+                - /pipenv/Pipfile.lock
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 113644b5dc5b87f8858cc256153815a69f2e18f5
+            dependencies:
+                - name: numpy
+                  previous-requirements:
+                    - file: Pipfile
+                      groups:
+                        - default
+                      requirement: 1.25.0
+                      source: null
+                  previous-version: 1.25.0
+                  requirements:
+                    - file: Pipfile
+                      groups:
+                        - default
+                      requirement: 1.26.2
+                      source: null
+                  version: 1.26.2
+                  directory: /pipenv
+            updated-dependency-files:
+                - content: |
+                    [[source]]
+                    url = "https://pypi.org/simple"
+                    verify_ssl = true
+                    name = "pypi"
+
+                    [packages]
+                    numpy = "1.26.2"
+
+                    [dev-packages]
+
+                    [requires]
+                    python_version = "3.11"
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /pipenv
+                  name: Pipfile
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    {
+                        "_meta": {
+                            "hash": {
+                                "sha256": "5a5839eb30150b6c663e9ac437de6033b3099834b86bef590e014ba91dd9b468"
+                            },
+                            "pipfile-spec": 6,
+                            "requires": {
+                                "python_version": "3.11"
+                            },
+                            "sources": [
+                                {
+                                    "name": "pypi",
+                                    "url": "https://pypi.org/simple",
+                                    "verify_ssl": true
+                                }
+                            ]
+                        },
+                        "default": {
+                            "numpy": {
+                                "hashes": [
+                                    "sha256:06fa1ed84aa60ea6ef9f91ba57b5ed963c3729534e6e54055fc151fad0423f0a",
+                                    "sha256:174a8880739c16c925799c018f3f55b8130c1f7c8e75ab0a6fa9d41cab092fd6",
+                                    "sha256:1a13860fdcd95de7cf58bd6f8bc5a5ef81c0b0625eb2c9a783948847abbef2c2",
+                                    "sha256:1cc3d5029a30fb5f06704ad6b23b35e11309491c999838c31f124fee32107c79",
+                                    "sha256:22f8fc02fdbc829e7a8c578dd8d2e15a9074b630d4da29cda483337e300e3ee9",
+                                    "sha256:26c9d33f8e8b846d5a65dd068c14e04018d05533b348d9eaeef6c1bd787f9919",
+                                    "sha256:2b3fca8a5b00184828d12b073af4d0fc5fdd94b1632c2477526f6bd7842d700d",
+                                    "sha256:2beef57fb031dcc0dc8fa4fe297a742027b954949cabb52a2a376c144e5e6060",
+                                    "sha256:36340109af8da8805d8851ef1d74761b3b88e81a9bd80b290bbfed61bd2b4f75",
+                                    "sha256:3703fc9258a4a122d17043e57b35e5ef1c5a5837c3db8be396c82e04c1cf9b0f",
+                                    "sha256:3ced40d4e9e18242f70dd02d739e44698df3dcb010d31f495ff00a31ef6014fe",
+                                    "sha256:4a06263321dfd3598cacb252f51e521a8cb4b6df471bb12a7ee5cbab20ea9167",
+                                    "sha256:4eb8df4bf8d3d90d091e0146f6c28492b0be84da3e409ebef54349f71ed271ef",
+                                    "sha256:5d5244aabd6ed7f312268b9247be47343a654ebea52a60f002dc70c769048e75",
+                                    "sha256:64308ebc366a8ed63fd0bf426b6a9468060962f1a4339ab1074c228fa6ade8e3",
+                                    "sha256:6a3cdb4d9c70e6b8c0814239ead47da00934666f668426fc6e94cce869e13fd7",
+                                    "sha256:854ab91a2906ef29dc3925a064fcd365c7b4da743f84b123002f6139bcb3f8a7",
+                                    "sha256:94cc3c222bb9fb5a12e334d0479b97bb2df446fbe622b470928f5284ffca3f8d",
+                                    "sha256:96ca5482c3dbdd051bcd1fce8034603d6ebfc125a7bd59f55b40d8f5d246832b",
+                                    "sha256:a2bbc29fcb1771cd7b7425f98b05307776a6baf43035d3b80c4b0f29e9545186",
+                                    "sha256:a4cd6ed4a339c21f1d1b0fdf13426cb3b284555c27ac2f156dfdaaa7e16bfab0",
+                                    "sha256:aa18428111fb9a591d7a9cc1b48150097ba6a7e8299fb56bdf574df650e7d1f1",
+                                    "sha256:aa317b2325f7aa0a9471663e6093c210cb2ae9c0ad824732b307d2c51983d5b6",
+                                    "sha256:b04f5dc6b3efdaab541f7857351aac359e6ae3c126e2edb376929bd3b7f92d7e",
+                                    "sha256:b272d4cecc32c9e19911891446b72e986157e6a1809b7b56518b4f3755267523",
+                                    "sha256:b361d369fc7e5e1714cf827b731ca32bff8d411212fccd29ad98ad622449cc36",
+                                    "sha256:b96e7b9c624ef3ae2ae0e04fa9b460f6b9f17ad8b4bec6d7756510f1f6c0c841",
+                                    "sha256:baf8aab04a2c0e859da118f0b38617e5ee65d75b83795055fb66c0d5e9e9b818",
+                                    "sha256:bcc008217145b3d77abd3e4d5ef586e3bdfba8fe17940769f8aa09b99e856c00",
+                                    "sha256:bd3f0091e845164a20bd5a326860c840fe2af79fa12e0469a12768a3ec578d80",
+                                    "sha256:cc392fdcbd21d4be6ae1bb4475a03ce3b025cd49a9be5345d76d7585aea69440",
+                                    "sha256:d73a3abcac238250091b11caef9ad12413dab01669511779bc9b29261dd50210",
+                                    "sha256:f43740ab089277d403aa07567be138fc2a89d4d9892d113b76153e0e412409f8",
+                                    "sha256:f65738447676ab5777f11e6bbbdb8ce11b785e105f690bc45966574816b6d3ea",
+                                    "sha256:f79b231bf5c16b1f39c7f4875e1ded36abee1591e98742b05d8a0fb55d8a3eec",
+                                    "sha256:fe6b44fb8fcdf7eda4ef4461b97b3f63c466b27ab151bec2366db8b197387841"
+                                ],
+                                "index": "pypi",
+                                "markers": "python_version >= '3.9'",
+                                "version": "==1.26.2"
+                            }
+                        },
+                        "develop": {}
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /pipenv
+                  name: Pipfile.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump numpy from 1.25.0 to 1.26.2 in /pipenv
+            pr-body: |
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.25.0 to 1.26.2.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/numpy/numpy/releases">numpy's releases</a>.</em></p>
+                <blockquote>
+                <h2>1.26.2 release</h2>
+                <h1>NumPy 1.26.2 Release Notes</h1>
+                <p>NumPy 1.26.2 is a maintenance release that fixes bugs and regressions
+                discovered after the 1.26.1 release. The 1.26.release series is the last
+                planned minor release series before NumPy 2.0. The Python versions
+                supported by this release are 3.9-3.12.</p>
+                <h2>Contributors</h2>
+                <p>A total of 13 people contributed to this release. People with a &quot;+&quot; by
+                their names contributed a patch for the first time.</p>
+                <ul>
+                <li><a href="https://github.com/stefan6419846"><code>@​stefan6419846</code></a></li>
+                <li><a href="https://github.com/thalassemia"><code>@​thalassemia</code></a> +</li>
+                <li>Andrew Nelson</li>
+                <li>Charles Bousseau +</li>
+                <li>Charles Harris</li>
+                <li>Marcel Bargull +</li>
+                <li>Mark Mentovai +</li>
+                <li>Matti Picus</li>
+                <li>Nathan Goldbaum</li>
+                <li>Ralf Gommers</li>
+                <li>Sayed Adel</li>
+                <li>Sebastian Berg</li>
+                <li>William Ayd +</li>
+                </ul>
+                <h2>Pull requests merged</h2>
+                <p>A total of 25 pull requests were merged for this release.</p>
+                <ul>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24814">#24814</a>: MAINT: align test_dispatcher s390x targets with _umath_tests_mtargets</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24929">#24929</a>: MAINT: prepare 1.26.x for further development</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24955">#24955</a>: ENH: Add Cython enumeration for NPY_FR_GENERIC</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24962">#24962</a>: REL: Remove Python upper version from the release branch</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24971">#24971</a>: BLD: Use the correct Python interpreter when running tempita.py</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24972">#24972</a>: MAINT: Remove unhelpful error replacements from <code>import_array()</code></li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24977">#24977</a>: BLD: use classic linker on macOS, the new one in XCode 15 has...</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25003">#25003</a>: BLD: musllinux_aarch64 [wheel build]</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25043">#25043</a>: MAINT: Update mailmap</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25049">#25049</a>: MAINT: Update meson build infrastructure.</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25071">#25071</a>: MAINT: Split up .github/workflows to match main</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25083">#25083</a>: BUG: Backport fix build on ppc64 when the baseline set to Power9...</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25093">#25093</a>: BLD: Fix features.h detection for Meson builds [1.26.x Backport]</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25095">#25095</a>: BUG: Avoid intp conversion regression in Cython 3 (backport)</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25107">#25107</a>: CI: remove obsolete jobs, and move macOS and conda Azure jobs...</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25108">#25108</a>: CI: Add linux_qemu action and remove travis testing.</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25112">#25112</a>: MAINT: Update .spin/cmds.py from main.</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25113">#25113</a>: DOC: Visually divide main license and bundled licenses in wheels</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25115">#25115</a>: MAINT: Add missing <code>noexcept</code> to shuffle helpers</li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/numpy/numpy/commit/03b62604eead0f7d279a5a4c094743eb29647368"><code>03b6260</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25128">#25128</a> from charris/prepare-1.26.2</li>
+                <li><a href="https://github.com/numpy/numpy/commit/6961f60056be3fce2f4c1c9aa1f8840675135973"><code>6961f60</code></a> REL: Prepare for the NumPy 1.26.2 release</li>
+                <li><a href="https://github.com/numpy/numpy/commit/d81f0aeae67300e5d6f295597a3c53ec204ca077"><code>d81f0ae</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25121">#25121</a> from charris/backport-25042</li>
+                <li><a href="https://github.com/numpy/numpy/commit/766d5a83a2eb5db9a6deca4616a6e32c45955782"><code>766d5a8</code></a> BUG: ensure passing <code>np.dtype</code> to itself doesn't crash</li>
+                <li><a href="https://github.com/numpy/numpy/commit/cefdd34ec2c8b8acb9507b1c01637e9ac0f8f762"><code>cefdd34</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25120">#25120</a> from charris/backport-25063</li>
+                <li><a href="https://github.com/numpy/numpy/commit/ae77d675544ccc772eab73f3316134de99278629"><code>ae77d67</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25119">#25119</a> from charris/backport-25090</li>
+                <li><a href="https://github.com/numpy/numpy/commit/0035b44c4276c0b72e56e52a4cf7a7048f487b70"><code>0035b44</code></a> BLD: change default of the <code>allow-noblas</code> option to true.</li>
+                <li><a href="https://github.com/numpy/numpy/commit/12b7b352020b1e7204430bee82af05c804b32f7d"><code>12b7b35</code></a> BUG: Make n a long int for np.random.multinomial</li>
+                <li><a href="https://github.com/numpy/numpy/commit/9887c9ce4ab45093cd063b3cade971fa98f20030"><code>9887c9c</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25118">#25118</a> from charris/backport-25051</li>
+                <li><a href="https://github.com/numpy/numpy/commit/2359aec3510bd9e8d0e80e91430ebb76291d6069"><code>2359aec</code></a> MAINT: Make bitfield integers unsigned</li>
+                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.25.0...v1.26.2">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump numpy from 1.25.0 to 1.26.2 in /pipenv
+
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.25.0 to 1.26.2.
+                - [Release notes](https://github.com/numpy/numpy/releases)
+                - [Changelog](https://github.com/numpy/numpy/blob/main/doc/RELEASE_WALKTHROUGH.rst)
+                - [Commits](https://github.com/numpy/numpy/compare/v1.25.0...v1.26.2)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 113644b5dc5b87f8858cc256153815a69f2e18f5
