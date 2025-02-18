@@ -2,18 +2,15 @@ input:
     job:
         package-manager: pip
         allowed-updates:
-            - dependency-name: django
+            - dependency-name: numpy
         ignore-conditions:
-            - dependency-name: django
-              version-requirement: '>4.0.6'
+            - dependency-name: numpy
+              version-requirement: '>2.1.3'
         source:
             provider: github
             repo: dependabot/smoke-tests
             directory: /pipenv/
-            commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
-        credentials-metadata:
-            - host: github.com
-              type: git_source
+            commit: 113644b5dc5b87f8858cc256153815a69f2e18f5
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -24,70 +21,52 @@ output:
       expect:
         data:
             dependencies:
-                - name: django
-                  requirements:
-                    - file: Pipfile
-                      groups:
-                        - default
-                      requirement: ==3.2.10
-                      source: null
-                  version: 3.2.10
                 - name: numpy
                   requirements:
                     - file: Pipfile
                       groups:
                         - default
-                      requirement: 1.23.0
+                      requirement: 1.25.0
                       source: null
-                  version: 1.23.2
-                - name: asgiref
-                  requirements: []
-                  version: 3.5.2
-                - name: pytz
-                  requirements: []
-                  version: 2022.2.1
-                - name: sqlparse
-                  requirements: []
-                  version: 0.4.2
+                  version: 1.25.0
             dependency_files:
                 - /pipenv/Pipfile
                 - /pipenv/Pipfile.lock
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 113644b5dc5b87f8858cc256153815a69f2e18f5
             dependencies:
-                - name: django
+                - name: numpy
                   previous-requirements:
                     - file: Pipfile
                       groups:
                         - default
-                      requirement: ==3.2.10
+                      requirement: 1.25.0
                       source: null
-                  previous-version: 3.2.10
+                  previous-version: 1.25.0
                   requirements:
                     - file: Pipfile
                       groups:
                         - default
-                      requirement: ==4.0.6
+                      requirement: 1.26.2
                       source: null
-                  version: 4.0.6
+                  version: 1.26.2
                   directory: /pipenv
             updated-dependency-files:
                 - content: |
                     [[source]]
-                    url = "https://pypi.python.org/simple"
+                    url = "https://pypi.org/simple"
                     verify_ssl = true
                     name = "pypi"
 
                     [packages]
-                    django = "==4.0.6"
-                    numpy = "1.23.0"
+                    numpy = "1.26.2"
 
                     [dev-packages]
 
                     [requires]
-                    python_version = "3.8"
+                    python_version = "3.11"
                   content_encoding: utf-8
                   deleted: false
                   directory: /pipenv
@@ -99,116 +78,63 @@ output:
                     {
                         "_meta": {
                             "hash": {
-                                "sha256": "409f9f801baf7b3a26ac51c4d738f6feb3b28407d790c6e0387a39ad7a0ee6c8"
+                                "sha256": "5a5839eb30150b6c663e9ac437de6033b3099834b86bef590e014ba91dd9b468"
                             },
                             "pipfile-spec": 6,
                             "requires": {
-                                "python_version": "3.8"
+                                "python_version": "3.11"
                             },
                             "sources": [
                                 {
                                     "name": "pypi",
-                                    "url": "https://pypi.python.org/simple",
+                                    "url": "https://pypi.org/simple",
                                     "verify_ssl": true
                                 }
                             ]
                         },
                         "default": {
-                            "asgiref": {
-                                "hashes": [
-                                    "sha256:89b2ef2247e3b562a16eef663bc0e2e703ec6468e2fa8a5cd61cd449786d4f6e",
-                                    "sha256:9e0ce3aa93a819ba5b45120216b23878cf6e8525eb3848653452b4192b92afed"
-                                ],
-                                "markers": "python_version >= '3.7'",
-                                "version": "==3.7.2"
-                            },
-                            "backports.zoneinfo": {
-                                "hashes": [
-                                    "sha256:17746bd546106fa389c51dbea67c8b7c8f0d14b5526a579ca6ccf5ed72c526cf",
-                                    "sha256:1b13e654a55cd45672cb54ed12148cd33628f672548f373963b0bff67b217328",
-                                    "sha256:1c5742112073a563c81f786e77514969acb58649bcdf6cdf0b4ed31a348d4546",
-                                    "sha256:4a0f800587060bf8880f954dbef70de6c11bbe59c673c3d818921f042f9954a6",
-                                    "sha256:5c144945a7752ca544b4b78c8c41544cdfaf9786f25fe5ffb10e838e19a27570",
-                                    "sha256:7b0a64cda4145548fed9efc10322770f929b944ce5cee6c0dfe0c87bf4c0c8c9",
-                                    "sha256:8439c030a11780786a2002261569bdf362264f605dfa4d65090b64b05c9f79a7",
-                                    "sha256:8961c0f32cd0336fb8e8ead11a1f8cd99ec07145ec2931122faaac1c8f7fd987",
-                                    "sha256:89a48c0d158a3cc3f654da4c2de1ceba85263fafb861b98b59040a5086259722",
-                                    "sha256:a76b38c52400b762e48131494ba26be363491ac4f9a04c1b7e92483d169f6582",
-                                    "sha256:da6013fd84a690242c310d77ddb8441a559e9cb3d3d59ebac9aca1a57b2e18bc",
-                                    "sha256:e55b384612d93be96506932a786bbcde5a2db7a9e6a4bb4bffe8b733f5b9036b",
-                                    "sha256:e81b76cace8eda1fca50e345242ba977f9be6ae3945af8d46326d776b4cf78d1",
-                                    "sha256:e8236383a20872c0cdf5a62b554b27538db7fa1bbec52429d8d106effbaeca08",
-                                    "sha256:f04e857b59d9d1ccc39ce2da1021d196e47234873820cbeaad210724b1ee28ac",
-                                    "sha256:fadbfe37f74051d024037f223b8e001611eac868b5c5b06144ef4d8b799862f2"
-                                ],
-                                "markers": "python_version < '3.9'",
-                                "version": "==0.2.1"
-                            },
-                            "django": {
-                                "hashes": [
-                                    "sha256:a67a793ff6827fd373555537dca0da293a63a316fe34cb7f367f898ccca3c3ae",
-                                    "sha256:ca54ebedfcbc60d191391efbf02ba68fb52165b8bf6ccd6fe71f098cac1fe59e"
-                                ],
-                                "index": "pypi",
-                                "markers": "python_version >= '3.8'",
-                                "version": "==4.0.6"
-                            },
                             "numpy": {
                                 "hashes": [
-                                    "sha256:17e5226674f6ea79e14e3b91bfbc153fdf3ac13f5cc54ee7bc8fdbe820a32da0",
-                                    "sha256:2bd879d3ca4b6f39b7770829f73278b7c5e248c91d538aab1e506c628353e47f",
-                                    "sha256:4f41f5bf20d9a521f8cab3a34557cd77b6f205ab2116651f12959714494268b0",
-                                    "sha256:5593f67e66dea4e237f5af998d31a43e447786b2154ba1ad833676c788f37cde",
-                                    "sha256:5e28cd64624dc2354a349152599e55308eb6ca95a13ce6a7d5679ebff2962913",
-                                    "sha256:633679a472934b1c20a12ed0c9a6c9eb167fbb4cb89031939bfd03dd9dbc62b8",
-                                    "sha256:806970e69106556d1dd200e26647e9bee5e2b3f1814f9da104a943e8d548ca38",
-                                    "sha256:806cc25d5c43e240db709875e947076b2826f47c2c340a5a2f36da5bb10c58d6",
-                                    "sha256:8247f01c4721479e482cc2f9f7d973f3f47810cbc8c65e38fd1bbd3141cc9842",
-                                    "sha256:8ebf7e194b89bc66b78475bd3624d92980fca4e5bb86dda08d677d786fefc414",
-                                    "sha256:8ecb818231afe5f0f568c81f12ce50f2b828ff2b27487520d85eb44c71313b9e",
-                                    "sha256:8f9d84a24889ebb4c641a9b99e54adb8cab50972f0166a3abc14c3b93163f074",
-                                    "sha256:909c56c4d4341ec8315291a105169d8aae732cfb4c250fbc375a1efb7a844f8f",
-                                    "sha256:9b83d48e464f393d46e8dd8171687394d39bc5abfe2978896b77dc2604e8635d",
-                                    "sha256:ac987b35df8c2a2eab495ee206658117e9ce867acf3ccb376a19e83070e69418",
-                                    "sha256:b78d00e48261fbbd04aa0d7427cf78d18401ee0abd89c7559bbf422e5b1c7d01",
-                                    "sha256:b8b97a8a87cadcd3f94659b4ef6ec056261fa1e1c3317f4193ac231d4df70215",
-                                    "sha256:bd5b7ccae24e3d8501ee5563e82febc1771e73bd268eef82a1e8d2b4d556ae66",
-                                    "sha256:bdc02c0235b261925102b1bd586579b7158e9d0d07ecb61148a1799214a4afd5",
-                                    "sha256:be6b350dfbc7f708d9d853663772a9310783ea58f6035eec649fb9c4371b5389",
-                                    "sha256:c403c81bb8ffb1c993d0165a11493fd4bf1353d258f6997b3ee288b0a48fce77",
-                                    "sha256:cf8c6aed12a935abf2e290860af8e77b26a042eb7f2582ff83dc7ed5f963340c",
-                                    "sha256:d98addfd3c8728ee8b2c49126f3c44c703e2b005d4a95998e2167af176a9e722",
-                                    "sha256:dc76bca1ca98f4b122114435f83f1fcf3c0fe48e4e6f660e07996abf2f53903c",
-                                    "sha256:dec198619b7dbd6db58603cd256e092bcadef22a796f778bf87f8592b468441d",
-                                    "sha256:df28dda02c9328e122661f399f7655cdcbcf22ea42daa3650a26bce08a187450",
-                                    "sha256:e603ca1fb47b913942f3e660a15e55a9ebca906857edfea476ae5f0fe9b457d5",
-                                    "sha256:ecfdd68d334a6b97472ed032b5b37a30d8217c097acfff15e8452c710e775524"
+                                    "sha256:06fa1ed84aa60ea6ef9f91ba57b5ed963c3729534e6e54055fc151fad0423f0a",
+                                    "sha256:174a8880739c16c925799c018f3f55b8130c1f7c8e75ab0a6fa9d41cab092fd6",
+                                    "sha256:1a13860fdcd95de7cf58bd6f8bc5a5ef81c0b0625eb2c9a783948847abbef2c2",
+                                    "sha256:1cc3d5029a30fb5f06704ad6b23b35e11309491c999838c31f124fee32107c79",
+                                    "sha256:22f8fc02fdbc829e7a8c578dd8d2e15a9074b630d4da29cda483337e300e3ee9",
+                                    "sha256:26c9d33f8e8b846d5a65dd068c14e04018d05533b348d9eaeef6c1bd787f9919",
+                                    "sha256:2b3fca8a5b00184828d12b073af4d0fc5fdd94b1632c2477526f6bd7842d700d",
+                                    "sha256:2beef57fb031dcc0dc8fa4fe297a742027b954949cabb52a2a376c144e5e6060",
+                                    "sha256:36340109af8da8805d8851ef1d74761b3b88e81a9bd80b290bbfed61bd2b4f75",
+                                    "sha256:3703fc9258a4a122d17043e57b35e5ef1c5a5837c3db8be396c82e04c1cf9b0f",
+                                    "sha256:3ced40d4e9e18242f70dd02d739e44698df3dcb010d31f495ff00a31ef6014fe",
+                                    "sha256:4a06263321dfd3598cacb252f51e521a8cb4b6df471bb12a7ee5cbab20ea9167",
+                                    "sha256:4eb8df4bf8d3d90d091e0146f6c28492b0be84da3e409ebef54349f71ed271ef",
+                                    "sha256:5d5244aabd6ed7f312268b9247be47343a654ebea52a60f002dc70c769048e75",
+                                    "sha256:64308ebc366a8ed63fd0bf426b6a9468060962f1a4339ab1074c228fa6ade8e3",
+                                    "sha256:6a3cdb4d9c70e6b8c0814239ead47da00934666f668426fc6e94cce869e13fd7",
+                                    "sha256:854ab91a2906ef29dc3925a064fcd365c7b4da743f84b123002f6139bcb3f8a7",
+                                    "sha256:94cc3c222bb9fb5a12e334d0479b97bb2df446fbe622b470928f5284ffca3f8d",
+                                    "sha256:96ca5482c3dbdd051bcd1fce8034603d6ebfc125a7bd59f55b40d8f5d246832b",
+                                    "sha256:a2bbc29fcb1771cd7b7425f98b05307776a6baf43035d3b80c4b0f29e9545186",
+                                    "sha256:a4cd6ed4a339c21f1d1b0fdf13426cb3b284555c27ac2f156dfdaaa7e16bfab0",
+                                    "sha256:aa18428111fb9a591d7a9cc1b48150097ba6a7e8299fb56bdf574df650e7d1f1",
+                                    "sha256:aa317b2325f7aa0a9471663e6093c210cb2ae9c0ad824732b307d2c51983d5b6",
+                                    "sha256:b04f5dc6b3efdaab541f7857351aac359e6ae3c126e2edb376929bd3b7f92d7e",
+                                    "sha256:b272d4cecc32c9e19911891446b72e986157e6a1809b7b56518b4f3755267523",
+                                    "sha256:b361d369fc7e5e1714cf827b731ca32bff8d411212fccd29ad98ad622449cc36",
+                                    "sha256:b96e7b9c624ef3ae2ae0e04fa9b460f6b9f17ad8b4bec6d7756510f1f6c0c841",
+                                    "sha256:baf8aab04a2c0e859da118f0b38617e5ee65d75b83795055fb66c0d5e9e9b818",
+                                    "sha256:bcc008217145b3d77abd3e4d5ef586e3bdfba8fe17940769f8aa09b99e856c00",
+                                    "sha256:bd3f0091e845164a20bd5a326860c840fe2af79fa12e0469a12768a3ec578d80",
+                                    "sha256:cc392fdcbd21d4be6ae1bb4475a03ce3b025cd49a9be5345d76d7585aea69440",
+                                    "sha256:d73a3abcac238250091b11caef9ad12413dab01669511779bc9b29261dd50210",
+                                    "sha256:f43740ab089277d403aa07567be138fc2a89d4d9892d113b76153e0e412409f8",
+                                    "sha256:f65738447676ab5777f11e6bbbdb8ce11b785e105f690bc45966574816b6d3ea",
+                                    "sha256:f79b231bf5c16b1f39c7f4875e1ded36abee1591e98742b05d8a0fb55d8a3eec",
+                                    "sha256:fe6b44fb8fcdf7eda4ef4461b97b3f63c466b27ab151bec2366db8b197387841"
                                 ],
                                 "index": "pypi",
-                                "version": "==1.23.2"
-                            },
-                            "pytz": {
-                                "hashes": [
-                                    "sha256:220f481bdafa09c3955dfbdddb7b57780e9a94f5127e35456a48589b9e0c0197",
-                                    "sha256:cea221417204f2d1a2aa03ddae3e867921971d0d76f14d87abb4414415bbdcf5"
-                                ],
-                                "version": "==2022.2.1"
-                            },
-                            "sqlparse": {
-                                "hashes": [
-                                    "sha256:5430a4fe2ac7d0f93e66f1efc6e1338a41884b7ddf2a350cedd20ccc4d9d28f3",
-                                    "sha256:d446183e84b8349fa3061f0fe7f06ca94ba65b426946ffebe6e3e8295332420c"
-                                ],
-                                "markers": "python_version >= '3.5'",
-                                "version": "==0.4.4"
-                            },
-                            "typing-extensions": {
-                                "hashes": [
-                                    "sha256:8f92fc8806f9a6b641eaa5318da32b44d401efaac0f6678c9bc448ba3605faa0",
-                                    "sha256:df8e4339e9cb77357558cbdbceca33c303714cf861d1eef15e1070055ae8b7ef"
-                                ],
-                                "markers": "python_version < '3.11'",
-                                "version": "==4.8.0"
+                                "markers": "python_version >= '3.9'",
+                                "version": "==1.26.2"
                             }
                         },
                         "develop": {}
@@ -220,32 +146,89 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump django from 3.2.10 to 4.0.6 in /pipenv
+            pr-title: Bump numpy from 1.25.0 to 1.26.2 in /pipenv
             pr-body: |
-                Bumps [django](https://github.com/django/django) from 3.2.10 to 4.0.6.
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.25.0 to 1.26.2.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/numpy/numpy/releases">numpy's releases</a>.</em></p>
+                <blockquote>
+                <h2>1.26.2 release</h2>
+                <h1>NumPy 1.26.2 Release Notes</h1>
+                <p>NumPy 1.26.2 is a maintenance release that fixes bugs and regressions
+                discovered after the 1.26.1 release. The 1.26.release series is the last
+                planned minor release series before NumPy 2.0. The Python versions
+                supported by this release are 3.9-3.12.</p>
+                <h2>Contributors</h2>
+                <p>A total of 13 people contributed to this release. People with a &quot;+&quot; by
+                their names contributed a patch for the first time.</p>
+                <ul>
+                <li><a href="https://github.com/stefan6419846"><code>@​stefan6419846</code></a></li>
+                <li><a href="https://github.com/thalassemia"><code>@​thalassemia</code></a> +</li>
+                <li>Andrew Nelson</li>
+                <li>Charles Bousseau +</li>
+                <li>Charles Harris</li>
+                <li>Marcel Bargull +</li>
+                <li>Mark Mentovai +</li>
+                <li>Matti Picus</li>
+                <li>Nathan Goldbaum</li>
+                <li>Ralf Gommers</li>
+                <li>Sayed Adel</li>
+                <li>Sebastian Berg</li>
+                <li>William Ayd +</li>
+                </ul>
+                <h2>Pull requests merged</h2>
+                <p>A total of 25 pull requests were merged for this release.</p>
+                <ul>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24814">#24814</a>: MAINT: align test_dispatcher s390x targets with _umath_tests_mtargets</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24929">#24929</a>: MAINT: prepare 1.26.x for further development</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24955">#24955</a>: ENH: Add Cython enumeration for NPY_FR_GENERIC</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24962">#24962</a>: REL: Remove Python upper version from the release branch</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24971">#24971</a>: BLD: Use the correct Python interpreter when running tempita.py</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24972">#24972</a>: MAINT: Remove unhelpful error replacements from <code>import_array()</code></li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/24977">#24977</a>: BLD: use classic linker on macOS, the new one in XCode 15 has...</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25003">#25003</a>: BLD: musllinux_aarch64 [wheel build]</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25043">#25043</a>: MAINT: Update mailmap</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25049">#25049</a>: MAINT: Update meson build infrastructure.</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25071">#25071</a>: MAINT: Split up .github/workflows to match main</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25083">#25083</a>: BUG: Backport fix build on ppc64 when the baseline set to Power9...</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25093">#25093</a>: BLD: Fix features.h detection for Meson builds [1.26.x Backport]</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25095">#25095</a>: BUG: Avoid intp conversion regression in Cython 3 (backport)</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25107">#25107</a>: CI: remove obsolete jobs, and move macOS and conda Azure jobs...</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25108">#25108</a>: CI: Add linux_qemu action and remove travis testing.</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25112">#25112</a>: MAINT: Update .spin/cmds.py from main.</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25113">#25113</a>: DOC: Visually divide main license and bundled licenses in wheels</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/25115">#25115</a>: MAINT: Add missing <code>noexcept</code> to shuffle helpers</li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/django/django/commit/caad462feaa84ba78ed658a9595a4a4363dad2db"><code>caad462</code></a> [4.0.x] Bumped version for 4.0.6 release.</li>
-                <li><a href="https://github.com/django/django/commit/c73215272a723b939548fe22c607a732530ce04f"><code>c732152</code></a> [4.0.x] Updated man page for Django 4.0.6.</li>
-                <li><a href="https://github.com/django/django/commit/0dc9c016fadb71a067e5a42be30164e3f96c0492"><code>0dc9c01</code></a> [4.0.x] Fixed CVE-2022-34265 -- Protected Trunc(kind)/Extract(lookup_name) ag...</li>
-                <li><a href="https://github.com/django/django/commit/a2b88d7be6fc9b443794518d2f75fd2f3d9e677a"><code>a2b88d7</code></a> [4.0.x] Fixed typo in docs/topics/signals.txt.</li>
-                <li><a href="https://github.com/django/django/commit/2b901c1be462a12cad39af40a57a454ffe185406"><code>2b901c1</code></a> [4.0.x] Fixed GEOSTest.test_emptyCollections() on GEOS 3.8.0.</li>
-                <li><a href="https://github.com/django/django/commit/4d20d2f7c2b8e74c3e85bd0716ebdcb3b35a70e6"><code>4d20d2f</code></a> [4.0.x] Fixed docs build with sphinxcontrib-spelling 7.5.0+.</li>
-                <li><a href="https://github.com/django/django/commit/8a294ee2e0e30f073f764310c74899e385a302ec"><code>8a294ee</code></a> [4.0.x] Added stub release notes and release date for 4.0.6 and 3.2.14.</li>
-                <li><a href="https://github.com/django/django/commit/1c28443fc92e57588fb9b37b700f97be9fde5982"><code>1c28443</code></a> [4.0.x] Fixed CoveringIndexTests.test_covering_partial_index() when DEFAULT_I...</li>
-                <li><a href="https://github.com/django/django/commit/0f3b25044c34fd17b6fcde0cb53db0181f212b20"><code>0f3b250</code></a> [4.0.x] Fixed <a href="https://redirect.github.com/django/django/issues/33789">#33789</a> -- Doc'd changes in quoting table/column names on Oracle...</li>
-                <li><a href="https://github.com/django/django/commit/6661c48a20d788dc76397ab4ec334b28b51db872"><code>6661c48</code></a> [4.0.x] Updated OWASP Top 10 link in security topic.</li>
-                <li>Additional commits viewable in <a href="https://github.com/django/django/compare/3.2.10...4.0.6">compare view</a></li>
+                <li><a href="https://github.com/numpy/numpy/commit/03b62604eead0f7d279a5a4c094743eb29647368"><code>03b6260</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25128">#25128</a> from charris/prepare-1.26.2</li>
+                <li><a href="https://github.com/numpy/numpy/commit/6961f60056be3fce2f4c1c9aa1f8840675135973"><code>6961f60</code></a> REL: Prepare for the NumPy 1.26.2 release</li>
+                <li><a href="https://github.com/numpy/numpy/commit/d81f0aeae67300e5d6f295597a3c53ec204ca077"><code>d81f0ae</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25121">#25121</a> from charris/backport-25042</li>
+                <li><a href="https://github.com/numpy/numpy/commit/766d5a83a2eb5db9a6deca4616a6e32c45955782"><code>766d5a8</code></a> BUG: ensure passing <code>np.dtype</code> to itself doesn't crash</li>
+                <li><a href="https://github.com/numpy/numpy/commit/cefdd34ec2c8b8acb9507b1c01637e9ac0f8f762"><code>cefdd34</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25120">#25120</a> from charris/backport-25063</li>
+                <li><a href="https://github.com/numpy/numpy/commit/ae77d675544ccc772eab73f3316134de99278629"><code>ae77d67</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25119">#25119</a> from charris/backport-25090</li>
+                <li><a href="https://github.com/numpy/numpy/commit/0035b44c4276c0b72e56e52a4cf7a7048f487b70"><code>0035b44</code></a> BLD: change default of the <code>allow-noblas</code> option to true.</li>
+                <li><a href="https://github.com/numpy/numpy/commit/12b7b352020b1e7204430bee82af05c804b32f7d"><code>12b7b35</code></a> BUG: Make n a long int for np.random.multinomial</li>
+                <li><a href="https://github.com/numpy/numpy/commit/9887c9ce4ab45093cd063b3cade971fa98f20030"><code>9887c9c</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25118">#25118</a> from charris/backport-25051</li>
+                <li><a href="https://github.com/numpy/numpy/commit/2359aec3510bd9e8d0e80e91430ebb76291d6069"><code>2359aec</code></a> MAINT: Make bitfield integers unsigned</li>
+                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.25.0...v1.26.2">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump django from 3.2.10 to 4.0.6 in /pipenv
+                Bump numpy from 1.25.0 to 1.26.2 in /pipenv
 
-                Bumps [django](https://github.com/django/django) from 3.2.10 to 4.0.6.
-                - [Commits](https://github.com/django/django/compare/3.2.10...4.0.6)
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.25.0 to 1.26.2.
+                - [Release notes](https://github.com/numpy/numpy/releases)
+                - [Changelog](https://github.com/numpy/numpy/blob/main/doc/RELEASE_WALKTHROUGH.rst)
+                - [Commits](https://github.com/numpy/numpy/compare/v1.25.0...v1.26.2)
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 113644b5dc5b87f8858cc256153815a69f2e18f5
