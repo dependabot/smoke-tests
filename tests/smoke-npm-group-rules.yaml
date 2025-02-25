@@ -25,9 +25,6 @@ input:
             - dependency-name: lodash
               source: tests/smoke-npm-group-rules.yaml
               version-requirement: '>4.17.21'
-            - dependency-name: get-intrinsic
-              source: tests/smoke-npm-group-rules.yaml
-              version-requirement: '>1.3.0'
         source:
             provider: github
             repo: dependabot/smoke-tests
@@ -575,7 +572,8 @@ output:
                         "node_modules/get-intrinsic": {
                           "version": "1.3.0",
                           "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.3.0.tgz",
-                          "integrity": "sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==",                          "license": "MIT",
+                          "integrity": "sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==",
+                          "license": "MIT",
                           "dependencies": {
                             "call-bind-apply-helpers": "^1.0.2",
                             "es-define-property": "^1.0.1",
@@ -1200,11 +1198,11 @@ output:
                           "resolved": "https://registry.npmjs.org/functions-have-names/-/functions-have-names-1.2.3.tgz",
                           "integrity": "sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ=="
                         },
-                        "get-intrinsic": { 
+                        "get-intrinsic": {
                           "version": "1.3.0",
                           "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.3.0.tgz",
-                          "integrity": "sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==",                          "license": "MIT",
-                          "dependencies": {
+                          "integrity": "sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==",
+                          "requires": {
                             "call-bind-apply-helpers": "^1.0.2",
                             "es-define-property": "^1.0.1",
                             "es-errors": "^1.3.0",
@@ -1215,6 +1213,7 @@ output:
                             "has-symbols": "^1.1.0",
                             "hasown": "^2.0.2",
                             "math-intrinsics": "^1.1.0"
+                          }
                         },
                         "get-proto": {
                           "version": "1.0.1",
