@@ -14,7 +14,9 @@ input:
             grouped-updates-prototype: true
             record-ecosystem-versions: true
         ignore-conditions:
-            - dependency-name: none
+             - dependency-name: get-intrinsic
+               source: tests/smoke-npm-group-semver.yaml
+               version-requirement: '>1.3.0'
         source:
             provider: github
             repo: dependabot/smoke-tests
