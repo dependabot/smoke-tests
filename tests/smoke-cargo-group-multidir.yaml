@@ -17,20 +17,17 @@ input:
             - iota
         ignore-conditions:
             - dependency-name: time
-              source: ../smoke-tests/tests/smoke-cargo-group-multidir.yaml
+              source: tests/smoke-cargo-group-multidir.yaml
               version-requirement: '>0.3.0'
             - dependency-name: regex
-              source: ../smoke-tests/tests/smoke-cargo-group-multidir.yaml
+              source: tests/smoke-cargo-group-multidir.yaml
               version-requirement: '>1.7.1'
             - dependency-name: time
-              source: ../smoke-tests/tests/smoke-cargo-group-multidir.yaml
+              source: tests/smoke-cargo-group-multidir.yaml
               version-requirement: '>0.3.0'
             - dependency-name: rand
-              source: ../smoke-tests/tests/smoke-cargo-group-multidir.yaml
-              version-requirement: '>0.8.5'
-            - dependency-name: rand-core
-              source: ../smoke-tests/tests/smoke-cargo-group-multidir.yaml
-              version-requirement: '>0.6.4'
+              source: tests/smoke-cargo-group-multidir.yaml
+              version-requirement: '>96f8df65ee6b4368d91a006f9c5b4a8050abae49'
         security-advisories:
             - dependency-name: time
               affected-versions:
