@@ -7,31 +7,22 @@ input:
             record-ecosystem-versions: true
         ignore-conditions:
             - dependency-name: axios
-              source: tests/smoke-npm.yaml
               version-requirement: '>1.4.0'
             - dependency-name: etag
-              source: tests/smoke-npm.yaml
               version-requirement: '>1.8.1'
             - dependency-name: fetch-factory
-              source: tests/smoke-npm.yaml
               version-requirement: '>0.2.1'
             - dependency-name: lodash
-              source: tests/smoke-npm.yaml
               version-requirement: '>4.17.21'
             - dependency-name: get-intrinsic
-              source: tests/smoke-npm.yaml
               version-requirement: '>1.0.3'
             - dependency-name: call-bound
-              source: tests/smoke-npm.yaml
-              version-requirement: '>1.0.3'
+              version-requirement: '>1.0.4'
         source:
             provider: github
             repo: dependabot/smoke-tests
             directory: /npm
             commit: d15ce2f331fa91f5ebb82da530dc7f3d69c64e6e
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -528,131 +519,7 @@ output:
                   support_file: false
                   type: file
             pr-title: Bump axios from 0.27.2 to 1.4.0 in /npm
-            pr-body: |
-                Bumps [axios](https://github.com/axios/axios) from 0.27.2 to 1.4.0.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/axios/axios/releases">axios's releases</a>.</em></p>
-                <blockquote>
-                <h2>Release v1.4.0</h2>
-                <h2>Release notes:</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href="https://redirect.github.com/axios/axios/issues/5678">#5678</a>) (<a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1">bbb61e7</a>)</li>
-                <li><strong>package:</strong> export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>) (<a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09">df38c94</a>)</li>
-                </ul>
-                <h3>Features</h3>
-                <ul>
-                <li><strong>dns:</strong> added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>) (<a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb">2701911</a>)</li>
-                <li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>) (<a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf">726f1c8</a>)</li>
-                </ul>
-                <h3>Performance Improvements</h3>
-                <ul>
-                <li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href="https://redirect.github.com/axios/axios/issues/5679">#5679</a>) (<a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e">e6f7053</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/arthurfiorette" title="+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )">Arthur Fiorette</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/npiyush97" title="+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )">PIYUSH NEGI</a></li>
-                </ul>
-                <h2>Release v1.3.6</h2>
-                <h2>Release notes:</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href="https://redirect.github.com/axios/axios/issues/5445">#5445</a>) (<a href="https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2">6f360a2</a>)</li>
-                <li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href="https://redirect.github.com/axios/axios/issues/5661">#5661</a>) (<a href="https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76">aa372f7</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/Cadienvan" title="+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )">Michael Di Prisco</a></li>
-                </ul>
-                <h2>Release v1.3.5</h2>
-                <h2>Release notes:</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>headers:</strong> fixed isValidHeaderName to support full list of allowed characters; (<a href="https://redirect.github.com/axios/axios/issues/5584">#5584</a>) (<a href="https://github.com/axios/axios/commit/e7decef6a99f4627e27ed9ea5b00ce8e201c3841">e7decef</a>)</li>
-                <li><strong>params:</strong> re-added the ability to set the function as <code>paramsSerializer</code> config; (<a href="https://redirect.github.com/axios/axios/issues/5633">#5633</a>) (<a href="https://github.com/axios/axios/commit/a56c8661209d5ce5a645a05f294a0e08a6c1f6b3">a56c866</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+28/-10 ([#5633](https://github.com/axios/axios/issues/5633) [#5584](https://github.com/axios/axios/issues/5584) )">Dmitriy Mozgovoy</a></li>
-                </ul>
-                <h2>Release v1.3.4</h2>
-                <h2>Release notes:</h2>
-                <h3>Bug Fixes</h3>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/axios/axios/blob/v1.x/CHANGELOG.md">axios's changelog</a>.</em></p>
-                <blockquote>
-                <h1><a href="https://github.com/axios/axios/compare/v1.3.6...v1.4.0">1.4.0</a> (2023-04-27)</h1>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href="https://redirect.github.com/axios/axios/issues/5678">#5678</a>) (<a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1">bbb61e7</a>)</li>
-                <li><strong>package:</strong> export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>) (<a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09">df38c94</a>)</li>
-                </ul>
-                <h3>Features</h3>
-                <ul>
-                <li><strong>dns:</strong> added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>) (<a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb">2701911</a>)</li>
-                <li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>) (<a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf">726f1c8</a>)</li>
-                </ul>
-                <h3>Performance Improvements</h3>
-                <ul>
-                <li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href="https://redirect.github.com/axios/axios/issues/5679">#5679</a>) (<a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e">e6f7053</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/arthurfiorette" title="+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )">Arthur Fiorette</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/npiyush97" title="+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )">PIYUSH NEGI</a></li>
-                </ul>
-                <h2><a href="https://github.com/axios/axios/compare/v1.3.5...v1.3.6">1.3.6</a> (2023-04-19)</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href="https://redirect.github.com/axios/axios/issues/5445">#5445</a>) (<a href="https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2">6f360a2</a>)</li>
-                <li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href="https://redirect.github.com/axios/axios/issues/5661">#5661</a>) (<a href="https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76">aa372f7</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/Cadienvan" title="+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )">Michael Di Prisco</a></li>
-                </ul>
-                <h2><a href="https://github.com/axios/axios/compare/v1.3.4...v1.3.5">1.3.5</a> (2023-04-05)</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>headers:</strong> fixed isValidHeaderName to support full list of allowed characters; (<a href="https://redirect.github.com/axios/axios/issues/5584">#5584</a>) (<a href="https://github.com/axios/axios/commit/e7decef6a99f4627e27ed9ea5b00ce8e201c3841">e7decef</a>)</li>
-                <li><strong>params:</strong> re-added the ability to set the function as <code>paramsSerializer</code> config; (<a href="https://redirect.github.com/axios/axios/issues/5633">#5633</a>) (<a href="https://github.com/axios/axios/commit/a56c8661209d5ce5a645a05f294a0e08a6c1f6b3">a56c866</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+28/-10 ([#5633](https://github.com/axios/axios/issues/5633) [#5584](https://github.com/axios/axios/issues/5584) )">Dmitriy Mozgovoy</a></li>
-                </ul>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/axios/axios/commit/21a5ad34c4a5956d81d338059ac0dd34a19ed094"><code>21a5ad3</code></a> chore(release): v1.4.0 (<a href="https://redirect.github.com/axios/axios/issues/5683">#5683</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/d627610d0c427de57c10618b36fa97814e2a75f0"><code>d627610</code></a> chore(utils): refactored isAsyncFn util to avoid inlining additional Babel he...</li>
-                <li><a href="https://github.com/axios/axios/commit/e18fdd893dfc67630c33fb6744d1b99d72857d92"><code>e18fdd8</code></a> refactor: remove deprecated url-search-params polyfill for URLSearchParams (#...</li>
-                <li><a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf"><code>726f1c8</code></a> feat(types): export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb"><code>2701911</code></a> feat(dns): added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e"><code>e6f7053</code></a> perf(merge-config): optimize mergeConfig performance by avoiding duplicate ke...</li>
-                <li><a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1"><code>bbb61e7</code></a> fix(formdata): add <code>multipart/form-data</code> content type for FormData payload on...</li>
-                <li><a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09"><code>df38c94</code></a> fix(package): export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/59eb99183546d822bc27e881f5dcd748daa04173"><code>59eb991</code></a> chore(release): v1.3.6 (<a href="https://redirect.github.com/axios/axios/issues/5666">#5666</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/1b8cc3b02b13f5d16ad988460edbda463113177e"><code>1b8cc3b</code></a> chore(template): improve issue template; (<a href="https://redirect.github.com/axios/axios/issues/5665">#5665</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/axios/axios/compare/v0.27.2...v1.4.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
+            pr-body: "Bumps [axios](https://github.com/axios/axios) from 0.27.2 to 1.4.0.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/axios/axios/releases\">axios's releases</a>.</em></p>\n<blockquote>\n<h2>Release v1.4.0</h2>\n<h2>Release notes:</h2>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href=\"https://redirect.github.com/axios/axios/issues/5678\">#5678</a>) (<a href=\"https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1\">bbb61e7</a>)</li>\n<li><strong>package:</strong> export package internals with unsafe path prefix; (<a href=\"https://redirect.github.com/axios/axios/issues/5677\">#5677</a>) (<a href=\"https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09\">df38c94</a>)</li>\n</ul>\n<h3>Features</h3>\n<ul>\n<li><strong>dns:</strong> added support for a custom lookup function; (<a href=\"https://redirect.github.com/axios/axios/issues/5339\">#5339</a>) (<a href=\"https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb\">2701911</a>)</li>\n<li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href=\"https://redirect.github.com/axios/axios/issues/5525\">#5525</a>) (<a href=\"https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf\">726f1c8</a>)</li>\n</ul>\n<h3>Performance Improvements</h3>\n<ul>\n<li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href=\"https://redirect.github.com/axios/axios/issues/5679\">#5679</a>) (<a href=\"https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e\">e6f7053</a>)</li>\n</ul>\n<h3>Contributors to this release</h3>\n<ul>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/DigitalBrainJS\" title=\"+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )\">Dmitriy Mozgovoy</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/arthurfiorette\" title=\"+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )\">Arthur Fiorette</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/npiyush97\" title=\"+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )\">PIYUSH NEGI</a></li>\n</ul>\n<h2>Release v1.3.6</h2>\n<h2>Release notes:</h2>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href=\"https://redirect.github.com/axios/axios/issues/5445\">#5445</a>) (<a href=\"https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2\">6f360a2</a>)</li>\n<li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href=\"https://redirect.github.com/axios/axios/issues/5661\">#5661</a>) (<a href=\"https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76\">aa372f7</a>)</li>\n</ul>\n<h3>Contributors to this release</h3>\n<ul>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/DigitalBrainJS\" title=\"+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )\">Dmitriy Mozgovoy</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/Cadienvan\" title=\"+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )\">Michael Di Prisco</a></li>\n</ul>\n<h2>Release v1.3.5</h2>\n<h2>Release notes:</h2>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>headers:</strong> fixed isValidHeaderName to support full list of allowed characters; (<a href=\"https://redirect.github.com/axios/axios/issues/5584\">#5584</a>) (<a href=\"https://github.com/axios/axios/commit/e7decef6a99f4627e27ed9ea5b00ce8e201c3841\">e7decef</a>)</li>\n<li><strong>params:</strong> re-added the ability to set the function as <code>paramsSerializer</code> config; (<a href=\"https://redirect.github.com/axios/axios/issues/5633\">#5633</a>) (<a href=\"https://github.com/axios/axios/commit/a56c8661209d5ce5a645a05f294a0e08a6c1f6b3\">a56c866</a>)</li>\n</ul>\n<h3>Contributors to this release</h3>\n<ul>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/DigitalBrainJS\" title=\"+28/-10 ([#5633](https://github.com/axios/axios/issues/5633) [#5584](https://github.com/axios/axios/issues/5584) )\">Dmitriy Mozgovoy</a></li>\n</ul>\n<h2>Release v1.3.4</h2>\n<h2>Release notes:</h2>\n<h3>Bug Fixes</h3>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a href=\"https://github.com/axios/axios/blob/v1.x/CHANGELOG.md\">axios's changelog</a>.</em></p>\n<blockquote>\n<h1><a href=\"https://github.com/axios/axios/compare/v1.3.6...v1.4.0\">1.4.0</a> (2023-04-27)</h1>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href=\"https://redirect.github.com/axios/axios/issues/5678\">#5678</a>) (<a href=\"https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1\">bbb61e7</a>)</li>\n<li><strong>package:</strong> export package internals with unsafe path prefix; (<a href=\"https://redirect.github.com/axios/axios/issues/5677\">#5677</a>) (<a href=\"https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09\">df38c94</a>)</li>\n</ul>\n<h3>Features</h3>\n<ul>\n<li><strong>dns:</strong> added support for a custom lookup function; (<a href=\"https://redirect.github.com/axios/axios/issues/5339\">#5339</a>) (<a href=\"https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb\">2701911</a>)</li>\n<li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href=\"https://redirect.github.com/axios/axios/issues/5525\">#5525</a>) (<a href=\"https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf\">726f1c8</a>)</li>\n</ul>\n<h3>Performance Improvements</h3>\n<ul>\n<li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href=\"https://redirect.github.com/axios/axios/issues/5679\">#5679</a>) (<a href=\"https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e\">e6f7053</a>)</li>\n</ul>\n<h3>Contributors to this release</h3>\n<ul>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/DigitalBrainJS\" title=\"+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )\">Dmitriy Mozgovoy</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/arthurfiorette\" title=\"+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )\">Arthur Fiorette</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/npiyush97\" title=\"+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )\">PIYUSH NEGI</a></li>\n</ul>\n<h3>PRs</h3>\n<ul>\n<li>CVE 2023 45857 ( <a href=\"https://api.github.com/repos/axios/axios/pulls/6028\">#6028</a> )</li>\n</ul>\n<pre><code>\n⚠️ Critical vulnerability fix. See https://security.snyk.io/vuln/SNYK-JS-AXIOS-6032459\n</code></pre>\n<h2><a href=\"https://github.com/axios/axios/compare/v1.3.5...v1.3.6\">1.3.6</a> (2023-04-19)</h2>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href=\"https://redirect.github.com/axios/axios/issues/5445\">#5445</a>) (<a href=\"https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2\">6f360a2</a>)</li>\n<li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href=\"https://redirect.github.com/axios/axios/issues/5661\">#5661</a>) (<a href=\"https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76\">aa372f7</a>)</li>\n</ul>\n<h3>Contributors to this release</h3>\n<ul>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/DigitalBrainJS\" title=\"+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )\">Dmitriy Mozgovoy</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/Cadienvan\" title=\"+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )\">Michael Di Prisco</a></li>\n</ul>\n<h3>PRs</h3>\n<ul>\n<li>CVE 2023 45857 ( <a href=\"https://api.github.com/repos/axios/axios/pulls/6028\">#6028</a> )</li>\n</ul>\n<pre><code>\n⚠️ Critical vulnerability fix. See https://security.snyk.io/vuln/SNYK-JS-AXIOS-6032459\n&lt;/tr&gt;&lt;/table&gt; \n</code></pre>\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/axios/axios/commit/21a5ad34c4a5956d81d338059ac0dd34a19ed094\"><code>21a5ad3</code></a> chore(release): v1.4.0 (<a href=\"https://redirect.github.com/axios/axios/issues/5683\">#5683</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/d627610d0c427de57c10618b36fa97814e2a75f0\"><code>d627610</code></a> chore(utils): refactored isAsyncFn util to avoid inlining additional Babel he...</li>\n<li><a href=\"https://github.com/axios/axios/commit/e18fdd893dfc67630c33fb6744d1b99d72857d92\"><code>e18fdd8</code></a> refactor: remove deprecated url-search-params polyfill for URLSearchParams (#...</li>\n<li><a href=\"https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf\"><code>726f1c8</code></a> feat(types): export <code>AxiosHeaderValue</code> type. (<a href=\"https://redirect.github.com/axios/axios/issues/5525\">#5525</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb\"><code>2701911</code></a> feat(dns): added support for a custom lookup function; (<a href=\"https://redirect.github.com/axios/axios/issues/5339\">#5339</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e\"><code>e6f7053</code></a> perf(merge-config): optimize mergeConfig performance by avoiding duplicate ke...</li>\n<li><a href=\"https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1\"><code>bbb61e7</code></a> fix(formdata): add <code>multipart/form-data</code> content type for FormData payload on...</li>\n<li><a href=\"https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09\"><code>df38c94</code></a> fix(package): export package internals with unsafe path prefix; (<a href=\"https://redirect.github.com/axios/axios/issues/5677\">#5677</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/59eb99183546d822bc27e881f5dcd748daa04173\"><code>59eb991</code></a> chore(release): v1.3.6 (<a href=\"https://redirect.github.com/axios/axios/issues/5666\">#5666</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/1b8cc3b02b13f5d16ad988460edbda463113177e\"><code>1b8cc3b</code></a> chore(template): improve issue template; (<a href=\"https://redirect.github.com/axios/axios/issues/5665\">#5665</a>)</li>\n<li>Additional commits viewable in <a href=\"https://github.com/axios/axios/compare/v0.27.2...v1.4.0\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
             commit-message: |-
                 Bump axios from 0.27.2 to 1.4.0 in /npm
 
@@ -793,13 +660,13 @@ output:
                           }
                         },
                         "node_modules/call-bound": {
-                          "version": "1.0.3",
-                          "resolved": "https://registry.npmjs.org/call-bound/-/call-bound-1.0.3.tgz",
-                          "integrity": "sha512-YTd+6wGlNlPxSuri7Y6X8tY2dmm12UMH66RpKMhiX6rsk5wXXnYgbUcOt8kiS31/AjfoTOvCsE+w8nZQLQnzHA==",
+                          "version": "1.0.4",
+                          "resolved": "https://registry.npmjs.org/call-bound/-/call-bound-1.0.4.tgz",
+                          "integrity": "sha512-+ys997U96po4Kx/ABpBCqhA9EuxJaQWDQg7295H4hBphv3IZg0boBKuwYpt4YXp6MZ5AmZQnU/tyMTlRpaSejg==",
                           "license": "MIT",
                           "dependencies": {
-                            "call-bind-apply-helpers": "^1.0.1",
-                            "get-intrinsic": "^1.2.6"
+                            "call-bind-apply-helpers": "^1.0.2",
+                            "get-intrinsic": "^1.3.0"
                           },
                           "engines": {
                             "node": ">= 0.4"
@@ -1498,12 +1365,12 @@ output:
                           }
                         },
                         "call-bound": {
-                          "version": "1.0.3",
-                          "resolved": "https://registry.npmjs.org/call-bound/-/call-bound-1.0.3.tgz",
-                          "integrity": "sha512-YTd+6wGlNlPxSuri7Y6X8tY2dmm12UMH66RpKMhiX6rsk5wXXnYgbUcOt8kiS31/AjfoTOvCsE+w8nZQLQnzHA==",
+                          "version": "1.0.4",
+                          "resolved": "https://registry.npmjs.org/call-bound/-/call-bound-1.0.4.tgz",
+                          "integrity": "sha512-+ys997U96po4Kx/ABpBCqhA9EuxJaQWDQg7295H4hBphv3IZg0boBKuwYpt4YXp6MZ5AmZQnU/tyMTlRpaSejg==",
                           "requires": {
-                            "call-bind-apply-helpers": "^1.0.1",
-                            "get-intrinsic": "^1.2.6"
+                            "call-bind-apply-helpers": "^1.0.2",
+                            "get-intrinsic": "^1.3.0"
                           }
                         },
                         "chai": {
@@ -2850,6 +2717,1038 @@ output:
                 - [Release notes](https://github.com/jshttp/etag/releases)
                 - [Changelog](https://github.com/jshttp/etag/blob/master/HISTORY.md)
                 - [Commits](https://github.com/jshttp/etag/compare/v1.0.0...v1.8.1)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: d15ce2f331fa91f5ebb82da530dc7f3d69c64e6e
+            dependencies:
+                - name: follow-redirects
+                  previous-requirements: []
+                  previous-version: 1.15.2
+                  requirements: []
+                  version: 1.15.9
+                  directory: /npm
+            updated-dependency-files:
+                - content: |
+                    {
+                      "name": "npm-test",
+                      "version": "1.0.0",
+                      "lockfileVersion": 2,
+                      "requires": true,
+                      "packages": {
+                        "": {
+                          "name": "npm-test",
+                          "version": "1.0.0",
+                          "license": "ISC",
+                          "dependencies": {
+                            "axios": "^0.27.2",
+                            "fetch-factory": "^0.0.1",
+                            "lodash": "^4.17.15"
+                          },
+                          "devDependencies": {
+                            "etag": "^1.0.0"
+                          }
+                        },
+                        "node_modules/asynckit": {
+                          "version": "0.4.0",
+                          "resolved": "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz",
+                          "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
+                        },
+                        "node_modules/axios": {
+                          "version": "0.27.2",
+                          "resolved": "https://registry.npmjs.org/axios/-/axios-0.27.2.tgz",
+                          "integrity": "sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==",
+                          "dependencies": {
+                            "follow-redirects": "^1.14.9",
+                            "form-data": "^4.0.0"
+                          }
+                        },
+                        "node_modules/combined-stream": {
+                          "version": "1.0.8",
+                          "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz",
+                          "integrity": "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==",
+                          "dependencies": {
+                            "delayed-stream": "~1.0.0"
+                          },
+                          "engines": {
+                            "node": ">= 0.8"
+                          }
+                        },
+                        "node_modules/delayed-stream": {
+                          "version": "1.0.0",
+                          "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz",
+                          "integrity": "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==",
+                          "engines": {
+                            "node": ">=0.4.0"
+                          }
+                        },
+                        "node_modules/encoding": {
+                          "version": "0.1.12",
+                          "resolved": "https://registry.npmjs.org/encoding/-/encoding-0.1.12.tgz",
+                          "integrity": "sha1-U4tm8+5izRq1HsMjgp0flIDHS+s=",
+                          "dependencies": {
+                            "iconv-lite": "0.4.19"
+                          }
+                        },
+                        "node_modules/es6-promise": {
+                          "version": "3.3.1",
+                          "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.3.1.tgz",
+                          "integrity": "sha1-oIzd6EzNvzTQJ6FFG8kdS80ophM="
+                        },
+                        "node_modules/etag": {
+                          "version": "1.0.0",
+                          "resolved": "https://registry.npmjs.org/etag/-/etag-1.0.0.tgz",
+                          "integrity": "sha512-IHsJ/pkALbMcdzbAC0hbN2dpoMFFQMP/TxEe8emE5cjanh9Lh053UdfeNyrlNW9vJaJWVoSk3mgo/MdOcNmtQQ==",
+                          "dev": true
+                        },
+                        "node_modules/fetch-factory": {
+                          "version": "0.0.1",
+                          "resolved": "https://registry.npmjs.org/fetch-factory/-/fetch-factory-0.0.1.tgz",
+                          "integrity": "sha1-4AdgWb2zHjFHx1s7jAQTO6jH4HE=",
+                          "dependencies": {
+                            "es6-promise": "3.3.1",
+                            "isomorphic-fetch": "2.2.1",
+                            "lodash": "3.10.1"
+                          }
+                        },
+                        "node_modules/fetch-factory/node_modules/lodash": {
+                          "version": "3.10.1",
+                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz",
+                          "integrity": "sha1-W/Rejkm6QYnhfUgnid/RW9FAt7Y="
+                        },
+                        "node_modules/follow-redirects": {
+                          "version": "1.15.9",
+                          "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.9.tgz",
+                          "integrity": "sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==",
+                          "funding": [
+                            {
+                              "type": "individual",
+                              "url": "https://github.com/sponsors/RubenVerborgh"
+                            }
+                          ],
+                          "license": "MIT",
+                          "engines": {
+                            "node": ">=4.0"
+                          },
+                          "peerDependenciesMeta": {
+                            "debug": {
+                              "optional": true
+                            }
+                          }
+                        },
+                        "node_modules/form-data": {
+                          "version": "4.0.0",
+                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz",
+                          "integrity": "sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==",
+                          "dependencies": {
+                            "asynckit": "^0.4.0",
+                            "combined-stream": "^1.0.8",
+                            "mime-types": "^2.1.12"
+                          },
+                          "engines": {
+                            "node": ">= 6"
+                          }
+                        },
+                        "node_modules/iconv-lite": {
+                          "version": "0.4.19",
+                          "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.19.tgz",
+                          "integrity": "sha512-oTZqweIP51xaGPI4uPa56/Pri/480R+mo7SeU+YETByQNhDG55ycFyNLIgta9vXhILrxXDmF7ZGhqZIcuN0gJQ==",
+                          "engines": {
+                            "node": ">=0.10.0"
+                          }
+                        },
+                        "node_modules/is-stream": {
+                          "version": "1.1.0",
+                          "resolved": "https://registry.npmjs.org/is-stream/-/is-stream-1.1.0.tgz",
+                          "integrity": "sha1-EtSj3U5o4Lec6428hBc66A2RykQ=",
+                          "engines": {
+                            "node": ">=0.10.0"
+                          }
+                        },
+                        "node_modules/isomorphic-fetch": {
+                          "version": "2.2.1",
+                          "resolved": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
+                          "integrity": "sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=",
+                          "dependencies": {
+                            "node-fetch": "1.7.3",
+                            "whatwg-fetch": "2.0.3"
+                          }
+                        },
+                        "node_modules/lodash": {
+                          "version": "4.17.15",
+                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
+                          "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
+                        },
+                        "node_modules/mime-db": {
+                          "version": "1.52.0",
+                          "resolved": "https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz",
+                          "integrity": "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==",
+                          "engines": {
+                            "node": ">= 0.6"
+                          }
+                        },
+                        "node_modules/mime-types": {
+                          "version": "2.1.35",
+                          "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz",
+                          "integrity": "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==",
+                          "dependencies": {
+                            "mime-db": "1.52.0"
+                          },
+                          "engines": {
+                            "node": ">= 0.6"
+                          }
+                        },
+                        "node_modules/node-fetch": {
+                          "version": "1.7.3",
+                          "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.7.3.tgz",
+                          "integrity": "sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==",
+                          "dependencies": {
+                            "encoding": "0.1.12",
+                            "is-stream": "1.1.0"
+                          }
+                        },
+                        "node_modules/whatwg-fetch": {
+                          "version": "2.0.3",
+                          "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz",
+                          "integrity": "sha1-nITsLc9oGH/wC8ZOEnS0QhduHIQ="
+                        }
+                      },
+                      "dependencies": {
+                        "asynckit": {
+                          "version": "0.4.0",
+                          "resolved": "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz",
+                          "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
+                        },
+                        "axios": {
+                          "version": "0.27.2",
+                          "resolved": "https://registry.npmjs.org/axios/-/axios-0.27.2.tgz",
+                          "integrity": "sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==",
+                          "requires": {
+                            "follow-redirects": "^1.14.9",
+                            "form-data": "^4.0.0"
+                          }
+                        },
+                        "combined-stream": {
+                          "version": "1.0.8",
+                          "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz",
+                          "integrity": "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==",
+                          "requires": {
+                            "delayed-stream": "~1.0.0"
+                          }
+                        },
+                        "delayed-stream": {
+                          "version": "1.0.0",
+                          "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz",
+                          "integrity": "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ=="
+                        },
+                        "encoding": {
+                          "version": "0.1.12",
+                          "resolved": "https://registry.npmjs.org/encoding/-/encoding-0.1.12.tgz",
+                          "integrity": "sha1-U4tm8+5izRq1HsMjgp0flIDHS+s=",
+                          "requires": {
+                            "iconv-lite": "0.4.19"
+                          }
+                        },
+                        "es6-promise": {
+                          "version": "3.3.1",
+                          "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.3.1.tgz",
+                          "integrity": "sha1-oIzd6EzNvzTQJ6FFG8kdS80ophM="
+                        },
+                        "etag": {
+                          "version": "1.0.0",
+                          "resolved": "https://registry.npmjs.org/etag/-/etag-1.0.0.tgz",
+                          "integrity": "sha512-IHsJ/pkALbMcdzbAC0hbN2dpoMFFQMP/TxEe8emE5cjanh9Lh053UdfeNyrlNW9vJaJWVoSk3mgo/MdOcNmtQQ==",
+                          "dev": true
+                        },
+                        "fetch-factory": {
+                          "version": "0.0.1",
+                          "resolved": "https://registry.npmjs.org/fetch-factory/-/fetch-factory-0.0.1.tgz",
+                          "integrity": "sha1-4AdgWb2zHjFHx1s7jAQTO6jH4HE=",
+                          "requires": {
+                            "es6-promise": "3.3.1",
+                            "isomorphic-fetch": "2.2.1",
+                            "lodash": "3.10.1"
+                          },
+                          "dependencies": {
+                            "lodash": {
+                              "version": "3.10.1",
+                              "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz",
+                              "integrity": "sha1-W/Rejkm6QYnhfUgnid/RW9FAt7Y="
+                            }
+                          }
+                        },
+                        "follow-redirects": {
+                          "version": "1.15.9",
+                          "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.9.tgz",
+                          "integrity": "sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ=="
+                        },
+                        "form-data": {
+                          "version": "4.0.0",
+                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz",
+                          "integrity": "sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==",
+                          "requires": {
+                            "asynckit": "^0.4.0",
+                            "combined-stream": "^1.0.8",
+                            "mime-types": "^2.1.12"
+                          }
+                        },
+                        "iconv-lite": {
+                          "version": "0.4.19",
+                          "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.19.tgz",
+                          "integrity": "sha512-oTZqweIP51xaGPI4uPa56/Pri/480R+mo7SeU+YETByQNhDG55ycFyNLIgta9vXhILrxXDmF7ZGhqZIcuN0gJQ=="
+                        },
+                        "is-stream": {
+                          "version": "1.1.0",
+                          "resolved": "https://registry.npmjs.org/is-stream/-/is-stream-1.1.0.tgz",
+                          "integrity": "sha1-EtSj3U5o4Lec6428hBc66A2RykQ="
+                        },
+                        "isomorphic-fetch": {
+                          "version": "2.2.1",
+                          "resolved": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
+                          "integrity": "sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=",
+                          "requires": {
+                            "node-fetch": "1.7.3",
+                            "whatwg-fetch": "2.0.3"
+                          }
+                        },
+                        "lodash": {
+                          "version": "4.17.15",
+                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
+                          "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
+                        },
+                        "mime-db": {
+                          "version": "1.52.0",
+                          "resolved": "https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz",
+                          "integrity": "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg=="
+                        },
+                        "mime-types": {
+                          "version": "2.1.35",
+                          "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz",
+                          "integrity": "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==",
+                          "requires": {
+                            "mime-db": "1.52.0"
+                          }
+                        },
+                        "node-fetch": {
+                          "version": "1.7.3",
+                          "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.7.3.tgz",
+                          "integrity": "sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==",
+                          "requires": {
+                            "encoding": "0.1.12",
+                            "is-stream": "1.1.0"
+                          }
+                        },
+                        "whatwg-fetch": {
+                          "version": "2.0.3",
+                          "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz",
+                          "integrity": "sha1-nITsLc9oGH/wC8ZOEnS0QhduHIQ="
+                        }
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /npm
+                  name: package-lock.json
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump follow-redirects from 1.15.2 to 1.15.9 in /npm
+            pr-body: |
+                Bumps [follow-redirects](https://github.com/follow-redirects/follow-redirects) from 1.15.2 to 1.15.9.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/e4e55c77b2d849280d105943f49f42e0c735d05d"><code>e4e55c7</code></a> Release version 1.15.9 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/31a1abf2d659ac1c8fcbe7e614a8c8914d80e1e3"><code>31a1abf</code></a> Attempt much more gentle detection.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/d2aaa97439e8a7e4a9cd02513ec7b12f23c17638"><code>d2aaa97</code></a> Fix url field.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/62558f0cd106195f4c17ece3ad255eb93487d37f"><code>62558f0</code></a> Release version 1.15.8 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/a8d1ceed257d46758f913ff555b4f7e1cd758627"><code>a8d1cee</code></a> Return subtlety.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/458ca8e19fd80897e97746e476d7389cdf9b6494"><code>458ca8e</code></a> Fix native URL test for Node 20.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/ca49e4462651b07eb10452116235c1269cb79e1e"><code>ca49e44</code></a> Handle KeepAlive connections in tests.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/f3711d7e78b24695eae8d348a4e695d288bd450f"><code>f3711d7</code></a> Test on Node 20 and 22.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/fda0fafa0c8d197cbcd232d98c68445ed323c337"><code>fda0faf</code></a> Fix typo.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/760757f7b75cce429604492d91649cbbd473c8d4"><code>760757f</code></a> Release version 1.15.7 of the npm package.</li>
+                <li>Additional commits viewable in <a href="https://github.com/follow-redirects/follow-redirects/compare/v1.15.2...v1.15.9">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump follow-redirects from 1.15.2 to 1.15.9 in /npm
+
+                Bumps [follow-redirects](https://github.com/follow-redirects/follow-redirects) from 1.15.2 to 1.15.9.
+                - [Release notes](https://github.com/follow-redirects/follow-redirects/releases)
+                - [Commits](https://github.com/follow-redirects/follow-redirects/compare/v1.15.2...v1.15.9)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: d15ce2f331fa91f5ebb82da530dc7f3d69c64e6e
+            dependencies:
+                - name: form-data
+                  previous-requirements: []
+                  previous-version: 4.0.0
+                  requirements: []
+                  version: 4.0.2
+                  directory: /npm
+            updated-dependency-files:
+                - content: |
+                    {
+                      "name": "npm-test",
+                      "version": "1.0.0",
+                      "lockfileVersion": 2,
+                      "requires": true,
+                      "packages": {
+                        "": {
+                          "name": "npm-test",
+                          "version": "1.0.0",
+                          "license": "ISC",
+                          "dependencies": {
+                            "axios": "^0.27.2",
+                            "fetch-factory": "^0.0.1",
+                            "lodash": "^4.17.15"
+                          },
+                          "devDependencies": {
+                            "etag": "^1.0.0"
+                          }
+                        },
+                        "node_modules/asynckit": {
+                          "version": "0.4.0",
+                          "resolved": "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz",
+                          "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
+                        },
+                        "node_modules/axios": {
+                          "version": "0.27.2",
+                          "resolved": "https://registry.npmjs.org/axios/-/axios-0.27.2.tgz",
+                          "integrity": "sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==",
+                          "dependencies": {
+                            "follow-redirects": "^1.14.9",
+                            "form-data": "^4.0.0"
+                          }
+                        },
+                        "node_modules/call-bind-apply-helpers": {
+                          "version": "1.0.2",
+                          "resolved": "https://registry.npmjs.org/call-bind-apply-helpers/-/call-bind-apply-helpers-1.0.2.tgz",
+                          "integrity": "sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "es-errors": "^1.3.0",
+                            "function-bind": "^1.1.2"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
+                        "node_modules/combined-stream": {
+                          "version": "1.0.8",
+                          "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz",
+                          "integrity": "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==",
+                          "dependencies": {
+                            "delayed-stream": "~1.0.0"
+                          },
+                          "engines": {
+                            "node": ">= 0.8"
+                          }
+                        },
+                        "node_modules/delayed-stream": {
+                          "version": "1.0.0",
+                          "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz",
+                          "integrity": "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==",
+                          "engines": {
+                            "node": ">=0.4.0"
+                          }
+                        },
+                        "node_modules/dunder-proto": {
+                          "version": "1.0.1",
+                          "resolved": "https://registry.npmjs.org/dunder-proto/-/dunder-proto-1.0.1.tgz",
+                          "integrity": "sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "call-bind-apply-helpers": "^1.0.1",
+                            "es-errors": "^1.3.0",
+                            "gopd": "^1.2.0"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
+                        "node_modules/encoding": {
+                          "version": "0.1.12",
+                          "resolved": "https://registry.npmjs.org/encoding/-/encoding-0.1.12.tgz",
+                          "integrity": "sha1-U4tm8+5izRq1HsMjgp0flIDHS+s=",
+                          "dependencies": {
+                            "iconv-lite": "0.4.19"
+                          }
+                        },
+                        "node_modules/es-define-property": {
+                          "version": "1.0.1",
+                          "resolved": "https://registry.npmjs.org/es-define-property/-/es-define-property-1.0.1.tgz",
+                          "integrity": "sha512-e3nRfgfUZ4rNGL232gUgX06QNyyez04KdjFrF+LTRoOXmrOgFKDg4BCdsjW8EnT69eqdYGmRpJwiPVYNrCaW3g==",
+                          "license": "MIT",
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
+                        "node_modules/es-errors": {
+                          "version": "1.3.0",
+                          "resolved": "https://registry.npmjs.org/es-errors/-/es-errors-1.3.0.tgz",
+                          "integrity": "sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==",
+                          "license": "MIT",
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
+                        "node_modules/es-object-atoms": {
+                          "version": "1.1.1",
+                          "resolved": "https://registry.npmjs.org/es-object-atoms/-/es-object-atoms-1.1.1.tgz",
+                          "integrity": "sha512-FGgH2h8zKNim9ljj7dankFPcICIK9Cp5bm+c2gQSYePhpaG5+esrLODihIorn+Pe6FGJzWhXQotPv73jTaldXA==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "es-errors": "^1.3.0"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
+                        "node_modules/es-set-tostringtag": {
+                          "version": "2.1.0",
+                          "resolved": "https://registry.npmjs.org/es-set-tostringtag/-/es-set-tostringtag-2.1.0.tgz",
+                          "integrity": "sha512-j6vWzfrGVfyXxge+O0x5sh6cvxAog0a/4Rdd2K36zCMV5eJ+/+tOAngRO8cODMNWbVRdVlmGZQL2YS3yR8bIUA==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "es-errors": "^1.3.0",
+                            "get-intrinsic": "^1.2.6",
+                            "has-tostringtag": "^1.0.2",
+                            "hasown": "^2.0.2"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
+                        "node_modules/es6-promise": {
+                          "version": "3.3.1",
+                          "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.3.1.tgz",
+                          "integrity": "sha1-oIzd6EzNvzTQJ6FFG8kdS80ophM="
+                        },
+                        "node_modules/etag": {
+                          "version": "1.0.0",
+                          "resolved": "https://registry.npmjs.org/etag/-/etag-1.0.0.tgz",
+                          "integrity": "sha512-IHsJ/pkALbMcdzbAC0hbN2dpoMFFQMP/TxEe8emE5cjanh9Lh053UdfeNyrlNW9vJaJWVoSk3mgo/MdOcNmtQQ==",
+                          "dev": true
+                        },
+                        "node_modules/fetch-factory": {
+                          "version": "0.0.1",
+                          "resolved": "https://registry.npmjs.org/fetch-factory/-/fetch-factory-0.0.1.tgz",
+                          "integrity": "sha1-4AdgWb2zHjFHx1s7jAQTO6jH4HE=",
+                          "dependencies": {
+                            "es6-promise": "3.3.1",
+                            "isomorphic-fetch": "2.2.1",
+                            "lodash": "3.10.1"
+                          }
+                        },
+                        "node_modules/fetch-factory/node_modules/lodash": {
+                          "version": "3.10.1",
+                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz",
+                          "integrity": "sha1-W/Rejkm6QYnhfUgnid/RW9FAt7Y="
+                        },
+                        "node_modules/follow-redirects": {
+                          "version": "1.15.2",
+                          "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz",
+                          "integrity": "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==",
+                          "funding": [
+                            {
+                              "type": "individual",
+                              "url": "https://github.com/sponsors/RubenVerborgh"
+                            }
+                          ],
+                          "engines": {
+                            "node": ">=4.0"
+                          },
+                          "peerDependenciesMeta": {
+                            "debug": {
+                              "optional": true
+                            }
+                          }
+                        },
+                        "node_modules/form-data": {
+                          "version": "4.0.2",
+                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.2.tgz",
+                          "integrity": "sha512-hGfm/slu0ZabnNt4oaRZ6uREyfCj6P4fT/n6A1rGV+Z0VdGXjfOhVUpkn6qVQONHGIFwmveGXyDs75+nr6FM8w==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "asynckit": "^0.4.0",
+                            "combined-stream": "^1.0.8",
+                            "es-set-tostringtag": "^2.1.0",
+                            "mime-types": "^2.1.12"
+                          },
+                          "engines": {
+                            "node": ">= 6"
+                          }
+                        },
+                        "node_modules/function-bind": {
+                          "version": "1.1.2",
+                          "resolved": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz",
+                          "integrity": "sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==",
+                          "license": "MIT",
+                          "funding": {
+                            "url": "https://github.com/sponsors/ljharb"
+                          }
+                        },
+                        "node_modules/get-intrinsic": {
+                          "version": "1.3.0",
+                          "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.3.0.tgz",
+                          "integrity": "sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "call-bind-apply-helpers": "^1.0.2",
+                            "es-define-property": "^1.0.1",
+                            "es-errors": "^1.3.0",
+                            "es-object-atoms": "^1.1.1",
+                            "function-bind": "^1.1.2",
+                            "get-proto": "^1.0.1",
+                            "gopd": "^1.2.0",
+                            "has-symbols": "^1.1.0",
+                            "hasown": "^2.0.2",
+                            "math-intrinsics": "^1.1.0"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
+                          },
+                          "funding": {
+                            "url": "https://github.com/sponsors/ljharb"
+                          }
+                        },
+                        "node_modules/get-proto": {
+                          "version": "1.0.1",
+                          "resolved": "https://registry.npmjs.org/get-proto/-/get-proto-1.0.1.tgz",
+                          "integrity": "sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "dunder-proto": "^1.0.1",
+                            "es-object-atoms": "^1.0.0"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
+                        "node_modules/gopd": {
+                          "version": "1.2.0",
+                          "resolved": "https://registry.npmjs.org/gopd/-/gopd-1.2.0.tgz",
+                          "integrity": "sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==",
+                          "license": "MIT",
+                          "engines": {
+                            "node": ">= 0.4"
+                          },
+                          "funding": {
+                            "url": "https://github.com/sponsors/ljharb"
+                          }
+                        },
+                        "node_modules/has-symbols": {
+                          "version": "1.1.0",
+                          "resolved": "https://registry.npmjs.org/has-symbols/-/has-symbols-1.1.0.tgz",
+                          "integrity": "sha512-1cDNdwJ2Jaohmb3sg4OmKaMBwuC48sYni5HUw2DvsC8LjGTLK9h+eb1X6RyuOHe4hT0ULCW68iomhjUoKUqlPQ==",
+                          "license": "MIT",
+                          "engines": {
+                            "node": ">= 0.4"
+                          },
+                          "funding": {
+                            "url": "https://github.com/sponsors/ljharb"
+                          }
+                        },
+                        "node_modules/has-tostringtag": {
+                          "version": "1.0.2",
+                          "resolved": "https://registry.npmjs.org/has-tostringtag/-/has-tostringtag-1.0.2.tgz",
+                          "integrity": "sha512-NqADB8VjPFLM2V0VvHUewwwsw0ZWBaIdgo+ieHtK3hasLz4qeCRjYcqfB6AQrBggRKppKF8L52/VqdVsO47Dlw==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "has-symbols": "^1.0.3"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
+                          },
+                          "funding": {
+                            "url": "https://github.com/sponsors/ljharb"
+                          }
+                        },
+                        "node_modules/hasown": {
+                          "version": "2.0.2",
+                          "resolved": "https://registry.npmjs.org/hasown/-/hasown-2.0.2.tgz",
+                          "integrity": "sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "function-bind": "^1.1.2"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
+                        "node_modules/iconv-lite": {
+                          "version": "0.4.19",
+                          "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.19.tgz",
+                          "integrity": "sha512-oTZqweIP51xaGPI4uPa56/Pri/480R+mo7SeU+YETByQNhDG55ycFyNLIgta9vXhILrxXDmF7ZGhqZIcuN0gJQ==",
+                          "engines": {
+                            "node": ">=0.10.0"
+                          }
+                        },
+                        "node_modules/is-stream": {
+                          "version": "1.1.0",
+                          "resolved": "https://registry.npmjs.org/is-stream/-/is-stream-1.1.0.tgz",
+                          "integrity": "sha1-EtSj3U5o4Lec6428hBc66A2RykQ=",
+                          "engines": {
+                            "node": ">=0.10.0"
+                          }
+                        },
+                        "node_modules/isomorphic-fetch": {
+                          "version": "2.2.1",
+                          "resolved": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
+                          "integrity": "sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=",
+                          "dependencies": {
+                            "node-fetch": "1.7.3",
+                            "whatwg-fetch": "2.0.3"
+                          }
+                        },
+                        "node_modules/lodash": {
+                          "version": "4.17.15",
+                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
+                          "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
+                        },
+                        "node_modules/math-intrinsics": {
+                          "version": "1.1.0",
+                          "resolved": "https://registry.npmjs.org/math-intrinsics/-/math-intrinsics-1.1.0.tgz",
+                          "integrity": "sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==",
+                          "license": "MIT",
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
+                        "node_modules/mime-db": {
+                          "version": "1.52.0",
+                          "resolved": "https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz",
+                          "integrity": "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==",
+                          "engines": {
+                            "node": ">= 0.6"
+                          }
+                        },
+                        "node_modules/mime-types": {
+                          "version": "2.1.35",
+                          "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz",
+                          "integrity": "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==",
+                          "dependencies": {
+                            "mime-db": "1.52.0"
+                          },
+                          "engines": {
+                            "node": ">= 0.6"
+                          }
+                        },
+                        "node_modules/node-fetch": {
+                          "version": "1.7.3",
+                          "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.7.3.tgz",
+                          "integrity": "sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==",
+                          "dependencies": {
+                            "encoding": "0.1.12",
+                            "is-stream": "1.1.0"
+                          }
+                        },
+                        "node_modules/whatwg-fetch": {
+                          "version": "2.0.3",
+                          "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz",
+                          "integrity": "sha1-nITsLc9oGH/wC8ZOEnS0QhduHIQ="
+                        }
+                      },
+                      "dependencies": {
+                        "asynckit": {
+                          "version": "0.4.0",
+                          "resolved": "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz",
+                          "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
+                        },
+                        "axios": {
+                          "version": "0.27.2",
+                          "resolved": "https://registry.npmjs.org/axios/-/axios-0.27.2.tgz",
+                          "integrity": "sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==",
+                          "requires": {
+                            "follow-redirects": "^1.14.9",
+                            "form-data": "^4.0.0"
+                          }
+                        },
+                        "call-bind-apply-helpers": {
+                          "version": "1.0.2",
+                          "resolved": "https://registry.npmjs.org/call-bind-apply-helpers/-/call-bind-apply-helpers-1.0.2.tgz",
+                          "integrity": "sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==",
+                          "requires": {
+                            "es-errors": "^1.3.0",
+                            "function-bind": "^1.1.2"
+                          }
+                        },
+                        "combined-stream": {
+                          "version": "1.0.8",
+                          "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz",
+                          "integrity": "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==",
+                          "requires": {
+                            "delayed-stream": "~1.0.0"
+                          }
+                        },
+                        "delayed-stream": {
+                          "version": "1.0.0",
+                          "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz",
+                          "integrity": "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ=="
+                        },
+                        "dunder-proto": {
+                          "version": "1.0.1",
+                          "resolved": "https://registry.npmjs.org/dunder-proto/-/dunder-proto-1.0.1.tgz",
+                          "integrity": "sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==",
+                          "requires": {
+                            "call-bind-apply-helpers": "^1.0.1",
+                            "es-errors": "^1.3.0",
+                            "gopd": "^1.2.0"
+                          }
+                        },
+                        "encoding": {
+                          "version": "0.1.12",
+                          "resolved": "https://registry.npmjs.org/encoding/-/encoding-0.1.12.tgz",
+                          "integrity": "sha1-U4tm8+5izRq1HsMjgp0flIDHS+s=",
+                          "requires": {
+                            "iconv-lite": "0.4.19"
+                          }
+                        },
+                        "es-define-property": {
+                          "version": "1.0.1",
+                          "resolved": "https://registry.npmjs.org/es-define-property/-/es-define-property-1.0.1.tgz",
+                          "integrity": "sha512-e3nRfgfUZ4rNGL232gUgX06QNyyez04KdjFrF+LTRoOXmrOgFKDg4BCdsjW8EnT69eqdYGmRpJwiPVYNrCaW3g=="
+                        },
+                        "es-errors": {
+                          "version": "1.3.0",
+                          "resolved": "https://registry.npmjs.org/es-errors/-/es-errors-1.3.0.tgz",
+                          "integrity": "sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw=="
+                        },
+                        "es-object-atoms": {
+                          "version": "1.1.1",
+                          "resolved": "https://registry.npmjs.org/es-object-atoms/-/es-object-atoms-1.1.1.tgz",
+                          "integrity": "sha512-FGgH2h8zKNim9ljj7dankFPcICIK9Cp5bm+c2gQSYePhpaG5+esrLODihIorn+Pe6FGJzWhXQotPv73jTaldXA==",
+                          "requires": {
+                            "es-errors": "^1.3.0"
+                          }
+                        },
+                        "es-set-tostringtag": {
+                          "version": "2.1.0",
+                          "resolved": "https://registry.npmjs.org/es-set-tostringtag/-/es-set-tostringtag-2.1.0.tgz",
+                          "integrity": "sha512-j6vWzfrGVfyXxge+O0x5sh6cvxAog0a/4Rdd2K36zCMV5eJ+/+tOAngRO8cODMNWbVRdVlmGZQL2YS3yR8bIUA==",
+                          "requires": {
+                            "es-errors": "^1.3.0",
+                            "get-intrinsic": "^1.2.6",
+                            "has-tostringtag": "^1.0.2",
+                            "hasown": "^2.0.2"
+                          }
+                        },
+                        "es6-promise": {
+                          "version": "3.3.1",
+                          "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.3.1.tgz",
+                          "integrity": "sha1-oIzd6EzNvzTQJ6FFG8kdS80ophM="
+                        },
+                        "etag": {
+                          "version": "1.0.0",
+                          "resolved": "https://registry.npmjs.org/etag/-/etag-1.0.0.tgz",
+                          "integrity": "sha512-IHsJ/pkALbMcdzbAC0hbN2dpoMFFQMP/TxEe8emE5cjanh9Lh053UdfeNyrlNW9vJaJWVoSk3mgo/MdOcNmtQQ==",
+                          "dev": true
+                        },
+                        "fetch-factory": {
+                          "version": "0.0.1",
+                          "resolved": "https://registry.npmjs.org/fetch-factory/-/fetch-factory-0.0.1.tgz",
+                          "integrity": "sha1-4AdgWb2zHjFHx1s7jAQTO6jH4HE=",
+                          "requires": {
+                            "es6-promise": "3.3.1",
+                            "isomorphic-fetch": "2.2.1",
+                            "lodash": "3.10.1"
+                          },
+                          "dependencies": {
+                            "lodash": {
+                              "version": "3.10.1",
+                              "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz",
+                              "integrity": "sha1-W/Rejkm6QYnhfUgnid/RW9FAt7Y="
+                            }
+                          }
+                        },
+                        "follow-redirects": {
+                          "version": "1.15.2",
+                          "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz",
+                          "integrity": "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA=="
+                        },
+                        "form-data": {
+                          "version": "4.0.2",
+                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.2.tgz",
+                          "integrity": "sha512-hGfm/slu0ZabnNt4oaRZ6uREyfCj6P4fT/n6A1rGV+Z0VdGXjfOhVUpkn6qVQONHGIFwmveGXyDs75+nr6FM8w==",
+                          "requires": {
+                            "asynckit": "^0.4.0",
+                            "combined-stream": "^1.0.8",
+                            "es-set-tostringtag": "^2.1.0",
+                            "mime-types": "^2.1.12"
+                          }
+                        },
+                        "function-bind": {
+                          "version": "1.1.2",
+                          "resolved": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz",
+                          "integrity": "sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA=="
+                        },
+                        "get-intrinsic": {
+                          "version": "1.3.0",
+                          "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.3.0.tgz",
+                          "integrity": "sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==",
+                          "requires": {
+                            "call-bind-apply-helpers": "^1.0.2",
+                            "es-define-property": "^1.0.1",
+                            "es-errors": "^1.3.0",
+                            "es-object-atoms": "^1.1.1",
+                            "function-bind": "^1.1.2",
+                            "get-proto": "^1.0.1",
+                            "gopd": "^1.2.0",
+                            "has-symbols": "^1.1.0",
+                            "hasown": "^2.0.2",
+                            "math-intrinsics": "^1.1.0"
+                          }
+                        },
+                        "get-proto": {
+                          "version": "1.0.1",
+                          "resolved": "https://registry.npmjs.org/get-proto/-/get-proto-1.0.1.tgz",
+                          "integrity": "sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==",
+                          "requires": {
+                            "dunder-proto": "^1.0.1",
+                            "es-object-atoms": "^1.0.0"
+                          }
+                        },
+                        "gopd": {
+                          "version": "1.2.0",
+                          "resolved": "https://registry.npmjs.org/gopd/-/gopd-1.2.0.tgz",
+                          "integrity": "sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg=="
+                        },
+                        "has-symbols": {
+                          "version": "1.1.0",
+                          "resolved": "https://registry.npmjs.org/has-symbols/-/has-symbols-1.1.0.tgz",
+                          "integrity": "sha512-1cDNdwJ2Jaohmb3sg4OmKaMBwuC48sYni5HUw2DvsC8LjGTLK9h+eb1X6RyuOHe4hT0ULCW68iomhjUoKUqlPQ=="
+                        },
+                        "has-tostringtag": {
+                          "version": "1.0.2",
+                          "resolved": "https://registry.npmjs.org/has-tostringtag/-/has-tostringtag-1.0.2.tgz",
+                          "integrity": "sha512-NqADB8VjPFLM2V0VvHUewwwsw0ZWBaIdgo+ieHtK3hasLz4qeCRjYcqfB6AQrBggRKppKF8L52/VqdVsO47Dlw==",
+                          "requires": {
+                            "has-symbols": "^1.0.3"
+                          }
+                        },
+                        "hasown": {
+                          "version": "2.0.2",
+                          "resolved": "https://registry.npmjs.org/hasown/-/hasown-2.0.2.tgz",
+                          "integrity": "sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==",
+                          "requires": {
+                            "function-bind": "^1.1.2"
+                          }
+                        },
+                        "iconv-lite": {
+                          "version": "0.4.19",
+                          "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.19.tgz",
+                          "integrity": "sha512-oTZqweIP51xaGPI4uPa56/Pri/480R+mo7SeU+YETByQNhDG55ycFyNLIgta9vXhILrxXDmF7ZGhqZIcuN0gJQ=="
+                        },
+                        "is-stream": {
+                          "version": "1.1.0",
+                          "resolved": "https://registry.npmjs.org/is-stream/-/is-stream-1.1.0.tgz",
+                          "integrity": "sha1-EtSj3U5o4Lec6428hBc66A2RykQ="
+                        },
+                        "isomorphic-fetch": {
+                          "version": "2.2.1",
+                          "resolved": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
+                          "integrity": "sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=",
+                          "requires": {
+                            "node-fetch": "1.7.3",
+                            "whatwg-fetch": "2.0.3"
+                          }
+                        },
+                        "lodash": {
+                          "version": "4.17.15",
+                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
+                          "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
+                        },
+                        "math-intrinsics": {
+                          "version": "1.1.0",
+                          "resolved": "https://registry.npmjs.org/math-intrinsics/-/math-intrinsics-1.1.0.tgz",
+                          "integrity": "sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g=="
+                        },
+                        "mime-db": {
+                          "version": "1.52.0",
+                          "resolved": "https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz",
+                          "integrity": "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg=="
+                        },
+                        "mime-types": {
+                          "version": "2.1.35",
+                          "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz",
+                          "integrity": "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==",
+                          "requires": {
+                            "mime-db": "1.52.0"
+                          }
+                        },
+                        "node-fetch": {
+                          "version": "1.7.3",
+                          "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.7.3.tgz",
+                          "integrity": "sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==",
+                          "requires": {
+                            "encoding": "0.1.12",
+                            "is-stream": "1.1.0"
+                          }
+                        },
+                        "whatwg-fetch": {
+                          "version": "2.0.3",
+                          "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz",
+                          "integrity": "sha1-nITsLc9oGH/wC8ZOEnS0QhduHIQ="
+                        }
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /npm
+                  name: package-lock.json
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump form-data from 4.0.0 to 4.0.2 in /npm
+            pr-body: |
+                Bumps [form-data](https://github.com/form-data/form-data) from 4.0.0 to 4.0.2.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/form-data/form-data/releases">form-data's releases</a>.</em></p>
+                <blockquote>
+                <h2>v4.0.1</h2>
+                <h3>Fixes</h3>
+                <ul>
+                <li>npmignore temporary build files (<a href="https://redirect.github.com/form-data/form-data/issues/532">#532</a>)</li>
+                <li>move util.isArray to Array.isArray (<a href="https://redirect.github.com/form-data/form-data/issues/564">#564</a>)</li>
+                </ul>
+                <h3>Tests</h3>
+                <ul>
+                <li>migrate from travis to GHA</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/form-data/form-data/commit/7465e1337244831e91f9a2413a2bf49bdc2a2e04"><code>7465e13</code></a> v4.0.2</li>
+                <li><a href="https://github.com/form-data/form-data/commit/92613b9208556eb4ebc482fdf599fae111626fb6"><code>92613b9</code></a> Merge tags v2.5.3 and v3.0.3</li>
+                <li><a href="https://github.com/form-data/form-data/commit/e46f09bb5338bff090f5cceea5119a8b37c9b147"><code>e46f09b</code></a> v3.0.3</li>
+                <li><a href="https://github.com/form-data/form-data/commit/e5df7f24383342264bd73dee3274818a40d04065"><code>e5df7f2</code></a> [Dev Deps] pin <code>request</code> which via <code>tough-cookie</code> ^2.4 depends on <code>psl</code></li>
+                <li><a href="https://github.com/form-data/form-data/commit/84ca1d6006d65abe7b73c3e99b023aeb353e1e12"><code>84ca1d6</code></a> [Fix] set <code>Symbol.toStringTag</code> when available (<a href="https://redirect.github.com/form-data/form-data/issues/573">#573</a>)</li>
+                <li><a href="https://github.com/form-data/form-data/commit/7fecefe4ba8f775634aff86a698776ad95ecffb5"><code>7fecefe</code></a> [Refactor] use <code>Object.prototype.hasOwnProperty.call</code></li>
+                <li><a href="https://github.com/form-data/form-data/commit/5a5bafee894fead10da49e1fa2b084e17f2e1034"><code>5a5bafe</code></a> [Deps] update <code>mime-types</code></li>
+                <li><a href="https://github.com/form-data/form-data/commit/8261fcb8bf5944d30ae3bd04b91b71d6a9932ef4"><code>8261fcb</code></a> [Dev Deps] update <code>@types/node</code>, <code>browserify</code>, <code>coveralls</code>, <code>cross-spawn</code>, `e...</li>
+                <li><a href="https://github.com/form-data/form-data/commit/b82f59093cdbadb4b7ec0922d33ae7ab048b82ff"><code>b82f590</code></a> Only apps should have lockfiles</li>
+                <li><a href="https://github.com/form-data/form-data/commit/9457283e1dce6122adc908fdd7442cfc54cabe7a"><code>9457283</code></a> Bumped version 2.5.3</li>
+                <li>Additional commits viewable in <a href="https://github.com/form-data/form-data/compare/v4.0.0...v4.0.2">compare view</a></li>
+                </ul>
+                </details>
+                <details>
+                <summary>Maintainer changes</summary>
+                <p>This version was pushed to npm by <a href="https://www.npmjs.com/~ljharb">ljharb</a>, a new releaser for form-data since your current version.</p>
+                </details>
+                <br />
+            commit-message: |-
+                Bump form-data from 4.0.0 to 4.0.2 in /npm
+
+                Bumps [form-data](https://github.com/form-data/form-data) from 4.0.0 to 4.0.2.
+                - [Release notes](https://github.com/form-data/form-data/releases)
+                - [Commits](https://github.com/form-data/form-data/compare/v4.0.0...v4.0.2)
     - type: mark_as_processed
       expect:
         data:
