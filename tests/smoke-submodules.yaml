@@ -34,6 +34,7 @@ output:
                   version: 83e962f7f9fa27eaf62ecfb5da86f1eb0355b785
             dependency_files:
                 - /.gitmodules
+                - /dependabot-test
     - type: create_pull_request
       expect:
         data:
@@ -68,7 +69,7 @@ output:
                   directory: /
                   name: dependabot-test
                   operation: update
-                  support_file: true
+                  support_file: false
                   type: submodule
             pr-title: Bump dependabot-test from `83e962f` to `5fc0a8c`
             pr-body: |

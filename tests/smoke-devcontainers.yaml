@@ -62,6 +62,7 @@ output:
             dependency_files:
                 - /devcontainers/.devcontainer.json
                 - /devcontainers/.devcontainer/devcontainer.json
+                - /devcontainers/.devcontainer/devcontainer-lock.json
     - type: create_pull_request
       expect:
         data:
@@ -150,7 +151,7 @@ output:
                   directory: /devcontainers
                   name: .devcontainer/devcontainer-lock.json
                   operation: update
-                  support_file: true
+                  support_file: false
                   type: file
             pr-title: Bump ghcr.io/codspace/versioning/foo from 1.1.0 to 2.11.1 in /devcontainers
             pr-body: |
@@ -222,7 +223,7 @@ output:
                   directory: /devcontainers
                   name: .devcontainer/devcontainer-lock.json
                   operation: update
-                  support_file: true
+                  support_file: false
                   type: file
             pr-title: Bump ghcr.io/codspace/versioning/baz from 1.0.0 to 2.0.0 in /devcontainers
             pr-body: |
