@@ -141,9 +141,9 @@ output:
                     - file: requirements.txt
                       groups:
                         - dependencies
-                      requirement: ==1.26.2
+                      requirement: ==2.0.2
                       source: null
-                  version: 1.26.2
+                  version: 2.0.2
                   directory: /pip
             updated-dependency-files:
                 - content: |
@@ -151,7 +151,7 @@ output:
                     requests
                     pyyaml
                     pytest
-                    numpy==1.26.2
+                    numpy==2.0.2
                   content_encoding: utf-8
                   deleted: false
                   directory: /pip
@@ -159,59 +159,58 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump numpy from 1.23.0 to 1.26.2 in /pip
+            pr-title: Bump numpy from 1.23.0 to 2.0.2 in /pip
             pr-body: |
-                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.26.2.
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 2.0.2.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/numpy/numpy/releases">numpy's releases</a>.</em></p>
                 <blockquote>
-                <h2>1.26.2 release</h2>
-                <h1>NumPy 1.26.2 Release Notes</h1>
-                <p>NumPy 1.26.2 is a maintenance release that fixes bugs and regressions
-                discovered after the 1.26.1 release. The 1.26.release series is the last
-                planned minor release series before NumPy 2.0. The Python versions
-                supported by this release are 3.9-3.12.</p>
+                <h2>NumPy 2.0.2 release (Aug 26, 2024)</h2>
+                <h1>NumPy 2.0.2 Release Notes</h1>
+                <p>NumPy 2.0.2 is a maintenance release that fixes bugs and regressions
+                discovered after the 2.0.1 release.</p>
+                <p>The Python versions supported by this release are 3.9-3.12.</p>
                 <h2>Contributors</h2>
                 <p>A total of 13 people contributed to this release. People with a &quot;+&quot; by
                 their names contributed a patch for the first time.</p>
                 <ul>
-                <li><a href="https://github.com/stefan6419846"><code>@​stefan6419846</code></a></li>
-                <li><a href="https://github.com/thalassemia"><code>@​thalassemia</code></a> +</li>
-                <li>Andrew Nelson</li>
-                <li>Charles Bousseau +</li>
+                <li>Bruno Oliveira +</li>
                 <li>Charles Harris</li>
-                <li>Marcel Bargull +</li>
-                <li>Mark Mentovai +</li>
+                <li>Chris Sidebottom</li>
+                <li>Christian Heimes +</li>
+                <li>Christopher Sidebottom</li>
+                <li>Mateusz Sokół</li>
                 <li>Matti Picus</li>
                 <li>Nathan Goldbaum</li>
+                <li>Pieter Eendebak</li>
+                <li>Raghuveer Devulapalli</li>
                 <li>Ralf Gommers</li>
-                <li>Sayed Adel</li>
                 <li>Sebastian Berg</li>
-                <li>William Ayd +</li>
+                <li>Yair Chuchem +</li>
                 </ul>
                 <h2>Pull requests merged</h2>
-                <p>A total of 25 pull requests were merged for this release.</p>
+                <p>A total of 19 pull requests were merged for this release.</p>
                 <ul>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/24814">#24814</a>: MAINT: align test_dispatcher s390x targets with _umath_tests_mtargets</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/24929">#24929</a>: MAINT: prepare 1.26.x for further development</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/24955">#24955</a>: ENH: Add Cython enumeration for NPY_FR_GENERIC</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/24962">#24962</a>: REL: Remove Python upper version from the release branch</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/24971">#24971</a>: BLD: Use the correct Python interpreter when running tempita.py</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/24972">#24972</a>: MAINT: Remove unhelpful error replacements from <code>import_array()</code></li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/24977">#24977</a>: BLD: use classic linker on macOS, the new one in XCode 15 has...</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/25003">#25003</a>: BLD: musllinux_aarch64 [wheel build]</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/25043">#25043</a>: MAINT: Update mailmap</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/25049">#25049</a>: MAINT: Update meson build infrastructure.</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/25071">#25071</a>: MAINT: Split up .github/workflows to match main</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/25083">#25083</a>: BUG: Backport fix build on ppc64 when the baseline set to Power9...</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/25093">#25093</a>: BLD: Fix features.h detection for Meson builds [1.26.x Backport]</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/25095">#25095</a>: BUG: Avoid intp conversion regression in Cython 3 (backport)</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/25107">#25107</a>: CI: remove obsolete jobs, and move macOS and conda Azure jobs...</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/25108">#25108</a>: CI: Add linux_qemu action and remove travis testing.</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/25112">#25112</a>: MAINT: Update .spin/cmds.py from main.</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/25113">#25113</a>: DOC: Visually divide main license and bundled licenses in wheels</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/25115">#25115</a>: MAINT: Add missing <code>noexcept</code> to shuffle helpers</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27000">#27000</a>: REL: Prepare for the NumPy 2.0.1 release [wheel build]</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27001">#27001</a>: MAINT: prepare 2.0.x for further development</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27021">#27021</a>: BUG: cfuncs.py: fix crash when sys.stderr is not available</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27022">#27022</a>: DOC: Fix migration note for <code>alltrue</code> and <code>sometrue</code></li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27061">#27061</a>: BUG: use proper input and output descriptor in array_assign_subscript...</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27073">#27073</a>: BUG: Mirror VQSORT_ENABLED logic in Quicksort</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27074">#27074</a>: BUG: Bump Highway to latest master</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27077">#27077</a>: BUG: Off by one in memory overlap check</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27122">#27122</a>: BUG: Use the new <code>npyv_loadable_stride_</code> functions for ldexp and...</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27126">#27126</a>: BUG: Bump Highway to latest</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27128">#27128</a>: BUG: add missing error handling in public_dtype_api.c</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27129">#27129</a>: BUG: fix another cast setup in array_assign_subscript</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27130">#27130</a>: BUG: Fix building NumPy in FIPS mode</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27131">#27131</a>: BLD: update vendored Meson for cross-compilation patches</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27146">#27146</a>: MAINT: Scipy openblas 0.3.27.44.4</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27151">#27151</a>: BUG: Do not accidentally store dtype metadata in <code>np.save</code></li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27195">#27195</a>: REV: Revert undef I and document it</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27213">#27213</a>: BUG: Fix NPY_RAVEL_AXIS on backwards compatible NumPy 2 builds</li>
+                <li><a href="https://redirect.github.com/numpy/numpy/pull/27279">#27279</a>: BUG: Fix array_equal for numeric and non-numeric scalar types</li>
                 </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
@@ -220,27 +219,27 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/numpy/numpy/commit/03b62604eead0f7d279a5a4c094743eb29647368"><code>03b6260</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25128">#25128</a> from charris/prepare-1.26.2</li>
-                <li><a href="https://github.com/numpy/numpy/commit/6961f60056be3fce2f4c1c9aa1f8840675135973"><code>6961f60</code></a> REL: Prepare for the NumPy 1.26.2 release</li>
-                <li><a href="https://github.com/numpy/numpy/commit/d81f0aeae67300e5d6f295597a3c53ec204ca077"><code>d81f0ae</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25121">#25121</a> from charris/backport-25042</li>
-                <li><a href="https://github.com/numpy/numpy/commit/766d5a83a2eb5db9a6deca4616a6e32c45955782"><code>766d5a8</code></a> BUG: ensure passing <code>np.dtype</code> to itself doesn't crash</li>
-                <li><a href="https://github.com/numpy/numpy/commit/cefdd34ec2c8b8acb9507b1c01637e9ac0f8f762"><code>cefdd34</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25120">#25120</a> from charris/backport-25063</li>
-                <li><a href="https://github.com/numpy/numpy/commit/ae77d675544ccc772eab73f3316134de99278629"><code>ae77d67</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25119">#25119</a> from charris/backport-25090</li>
-                <li><a href="https://github.com/numpy/numpy/commit/0035b44c4276c0b72e56e52a4cf7a7048f487b70"><code>0035b44</code></a> BLD: change default of the <code>allow-noblas</code> option to true.</li>
-                <li><a href="https://github.com/numpy/numpy/commit/12b7b352020b1e7204430bee82af05c804b32f7d"><code>12b7b35</code></a> BUG: Make n a long int for np.random.multinomial</li>
-                <li><a href="https://github.com/numpy/numpy/commit/9887c9ce4ab45093cd063b3cade971fa98f20030"><code>9887c9c</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/25118">#25118</a> from charris/backport-25051</li>
-                <li><a href="https://github.com/numpy/numpy/commit/2359aec3510bd9e8d0e80e91430ebb76291d6069"><code>2359aec</code></a> MAINT: Make bitfield integers unsigned</li>
-                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.23.0...v1.26.2">compare view</a></li>
+                <li><a href="https://github.com/numpy/numpy/commit/854252ded83e6b9c21c4ee80558d354d8a72484c"><code>854252d</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/27280">#27280</a> from charris/prepare-2.0.2</li>
+                <li><a href="https://github.com/numpy/numpy/commit/cffa071f4f40a326de7fca9ec3f9b829b8aaf511"><code>cffa071</code></a> REL: Prepare for the NumPy 2.0.2 release [wheel build]</li>
+                <li><a href="https://github.com/numpy/numpy/commit/16930298f0ab09ccac66235720832df2d4dbb86c"><code>1693029</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/27279">#27279</a> from charris/backport-27275</li>
+                <li><a href="https://github.com/numpy/numpy/commit/da9f9c3bbab1324cbc4d29384a93b55a6b8e7d5b"><code>da9f9c3</code></a> BUG: Fix array_equal for numeric and non-numeric scalar types</li>
+                <li><a href="https://github.com/numpy/numpy/commit/ee1cf963d999eb39244e8d2b3db1c91ff27dd7c2"><code>ee1cf96</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/27213">#27213</a> from charris/backport-27202</li>
+                <li><a href="https://github.com/numpy/numpy/commit/49dec35f897f33a29a451ef3e25632b77b8d8c3e"><code>49dec35</code></a> BUG: Fix NPY_RAVEL_AXIS on backwards compatible NumPy 2 builds</li>
+                <li><a href="https://github.com/numpy/numpy/commit/be56ae27aade17b8cf45421d7c4f525819493b33"><code>be56ae2</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/27195">#27195</a> from charris/backport-27182</li>
+                <li><a href="https://github.com/numpy/numpy/commit/75b039c3e7ae9057236847563ab39ce6d600fa38"><code>75b039c</code></a> REV: Revert undef I and document it</li>
+                <li><a href="https://github.com/numpy/numpy/commit/428e2ba733a78e99d0bda94ac4d7bce6539693c6"><code>428e2ba</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/27151">#27151</a> from charris/backport-27143</li>
+                <li><a href="https://github.com/numpy/numpy/commit/451516de729c38677d717851590fda1d8920fa00"><code>451516d</code></a> BUG: Do not accidentally store dtype metadata in <code>np.save</code></li>
+                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.23.0...v2.0.2">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump numpy from 1.23.0 to 1.26.2 in /pip
+                Bump numpy from 1.23.0 to 2.0.2 in /pip
 
-                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 1.26.2.
+                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 2.0.2.
                 - [Release notes](https://github.com/numpy/numpy/releases)
                 - [Changelog](https://github.com/numpy/numpy/blob/main/doc/RELEASE_WALKTHROUGH.rst)
-                - [Commits](https://github.com/numpy/numpy/compare/v1.23.0...v1.26.2)
+                - [Commits](https://github.com/numpy/numpy/compare/v1.23.0...v2.0.2)
     - type: mark_as_processed
       expect:
         data:
