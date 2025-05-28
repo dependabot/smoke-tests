@@ -59,7 +59,7 @@ In this case we will need to regenerate the failing test locally with `dependabo
 
 Where possible try to add additional ignore_conditions and allowed_updates so even when uncached the tests will not fail.
 
-For convenience there's a `script/run-all.sh` which will regenerate all of the tests.
+For convenience there's a `script/regen.sh` which will regenerate all of the tests.
 
 ### How to add new tests
 
