@@ -21,9 +21,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /terraform
             commit: 8b2c0d821028c531826db20ca22cffdd2cc05abf
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -124,10 +121,10 @@ output:
                       requirement: null
                       source:
                         branch: null
-                        ref: tags/0.3.0
+                        ref: tags/v1.0.1
                         type: git
                         url: https://github.com/cloudposse/terraform-cloudflare-zone.git
-                  version: 0.3.0
+                  version: 1.0.1
                   directory: /terraform
             updated-dependency-files:
                 - content: |
@@ -246,7 +243,7 @@ output:
                     }
 
                     module "dns" {
-                      source           = "git::https://github.com/cloudposse/terraform-cloudflare-zone.git//some/dir?ref=tags/0.3.0"
+                      source           = "git::https://github.com/cloudposse/terraform-cloudflare-zone.git//some/dir?ref=tags/v1.0.1"
                       enabled          = "${var.dns_aliases_enabled}"
                       aliases          = "${var.aliases}"
                       parent_zone_id   = "${var.parent_zone_id}"
@@ -281,45 +278,14 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump dns::terraform-cloudflare-zone from 0.2.5 to 0.3.0 in /terraform
-            pr-body: |
-                Bumps [dns::terraform-cloudflare-zone](https://github.com/cloudposse/terraform-cloudflare-zone) from 0.2.5 to 0.3.0.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/cloudposse/terraform-cloudflare-zone/releases">dns::terraform-cloudflare-zone's releases</a>.</em></p>
-                <blockquote>
-                <h2>v0.3.0</h2>
-                <!-- raw HTML omitted -->
-                <h2>what</h2>
-                <ul>
-                <li>updated default records</li>
-                <li>removed flatten</li>
-                </ul>
-                <h2>why</h2>
-                <ul>
-                <li>Fix edge case in <a href="https://redirect.github.com/cloudposse/terraform-cloudflare-zone/issues/14">#14</a></li>
-                <li>Remove flatten() as it's confusing and unnecessary</li>
-                </ul>
-                <h2>references</h2>
-                <ul>
-                <li>Closes <a href="https://redirect.github.com/cloudposse/terraform-cloudflare-zone/issues/14">#14</a></li>
-                </ul>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li>See full diff in <a href="https://github.com/cloudposse/terraform-cloudflare-zone/compare/tags/0.2.5...tags/0.3.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
+            pr-title: Bump dns::terraform-cloudflare-zone from 0.2.5 to 1.0.1 in /terraform
+            pr-body: "Bumps [dns::terraform-cloudflare-zone](https://github.com/cloudposse/terraform-cloudflare-zone) from 0.2.5 to 1.0.1.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/cloudposse/terraform-cloudflare-zone/releases\">dns::terraform-cloudflare-zone's releases</a>.</em></p>\n<blockquote>\n<h2>v1.0.1</h2>\n<!-- raw HTML omitted -->\n<h2>\U0001F916 Automatic Updates</h2>\n<!-- raw HTML omitted -->\n<h2>why</h2>\n<ul>\n<li>Re-apply <code>.github/settings.yml</code> from org level</li>\n<li>Use organization level auto-release settings</li>\n</ul>\n<h2>references</h2>\n<ul>\n<li>DEV-1242 Add protected tags with Repository Rulesets on GitHub</li>\n</ul>\n<!-- raw HTML omitted -->\n<h2>v1.0.0</h2>\n<!-- raw HTML omitted -->\n<h2>Remove deprecated filter and firewall resources</h2>\n<h2>what</h2>\n<p>Support for the following resources, which are deprecated, are removed from this module.</p>\n<ul>\n<li>cloudflare_firewall_rule</li>\n<li>cloudflare_filter</li>\n</ul>\n<h2>why</h2>\n<p>Cloudflare converted existing <a href=\"https://developers.cloudflare.com/firewall/\">firewall rules</a> into <a href=\"https://developers.cloudflare.com/waf/custom-rules/\">WAF custom rules</a></p>\n<blockquote>\n<p>The <a href=\"https://developers.cloudflare.com/firewall/api/cf-firewall-rules/\">Firewall Rules API</a> and the associated <a href=\"https://developers.cloudflare.com/firewall/api/cf-filters/\">Cloudflare Filters API</a> are now deprecated. These APIs will stop working on 2024-07-01</p>\n</blockquote>\n<blockquote>\n<h4><a href=\"https://developers.cloudflare.com/waf/reference/migration-guides/firewall-rules-to-custom-rules/#relevant-changes-for-terraform-users\">Relevant changes for Terraform users</a></h4>\n<p>The following Terraform resources from the Cloudflare provider are now deprecated:\n* cloudflare_firewall_rule\n* cloudflare_filter</p>\n</blockquote>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li>See full diff in <a href=\"https://github.com/cloudposse/terraform-cloudflare-zone/compare/tags/0.2.5...tags/v1.0.1\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
             commit-message: |-
-                Bump dns::terraform-cloudflare-zone from 0.2.5 to 0.3.0 in /terraform
+                Bump dns::terraform-cloudflare-zone from 0.2.5 to 1.0.1 in /terraform
 
-                Bumps [dns::terraform-cloudflare-zone](https://github.com/cloudposse/terraform-cloudflare-zone) from 0.2.5 to 0.3.0.
+                Bumps [dns::terraform-cloudflare-zone](https://github.com/cloudposse/terraform-cloudflare-zone) from 0.2.5 to 1.0.1.
                 - [Release notes](https://github.com/cloudposse/terraform-cloudflare-zone/releases)
-                - [Commits](https://github.com/cloudposse/terraform-cloudflare-zone/compare/tags/0.2.5...tags/0.3.0)
+                - [Commits](https://github.com/cloudposse/terraform-cloudflare-zone/compare/tags/0.2.5...tags/v1.0.1)
     - type: create_pull_request
       expect:
         data:
@@ -760,7 +726,7 @@ output:
                   support_file: false
                   type: file
             pr-title: Bump github_ssh_without_protocol::terraform-aws-jenkins from 0.4.0 to 0.10.6 in /terraform
-            pr-body: "Bumps [github_ssh_without_protocol::terraform-aws-jenkins](https://github.com/cloudposse/terraform-aws-jenkins) from 0.4.0 to 0.10.6.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/cloudposse/terraform-aws-jenkins/releases\">github_ssh_without_protocol::terraform-aws-jenkins's releases</a>.</em></p>\n<blockquote>\n<h2>v0.10.6</h2>\n<h2>\U0001F916 Automatic Updates</h2>\n<!-- raw HTML omitted -->\n<p>This PR contains the following updates:</p>\n<table>\n<thead>\n<tr>\n<th>Package</th>\n<th>Type</th>\n<th>Update</th>\n<th>Change</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a href=\"https://registry.terraform.io/modules/cloudposse/cicd/aws\">cloudposse/cicd/aws</a> (<a href=\"https://togithub.com/cloudposse/terraform-aws-cicd\">source</a>)</td>\n<td>module</td>\n<td>patch</td>\n<td><code>0.19.4</code> -&gt; <code>0.19.5</code></td>\n</tr>\n</tbody>\n</table>\n<hr />\n<!-- raw HTML omitted -->\n<h2>v0.10.5</h2>\n<h2>\U0001F916 Automatic Updates</h2>\n<!-- raw HTML omitted -->\n<p>This PR contains the following updates:</p>\n<table>\n<thead>\n<tr>\n<th>Package</th>\n<th>Type</th>\n<th>Update</th>\n<th>Change</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a href=\"https://registry.terraform.io/modules/cloudposse/backup/aws\">cloudposse/backup/aws</a> (<a href=\"https://togithub.com/cloudposse/terraform-aws-backup\">source</a>)</td>\n<td>module</td>\n<td>minor</td>\n<td><code>0.13.1</code> -&gt; <code>0.14.0</code></td>\n</tr>\n</tbody>\n</table>\n<hr />\n<!-- raw HTML omitted -->\n<h2>v0.10.4</h2>\n<h2>\U0001F916 Automatic Updates</h2>\n<!-- raw HTML omitted -->\n<p>This PR contains the following updates:</p>\n<table>\n<thead>\n<tr>\n<th>Package</th>\n<th>Type</th>\n<th>Update</th>\n<th>Change</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a href=\"https://registry.terraform.io/modules/cloudposse/cicd/aws\">cloudposse/cicd/aws</a> (<a href=\"https://togithub.com/cloudposse/terraform-aws-cicd\">source</a>)</td>\n<td>module</td>\n<td>patch</td>\n<td><code>0.19.1</code> -&gt; <code>0.19.4</code></td>\n</tr>\n</tbody>\n</table>\n<hr />\n<!-- raw HTML omitted -->\n<h2>v0.10.3</h2>\n<h2>\U0001F916 Automatic Updates</h2>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/07899c811e348f0c426e6858c96c49cb545b39cc\"><code>07899c8</code></a> chore(deps): update terraform cloudposse/cicd/aws to v0.19.5 (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/92\">#92</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/78ba2bc5a0d84d27d295055e3fbbaf2163ce88bb\"><code>78ba2bc</code></a> chore(deps): update terraform cloudposse/backup/aws to v0.14.0 (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/90\">#90</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/3966f67ae68ed1e97e1f3cc4c611a1c3b9cd19da\"><code>3966f67</code></a> chore(deps): update terraform cloudposse/cicd/aws to v0.19.4 (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/89\">#89</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/1dbfe5b194288266096abb699fc823d6553fba96\"><code>1dbfe5b</code></a> chore(deps): update terraform cloudposse/cicd/aws to v0.19.1 (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/65\">#65</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/774a1b81b4eda41e13a15a1138256e3885f7e790\"><code>774a1b8</code></a> chore(deps): update terraform cloudposse/elastic-beanstalk-environment/aws to...</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/53f84372307d3712eb3b2334f5e079d2a7696876\"><code>53f8437</code></a> chore(deps): update terraform cloudposse/efs/aws to v0.32.7 (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/86\">#86</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/4ae2c938c8aae325a69a53b0bbb4c65ec2ea579a\"><code>4ae2c93</code></a> Provide SSL security policy (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/45\">#45</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/fc65422a5d3f60588cae1aae1a91bd2676c1103a\"><code>fc65422</code></a> chore(deps): update terraform cloudposse/backup/aws to v0.13.1 (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/77\">#77</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/27bdb559d7b6985de7a4bd5a80eca61d17122dd0\"><code>27bdb55</code></a> chore(deps): update terraform cloudposse/ecr/aws to v0.34.0 (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/79\">#79</a>)</li>\n<li><a href=\"https://github.com/cloudposse/terraform-aws-jenkins/commit/a25c91b035a00718d123c8e4239ab44e25826de7\"><code>a25c91b</code></a> chore(deps): update terraform cloudposse/label/null to v0.25.0 (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/80\">#80</a>)</li>\n<li>Additional commits viewable in <a href=\"https://github.com/cloudposse/terraform-aws-jenkins/compare/tags/0.4.0...tags/0.10.6\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
+            pr-body: "Bumps [github_ssh_without_protocol::terraform-aws-jenkins](https://github.com/cloudposse/terraform-aws-jenkins) from 0.4.0 to 0.10.6.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/cloudposse/terraform-aws-jenkins/releases\">github_ssh_without_protocol::terraform-aws-jenkins's releases</a>.</em></p>\n<blockquote>\n<h2>v0.10.6</h2>\n<h2>\U0001F916 Automatic Updates</h2>\n<!-- raw HTML omitted -->\n<p>This PR contains the following updates:</p>\n<table>\n<thead>\n<tr>\n<th>Package</th>\n<th>Type</th>\n<th>Update</th>\n<th>Change</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a href=\"https://registry.terraform.io/modules/cloudposse/cicd/aws\">cloudposse/cicd/aws</a> (<a href=\"https://togithub.com/cloudposse/terraform-aws-cicd\">source</a>)</td>\n<td>module</td>\n<td>patch</td>\n<td><code>0.19.4</code> -&gt; <code>0.19.5</code></td>\n</tr>\n</tbody>\n</table>\n<hr />\n<!-- raw HTML omitted -->\n<h2>v0.10.5</h2>\n<h2>\U0001F916 Automatic Updates</h2>\n<!-- raw HTML omitted -->\n<p>This PR contains the following updates:</p>\n<table>\n<thead>\n<tr>\n<th>Package</th>\n<th>Type</th>\n<th>Update</th>\n<th>Change</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a href=\"https://registry.terraform.io/modules/cloudposse/backup/aws\">cloudposse/backup/aws</a> (<a href=\"https://togithub.com/cloudposse/terraform-aws-backup\">source</a>)</td>\n<td>module</td>\n<td>minor</td>\n<td><code>0.13.1</code> -&gt; <code>0.14.0</code></td>\n</tr>\n</tbody>\n</table>\n<hr />\n<!-- raw HTML omitted -->\n<h2>v0.10.4</h2>\n<h2>\U0001F916 Automatic Updates</h2>\n<!-- raw HTML omitted -->\n<p>This PR contains the following updates:</p>\n<table>\n<thead>\n<tr>\n<th>Package</th>\n<th>Type</th>\n<th>Update</th>\n<th>Change</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a href=\"https://registry.terraform.io/modules/cloudposse/cicd/aws\">cloudposse/cicd/aws</a> (<a href=\"https://togithub.com/cloudposse/terraform-aws-cicd\">source</a>)</td>\n<td>module</td>\n<td>patch</td>\n<td><code>0.19.1</code> -&gt; <code>0.19.4</code></td>\n</tr>\n</tbody>\n</table>\n<hr />\n<!-- raw HTML omitted -->\n<h2>v0.10.3</h2>\n<h2>\U0001F916 Automatic Updates</h2>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/cloudposse-archives/terraform-aws-jenkins/commit/07899c811e348f0c426e6858c96c49cb545b39cc\"><code>07899c8</code></a> chore(deps): update terraform cloudposse/cicd/aws to v0.19.5 (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/92\">#92</a>)</li>\n<li><a href=\"https://github.com/cloudposse-archives/terraform-aws-jenkins/commit/78ba2bc5a0d84d27d295055e3fbbaf2163ce88bb\"><code>78ba2bc</code></a> chore(deps): update terraform cloudposse/backup/aws to v0.14.0 (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/90\">#90</a>)</li>\n<li><a href=\"https://github.com/cloudposse-archives/terraform-aws-jenkins/commit/3966f67ae68ed1e97e1f3cc4c611a1c3b9cd19da\"><code>3966f67</code></a> chore(deps): update terraform cloudposse/cicd/aws to v0.19.4 (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/89\">#89</a>)</li>\n<li><a href=\"https://github.com/cloudposse-archives/terraform-aws-jenkins/commit/1dbfe5b194288266096abb699fc823d6553fba96\"><code>1dbfe5b</code></a> chore(deps): update terraform cloudposse/cicd/aws to v0.19.1 (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/65\">#65</a>)</li>\n<li><a href=\"https://github.com/cloudposse-archives/terraform-aws-jenkins/commit/774a1b81b4eda41e13a15a1138256e3885f7e790\"><code>774a1b8</code></a> chore(deps): update terraform cloudposse/elastic-beanstalk-environment/aws to...</li>\n<li><a href=\"https://github.com/cloudposse-archives/terraform-aws-jenkins/commit/53f84372307d3712eb3b2334f5e079d2a7696876\"><code>53f8437</code></a> chore(deps): update terraform cloudposse/efs/aws to v0.32.7 (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/86\">#86</a>)</li>\n<li><a href=\"https://github.com/cloudposse-archives/terraform-aws-jenkins/commit/4ae2c938c8aae325a69a53b0bbb4c65ec2ea579a\"><code>4ae2c93</code></a> Provide SSL security policy (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/45\">#45</a>)</li>\n<li><a href=\"https://github.com/cloudposse-archives/terraform-aws-jenkins/commit/fc65422a5d3f60588cae1aae1a91bd2676c1103a\"><code>fc65422</code></a> chore(deps): update terraform cloudposse/backup/aws to v0.13.1 (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/77\">#77</a>)</li>\n<li><a href=\"https://github.com/cloudposse-archives/terraform-aws-jenkins/commit/27bdb559d7b6985de7a4bd5a80eca61d17122dd0\"><code>27bdb55</code></a> chore(deps): update terraform cloudposse/ecr/aws to v0.34.0 (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/79\">#79</a>)</li>\n<li><a href=\"https://github.com/cloudposse-archives/terraform-aws-jenkins/commit/a25c91b035a00718d123c8e4239ab44e25826de7\"><code>a25c91b</code></a> chore(deps): update terraform cloudposse/label/null to v0.25.0 (<a href=\"https://redirect.github.com/cloudposse/terraform-aws-jenkins/issues/80\">#80</a>)</li>\n<li>Additional commits viewable in <a href=\"https://github.com/cloudposse/terraform-aws-jenkins/compare/tags/0.4.0...tags/0.10.6\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
             commit-message: |-
                 Bump github_ssh_without_protocol::terraform-aws-jenkins in /terraform
 

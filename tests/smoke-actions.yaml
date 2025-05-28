@@ -23,9 +23,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /.
             commit: 9e96615658c7e573f451797088c5d078cb496c8a
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -374,10 +371,10 @@ output:
                       requirement: null
                       source:
                         branch: null
-                        ref: 93397bea11091df50f3d7e59dc26a7711a8bcfbe
+                        ref: d35c59abb061a4a6fb18e82ac0862c26744d6ab5
                         type: git
                         url: https://github.com/actions/setup-go
-                  version: 4.1.0
+                  version: 5.5.0
                   directory: /
             updated-dependency-files:
                 - content: |
@@ -393,7 +390,7 @@ output:
                         runs-on: ubuntu-latest
                         steps:
                           - name: Setup Go
-                            uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe
+                            uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5
                           - name: Setup Ruby
                             uses: actions/setup-ruby@5f29a1cd8dfebf420691c4c9a0e832e2fae5a526
                           - name: Setup Node
@@ -405,71 +402,96 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump actions/setup-go from 4.0.0 to 4.1.0
+            pr-title: Bump actions/setup-go from 4.0.0 to 5.5.0
             pr-body: |
-                Bumps [actions/setup-go](https://github.com/actions/setup-go) from 4.0.0 to 4.1.0.
+                Bumps [actions/setup-go](https://github.com/actions/setup-go) from 4.0.0 to 5.5.0.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/actions/setup-go/releases">actions/setup-go's releases</a>.</em></p>
                 <blockquote>
-                <h2>v4.1.0</h2>
+                <h2>v5.5.0</h2>
                 <h2>What's Changed</h2>
-                <p>In scope of this release, slow installation on Windows was fixed by <a href="https://github.com/dsame"><code>@​dsame</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/393">actions/setup-go#393</a> and OS version was added to <code>primaryKey</code> for Ubuntu runners to avoid conflicts (<a href="https://redirect.github.com/actions/setup-go/pull/383">actions/setup-go#383</a>)</p>
-                <p>This release also includes the following changes:</p>
+                <h3>Bug fixes:</h3>
                 <ul>
-                <li>Remove implicit dependencies by <a href="https://github.com/nikolai-laevskii"><code>@​nikolai-laevskii</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/378">actions/setup-go#378</a></li>
-                <li>Update action.yml by <a href="https://github.com/mkelly"><code>@​mkelly</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/379">actions/setup-go#379</a></li>
-                <li>Added a description that go-version should be specified as a string type by <a href="https://github.com/n3xem"><code>@​n3xem</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/367">actions/setup-go#367</a></li>
-                <li>Add note about YAML parsing versions by <a href="https://github.com/dmitry-shibanov"><code>@​dmitry-shibanov</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/382">actions/setup-go#382</a></li>
-                <li>Automatic update of configuration files from 05/23/2023 by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/377">actions/setup-go#377</a></li>
-                <li>Bump tough-cookie and <code>@​azure/ms-rest-js</code> by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/392">actions/setup-go#392</a></li>
-                <li>Bump word-wrap from 1.2.3 to 1.2.4 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/397">actions/setup-go#397</a></li>
-                <li>Bump semver from 6.3.0 to 6.3.1 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/396">actions/setup-go#396</a></li>
+                <li>Update self-hosted environment validation by <a href="https://github.com/priyagupta108"><code>@​priyagupta108</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/556">actions/setup-go#556</a></li>
+                <li>Add manifest validation and improve error handling by <a href="https://github.com/priyagupta108"><code>@​priyagupta108</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/586">actions/setup-go#586</a></li>
+                <li>Update template link by <a href="https://github.com/jsoref"><code>@​jsoref</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/527">actions/setup-go#527</a></li>
+                </ul>
+                <h3>Dependency  updates:</h3>
+                <ul>
+                <li>Upgrade <code>@​action/cache</code> from 4.0.2 to 4.0.3 by <a href="https://github.com/aparnajyothi-y"><code>@​aparnajyothi-y</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/574">actions/setup-go#574</a></li>
+                <li>Upgrade <code>@​actions/glob</code> from 0.4.0 to 0.5.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/573">actions/setup-go#573</a></li>
+                <li>Upgrade ts-jest from 29.1.2 to 29.3.2 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/582">actions/setup-go#582</a></li>
+                <li>Upgrade eslint-plugin-jest from 27.9.0 to 28.11.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/537">actions/setup-go#537</a></li>
                 </ul>
                 <h2>New Contributors</h2>
                 <ul>
-                <li><a href="https://github.com/mkelly"><code>@​mkelly</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/379">actions/setup-go#379</a></li>
-                <li><a href="https://github.com/n3xem"><code>@​n3xem</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/367">actions/setup-go#367</a></li>
+                <li><a href="https://github.com/jsoref"><code>@​jsoref</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/527">actions/setup-go#527</a></li>
                 </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/setup-go/compare/v4...v4.1.0">https://github.com/actions/setup-go/compare/v4...v4.1.0</a></p>
-                <h2>v4.0.1</h2>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/setup-go/compare/v5...v5.5.0">https://github.com/actions/setup-go/compare/v5...v5.5.0</a></p>
+                <h2>v5.4.0</h2>
                 <h2>What's Changed</h2>
+                <h3>Dependency updates :</h3>
                 <ul>
-                <li>Update documentation for <code>v4</code> by <a href="https://github.com/dsame"><code>@​dsame</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/354">actions/setup-go#354</a></li>
-                <li>Fix glob bug in the package.json scripts section by <a href="https://github.com/IvanZosimov"><code>@​IvanZosimov</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/359">actions/setup-go#359</a></li>
-                <li>Bump <code>xml2js</code> dependency by <a href="https://github.com/dmitry-shibanov"><code>@​dmitry-shibanov</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/370">actions/setup-go#370</a></li>
-                <li>Bump <code>@actions/cache</code> dependency to v3.2.1 by <a href="https://github.com/nikolai-laevskii"><code>@​nikolai-laevskii</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/374">actions/setup-go#374</a></li>
+                <li>Upgrade semver from 7.6.0 to 7.6.3 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/535">actions/setup-go#535</a></li>
+                <li>Upgrade eslint-config-prettier from 8.10.0 to 10.0.1 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/536">actions/setup-go#536</a></li>
+                <li>Upgrade <code>@​action/cache</code> from 4.0.0 to 4.0.2 by <a href="https://github.com/aparnajyothi-y"><code>@​aparnajyothi-y</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/568">actions/setup-go#568</a></li>
+                <li>Upgrade undici from 5.28.4 to 5.28.5 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/541">actions/setup-go#541</a></li>
                 </ul>
                 <h2>New Contributors</h2>
                 <ul>
-                <li><a href="https://github.com/nikolai-laevskii"><code>@​nikolai-laevskii</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/374">actions/setup-go#374</a></li>
+                <li><a href="https://github.com/aparnajyothi-y"><code>@​aparnajyothi-y</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/568">actions/setup-go#568</a></li>
                 </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/setup-go/compare/v4...v4.0.1">https://github.com/actions/setup-go/compare/v4...v4.0.1</a></p>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/setup-go/compare/v5...v5.4.0">https://github.com/actions/setup-go/compare/v5...v5.4.0</a></p>
+                <h2>v5.3.0</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Use the new cache service: upgrade <code>@actions/cache</code> to <code>^4.0.0</code> by <a href="https://github.com/Link"><code>@​Link</code></a>- in <a href="https://redirect.github.com/actions/setup-go/pull/531">actions/setup-go#531</a></li>
+                <li>Configure Dependabot settings by <a href="https://github.com/HarithaVattikuti"><code>@​HarithaVattikuti</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/530">actions/setup-go#530</a></li>
+                <li>Document update - permission section  by <a href="https://github.com/HarithaVattikuti"><code>@​HarithaVattikuti</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/533">actions/setup-go#533</a></li>
+                <li>Bump actions/publish-immutable-action from 0.0.3 to 0.0.4 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/534">actions/setup-go#534</a></li>
+                </ul>
+                <h2>New Contributors</h2>
+                <ul>
+                <li><a href="https://github.com/Link"><code>@​Link</code></a>- made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/531">actions/setup-go#531</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/setup-go/compare/v5...v5.3.0">https://github.com/actions/setup-go/compare/v5...v5.3.0</a></p>
+                <h2>v5.2.0</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Leveraging the raw API to retrieve the version-manifest, as it does not impose a rate limit and hence facilitates unrestricted consumption without the need for a token for Github Enterprise Servers by <a href="https://github.com/Shegox"><code>@​Shegox</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/496">actions/setup-go#496</a></li>
+                </ul>
+                <h2>New Contributors</h2>
+                <ul>
+                <li><a href="https://github.com/Shegox"><code>@​Shegox</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/496">actions/setup-go#496</a></li>
+                </ul>
+                <!-- raw HTML omitted -->
                 </blockquote>
+                <p>... (truncated)</p>
                 </details>
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/actions/setup-go/commit/93397bea11091df50f3d7e59dc26a7711a8bcfbe"><code>93397be</code></a> Fix Install on Windows is very slow (<a href="https://redirect.github.com/actions/setup-go/issues/393">#393</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/27eec5b9827114de74a8fbddada57bd21221d79b"><code>27eec5b</code></a> Merge pull request <a href="https://redirect.github.com/actions/setup-go/issues/396">#396</a> from actions/dependabot/npm_and_yarn/semver-6.3.1</li>
-                <li><a href="https://github.com/actions/setup-go/commit/ecfc77a56f4c58db46b8f45d9b67e080f4401156"><code>ecfc77a</code></a> Merge pull request <a href="https://redirect.github.com/actions/setup-go/issues/397">#397</a> from actions/dependabot/npm_and_yarn/word-wrap-1.2.4</li>
-                <li><a href="https://github.com/actions/setup-go/commit/1b80a11e05ba624fe146ccc39f322912e3d38ae9"><code>1b80a11</code></a> Bump word-wrap from 1.2.3 to 1.2.4</li>
-                <li><a href="https://github.com/actions/setup-go/commit/b1c343484c992a921dd0d7653785a43167f35458"><code>b1c3434</code></a> Fix licensing for Semver 6.3.1</li>
-                <li><a href="https://github.com/actions/setup-go/commit/0bb97b1c5c1e1494619bc2a90dccc029bba36753"><code>0bb97b1</code></a> Rebuild after updating Semver</li>
-                <li><a href="https://github.com/actions/setup-go/commit/4220624b80315b7394cd9b9edc82b5c50411a023"><code>4220624</code></a> Bump semver from 6.3.0 to 6.3.1</li>
-                <li><a href="https://github.com/actions/setup-go/commit/db8764c1e24b94e6bf86c7b9195ce862c97a4090"><code>db8764c</code></a> Bump tough-cookie and <code>@​azure/ms-rest-js</code> (<a href="https://redirect.github.com/actions/setup-go/issues/392">#392</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/08b314a5730da00e95d0394603ed798406886596"><code>08b314a</code></a> Merge pull request <a href="https://redirect.github.com/actions/setup-go/issues/383">#383</a> from akv-platform/issue-368</li>
-                <li><a href="https://github.com/actions/setup-go/commit/4e0b6c77c6448caafaff5eed51516cad78e7639a"><code>4e0b6c7</code></a> Limit to Linux only</li>
-                <li>Additional commits viewable in <a href="https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...93397bea11091df50f3d7e59dc26a7711a8bcfbe">compare view</a></li>
+                <li><a href="https://github.com/actions/setup-go/commit/d35c59abb061a4a6fb18e82ac0862c26744d6ab5"><code>d35c59a</code></a> chore: update discussions url (<a href="https://redirect.github.com/actions/setup-go/issues/527">#527</a>)</li>
+                <li><a href="https://github.com/actions/setup-go/commit/29694d72cd5e7ef3b09496b39f28a942af47737e"><code>29694d7</code></a> Add manifest validation and improve error handling (<a href="https://redirect.github.com/actions/setup-go/issues/586">#586</a>)</li>
+                <li><a href="https://github.com/actions/setup-go/commit/78535dd5f299baffe8c7a20903d46f69f967f55b"><code>78535dd</code></a> Bump eslint-plugin-jest from 27.9.0 to 28.11.0 (<a href="https://redirect.github.com/actions/setup-go/issues/537">#537</a>)</li>
+                <li><a href="https://github.com/actions/setup-go/commit/bb65d8857b81c74a671e81f935d3362a5d718e2f"><code>bb65d88</code></a> Bump ts-jest from 29.1.2 to 29.3.2 (<a href="https://redirect.github.com/actions/setup-go/issues/582">#582</a>)</li>
+                <li><a href="https://github.com/actions/setup-go/commit/7f17e836c0800bfdfa49811f9ddaa7608881dffc"><code>7f17e83</code></a> Bump <code>@​actions/glob</code> from 0.4.0 to 0.5.0 (<a href="https://redirect.github.com/actions/setup-go/issues/573">#573</a>)</li>
+                <li><a href="https://github.com/actions/setup-go/commit/dca8468d37b6d090cde2c7b97b738a37134f5ffb"><code>dca8468</code></a> Update self-hosted environment validation and bump undici version (<a href="https://redirect.github.com/actions/setup-go/issues/556">#556</a>)</li>
+                <li><a href="https://github.com/actions/setup-go/commit/691cc3533f9e01982f216a98ecdd9fd81c27fd5b"><code>691cc35</code></a> upgrade actions/cache to 4.0.3 (<a href="https://redirect.github.com/actions/setup-go/issues/574">#574</a>)</li>
+                <li><a href="https://github.com/actions/setup-go/commit/0aaccfd150d50ccaeb58ebd88d36e91967a5f35b"><code>0aaccfd</code></a> Bump undici from 5.28.4 to 5.28.5 (<a href="https://redirect.github.com/actions/setup-go/issues/541">#541</a>)</li>
+                <li><a href="https://github.com/actions/setup-go/commit/c4c114188661c0fa735e5b938764519fc6e8efa9"><code>c4c1141</code></a> upgrade actions/cache to 4.0.2 (<a href="https://redirect.github.com/actions/setup-go/issues/568">#568</a>)</li>
+                <li><a href="https://github.com/actions/setup-go/commit/5a083d0e9a84784eb32078397cf5459adecb4c40"><code>5a083d0</code></a> Bump eslint-config-prettier from 8.10.0 to 10.0.1 (<a href="https://redirect.github.com/actions/setup-go/issues/536">#536</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...d35c59abb061a4a6fb18e82ac0862c26744d6ab5">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump actions/setup-go from 4.0.0 to 4.1.0
+                Bump actions/setup-go from 4.0.0 to 5.5.0
 
-                Bumps [actions/setup-go](https://github.com/actions/setup-go) from 4.0.0 to 4.1.0.
+                Bumps [actions/setup-go](https://github.com/actions/setup-go) from 4.0.0 to 5.5.0.
                 - [Release notes](https://github.com/actions/setup-go/releases)
-                - [Commits](https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...93397bea11091df50f3d7e59dc26a7711a8bcfbe)
+                - [Commits](https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...d35c59abb061a4a6fb18e82ac0862c26744d6ab5)
     - type: mark_as_processed
       expect:
         data:

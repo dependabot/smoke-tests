@@ -164,6 +164,24 @@ output:
                         url: https://registry.npmjs.org
                   version: 4.17.21
                   directory: /npm/semver
+                - name: follow-redirects
+                  previous-requirements: []
+                  previous-version: 1.15.2
+                  requirements: []
+                  version: 1.15.9
+                  directory: /npm/semver
+                - name: form-data
+                  previous-requirements: []
+                  previous-version: 4.0.0
+                  requirements: []
+                  version: 4.0.2
+                  directory: /npm/semver
+                - name: whatwg-fetch
+                  previous-requirements: []
+                  previous-version: 3.6.17
+                  requirements: []
+                  version: 3.6.20
+                  directory: /npm/semver
             updated-dependency-files:
                 - content: |
                     {
@@ -450,6 +468,21 @@ output:
                             "node": ">= 0.4"
                           }
                         },
+                        "node_modules/es-set-tostringtag": {
+                          "version": "2.1.0",
+                          "resolved": "https://registry.npmjs.org/es-set-tostringtag/-/es-set-tostringtag-2.1.0.tgz",
+                          "integrity": "sha512-j6vWzfrGVfyXxge+O0x5sh6cvxAog0a/4Rdd2K36zCMV5eJ+/+tOAngRO8cODMNWbVRdVlmGZQL2YS3yR8bIUA==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "es-errors": "^1.3.0",
+                            "get-intrinsic": "^1.2.6",
+                            "has-tostringtag": "^1.0.2",
+                            "hasown": "^2.0.2"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
                         "node_modules/es6-promise": {
                           "version": "3.3.1",
                           "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.3.1.tgz",
@@ -475,15 +508,16 @@ output:
                           "integrity": "sha512-9mDDwqVIma6OZX79ZlDACZl8sBm0TEnkf99zV3iMA4GzkIT/9hiqP5mY0HoT1iNLCrKc/R1HByV+yJfRWVJryQ=="
                         },
                         "node_modules/follow-redirects": {
-                          "version": "1.15.2",
-                          "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz",
-                          "integrity": "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==",
+                          "version": "1.15.9",
+                          "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.9.tgz",
+                          "integrity": "sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==",
                           "funding": [
                             {
                               "type": "individual",
                               "url": "https://github.com/sponsors/RubenVerborgh"
                             }
                           ],
+                          "license": "MIT",
                           "engines": {
                             "node": ">=4.0"
                           },
@@ -494,12 +528,14 @@ output:
                           }
                         },
                         "node_modules/form-data": {
-                          "version": "4.0.0",
-                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz",
-                          "integrity": "sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==",
+                          "version": "4.0.2",
+                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.2.tgz",
+                          "integrity": "sha512-hGfm/slu0ZabnNt4oaRZ6uREyfCj6P4fT/n6A1rGV+Z0VdGXjfOhVUpkn6qVQONHGIFwmveGXyDs75+nr6FM8w==",
+                          "license": "MIT",
                           "dependencies": {
                             "asynckit": "^0.4.0",
                             "combined-stream": "^1.0.8",
+                            "es-set-tostringtag": "^2.1.0",
                             "mime-types": "^2.1.12"
                           },
                           "engines": {
@@ -929,9 +965,10 @@ output:
                           }
                         },
                         "node_modules/whatwg-fetch": {
-                          "version": "3.6.17",
-                          "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-3.6.17.tgz",
-                          "integrity": "sha512-c4ghIvG6th0eudYwKZY5keb81wtFz9/WeAHAoy8+r18kcWlitUIrmGFQ2rWEl4UCKUilD3zCLHOIPheHx5ypRQ=="
+                          "version": "3.6.20",
+                          "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-3.6.20.tgz",
+                          "integrity": "sha512-EqhiFU6daOA8kpjOWTL0olhVOF3i7OrFzSYiGsEMB8GcXS+RrzauAERX65xMeNWVqxA6HXH2m69Z9LaKKdisfg==",
+                          "license": "MIT"
                         }
                       }
                     }
@@ -942,9 +979,17 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the not major group in /npm/semver with 2 updates
+            pr-title: Bump the not major group in /npm/semver with 5 updates
             pr-body: |
-                Bumps the not major group in /npm/semver with 2 updates: fetch-factory and [lodash](https://github.com/lodash/lodash).
+                Bumps the not major group in /npm/semver with 5 updates:
+
+                | Package | From | To |
+                | --- | --- | --- |
+                | fetch-factory | `0.0.1` | `0.2.1` |
+                | [lodash](https://github.com/lodash/lodash) | `4.16.6` | `4.17.21` |
+                | [follow-redirects](https://github.com/follow-redirects/follow-redirects) | `1.15.2` | `1.15.9` |
+                | [form-data](https://github.com/form-data/form-data) | `4.0.0` | `4.0.2` |
+                | [whatwg-fetch](https://github.com/github/fetch) | `3.6.17` | `3.6.20` |
 
                 Updates `fetch-factory` from 0.0.1 to 0.2.1
 
@@ -970,10 +1015,145 @@ output:
                 <p>This version was pushed to npm by <a href="https://www.npmjs.com/~bnjmnt4n">bnjmnt4n</a>, a new releaser for lodash since your current version.</p>
                 </details>
                 <br />
-            commit-message: |-
-                Bump the not major group in /npm/semver with 2 updates
 
-                Bumps the not major group in /npm/semver with 2 updates: fetch-factory and [lodash](https://github.com/lodash/lodash).
+                Updates `follow-redirects` from 1.15.2 to 1.15.9
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/e4e55c77b2d849280d105943f49f42e0c735d05d"><code>e4e55c7</code></a> Release version 1.15.9 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/31a1abf2d659ac1c8fcbe7e614a8c8914d80e1e3"><code>31a1abf</code></a> Attempt much more gentle detection.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/d2aaa97439e8a7e4a9cd02513ec7b12f23c17638"><code>d2aaa97</code></a> Fix url field.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/62558f0cd106195f4c17ece3ad255eb93487d37f"><code>62558f0</code></a> Release version 1.15.8 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/a8d1ceed257d46758f913ff555b4f7e1cd758627"><code>a8d1cee</code></a> Return subtlety.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/458ca8e19fd80897e97746e476d7389cdf9b6494"><code>458ca8e</code></a> Fix native URL test for Node 20.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/ca49e4462651b07eb10452116235c1269cb79e1e"><code>ca49e44</code></a> Handle KeepAlive connections in tests.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/f3711d7e78b24695eae8d348a4e695d288bd450f"><code>f3711d7</code></a> Test on Node 20 and 22.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/fda0fafa0c8d197cbcd232d98c68445ed323c337"><code>fda0faf</code></a> Fix typo.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/760757f7b75cce429604492d91649cbbd473c8d4"><code>760757f</code></a> Release version 1.15.7 of the npm package.</li>
+                <li>Additional commits viewable in <a href="https://github.com/follow-redirects/follow-redirects/compare/v1.15.2...v1.15.9">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `form-data` from 4.0.0 to 4.0.2
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/form-data/form-data/releases">form-data's releases</a>.</em></p>
+                <blockquote>
+                <h2>v4.0.1</h2>
+                <h3>Fixes</h3>
+                <ul>
+                <li>npmignore temporary build files (<a href="https://redirect.github.com/form-data/form-data/issues/532">#532</a>)</li>
+                <li>move util.isArray to Array.isArray (<a href="https://redirect.github.com/form-data/form-data/issues/564">#564</a>)</li>
+                </ul>
+                <h3>Tests</h3>
+                <ul>
+                <li>migrate from travis to GHA</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/form-data/form-data/commit/7465e1337244831e91f9a2413a2bf49bdc2a2e04"><code>7465e13</code></a> v4.0.2</li>
+                <li><a href="https://github.com/form-data/form-data/commit/92613b9208556eb4ebc482fdf599fae111626fb6"><code>92613b9</code></a> Merge tags v2.5.3 and v3.0.3</li>
+                <li><a href="https://github.com/form-data/form-data/commit/e46f09bb5338bff090f5cceea5119a8b37c9b147"><code>e46f09b</code></a> v3.0.3</li>
+                <li><a href="https://github.com/form-data/form-data/commit/e5df7f24383342264bd73dee3274818a40d04065"><code>e5df7f2</code></a> [Dev Deps] pin <code>request</code> which via <code>tough-cookie</code> ^2.4 depends on <code>psl</code></li>
+                <li><a href="https://github.com/form-data/form-data/commit/84ca1d6006d65abe7b73c3e99b023aeb353e1e12"><code>84ca1d6</code></a> [Fix] set <code>Symbol.toStringTag</code> when available (<a href="https://redirect.github.com/form-data/form-data/issues/573">#573</a>)</li>
+                <li><a href="https://github.com/form-data/form-data/commit/7fecefe4ba8f775634aff86a698776ad95ecffb5"><code>7fecefe</code></a> [Refactor] use <code>Object.prototype.hasOwnProperty.call</code></li>
+                <li><a href="https://github.com/form-data/form-data/commit/5a5bafee894fead10da49e1fa2b084e17f2e1034"><code>5a5bafe</code></a> [Deps] update <code>mime-types</code></li>
+                <li><a href="https://github.com/form-data/form-data/commit/8261fcb8bf5944d30ae3bd04b91b71d6a9932ef4"><code>8261fcb</code></a> [Dev Deps] update <code>@types/node</code>, <code>browserify</code>, <code>coveralls</code>, <code>cross-spawn</code>, `e...</li>
+                <li><a href="https://github.com/form-data/form-data/commit/b82f59093cdbadb4b7ec0922d33ae7ab048b82ff"><code>b82f590</code></a> Only apps should have lockfiles</li>
+                <li><a href="https://github.com/form-data/form-data/commit/9457283e1dce6122adc908fdd7442cfc54cabe7a"><code>9457283</code></a> Bumped version 2.5.3</li>
+                <li>Additional commits viewable in <a href="https://github.com/form-data/form-data/compare/v4.0.0...v4.0.2">compare view</a></li>
+                </ul>
+                </details>
+                <details>
+                <summary>Maintainer changes</summary>
+                <p>This version was pushed to npm by <a href="https://www.npmjs.com/~ljharb">ljharb</a>, a new releaser for form-data since your current version.</p>
+                </details>
+                <br />
+
+                Updates `whatwg-fetch` from 3.6.17 to 3.6.20
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/github/fetch/releases">whatwg-fetch's releases</a>.</em></p>
+                <blockquote>
+                <h2>v3.6.20</h2>
+                <h2><a href="https://github.com/JakeChampion/fetch/compare/v3.6.19...v3.6.20">3.6.20</a> (2023-12-13)</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li>Response.error().ok === false (<a href="https://redirect.github.com/JakeChampion/fetch/issues/1412">#1412</a>) (<a href="https://github.com/JakeChampion/fetch/commit/27e1c75f830f0b70a40b511e03652776951aca75">27e1c75</a>)</li>
+                </ul>
+                <h2>v3.6.19</h2>
+                <h2><a href="https://github.com/JakeChampion/fetch/compare/v3.6.18...v3.6.19">3.6.19</a> (2023-09-11)</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li>Have unique error messages for xhr timeouts and errors (<a href="https://redirect.github.com/JakeChampion/fetch/issues/1380">#1380</a>) (<a href="https://github.com/JakeChampion/fetch/commit/7170f0b127d16c5895aba61c9168482834809046">7170f0b</a>)</li>
+                </ul>
+                <h2>v3.6.18</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Fix - File fetching broken since commit 0c1d2b9 by <a href="https://github.com/mercpls"><code>@​mercpls</code></a> in <a href="https://redirect.github.com/JakeChampion/fetch/pull/1375">JakeChampion/fetch#1375</a></li>
+                </ul>
+                <h2>New Contributors</h2>
+                <ul>
+                <li><a href="https://github.com/mercpls"><code>@​mercpls</code></a> made their first contribution in <a href="https://redirect.github.com/JakeChampion/fetch/pull/1375">JakeChampion/fetch#1375</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/JakeChampion/fetch/compare/v3.6.17...v3.6.18">https://github.com/JakeChampion/fetch/compare/v3.6.17...v3.6.18</a></p>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/JakeChampion/fetch/blob/main/CHANGELOG.md">whatwg-fetch's changelog</a>.</em></p>
+                <blockquote>
+                <h2><a href="https://github.com/JakeChampion/fetch/compare/v3.6.19...v3.6.20">3.6.20</a> (2023-12-13)</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li>Response.error().ok === false (<a href="https://redirect.github.com/JakeChampion/fetch/issues/1412">#1412</a>) (<a href="https://github.com/JakeChampion/fetch/commit/27e1c75f830f0b70a40b511e03652776951aca75">27e1c75</a>)</li>
+                </ul>
+                <h2><a href="https://github.com/JakeChampion/fetch/compare/v3.6.18...v3.6.19">3.6.19</a> (2023-09-11)</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li>Have unique error messages for xhr timeouts and errors (<a href="https://redirect.github.com/JakeChampion/fetch/issues/1380">#1380</a>) (<a href="https://github.com/JakeChampion/fetch/commit/7170f0b127d16c5895aba61c9168482834809046">7170f0b</a>)</li>
+                </ul>
+                <h2><a href="https://github.com/JakeChampion/fetch/compare/v3.6.17...v3.6.18">v3.6.18</a></h2>
+                <ul>
+                <li>Fix - File fetching broken since commit 0c1d2b9 <a href="https://redirect.github.com/JakeChampion/fetch/pull/1375"><code>[#1375](https://github.com/github/fetch/issues/1375)</code></a></li>
+                <li>Remove broken links <a href="https://github.com/JakeChampion/fetch/commit/1dc07c6064a32e989306fb2324204c56c93140fe"><code>1dc07c6</code></a></li>
+                <li>automatically generate a changelog <a href="https://github.com/JakeChampion/fetch/commit/0e7d1dd95826b3b76510f0832784207f2609145e"><code>0e7d1dd</code></a></li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/a0aea1004830a1976c0c70d2f23c42a71da21cc7"><code>a0aea10</code></a> chore(main): release 3.6.20 (<a href="https://redirect.github.com/github/fetch/issues/1417">#1417</a>)</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/7d1998d211736ec49fc151eb4205d8d5790c58cb"><code>7d1998d</code></a> remove umd section from readme</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/27e1c75f830f0b70a40b511e03652776951aca75"><code>27e1c75</code></a> Fix: Response.error().ok === false (<a href="https://redirect.github.com/github/fetch/issues/1412">#1412</a>)</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/84256c8d91de08d6bf7a53e7798f7ae05b1d2f77"><code>84256c8</code></a> Bump the github-actions group with 1 update (<a href="https://redirect.github.com/github/fetch/issues/1416">#1416</a>)</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/806ea66b1c42a0cbc252957c03f33b6f1fe35d37"><code>806ea66</code></a> Bump the github-actions group with 2 updates (<a href="https://redirect.github.com/github/fetch/issues/1414">#1414</a>)</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/af519560bea0f7906d2aa6904f7c76298dcfb55c"><code>af51956</code></a> Bump the github-actions group with 1 update (<a href="https://redirect.github.com/github/fetch/issues/1413">#1413</a>)</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/a71a60df483dcbd13ad5b5b5f7434d47e7b85c86"><code>a71a60d</code></a> Bump the github-actions group with 2 updates (<a href="https://redirect.github.com/github/fetch/issues/1410">#1410</a>)</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/af5cf4b3b017c5821c48bc62d26e6a6236616820"><code>af5cf4b</code></a> Bump the github-actions group with 2 updates (<a href="https://redirect.github.com/github/fetch/issues/1407">#1407</a>)</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/a686358611c631a8846e61683eccde75c30b487b"><code>a686358</code></a> enhance: replaced str.startsWith with str.indexOf (<a href="https://redirect.github.com/github/fetch/issues/1404">#1404</a>)</li>
+                <li><a href="https://github.com/JakeChampion/fetch/commit/b5cee5093bb4929239b74b9394e51355b231c460"><code>b5cee50</code></a> Bump the github-actions group with 1 update (<a href="https://redirect.github.com/github/fetch/issues/1402">#1402</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/github/fetch/compare/v3.6.17...v3.6.20">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump the not major group in /npm/semver with 5 updates
+
+                Bumps the not major group in /npm/semver with 5 updates:
+
+                | Package | From | To |
+                | --- | --- | --- |
+                | fetch-factory | `0.0.1` | `0.2.1` |
+                | [lodash](https://github.com/lodash/lodash) | `4.16.6` | `4.17.21` |
+                | [follow-redirects](https://github.com/follow-redirects/follow-redirects) | `1.15.2` | `1.15.9` |
+                | [form-data](https://github.com/form-data/form-data) | `4.0.0` | `4.0.2` |
+                | [whatwg-fetch](https://github.com/github/fetch) | `3.6.17` | `3.6.20` |
 
 
                 Updates `fetch-factory` from 0.0.1 to 0.2.1
@@ -981,6 +1161,19 @@ output:
                 Updates `lodash` from 4.16.6 to 4.17.21
                 - [Release notes](https://github.com/lodash/lodash/releases)
                 - [Commits](https://github.com/lodash/lodash/compare/4.16.6...4.17.21)
+
+                Updates `follow-redirects` from 1.15.2 to 1.15.9
+                - [Release notes](https://github.com/follow-redirects/follow-redirects/releases)
+                - [Commits](https://github.com/follow-redirects/follow-redirects/compare/v1.15.2...v1.15.9)
+
+                Updates `form-data` from 4.0.0 to 4.0.2
+                - [Release notes](https://github.com/form-data/form-data/releases)
+                - [Commits](https://github.com/form-data/form-data/compare/v4.0.0...v4.0.2)
+
+                Updates `whatwg-fetch` from 3.6.17 to 3.6.20
+                - [Release notes](https://github.com/github/fetch/releases)
+                - [Changelog](https://github.com/JakeChampion/fetch/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/github/fetch/compare/v3.6.17...v3.6.20)
             dependency-group:
                 name: not major
     - type: create_pull_request
@@ -1002,11 +1195,11 @@ output:
                     - file: package.json
                       groups:
                         - dependencies
-                      requirement: 1.4.0
+                      requirement: 1.9.0
                       source:
                         type: registry
                         url: https://registry.npmjs.org
-                  version: 1.4.0
+                  version: 1.9.0
                   directory: /npm/semver
             updated-dependency-files:
                 - content: |
@@ -1026,7 +1219,7 @@ output:
                       },
                       "homepage": "https://github.com/dsp-testing/dependabot-all-updates-test",
                       "dependencies": {
-                        "axios": "1.4.0",
+                        "axios": "1.9.0",
                         "fetch-factory": "0.0.1",
                         "lodash": "4.16.6"
                       }
@@ -1050,7 +1243,7 @@ output:
                           "version": "1.0.0",
                           "license": "ISC",
                           "dependencies": {
-                            "axios": "1.4.0",
+                            "axios": "1.9.0",
                             "fetch-factory": "0.0.1",
                             "lodash": "4.16.6"
                           }
@@ -1061,12 +1254,12 @@ output:
                           "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
                         },
                         "node_modules/axios": {
-                          "version": "1.4.0",
-                          "resolved": "https://registry.npmjs.org/axios/-/axios-1.4.0.tgz",
-                          "integrity": "sha512-S4XCWMEmzvo64T9GfvQDOXgYRDJ/wsSZc7Jvdgx5u1sd0JwsuPLqb3SYmusag+edF6ziyMensPVqLTSc1PiSEA==",
+                          "version": "1.9.0",
+                          "resolved": "https://registry.npmjs.org/axios/-/axios-1.9.0.tgz",
+                          "integrity": "sha512-re4CqKTJaURpzbLHtIi6XpDv20/CnpXOtjRY5/CU32L8gU8ek9UIivcfvSWvmKEngmVbrUtPpdDwWDWL7DNHvg==",
                           "license": "MIT",
                           "dependencies": {
-                            "follow-redirects": "^1.15.0",
+                            "follow-redirects": "^1.15.6",
                             "form-data": "^4.0.0",
                             "proxy-from-env": "^1.1.0"
                           }
@@ -1119,15 +1312,16 @@ output:
                           "integrity": "sha512-9mDDwqVIma6OZX79ZlDACZl8sBm0TEnkf99zV3iMA4GzkIT/9hiqP5mY0HoT1iNLCrKc/R1HByV+yJfRWVJryQ=="
                         },
                         "node_modules/follow-redirects": {
-                          "version": "1.15.2",
-                          "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz",
-                          "integrity": "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==",
+                          "version": "1.15.9",
+                          "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.9.tgz",
+                          "integrity": "sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==",
                           "funding": [
                             {
                               "type": "individual",
                               "url": "https://github.com/sponsors/RubenVerborgh"
                             }
                           ],
+                          "license": "MIT",
                           "engines": {
                             "node": ">=4.0"
                           },
@@ -1236,61 +1430,62 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump axios from 0.27.1 to 1.4.0 in /npm/semver
+            pr-title: Bump axios from 0.27.1 to 1.9.0 in /npm/semver
             pr-body: |
-                Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.4.0.
+                Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.9.0.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/axios/axios/releases">axios's releases</a>.</em></p>
                 <blockquote>
-                <h2>Release v1.4.0</h2>
+                <h2>Release v1.9.0</h2>
                 <h2>Release notes:</h2>
                 <h3>Bug Fixes</h3>
                 <ul>
-                <li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href="https://redirect.github.com/axios/axios/issues/5678">#5678</a>) (<a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1">bbb61e7</a>)</li>
-                <li><strong>package:</strong> export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>) (<a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09">df38c94</a>)</li>
+                <li><strong>core:</strong> fix the Axios constructor implementation to treat the config argument as optional; (<a href="https://redirect.github.com/axios/axios/issues/6881">#6881</a>) (<a href="https://github.com/axios/axios/commit/6c5d4cd69286868059c5e52d45085cb9a894a983">6c5d4cd</a>)</li>
+                <li><strong>fetch:</strong> fixed ERR_NETWORK mapping for Safari browsers; (<a href="https://redirect.github.com/axios/axios/issues/6767">#6767</a>) (<a href="https://github.com/axios/axios/commit/dfe8411c9a082c3d068bdd1f8d6e73054f387f45">dfe8411</a>)</li>
+                <li><strong>headers:</strong> allow iterable objects to be a data source for the set method; (<a href="https://redirect.github.com/axios/axios/issues/6873">#6873</a>) (<a href="https://github.com/axios/axios/commit/1b1f9ccdc15f1ea745160ec9a5223de9db4673bc">1b1f9cc</a>)</li>
+                <li><strong>headers:</strong> fix <code>getSetCookie</code> by using 'get' method for caseless access; (<a href="https://redirect.github.com/axios/axios/issues/6874">#6874</a>) (<a href="https://github.com/axios/axios/commit/d4f7df4b304af8b373488fdf8e830793ff843eb9">d4f7df4</a>)</li>
+                <li><strong>headers:</strong> fixed support for setting multiple header values from an iterated source; (<a href="https://redirect.github.com/axios/axios/issues/6885">#6885</a>) (<a href="https://github.com/axios/axios/commit/f7a3b5e0f7e5e127b97defa92a132fbf1b55cf15">f7a3b5e</a>)</li>
+                <li><strong>http:</strong> send minimal end multipart boundary (<a href="https://redirect.github.com/axios/axios/issues/6661">#6661</a>) (<a href="https://github.com/axios/axios/commit/987d2e2dd3b362757550f36eab875e60640b6ddc">987d2e2</a>)</li>
+                <li><strong>types:</strong> fix autocomplete for adapter config (<a href="https://redirect.github.com/axios/axios/issues/6855">#6855</a>) (<a href="https://github.com/axios/axios/commit/e61a8934d8f94dd429a2f309b48c67307c700df0">e61a893</a>)</li>
                 </ul>
                 <h3>Features</h3>
                 <ul>
-                <li><strong>dns:</strong> added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>) (<a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb">2701911</a>)</li>
-                <li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>) (<a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf">726f1c8</a>)</li>
-                </ul>
-                <h3>Performance Improvements</h3>
-                <ul>
-                <li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href="https://redirect.github.com/axios/axios/issues/5679">#5679</a>) (<a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e">e6f7053</a>)</li>
+                <li><strong>AxiosHeaders:</strong> add getSetCookie method to retrieve set-cookie headers values (<a href="https://redirect.github.com/axios/axios/issues/5707">#5707</a>) (<a href="https://github.com/axios/axios/commit/80ea756e72bcf53110fa792f5d7ab76e8b11c996">80ea756</a>)</li>
                 </ul>
                 <h3>Contributors to this release</h3>
                 <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/arthurfiorette" title="+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )">Arthur Fiorette</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/npiyush97" title="+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )">PIYUSH NEGI</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+200/-34 ([#6890](https://github.com/axios/axios/issues/6890) [#6889](https://github.com/axios/axios/issues/6889) [#6888](https://github.com/axios/axios/issues/6888) [#6885](https://github.com/axios/axios/issues/6885) [#6881](https://github.com/axios/axios/issues/6881) [#6767](https://github.com/axios/axios/issues/6767) [#6874](https://github.com/axios/axios/issues/6874) [#6873](https://github.com/axios/axios/issues/6873) )">Dmitriy Mozgovoy</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/jasonsaayman" title="+26/-1 ()">Jay</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/WillianAgostini" title="+21/-0 ([#5707](https://github.com/axios/axios/issues/5707) )">Willian Agostini</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/Gerhut" title="+3/-3 ([#5096](https://github.com/axios/axios/issues/5096) )">George Cheng</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/FatahChan" title="+2/-2 ([#6855](https://github.com/axios/axios/issues/6855) )">FatahChan</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/igstan" title="+1/-1 ([#6661](https://github.com/axios/axios/issues/6661) )">Ionuț G. Stan</a></li>
                 </ul>
-                <h2>Release v1.3.6</h2>
+                <h2>Release v1.8.4</h2>
                 <h2>Release notes:</h2>
                 <h3>Bug Fixes</h3>
                 <ul>
-                <li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href="https://redirect.github.com/axios/axios/issues/5445">#5445</a>) (<a href="https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2">6f360a2</a>)</li>
-                <li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href="https://redirect.github.com/axios/axios/issues/5661">#5661</a>) (<a href="https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76">aa372f7</a>)</li>
+                <li><strong>buildFullPath:</strong> handle <code>allowAbsoluteUrls: false</code> without <code>baseURL</code> (<a href="https://redirect.github.com/axios/axios/issues/6833">#6833</a>) (<a href="https://github.com/axios/axios/commit/f10c2e0de7fde0051f848609a29c2906d0caa1d9">f10c2e0</a>)</li>
                 </ul>
                 <h3>Contributors to this release</h3>
                 <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/Cadienvan" title="+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )">Michael Di Prisco</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/mhassan1" title="+5/-1 ([#6833](https://github.com/axios/axios/issues/6833) )">Marc Hassan</a></li>
                 </ul>
-                <h2>Release v1.3.5</h2>
+                <h2>Release v1.8.3</h2>
                 <h2>Release notes:</h2>
                 <h3>Bug Fixes</h3>
                 <ul>
-                <li><strong>headers:</strong> fixed isValidHeaderName to support full list of allowed characters; (<a href="https://redirect.github.com/axios/axios/issues/5584">#5584</a>) (<a href="https://github.com/axios/axios/commit/e7decef6a99f4627e27ed9ea5b00ce8e201c3841">e7decef</a>)</li>
-                <li><strong>params:</strong> re-added the ability to set the function as <code>paramsSerializer</code> config; (<a href="https://redirect.github.com/axios/axios/issues/5633">#5633</a>) (<a href="https://github.com/axios/axios/commit/a56c8661209d5ce5a645a05f294a0e08a6c1f6b3">a56c866</a>)</li>
+                <li>add missing type for allowAbsoluteUrls (<a href="https://redirect.github.com/axios/axios/issues/6818">#6818</a>) (<a href="https://github.com/axios/axios/commit/10fa70ef14fe39558b15a179f0e82f5f5e5d11b2">10fa70e</a>)</li>
+                <li><strong>xhr/fetch:</strong> pass <code>allowAbsoluteUrls</code> to <code>buildFullPath</code> in <code>xhr</code> and <code>fetch</code> adapters (<a href="https://redirect.github.com/axios/axios/issues/6814">#6814</a>) (<a href="https://github.com/axios/axios/commit/ec159e507bdf08c04ba1a10fe7710094e9e50ec9">ec159e5</a>)</li>
                 </ul>
                 <h3>Contributors to this release</h3>
                 <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+28/-10 ([#5633](https://github.com/axios/axios/issues/5633) [#5584](https://github.com/axios/axios/issues/5584) )">Dmitriy Mozgovoy</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/Electroid" title="+6/-0 ([#6811](https://github.com/axios/axios/issues/6811) )">Ashcon Partovi</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/StefanBRas" title="+4/-0 ([#6818](https://github.com/axios/axios/issues/6818) )">StefanBRas</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/mhassan1" title="+2/-2 ([#6814](https://github.com/axios/axios/issues/6814) )">Marc Hassan</a></li>
                 </ul>
-                <h2>Release v1.3.4</h2>
-                <h2>Release notes:</h2>
-                <h3>Bug Fixes</h3>
+                <h2>Release v1.8.2</h2>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -1299,47 +1494,49 @@ output:
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/axios/axios/blob/v1.x/CHANGELOG.md">axios's changelog</a>.</em></p>
                 <blockquote>
-                <h1><a href="https://github.com/axios/axios/compare/v1.3.6...v1.4.0">1.4.0</a> (2023-04-27)</h1>
+                <h1><a href="https://github.com/axios/axios/compare/v1.8.4...v1.9.0">1.9.0</a> (2025-04-24)</h1>
                 <h3>Bug Fixes</h3>
                 <ul>
-                <li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href="https://redirect.github.com/axios/axios/issues/5678">#5678</a>) (<a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1">bbb61e7</a>)</li>
-                <li><strong>package:</strong> export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>) (<a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09">df38c94</a>)</li>
+                <li><strong>core:</strong> fix the Axios constructor implementation to treat the config argument as optional; (<a href="https://redirect.github.com/axios/axios/issues/6881">#6881</a>) (<a href="https://github.com/axios/axios/commit/6c5d4cd69286868059c5e52d45085cb9a894a983">6c5d4cd</a>)</li>
+                <li><strong>fetch:</strong> fixed ERR_NETWORK mapping for Safari browsers; (<a href="https://redirect.github.com/axios/axios/issues/6767">#6767</a>) (<a href="https://github.com/axios/axios/commit/dfe8411c9a082c3d068bdd1f8d6e73054f387f45">dfe8411</a>)</li>
+                <li><strong>headers:</strong> allow iterable objects to be a data source for the set method; (<a href="https://redirect.github.com/axios/axios/issues/6873">#6873</a>) (<a href="https://github.com/axios/axios/commit/1b1f9ccdc15f1ea745160ec9a5223de9db4673bc">1b1f9cc</a>)</li>
+                <li><strong>headers:</strong> fix <code>getSetCookie</code> by using 'get' method for caseless access; (<a href="https://redirect.github.com/axios/axios/issues/6874">#6874</a>) (<a href="https://github.com/axios/axios/commit/d4f7df4b304af8b373488fdf8e830793ff843eb9">d4f7df4</a>)</li>
+                <li><strong>headers:</strong> fixed support for setting multiple header values from an iterated source; (<a href="https://redirect.github.com/axios/axios/issues/6885">#6885</a>) (<a href="https://github.com/axios/axios/commit/f7a3b5e0f7e5e127b97defa92a132fbf1b55cf15">f7a3b5e</a>)</li>
+                <li><strong>http:</strong> send minimal end multipart boundary (<a href="https://redirect.github.com/axios/axios/issues/6661">#6661</a>) (<a href="https://github.com/axios/axios/commit/987d2e2dd3b362757550f36eab875e60640b6ddc">987d2e2</a>)</li>
+                <li><strong>types:</strong> fix autocomplete for adapter config (<a href="https://redirect.github.com/axios/axios/issues/6855">#6855</a>) (<a href="https://github.com/axios/axios/commit/e61a8934d8f94dd429a2f309b48c67307c700df0">e61a893</a>)</li>
                 </ul>
                 <h3>Features</h3>
                 <ul>
-                <li><strong>dns:</strong> added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>) (<a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb">2701911</a>)</li>
-                <li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>) (<a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf">726f1c8</a>)</li>
-                </ul>
-                <h3>Performance Improvements</h3>
-                <ul>
-                <li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href="https://redirect.github.com/axios/axios/issues/5679">#5679</a>) (<a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e">e6f7053</a>)</li>
+                <li><strong>AxiosHeaders:</strong> add getSetCookie method to retrieve set-cookie headers values (<a href="https://redirect.github.com/axios/axios/issues/5707">#5707</a>) (<a href="https://github.com/axios/axios/commit/80ea756e72bcf53110fa792f5d7ab76e8b11c996">80ea756</a>)</li>
                 </ul>
                 <h3>Contributors to this release</h3>
                 <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/arthurfiorette" title="+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )">Arthur Fiorette</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/npiyush97" title="+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )">PIYUSH NEGI</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+200/-34 ([#6890](https://github.com/axios/axios/issues/6890) [#6889](https://github.com/axios/axios/issues/6889) [#6888](https://github.com/axios/axios/issues/6888) [#6885](https://github.com/axios/axios/issues/6885) [#6881](https://github.com/axios/axios/issues/6881) [#6767](https://github.com/axios/axios/issues/6767) [#6874](https://github.com/axios/axios/issues/6874) [#6873](https://github.com/axios/axios/issues/6873) )">Dmitriy Mozgovoy</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/jasonsaayman" title="+26/-1 ()">Jay</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/WillianAgostini" title="+21/-0 ([#5707](https://github.com/axios/axios/issues/5707) )">Willian Agostini</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/Gerhut" title="+3/-3 ([#5096](https://github.com/axios/axios/issues/5096) )">George Cheng</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/FatahChan" title="+2/-2 ([#6855](https://github.com/axios/axios/issues/6855) )">FatahChan</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/igstan" title="+1/-1 ([#6661](https://github.com/axios/axios/issues/6661) )">Ionuț G. Stan</a></li>
                 </ul>
-                <h2><a href="https://github.com/axios/axios/compare/v1.3.5...v1.3.6">1.3.6</a> (2023-04-19)</h2>
+                <h2><a href="https://github.com/axios/axios/compare/v1.8.3...v1.8.4">1.8.4</a> (2025-03-19)</h2>
                 <h3>Bug Fixes</h3>
                 <ul>
-                <li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href="https://redirect.github.com/axios/axios/issues/5445">#5445</a>) (<a href="https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2">6f360a2</a>)</li>
-                <li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href="https://redirect.github.com/axios/axios/issues/5661">#5661</a>) (<a href="https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76">aa372f7</a>)</li>
+                <li><strong>buildFullPath:</strong> handle <code>allowAbsoluteUrls: false</code> without <code>baseURL</code> (<a href="https://redirect.github.com/axios/axios/issues/6833">#6833</a>) (<a href="https://github.com/axios/axios/commit/f10c2e0de7fde0051f848609a29c2906d0caa1d9">f10c2e0</a>)</li>
                 </ul>
                 <h3>Contributors to this release</h3>
                 <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/Cadienvan" title="+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )">Michael Di Prisco</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/mhassan1" title="+5/-1 ([#6833](https://github.com/axios/axios/issues/6833) )">Marc Hassan</a></li>
                 </ul>
-                <h2><a href="https://github.com/axios/axios/compare/v1.3.4...v1.3.5">1.3.5</a> (2023-04-05)</h2>
+                <h2><a href="https://github.com/axios/axios/compare/v1.8.2...v1.8.3">1.8.3</a> (2025-03-10)</h2>
                 <h3>Bug Fixes</h3>
                 <ul>
-                <li><strong>headers:</strong> fixed isValidHeaderName to support full list of allowed characters; (<a href="https://redirect.github.com/axios/axios/issues/5584">#5584</a>) (<a href="https://github.com/axios/axios/commit/e7decef6a99f4627e27ed9ea5b00ce8e201c3841">e7decef</a>)</li>
-                <li><strong>params:</strong> re-added the ability to set the function as <code>paramsSerializer</code> config; (<a href="https://redirect.github.com/axios/axios/issues/5633">#5633</a>) (<a href="https://github.com/axios/axios/commit/a56c8661209d5ce5a645a05f294a0e08a6c1f6b3">a56c866</a>)</li>
+                <li>add missing type for allowAbsoluteUrls (<a href="https://redirect.github.com/axios/axios/issues/6818">#6818</a>) (<a href="https://github.com/axios/axios/commit/10fa70ef14fe39558b15a179f0e82f5f5e5d11b2">10fa70e</a>)</li>
+                <li><strong>xhr/fetch:</strong> pass <code>allowAbsoluteUrls</code> to <code>buildFullPath</code> in <code>xhr</code> and <code>fetch</code> adapters (<a href="https://redirect.github.com/axios/axios/issues/6814">#6814</a>) (<a href="https://github.com/axios/axios/commit/ec159e507bdf08c04ba1a10fe7710094e9e50ec9">ec159e5</a>)</li>
                 </ul>
                 <h3>Contributors to this release</h3>
                 <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+28/-10 ([#5633](https://github.com/axios/axios/issues/5633) [#5584](https://github.com/axios/axios/issues/5584) )">Dmitriy Mozgovoy</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/Electroid" title="+6/-0 ([#6811](https://github.com/axios/axios/issues/6811) )">Ashcon Partovi</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/StefanBRas" title="+4/-0 ([#6818](https://github.com/axios/axios/issues/6818) )">StefanBRas</a></li>
                 </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
@@ -1348,27 +1545,27 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/axios/axios/commit/21a5ad34c4a5956d81d338059ac0dd34a19ed094"><code>21a5ad3</code></a> chore(release): v1.4.0 (<a href="https://redirect.github.com/axios/axios/issues/5683">#5683</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/d627610d0c427de57c10618b36fa97814e2a75f0"><code>d627610</code></a> chore(utils): refactored isAsyncFn util to avoid inlining additional Babel he...</li>
-                <li><a href="https://github.com/axios/axios/commit/e18fdd893dfc67630c33fb6744d1b99d72857d92"><code>e18fdd8</code></a> refactor: remove deprecated url-search-params polyfill for URLSearchParams (#...</li>
-                <li><a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf"><code>726f1c8</code></a> feat(types): export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb"><code>2701911</code></a> feat(dns): added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e"><code>e6f7053</code></a> perf(merge-config): optimize mergeConfig performance by avoiding duplicate ke...</li>
-                <li><a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1"><code>bbb61e7</code></a> fix(formdata): add <code>multipart/form-data</code> content type for FormData payload on...</li>
-                <li><a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09"><code>df38c94</code></a> fix(package): export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/59eb99183546d822bc27e881f5dcd748daa04173"><code>59eb991</code></a> chore(release): v1.3.6 (<a href="https://redirect.github.com/axios/axios/issues/5666">#5666</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/1b8cc3b02b13f5d16ad988460edbda463113177e"><code>1b8cc3b</code></a> chore(template): improve issue template; (<a href="https://redirect.github.com/axios/axios/issues/5665">#5665</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/axios/axios/compare/v0.27.1...v1.4.0">compare view</a></li>
+                <li><a href="https://github.com/axios/axios/commit/cdcfd214c169a1acba8e267ab8e77ff4dfec3105"><code>cdcfd21</code></a> chore(release): v1.9.0 (<a href="https://redirect.github.com/axios/axios/issues/6891">#6891</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/987d2e2dd3b362757550f36eab875e60640b6ddc"><code>987d2e2</code></a> fix(http): send minimal end multipart boundary (<a href="https://redirect.github.com/axios/axios/issues/6661">#6661</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/f112edfdfacb5857ac4f91156fe8b116c456dfca"><code>f112edf</code></a> chore(ci): add PR files guard action; (<a href="https://redirect.github.com/axios/axios/issues/6890">#6890</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/61de4c05cc01e2ccd7705bbc87c4a49e6dea7928"><code>61de4c0</code></a> chore(ci): update github actions; (<a href="https://redirect.github.com/axios/axios/issues/6889">#6889</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/c3aba3d8f700337651d906b1a1ad3ecfe88a075e"><code>c3aba3d</code></a> chore(ci): add labeler github action; (<a href="https://redirect.github.com/axios/axios/issues/6888">#6888</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/f7a3b5e0f7e5e127b97defa92a132fbf1b55cf15"><code>f7a3b5e</code></a> fix(headers): fixed support for setting multiple header values from an iterat...</li>
+                <li><a href="https://github.com/axios/axios/commit/e61a8934d8f94dd429a2f309b48c67307c700df0"><code>e61a893</code></a> fix(types): fix autocomplete for adapter config (<a href="https://redirect.github.com/axios/axios/issues/6855">#6855</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/6c5d4cd69286868059c5e52d45085cb9a894a983"><code>6c5d4cd</code></a> fix(core): fix the Axios constructor implementation to treat the config argum...</li>
+                <li><a href="https://github.com/axios/axios/commit/dfe8411c9a082c3d068bdd1f8d6e73054f387f45"><code>dfe8411</code></a> fix(fetch): fixed ERR_NETWORK mapping for Safari browsers; (<a href="https://redirect.github.com/axios/axios/issues/6767">#6767</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/d4f7df4b304af8b373488fdf8e830793ff843eb9"><code>d4f7df4</code></a> fix(headers): fix <code>getSetCookie</code> by using 'get' method for caseless access; (...</li>
+                <li>Additional commits viewable in <a href="https://github.com/axios/axios/compare/v0.27.1...v1.9.0">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump axios from 0.27.1 to 1.4.0 in /npm/semver
+                Bump axios from 0.27.1 to 1.9.0 in /npm/semver
 
-                Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.4.0.
+                Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.9.0.
                 - [Release notes](https://github.com/axios/axios/releases)
                 - [Changelog](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
-                - [Commits](https://github.com/axios/axios/compare/v0.27.1...v1.4.0)
+                - [Commits](https://github.com/axios/axios/compare/v0.27.1...v1.9.0)
     - type: mark_as_processed
       expect:
         data:
