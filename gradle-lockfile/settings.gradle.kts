@@ -7,3 +7,7 @@
 
 rootProject.name = "demo"
 include("app")
+
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention").version("0.10.0")
+}
