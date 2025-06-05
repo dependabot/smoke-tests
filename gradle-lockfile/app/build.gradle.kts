@@ -16,8 +16,6 @@ repositories {
 }
 
 dependencies {
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-
     // This dependency is used by the application.
     implementation("com.google.code.gson:gson:2.8.8")
 }
@@ -36,9 +34,4 @@ java {
 application {
     // Define the main class for the application.
     mainClass = "org.example.App"
-}
-
-tasks.named<Test>("test") {
-    // Use JUnit Platform for unit tests.
-    useJUnitPlatform()
 }
