@@ -17,18 +17,11 @@ repositories {
 
 dependencies {
     // This dependency is used by the application.
-    implementation("com.google.code.gson:gson:2.8.8")
+    implementation("com.google.code.gson:gson:2.8.9")
 }
 
 dependencyLocking {
     lockAllConfigurations()
-}
-
-// Apply a specific Java toolchain to ease working on different environments.
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
 }
 
 application {
