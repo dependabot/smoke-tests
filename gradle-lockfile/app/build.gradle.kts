@@ -40,3 +40,4 @@ tasks.register("resolveAndLockAll") {
             it.isCanBeResolved
         }.forEach { it.resolve() }
     }
+}
