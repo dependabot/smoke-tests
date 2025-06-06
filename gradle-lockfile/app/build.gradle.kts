@@ -18,10 +18,6 @@ repositories {
 dependencies {
     // This dependency is used by the application.
     implementation("com.google.code.gson:gson:2.8.8")
-    compileClasspath("com.google.code.gson:gson:2.8.8")
-    runtimeClasspath("com.google.code.gson:gson:2.8.8")
-    testCompileClasspath("com.google.code.gson:gson:2.8.8")
-    testRuntimeClasspath("com.google.code.gson:gson:2.8.8")
 }
 
 dependencyLocking {
