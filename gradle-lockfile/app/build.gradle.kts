@@ -17,7 +17,7 @@ repositories {
 
 dependencies {
     // This dependency is used by the application.
-    implementation("com.google.code.gson:gson:2.8.9")
+    implementation("com.google.code.gson:gson:2.8.8")
 }
 
 dependencyLocking {
@@ -40,4 +40,3 @@ tasks.register("resolveAndLockAll") {
             it.isCanBeResolved
         }.forEach { it.resolve() }
     }
-}
