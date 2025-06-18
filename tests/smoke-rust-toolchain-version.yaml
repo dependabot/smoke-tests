@@ -1,0 +1,202 @@
+input:
+    job:
+        package-manager: rust_toolchain
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: rust-toolchain
+              source: tests/smoke-rust-toolchain-version.yaml
+              version-requirement: "> 1.86.0"
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: rust-toolchain/version
+            commit: 95610869fd530ecf51e35a402fe681f1ca961b48
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+          data:
+              dependencies:
+                  - name: rust-toolchain
+                    requirements:
+                        - file: rust-toolchain.toml
+                          groups: []
+                          requirement: 1.82.0
+                          source: null
+                    version: 1.82.0
+              dependency_files:
+                  - /rust-toolchain/version/rust-toolchain.toml
+    - type: create_pull_request
+      expect:
+          data:
+              base-commit-sha: 95610869fd530ecf51e35a402fe681f1ca961b48
+              dependencies:
+                  - name: rust-toolchain
+                    previous-requirements:
+                        - file: rust-toolchain.toml
+                          groups: []
+                          requirement: 1.82.0
+                          source: null
+                    previous-version: 1.82.0
+                    requirements:
+                        - file: rust-toolchain.toml
+                          groups: []
+                          requirement: 1.86.0
+                          source: null
+                    version: 1.86.0
+                    directory: /rust-toolchain/version
+              updated-dependency-files:
+                  - content: |-
+                        [toolchain]
+                        channel = "1.86.0"
+                    content_encoding: utf-8
+                    deleted: false
+                    directory: /rust-toolchain/version
+                    name: rust-toolchain.toml
+                    operation: update
+                    support_file: false
+                    type: file
+              pr-title: Bump rust-toolchain from 1.82.0 to 1.86.0 in /rust-toolchain/version
+              pr-body: |
+                  Bumps [rust-toolchain](https://github.com/rust-lang/rust) from 1.82.0 to 1.86.0.
+                  <details>
+                  <summary>Release notes</summary>
+                  <p><em>Sourced from <a href="https://github.com/rust-lang/rust/releases">rust-toolchain's releases</a>.</em></p>
+                  <blockquote>
+                  <h2>Rust 1.86.0</h2>
+                  <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                  <h2>Language</h2>
+                  <ul>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/134367">Stabilize upcasting trait objects to supertraits.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/134090">Allow safe functions to be marked with the <code>#[target_feature]</code> attribute.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/132397">The <code>missing_abi</code> lint now warns-by-default.</a></li>
+                  <li>Rust now lints about double negations, to catch cases that might have intended to be a prefix decrement operator (<code>--x</code>) as written in other languages. This was previously a clippy lint, <code>clippy::double_neg</code>, and is <a href="https://redirect.github.com/rust-lang/rust/pull/126604">now available directly in Rust as <code>double_negations</code>.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/133700">More pointers are now detected as definitely not-null based on their alignment in const eval.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/133925">Empty <code>repr()</code> attribute applied to invalid items are now correctly rejected.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/134276">Inner attributes <code>#![test]</code> and <code>#![rustfmt::skip]</code> are no longer accepted in more places than intended.</a></li>
+                  </ul>
+                  <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                  <h2>Compiler</h2>
+                  <ul>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/134424">Debug-assert that raw pointers are non-null on access.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/135439">Change <code>-O</code> to mean <code>-C opt-level=3</code> instead of <code>-C opt-level=2</code> to match Cargo's defaults.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/136393">Fix emission of <code>overflowing_literals</code> under certain macro environments.</a></li>
+                  </ul>
+                  <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                  <h2>Platform Support</h2>
+                  <ul>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/136698">Replace <code>i686-unknown-redox</code> target with <code>i586-unknown-redox</code>.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/136700">Increase baseline CPU of <code>i686-unknown-hurd-gnu</code> to Pentium 4.</a></li>
+                  <li>New tier 3 targets:
+                  <ul>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/133631"><code>{aarch64-unknown,x86_64-pc}-nto-qnx710_iosock</code></a>. For supporting Neutrino QNX 7.1 with <code>io-socket</code> network stack.</li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/133631"><code>{aarch64-unknown,x86_64-pc}-nto-qnx800</code></a>. For supporting Neutrino QNX 8.0 (<code>no_std</code>-only).</li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/134609"><code>{x86_64,i686}-win7-windows-gnu</code></a>. Intended for backwards compatibility with Windows 7. <code>{x86_64,i686}-win7-windows-msvc</code> are the Windows MSVC counterparts that already exist as Tier 3 targets.</li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/134740"><code>amdgcn-amd-amdhsa</code></a>.</li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/134999"><code>x86_64-pc-cygwin</code></a>.</li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/135074"><code>{mips,mipsel}-mti-none-elf</code></a>. Initial bare-metal support.</li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/135085"><code>m68k-unknown-none-elf</code></a>.</li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/135757"><code>armv7a-nuttx-{eabi,eabihf}</code>, <code>aarch64-unknown-nuttx</code>, and <code>thumbv7a-nuttx-{eabi,eabihf}</code></a>.</li>
+                  </ul>
+                  </li>
+                  </ul>
+                  <p>Refer to Rust's <a href="https://doc.rust-lang.org/rustc/platform-support.html">platform support page</a> for more information on Rust's tiered platform support.</p>
+                  <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                  <h2>Libraries</h2>
+                  <ul>
+                  <li>The type of <code>FromBytesWithNulError</code> in <code>CStr::from_bytes_with_nul(bytes: &amp;[u8]) -&gt; Result&lt;&amp;Self, FromBytesWithNulError&gt;</code> was <a href="https://redirect.github.com/rust-lang/rust/pull/134143">changed from an opaque struct to an enum</a>, allowing users to examine why the conversion failed.</li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/134272">Remove <code>RustcDecodable</code> and <code>RustcEncodable</code>.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/134283">Deprecate libtest's <code>--logfile</code> option.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/134679">On recent versions of Windows, <code>std::fs::remove_file</code> will now remove read-only files.</a></li>
+                  </ul>
+                  <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                  <!-- raw HTML omitted -->
+                  </blockquote>
+                  <p>... (truncated)</p>
+                  </details>
+                  <details>
+                  <summary>Changelog</summary>
+                  <p><em>Sourced from <a href="https://github.com/rust-lang/rust/blob/master/RELEASES.md">rust-toolchain's changelog</a>.</em></p>
+                  <blockquote>
+                  <h1>Version 1.86.0 (2025-04-03)</h1>
+                  <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                  <h2>Language</h2>
+                  <ul>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/134367">Stabilize upcasting trait objects to supertraits.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/134090">Allow safe functions to be marked with the <code>#[target_feature]</code> attribute.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/132397">The <code>missing_abi</code> lint now warns-by-default.</a></li>
+                  <li>Rust now lints about double negations, to catch cases that might have intended to be a prefix decrement operator (<code>--x</code>) as written in other languages. This was previously a clippy lint, <code>clippy::double_neg</code>, and is <a href="https://redirect.github.com/rust-lang/rust/pull/126604">now available directly in Rust as <code>double_negations</code>.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/133700">More pointers are now detected as definitely not-null based on their alignment in const eval.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/133925">Empty <code>repr()</code> attribute applied to invalid items are now correctly rejected.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/134276">Inner attributes <code>#![test]</code> and <code>#![rustfmt::skip]</code> are no longer accepted in more places than intended.</a></li>
+                  </ul>
+                  <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                  <h2>Compiler</h2>
+                  <ul>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/134424">Debug-assert that raw pointers are non-null on access.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/135439">Change <code>-O</code> to mean <code>-C opt-level=3</code> instead of <code>-C opt-level=2</code> to match Cargo's defaults.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/136393">Fix emission of <code>overflowing_literals</code> under certain macro environments.</a></li>
+                  </ul>
+                  <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                  <h2>Platform Support</h2>
+                  <ul>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/136698">Replace <code>i686-unknown-redox</code> target with <code>i586-unknown-redox</code>.</a></li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/136700">Increase baseline CPU of <code>i686-unknown-hurd-gnu</code> to Pentium 4.</a></li>
+                  <li>New tier 3 targets:
+                  <ul>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/133631"><code>{aarch64-unknown,x86_64-pc}-nto-qnx710_iosock</code></a>.
+                  For supporting Neutrino QNX 7.1 with <code>io-socket</code> network stack.</li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/133631"><code>{aarch64-unknown,x86_64-pc}-nto-qnx800</code></a>.
+                  For supporting Neutrino QNX 8.0 (<code>no_std</code>-only).</li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/134609"><code>{x86_64,i686}-win7-windows-gnu</code></a>.
+                  Intended for backwards compatibility with Windows 7. <code>{x86_64,i686}-win7-windows-msvc</code> are the Windows MSVC counterparts that already exist as Tier 3 targets.</li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/134740"><code>amdgcn-amd-amdhsa</code></a>.</li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/134999"><code>x86_64-pc-cygwin</code></a>.</li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/135074"><code>{mips,mipsel}-mti-none-elf</code></a>.
+                  Initial bare-metal support.</li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/135085"><code>m68k-unknown-none-elf</code></a>.</li>
+                  <li><a href="https://redirect.github.com/rust-lang/rust/pull/135757"><code>armv7a-nuttx-{eabi,eabihf}</code>, <code>aarch64-unknown-nuttx</code>, and <code>thumbv7a-nuttx-{eabi,eabihf}</code></a>.</li>
+                  </ul>
+                  </li>
+                  </ul>
+                  <p>Refer to Rust's [platform support page][platform-support-doc]
+                  for more information on Rust's tiered platform support.</p>
+                  <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                  <h2>Libraries</h2>
+                  <!-- raw HTML omitted -->
+                  </blockquote>
+                  <p>... (truncated)</p>
+                  </details>
+                  <details>
+                  <summary>Commits</summary>
+                  <ul>
+                  <li><a href="https://github.com/rust-lang/rust/commit/05f9846f893b09a1be1fc8560e33fc3c815cfecb"><code>05f9846</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/rust/issues/139182">#139182</a> - BoxyUwU:stable, r=BoxyUwU</li>
+                  <li><a href="https://github.com/rust-lang/rust/commit/1d54fa26a8b9a6bd965d2bbe55afa6c2ddb65ccf"><code>1d54fa2</code></a> bump channel</li>
+                  <li><a href="https://github.com/rust-lang/rust/commit/b79b7d7b5e994f074ad430db9b70aaf80c33028a"><code>b79b7d7</code></a> release notes</li>
+                  <li><a href="https://github.com/rust-lang/rust/commit/7824ede68eef464473b01249568df27ed9e4fc27"><code>7824ede</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/rust/issues/138817">#138817</a> - cuviper:beta-next, r=cuviper</li>
+                  <li><a href="https://github.com/rust-lang/rust/commit/7fc74cdd8bb2737003f18e0a4711703f0d984bbd"><code>7fc74cd</code></a> Install licenses into <code>share/doc/rust/licenses</code></li>
+                  <li><a href="https://github.com/rust-lang/rust/commit/2c0e146d6d4fd67c7b27c6eb2e9bacd346751371"><code>2c0e146</code></a> Print the environment a second time</li>
+                  <li><a href="https://github.com/rust-lang/rust/commit/6a2ca0d4d7840fd197d8c4ef832e8b1fcedfa251"><code>6a2ca0d</code></a> Prevent /msys64/bin from being prepended to PATH</li>
+                  <li><a href="https://github.com/rust-lang/rust/commit/8c7969a3ae4a292789a415618fd3ebd35bee38e9"><code>8c7969a</code></a> Auto merge of <a href="https://redirect.github.com/rust-lang/rust/issues/138525">#138525</a> - cuviper:beta-next, r=cuviper</li>
+                  <li><a href="https://github.com/rust-lang/rust/commit/ea14c4a48f92797c8c7434034acc56a47d85c0dc"><code>ea14c4a</code></a> Fix revert fallout</li>
+                  <li><a href="https://github.com/rust-lang/rust/commit/4d1e502122b7d16091ca47a068b49c4a5159a91d"><code>4d1e502</code></a> Revert &quot;Rollup merge of <a href="https://redirect.github.com/rust-lang/rust/issues/136274">#136274</a> - compiler-errors:sized-wf, r=lcnr&quot;</li>
+                  <li>Additional commits viewable in <a href="https://github.com/rust-lang/rust/compare/1.82.0...1.86.0">compare view</a></li>
+                  </ul>
+                  </details>
+                  <br />
+              commit-message: |-
+                  Bump rust-toolchain from 1.82.0 to 1.86.0 in /rust-toolchain/version
+
+                  Bumps [rust-toolchain](https://github.com/rust-lang/rust) from 1.82.0 to 1.86.0.
+                  - [Release notes](https://github.com/rust-lang/rust/releases)
+                  - [Changelog](https://github.com/rust-lang/rust/blob/master/RELEASES.md)
+                  - [Commits](https://github.com/rust-lang/rust/compare/1.82.0...1.86.0)
+    - type: mark_as_processed
+      expect:
+          data:
+              base-commit-sha: 95610869fd530ecf51e35a402fe681f1ca961b48
