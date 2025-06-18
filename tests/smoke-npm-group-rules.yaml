@@ -1481,158 +1481,7 @@ output:
                   support_file: false
                   type: file
             pr-title: Bump the ruleset group in /npm with 3 updates
-            pr-body: |
-                Bumps the ruleset group in /npm with 3 updates: [axios](https://github.com/axios/axios), fetch-factory and [lodash](https://github.com/lodash/lodash).
-
-                Updates `axios` from 0.27.2 to 1.4.0
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/axios/axios/releases">axios's releases</a>.</em></p>
-                <blockquote>
-                <h2>Release v1.4.0</h2>
-                <h2>Release notes:</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href="https://redirect.github.com/axios/axios/issues/5678">#5678</a>) (<a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1">bbb61e7</a>)</li>
-                <li><strong>package:</strong> export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>) (<a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09">df38c94</a>)</li>
-                </ul>
-                <h3>Features</h3>
-                <ul>
-                <li><strong>dns:</strong> added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>) (<a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb">2701911</a>)</li>
-                <li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>) (<a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf">726f1c8</a>)</li>
-                </ul>
-                <h3>Performance Improvements</h3>
-                <ul>
-                <li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href="https://redirect.github.com/axios/axios/issues/5679">#5679</a>) (<a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e">e6f7053</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/arthurfiorette" title="+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )">Arthur Fiorette</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/npiyush97" title="+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )">PIYUSH NEGI</a></li>
-                </ul>
-                <h2>Release v1.3.6</h2>
-                <h2>Release notes:</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href="https://redirect.github.com/axios/axios/issues/5445">#5445</a>) (<a href="https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2">6f360a2</a>)</li>
-                <li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href="https://redirect.github.com/axios/axios/issues/5661">#5661</a>) (<a href="https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76">aa372f7</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/Cadienvan" title="+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )">Michael Di Prisco</a></li>
-                </ul>
-                <h2>Release v1.3.5</h2>
-                <h2>Release notes:</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>headers:</strong> fixed isValidHeaderName to support full list of allowed characters; (<a href="https://redirect.github.com/axios/axios/issues/5584">#5584</a>) (<a href="https://github.com/axios/axios/commit/e7decef6a99f4627e27ed9ea5b00ce8e201c3841">e7decef</a>)</li>
-                <li><strong>params:</strong> re-added the ability to set the function as <code>paramsSerializer</code> config; (<a href="https://redirect.github.com/axios/axios/issues/5633">#5633</a>) (<a href="https://github.com/axios/axios/commit/a56c8661209d5ce5a645a05f294a0e08a6c1f6b3">a56c866</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+28/-10 ([#5633](https://github.com/axios/axios/issues/5633) [#5584](https://github.com/axios/axios/issues/5584) )">Dmitriy Mozgovoy</a></li>
-                </ul>
-                <h2>Release v1.3.4</h2>
-                <h2>Release notes:</h2>
-                <h3>Bug Fixes</h3>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/axios/axios/blob/v1.x/CHANGELOG.md">axios's changelog</a>.</em></p>
-                <blockquote>
-                <h1><a href="https://github.com/axios/axios/compare/v1.3.6...v1.4.0">1.4.0</a> (2023-04-27)</h1>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href="https://redirect.github.com/axios/axios/issues/5678">#5678</a>) (<a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1">bbb61e7</a>)</li>
-                <li><strong>package:</strong> export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>) (<a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09">df38c94</a>)</li>
-                </ul>
-                <h3>Features</h3>
-                <ul>
-                <li><strong>dns:</strong> added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>) (<a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb">2701911</a>)</li>
-                <li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>) (<a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf">726f1c8</a>)</li>
-                </ul>
-                <h3>Performance Improvements</h3>
-                <ul>
-                <li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href="https://redirect.github.com/axios/axios/issues/5679">#5679</a>) (<a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e">e6f7053</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/arthurfiorette" title="+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )">Arthur Fiorette</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/npiyush97" title="+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )">PIYUSH NEGI</a></li>
-                </ul>
-                <h2><a href="https://github.com/axios/axios/compare/v1.3.5...v1.3.6">1.3.6</a> (2023-04-19)</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href="https://redirect.github.com/axios/axios/issues/5445">#5445</a>) (<a href="https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2">6f360a2</a>)</li>
-                <li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href="https://redirect.github.com/axios/axios/issues/5661">#5661</a>) (<a href="https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76">aa372f7</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/Cadienvan" title="+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )">Michael Di Prisco</a></li>
-                </ul>
-                <h2><a href="https://github.com/axios/axios/compare/v1.3.4...v1.3.5">1.3.5</a> (2023-04-05)</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>headers:</strong> fixed isValidHeaderName to support full list of allowed characters; (<a href="https://redirect.github.com/axios/axios/issues/5584">#5584</a>) (<a href="https://github.com/axios/axios/commit/e7decef6a99f4627e27ed9ea5b00ce8e201c3841">e7decef</a>)</li>
-                <li><strong>params:</strong> re-added the ability to set the function as <code>paramsSerializer</code> config; (<a href="https://redirect.github.com/axios/axios/issues/5633">#5633</a>) (<a href="https://github.com/axios/axios/commit/a56c8661209d5ce5a645a05f294a0e08a6c1f6b3">a56c866</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+28/-10 ([#5633](https://github.com/axios/axios/issues/5633) [#5584](https://github.com/axios/axios/issues/5584) )">Dmitriy Mozgovoy</a></li>
-                </ul>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/axios/axios/commit/21a5ad34c4a5956d81d338059ac0dd34a19ed094"><code>21a5ad3</code></a> chore(release): v1.4.0 (<a href="https://redirect.github.com/axios/axios/issues/5683">#5683</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/d627610d0c427de57c10618b36fa97814e2a75f0"><code>d627610</code></a> chore(utils): refactored isAsyncFn util to avoid inlining additional Babel he...</li>
-                <li><a href="https://github.com/axios/axios/commit/e18fdd893dfc67630c33fb6744d1b99d72857d92"><code>e18fdd8</code></a> refactor: remove deprecated url-search-params polyfill for URLSearchParams (#...</li>
-                <li><a href="https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf"><code>726f1c8</code></a> feat(types): export <code>AxiosHeaderValue</code> type. (<a href="https://redirect.github.com/axios/axios/issues/5525">#5525</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb"><code>2701911</code></a> feat(dns): added support for a custom lookup function; (<a href="https://redirect.github.com/axios/axios/issues/5339">#5339</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e"><code>e6f7053</code></a> perf(merge-config): optimize mergeConfig performance by avoiding duplicate ke...</li>
-                <li><a href="https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1"><code>bbb61e7</code></a> fix(formdata): add <code>multipart/form-data</code> content type for FormData payload on...</li>
-                <li><a href="https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09"><code>df38c94</code></a> fix(package): export package internals with unsafe path prefix; (<a href="https://redirect.github.com/axios/axios/issues/5677">#5677</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/59eb99183546d822bc27e881f5dcd748daa04173"><code>59eb991</code></a> chore(release): v1.3.6 (<a href="https://redirect.github.com/axios/axios/issues/5666">#5666</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/1b8cc3b02b13f5d16ad988460edbda463113177e"><code>1b8cc3b</code></a> chore(template): improve issue template; (<a href="https://redirect.github.com/axios/axios/issues/5665">#5665</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/axios/axios/compare/v0.27.2...v1.4.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-
-                Updates `fetch-factory` from 0.0.1 to 0.2.1
-
-                Updates `lodash` from 4.17.15 to 4.17.21
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/lodash/lodash/commit/f299b52f39486275a9e6483b60a410e06520c538"><code>f299b52</code></a> Bump to v4.17.21</li>
-                <li><a href="https://github.com/lodash/lodash/commit/c4847ebe7d14540bb28a8b932a9ce1b9ecbfee1a"><code>c4847eb</code></a> Improve performance of <code>toNumber</code>, <code>trim</code> and <code>trimEnd</code> on large input strings</li>
-                <li><a href="https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c"><code>3469357</code></a> Prevent command injection through <code>_.template</code>'s <code>variable</code> option</li>
-                <li><a href="https://github.com/lodash/lodash/commit/ded9bc66583ed0b4e3b7dc906206d40757b4a90a"><code>ded9bc6</code></a> Bump to v4.17.20.</li>
-                <li><a href="https://github.com/lodash/lodash/commit/63150ef7645ac07961b63a86490f419f356429aa"><code>63150ef</code></a> Documentation fixes.</li>
-                <li><a href="https://github.com/lodash/lodash/commit/00f0f62a979d2f5fa0287c06eae70cf9a62d8794"><code>00f0f62</code></a> test.js: Remove trailing comma.</li>
-                <li><a href="https://github.com/lodash/lodash/commit/846e434c7a5b5692c55ebf5715ed677b70a32389"><code>846e434</code></a> Temporarily use a custom fork of <code>lodash-cli</code>.</li>
-                <li><a href="https://github.com/lodash/lodash/commit/5d046f39cbd27f573914768e3b36eeefcc4f1229"><code>5d046f3</code></a> Re-enable Travis tests on <code>4.17</code> branch.</li>
-                <li><a href="https://github.com/lodash/lodash/commit/aa816b36d402a1ad9385142ce7188f17dae514fd"><code>aa816b3</code></a> Remove <code>/npm-package</code>.</li>
-                <li><a href="https://github.com/lodash/lodash/commit/d7fbc52ee0466a6d248f047b5d5c3e6d1e099056"><code>d7fbc52</code></a> Bump to v4.17.19</li>
-                <li>Additional commits viewable in <a href="https://github.com/lodash/lodash/compare/4.17.15...4.17.21">compare view</a></li>
-                </ul>
-                </details>
-                <details>
-                <summary>Maintainer changes</summary>
-                <p>This version was pushed to npm by <a href="https://www.npmjs.com/~bnjmnt4n">bnjmnt4n</a>, a new releaser for lodash since your current version.</p>
-                </details>
-                <br />
+            pr-body: "Bumps the ruleset group in /npm with 3 updates: [axios](https://github.com/axios/axios), fetch-factory and [lodash](https://github.com/lodash/lodash).\n\nUpdates `axios` from 0.27.2 to 1.4.0\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/axios/axios/releases\">axios's releases</a>.</em></p>\n<blockquote>\n<h2>Release v1.4.0</h2>\n<h2>Release notes:</h2>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href=\"https://redirect.github.com/axios/axios/issues/5678\">#5678</a>) (<a href=\"https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1\">bbb61e7</a>)</li>\n<li><strong>package:</strong> export package internals with unsafe path prefix; (<a href=\"https://redirect.github.com/axios/axios/issues/5677\">#5677</a>) (<a href=\"https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09\">df38c94</a>)</li>\n</ul>\n<h3>Features</h3>\n<ul>\n<li><strong>dns:</strong> added support for a custom lookup function; (<a href=\"https://redirect.github.com/axios/axios/issues/5339\">#5339</a>) (<a href=\"https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb\">2701911</a>)</li>\n<li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href=\"https://redirect.github.com/axios/axios/issues/5525\">#5525</a>) (<a href=\"https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf\">726f1c8</a>)</li>\n</ul>\n<h3>Performance Improvements</h3>\n<ul>\n<li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href=\"https://redirect.github.com/axios/axios/issues/5679\">#5679</a>) (<a href=\"https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e\">e6f7053</a>)</li>\n</ul>\n<h3>Contributors to this release</h3>\n<ul>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/DigitalBrainJS\" title=\"+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )\">Dmitriy Mozgovoy</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/arthurfiorette\" title=\"+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )\">Arthur Fiorette</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/npiyush97\" title=\"+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )\">PIYUSH NEGI</a></li>\n</ul>\n<h2>Release v1.3.6</h2>\n<h2>Release notes:</h2>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href=\"https://redirect.github.com/axios/axios/issues/5445\">#5445</a>) (<a href=\"https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2\">6f360a2</a>)</li>\n<li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href=\"https://redirect.github.com/axios/axios/issues/5661\">#5661</a>) (<a href=\"https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76\">aa372f7</a>)</li>\n</ul>\n<h3>Contributors to this release</h3>\n<ul>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/DigitalBrainJS\" title=\"+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )\">Dmitriy Mozgovoy</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/Cadienvan\" title=\"+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )\">Michael Di Prisco</a></li>\n</ul>\n<h2>Release v1.3.5</h2>\n<h2>Release notes:</h2>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>headers:</strong> fixed isValidHeaderName to support full list of allowed characters; (<a href=\"https://redirect.github.com/axios/axios/issues/5584\">#5584</a>) (<a href=\"https://github.com/axios/axios/commit/e7decef6a99f4627e27ed9ea5b00ce8e201c3841\">e7decef</a>)</li>\n<li><strong>params:</strong> re-added the ability to set the function as <code>paramsSerializer</code> config; (<a href=\"https://redirect.github.com/axios/axios/issues/5633\">#5633</a>) (<a href=\"https://github.com/axios/axios/commit/a56c8661209d5ce5a645a05f294a0e08a6c1f6b3\">a56c866</a>)</li>\n</ul>\n<h3>Contributors to this release</h3>\n<ul>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/DigitalBrainJS\" title=\"+28/-10 ([#5633](https://github.com/axios/axios/issues/5633) [#5584](https://github.com/axios/axios/issues/5584) )\">Dmitriy Mozgovoy</a></li>\n</ul>\n<h2>Release v1.3.4</h2>\n<h2>Release notes:</h2>\n<h3>Bug Fixes</h3>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a href=\"https://github.com/axios/axios/blob/v1.x/CHANGELOG.md\">axios's changelog</a>.</em></p>\n<blockquote>\n<h1><a href=\"https://github.com/axios/axios/compare/v1.3.6...v1.4.0\">1.4.0</a> (2023-04-27)</h1>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>formdata:</strong> add <code>multipart/form-data</code> content type for FormData payload on custom client environments; (<a href=\"https://redirect.github.com/axios/axios/issues/5678\">#5678</a>) (<a href=\"https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1\">bbb61e7</a>)</li>\n<li><strong>package:</strong> export package internals with unsafe path prefix; (<a href=\"https://redirect.github.com/axios/axios/issues/5677\">#5677</a>) (<a href=\"https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09\">df38c94</a>)</li>\n</ul>\n<h3>Features</h3>\n<ul>\n<li><strong>dns:</strong> added support for a custom lookup function; (<a href=\"https://redirect.github.com/axios/axios/issues/5339\">#5339</a>) (<a href=\"https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb\">2701911</a>)</li>\n<li><strong>types:</strong> export <code>AxiosHeaderValue</code> type. (<a href=\"https://redirect.github.com/axios/axios/issues/5525\">#5525</a>) (<a href=\"https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf\">726f1c8</a>)</li>\n</ul>\n<h3>Performance Improvements</h3>\n<ul>\n<li><strong>merge-config:</strong> optimize mergeConfig performance by avoiding duplicate key visits; (<a href=\"https://redirect.github.com/axios/axios/issues/5679\">#5679</a>) (<a href=\"https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e\">e6f7053</a>)</li>\n</ul>\n<h3>Contributors to this release</h3>\n<ul>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/DigitalBrainJS\" title=\"+151/-16 ([#5684](https://github.com/axios/axios/issues/5684) [#5339](https://github.com/axios/axios/issues/5339) [#5679](https://github.com/axios/axios/issues/5679) [#5678](https://github.com/axios/axios/issues/5678) [#5677](https://github.com/axios/axios/issues/5677) )\">Dmitriy Mozgovoy</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/arthurfiorette\" title=\"+19/-19 ([#5525](https://github.com/axios/axios/issues/5525) )\">Arthur Fiorette</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/npiyush97\" title=\"+2/-18 ([#5670](https://github.com/axios/axios/issues/5670) )\">PIYUSH NEGI</a></li>\n</ul>\n<h3>PRs</h3>\n<ul>\n<li>CVE 2023 45857 ( <a href=\"https://api.github.com/repos/axios/axios/pulls/6028\">#6028</a> )</li>\n</ul>\n<pre><code>\n⚠️ Critical vulnerability fix. See https://security.snyk.io/vuln/SNYK-JS-AXIOS-6032459\n</code></pre>\n<h2><a href=\"https://github.com/axios/axios/compare/v1.3.5...v1.3.6\">1.3.6</a> (2023-04-19)</h2>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>types:</strong> added transport to RawAxiosRequestConfig (<a href=\"https://redirect.github.com/axios/axios/issues/5445\">#5445</a>) (<a href=\"https://github.com/axios/axios/commit/6f360a2531d8d70363fd9becef6a45a323f170e2\">6f360a2</a>)</li>\n<li><strong>utils:</strong> make isFormData detection logic stricter to avoid unnecessary calling of the <code>toString</code> method on the target; (<a href=\"https://redirect.github.com/axios/axios/issues/5661\">#5661</a>) (<a href=\"https://github.com/axios/axios/commit/aa372f7306295dfd1100c1c2c77ce95c95808e76\">aa372f7</a>)</li>\n</ul>\n<h3>Contributors to this release</h3>\n<ul>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/DigitalBrainJS\" title=\"+48/-10 ([#5665](https://github.com/axios/axios/issues/5665) [#5661](https://github.com/axios/axios/issues/5661) [#5663](https://github.com/axios/axios/issues/5663) )\">Dmitriy Mozgovoy</a></li>\n<li><!-- raw HTML omitted --> <a href=\"https://github.com/Cadienvan\" title=\"+2/-0 ([#5445](https://github.com/axios/axios/issues/5445) )\">Michael Di Prisco</a></li>\n</ul>\n<h3>PRs</h3>\n<ul>\n<li>CVE 2023 45857 ( <a href=\"https://api.github.com/repos/axios/axios/pulls/6028\">#6028</a> )</li>\n</ul>\n<pre><code>\n⚠️ Critical vulnerability fix. See https://security.snyk.io/vuln/SNYK-JS-AXIOS-6032459\n&lt;/tr&gt;&lt;/table&gt; \n</code></pre>\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/axios/axios/commit/21a5ad34c4a5956d81d338059ac0dd34a19ed094\"><code>21a5ad3</code></a> chore(release): v1.4.0 (<a href=\"https://redirect.github.com/axios/axios/issues/5683\">#5683</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/d627610d0c427de57c10618b36fa97814e2a75f0\"><code>d627610</code></a> chore(utils): refactored isAsyncFn util to avoid inlining additional Babel he...</li>\n<li><a href=\"https://github.com/axios/axios/commit/e18fdd893dfc67630c33fb6744d1b99d72857d92\"><code>e18fdd8</code></a> refactor: remove deprecated url-search-params polyfill for URLSearchParams (#...</li>\n<li><a href=\"https://github.com/axios/axios/commit/726f1c8e00cffa0461a8813a9bdcb8f8b9d762cf\"><code>726f1c8</code></a> feat(types): export <code>AxiosHeaderValue</code> type. (<a href=\"https://redirect.github.com/axios/axios/issues/5525\">#5525</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/2701911260a1faa5cc5e1afe437121b330a3b7bb\"><code>2701911</code></a> feat(dns): added support for a custom lookup function; (<a href=\"https://redirect.github.com/axios/axios/issues/5339\">#5339</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/e6f7053bf1a3e87cf1f9da8677e12e3fe829d68e\"><code>e6f7053</code></a> perf(merge-config): optimize mergeConfig performance by avoiding duplicate ke...</li>\n<li><a href=\"https://github.com/axios/axios/commit/bbb61e70cb1185adfb1cbbb86eaf6652c48d89d1\"><code>bbb61e7</code></a> fix(formdata): add <code>multipart/form-data</code> content type for FormData payload on...</li>\n<li><a href=\"https://github.com/axios/axios/commit/df38c949f26414d88ba29ec1e353c4d4f97eaf09\"><code>df38c94</code></a> fix(package): export package internals with unsafe path prefix; (<a href=\"https://redirect.github.com/axios/axios/issues/5677\">#5677</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/59eb99183546d822bc27e881f5dcd748daa04173\"><code>59eb991</code></a> chore(release): v1.3.6 (<a href=\"https://redirect.github.com/axios/axios/issues/5666\">#5666</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/1b8cc3b02b13f5d16ad988460edbda463113177e\"><code>1b8cc3b</code></a> chore(template): improve issue template; (<a href=\"https://redirect.github.com/axios/axios/issues/5665\">#5665</a>)</li>\n<li>Additional commits viewable in <a href=\"https://github.com/axios/axios/compare/v0.27.2...v1.4.0\">compare view</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `fetch-factory` from 0.0.1 to 0.2.1\n\nUpdates `lodash` from 4.17.15 to 4.17.21\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/lodash/lodash/commit/f299b52f39486275a9e6483b60a410e06520c538\"><code>f299b52</code></a> Bump to v4.17.21</li>\n<li><a href=\"https://github.com/lodash/lodash/commit/c4847ebe7d14540bb28a8b932a9ce1b9ecbfee1a\"><code>c4847eb</code></a> Improve performance of <code>toNumber</code>, <code>trim</code> and <code>trimEnd</code> on large input strings</li>\n<li><a href=\"https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c\"><code>3469357</code></a> Prevent command injection through <code>_.template</code>'s <code>variable</code> option</li>\n<li><a href=\"https://github.com/lodash/lodash/commit/ded9bc66583ed0b4e3b7dc906206d40757b4a90a\"><code>ded9bc6</code></a> Bump to v4.17.20.</li>\n<li><a href=\"https://github.com/lodash/lodash/commit/63150ef7645ac07961b63a86490f419f356429aa\"><code>63150ef</code></a> Documentation fixes.</li>\n<li><a href=\"https://github.com/lodash/lodash/commit/00f0f62a979d2f5fa0287c06eae70cf9a62d8794\"><code>00f0f62</code></a> test.js: Remove trailing comma.</li>\n<li><a href=\"https://github.com/lodash/lodash/commit/846e434c7a5b5692c55ebf5715ed677b70a32389\"><code>846e434</code></a> Temporarily use a custom fork of <code>lodash-cli</code>.</li>\n<li><a href=\"https://github.com/lodash/lodash/commit/5d046f39cbd27f573914768e3b36eeefcc4f1229\"><code>5d046f3</code></a> Re-enable Travis tests on <code>4.17</code> branch.</li>\n<li><a href=\"https://github.com/lodash/lodash/commit/aa816b36d402a1ad9385142ce7188f17dae514fd\"><code>aa816b3</code></a> Remove <code>/npm-package</code>.</li>\n<li><a href=\"https://github.com/lodash/lodash/commit/d7fbc52ee0466a6d248f047b5d5c3e6d1e099056\"><code>d7fbc52</code></a> Bump to v4.17.19</li>\n<li>Additional commits viewable in <a href=\"https://github.com/lodash/lodash/compare/4.17.15...4.17.21\">compare view</a></li>\n</ul>\n</details>\n<details>\n<summary>Maintainer changes</summary>\n<p>This version was pushed to npm by <a href=\"https://www.npmjs.com/~bnjmnt4n\">bnjmnt4n</a>, a new releaser for lodash since your current version.</p>\n</details>\n<br />\n"
             commit-message: |-
                 Bump the ruleset group in /npm with 3 updates
 
@@ -2537,7 +2386,7 @@ output:
                   previous-requirements: []
                   previous-version: 4.0.0
                   requirements: []
-                  version: 4.0.2
+                  version: 4.0.3
                   directory: /npm
             updated-dependency-files:
                 - content: |
@@ -2719,14 +2568,15 @@ output:
                           }
                         },
                         "node_modules/form-data": {
-                          "version": "4.0.2",
-                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.2.tgz",
-                          "integrity": "sha512-hGfm/slu0ZabnNt4oaRZ6uREyfCj6P4fT/n6A1rGV+Z0VdGXjfOhVUpkn6qVQONHGIFwmveGXyDs75+nr6FM8w==",
+                          "version": "4.0.3",
+                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.3.tgz",
+                          "integrity": "sha512-qsITQPfmvMOSAdeyZ+12I1c+CKSstAFAwu+97zrnWAbIr5u8wfsExUzCesVLC8NgHuRUqNN4Zy6UPWUTRGslcA==",
                           "license": "MIT",
                           "dependencies": {
                             "asynckit": "^0.4.0",
                             "combined-stream": "^1.0.8",
                             "es-set-tostringtag": "^2.1.0",
+                            "hasown": "^2.0.2",
                             "mime-types": "^2.1.12"
                           },
                           "engines": {
@@ -3021,13 +2871,14 @@ output:
                           "integrity": "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA=="
                         },
                         "form-data": {
-                          "version": "4.0.2",
-                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.2.tgz",
-                          "integrity": "sha512-hGfm/slu0ZabnNt4oaRZ6uREyfCj6P4fT/n6A1rGV+Z0VdGXjfOhVUpkn6qVQONHGIFwmveGXyDs75+nr6FM8w==",
+                          "version": "4.0.3",
+                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.3.tgz",
+                          "integrity": "sha512-qsITQPfmvMOSAdeyZ+12I1c+CKSstAFAwu+97zrnWAbIr5u8wfsExUzCesVLC8NgHuRUqNN4Zy6UPWUTRGslcA==",
                           "requires": {
                             "asynckit": "^0.4.0",
                             "combined-stream": "^1.0.8",
                             "es-set-tostringtag": "^2.1.0",
+                            "hasown": "^2.0.2",
                             "mime-types": "^2.1.12"
                           }
                         },
@@ -3153,9 +3004,9 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump form-data from 4.0.0 to 4.0.2 in /npm
+            pr-title: Bump form-data from 4.0.0 to 4.0.3 in /npm
             pr-body: |
-                Bumps [form-data](https://github.com/form-data/form-data) from 4.0.0 to 4.0.2.
+                Bumps [form-data](https://github.com/form-data/form-data) from 4.0.0 to 4.0.3.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/form-data/form-data/releases">form-data's releases</a>.</em></p>
@@ -3175,17 +3026,17 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/form-data/form-data/commit/7465e1337244831e91f9a2413a2bf49bdc2a2e04"><code>7465e13</code></a> v4.0.2</li>
-                <li><a href="https://github.com/form-data/form-data/commit/92613b9208556eb4ebc482fdf599fae111626fb6"><code>92613b9</code></a> Merge tags v2.5.3 and v3.0.3</li>
-                <li><a href="https://github.com/form-data/form-data/commit/e46f09bb5338bff090f5cceea5119a8b37c9b147"><code>e46f09b</code></a> v3.0.3</li>
-                <li><a href="https://github.com/form-data/form-data/commit/e5df7f24383342264bd73dee3274818a40d04065"><code>e5df7f2</code></a> [Dev Deps] pin <code>request</code> which via <code>tough-cookie</code> ^2.4 depends on <code>psl</code></li>
-                <li><a href="https://github.com/form-data/form-data/commit/84ca1d6006d65abe7b73c3e99b023aeb353e1e12"><code>84ca1d6</code></a> [Fix] set <code>Symbol.toStringTag</code> when available (<a href="https://redirect.github.com/form-data/form-data/issues/573">#573</a>)</li>
-                <li><a href="https://github.com/form-data/form-data/commit/7fecefe4ba8f775634aff86a698776ad95ecffb5"><code>7fecefe</code></a> [Refactor] use <code>Object.prototype.hasOwnProperty.call</code></li>
-                <li><a href="https://github.com/form-data/form-data/commit/5a5bafee894fead10da49e1fa2b084e17f2e1034"><code>5a5bafe</code></a> [Deps] update <code>mime-types</code></li>
-                <li><a href="https://github.com/form-data/form-data/commit/8261fcb8bf5944d30ae3bd04b91b71d6a9932ef4"><code>8261fcb</code></a> [Dev Deps] update <code>@types/node</code>, <code>browserify</code>, <code>coveralls</code>, <code>cross-spawn</code>, `e...</li>
-                <li><a href="https://github.com/form-data/form-data/commit/b82f59093cdbadb4b7ec0922d33ae7ab048b82ff"><code>b82f590</code></a> Only apps should have lockfiles</li>
-                <li><a href="https://github.com/form-data/form-data/commit/9457283e1dce6122adc908fdd7442cfc54cabe7a"><code>9457283</code></a> Bumped version 2.5.3</li>
-                <li>Additional commits viewable in <a href="https://github.com/form-data/form-data/compare/v4.0.0...v4.0.2">compare view</a></li>
+                <li><a href="https://github.com/form-data/form-data/commit/d8d67dc8ac79285154edf7d3f57dbab593b9a146"><code>d8d67dc</code></a> v4.0.3</li>
+                <li><a href="https://github.com/form-data/form-data/commit/e6e83ccb545a5619ed6cd04f31d5c2f655eb633e"><code>e6e83cc</code></a> [meta] remove local commit hooks</li>
+                <li><a href="https://github.com/form-data/form-data/commit/870e4e665935e701bf983a051244ab928e62d58e"><code>870e4e6</code></a> [Dev Deps] remove unused deps</li>
+                <li><a href="https://github.com/form-data/form-data/commit/799d56c897d1eab6eafefe1454bb53011596da15"><code>799d56c</code></a> [Fix] <code>append</code>: avoid a crash on nullish values</li>
+                <li><a href="https://github.com/form-data/form-data/commit/8d8e4693093519f7f18e3c597d1e8df8c493de9e"><code>8d8e469</code></a> [Fix] validate boundary type in <code>setBoundary()</code> method</li>
+                <li><a href="https://github.com/form-data/form-data/commit/837b8a1f7562bfb8bda74f3fc538adb7a5858995"><code>837b8a1</code></a> [Tests] add tests to check the behavior of <code>getBoundary</code> with non-strings</li>
+                <li><a href="https://github.com/form-data/form-data/commit/426ba9ac440f95d1998dac9a5cd8d738043b048f"><code>426ba9a</code></a> [eslint] use a shared config</li>
+                <li><a href="https://github.com/form-data/form-data/commit/20941917f0e9487e68c564ebc3157e23609e2939"><code>2094191</code></a> [eslint] fix some spacing issues</li>
+                <li><a href="https://github.com/form-data/form-data/commit/4066fd6f65992b62fa324a6474a9292a4f88c916"><code>4066fd6</code></a> [Dev Deps] update <code>eslint</code></li>
+                <li><a href="https://github.com/form-data/form-data/commit/81ab41b46fdf34f5d89d7ff30b513b0925febfaa"><code>81ab41b</code></a> [Refactor] use <code>hasown</code></li>
+                <li>Additional commits viewable in <a href="https://github.com/form-data/form-data/compare/v4.0.0...v4.0.3">compare view</a></li>
                 </ul>
                 </details>
                 <details>
@@ -3194,11 +3045,11 @@ output:
                 </details>
                 <br />
             commit-message: |-
-                Bump form-data from 4.0.0 to 4.0.2 in /npm
+                Bump form-data from 4.0.0 to 4.0.3 in /npm
 
-                Bumps [form-data](https://github.com/form-data/form-data) from 4.0.0 to 4.0.2.
+                Bumps [form-data](https://github.com/form-data/form-data) from 4.0.0 to 4.0.3.
                 - [Release notes](https://github.com/form-data/form-data/releases)
-                - [Commits](https://github.com/form-data/form-data/compare/v4.0.0...v4.0.2)
+                - [Commits](https://github.com/form-data/form-data/compare/v4.0.0...v4.0.3)
     - type: mark_as_processed
       expect:
         data:
