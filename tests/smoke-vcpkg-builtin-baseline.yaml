@@ -3,6 +3,10 @@ input:
         package-manager: vcpkg
         allowed-updates:
             - update-type: all
+        ignore-conditions:
+            - dependency-name: github.com/microsoft/vcpkg
+              source: tests/smoke-vcpkg-builtin-baseline.yaml
+              version-requirement: '>2025.06.13'
         source:
             provider: github
             repo: dependabot/smoke-tests
