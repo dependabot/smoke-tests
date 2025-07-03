@@ -1,0 +1,84 @@
+input:
+  job:
+    package-manager: rust_toolchain
+    allowed-updates:
+      - update-type: all
+    ignore-conditions:
+      - dependency-name: rust-toolchain
+        source: tests/smoke-rust-toolchain-date.yaml
+        version-requirement: "> stable-2025-04-03"
+    source:
+      provider: github
+      repo: dependabot/smoke-tests
+      directory: rust-toolchain/date
+      commit: 95610869fd530ecf51e35a402fe681f1ca961b48
+  credentials:
+    - host: github.com
+      password: $LOCAL_GITHUB_ACCESS_TOKEN
+      type: git_source
+      username: x-access-token
+output:
+  - type: update_dependency_list
+    expect:
+      data:
+        dependencies:
+          - name: rust-toolchain
+            requirements:
+              - file: rust-toolchain.toml
+                groups: []
+                requirement: stable-2024-10-17
+                source: null
+            version: stable-2024-10-17
+        dependency_files:
+          - /rust-toolchain/date/rust-toolchain.toml
+  - type: create_pull_request
+    expect:
+      data:
+        base-commit-sha: 95610869fd530ecf51e35a402fe681f1ca961b48
+        dependencies:
+          - name: rust-toolchain
+            previous-requirements:
+              - file: rust-toolchain.toml
+                groups: []
+                requirement: stable-2024-10-17
+                source: null
+            previous-version: stable-2024-10-17
+            requirements:
+              - file: rust-toolchain.toml
+                groups: []
+                requirement: stable-2025-04-03
+                source: null
+            version: stable-2025-04-03
+            directory: /rust-toolchain/date
+        updated-dependency-files:
+          - content: |-
+              [toolchain]
+              channel = "stable-2025-04-03"
+            content_encoding: utf-8
+            deleted: false
+            directory: /rust-toolchain/date
+            name: rust-toolchain.toml
+            operation: update
+            support_file: false
+            type: file
+        pr-title: Bump rust-toolchain from stable-2024-10-17 to stable-2025-04-03 in /rust-toolchain/date
+        pr-body: |
+          Bumps [rust-toolchain](https://github.com/rust-lang/rust) from stable-2024-10-17 to stable-2025-04-03.
+          <details>
+          <summary>Commits</summary>
+          <ul>
+          <li>See full diff in <a href="https://github.com/rust-lang/rust/commits">compare view</a></li>
+          </ul>
+          </details>
+          <br />
+        commit-message: |-
+          Bump rust-toolchain in /rust-toolchain/date
+
+          Bumps [rust-toolchain](https://github.com/rust-lang/rust) from stable-2024-10-17 to stable-2025-04-03.
+          - [Release notes](https://github.com/rust-lang/rust/releases)
+          - [Changelog](https://github.com/rust-lang/rust/blob/master/RELEASES.md)
+          - [Commits](https://github.com/rust-lang/rust/commits)
+  - type: mark_as_processed
+    expect:
+      data:
+        base-commit-sha: 95610869fd530ecf51e35a402fe681f1ca961b48

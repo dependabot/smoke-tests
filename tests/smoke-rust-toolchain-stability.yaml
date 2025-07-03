@@ -1,0 +1,33 @@
+input:
+    job:
+        package-manager: rust_toolchain
+        allowed-updates:
+            - update-type: all
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: rust-toolchain/stability
+            commit: 95610869fd530ecf51e35a402fe681f1ca961b48
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+          data:
+              dependencies:
+                  - name: rust-toolchain
+                    requirements:
+                        - file: rust-toolchain.toml
+                          groups: []
+                          requirement: stable
+                          source: null
+                    version: stable
+              dependency_files:
+                  - /rust-toolchain/stability/rust-toolchain.toml
+    - type: mark_as_processed
+      expect:
+          data:
+              base-commit-sha: 95610869fd530ecf51e35a402fe681f1ca961b48
