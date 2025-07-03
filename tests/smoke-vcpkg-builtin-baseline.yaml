@@ -1,0 +1,108 @@
+input:
+    job:
+        package-manager: vcpkg
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: github.com/microsoft/vcpkg
+              source: tests/smoke-vcpkg-builtin-baseline.yaml
+              version-requirement: '>2025.06.13'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /vcpkg/builtin-baseline
+            commit: 761fd1bcff70338b9105d5cb4e2032417391d39d
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: github.com/microsoft/vcpkg
+                  requirements:
+                    - file: vcpkg.json
+                      groups: []
+                      requirement: null
+                      source:
+                        ref: master
+                        type: git
+                        url: https://github.com/microsoft/vcpkg.git
+                  version: fe1cde61e971d53c9687cf9a46308f8f55da19fa
+            dependency_files:
+                - /vcpkg/builtin-baseline/vcpkg.json
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 761fd1bcff70338b9105d5cb4e2032417391d39d
+            dependencies:
+                - name: github.com/microsoft/vcpkg
+                  previous-requirements:
+                    - file: vcpkg.json
+                      groups: []
+                      requirement: null
+                      source:
+                        ref: master
+                        type: git
+                        url: https://github.com/microsoft/vcpkg.git
+                  previous-version: fe1cde61e971d53c9687cf9a46308f8f55da19fa
+                  requirements:
+                    - file: vcpkg.json
+                      groups: []
+                      requirement: null
+                      source:
+                        ref: ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0
+                        type: git
+                        url: https://github.com/microsoft/vcpkg.git
+                  version: ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0
+                  directory: /vcpkg/builtin-baseline
+            updated-dependency-files:
+                - content: |-
+                    {
+                      "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+                      "builtin-baseline": "ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0",
+                      "dependencies": [
+                        "fmt",
+                        "ms-gsl"
+                      ]
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /vcpkg/builtin-baseline
+                  name: vcpkg.json
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump github.com/microsoft/vcpkg from master to ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0 in /vcpkg/builtin-baseline
+            pr-body: |
+                Bumps [github.com/microsoft/vcpkg](https://github.com/microsoft/vcpkg) from master to ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/microsoft/vcpkg/commit/ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0"><code>ef7dbf9</code></a> [protobuf] Don't emulate module for find_package(protobuf) (<a href="https://redirect.github.com/microsoft/vcpkg/issues/45959">#45959</a>)</li>
+                <li><a href="https://github.com/microsoft/vcpkg/commit/22881dbfabcf0a9f5e58222087f24c01bff06639"><code>22881db</code></a> [libjuice] update to 1.6.1 (<a href="https://redirect.github.com/microsoft/vcpkg/issues/45978">#45978</a>)</li>
+                <li><a href="https://github.com/microsoft/vcpkg/commit/fce9157722b6ad5b6d47f344cd5acd761bdc2f96"><code>fce9157</code></a> [upa-url] update to 2.2.0 (<a href="https://redirect.github.com/microsoft/vcpkg/issues/45982">#45982</a>)</li>
+                <li><a href="https://github.com/microsoft/vcpkg/commit/dd6445443438eaa1ac541cb8e369d4dfce01e7bd"><code>dd64454</code></a> Patch Tuesday for June 2025 (<a href="https://redirect.github.com/microsoft/vcpkg/issues/45951">#45951</a>)</li>
+                <li><a href="https://github.com/microsoft/vcpkg/commit/d8da7a82f06d9ca61cd939ce9bc94e81f2d61deb"><code>d8da7a8</code></a> [librdkafka] update to 2.10.1 (<a href="https://redirect.github.com/microsoft/vcpkg/issues/45976">#45976</a>)</li>
+                <li><a href="https://github.com/microsoft/vcpkg/commit/242ac6932a9cd2607332969129e9572516f28d65"><code>242ac69</code></a> [libffi] Update to 3.5.1 (<a href="https://redirect.github.com/microsoft/vcpkg/issues/45914">#45914</a>)</li>
+                <li><a href="https://github.com/microsoft/vcpkg/commit/f4ea42fa5c2b993cf2b75725331616999e2e34d1"><code>f4ea42f</code></a> [glaze] update to 5.4.1 (<a href="https://redirect.github.com/microsoft/vcpkg/issues/45954">#45954</a>)</li>
+                <li><a href="https://github.com/microsoft/vcpkg/commit/4f2b3ff99c2d7f95a85d2725b381bbe78b2cc74b"><code>4f2b3ff</code></a> [libgit2] update to 1.9.1 (<a href="https://redirect.github.com/microsoft/vcpkg/issues/45900">#45900</a>)</li>
+                <li><a href="https://github.com/microsoft/vcpkg/commit/83ca15c7c0e2d861c470cfbda8dde2f73e0cf2b2"><code>83ca15c</code></a> [opentelemetry-cpp] update to 1.21.0 (<a href="https://redirect.github.com/microsoft/vcpkg/issues/44804">#44804</a>) (<a href="https://redirect.github.com/microsoft/vcpkg/issues/45927">#45927</a>)</li>
+                <li><a href="https://github.com/microsoft/vcpkg/commit/638e14b9e6df78a23a5591d60be213b0125790ed"><code>638e14b</code></a> [gtk3] Skip in CI (<a href="https://redirect.github.com/microsoft/vcpkg/issues/45972">#45972</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/microsoft/vcpkg/compare/fe1cde61e971d53c9687cf9a46308f8f55da19fa...ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump github.com/microsoft/vcpkg in /vcpkg/builtin-baseline
+
+                Bumps [github.com/microsoft/vcpkg](https://github.com/microsoft/vcpkg) from master to ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0.
+                - [Release notes](https://github.com/microsoft/vcpkg/releases)
+                - [Commits](https://github.com/microsoft/vcpkg/compare/fe1cde61e971d53c9687cf9a46308f8f55da19fa...ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 761fd1bcff70338b9105d5cb4e2032417391d39d
