@@ -10,6 +10,7 @@ input:
             - '@dependabot-fixtures/npm-transitive-dependency'
         experiments:
             record-ecosystem-versions: true
+            enable_cooldown_for_npm_and_yarn: true
         ignore-conditions:
             - dependency-name: '@dependabot-fixtures/npm-remove-dependency'
               source: tests/smoke-npm-remove-transitive.yaml

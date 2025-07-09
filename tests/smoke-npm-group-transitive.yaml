@@ -10,6 +10,7 @@ input:
                     - '@hapi/*'
         experiments:
             record-ecosystem-versions: true
+            enable_cooldown_for_npm_and_yarn: true
         ignore-conditions:
             - dependency-name: '@hapi/hoek'
               source: tests/smoke-npm-group-transitive.yaml
