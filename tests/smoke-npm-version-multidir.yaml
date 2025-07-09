@@ -11,6 +11,8 @@ input:
                     - '@dependabot/dummy-pkg-a'
                     - '@dependabot/dummy-pkg-b'
                     - left-pad
+        experiments:
+            enable_cooldown_for_npm_and_yarn: true
         ignore-conditions:
             - dependency-name: '@dependabot/dummy-pkg-b'
               source: tests/smoke-npm-version-multidir.yaml
