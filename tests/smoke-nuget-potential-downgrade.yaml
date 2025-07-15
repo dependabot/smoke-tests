@@ -6,8 +6,9 @@ input:
         dependencies:
             - Microsoft.VisualStudio.Sdk.TestFramework.Xunit
         experiments:
-            nuget_native_analysis: true
+            nuget_native_updater: true
             nuget_use_direct_discovery: true
+            nuget_use_new_file_updater: true
         ignore-conditions:
             - dependency-name: Microsoft.VisualStudio.Sdk.TestFramework.Xunit
               source: tests/potential-downgrade.yaml
@@ -36,34 +37,84 @@ output:
         data:
             dependencies:
                 - name: Castle.Core
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 5.1.0
+                      source: null
                   version: 5.1.0
                 - name: MessagePack
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 2.5.108
+                      source: null
                   version: 2.5.108
                 - name: MessagePack.Annotations
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 2.5.108
+                      source: null
                   version: 2.5.108
                 - name: Microsoft.Bcl.AsyncInterfaces
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: Microsoft.Build.Framework
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.3
+                      source: null
                   version: 17.6.3
                 - name: Microsoft.CodeAnalysis.BannedApiAnalyzers
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 3.3.2
+                      source: null
                   version: 3.3.2
                 - name: Microsoft.CodeCoverage
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.3
+                      source: null
                   version: 17.6.3
                 - name: Microsoft.CSharp
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.7.0
+                      source: null
                   version: 4.7.0
                 - name: Microsoft.IO.Redist
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.0.0
+                      source: null
                   version: 6.0.0
                 - name: Microsoft.NET.StringTools
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.3
+                      source: null
                   version: 17.6.3
                 - name: Microsoft.NET.Test.Sdk
                   requirements:
@@ -74,55 +125,140 @@ output:
                       source: null
                   version: 17.6.3
                 - name: Microsoft.ServiceHub.Analyzers
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.2.102
+                      source: null
                   version: 4.2.102
                 - name: Microsoft.ServiceHub.Framework
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.2.102
+                      source: null
                   version: 4.2.102
                 - name: Microsoft.ServiceHub.Resources
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.2.8
+                      source: null
                   version: 4.2.8
                 - name: Microsoft.TestPlatform.ObjectModel
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.3
+                      source: null
                   version: 17.6.3
                 - name: Microsoft.TestPlatform.TestHost
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.3
+                      source: null
                   version: 17.6.3
                 - name: Microsoft.VisualStudio.ComponentModelHost
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.268
+                      source: null
                   version: 17.6.268
                 - name: Microsoft.VisualStudio.Composition
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.17
+                      source: null
                   version: 17.6.17
                 - name: Microsoft.VisualStudio.Composition.Analyzers
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.17
+                      source: null
                   version: 17.6.17
                 - name: Microsoft.VisualStudio.GraphModel
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.36389
+                      source: null
                   version: 17.6.36389
                 - name: Microsoft.VisualStudio.ImageCatalog
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.36389
+                      source: null
                   version: 17.6.36389
                 - name: Microsoft.VisualStudio.Imaging
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.36389
+                      source: null
                   version: 17.6.36389
                 - name: Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.36387
+                      source: null
                   version: 17.6.36387
                 - name: Microsoft.VisualStudio.Interop
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.36389
+                      source: null
                   version: 17.6.36389
                 - name: Microsoft.VisualStudio.ProjectAggregator
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.36387
+                      source: null
                   version: 17.6.36387
                 - name: Microsoft.VisualStudio.RemoteControl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 16.3.52
+                      source: null
                   version: 16.3.52
                 - name: Microsoft.VisualStudio.RpcContracts
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.13
+                      source: null
                   version: 17.6.13
                 - name: Microsoft.VisualStudio.SDK.Analyzers
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 16.10.10
+                      source: null
                   version: 16.10.10
                 - name: Microsoft.VisualStudio.Sdk.TestFramework
                   requirements:
@@ -141,43 +277,108 @@ output:
                       source: null
                   version: 17.2.7
                 - name: Microsoft.VisualStudio.Setup.Configuration.Interop
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 3.6.2115
+                      source: null
                   version: 3.6.2115
                 - name: Microsoft.VisualStudio.Shell.15.0
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.36389
+                      source: null
                   version: 17.6.36389
                 - name: Microsoft.VisualStudio.Shell.Framework
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.36389
+                      source: null
                   version: 17.6.36389
                 - name: Microsoft.VisualStudio.Telemetry
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.46
+                      source: null
                   version: 17.6.46
                 - name: Microsoft.VisualStudio.Threading
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.40
+                      source: null
                   version: 17.6.40
                 - name: Microsoft.VisualStudio.Threading.Analyzers
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.40
+                      source: null
                   version: 17.6.40
                 - name: Microsoft.VisualStudio.Utilities
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.36389
+                      source: null
                   version: 17.6.36389
                 - name: Microsoft.VisualStudio.Utilities.Internal
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 16.3.42
+                      source: null
                   version: 16.3.42
                 - name: Microsoft.VisualStudio.Utilities.Testing
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.2.32505.113
+                      source: null
                   version: 17.2.32505.113
                 - name: Microsoft.VisualStudio.Validation
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.11
+                      source: null
                   version: 17.6.11
                 - name: Microsoft.Win32.Primitives
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: Microsoft.Win32.Registry
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 5.0.0
+                      source: null
                   version: 5.0.0
                 - name: Microsoft.Win32.SystemEvents
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: Moq
                   requirements:
@@ -188,316 +389,836 @@ output:
                       source: null
                   version: 4.18.2
                 - name: Nerdbank.Streams
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 2.9.112
+                      source: null
                   version: 2.9.112
                 - name: Newtonsoft.Json
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 13.0.3
+                      source: null
                   version: 13.0.3
                 - name: NuGet.Frameworks
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.5.0
+                      source: null
                   version: 6.5.0
                 - name: runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.native.System
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.native.System.IO.Compression
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.native.System.Net.Http
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.native.System.Security.Cryptography.Apple
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.opensuse.13.2-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: StreamJsonRpc
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 2.15.29
+                      source: null
                   version: 2.15.29
                 - name: System.AppContext
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Buffers
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.5.1
+                      source: null
                   version: 4.5.1
                 - name: System.CodeDom
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 5.0.0
+                      source: null
                   version: 5.0.0
                 - name: System.Collections
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Collections.Concurrent
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Collections.Immutable
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.ComponentModel.Composition
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Composition
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Composition.AttributedModel
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Composition.Convention
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Composition.Hosting
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Composition.Runtime
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Composition.TypedParts
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Configuration.ConfigurationManager
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Console
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Diagnostics.Debug
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Diagnostics.DiagnosticSource
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.1
+                      source: null
                   version: 7.0.1
                 - name: System.Diagnostics.EventLog
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Diagnostics.PerformanceCounter
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Diagnostics.Tools
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Diagnostics.Tracing
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Drawing.Common
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Globalization
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Globalization.Calendars
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Globalization.Extensions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.IO
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.IO.Compression
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.IO.Compression.ZipFile
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.IO.FileSystem
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.IO.FileSystem.AccessControl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 5.0.0
+                      source: null
                   version: 5.0.0
                 - name: System.IO.FileSystem.Primitives
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.IO.Pipelines
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Linq
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Linq.Expressions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Management
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 5.0.0
+                      source: null
                   version: 5.0.0
                 - name: System.Memory
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.5.5
+                      source: null
                   version: 4.5.5
                 - name: System.Net.Http
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Net.Primitives
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Net.Sockets
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Numerics.Vectors
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.5.0
+                      source: null
                   version: 4.5.0
                 - name: System.ObjectModel
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Reflection
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Reflection.Emit
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.7.0
+                      source: null
                   version: 4.7.0
                 - name: System.Reflection.Emit.ILGeneration
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Reflection.Emit.Lightweight
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Reflection.Extensions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Reflection.Metadata
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Reflection.Primitives
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Reflection.TypeExtensions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.7.0
+                      source: null
                   version: 4.7.0
                 - name: System.Resources.ResourceManager
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Runtime
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Runtime.CompilerServices.Unsafe
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.0.0
+                      source: null
                   version: 6.0.0
                 - name: System.Runtime.Extensions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Runtime.Handles
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Runtime.InteropServices
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Runtime.InteropServices.RuntimeInformation
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Runtime.Numerics
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Security.AccessControl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.0.0
+                      source: null
                   version: 6.0.0
                 - name: System.Security.Cryptography.Algorithms
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Security.Cryptography.Cng
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Security.Cryptography.Csp
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Security.Cryptography.Encoding
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Security.Cryptography.Primitives
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Security.Cryptography.ProtectedData
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Security.Cryptography.X509Certificates
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Security.Permissions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Security.Principal.Windows
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 5.0.0
+                      source: null
                   version: 5.0.0
                 - name: System.Text.Encoding
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Text.Encoding.Extensions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Text.Encodings.Web
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Text.Json
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Text.RegularExpressions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Threading
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Threading.AccessControl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Threading.Tasks
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Threading.Tasks.Dataflow
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Threading.Tasks.Extensions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.5.4
+                      source: null
                   version: 4.5.4
                 - name: System.Threading.Timer
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.ValueTuple
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.5.0
+                      source: null
                   version: 4.5.0
                 - name: System.Windows.Extensions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 7.0.0
+                      source: null
                   version: 7.0.0
                 - name: System.Xml.ReaderWriter
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Xml.XDocument
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: Validation
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 2.4.18
+                      source: null
                   version: 2.4.18
                 - name: xunit
                   requirements:
@@ -508,22 +1229,52 @@ output:
                       source: null
                   version: 2.5.0
                 - name: xunit.abstractions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 2.0.3
+                      source: null
                   version: 2.0.3
                 - name: xunit.analyzers
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 1.2.0
+                      source: null
                   version: 1.2.0
                 - name: xunit.assert
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 2.5.0
+                      source: null
                   version: 2.5.0
                 - name: xunit.core
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 2.5.0
+                      source: null
                   version: 2.5.0
                 - name: xunit.extensibility.core
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 2.5.0
+                      source: null
                   version: 2.5.0
                 - name: xunit.extensibility.execution
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 2.5.0
+                      source: null
                   version: 2.5.0
                 - name: xunit.runner.visualstudio
                   requirements:
@@ -534,7 +1285,12 @@ output:
                       source: null
                   version: 2.5.0
                 - name: Xunit.SkippableFact
-                  requirements: []
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 1.4.13
+                      source: null
                   version: 1.4.13
             dependency_files:
                 - /nuget/potential-downgrade/Directory.Build.props
@@ -545,6 +1301,23 @@ output:
         data:
             base-commit-sha: c28157d6e1e0304bbde1ae81227f5a789033fe9d
             dependencies:
+                - name: Microsoft.VisualStudio.Sdk.TestFramework
+                  previous-requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.2.7
+                      source: null
+                  previous-version: 17.2.7
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 17.6.16
+                      source:
+                        source_url: https://github.com/microsoft/vssdktestfx
+                        type: nuget_repo
+                  version: 17.6.16
                 - name: Microsoft.VisualStudio.Sdk.TestFramework.Xunit
                   previous-requirements:
                     - file: /nuget/potential-downgrade/project.csproj
@@ -562,7 +1335,23 @@ output:
                         source_url: https://github.com/microsoft/vssdktestfx
                         type: nuget_repo
                   version: 17.6.16
-                  directory: /nuget/potential-downgrade
+                - name: Moq
+                  previous-requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.18.2
+                      source: null
+                  previous-version: 4.18.2
+                  requirements:
+                    - file: /nuget/potential-downgrade/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.18.4
+                      source:
+                        source_url: https://github.com/moq/moq4
+                        type: nuget_repo
+                  version: 4.18.4
             updated-dependency-files:
                 - content: |
                     <Project>
@@ -588,32 +1377,18 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump Microsoft.VisualStudio.Sdk.TestFramework.Xunit from 17.2.7 to 17.6.16 in /nuget/potential-downgrade
-            pr-body: |
-                Bumps [Microsoft.VisualStudio.Sdk.TestFramework.Xunit](https://github.com/microsoft/vssdktestfx) from 17.2.7 to 17.6.16.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/microsoft/vssdktestfx/commit/fabda9e07d14ba6bb6b0f06cf3cb5aaaf8acc498"><code>fabda9e</code></a> Merge pull request <a href="https://redirect.github.com/microsoft/vssdktestfx/issues/105">#105</a> from microsoft/libtemplateUpdate</li>
-                <li><a href="https://github.com/microsoft/vssdktestfx/commit/33e797f816bedb1c76d17225174dc99e43b1ea80"><code>33e797f</code></a> Bump Microsoft.VisualStudio.Composition from 17.6.6 to 17.6.17 (<a href="https://redirect.github.com/microsoft/vssdktestfx/issues/98">#98</a>)</li>
-                <li><a href="https://github.com/microsoft/vssdktestfx/commit/8192de90312c432a0e7805bfd86478e7e30bac01"><code>8192de9</code></a> Fix new warnings</li>
-                <li><a href="https://github.com/microsoft/vssdktestfx/commit/212811898cebadc79d937c1f3bc5aaf2ddcd521c"><code>2128118</code></a> Merge remote-tracking branch 'libtemplate/microbuild' into libtemplateUpdate</li>
-                <li><a href="https://github.com/microsoft/vssdktestfx/commit/dfcf3754d53d0a959c97c14fbfd8696177273aaa"><code>dfcf375</code></a> Bump MicroBuild version</li>
-                <li><a href="https://github.com/microsoft/vssdktestfx/commit/558e8dd111ec96d6f203c88fe1c2df3e7eb2cbe9"><code>558e8dd</code></a> Merge branch 'main' into microbuild</li>
-                <li><a href="https://github.com/microsoft/vssdktestfx/commit/c3c23f7e91194f845d8df92755edb6803f6cea47"><code>c3c23f7</code></a> Bump Nerdbank.GitVersioning to 3.6.128</li>
-                <li><a href="https://github.com/microsoft/vssdktestfx/commit/e45848775d23805e530d9e0475307afc936a6d24"><code>e458487</code></a> Elevate CA1062 for shipping code</li>
-                <li><a href="https://github.com/microsoft/vssdktestfx/commit/1afa3e42190709e07ef276b076897335e0c87451"><code>1afa3e4</code></a> Fix and simplify BinSkim</li>
-                <li><a href="https://github.com/microsoft/vssdktestfx/commit/30cf33841a0e98dd1901643cb3a5dce277c30a99"><code>30cf338</code></a> Fix source archival pipeline nuget auth failures</li>
-                <li>Additional commits viewable in <a href="https://github.com/microsoft/vssdktestfx/compare/v17.2.7...v17.6.16">compare view</a></li>
-                </ul>
-                </details>
-                <br />
+            pr-title: Bump Microsoft.VisualStudio.Sdk.TestFramework and 2 others
+            pr-body: |-
+                Performed the following updates:
+                - Updated Microsoft.VisualStudio.Sdk.TestFramework from 17.2.7 to 17.6.16
+                - Updated Microsoft.VisualStudio.Sdk.TestFramework.Xunit from 17.2.7 to 17.6.16
+                - Updated Moq from 4.18.2 to 4.18.4
             commit-message: |-
-                Bump Microsoft.VisualStudio.Sdk.TestFramework.Xunit
+                Bump Microsoft.VisualStudio.Sdk.TestFramework and 2 others
 
-                Bumps [Microsoft.VisualStudio.Sdk.TestFramework.Xunit](https://github.com/microsoft/vssdktestfx) from 17.2.7 to 17.6.16.
-                - [Release notes](https://github.com/microsoft/vssdktestfx/releases)
-                - [Commits](https://github.com/microsoft/vssdktestfx/compare/v17.2.7...v17.6.16)
+                Bumps Microsoft.VisualStudio.Sdk.TestFramework from 17.2.7 to 17.6.16
+                Bumps Microsoft.VisualStudio.Sdk.TestFramework.Xunit from 17.2.7 to 17.6.16
+                Bumps Moq from 4.18.2 to 4.18.4
     - type: mark_as_processed
       expect:
         data:

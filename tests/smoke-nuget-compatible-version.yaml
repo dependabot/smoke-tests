@@ -4,8 +4,9 @@ input:
         allowed-updates:
             - update-type: all
         experiments:
-            nuget_native_analysis: true
+            nuget_native_updater: true
             nuget_use_direct_discovery: true
+            nuget_use_new_file_updater: true
         ignore-conditions:
             - dependency-name: Microsoft.AspNetCore.Authentication.JwtBearer
               source: tests/smoke-nuget-compatible-version.yaml
@@ -34,28 +35,68 @@ output:
                       source: null
                   version: 6.0.0
                 - name: Microsoft.CSharp
-                  requirements: []
+                  requirements:
+                    - file: /nuget/compatible-version/project/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.5.0
+                      source: null
                   version: 4.5.0
                 - name: Microsoft.IdentityModel.JsonWebTokens
-                  requirements: []
+                  requirements:
+                    - file: /nuget/compatible-version/project/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.10.0
+                      source: null
                   version: 6.10.0
                 - name: Microsoft.IdentityModel.Logging
-                  requirements: []
+                  requirements:
+                    - file: /nuget/compatible-version/project/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.10.0
+                      source: null
                   version: 6.10.0
                 - name: Microsoft.IdentityModel.Protocols
-                  requirements: []
+                  requirements:
+                    - file: /nuget/compatible-version/project/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.10.0
+                      source: null
                   version: 6.10.0
                 - name: Microsoft.IdentityModel.Protocols.OpenIdConnect
-                  requirements: []
+                  requirements:
+                    - file: /nuget/compatible-version/project/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.10.0
+                      source: null
                   version: 6.10.0
                 - name: Microsoft.IdentityModel.Tokens
-                  requirements: []
+                  requirements:
+                    - file: /nuget/compatible-version/project/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.10.0
+                      source: null
                   version: 6.10.0
                 - name: System.IdentityModel.Tokens.Jwt
-                  requirements: []
+                  requirements:
+                    - file: /nuget/compatible-version/project/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.10.0
+                      source: null
                   version: 6.10.0
                 - name: System.Security.Cryptography.Cng
-                  requirements: []
+                  requirements:
+                    - file: /nuget/compatible-version/project/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.5.0
+                      source: null
                   version: 4.5.0
             dependency_files:
                 - /nuget/compatible-version/project/project.csproj
@@ -81,7 +122,6 @@ output:
                         source_url: https://github.com/dotnet/aspnetcore
                         type: nuget_repo
                   version: 6.0.25
-                  directory: /nuget/compatible-version
             updated-dependency-files:
                 - content: |-
                     <Project Sdk="Microsoft.NET.Sdk">
@@ -104,84 +144,16 @@ output:
                     </Project>
                   content_encoding: utf-8
                   deleted: false
-                  directory: /nuget/compatible-version
-                  name: project/project.csproj
+                  directory: /nuget/compatible-version/project
+                  name: project.csproj
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump Microsoft.AspNetCore.Authentication.JwtBearer from 6.0.0 to 6.0.25 in /nuget/compatible-version
-            pr-body: |
-                Bumps [Microsoft.AspNetCore.Authentication.JwtBearer](https://github.com/dotnet/aspnetcore) from 6.0.0 to 6.0.25.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/dotnet/aspnetcore/releases">Microsoft.AspNetCore.Authentication.JwtBearer's releases</a>.</em></p>
-                <blockquote>
-                <h2>.NET 6.0.25</h2>
-                <p><a href="https://github.com/dotnet/core/releases/tag/v6.0.25">Release</a></p>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Fix pRequestInfo INVALID_POINTER_READ caused by GCs (v6 backport) by <a href="https://github.com/NGloreous"><code>@​NGloreous</code></a> in <a href="https://redirect.github.com/dotnet/aspnetcore/pull/50447">dotnet/aspnetcore#50447</a></li>
-                <li>[release/6.0] Update jquery-validation to v1.19.5 by <a href="https://github.com/MackinnonBuck"><code>@​MackinnonBuck</code></a> in <a href="https://redirect.github.com/dotnet/aspnetcore/pull/50484">dotnet/aspnetcore#50484</a></li>
-                <li>Merging internal commits for release/6.0 by <a href="https://github.com/vseanreesermsft"><code>@​vseanreesermsft</code></a> in <a href="https://redirect.github.com/dotnet/aspnetcore/pull/50661">dotnet/aspnetcore#50661</a></li>
-                <li>Update branding to 6.0.24 by <a href="https://github.com/vseanreesermsft"><code>@​vseanreesermsft</code></a> in <a href="https://redirect.github.com/dotnet/aspnetcore/pull/51115">dotnet/aspnetcore#51115</a></li>
-                <li>[release/6.0] (deps): Bump src/submodules/googletest from <code>8a6feab</code> to <code>e47544a</code> by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/dotnet/aspnetcore/pull/51049">dotnet/aspnetcore#51049</a></li>
-                <li>[release/6.0] Fix <code>DragDrop_CanTrigger()</code> flakiness by <a href="https://github.com/MackinnonBuck"><code>@​MackinnonBuck</code></a> in <a href="https://redirect.github.com/dotnet/aspnetcore/pull/51142">dotnet/aspnetcore#51142</a></li>
-                <li>[release/6.0] Dispose CTS in HubConnection streaming by <a href="https://github.com/github-actions"><code>@​github-actions</code></a> in <a href="https://redirect.github.com/dotnet/aspnetcore/pull/51139">dotnet/aspnetcore#51139</a></li>
-                <li>Merging internal commits for release/6.0 by <a href="https://github.com/vseanreesermsft"><code>@​vseanreesermsft</code></a> in <a href="https://redirect.github.com/dotnet/aspnetcore/pull/51265">dotnet/aspnetcore#51265</a></li>
-                <li>[release/6.0] Update dependencies from dotnet/arcade by <a href="https://github.com/dotnet-maestro"><code>@​dotnet-maestro</code></a> in <a href="https://redirect.github.com/dotnet/aspnetcore/pull/51329">dotnet/aspnetcore#51329</a></li>
-                <li>Update branding to 6.0.25 by <a href="https://github.com/vseanreesermsft"><code>@​vseanreesermsft</code></a> in <a href="https://redirect.github.com/dotnet/aspnetcore/pull/51478">dotnet/aspnetcore#51478</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/dotnet/aspnetcore/compare/v6.0.24...v6.0.25">https://github.com/dotnet/aspnetcore/compare/v6.0.24...v6.0.25</a></p>
-                <h2>.NET 6.0.24</h2>
-                <p><a href="https://github.com/dotnet/core/releases/tag/v6.0.24">Release</a></p>
-                <h2>.NET 6.0.23</h2>
-                <p><a href="https://github.com/dotnet/core/releases/tag/v6.0.23">Release</a></p>
-                <h2>.NET 6.0.22</h2>
-                <p><a href="https://github.com/dotnet/core/releases/tag/v6.0.22">Release</a></p>
-                <h2>.NET 6.0.21</h2>
-                <p><a href="https://github.com/dotnet/core/releases/tag/v6.0.21">Release</a></p>
-                <h2>.NET 6.0.20</h2>
-                <p><a href="https://github.com/dotnet/core/releases/tag/v6.0.20">Release</a></p>
-                <h2>.NET 6.0.19</h2>
-                <p><a href="https://github.com/dotnet/core/releases/tag/v6.0.19">Release</a></p>
-                <h2>.NET 6.0.18</h2>
-                <p><a href="https://github.com/dotnet/core/releases/tag/v6.0.18">Release</a></p>
-                <h2>.NET 6.0.16</h2>
-                <p><a href="https://github.com/dotnet/core/releases/tag/v6.0.16">Release</a></p>
-                <h2>.NET 6.0.15</h2>
-                <p><a href="https://github.com/dotnet/core/releases/tag/v6.0.15">Release</a></p>
-                <h2>.NET 6.0.14</h2>
-                <p><a href="https://github.com/dotnet/core/releases/tag/v6.0.14">Release</a></p>
-                <h2>.NET 6.0.13</h2>
-                <p><a href="https://github.com/dotnet/core/tree/v6.0.13">Release</a></p>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/dotnet/aspnetcore/commit/36be7ed6d6d56b7da0a2891e3de7ecc2aa48eecd"><code>36be7ed</code></a> Merged PR 34740: [internal/release/6.0] Update dependencies from dnceng/inter...</li>
-                <li><a href="https://github.com/dotnet/aspnetcore/commit/813d42072c04dd128265b4b64800bf7c2b83f07a"><code>813d420</code></a> Update dependencies from <a href="https://dev.azure.com/dnceng/internal/_git/dotnet-ef">https://dev.azure.com/dnceng/internal/_git/dotnet-ef</a>...</li>
-                <li><a href="https://github.com/dotnet/aspnetcore/commit/f63f76697c91ea1cdfd2085996dc24a55506ce93"><code>f63f766</code></a> Merged PR 34736: [internal/release/6.0] Update dependencies from dnceng/inter...</li>
-                <li><a href="https://github.com/dotnet/aspnetcore/commit/b00de4a0a9af86be6fc4891431d5c75cbe81bc37"><code>b00de4a</code></a> Update dependencies from <a href="https://dev.azure.com/dnceng/internal/_git/dotnet-ef">https://dev.azure.com/dnceng/internal/_git/dotnet-ef</a>...</li>
-                <li><a href="https://github.com/dotnet/aspnetcore/commit/ad15e08a98e1d3697d4577631c6ffc1bfb07e904"><code>ad15e08</code></a> [internal/release/6.0] Update dependencies from dnceng/internal/dotnet-runtime</li>
-                <li><a href="https://github.com/dotnet/aspnetcore/commit/0fc7d670f4e51b903722a1a9d8e0bac0e1673d46"><code>0fc7d67</code></a> Merge in 'release/6.0' changes</li>
-                <li><a href="https://github.com/dotnet/aspnetcore/commit/d025c79968d63df02830f9b9914707db4d9f02d5"><code>d025c79</code></a> Update branding to 6.0.25 (<a href="https://redirect.github.com/dotnet/aspnetcore/issues/51478">#51478</a>)</li>
-                <li><a href="https://github.com/dotnet/aspnetcore/commit/9f5e433f881aea5968fc5a9acb2c5131f3956794"><code>9f5e433</code></a> [internal/release/6.0] Update dependencies from dnceng/internal/dotnet-runtime</li>
-                <li><a href="https://github.com/dotnet/aspnetcore/commit/c81c53cd507ae3699ef60e6a02be0b1984d00452"><code>c81c53c</code></a> [internal/release/6.0] Update dependencies from dnceng/internal/dotnet-runtime</li>
-                <li><a href="https://github.com/dotnet/aspnetcore/commit/caada2338902a9524eb87fdab853eba77db52974"><code>caada23</code></a> [internal/release/6.0] Update dependencies from dnceng/internal/dotnet-runtime</li>
-                <li>Additional commits viewable in <a href="https://github.com/dotnet/aspnetcore/compare/v6.0.0...v6.0.25">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump Microsoft.AspNetCore.Authentication.JwtBearer
-
-                Bumps [Microsoft.AspNetCore.Authentication.JwtBearer](https://github.com/dotnet/aspnetcore) from 6.0.0 to 6.0.25.
-                - [Release notes](https://github.com/dotnet/aspnetcore/releases)
-                - [Changelog](https://github.com/dotnet/aspnetcore/blob/main/docs/ReleasePlanning.md)
-                - [Commits](https://github.com/dotnet/aspnetcore/compare/v6.0.0...v6.0.25)
+            pr-title: Bump Microsoft.AspNetCore.Authentication.JwtBearer from 6.0.0 to 6.0.25
+            pr-body: |-
+                Performed the following updates:
+                - Updated Microsoft.AspNetCore.Authentication.JwtBearer from 6.0.0 to 6.0.25
+            commit-message: Bump Microsoft.AspNetCore.Authentication.JwtBearer from 6.0.0 to 6.0.25
     - type: mark_as_processed
       expect:
         data:

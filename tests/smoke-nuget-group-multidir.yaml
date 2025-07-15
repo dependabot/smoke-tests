@@ -14,8 +14,9 @@ input:
             - NuGet.Versioning
             - NuGet.Versioning
         experiments:
-            nuget_native_analysis: true
+            nuget_native_updater: true
             nuget_use_direct_discovery: true
+            nuget_use_new_file_updater: true
         ignore-conditions:
             - dependency-name: NuGet.Versioning
               source: ../smoke-tests/tests/smoke-nuget-group-multidir.yaml
@@ -55,6 +56,12 @@ output:
                       requirement: 6.1.0
                       source: null
                   version: 6.1.0
+            dependency_files:
+                - /nuget/multi-dir/foo/project.csproj
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
                 - name: NuGet.Versioning
                   requirements:
                     - file: /nuget/multi-dir/bar/project.csproj
@@ -64,7 +71,6 @@ output:
                       source: null
                   version: 6.2.2
             dependency_files:
-                - /nuget/multi-dir/foo/project.csproj
                 - /nuget/multi-dir/bar/project.csproj
     - type: create_pull_request
       expect:
@@ -88,7 +94,6 @@ output:
                         source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
                   version: 6.2.4
-                  directory: /nuget/multi-dir/foo
                 - name: NuGet.Versioning
                   previous-requirements:
                     - file: /nuget/multi-dir/bar/project.csproj
@@ -106,7 +111,6 @@ output:
                         source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
                   version: 6.2.4
-                  directory: /nuget/multi-dir/bar
             updated-dependency-files:
                 - content: |
                     <Project Sdk="Microsoft.NET.Sdk">
@@ -125,7 +129,7 @@ output:
                     </Project>
                   content_encoding: utf-8
                   deleted: false
-                  directory: /nuget/multi-dir/foo
+                  directory: /nuget/multi-dir/bar
                   name: project.csproj
                   operation: update
                   support_file: false
@@ -147,47 +151,20 @@ output:
                     </Project>
                   content_encoding: utf-8
                   deleted: false
-                  directory: /nuget/multi-dir/bar
+                  directory: /nuget/multi-dir/foo
                   name: project.csproj
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the nuget group across 2 directories with 1 update
-            pr-body: |
-                Bumps the nuget group with 1 update in the /nuget/multi-dir/foo directory: [NuGet.Versioning](https://github.com/NuGet/NuGet.Client).
-                Bumps the nuget group with 1 update in the /nuget/multi-dir/bar directory: [NuGet.Versioning](https://github.com/NuGet/NuGet.Client).
-
-                Updates `NuGet.Versioning` from 6.1.0 to 6.2.4
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li>See full diff in <a href="https://github.com/NuGet/NuGet.Client/commits">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-
-                Updates `NuGet.Versioning` from 6.2.2 to 6.2.4
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li>See full diff in <a href="https://github.com/NuGet/NuGet.Client/commits">compare view</a></li>
-                </ul>
-                </details>
-                <br />
+            pr-title: Bump the nuget group with 1 update
+            pr-body: |-
+                Performed the following updates:
+                - Updated NuGet.Versioning from 6.1.0 to 6.2.4
+                - Updated NuGet.Versioning from 6.2.2 to 6.2.4
             commit-message: |-
-                Bump the nuget group across 2 directories with 1 update
+                Bump the nuget group with 1 update
 
-                Bumps the nuget group with 1 update in the /nuget/multi-dir/foo directory: [NuGet.Versioning](https://github.com/NuGet/NuGet.Client).
-                Bumps the nuget group with 1 update in the /nuget/multi-dir/bar directory: [NuGet.Versioning](https://github.com/NuGet/NuGet.Client).
-
-
-                Updates `NuGet.Versioning` from 6.1.0 to 6.2.4
-                - [Release notes](https://github.com/NuGet/NuGet.Client/releases)
-                - [Commits](https://github.com/NuGet/NuGet.Client/commits)
-
-                Updates `NuGet.Versioning` from 6.2.2 to 6.2.4
-                - [Release notes](https://github.com/NuGet/NuGet.Client/releases)
-                - [Commits](https://github.com/NuGet/NuGet.Client/commits)
+                Bumps NuGet.Versioning to 6.2.4
             dependency-group:
                 name: nuget
     - type: mark_as_processed

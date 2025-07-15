@@ -4,8 +4,9 @@ input:
         allowed-updates:
             - update-type: all
         experiments:
-            nuget_native_analysis: true
+            nuget_native_updater: true
             nuget_use_direct_discovery: true
+            nuget_use_new_file_updater: true
         ignore-conditions:
             - dependency-name: Newtonsoft.Json
               source: tests/smoke-nuget-version-property.yaml
@@ -58,7 +59,6 @@ output:
                         source_url: https://github.com/JamesNK/Newtonsoft.Json
                         type: nuget_repo
                   version: 13.0.3
-                  directory: /nuget/version-property
             updated-dependency-files:
                 - content: |-
                     <Project>
@@ -73,60 +73,11 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump Newtonsoft.Json from 13.0.1 to 13.0.3 in /nuget/version-property
-            pr-body: |
-                Bumps [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) from 13.0.1 to 13.0.3.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/JamesNK/Newtonsoft.Json/releases">Newtonsoft.Json's releases</a>.</em></p>
-                <blockquote>
-                <h2>13.0.3</h2>
-                <ul>
-                <li>Fix - Fixed parsed zero decimals losing trailing zeroes</li>
-                <li>Fix - Fixed parsed negative zero double losing negative</li>
-                <li>Fix - Fixed null string being reported as String rather than JTokenType.Null</li>
-                </ul>
-                <h2>13.0.2</h2>
-                <ul>
-                <li>New feature - Add support for DateOnly and TimeOnly</li>
-                <li>New feature - Add UnixDateTimeConverter.AllowPreEpoch property</li>
-                <li>New feature - Add copy constructor to JsonSerializerSettings</li>
-                <li>New feature - Add JsonCloneSettings with property to disable copying annotations</li>
-                <li>Change - Add nullable annotation to JToken.ToObject(Type, JsonSerializer)</li>
-                <li>Change - Reduced allocations by reusing boxed values</li>
-                <li>Fix - Fixed MaxDepth when used with ToObject inside of a JsonConverter</li>
-                <li>Fix - Fixed deserializing mismatched JToken types in properties</li>
-                <li>Fix - Fixed merging enumerable content and validate content</li>
-                <li>Fix - Fixed using $type with arrays of more than two dimensions</li>
-                <li>Fix - Fixed rare race condition in name table when deserializing on device with ARM processors</li>
-                <li>Fix - Fixed deserializing via constructor with ignored base type properties</li>
-                <li>Fix - Fixed MaxDepth not being used with ISerializable deserialization</li>
-                </ul>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/0a2e291c0d9c0c7675d445703e51750363a549ef"><code>0a2e291</code></a> Remove prerelease for 13.0.3</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/4949c66c3a6e3824c1d3eed042a6742fb54d1b1f"><code>4949c66</code></a> Update to 13.0.3-beta1</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/57025815e564d36821acf778e2c00d02225aab35"><code>5702581</code></a> Fix: Null String being reported as String rather than JTokenType.Null (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json/issues/2796">#2796</a>)</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/c908de3017ee32278c5330f715cef0e9733ce9db"><code>c908de3</code></a> Fix not returning negative double from box cache (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json/issues/2777">#2777</a>)</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/2afdccdb6374c9452a9c82929e59967aab49b37f"><code>2afdccd</code></a> Fix parsed decimal losing trailing zeroes (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json/issues/2769">#2769</a>)</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/4fba53a324c445f06ee08e45a015c346000a7ef2"><code>4fba53a</code></a> Remove prerelease for 13.0.2</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/b15df4b50de66065711d5d613f2531e372297fcf"><code>b15df4b</code></a> Add missing headers</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/789bfd3bbcd3d5e567bcfb57a1d08fb8611adf96"><code>789bfd3</code></a> Update to 13.0.2-beta3</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/b13717a1c13b0747853568f11fc9e2aa0abf4649"><code>b13717a</code></a> Add JsonCloneSettings to disable copy annotations (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json/issues/2757">#2757</a>)</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json/commit/d0a328e8a46304d62d2174b8bba54721d02be3d3"><code>d0a328e</code></a> Fix MaxDepth not being used with ISerializable deserialization (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json/issues/2736">#2736</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/JamesNK/Newtonsoft.Json/compare/13.0.1...13.0.3">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump Newtonsoft.Json from 13.0.1 to 13.0.3 in /nuget/version-property
-
-                Bumps [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) from 13.0.1 to 13.0.3.
-                - [Release notes](https://github.com/JamesNK/Newtonsoft.Json/releases)
-                - [Commits](https://github.com/JamesNK/Newtonsoft.Json/compare/13.0.1...13.0.3)
+            pr-title: Bump Newtonsoft.Json from 13.0.1 to 13.0.3
+            pr-body: |-
+                Performed the following updates:
+                - Updated Newtonsoft.Json from 13.0.1 to 13.0.3
+            commit-message: Bump Newtonsoft.Json from 13.0.1 to 13.0.3
     - type: mark_as_processed
       expect:
         data:
