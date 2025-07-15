@@ -4,8 +4,9 @@ input:
         allowed-updates:
             - update-type: all
         experiments:
-            nuget_native_analysis: true
+            nuget_native_updater: true
             nuget_use_direct_discovery: true
+            nuget_use_new_file_updater: true
         ignore-conditions:
             - dependency-name: NuGet.Versioning
               source: tests/smoke-nuget.yaml
@@ -57,7 +58,6 @@ output:
                         source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
                   version: 6.2.2
-                  directory: /nuget
             updated-dependency-files:
                 - content: |
                     <Project Sdk="Microsoft.NET.Sdk">
@@ -81,22 +81,11 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump NuGet.Versioning from 6.1.0 to 6.2.2 in /nuget
-            pr-body: |
-                Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.2.2.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li>See full diff in <a href="https://github.com/NuGet/NuGet.Client/commits">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump NuGet.Versioning from 6.1.0 to 6.2.2 in /nuget
-
-                Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.2.2.
-                - [Release notes](https://github.com/NuGet/NuGet.Client/releases)
-                - [Commits](https://github.com/NuGet/NuGet.Client/commits)
+            pr-title: Bump NuGet.Versioning from 6.1.0 to 6.2.2
+            pr-body: |-
+                Performed the following updates:
+                - Updated NuGet.Versioning from 6.1.0 to 6.2.2
+            commit-message: Bump NuGet.Versioning from 6.1.0 to 6.2.2
     - type: mark_as_processed
       expect:
         data:

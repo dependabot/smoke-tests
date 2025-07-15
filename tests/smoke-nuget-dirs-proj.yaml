@@ -4,8 +4,9 @@ input:
         allowed-updates:
             - update-type: all
         experiments:
-            nuget_native_analysis: true
+            nuget_native_updater: true
             nuget_use_direct_discovery: true
+            nuget_use_new_file_updater: true
         ignore-conditions:
             - dependency-name: NuGet.Versioning
               source: tests/smoke-nuget-dirs-proj.yaml
@@ -32,6 +33,9 @@ output:
                         - dependencies
                       requirement: 6.1.0
                       source: null
+                  version: 6.1.0
+                - name: NuGet.Versioning
+                  requirements:
                     - file: /nuget/dirs-proj/project2/project.csproj
                       groups:
                         - dependencies
@@ -53,11 +57,6 @@ output:
                         - dependencies
                       requirement: 6.1.0
                       source: null
-                    - file: /nuget/dirs-proj/project2/project.csproj
-                      groups:
-                        - dependencies
-                      requirement: 6.1.0
-                      source: null
                   previous-version: 6.1.0
                   requirements:
                     - file: /nuget/dirs-proj/project1/project.csproj
@@ -67,6 +66,16 @@ output:
                       source:
                         source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
+                  version: 6.8.0
+                - name: NuGet.Versioning
+                  previous-requirements:
+                    - file: /nuget/dirs-proj/project2/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.1.0
+                      source: null
+                  previous-version: 6.1.0
+                  requirements:
                     - file: /nuget/dirs-proj/project2/project.csproj
                       groups:
                         - dependencies
@@ -75,7 +84,6 @@ output:
                         source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
                   version: 6.8.0
-                  directory: /nuget/dirs-proj
             updated-dependency-files:
                 - content: |-
                     <Project Sdk="Microsoft.NET.Sdk">
@@ -94,8 +102,8 @@ output:
                     </Project>
                   content_encoding: utf-8
                   deleted: false
-                  directory: /nuget/dirs-proj
-                  name: project1/project.csproj
+                  directory: /nuget/dirs-proj/project1
+                  name: project.csproj
                   operation: update
                   support_file: false
                   type: file
@@ -116,27 +124,16 @@ output:
                     </Project>
                   content_encoding: utf-8
                   deleted: false
-                  directory: /nuget/dirs-proj
-                  name: project2/project.csproj
+                  directory: /nuget/dirs-proj/project2
+                  name: project.csproj
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump NuGet.Versioning from 6.1.0 to 6.8.0 in /nuget/dirs-proj
-            pr-body: |
-                Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.8.0.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li>See full diff in <a href="https://github.com/NuGet/NuGet.Client/commits">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump NuGet.Versioning from 6.1.0 to 6.8.0 in /nuget/dirs-proj
-
-                Bumps [NuGet.Versioning](https://github.com/NuGet/NuGet.Client) from 6.1.0 to 6.8.0.
-                - [Release notes](https://github.com/NuGet/NuGet.Client/releases)
-                - [Commits](https://github.com/NuGet/NuGet.Client/commits)
+            pr-title: Bump NuGet.Versioning to 6.8.0
+            pr-body: |-
+                Performed the following updates:
+                - Updated NuGet.Versioning from 6.1.0 to 6.8.0
+            commit-message: Bump NuGet.Versioning to 6.8.0
     - type: mark_as_processed
       expect:
         data:

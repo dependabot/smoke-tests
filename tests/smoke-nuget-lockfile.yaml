@@ -4,8 +4,9 @@ input:
         allowed-updates:
             - update-type: all
         experiments:
-            nuget_native_analysis: true
+            nuget_native_updater: true
             nuget_use_direct_discovery: true
+            nuget_use_new_file_updater: true
         ignore-conditions:
             - dependency-name: Newtonsoft.Json.Bson
               source: tests/smoke-nuget-lockfile.yaml
@@ -26,13 +27,28 @@ output:
         data:
             dependencies:
                 - name: Microsoft.CSharp
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: Microsoft.Win32.Primitives
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: Newtonsoft.Json
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 10.0.1
+                      source: null
                   version: 10.0.1
                 - name: Newtonsoft.Json.Bson
                   requirements:
@@ -43,238 +59,628 @@ output:
                       source: null
                   version: 1.0.1
                 - name: runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.native.System
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.native.System.IO.Compression
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.native.System.Net.Http
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.native.System.Security.Cryptography.Apple
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.opensuse.13.2-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.AppContext
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Buffers
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Collections
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Collections.Concurrent
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Collections.NonGeneric
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Collections.Specialized
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.ComponentModel
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.ComponentModel.Primitives
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.ComponentModel.TypeConverter
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Console
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Diagnostics.Debug
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Diagnostics.DiagnosticSource
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Diagnostics.Tools
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Diagnostics.Tracing
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Dynamic.Runtime
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Globalization
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Globalization.Calendars
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Globalization.Extensions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.IO
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.IO.Compression
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.IO.Compression.ZipFile
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.IO.FileSystem
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.IO.FileSystem.Primitives
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Linq
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Linq.Expressions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Net.Http
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Net.Primitives
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Net.Sockets
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.ObjectModel
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Reflection
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Reflection.Emit
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Reflection.Emit.ILGeneration
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Reflection.Emit.Lightweight
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Reflection.Extensions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Reflection.Primitives
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Reflection.TypeExtensions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Resources.ResourceManager
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Runtime
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Runtime.Extensions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Runtime.Handles
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Runtime.InteropServices
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Runtime.InteropServices.RuntimeInformation
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Runtime.Numerics
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Runtime.Serialization.Formatters
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Runtime.Serialization.Primitives
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Security.Cryptography.Algorithms
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Security.Cryptography.Cng
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Security.Cryptography.Csp
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Security.Cryptography.Encoding
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Security.Cryptography.OpenSsl
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Security.Cryptography.Primitives
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Security.Cryptography.X509Certificates
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Text.Encoding
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Text.Encoding.Extensions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Text.RegularExpressions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Threading
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Threading.Tasks
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Threading.Tasks.Extensions
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Threading.Timer
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Xml.ReaderWriter
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Xml.XDocument
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
                 - name: System.Xml.XmlDocument
-                  requirements: []
+                  requirements:
+                    - file: /nuget/lock-file/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 4.3.0
+                      source: null
                   version: 4.3.0
             dependency_files:
                 - /nuget/lock-file/packages.lock.json
@@ -301,7 +707,6 @@ output:
                         source_url: https://github.com/JamesNK/Newtonsoft.Json.Bson
                         type: nuget_repo
                   version: 1.0.2
-                  directory: /nuget/lock-file
             updated-dependency-files:
                 - content: |-
                     {
@@ -348,47 +753,11 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump Newtonsoft.Json.Bson from 1.0.1 to 1.0.2 in /nuget/lock-file
-            pr-body: |
-                Bumps [Newtonsoft.Json.Bson](https://github.com/JamesNK/Newtonsoft.Json.Bson) from 1.0.1 to 1.0.2.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/releases">Newtonsoft.Json.Bson's releases</a>.</em></p>
-                <blockquote>
-                <h2>1.0.2</h2>
-                <ul>
-                <li>New feature - Added netstandard2.0 target</li>
-                <li>New feature - Added NuGet package signing</li>
-                <li>New feature - Added Authenticode assembly signing</li>
-                <li>New feature - Added SourceLink support</li>
-                <li>New feature - Updated to Newtonsoft.Json 12.0.1</li>
-                <li>Fix - Fixed BsonDataReader when reading multiple content</li>
-                </ul>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/a1db92678e7e72eb733f37079f3a93bfb6215338"><code>a1db926</code></a> Update zip filename in build</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/af9c864a303a67591871c5c4da326d9b034c4088"><code>af9c864</code></a> Use package license expression (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json.Bson/issues/24">#24</a>)</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/5d6e2ffe166e5bf5078f228716892e0ede6f3bd7"><code>5d6e2ff</code></a> Update to 1.0.2</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/8de6b17cba63fe94839f4aac3eeacd85d4cbf894"><code>8de6b17</code></a> Update to Newtonsoft.Json 12.0.1-beta1 (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json.Bson/issues/22">#22</a>)</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/18d0b588795eeabb641d2df408a0370e009fd648"><code>18d0b58</code></a> Update build to deploy to NuGet (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json.Bson/issues/21">#21</a>)</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/0271d98980940d8ca90e7dee717801fd3168e242"><code>0271d98</code></a> Add code and package signing (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json.Bson/issues/20">#20</a>)</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/82996791d73c1c969d08236300585138fb1bffa6"><code>8299679</code></a> Add single multiple content test (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json.Bson/issues/19">#19</a>)</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/7c7ee2202236143f80f36576413cb39ec09de6f1"><code>7c7ee22</code></a> Add DevOps build badge (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json.Bson/issues/18">#18</a>)</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/09af7443d12a3059ddabbd4e637157aa84ade79a"><code>09af744</code></a> Add .NET Standard 2.0 target (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json.Bson/issues/17">#17</a>)</li>
-                <li><a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/commit/c410aa2e40c005e27c97e62f516378ccdf7789a8"><code>c410aa2</code></a> Build NuGet package in CI (<a href="https://redirect.github.com/JamesNK/Newtonsoft.Json.Bson/issues/16">#16</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/JamesNK/Newtonsoft.Json.Bson/compare/1.0.1...1.0.2">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump Newtonsoft.Json.Bson from 1.0.1 to 1.0.2 in /nuget/lock-file
-
-                Bumps [Newtonsoft.Json.Bson](https://github.com/JamesNK/Newtonsoft.Json.Bson) from 1.0.1 to 1.0.2.
-                - [Release notes](https://github.com/JamesNK/Newtonsoft.Json.Bson/releases)
-                - [Commits](https://github.com/JamesNK/Newtonsoft.Json.Bson/compare/1.0.1...1.0.2)
+            pr-title: Bump Newtonsoft.Json.Bson from 1.0.1 to 1.0.2
+            pr-body: |-
+                Performed the following updates:
+                - Updated Newtonsoft.Json.Bson from 1.0.1 to 1.0.2
+            commit-message: Bump Newtonsoft.Json.Bson from 1.0.1 to 1.0.2
     - type: mark_as_processed
       expect:
         data:
