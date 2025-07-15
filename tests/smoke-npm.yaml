@@ -4,8 +4,8 @@ input:
         allowed-updates:
             - update-type: all
         experiments:
-            record-ecosystem-versions: true
             enable_cooldown_for_npm_and_yarn: true
+            record-ecosystem-versions: true
         ignore-conditions:
             - dependency-name: axios
               source: tests/smoke-npm.yaml
@@ -3094,7 +3094,7 @@ output:
                   previous-requirements: []
                   previous-version: 4.0.0
                   requirements: []
-                  version: 4.0.2
+                  version: 4.0.3
                   directory: /npm
             updated-dependency-files:
                 - content: |
@@ -3276,14 +3276,15 @@ output:
                           }
                         },
                         "node_modules/form-data": {
-                          "version": "4.0.2",
-                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.2.tgz",
-                          "integrity": "sha512-hGfm/slu0ZabnNt4oaRZ6uREyfCj6P4fT/n6A1rGV+Z0VdGXjfOhVUpkn6qVQONHGIFwmveGXyDs75+nr6FM8w==",
+                          "version": "4.0.3",
+                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.3.tgz",
+                          "integrity": "sha512-qsITQPfmvMOSAdeyZ+12I1c+CKSstAFAwu+97zrnWAbIr5u8wfsExUzCesVLC8NgHuRUqNN4Zy6UPWUTRGslcA==",
                           "license": "MIT",
                           "dependencies": {
                             "asynckit": "^0.4.0",
                             "combined-stream": "^1.0.8",
                             "es-set-tostringtag": "^2.1.0",
+                            "hasown": "^2.0.2",
                             "mime-types": "^2.1.12"
                           },
                           "engines": {
@@ -3578,13 +3579,14 @@ output:
                           "integrity": "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA=="
                         },
                         "form-data": {
-                          "version": "4.0.2",
-                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.2.tgz",
-                          "integrity": "sha512-hGfm/slu0ZabnNt4oaRZ6uREyfCj6P4fT/n6A1rGV+Z0VdGXjfOhVUpkn6qVQONHGIFwmveGXyDs75+nr6FM8w==",
+                          "version": "4.0.3",
+                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.3.tgz",
+                          "integrity": "sha512-qsITQPfmvMOSAdeyZ+12I1c+CKSstAFAwu+97zrnWAbIr5u8wfsExUzCesVLC8NgHuRUqNN4Zy6UPWUTRGslcA==",
                           "requires": {
                             "asynckit": "^0.4.0",
                             "combined-stream": "^1.0.8",
                             "es-set-tostringtag": "^2.1.0",
+                            "hasown": "^2.0.2",
                             "mime-types": "^2.1.12"
                           }
                         },
@@ -3710,9 +3712,9 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump form-data from 4.0.0 to 4.0.2 in /npm
+            pr-title: Bump form-data from 4.0.0 to 4.0.3 in /npm
             pr-body: |
-                Bumps [form-data](https://github.com/form-data/form-data) from 4.0.0 to 4.0.2.
+                Bumps [form-data](https://github.com/form-data/form-data) from 4.0.0 to 4.0.3.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/form-data/form-data/releases">form-data's releases</a>.</em></p>
@@ -3732,30 +3734,27 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/form-data/form-data/commit/7465e1337244831e91f9a2413a2bf49bdc2a2e04"><code>7465e13</code></a> v4.0.2</li>
-                <li><a href="https://github.com/form-data/form-data/commit/92613b9208556eb4ebc482fdf599fae111626fb6"><code>92613b9</code></a> Merge tags v2.5.3 and v3.0.3</li>
-                <li><a href="https://github.com/form-data/form-data/commit/e46f09bb5338bff090f5cceea5119a8b37c9b147"><code>e46f09b</code></a> v3.0.3</li>
-                <li><a href="https://github.com/form-data/form-data/commit/e5df7f24383342264bd73dee3274818a40d04065"><code>e5df7f2</code></a> [Dev Deps] pin <code>request</code> which via <code>tough-cookie</code> ^2.4 depends on <code>psl</code></li>
+                <li>See full diff in <a href="https://github.com/form-data/form-data/commits">compare view</a></li>
+
+
+
                 <li><a href="https://github.com/form-data/form-data/commit/84ca1d6006d65abe7b73c3e99b023aeb353e1e12"><code>84ca1d6</code></a> [Fix] set <code>Symbol.toStringTag</code> when available (<a href="https://redirect.github.com/form-data/form-data/issues/573">#573</a>)</li>
-                <li><a href="https://github.com/form-data/form-data/commit/7fecefe4ba8f775634aff86a698776ad95ecffb5"><code>7fecefe</code></a> [Refactor] use <code>Object.prototype.hasOwnProperty.call</code></li>
-                <li><a href="https://github.com/form-data/form-data/commit/5a5bafee894fead10da49e1fa2b084e17f2e1034"><code>5a5bafe</code></a> [Deps] update <code>mime-types</code></li>
-                <li><a href="https://github.com/form-data/form-data/commit/8261fcb8bf5944d30ae3bd04b91b71d6a9932ef4"><code>8261fcb</code></a> [Dev Deps] update <code>@types/node</code>, <code>browserify</code>, <code>coveralls</code>, <code>cross-spawn</code>, `e...</li>
-                <li><a href="https://github.com/form-data/form-data/commit/b82f59093cdbadb4b7ec0922d33ae7ab048b82ff"><code>b82f590</code></a> Only apps should have lockfiles</li>
-                <li><a href="https://github.com/form-data/form-data/commit/9457283e1dce6122adc908fdd7442cfc54cabe7a"><code>9457283</code></a> Bumped version 2.5.3</li>
-                <li>Additional commits viewable in <a href="https://github.com/form-data/form-data/compare/v4.0.0...v4.0.2">compare view</a></li>
+
+
+
+
+
+
                 </ul>
                 </details>
-                <details>
-                <summary>Maintainer changes</summary>
-                <p>This version was pushed to npm by <a href="https://www.npmjs.com/~ljharb">ljharb</a>, a new releaser for form-data since your current version.</p>
-                </details>
+
                 <br />
             commit-message: |-
-                Bump form-data from 4.0.0 to 4.0.2 in /npm
+                Bump form-data from 4.0.0 to 4.0.3 in /npm
 
-                Bumps [form-data](https://github.com/form-data/form-data) from 4.0.0 to 4.0.2.
+                Bumps [form-data](https://github.com/form-data/form-data) from 4.0.0 to 4.0.3.
                 - [Release notes](https://github.com/form-data/form-data/releases)
-                - [Commits](https://github.com/form-data/form-data/compare/v4.0.0...v4.0.2)
+                - [Commits](https://github.com/form-data/form-data/commits)
     - type: mark_as_processed
       expect:
         data:
