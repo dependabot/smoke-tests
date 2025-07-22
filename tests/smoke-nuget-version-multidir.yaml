@@ -11,6 +11,7 @@ input:
                     - '*'
         experiments:
             nuget_generate_simple_pr_body: true
+            nuget_install_dotnet_sdks: true
             nuget_native_updater: true
             nuget_use_direct_discovery: true
             nuget_use_new_file_updater: true
@@ -134,9 +135,9 @@ output:
                     - file: /nuget/multi-dir/foo/project.csproj
                       groups:
                         - dependencies
-                      requirement: 4.5.1
+                      requirement: 6.0.0
                       source: null
-                  version: 4.5.1
+                  version: 6.0.0
             dependency_files:
                 - /nuget/multi-dir/foo/project.csproj
     - type: update_dependency_list
@@ -244,9 +245,9 @@ output:
                     - file: /nuget/multi-dir/bar/project.csproj
                       groups:
                         - dependencies
-                      requirement: 4.5.1
+                      requirement: 6.0.0
                       source: null
-                  version: 4.5.1
+                  version: 6.0.0
             dependency_files:
                 - /nuget/multi-dir/bar/project.csproj
     - type: create_pull_request
