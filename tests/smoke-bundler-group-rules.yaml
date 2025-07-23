@@ -137,10 +137,10 @@ output:
                       requirement: '>= 0'
                       source:
                         branch: null
-                        ref: v3.1.15
+                        ref: v3.1.16
                         type: git
                         url: git@github.com:rack/rack.git
-                  version: 3213339b6f18cb24b496bafbfe0756b813a49037
+                  version: 2399f317ff195e33b0eef9770bf9c1b827010ed9
                   directory: /bundler
             updated-dependency-files:
                 - content: |
@@ -150,7 +150,7 @@ output:
 
                     gem "rubocop", "1.59.0"
                     gem "toml-rb", "2.2.0"
-                    gem 'rack', git: 'git@github.com:rack/rack.git', tag: 'v3.1.15'
+                    gem 'rack', git: 'git@github.com:rack/rack.git', tag: 'v3.1.16'
                   content_encoding: utf-8
                   deleted: false
                   directory: /bundler
@@ -161,17 +161,17 @@ output:
                 - content: |
                     GIT
                       remote: git@github.com:rack/rack.git
-                      revision: 3213339b6f18cb24b496bafbfe0756b813a49037
-                      tag: v3.1.15
+                      revision: 2399f317ff195e33b0eef9770bf9c1b827010ed9
+                      tag: v3.1.16
                       specs:
-                        rack (3.1.15)
+                        rack (3.1.16)
 
                     GEM
                       remote: https://rubygems.org/
                       specs:
                         ast (2.4.3)
                         citrus (3.0.2)
-                        json (2.12.2)
+                        json (2.13.0)
                         language_server-protocol (3.17.0.5)
                         parallel (1.27.0)
                         parser (3.3.8.0)
@@ -193,7 +193,7 @@ output:
                           rubocop-ast (>= 1.30.0, < 2.0)
                           ruby-progressbar (~> 1.7)
                           unicode-display_width (>= 2.4.0, < 3.0)
-                        rubocop-ast (1.44.1)
+                        rubocop-ast (1.46.0)
                           parser (>= 3.3.7.2)
                           prism (~> 1.4)
                         ruby-progressbar (1.13.0)
@@ -355,11 +355,16 @@ output:
                 </details>
                 <br />
 
-                Updates `rack` from 2.1.4 to v3.1.15
+                Updates `rack` from 2.1.4 to v3.1.16
                 <details>
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/rack/rack/blob/main/CHANGELOG.md">rack's changelog</a>.</em></p>
                 <blockquote>
+                <h2>[3.1.16] - 2025-06-04</h2>
+                <h3>Security</h3>
+                <ul>
+                <li><a href="https://github.com/advisories/GHSA-47m2-26rw-j2jw">CVE-2025-49007</a> Fix ReDoS in multipart request.</li>
+                </ul>
                 <h2>[3.1.15] - 2025-05-18</h2>
                 <ul>
                 <li>Optional support for <code>CGI::Cookie</code> if not available. (<a href="https://redirect.github.com/rack/rack/pull/2327">#2327</a>, <a href="https://redirect.github.com/rack/rack/pull/2333">#2333</a>, [<a href="https://github.com/earlopain"><code>@​earlopain</code></a>])</li>
@@ -398,12 +403,6 @@ output:
                 <ul>
                 <li>Resolve deprecation warnings about uri <code>DEFAULT_PARSER</code>. (<a href="https://redirect.github.com/rack/rack/pull/2249">#2249</a>, [<a href="https://github.com/earlopain"><code>@​earlopain</code></a>])</li>
                 </ul>
-                <h2>[3.1.7] - 2024-07-11</h2>
-                <h3>Fixed</h3>
-                <ul>
-                <li>Do not remove escaped opening/closing quotes for content-disposition filenames. (<a href="https://redirect.github.com/rack/rack/pull/2229">#2229</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
-                <li>Fix encoding setting for non-binary IO-like objects in MockRequest#env_for. (<a href="https://redirect.github.com/rack/rack/pull/2227">#2227</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
-                </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -411,6 +410,9 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
+                <li><a href="https://github.com/rack/rack/commit/df2f3f2804373acafc429ed9f0770847a9c6b226"><code>df2f3f2</code></a> Bump patch version.</li>
+                <li><a href="https://github.com/rack/rack/commit/aed514df37e33907df3c971ed3ca9a0a20ac2901"><code>aed514d</code></a> Fix ReDoS and consistency in multipart regexes</li>
+                <li><a href="https://github.com/rack/rack/commit/352650a65cc2027191aaaa1b93a302542ceeb638"><code>352650a</code></a> Synchronize changelog.</li>
                 <li><a href="https://github.com/rack/rack/commit/835e15bf9e51846471e3da63ce474f6836ebd203"><code>835e15b</code></a> Bump patch version.</li>
                 <li><a href="https://github.com/rack/rack/commit/bd60f6e13486fafceb0078fa17f535ac24877b3f"><code>bd60f6e</code></a> Feature detect <code>CGI::Cookie</code>. (<a href="https://redirect.github.com/rack/rack/issues/2333">#2333</a>)</li>
                 <li><a href="https://github.com/rack/rack/commit/3c1a46de3f637f08993d83eb341ddae409cc60c5"><code>3c1a46d</code></a> Replace usage of <code>CGI::Cookie</code> (<a href="https://redirect.github.com/rack/rack/issues/2328">#2328</a>)</li>
@@ -418,10 +420,7 @@ output:
                 <li><a href="https://github.com/rack/rack/commit/5440b2c8b006f1c2ef202c2bd60dd70924c9b1c1"><code>5440b2c</code></a> Bump patch version.</li>
                 <li><a href="https://github.com/rack/rack/commit/cd6b70a1f2a1016b73dc906f924869f4902c2d74"><code>cd6b70a</code></a> Merge commit from fork</li>
                 <li><a href="https://github.com/rack/rack/commit/037953789da9cd49c4a3453ade6ede13619276e0"><code>0379537</code></a> Bump patch version.</li>
-                <li><a href="https://github.com/rack/rack/commit/8e3c9b1c08e24e85b90a9c322d36cc2840384de1"><code>8e3c9b1</code></a> Ensure <code>Rack::ETag</code> correctly updates response body. (<a href="https://redirect.github.com/rack/rack/issues/2324">#2324</a>)</li>
-                <li><a href="https://github.com/rack/rack/commit/e8f47608668d507e0f231a932fa37c9ca551c0a5"><code>e8f4760</code></a> Bump patch version.</li>
-                <li><a href="https://github.com/rack/rack/commit/413b8349f18032784b24b32e6c425eea14bb2a2e"><code>413b834</code></a> Update changelog.</li>
-                <li>Additional commits viewable in <a href="https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...3213339b6f18cb24b496bafbfe0756b813a49037">compare view</a></li>
+                <li>Additional commits viewable in <a href="https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...2399f317ff195e33b0eef9770bf9c1b827010ed9">compare view</a></li>
                 </ul>
                 </details>
                 <br />
@@ -436,10 +435,10 @@ output:
                 - [Changelog](https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md)
                 - [Commits](https://github.com/rubocop/rubocop/compare/v0.76.0...v1.59.0)
 
-                Updates `rack` from 2.1.4 to v3.1.15
+                Updates `rack` from 2.1.4 to v3.1.16
                 - [Release notes](https://github.com/rack/rack/releases)
                 - [Changelog](https://github.com/rack/rack/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...3213339b6f18cb24b496bafbfe0756b813a49037)
+                - [Commits](https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...2399f317ff195e33b0eef9770bf9c1b827010ed9)
             dependency-group:
                 name: ruleset
     - type: create_pull_request
