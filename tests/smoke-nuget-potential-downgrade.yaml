@@ -7,6 +7,7 @@ input:
             - Microsoft.VisualStudio.Sdk.TestFramework.Xunit
         experiments:
             nuget_generate_simple_pr_body: true
+            nuget_install_dotnet_sdks: true
             nuget_native_updater: true
             nuget_use_direct_discovery: true
             nuget_use_new_file_updater: true
@@ -682,9 +683,9 @@ output:
                     - file: /nuget/potential-downgrade/project.csproj
                       groups:
                         - dependencies
-                      requirement: 7.0.1
+                      requirement: 7.0.2
                       source: null
-                  version: 7.0.1
+                  version: 7.0.2
                 - name: System.Diagnostics.EventLog
                   requirements:
                     - file: /nuget/potential-downgrade/project.csproj
@@ -922,9 +923,9 @@ output:
                     - file: /nuget/potential-downgrade/project.csproj
                       groups:
                         - dependencies
-                      requirement: 7.0.0
+                      requirement: 7.0.2
                       source: null
-                  version: 7.0.0
+                  version: 7.0.2
                 - name: System.Reflection.Primitives
                   requirements:
                     - file: /nuget/potential-downgrade/project.csproj
@@ -1122,9 +1123,9 @@ output:
                     - file: /nuget/potential-downgrade/project.csproj
                       groups:
                         - dependencies
-                      requirement: 7.0.0
+                      requirement: 7.0.4
                       source: null
-                  version: 7.0.0
+                  version: 7.0.4
                 - name: System.Text.RegularExpressions
                   requirements:
                     - file: /nuget/potential-downgrade/project.csproj
