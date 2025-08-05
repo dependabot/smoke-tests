@@ -205,6 +205,57 @@ output:
 
                 Bumps Microsoft.Extensions.Http from 2.2.0 to 8.0.0
                 Bumps Microsoft.Extensions.Logging from 2.2.0 to 8.0.0
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+            dependencies:
+                - name: Microsoft.Extensions.Logging
+                  previous-requirements:
+                    - file: /nuget/peer-dependencies/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 2.2.0
+                      source: null
+                  previous-version: 2.2.0
+                  requirements:
+                    - file: /nuget/peer-dependencies/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 8.0.0
+                      source:
+                        source_url: https://github.com/dotnet/runtime
+                        type: nuget_repo
+                  version: 8.0.0
+            updated-dependency-files:
+                - content: |-
+                    <Project Sdk="Microsoft.NET.Sdk">
+
+                      <PropertyGroup>
+                        <OutputType>Exe</OutputType>
+                        <TargetFramework>net6.0</TargetFramework>
+                        <ImplicitUsings>enable</ImplicitUsings>
+                        <Nullable>enable</Nullable>
+                      </PropertyGroup>
+
+                      <ItemGroup>
+                        <PackageReference Include="Microsoft.Extensions.Http" Version="2.2.0" />
+                        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+                      </ItemGroup>
+
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/peer-dependencies
+                  name: project.csproj
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump Microsoft.Extensions.Logging from 2.2.0 to 8.0.0
+            pr-body: |-
+                Performed the following updates:
+                - Updated Microsoft.Extensions.Logging from 2.2.0 to 8.0.0
+            commit-message: Bump Microsoft.Extensions.Logging from 2.2.0 to 8.0.0
     - type: mark_as_processed
       expect:
         data:

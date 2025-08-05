@@ -72,6 +72,40 @@ output:
                         source_url: https://github.com/dotnet/roslyn-analyzers
                         type: nuget_repo
                   version: 3.3.4
+            updated-dependency-files:
+                - content: |-
+                    <!--
+                    This build configuration file will be automatically imported by MSBuild in all projects in the
+                    solution, because it's placed in the root directory.
+                    See https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2019
+                    -->
+                    <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+                      <ItemGroup>
+                        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4">
+                          <PrivateAssets>all</PrivateAssets>
+                          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+                        </PackageReference>
+                      </ItemGroup>
+
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/props-and-targets
+                  name: Directory.Build.targets
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump Microsoft.CodeAnalysis.Analyzers from 3.3.0 to 3.3.4
+            pr-body: |-
+                Performed the following updates:
+                - Updated Microsoft.CodeAnalysis.Analyzers from 3.3.0 to 3.3.4
+            commit-message: Bump Microsoft.CodeAnalysis.Analyzers from 3.3.0 to 3.3.4
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+            dependencies:
                 - name: NuGet.Versioning
                   previous-requirements:
                     - file: /nuget/props-and-targets/project.csproj
@@ -110,39 +144,11 @@ output:
                   operation: update
                   support_file: false
                   type: file
-                - content: |-
-                    <!--
-                    This build configuration file will be automatically imported by MSBuild in all projects in the
-                    solution, because it's placed in the root directory.
-                    See https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2019
-                    -->
-                    <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-
-                      <ItemGroup>
-                        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4">
-                          <PrivateAssets>all</PrivateAssets>
-                          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-                        </PackageReference>
-                      </ItemGroup>
-
-                    </Project>
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /nuget/props-and-targets
-                  name: Directory.Build.targets
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump Microsoft.CodeAnalysis.Analyzers and NuGet.Versioning
+            pr-title: Bump NuGet.Versioning from 6.1.0 to 6.8.0
             pr-body: |-
                 Performed the following updates:
-                - Updated Microsoft.CodeAnalysis.Analyzers from 3.3.0 to 3.3.4
                 - Updated NuGet.Versioning from 6.1.0 to 6.8.0
-            commit-message: |-
-                Bump Microsoft.CodeAnalysis.Analyzers and NuGet.Versioning
-
-                Bumps Microsoft.CodeAnalysis.Analyzers from 3.3.0 to 3.3.4
-                Bumps NuGet.Versioning from 6.1.0 to 6.8.0
+            commit-message: Bump NuGet.Versioning from 6.1.0 to 6.8.0
     - type: mark_as_processed
       expect:
         data:
