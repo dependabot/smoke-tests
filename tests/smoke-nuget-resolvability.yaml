@@ -265,6 +265,35 @@ output:
                         source_url: https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
                         type: nuget_repo
                   version: 7.0.0
+            updated-dependency-files:
+                - content: |-
+                    <Project>
+                      <!--https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management-->
+                      <PropertyGroup>
+                        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+                      </PropertyGroup>
+                      <ItemGroup>
+                        <PackageVersion Include="AspNetCore.HealthChecks.Rabbitmq" Version="7.0.0" />
+                        <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="5.0.17" />
+                      </ItemGroup>
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/resolvability
+                  name: Directory.Packages.props
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump AspNetCore.HealthChecks.Rabbitmq from 5.0.2 to 7.0.0
+            pr-body: |-
+                Performed the following updates:
+                - Updated AspNetCore.HealthChecks.Rabbitmq from 5.0.2 to 7.0.0
+            commit-message: Bump AspNetCore.HealthChecks.Rabbitmq from 5.0.2 to 7.0.0
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 1204ab6852a4872bbb0ba4fff1343fefb39663d6
+            dependencies:
                 - name: Microsoft.Extensions.Diagnostics.HealthChecks
                   previous-requirements:
                     - file: /nuget/resolvability/B/B.csproj
@@ -290,7 +319,7 @@ output:
                         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
                       </PropertyGroup>
                       <ItemGroup>
-                        <PackageVersion Include="AspNetCore.HealthChecks.Rabbitmq" Version="7.0.0" />
+                        <PackageVersion Include="AspNetCore.HealthChecks.Rabbitmq" Version="5.0.2" />
                         <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="7.0.9" />
                       </ItemGroup>
                     </Project>
@@ -301,16 +330,11 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump AspNetCore.HealthChecks.Rabbitmq and Microsoft.Extensions.Diagnostics.HealthChecks
+            pr-title: Bump Microsoft.Extensions.Diagnostics.HealthChecks from 5.0.17 to 7.0.9
             pr-body: |-
                 Performed the following updates:
-                - Updated AspNetCore.HealthChecks.Rabbitmq from 5.0.2 to 7.0.0
                 - Updated Microsoft.Extensions.Diagnostics.HealthChecks from 5.0.17 to 7.0.9
-            commit-message: |-
-                Bump AspNetCore.HealthChecks.Rabbitmq and Microsoft.Extensions.Diagnostics.HealthChecks
-
-                Bumps AspNetCore.HealthChecks.Rabbitmq from 5.0.2 to 7.0.0
-                Bumps Microsoft.Extensions.Diagnostics.HealthChecks from 5.0.17 to 7.0.9
+            commit-message: Bump Microsoft.Extensions.Diagnostics.HealthChecks from 5.0.17 to 7.0.9
     - type: mark_as_processed
       expect:
         data:
