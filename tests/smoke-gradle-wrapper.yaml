@@ -1,0 +1,175 @@
+input:
+    job:
+        package-manager: gradle
+        allowed-updates:
+            - update-type: all
+        dependencies:
+            - gradle-wrapper
+        experiments:
+            gradle_wrapper_updater: true
+        ignore-conditions:
+            - dependency-name: gradle-wrapper
+              source: tests/result.yaml
+              version-requirement: '>9.0.0'
+        source:
+            provider: github
+            repo: gmazzo/dependabot-smoke-tests
+            directory: /gradle-wrapper
+            commit: 690dce97e20919510c30cb5ad924417183fce587
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: gradle-wrapper
+                  requirements:
+                    - file: gradle/wrapper/gradle-wrapper.properties
+                      groups: []
+                      requirement: "8.0"
+                      source:
+                        property: distributionUrl
+                        type: gradle-distribution
+                        url: https://services.gradle.org/distributions/gradle-8.0-all.zip
+                    - file: gradle/wrapper/gradle-wrapper.properties
+                      groups: []
+                      requirement: f30b29580fe11719087d698da23f3b0f0d04031d8995f7dd8275a31f7674dc01
+                      source:
+                        property: distributionSha256Sum
+                        type: gradle-distribution
+                        url: https://services.gradle.org/distributions/gradle-8.0-all.zip.sha256
+                    - file: buildSrc/gradle/wrapper/gradle-wrapper.properties
+                      groups: []
+                      requirement: "7.5"
+                      source:
+                        property: distributionUrl
+                        type: gradle-distribution
+                        url: https://services.gradle.org/distributions/gradle-7.5-bin.zip
+                    - file: buildSrc/gradle/wrapper/gradle-wrapper.properties
+                      groups: []
+                      requirement: cb87f222c5585bd46838ad4db78463a5c5f3d336e5e2b98dc7c0c586527351c2
+                      source:
+                        property: distributionSha256Sum
+                        type: gradle-distribution
+                        url: https://services.gradle.org/distributions/gradle-7.5-bin.zip.sha256
+                  version: "7.5"
+            dependency_files:
+                - /gradle-wrapper/build.gradle
+                - /gradle-wrapper/settings.gradle
+                - /gradle-wrapper/gradle/wrapper/gradle-wrapper.properties
+                - /gradle-wrapper/buildSrc/build.gradle.kts
+                - /gradle-wrapper/buildSrc/settings.gradle.kts
+                - /gradle-wrapper/buildSrc/gradle/wrapper/gradle-wrapper.properties
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 690dce97e20919510c30cb5ad924417183fce587
+            dependencies:
+                - name: gradle-wrapper
+                  previous-requirements:
+                    - file: gradle/wrapper/gradle-wrapper.properties
+                      groups: []
+                      requirement: "8.0"
+                      source:
+                        property: distributionUrl
+                        type: gradle-distribution
+                        url: https://services.gradle.org/distributions/gradle-8.0-all.zip
+                    - file: gradle/wrapper/gradle-wrapper.properties
+                      groups: []
+                      requirement: f30b29580fe11719087d698da23f3b0f0d04031d8995f7dd8275a31f7674dc01
+                      source:
+                        property: distributionSha256Sum
+                        type: gradle-distribution
+                        url: https://services.gradle.org/distributions/gradle-8.0-all.zip.sha256
+                    - file: buildSrc/gradle/wrapper/gradle-wrapper.properties
+                      groups: []
+                      requirement: "7.5"
+                      source:
+                        property: distributionUrl
+                        type: gradle-distribution
+                        url: https://services.gradle.org/distributions/gradle-7.5-bin.zip
+                    - file: buildSrc/gradle/wrapper/gradle-wrapper.properties
+                      groups: []
+                      requirement: cb87f222c5585bd46838ad4db78463a5c5f3d336e5e2b98dc7c0c586527351c2
+                      source:
+                        property: distributionSha256Sum
+                        type: gradle-distribution
+                        url: https://services.gradle.org/distributions/gradle-7.5-bin.zip.sha256
+                  previous-version: "7.5"
+                  requirements:
+                    - file: gradle/wrapper/gradle-wrapper.properties
+                      groups: []
+                      requirement: 9.0.0
+                      source:
+                        property: distributionUrl
+                        type: gradle-distribution
+                        url: https://services.gradle.org/distributions/gradle-9.0.0-all.zip
+                    - file: gradle/wrapper/gradle-wrapper.properties
+                      groups: []
+                      requirement: f759b8dd5204e2e3fa4ca3e73f452f087153cf81bac9561eeb854229cc2c5365
+                      source:
+                        property: distributionSha256Sum
+                        type: gradle-distribution
+                        url: https://services.gradle.org/distributions/gradle-9.0.0-all.zip.sha256
+                    - file: buildSrc/gradle/wrapper/gradle-wrapper.properties
+                      groups: []
+                      requirement: 9.0.0
+                      source:
+                        property: distributionUrl
+                        type: gradle-distribution
+                        url: https://services.gradle.org/distributions/gradle-9.0.0-bin.zip
+                    - file: buildSrc/gradle/wrapper/gradle-wrapper.properties
+                      groups: []
+                      requirement: 8fad3d78296ca518113f3d29016617c7f9367dc005f932bd9d93bf45ba46072b
+                      source:
+                        property: distributionSha256Sum
+                        type: gradle-distribution
+                        url: https://services.gradle.org/distributions/gradle-9.0.0-bin.zip.sha256
+                  version: 9.0.0
+                  directory: /gradle-wrapper
+            updated-dependency-files:
+                - content: |
+                    #Mon Nov 28 14:29:39 CET 2022
+                    distributionBase=GRADLE_USER_HOME
+                    distributionUrl=https\://services.gradle.org/distributions/gradle-9.0.0-all.zip
+                    distributionSha256Sum=f759b8dd5204e2e3fa4ca3e73f452f087153cf81bac9561eeb854229cc2c5365
+                    distributionPath=wrapper/dists
+                    zipStorePath=wrapper/dists
+                    zipStoreBase=GRADLE_USER_HOME
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /gradle-wrapper
+                  name: gradle/wrapper/gradle-wrapper.properties
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    #Mon Nov 28 14:29:39 CET 2022
+                    distributionBase=GRADLE_USER_HOME
+                    distributionUrl=https\://services.gradle.org/distributions/gradle-9.0.0-bin.zip
+                    distributionSha256Sum=8fad3d78296ca518113f3d29016617c7f9367dc005f932bd9d93bf45ba46072b
+                    distributionPath=wrapper/dists
+                    zipStorePath=wrapper/dists
+                    zipStoreBase=GRADLE_USER_HOME
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /gradle-wrapper
+                  name: buildSrc/gradle/wrapper/gradle-wrapper.properties
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump gradle-wrapper from 7.5 to 9.0.0 in /gradle-wrapper
+            pr-body: |
+                Bumps gradle-wrapper from 7.5 to 9.0.0.
+            commit-message: |-
+                Bump gradle-wrapper from 7.5 to 9.0.0 in /gradle-wrapper
+
+                Bumps gradle-wrapper from 7.5 to 9.0.0.
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 690dce97e20919510c30cb5ad924417183fce587
