@@ -204,54 +204,8 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump github.com/reactivecocoa/reactiveswift from 7.1.1 to 7.2.1 in /swift
-            pr-body: |
-                Bumps [github.com/reactivecocoa/reactiveswift](https://github.com/ReactiveCocoa/ReactiveSwift) from 7.1.1 to 7.2.1.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/ReactiveCocoa/ReactiveSwift/releases">github.com/reactivecocoa/reactiveswift's releases</a>.</em></p>
-                <blockquote>
-                <h1>7.2.1</h1>
-                <ol>
-                <li>Add primary associated types to property and binding protocols (<a href="https://redirect.github.com/ReactiveCocoa/ReactiveSwift/issues/888">#888</a>, kudos to <a href="https://github.com/braker1nine"><code>@​braker1nine</code></a>)</li>
-                <li>Fix the Carthage build checks (kudos to <a href="https://github.com/mluisbrown"><code>@​mluisbrown</code></a>)</li>
-                <li>Add dynamic library support for SPM (<a href="https://redirect.github.com/ReactiveCocoa/ReactiveSwift/issues/886">#886</a> kudos to <a href="https://github.com/mluisbrown"><code>@​mluisbrown</code></a>)</li>
-                <li>Fixed <code>BindingTarget.init</code> that uses a keypath to avoid source breaking change in SE-0481 (<a href="https://redirect.github.com/ReactiveCocoa/ReactiveSwift/issues/890">#890</a> kudos to <a href="https://github.com/mluisbrown"><code>@​mluisbrown</code></a>)</li>
-                </ol>
-                <h2>7.2.0</h2>
-                <ol>
-                <li>Change <code>QueueScheduler</code> to use unspecified QoS when QoS parameter is defaulted (<a href="https://redirect.github.com/ReactiveCocoa/ReactiveSwift/issues/880">#880</a>, kudos to <a href="https://github.com/jamieQ"><code>@​jamieQ</code></a>)</li>
-                <li>Add support for visionOS (<a href="https://redirect.github.com/ReactiveCocoa/ReactiveSwift/issues/875">#875</a>, kudos to <a href="https://github.com/NachoSoto"><code>@​NachoSoto</code></a>)</li>
-                <li>Fix CI release git tag push trigger (<a href="https://redirect.github.com/ReactiveCocoa/ReactiveSwift/issues/869">#869</a>, kudos to <a href="https://github.com/p4checo"><code>@​p4checo</code></a>)</li>
-                <li>Find and remove items from Bag using a binary search to improve performance when the collection gets large (<a href="https://redirect.github.com/ReactiveCocoa/ReactiveSwift/issues/878">#878</a>, kudos to <a href="https://github.com/nickoto"><code>@​nickoto</code></a>)</li>
-                <li>Add extension to <code>ScopedDisposable</code> for inner <code>SerialDisposable</code> (<a href="https://redirect.github.com/ReactiveCocoa/ReactiveSwift/issues/873">#873</a>, kudos to <a href="https://github.com/sirnacnud"><code>@​sirnacnud</code></a>)</li>
-                <li>Updated project settings for Xcode 16, bumped min deployment targets to iOS 12, macOS 10.13, tvOS 12, watchOS 4, visionOS 1.0 (<a href="https://redirect.github.com/ReactiveCocoa/ReactiveSwift/issues/883">#883</a>, kudos to <a href="https://github.com/mluisbrown"><code>@​mluisbrown</code></a>)</li>
-                </ol>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/ReactiveCocoa/ReactiveSwift/commit/a44317ce38b5bcce173b03f5d36cfdc939e1768b"><code>a44317c</code></a> Bump version to 7.2.1</li>
-                <li><a href="https://github.com/ReactiveCocoa/ReactiveSwift/commit/3517de29bc7a2a41cf28c0884657ed6c9ebfaf97"><code>3517de2</code></a> Update CHANGELOG.md</li>
-                <li><a href="https://github.com/ReactiveCocoa/ReactiveSwift/commit/a01a469822c30b18a0556aac1a7250165782c8ae"><code>a01a469</code></a> Change keypath BindingTarget initializer to use a (<a href="https://redirect.github.com/ReactiveCocoa/ReactiveSwift/issues/890">#890</a>)</li>
-                <li><a href="https://github.com/ReactiveCocoa/ReactiveSwift/commit/7f733497761379030d1b82e36d5b7c3deabbf01b"><code>7f73349</code></a> Add primary associated types to property and binding protocols (<a href="https://redirect.github.com/ReactiveCocoa/ReactiveSwift/issues/888">#888</a>)</li>
-                <li><a href="https://github.com/ReactiveCocoa/ReactiveSwift/commit/8581f24e9944521975a1b2177a7bb9b95ab803ed"><code>8581f24</code></a> Add dynamic library support to Swift Package. (<a href="https://redirect.github.com/ReactiveCocoa/ReactiveSwift/issues/886">#886</a>)</li>
-                <li><a href="https://github.com/ReactiveCocoa/ReactiveSwift/commit/83fb2959a4439440ce162c89384c3fae78d1b22e"><code>83fb295</code></a> Fix Carthage checks.</li>
-                <li><a href="https://github.com/ReactiveCocoa/ReactiveSwift/commit/c5eecb5374ac342e22d46abd333e4c8c698c93cc"><code>c5eecb5</code></a> Remove carthage checks as dependency for release checks.</li>
-                <li><a href="https://github.com/ReactiveCocoa/ReactiveSwift/commit/4bb00b6ccf3036195d02eca53553b894645858f7"><code>4bb00b6</code></a> Changes to support Xcode 16, and prep for Release 7.2.0 (<a href="https://redirect.github.com/ReactiveCocoa/ReactiveSwift/issues/884">#884</a>)</li>
-                <li><a href="https://github.com/ReactiveCocoa/ReactiveSwift/commit/f4f3d4d7375ce26a797f7f0b4c246444c3afd43f"><code>f4f3d4d</code></a> Use unspecified QoS in QueueScheduler when QoS is unspecified (<a href="https://redirect.github.com/ReactiveCocoa/ReactiveSwift/issues/880">#880</a>)</li>
-                <li><a href="https://github.com/ReactiveCocoa/ReactiveSwift/commit/196bf28f6b59ba0c5566c9a25bd08540a3a7db51"><code>196bf28</code></a> Add support for <code>xrOS</code> (<a href="https://redirect.github.com/ReactiveCocoa/ReactiveSwift/issues/875">#875</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/ReactiveCocoa/ReactiveSwift/compare/7.1.1...7.2.1">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump github.com/reactivecocoa/reactiveswift in /swift
-
-                Bumps [github.com/reactivecocoa/reactiveswift](https://github.com/ReactiveCocoa/ReactiveSwift) from 7.1.1 to 7.2.1.
-                - [Release notes](https://github.com/ReactiveCocoa/ReactiveSwift/releases)
-                - [Commits](https://github.com/ReactiveCocoa/ReactiveSwift/compare/7.1.1...7.2.1)
+            pr-title: bump github.com/reactivecocoa/reactiveswift from 7.1.1 to 7.2.1 in /swift
+            commit-message: bump github.com/reactivecocoa/reactiveswift in /swift
     - type: create_pull_request
       expect:
         data:
@@ -371,77 +325,8 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump github.com/quick/quick from 4.0.0 to 7.2.0 in /swift
-            pr-body: |
-                Bumps [github.com/quick/quick](https://github.com/Quick/Quick) from 4.0.0 to 7.2.0.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/Quick/Quick/releases">github.com/quick/quick's releases</a>.</em></p>
-                <blockquote>
-                <h2>v7.2.0 - TestState property wrapper</h2>
-                <h1>Highlight</h1>
-                <p>You can now use the <code>@TestState</code> property wrapper to automatically deconstruct test variables. For example:</p>
-                <pre lang="swift"><code>describe(&quot;using TestState&quot;) {
-                    @TestState var subject: SomeObject?
-                }
-                </code></pre>
-                <p>Is functionally equivalent to:</p>
-                <pre lang="swift"><code>describe(&quot;using TestState&quot;) {
-                    var subject: SomeObject?
-                    afterEach {
-                        subject = nil
-                    }
-                }
-                </code></pre>
-                <p>You can also specify an initial value, and <code>TestState</code> will act as an <code>aroundEach</code>: setting the wrapped variable to the value, then setting it to nil at test teardown.</p>
-                <pre lang="swift"><code>describe(&quot;using TestState&quot;) {
-                    @TestState(1) var value: Int?
-                <pre><code>it(&amp;quot;is already configured&amp;quot;) {
-                    expect(value).to(equal(1))
-                }
-                </code></pre>
-                <p>}
-                </code></pre></p>
-                <p>Thanks <a href="https://github.com/CraigSiemens"><code>@​CraigSiemens</code></a> for their contribution!</p>
-                <h1>Automated Release Notes</h1>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Added a TestState property wrapper, again :D by <a href="https://github.com/CraigSiemens"><code>@​CraigSiemens</code></a> in <a href="https://redirect.github.com/Quick/Quick/pull/1233">Quick/Quick#1233</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/Quick/Quick/compare/v7.1.0...v7.2.0">https://github.com/Quick/Quick/compare/v7.1.0...v7.2.0</a></p>
-                <h2>v7.1.0</h2>
-                <h1>Highlights</h1>
-                <h2>New Features</h2>
-                <ul>
-                <li>You can now use <code>throw</code> in <code>beforeEach</code>, <code>justBeforeEach</code>, and <code>afterEach</code> blocks.</li>
-                </ul>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/Quick/Quick/commit/494eff9ad74a37047782b0d5d8d84c7ff49a60e4"><code>494eff9</code></a> [v7.2.0] Update docs and podspec</li>
-                <li><a href="https://github.com/Quick/Quick/commit/c6a3fbadb3dc6e32baef29aa48d1f32457751eb8"><code>c6a3fba</code></a> Merge pull request <a href="https://redirect.github.com/Quick/Quick/issues/1233">#1233</a> from CraigSiemens/test-state-property-wrapper</li>
-                <li><a href="https://github.com/Quick/Quick/commit/fbdda51c0e678fa63ed82b74d905fd5872103258"><code>fbdda51</code></a> Added a TestState property wrapper.</li>
-                <li><a href="https://github.com/Quick/Quick/commit/9913828ef3554e6cc1a57797c9f8dfd136c6c9d6"><code>9913828</code></a> [v7.1.0] Update docs &amp; podspec</li>
-                <li><a href="https://github.com/Quick/Quick/commit/4121c3ffb911f7542983de9b0179eebfd8e05d80"><code>4121c3f</code></a> Merge pull request <a href="https://redirect.github.com/Quick/Quick/issues/1232">#1232</a> from Quick/task/759-specify-ordering</li>
-                <li><a href="https://github.com/Quick/Quick/commit/345ab6485aba7fe5322519d70fd884d68093ad60"><code>345ab64</code></a> The test ordering page should more strongly suggest that you enable Randomize...</li>
-                <li><a href="https://github.com/Quick/Quick/commit/d3bddab9d204c70dc885962c286809bf12044396"><code>d3bddab</code></a> Attempt to run tests within a QuickSpec or AsyncSpec in the order they are de...</li>
-                <li><a href="https://github.com/Quick/Quick/commit/6d3524d4c16feba42a44c3ef3ab8f91acb4874e4"><code>6d3524d</code></a> Merge pull request <a href="https://redirect.github.com/Quick/Quick/issues/1230">#1230</a> from Quick/bugfix/1227-xitBehavesLike-on-dslusers</li>
-                <li><a href="https://github.com/Quick/Quick/commit/0fdeeebb0adc007f0b7cd22483026c074dc85be4"><code>0fdeeeb</code></a> Merge pull request <a href="https://redirect.github.com/Quick/Quick/issues/1231">#1231</a> from Quick/documentation/774-installation-instructions</li>
-                <li><a href="https://github.com/Quick/Quick/commit/e9420da4c4702c1ed33d5f9e144e521819246575"><code>e9420da</code></a> Improve documentation for installing Quick and Nimble via Cocoapods in the RE...</li>
-                <li>Additional commits viewable in <a href="https://github.com/Quick/Quick/compare/v4.0.0...v7.2.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump github.com/quick/quick from 4.0.0 to 7.2.0 in /swift
-
-                Bumps [github.com/quick/quick](https://github.com/Quick/Quick) from 4.0.0 to 7.2.0.
-                - [Release notes](https://github.com/Quick/Quick/releases)
-                - [Commits](https://github.com/Quick/Quick/compare/v4.0.0...v7.2.0)
+            pr-title: bump github.com/quick/quick from 4.0.0 to 7.2.0 in /swift
+            commit-message: bump github.com/quick/quick from 4.0.0 to 7.2.0 in /swift
     - type: create_pull_request
       expect:
         data:
@@ -561,88 +446,8 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump github.com/quick/nimble from 9.2.1 to 12.2.0 in /swift
-            pr-body: |
-                Bumps [github.com/quick/nimble](https://github.com/Quick/Nimble) from 9.2.1 to 12.2.0.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/Quick/Nimble/releases">github.com/quick/nimble's releases</a>.</em></p>
-                <blockquote>
-                <h2>v12.2.0</h2>
-                <h1>Highlights</h1>
-                <p>the <code>equal</code> matcher now supports arrays of tuples. For example:</p>
-                <pre lang="swift"><code>expect([
-                    (1, 2),
-                    (3, 4)
-                ]).to(equal([
-                    (1, 2),
-                    (3, 4)
-                ]))
-                </code></pre>
-                <p>Thanks <a href="https://github.com/faroman"><code>@​faroman</code></a> for their contribution!</p>
-                <h1>Automatically Generated Release Notes</h1>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Fix typo in README.md by <a href="https://github.com/nemesis"><code>@​nemesis</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1066">Quick/Nimble#1066</a></li>
-                <li>Equal predicate for array of tuples by <a href="https://github.com/faroman"><code>@​faroman</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1065">Quick/Nimble#1065</a></li>
-                </ul>
-                <h2>New Contributors</h2>
-                <ul>
-                <li><a href="https://github.com/nemesis"><code>@​nemesis</code></a> made their first contribution in <a href="https://redirect.github.com/Quick/Nimble/pull/1066">Quick/Nimble#1066</a></li>
-                <li><a href="https://github.com/faroman"><code>@​faroman</code></a> made their first contribution in <a href="https://redirect.github.com/Quick/Nimble/pull/1065">Quick/Nimble#1065</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/Quick/Nimble/compare/v12.1.0...v12.2.0">https://github.com/Quick/Nimble/compare/v12.1.0...v12.2.0</a></p>
-                <h2>v12.1.0 - AsyncPredicate</h2>
-                <h2>Highlights</h2>
-                <ul>
-                <li>You can now create Predicates that run in async contexts.</li>
-                </ul>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Add AsyncPredicate - Matchers with AsyncExpressions by <a href="https://github.com/younata"><code>@​younata</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1056">Quick/Nimble#1056</a></li>
-                <li>Remove unused constant by <a href="https://github.com/peterringset"><code>@​peterringset</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1064">Quick/Nimble#1064</a></li>
-                </ul>
-                <h2>New Contributors</h2>
-                <ul>
-                <li><a href="https://github.com/peterringset"><code>@​peterringset</code></a> made their first contribution in <a href="https://redirect.github.com/Quick/Nimble/pull/1064">Quick/Nimble#1064</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/Quick/Nimble/compare/v12.0.1...v12.1.0">https://github.com/Quick/Nimble/compare/v12.0.1...v12.1.0</a></p>
-                <h2>v12.0.1</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Fix wasm build by <a href="https://github.com/ikesyo"><code>@​ikesyo</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1053">Quick/Nimble#1053</a></li>
-                <li>Bump cocoapods from 1.12.0 to 1.12.1 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1054">Quick/Nimble#1054</a></li>
-                <li>Bump swiftwasm/swiftwasm-action from 5.7 to 5.8 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1057">Quick/Nimble#1057</a></li>
-                <li>Make the async version of poll concurrency-safe by wrapping it in an actor by <a href="https://github.com/younata"><code>@​younata</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1059">Quick/Nimble#1059</a></li>
-                <li>cast an empty array to avoid a warning during compile time by <a href="https://github.com/younata"><code>@​younata</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1060">Quick/Nimble#1060</a></li>
-                </ul>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/Quick/Nimble/commit/f552a16f434eef1f18b62985172489f41d37a18e"><code>f552a16</code></a> [v12.2.0] Update docs and podspec</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/02f1aa9d0006f6ed926de244638014ab6cc6965d"><code>02f1aa9</code></a> Equal predicate for array of tuples (<a href="https://redirect.github.com/Quick/Nimble/issues/1065">#1065</a>)</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/941c1fdc1b5ec3d12b963c2c45e16134043505a4"><code>941c1fd</code></a> Fix typo in README.md (<a href="https://redirect.github.com/Quick/Nimble/issues/1066">#1066</a>)</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/831000dd1939bc2096df572c5fd156f41d858bfa"><code>831000d</code></a> [v12.1.0] Update docs and podspec</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/670c1f8ab1db3486fca8aab2de0bcd62c768fd5a"><code>670c1f8</code></a> Remove unused constant (<a href="https://redirect.github.com/Quick/Nimble/issues/1064">#1064</a>)</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/7f0621bc3f6c4315f01343a0cab0aabbf07f0567"><code>7f0621b</code></a> Add AsyncPredicate - Matchers with AsyncExpressions (<a href="https://redirect.github.com/Quick/Nimble/issues/1056">#1056</a>)</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/371f7d278ba95a5511c248aaeec84f5dbe770491"><code>371f7d2</code></a> [v12.0.1] Update docs and podspec</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/5176df5b2e654b6047e17a90ce7b16a516cf479e"><code>5176df5</code></a> cast an empty array to avoid a warning during compile time (<a href="https://redirect.github.com/Quick/Nimble/issues/1060">#1060</a>)</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/1aea01458f2a34eda6fdc4a3d4bc0142936e46ba"><code>1aea014</code></a> Make the async version of poll concurrency-safe by wrapping it in an actor (#...</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/3f372afc6b9866296fcebbe2a46279c6b7271ddd"><code>3f372af</code></a> Bump swiftwasm/swiftwasm-action from 5.7 to 5.8 (<a href="https://redirect.github.com/Quick/Nimble/issues/1057">#1057</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/Quick/Nimble/compare/v9.2.1...v12.2.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump github.com/quick/nimble from 9.2.1 to 12.2.0 in /swift
-
-                Bumps [github.com/quick/nimble](https://github.com/Quick/Nimble) from 9.2.1 to 12.2.0.
-                - [Release notes](https://github.com/Quick/Nimble/releases)
-                - [Commits](https://github.com/Quick/Nimble/compare/v9.2.1...v12.2.0)
+            pr-title: bump github.com/quick/nimble from 9.2.1 to 12.2.0 in /swift
+            commit-message: bump github.com/quick/nimble from 9.2.1 to 12.2.0 in /swift
     - type: create_pull_request
       expect:
         data:
@@ -715,31 +520,8 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump github.com/mattgallagher/cwlpreconditiontesting from 2.1.0 to 2.2.2 in /swift
-            pr-body: |
-                Bumps [github.com/mattgallagher/cwlpreconditiontesting](https://github.com/mattgallagher/CwlPreconditionTesting) from 2.1.0 to 2.2.2.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/mattgallagher/CwlPreconditionTesting/commit/0139c665ebb45e6a9fbdb68aabfd7c39f3fe0071"><code>0139c66</code></a> Merge pull request <a href="https://redirect.github.com/mattgallagher/CwlPreconditionTesting/issues/39">#39</a> from LowAmmo/Issue-38-Xcode16-Warnings</li>
-                <li><a href="https://github.com/mattgallagher/CwlPreconditionTesting/commit/c62129d860914b4ba8ab2e5b14c51df771ff5ff4"><code>c62129d</code></a> [Issue 38] Address Xcode 16 build warnings</li>
-                <li><a href="https://github.com/mattgallagher/CwlPreconditionTesting/commit/2ef56b2caf25f55fa7eef8784c30d5a767550f54"><code>2ef56b2</code></a> Also update CwlCatchException in podspec.</li>
-                <li><a href="https://github.com/mattgallagher/CwlPreconditionTesting/commit/387c7505752e8e8bd863c99dcb857904b4844780"><code>387c750</code></a> Merge cocoapods-update into master</li>
-                <li><a href="https://github.com/mattgallagher/CwlPreconditionTesting/commit/2455f032d0f7f3ca9c02c862c90373879d88cfb0"><code>2455f03</code></a> Updated intermediate dependency numbers ahead of cocoapods spec push.</li>
-                <li><a href="https://github.com/mattgallagher/CwlPreconditionTesting/commit/f900bb803d071e09a5822863bded1e6d9b78e319"><code>f900bb8</code></a> Merge pull request <a href="https://redirect.github.com/mattgallagher/CwlPreconditionTesting/issues/37">#37</a> from mattgallagher/cocoapods-update</li>
-                <li><a href="https://github.com/mattgallagher/CwlPreconditionTesting/commit/b16619b2bfa672fac54e2c3fefe8af0b10ce89d4"><code>b16619b</code></a> Updated intermediate dependency numbers ahead of cocoapods spec push.</li>
-                <li><a href="https://github.com/mattgallagher/CwlPreconditionTesting/commit/dc9af4781f2afdd1e68e90f80b8603be73ea7abc"><code>dc9af47</code></a> Merge pull request <a href="https://redirect.github.com/mattgallagher/CwlPreconditionTesting/issues/35">#35</a> from mattgallagher/release-2-2</li>
-                <li><a href="https://github.com/mattgallagher/CwlPreconditionTesting/commit/49552d9aa8621220bbca605390aca66609cd89c4"><code>49552d9</code></a> Bump podspec version numbers.</li>
-                <li><a href="https://github.com/mattgallagher/CwlPreconditionTesting/commit/de14cf59f624f387e185cdd48b00c955655cc34b"><code>de14cf5</code></a> Merge pull request <a href="https://redirect.github.com/mattgallagher/CwlPreconditionTesting/issues/33">#33</a> from bitmovin-engineering/bitmovin/feature/visionos-su...</li>
-                <li>Additional commits viewable in <a href="https://github.com/mattgallagher/CwlPreconditionTesting/compare/2.1.0...2.2.2">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump github.com/mattgallagher/cwlpreconditiontesting in /swift
-
-                Bumps [github.com/mattgallagher/cwlpreconditiontesting](https://github.com/mattgallagher/CwlPreconditionTesting) from 2.1.0 to 2.2.2.
-                - [Commits](https://github.com/mattgallagher/CwlPreconditionTesting/compare/2.1.0...2.2.2)
+            pr-title: bump github.com/mattgallagher/cwlpreconditiontesting from 2.1.0 to 2.2.2 in /swift
+            commit-message: bump github.com/mattgallagher/cwlpreconditiontesting in /swift
     - type: create_pull_request
       expect:
         data:
@@ -812,31 +594,8 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump github.com/mattgallagher/cwlcatchexception from 2.1.1 to 2.2.1 in /swift
-            pr-body: |
-                Bumps [github.com/mattgallagher/cwlcatchexception](https://github.com/mattgallagher/CwlCatchException) from 2.1.1 to 2.2.1.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/mattgallagher/CwlCatchException/commit/07b2ba21d361c223e25e3c1e924288742923f08c"><code>07b2ba2</code></a> Merge pull request <a href="https://redirect.github.com/mattgallagher/CwlCatchException/issues/10">#10</a> from LowAmmo/Issue-9-Xcode16-Warnings</li>
-                <li><a href="https://github.com/mattgallagher/CwlCatchException/commit/532c1c3a769c7178d1e89675ce264116ac332890"><code>532c1c3</code></a> Adding check for Swift compiler version as <a href="https://github.com/retroactive"><code>@​retroactive</code></a> isn't available until...</li>
-                <li><a href="https://github.com/mattgallagher/CwlCatchException/commit/17bd4dabd220b903d28e81f5907f69db27c9aff9"><code>17bd4da</code></a> [Issue 9] Address build warnings with Xcode 16</li>
-                <li><a href="https://github.com/mattgallagher/CwlCatchException/commit/3ef6999c73b6938cc0da422f2c912d0158abb0a0"><code>3ef6999</code></a> More version cleanup.</li>
-                <li><a href="https://github.com/mattgallagher/CwlCatchException/commit/ae48425db7bf86ef46d6cc262bfe4d02f1033afc"><code>ae48425</code></a> Declare support for visionOS in podspec.</li>
-                <li><a href="https://github.com/mattgallagher/CwlCatchException/commit/3b123999de19bf04905bc1dfdb76f817b0f2cc00"><code>3b12399</code></a> Cocoapods dependency version change. Also swap quotes for angle brackets.</li>
-                <li><a href="https://github.com/mattgallagher/CwlCatchException/commit/9bdf8f5106ab5599d2ba567ddb5745fa0c537ec3"><code>9bdf8f5</code></a> Merge bump-cocoapods into master</li>
-                <li><a href="https://github.com/mattgallagher/CwlCatchException/commit/219da43fa88723bcfa450fcecaff58138a0e9ee9"><code>219da43</code></a> Move to Swift 5.5 for Sendable and min OS to 2018 releases to stay within Xco...</li>
-                <li><a href="https://github.com/mattgallagher/CwlCatchException/commit/4272d34fd675492b351d3ba876a0e2d4c3d88732"><code>4272d34</code></a> Merge branch 'LowAmmo-Issue-7-fix-build-warning'</li>
-                <li><a href="https://github.com/mattgallagher/CwlCatchException/commit/61d935fb240d4b8c2ec3461f5dde588373bc2cb9"><code>61d935f</code></a> Whitespace and comment formatting fixes.</li>
-                <li>Additional commits viewable in <a href="https://github.com/mattgallagher/CwlCatchException/compare/2.1.1...2.2.1">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump github.com/mattgallagher/cwlcatchexception in /swift
-
-                Bumps [github.com/mattgallagher/cwlcatchexception](https://github.com/mattgallagher/CwlCatchException) from 2.1.1 to 2.2.1.
-                - [Commits](https://github.com/mattgallagher/CwlCatchException/compare/2.1.1...2.2.1)
+            pr-title: bump github.com/mattgallagher/cwlcatchexception from 2.1.1 to 2.2.1 in /swift
+            commit-message: bump github.com/mattgallagher/cwlcatchexception in /swift
     - type: mark_as_processed
       expect:
         data:
