@@ -57,7 +57,7 @@ output:
                         ref: ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0
                         type: git
                         url: https://github.com/microsoft/vcpkg.git
-                  version: ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0
+                  version: 2025.06.13
                   directory: /vcpkg/builtin-baseline
             updated-dependency-files:
                 - content: |-
@@ -76,9 +76,122 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump github.com/microsoft/vcpkg from master to ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0 in /vcpkg/builtin-baseline
+            pr-title: Bump github.com/microsoft/vcpkg from master to 2025.06.13 in /vcpkg/builtin-baseline
             pr-body: |
-                Bumps [github.com/microsoft/vcpkg](https://github.com/microsoft/vcpkg) from master to ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0.
+                Bumps [github.com/microsoft/vcpkg](https://github.com/microsoft/vcpkg) from master to 2025.06.13. This release includes the previously tagged commit.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/microsoft/vcpkg/releases">github.com/microsoft/vcpkg's releases</a>.</em></p>
+                <blockquote>
+                <h2>2025.06.13</h2>
+                <h4>Total port count: 2621</h4>
+                <h4>Total port count per triplet (tested): <a href="https://dev.azure.com/vcpkg/public/_build/results?buildId=116719&amp;view=results">https://dev.azure.com/vcpkg/public/_build/results?buildId=116719&amp;view=results</a></h4>
+                <table>
+                <thead>
+                <tr>
+                <th>triplet</th>
+                <th>ports available</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>x86-windows</td>
+                <td>2406</td>
+                </tr>
+                <tr>
+                <td><strong>x64-windows</strong></td>
+                <td>2524</td>
+                </tr>
+                <tr>
+                <td>x64-windows-release</td>
+                <td>2524</td>
+                </tr>
+                <tr>
+                <td>x64-windows-static</td>
+                <td>2398</td>
+                </tr>
+                <tr>
+                <td>x64-windows-static-md</td>
+                <td>2450</td>
+                </tr>
+                <tr>
+                <td>x64-uwp</td>
+                <td>1410</td>
+                </tr>
+                <tr>
+                <td>arm64-windows</td>
+                <td>2122</td>
+                </tr>
+                <tr>
+                <td>arm64-windows-static-md</td>
+                <td>2102</td>
+                </tr>
+                <tr>
+                <td>arm64-uwp</td>
+                <td>1377</td>
+                </tr>
+                <tr>
+                <td>x64-osx</td>
+                <td>2394</td>
+                </tr>
+                <tr>
+                <td><strong>arm64-osx</strong></td>
+                <td>2321</td>
+                </tr>
+                <tr>
+                <td><strong>x64-linux</strong></td>
+                <td>2510</td>
+                </tr>
+                <tr>
+                <td>arm-neon-android</td>
+                <td>1939</td>
+                </tr>
+                <tr>
+                <td>x64-android</td>
+                <td>1996</td>
+                </tr>
+                <tr>
+                <td>arm64-android</td>
+                <td>1961</td>
+                </tr>
+                </tbody>
+                </table>
+                <p>The following vcpkg-tool releases have occurred since the last registry release:</p>
+                <ul>
+                <li><a href="https://github.com/microsoft/vcpkg-tool/releases/tag/2025-04-16">https://github.com/microsoft/vcpkg-tool/releases/tag/2025-04-16</a></li>
+                <li><a href="https://github.com/microsoft/vcpkg-tool/releases/tag/2025-05-19">https://github.com/microsoft/vcpkg-tool/releases/tag/2025-05-19</a></li>
+                <li><a href="https://github.com/microsoft/vcpkg-tool/releases/tag/2025-06-02">https://github.com/microsoft/vcpkg-tool/releases/tag/2025-06-02</a></li>
+                </ul>
+                <p>In those tool releases, the following changes are particularly meaningful:</p>
+                <ul>
+                <li>Add z-check-tools-sha by <a href="https://github.com/autoantwort"><code>@​autoantwort</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1661">microsoft/vcpkg-tool#1661</a></li>
+                <li>Force LC_ALL=C for test execution by <a href="https://github.com/dg0yt"><code>@​dg0yt</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1656">microsoft/vcpkg-tool#1656</a></li>
+                <li>Remove x-gha binary cache provider by <a href="https://github.com/vicroms"><code>@​vicroms</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1662">microsoft/vcpkg-tool#1662</a></li>
+                <li>Detect vcvarsarm64_arm by <a href="https://github.com/huangqinjin"><code>@​huangqinjin</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1672">microsoft/vcpkg-tool#1672</a></li>
+                <li>Remove trailing '/' from environment HTTP_PROXY variable fixes <a href="https://redirect.github.com/microsoft/vcpkg/issues/45678">#45678</a> by <a href="https://github.com/DewJunkie"><code>@​DewJunkie</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1690">microsoft/vcpkg-tool#1690</a></li>
+                <li>Add C:\Windows\System32\OpenSSH to PATH for git-for-windows using external OpenSSH by <a href="https://github.com/huangqinjin"><code>@​huangqinjin</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1695">microsoft/vcpkg-tool#1695</a></li>
+                <li>Preserve permissions using upkg by <a href="https://github.com/JavierMatosD"><code>@​JavierMatosD</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1625">microsoft/vcpkg-tool#1625</a></li>
+                <li>--clean-buildtrees-after-build: Only clean on success by <a href="https://github.com/autoantwort"><code>@​autoantwort</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1655">microsoft/vcpkg-tool#1655</a></li>
+                <li>test-features: failure exit code if tests fail by <a href="https://github.com/autoantwort"><code>@​autoantwort</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1649">microsoft/vcpkg-tool#1649</a></li>
+                <li>test-features: Only create the tested-spec.txt file if a feature test fails by <a href="https://github.com/autoantwort"><code>@​autoantwort</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1650">microsoft/vcpkg-tool#1650</a></li>
+                <li>Improve x-test-features diagnostics for conflicting baseline entries by <a href="https://github.com/BillyONeal"><code>@​BillyONeal</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1663">microsoft/vcpkg-tool#1663</a></li>
+                <li>BuildLogsRecorder: Only copy new log files by <a href="https://github.com/autoantwort"><code>@​autoantwort</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1657">microsoft/vcpkg-tool#1657</a>
+                <ul>
+                <li>CiBuildLogsRecorder: Fix collection of logs by <a href="https://github.com/autoantwort"><code>@​autoantwort</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1689">microsoft/vcpkg-tool#1689</a></li>
+                </ul>
+                </li>
+                <li>Improve x-test-features diagnostics. by <a href="https://github.com/BillyONeal"><code>@​BillyONeal</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1676">microsoft/vcpkg-tool#1676</a></li>
+                <li>x-feature-test: Only enforce cascades in baseline when used with --all by <a href="https://github.com/BillyONeal"><code>@​BillyONeal</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1686">microsoft/vcpkg-tool#1686</a></li>
+                <li>Optimize rename_or_delete to stop retrying after EXDEV by <a href="https://github.com/Thomas1664"><code>@​Thomas1664</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1659">microsoft/vcpkg-tool#1659</a></li>
+                <li>Fix cross-device rename_or_delete by <a href="https://github.com/dg0yt"><code>@​dg0yt</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1669">microsoft/vcpkg-tool#1669</a></li>
+                <li>Merge cascaded failure feature dependencies together. by <a href="https://github.com/BillyONeal"><code>@​BillyONeal</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1665">microsoft/vcpkg-tool#1665</a></li>
+                <li>Improve invalid feature name reporting by <a href="https://github.com/BillyONeal"><code>@​BillyONeal</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1675">microsoft/vcpkg-tool#1675</a></li>
+                <li>Deduplicate 'already installed' / HEAD message. by <a href="https://github.com/BillyONeal"><code>@​BillyONeal</code></a> in <a href="https://redirect.github.com/microsoft/vcpkg-tool/pull/1683">microsoft/vcpkg-tool#1683</a></li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
                 <details>
                 <summary>Commits</summary>
                 <ul>
@@ -99,7 +212,7 @@ output:
             commit-message: |-
                 Bump github.com/microsoft/vcpkg in /vcpkg/builtin-baseline
 
-                Bumps [github.com/microsoft/vcpkg](https://github.com/microsoft/vcpkg) from master to ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0.
+                Bumps [github.com/microsoft/vcpkg](https://github.com/microsoft/vcpkg) from master to 2025.06.13. This release includes the previously tagged commit.
                 - [Release notes](https://github.com/microsoft/vcpkg/releases)
                 - [Commits](https://github.com/microsoft/vcpkg/compare/fe1cde61e971d53c9687cf9a46308f8f55da19fa...ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0)
     - type: mark_as_processed
