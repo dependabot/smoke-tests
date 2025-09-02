@@ -11,7 +11,7 @@ input:
             provider: github
             repo: dependabot/smoke-tests
             directory: /vcpkg/builtin-baseline
-            commit: 761fd1bcff70338b9105d5cb4e2032417391d39d
+            commit: 3252af76d19ed7ce6034d27d4d6496e6079f4d3a
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -32,12 +32,19 @@ output:
                         type: git
                         url: https://github.com/microsoft/vcpkg.git
                   version: fe1cde61e971d53c9687cf9a46308f8f55da19fa
+                - name: curl
+                  requirements:
+                    - file: vcpkg.json
+                      groups: []
+                      requirement: '>=8.14.0'
+                      source: null
+                  version: 8.14.0
             dependency_files:
                 - /vcpkg/builtin-baseline/vcpkg.json
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 761fd1bcff70338b9105d5cb4e2032417391d39d
+            base-commit-sha: 3252af76d19ed7ce6034d27d4d6496e6079f4d3a
             dependencies:
                 - name: github.com/microsoft/vcpkg
                   previous-requirements:
@@ -65,7 +72,10 @@ output:
                       "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
                       "builtin-baseline": "ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0",
                       "dependencies": [
-                        "fmt",
+                        {
+                          "name": "curl",
+                          "version>=": "8.14.0"
+                        },
                         "ms-gsl"
                       ]
                     }
@@ -215,7 +225,62 @@ output:
                 Bumps [github.com/microsoft/vcpkg](https://github.com/microsoft/vcpkg) from master to 2025.06.13. This release includes the previously tagged commit.
                 - [Release notes](https://github.com/microsoft/vcpkg/releases)
                 - [Commits](https://github.com/microsoft/vcpkg/compare/fe1cde61e971d53c9687cf9a46308f8f55da19fa...ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 3252af76d19ed7ce6034d27d4d6496e6079f4d3a
+            dependencies:
+                - name: curl
+                  previous-requirements:
+                    - file: vcpkg.json
+                      groups: []
+                      requirement: '>=8.14.0'
+                      source: null
+                  previous-version: 8.14.0
+                  requirements:
+                    - file: vcpkg.json
+                      groups: []
+                      requirement: '>=8.15.0'
+                      source: null
+                  version: 8.15.0
+                  directory: /vcpkg/builtin-baseline
+            updated-dependency-files:
+                - content: |-
+                    {
+                      "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+                      "builtin-baseline": "fe1cde61e971d53c9687cf9a46308f8f55da19fa",
+                      "dependencies": [
+                        {
+                          "name": "curl",
+                          "version>=": "8.15.0"
+                        },
+                        "ms-gsl"
+                      ]
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /vcpkg/builtin-baseline
+                  name: vcpkg.json
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump curl from 8.14.0 to 8.15.0 in /vcpkg/builtin-baseline
+            pr-body: |
+                Bumps [curl](https://github.com/microsoft/vcpkg) from 8.14.0 to 8.15.0.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/microsoft/vcpkg/commits">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump curl from 8.14.0 to 8.15.0 in /vcpkg/builtin-baseline
+
+                Bumps [curl](https://github.com/microsoft/vcpkg) from 8.14.0 to 8.15.0.
+                - [Release notes](https://github.com/microsoft/vcpkg/releases)
+                - [Commits](https://github.com/microsoft/vcpkg/commits)
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 761fd1bcff70338b9105d5cb4e2032417391d39d
+            base-commit-sha: 3252af76d19ed7ce6034d27d4d6496e6079f4d3a
