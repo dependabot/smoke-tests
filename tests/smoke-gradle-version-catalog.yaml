@@ -48,12 +48,9 @@ input:
               version-requirement: '>3.13.0'
         source:
             provider: github
-            repo: dependabot/smoke-tests
+            repo: gmazzo/dependabot-smoke-tests
             directory: /gradle-version-catalog/
-            commit: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
-        credentials-metadata:
-            - host: github.com
-              type: git_source
+            commit: 8bc960855eb981c542bdb69a39cad446063187d2
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -64,22 +61,6 @@ output:
       expect:
         data:
             dependencies:
-                - name: com.android.application
-                  requirements:
-                    - file: build.gradle
-                      groups:
-                        - plugins
-                      requirement: 7.3.1
-                      source: null
-                  version: 7.3.1
-                - name: com.android.library
-                  requirements:
-                    - file: build.gradle
-                      groups:
-                        - plugins
-                      requirement: 7.3.1
-                      source: null
-                  version: 7.3.1
                 - name: org.jetbrains.kotlin.android
                   requirements:
                     - file: build.gradle
@@ -88,16 +69,36 @@ output:
                       requirement: 1.7.0
                       source: null
                   version: 1.7.0
+                - name: com.android.application
+                  requirements:
+                    - file: gradle/google-libs.versions.toml
+                      groups:
+                        - plugins
+                      metadata:
+                        property_name: agp
+                      requirement: 7.3.1
+                      source: null
+                  version: 7.3.1
+                - name: com.android.library
+                  requirements:
+                    - file: gradle/google-libs.versions.toml
+                      groups:
+                        - plugins
+                      metadata:
+                        property_name: agp
+                      requirement: 7.3.1
+                      source: null
+                  version: 7.3.1
                 - name: androidx.core:core-ktx
                   requirements:
-                    - file: app/build.gradle
-                      groups: []
-                      requirement: 1.7.0
-                      source: null
                     - file: gradle/libs.versions.toml
                       groups: []
                       metadata:
                         property_name: corektx
+                      requirement: 1.7.0
+                      source: null
+                    - file: app/libs.versions.toml
+                      groups: []
                       requirement: 1.7.0
                       source: null
                   version: 1.7.0
@@ -200,122 +201,14 @@ output:
             dependency_files:
                 - /gradle-version-catalog/build.gradle
                 - /gradle-version-catalog/settings.gradle
+                - /gradle-version-catalog/gradle/google-libs.versions.toml
                 - /gradle-version-catalog/gradle/libs.versions.toml
+                - /gradle-version-catalog/app/libs.versions.toml
                 - /gradle-version-catalog/app/build.gradle
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
-            dependencies:
-                - name: com.android.application
-                  previous-requirements:
-                    - file: build.gradle
-                      groups:
-                        - plugins
-                      requirement: 7.3.1
-                      source: null
-                  previous-version: 7.3.1
-                  requirements:
-                    - file: build.gradle
-                      groups:
-                        - plugins
-                      requirement: 7.4.2
-                      source:
-                        type: maven_repo
-                        url: https://maven.google.com
-                  version: 7.4.2
-                  directory: /gradle-version-catalog
-            updated-dependency-files:
-                - content: |
-                    buildscript {
-                        allprojects {
-                            repositories {
-                                google()
-                                mavenCentral()
-                                maven { url 'https://jitpack.io' }
-                            }
-                        }
-                    }
-
-                    plugins {
-                        id 'com.android.application' version '7.4.2' apply false
-                        id 'com.android.library' version '7.3.1' apply false
-                        id 'org.jetbrains.kotlin.android' version '1.7.0' apply false
-                        alias(libs.plugins.kotlinter)
-                    }
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /gradle-version-catalog
-                  name: build.gradle
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump com.android.application from 7.3.1 to 7.4.2 in /gradle-version-catalog
-            pr-body: |
-                Bumps com.android.application from 7.3.1 to 7.4.2.
-            commit-message: |-
-                Bump com.android.application in /gradle-version-catalog
-
-                Bumps com.android.application from 7.3.1 to 7.4.2.
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
-            dependencies:
-                - name: com.android.library
-                  previous-requirements:
-                    - file: build.gradle
-                      groups:
-                        - plugins
-                      requirement: 7.3.1
-                      source: null
-                  previous-version: 7.3.1
-                  requirements:
-                    - file: build.gradle
-                      groups:
-                        - plugins
-                      requirement: 7.4.2
-                      source:
-                        type: maven_repo
-                        url: https://maven.google.com
-                  version: 7.4.2
-                  directory: /gradle-version-catalog
-            updated-dependency-files:
-                - content: |
-                    buildscript {
-                        allprojects {
-                            repositories {
-                                google()
-                                mavenCentral()
-                                maven { url 'https://jitpack.io' }
-                            }
-                        }
-                    }
-
-                    plugins {
-                        id 'com.android.application' version '7.3.1' apply false
-                        id 'com.android.library' version '7.4.2' apply false
-                        id 'org.jetbrains.kotlin.android' version '1.7.0' apply false
-                        alias(libs.plugins.kotlinter)
-                    }
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /gradle-version-catalog
-                  name: build.gradle
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump com.android.library from 7.3.1 to 7.4.2 in /gradle-version-catalog
-            pr-body: |
-                Bumps com.android.library from 7.3.1 to 7.4.2.
-            commit-message: |-
-                Bump com.android.library from 7.3.1 to 7.4.2 in /gradle-version-catalog
-
-                Bumps com.android.library from 7.3.1 to 7.4.2.
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            base-commit-sha: 8bc960855eb981c542bdb69a39cad446063187d2
             dependencies:
                 - name: org.jetbrains.kotlin.android
                   previous-requirements:
@@ -348,8 +241,8 @@ output:
                     }
 
                     plugins {
-                        id 'com.android.application' version '7.3.1' apply false
-                        id 'com.android.library' version '7.3.1' apply false
+                        alias(googleLibs.plugins.android.application) apply false
+                        alias(googleLibs.plugins.android.library) apply false
                         id 'org.jetbrains.kotlin.android' version '1.8.10' apply false
                         alias(libs.plugins.kotlinter)
                     }
@@ -436,54 +329,56 @@ output:
                 </details>
                 <details>
                 <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/JetBrains/kotlin/blob/master/ChangeLog.md">org.jetbrains.kotlin.android's changelog</a>.</em></p>
+                <p><em>Sourced from <a href="https://github.com/JetBrains/kotlin/blob/v1.8.10/ChangeLog.md">org.jetbrains.kotlin.android's changelog</a>.</em></p>
                 <blockquote>
-                <h2>1.8.21</h2>
+                <h2>1.8.10</h2>
                 <h3>Compiler</h3>
                 <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-57848"><code>KT-57848</code></a> Native: compilation of dynamic/static library fails with Xcode 14.3</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-57875"><code>KT-57875</code></a> Native compilation failure: Suspend functions should be lowered out at this point, but FUN LOCAL_FUNCTION_FOR_LAMBDA</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-57946"><code>KT-57946</code></a> KAPT: &quot;RuntimeException: No type for expression&quot; with delegate</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55483"><code>KT-55483</code></a> K2: Fir is not initialized for FirRegularClassSymbol java/lang/invoke/LambdaMetafactory</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55729"><code>KT-55729</code></a> &quot;None of the following functions can be called with the arguments supplied:&quot; in 1.8.0</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55769"><code>KT-55769</code></a> &quot;ERROR: Could not find accessor&quot;: Android DataBinding fails with Kotlin 1.8.0</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55308"><code>KT-55308</code></a> InnerClass attributes should be sorted (innermost last)</li>
                 </ul>
                 <h3>JavaScript</h3>
                 <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-57356"><code>KT-57356</code></a> KJS: StackOverflowException on <a href="https://github.com/JsExport"><code>@​JsExport</code></a> with type parameters referring to one another</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-56282"><code>KT-56282</code></a> KJS: Invalidate incremental cache in case of compiler internal errors</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55852"><code>KT-55852</code></a> JS: &quot;IllegalStateException: Unexpected ir type argument&quot; caused by List with star projection type</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55716"><code>KT-55716</code></a> KJS / IC: &quot;Cannot read properties of undefined&quot; with overriding variables with 1.8.0</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55758"><code>KT-55758</code></a> KJS / IR: Checking implemented interface on a class implementing a <a href="https://github.com/JsExport"><code>@​JsExport</code></a> interface returns the wrong result</li>
+                </ul>
+                <h3>Reflection</h3>
+                <ul>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-56093"><code>KT-56093</code></a> Metaspace leak in a Gradle plugin built with Kotlin 1.8.0</li>
                 </ul>
                 <h3>Tools. Compiler plugins. Serialization</h3>
                 <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-58067"><code>KT-58067</code></a> Serialization: NullPointerException caused by <a href="https://github.com/Contextual"><code>@​Contextual</code></a> property with type with generic</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-57730"><code>KT-57730</code></a> Serialization: &quot;IllegalStateException: Serializer for element of type <!-- raw HTML omitted -->.Foo has not been found&quot; caused by serialization of Java type</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-56347"><code>KT-56347</code></a> [Kotlin 1.8] Regression kotlinx.serialization compiler plugin internal error</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55681"><code>KT-55681</code></a> Serialization: NullPointerException after update to 1.8.0 caused by <code>@Serializer(forClass= ..)</code></li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-56244"><code>KT-56244</code></a> kotlinx.serialization compiler intrinsic does not work with encodeToString function in 1.8.0</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55683"><code>KT-55683</code></a> Serialization: &quot;IllegalStateException: Expected to have a primary constructor&quot; with expect class and companion object</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55682"><code>KT-55682</code></a> Serialization: &quot;IllegalStateException: Function has no body: FUN name:serializer&quot; with 1.8.0</li>
                 </ul>
-                <h3>Tools. Gradle. JS</h3>
+                <h3>Tools. Gradle</h3>
                 <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-57766"><code>KT-57766</code></a> KJS / Gradle &quot;Module not found: Error: Can't resolve 'kotlin-kotlin-stdlib-js-ir'&quot; when using &quot;useEsModules&quot;</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55697"><code>KT-55697</code></a> KGP 1.8.0 adds compileOnly dependencies to unit test compile classpath</li>
+                </ul>
+                <h3>Tools. Gradle. Multiplatform</h3>
+                <ul>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55730"><code>KT-55730</code></a> MPP / Gradle: compileKotlinMetadata fails to resolve symbols in additional source sets</li>
+                </ul>
+                <h3>Tools. Gradle. Native</h3>
+                <ul>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-56280"><code>KT-56280</code></a> Gradle: freeCompilerArgs are no longer propagated from compilations to Native binaries</li>
                 </ul>
                 <h3>Tools. Kapt</h3>
                 <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-58027"><code>KT-58027</code></a> Kotlin 1.8.20 kapt issue &quot;null: KtCallExpression: build()&quot;</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-48013"><code>KT-48013</code></a> Kapt generates illegal stubs for private interface methods</li>
                 </ul>
-                <h3>Tools. Maven</h3>
+                <h2>1.8.0-RC2</h2>
+                <h3>Compiler</h3>
                 <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-58048"><code>KT-58048</code></a> Maven: &quot;Too many source module declarations found&quot; after upgrading to 1.8.20</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-58101"><code>KT-58101</code></a> 'Unable to access class' in kotlin-maven-plugin after updating to Kotlin 1.8.20</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55357"><code>KT-55357</code></a> IllegalStateException when reading a class that delegates to a Java class with a definitely-not-null type with a flexible upper bound</li>
                 </ul>
-                <h2>1.8.20</h2>
-                <h3>Analysis API</h3>
-                <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-55510"><code>KT-55510</code></a> K2: Lost designation for local classes</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-55191"><code>KT-55191</code></a> AA: add an API to compare symbol pointers</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-55487"><code>KT-55487</code></a> K2: symbol pointer restoring doesn't work for static members</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-55336"><code>KT-55336</code></a> K2 IDE: &quot;java.lang.IllegalStateException: Required value was null.&quot; exception while importing a compiled JPS project</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-55098"><code>KT-55098</code></a> AA: KtDeclarationRenderer should render a context receivers</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-51181"><code>KT-51181</code></a> LL API: errors for SAM with suspend function from another module</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-50250"><code>KT-50250</code></a> Analysis API: Implement Analysis API of KtExpression.isUsedAsExpression</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-54360"><code>KT-54360</code></a> KtPropertySymbol: support JvmField in javaSetterName and javaGetterName</li>
-                </ul>
-                <h3>Analysis API. FE1.0</h3>
-                <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-55825"><code>KT-55825</code></a> AA FE1.0: stackoverflow when resolution to a function with a recursive type parameter</li>
-                </ul>
-                <h3>Analysis API. FIR</h3>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -510,37 +405,115 @@ output:
 
                 Bumps [org.jetbrains.kotlin.android](https://github.com/JetBrains/kotlin) from 1.7.0 to 1.8.10.
                 - [Release notes](https://github.com/JetBrains/kotlin/releases)
-                - [Changelog](https://github.com/JetBrains/kotlin/blob/master/ChangeLog.md)
+                - [Changelog](https://github.com/JetBrains/kotlin/blob/v1.8.10/ChangeLog.md)
                 - [Commits](https://github.com/JetBrains/kotlin/compare/v1.7.0...v1.8.10)
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            base-commit-sha: 8bc960855eb981c542bdb69a39cad446063187d2
+            dependencies:
+                - name: com.android.application
+                  previous-requirements:
+                    - file: gradle/google-libs.versions.toml
+                      groups:
+                        - plugins
+                      metadata:
+                        property_name: agp
+                      requirement: 7.3.1
+                      source: null
+                  previous-version: 7.3.1
+                  requirements:
+                    - file: gradle/google-libs.versions.toml
+                      groups:
+                        - plugins
+                      metadata:
+                        property_name: agp
+                      requirement: 7.4.2
+                      source:
+                        type: maven_repo
+                        url: https://maven.google.com
+                  version: 7.4.2
+                  directory: /gradle-version-catalog
+                - name: com.android.library
+                  previous-requirements:
+                    - file: gradle/google-libs.versions.toml
+                      groups:
+                        - plugins
+                      metadata:
+                        property_name: agp
+                      requirement: 7.3.1
+                      source: null
+                  previous-version: 7.3.1
+                  requirements:
+                    - file: gradle/google-libs.versions.toml
+                      groups:
+                        - plugins
+                      metadata:
+                        property_name: agp
+                      requirement: 7.4.2
+                      source:
+                        type: maven_repo
+                        url: https://maven.google.com
+                  version: 7.4.2
+                  directory: /gradle-version-catalog
+            updated-dependency-files:
+                - content: |
+                    [versions]
+                    agp = "7.4.2"
+
+                    [plugins]
+                    android-application = { id = "com.android.application", version.ref = "agp" }
+                    android-library = { id = "com.android.library", version.ref = "agp" }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /gradle-version-catalog
+                  name: gradle/google-libs.versions.toml
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump agp from 7.3.1 to 7.4.2 in /gradle-version-catalog
+            pr-body: |
+                Bumps `agp` from 7.3.1 to 7.4.2.
+                Updates `com.android.application` from 7.3.1 to 7.4.2
+
+                Updates `com.android.library` from 7.3.1 to 7.4.2
+            commit-message: |-
+                Bump agp from 7.3.1 to 7.4.2 in /gradle-version-catalog
+
+                Bumps `agp` from 7.3.1 to 7.4.2.
+
+                Updates `com.android.application` from 7.3.1 to 7.4.2
+
+                Updates `com.android.library` from 7.3.1 to 7.4.2
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 8bc960855eb981c542bdb69a39cad446063187d2
             dependencies:
                 - name: androidx.core:core-ktx
                   previous-requirements:
-                    - file: app/build.gradle
-                      groups: []
-                      requirement: 1.7.0
-                      source: null
                     - file: gradle/libs.versions.toml
                       groups: []
                       metadata:
                         property_name: corektx
+                      requirement: 1.7.0
+                      source: null
+                    - file: app/libs.versions.toml
+                      groups: []
                       requirement: 1.7.0
                       source: null
                   previous-version: 1.7.0
                   requirements:
-                    - file: app/build.gradle
-                      groups: []
-                      requirement: 1.9.0
-                      source:
-                        type: maven_repo
-                        url: https://maven.google.com
                     - file: gradle/libs.versions.toml
                       groups: []
                       metadata:
                         property_name: corektx
+                      requirement: 1.9.0
+                      source:
+                        type: maven_repo
+                        url: https://maven.google.com
+                    - file: app/libs.versions.toml
+                      groups: []
                       requirement: 1.9.0
                       source:
                         type: maven_repo
@@ -586,75 +559,12 @@ output:
                   support_file: false
                   type: file
                 - content: |
-                    plugins {
-                        id 'com.android.application'
-                        id 'org.jetbrains.kotlin.android'
-                    }
-
-                    android {
-                        namespace 'com.example.versioncatalog'
-                        compileSdk 33
-
-                        defaultConfig {
-                            applicationId "com.example.versioncatalog"
-                            minSdk 24
-                            targetSdk 33
-                            versionCode 1
-                            versionName "1.0"
-
-                            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-                            vectorDrawables {
-                                useSupportLibrary true
-                            }
-                        }
-
-                        buildTypes {
-                            release {
-                                minifyEnabled false
-                                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-                            }
-                        }
-                        compileOptions {
-                            sourceCompatibility JavaVersion.VERSION_1_8
-                            targetCompatibility JavaVersion.VERSION_1_8
-                        }
-                        kotlinOptions {
-                            jvmTarget = '1.8'
-                        }
-                        buildFeatures {
-                            compose true
-                        }
-                        composeOptions {
-                            kotlinCompilerExtensionVersion '1.2.0'
-                        }
-                        packagingOptions {
-                            resources {
-                                excludes += '/META-INF/{AL2.0,LGPL2.1}'
-                            }
-                        }
-                    }
-
-                    dependencies {
-
-                        implementation 'androidx.core:core-ktx:1.9.0'
-
-                        implementation libs.lifecycleRuntimeKtx
-                        implementation libs.bundles.compose
-
-                        testImplementation libs.test.junit
-
-                        androidTestImplementation libs.test.andoridx.junit
-                        androidTestImplementation libs.test.espresso.core
-                        androidTestImplementation libs.test.compose.ui
-                        androidTestImplementation libs.test.compose.ui.tooling
-
-                        debugImplementation libs.test.compose.ui.tooling
-                        debugImplementation libs.test.compose.manifest
-                    }
+                    [libraries]
+                    androidx-core = "androidx.core:core-ktx:1.9.0"
                   content_encoding: utf-8
                   deleted: false
                   directory: /gradle-version-catalog
-                  name: app/build.gradle
+                  name: app/libs.versions.toml
                   operation: update
                   support_file: false
                   type: file
@@ -668,7 +578,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            base-commit-sha: 8bc960855eb981c542bdb69a39cad446063187d2
             dependencies:
                 - name: androidx.lifecycle:lifecycle-runtime-ktx
                   previous-requirements:
@@ -738,7 +648,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            base-commit-sha: 8bc960855eb981c542bdb69a39cad446063187d2
             dependencies:
                 - name: androidx.activity:activity-compose
                   previous-requirements:
@@ -804,7 +714,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            base-commit-sha: 8bc960855eb981c542bdb69a39cad446063187d2
             dependencies:
                 - name: androidx.compose.ui:ui
                   previous-requirements:
@@ -973,7 +883,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            base-commit-sha: 8bc960855eb981c542bdb69a39cad446063187d2
             dependencies:
                 - name: androidx.test.ext:junit
                   previous-requirements:
@@ -1043,7 +953,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            base-commit-sha: 8bc960855eb981c542bdb69a39cad446063187d2
             dependencies:
                 - name: androidx.test.espresso:espresso-core
                   previous-requirements:
@@ -1113,7 +1023,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            base-commit-sha: 8bc960855eb981c542bdb69a39cad446063187d2
             dependencies:
                 - name: org.jmailen.kotlinter
                   previous-requirements:
@@ -1181,4 +1091,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
+            base-commit-sha: 8bc960855eb981c542bdb69a39cad446063187d2
