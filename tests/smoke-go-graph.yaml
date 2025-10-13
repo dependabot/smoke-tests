@@ -33,7 +33,7 @@ output:
             detector:
                 name: dependabot
                 url: https://github.com/dependabot/dependabot-core
-                version: 0.337.0
+                version: 0.340.0
             manifests:
                 /go/go.mod:
                     file:
@@ -73,7 +73,8 @@ output:
                             relationship: indirect
                             scope: runtime
                         rsc.io/quote:
-                            dependencies: []
+                            dependencies:
+                                - rsc.io/sampler
                             package_url: pkg:golang/rsc.io/quote@v1.4.0
                             relationship: direct
                             scope: runtime
