@@ -4,12 +4,7 @@ package main
 // to see what is actually used. Thus, for sufficient testing we must
 // have a main that imports the direct dependencies.
 import (
-	_ "example.com/fake"
-	_ "github.com/fatih/color"
-	_ "github.com/inconshreveable/mousetrap"
-	_ "golang.org/x/crypto/cryptobyte"
-	_ "rsc.io/qr"
-	_ "rsc.io/quote"
+	_ "golang.org/x/text"
 )
 
 func main() {}
