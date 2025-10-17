@@ -4,7 +4,8 @@ package main
 // to see what is actually used. Thus, for sufficient testing we must
 // have a main that imports the direct dependencies.
 import (
-	_ "example.com/fake"
+	_ "example.com/elsewhere"
+	_ "example.com/local"
 	_ "github.com/fatih/color"
 	_ "github.com/inconshreveable/mousetrap"
 	_ "golang.org/x/crypto/cryptobyte"
