@@ -12,7 +12,7 @@ input:
             repo: dependabot/smoke-tests
             directories:
                 - go
-            commit: 46cc326fb8ab3beaeb7a3f37b015d6988bf83396
+            commit: adefdc01a3f0b0b041832dcf906c1d52fdfa08ec
             hostname: github.com
             api-endpoint: https://api.github.com
     credentials:
@@ -25,7 +25,7 @@ output:
       expect:
         data:
             version: 0
-            sha: 46cc326fb8ab3beaeb7a3f37b015d6988bf83396
+            sha: adefdc01a3f0b0b041832dcf906c1d52fdfa08ec
             ref: refs/heads/main
             job:
                 correlator: dependabot-go_modules-go
@@ -33,7 +33,7 @@ output:
             detector:
                 name: dependabot
                 url: https://github.com/dependabot/dependabot-core
-                version: 0.340.0
+                version: 0.341.0
             manifests:
                 /go/go.mod:
                     file:
@@ -69,16 +69,25 @@ output:
                             scope: runtime
                         golang.org/x/sys:
                             dependencies: []
-                            package_url: pkg:golang/golang.org/x/sys@v0.0.0-20220731174439-a90be440212d
+                            package_url: pkg:golang/golang.org/x/sys@v0.37.0
+                            relationship: indirect
+                            scope: runtime
+                        golang.org/x/text:
+                            dependencies: []
+                            package_url: pkg:golang/golang.org/x/text@v0.3.7
                             relationship: indirect
                             scope: runtime
                         rsc.io/quote:
-                            dependencies:
-                                - rsc.io/sampler
+                            dependencies: []
                             package_url: pkg:golang/rsc.io/quote@v1.4.0
                             relationship: direct
+                            scope: runtime
+                        rsc.io/sampler:
+                            dependencies: []
+                            package_url: pkg:golang/rsc.io/sampler@v1.0.0
+                            relationship: indirect
                             scope: runtime
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 46cc326fb8ab3beaeb7a3f37b015d6988bf83396
+            base-commit-sha: adefdc01a3f0b0b041832dcf906c1d52fdfa08ec
