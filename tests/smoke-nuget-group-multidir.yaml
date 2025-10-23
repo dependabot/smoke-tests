@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: nuget
         allowed-updates:
             - dependency-type: direct
@@ -168,6 +169,34 @@ output:
                 Bumps NuGet.Versioning to 6.2.4
             dependency-group:
                 name: nuget
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: NuGet.Versioning
+                  requirements:
+                    - file: /nuget/multi-dir/foo/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.1.0
+                      source: null
+                  version: 6.1.0
+            dependency_files:
+                - /nuget/multi-dir/foo/project.csproj
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: NuGet.Versioning
+                  requirements:
+                    - file: /nuget/multi-dir/bar/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 6.2.2
+                      source: null
+                  version: 6.2.2
+            dependency_files:
+                - /nuget/multi-dir/bar/project.csproj
     - type: mark_as_processed
       expect:
         data:
