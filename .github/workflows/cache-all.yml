@@ -16,6 +16,8 @@ jobs:
     uses: ./.github/workflows/download-cli.yml
     permissions:
       contents: read
+    secrets:
+      gh_token: ${{ secrets.GITHUB_TOKEN }}
 
   e2e:
     runs-on: ubuntu-latest
