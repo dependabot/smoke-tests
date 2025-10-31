@@ -17,6 +17,8 @@ jobs:
 
   download-cli:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Download CLI
         run: |
