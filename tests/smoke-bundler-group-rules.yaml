@@ -1,7 +1,5 @@
-command: update
 input:
     job:
-        command: update
         package-manager: bundler
         allowed-updates:
             - dependency-type: direct
@@ -34,15 +32,566 @@ input:
           type: git_source
           username: x-access-token
 output:
-    - type: record_update_job_error
+    - type: record_ecosystem_versions
       expect:
         data:
-            error-type: job_repo_not_found
-            error-details:
-                message: |-
-                    Cloning into '/home/dependabot/dependabot-updater/repo'...
-                    fatal: could not read Username for 'https://github.com': terminal prompts disabled
+            ecosystem_versions:
+                package_managers:
+                    bundler: "2"
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: rubocop
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: 0.76.0
+                      source: null
+                  version: 0.76.0
+                - name: toml-rb
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: 2.2.0
+                      source: null
+                  version: 2.2.0
+                - name: rack
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: '>= 0'
+                      source:
+                        branch: null
+                        ref: 2.1.4
+                        type: git
+                        url: git@github.com:rack/rack.git
+                  version: f3cf79d6460dc592767941806d1b2b7008f73e01
+                - name: ast
+                  requirements: []
+                  version: 2.4.2
+                - name: citrus
+                  requirements: []
+                  version: 3.0.2
+                - name: jaro_winkler
+                  requirements: []
+                  version: 1.5.4
+                - name: parallel
+                  requirements: []
+                  version: 1.22.1
+                - name: parser
+                  requirements: []
+                  version: 3.1.2.0
+                - name: rainbow
+                  requirements: []
+                  version: 3.1.1
+                - name: ruby-progressbar
+                  requirements: []
+                  version: 1.11.0
+                - name: unicode-display_width
+                  requirements: []
+                  version: 1.6.1
+            dependency_files:
+                - /bundler/Gemfile
+                - /bundler/Gemfile.lock
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: f558406ea0f067dcb5e223e257dcd91c27ea3a85
+            dependencies:
+                - name: rubocop
+                  previous-requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: 0.76.0
+                      source: null
+                  previous-version: 0.76.0
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: 1.59.0
+                      source: null
+                  version: 1.59.0
+                  directory: /bundler
+                - name: rack
+                  previous-requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: '>= 0'
+                      source:
+                        branch: null
+                        ref: 2.1.4
+                        type: git
+                        url: git@github.com:rack/rack.git
+                  previous-version: f3cf79d6460dc592767941806d1b2b7008f73e01
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: '>= 0'
+                      source:
+                        branch: null
+                        ref: v3.1.15
+                        type: git
+                        url: git@github.com:rack/rack.git
+                  version: 3213339b6f18cb24b496bafbfe0756b813a49037
+                  directory: /bundler
+            updated-dependency-files:
+                - content: |
+                    # frozen_string_literal: true
+
+                    source "https://rubygems.org"
+
+                    gem "rubocop", "1.59.0"
+                    gem "toml-rb", "2.2.0"
+                    gem 'rack', git: 'git@github.com:rack/rack.git', tag: 'v3.1.15'
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bundler
+                  name: Gemfile
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    GIT
+                      remote: git@github.com:rack/rack.git
+                      revision: 3213339b6f18cb24b496bafbfe0756b813a49037
+                      tag: v3.1.15
+                      specs:
+                        rack (3.1.15)
+
+                    GEM
+                      remote: https://rubygems.org/
+                      specs:
+                        ast (2.4.3)
+                        citrus (3.0.2)
+                        json (2.12.2)
+                        language_server-protocol (3.17.0.5)
+                        parallel (1.27.0)
+                        parser (3.3.8.0)
+                          ast (~> 2.4.1)
+                          racc
+                        prism (1.4.0)
+                        racc (1.8.1)
+                        rainbow (3.1.1)
+                        regexp_parser (2.10.0)
+                        rexml (3.4.1)
+                        rubocop (1.59.0)
+                          json (~> 2.3)
+                          language_server-protocol (>= 3.17.0)
+                          parallel (~> 1.10)
+                          parser (>= 3.2.2.4)
+                          rainbow (>= 2.2.2, < 4.0)
+                          regexp_parser (>= 1.8, < 3.0)
+                          rexml (>= 3.2.5, < 4.0)
+                          rubocop-ast (>= 1.30.0, < 2.0)
+                          ruby-progressbar (~> 1.7)
+                          unicode-display_width (>= 2.4.0, < 3.0)
+                        rubocop-ast (1.44.1)
+                          parser (>= 3.3.7.2)
+                          prism (~> 1.4)
+                        ruby-progressbar (1.13.0)
+                        toml-rb (2.2.0)
+                          citrus (~> 3.0, > 3.0)
+                        unicode-display_width (2.6.0)
+
+                    PLATFORMS
+                      ruby
+
+                    DEPENDENCIES
+                      rack!
+                      rubocop (= 1.59.0)
+                      toml-rb (= 2.2.0)
+
+                    BUNDLED WITH
+                       2.1.4
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bundler
+                  name: Gemfile.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump the ruleset group in /bundler with 2 updates
+            pr-body: |
+                Bumps the ruleset group in /bundler with 2 updates: [rubocop](https://github.com/rubocop/rubocop) and [rack](https://github.com/rack/rack).
+
+                Updates `rubocop` from 0.76.0 to 1.59.0
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/rubocop/rubocop/releases">rubocop's releases</a>.</em></p>
+                <blockquote>
+                <h2>RuboCop 1.59</h2>
+                <h3>New features</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12518">#12518</a>: Add new <code>Lint/ItWithoutArgumentsInBlock</code> cop. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                </ul>
+                <h3>Bug fixes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12434">#12434</a>: Fix a false positive for <code>Lint/LiteralAssignmentInCondition</code> when using interpolated string or xstring literals. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12435">#12435</a>: Fix a false positive for <code>Lint/SelfAssignment</code> when using attribute assignment with method call with arguments. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12444">#12444</a>: Fix false positive for <code>Style/HashEachMethods</code> when receiver literal is not a hash literal. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12524">#12524</a>: Fix a false positive for <code>Style/MethodCallWithArgsParentheses</code> when <code>EnforcedStyle: omit_parentheses</code> and parens in <code>when</code> clause is used to pass an argument. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12505">#12505</a>: Fix a false positive for <code>Style/RedundantParentheses</code> when using parenthesized <code>lambda</code> or <code>proc</code> with <code>do</code>...<code>end</code> block. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12442">#12442</a>: Fix an incorrect autocorrect for <code>Style/CombinableLoops</code> when looping over the same data as previous loop in <code>do</code>...<code>end</code> and <code>{</code>...<code>}</code> blocks. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12432">#12432</a>: Fix a false positive for <code>Lint/LiteralAssignmentInCondition</code> when using parallel assignment with splat operator in block of guard condition. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12441">#12441</a>: Fix false positives for <code>Style/HashEachMethods</code> when using destructed block arguments. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12436">#12436</a>: Fix false positives for <code>Style/RedundantParentheses</code> when a part of range is a parenthesized condition. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12429">#12429</a>: Fix incorrect autocorrect for <code>Style/MapToHash</code> when using dot method calls for <code>to_h</code>. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12488">#12488</a>: Make <code>Lint/HashCompareByIdentity</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12489">#12489</a>: Make <code>Lint/NextWithoutAccumulator</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12490">#12490</a>: Make <code>Lint/NumberConversion</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12491">#12491</a>: Make <code>Lint/RedundantWithIndex</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12492">#12492</a>: Make <code>Lint/RedundantWithObject</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12493">#12493</a>: Make <code>Lint/UnmodifiedReduceAccumulator</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12473">#12473</a>: Make <code>Style/ClassCheck</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12445">#12445</a>: Make <code>Style/CollectionCompact</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12474">#12474</a>: Make <code>Style/ConcatArrayLiterals</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12476">#12476</a>: Make <code>Style/DateTime</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12479">#12479</a>: Make <code>Style/EachWithObject</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12446">#12446</a>: Make <code>Style/HashExcept</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12447">#12447</a>: Make <code>Style/MapCompactWithConditionalBlock</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12484">#12484</a>: Make <code>Style/Next</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12486">#12486</a>: Make <code>Style/RedundantArgument</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12454">#12454</a>: Make <code>Style/RedundantFetchBlock</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12495">#12495</a>: Make <code>Layout/RedundantLineBreak</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12455">#12455</a>: Make <code>Style/RedundantSortBy</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12456">#12456</a>: Make <code>Style/RedundantSortBy</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12480">#12480</a>: Make <code>Style/ExactRegexpMatch</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12457">#12457</a>: Make <code>Style/Sample</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12458">#12458</a>: Make <code>Style/SelectByRegexp</code> cops aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12494">#12494</a>: Make <code>Layout/SingleLineBlockChain</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12461">#12461</a>: Make <code>Style/StringChars</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12468">#12468</a>: Make <code>Style/Strip</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12469">#12469</a>: Make <code>Style/UnpackFirst</code> aware of safe navigation operator. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                </ul>
+                <h3>Changes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12522">#12522</a>: Make <code>Style/MethodCallWithoutArgsParentheses</code> allow the parenthesized <code>it</code> method in a block. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12523">#12523</a>: Make <code>Style/RedundantSelf</code> allow the <code>self.it</code> method in a block. (<a href="https://github.com/koic"><code>@​koic</code></a>)</li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md">rubocop's changelog</a>.</em></p>
+                <blockquote>
+                <h2>1.59.0 (2023-12-11)</h2>
+                <h3>New features</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12518">#12518</a>: Add new <code>Lint/ItWithoutArgumentsInBlock</code> cop. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                </ul>
+                <h3>Bug fixes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12434">#12434</a>: Fix a false positive for <code>Lint/LiteralAssignmentInCondition</code> when using interpolated string or xstring literals. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12435">#12435</a>: Fix a false positive for <code>Lint/SelfAssignment</code> when using attribute assignment with method call with arguments. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12444">#12444</a>: Fix false positive for <code>Style/HashEachMethods</code> when receiver literal is not a hash literal. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12524">#12524</a>: Fix a false positive for <code>Style/MethodCallWithArgsParentheses</code> when <code>EnforcedStyle: omit_parentheses</code> and parens in <code>when</code> clause is used to pass an argument. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12505">#12505</a>: Fix a false positive for <code>Style/RedundantParentheses</code> when using parenthesized <code>lambda</code> or <code>proc</code> with <code>do</code>...<code>end</code> block. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12442">#12442</a>: Fix an incorrect autocorrect for <code>Style/CombinableLoops</code> when looping over the same data as previous loop in <code>do</code>...<code>end</code> and <code>{</code>...<code>}</code> blocks. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12432">#12432</a>: Fix a false positive for <code>Lint/LiteralAssignmentInCondition</code> when using parallel assignment with splat operator in block of guard condition. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12441">#12441</a>: Fix false positives for <code>Style/HashEachMethods</code> when using destructed block arguments. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12436">#12436</a>: Fix false positives for <code>Style/RedundantParentheses</code> when a part of range is a parenthesized condition. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12429">#12429</a>: Fix incorrect autocorrect for <code>Style/MapToHash</code> when using dot method calls for <code>to_h</code>. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12488">#12488</a>: Make <code>Lint/HashCompareByIdentity</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12489">#12489</a>: Make <code>Lint/NextWithoutAccumulator</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12490">#12490</a>: Make <code>Lint/NumberConversion</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12491">#12491</a>: Make <code>Lint/RedundantWithIndex</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12492">#12492</a>: Make <code>Lint/RedundantWithObject</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12493">#12493</a>: Make <code>Lint/UnmodifiedReduceAccumulator</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12473">#12473</a>: Make <code>Style/ClassCheck</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12445">#12445</a>: Make <code>Style/CollectionCompact</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12474">#12474</a>: Make <code>Style/ConcatArrayLiterals</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12476">#12476</a>: Make <code>Style/DateTime</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12479">#12479</a>: Make <code>Style/EachWithObject</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12446">#12446</a>: Make <code>Style/HashExcept</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12447">#12447</a>: Make <code>Style/MapCompactWithConditionalBlock</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12484">#12484</a>: Make <code>Style/Next</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12486">#12486</a>: Make <code>Style/RedundantArgument</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12454">#12454</a>: Make <code>Style/RedundantFetchBlock</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12495">#12495</a>: Make <code>Layout/RedundantLineBreak</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12455">#12455</a>: Make <code>Style/RedundantSortBy</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12456">#12456</a>: Make <code>Style/RedundantSortBy</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12480">#12480</a>: Make <code>Style/ExactRegexpMatch</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12457">#12457</a>: Make <code>Style/Sample</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12458">#12458</a>: Make <code>Style/SelectByRegexp</code> cops aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12494">#12494</a>: Make <code>Layout/SingleLineBlockChain</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12461">#12461</a>: Make <code>Style/StringChars</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12468">#12468</a>: Make <code>Style/Strip</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/issues/12469">#12469</a>: Make <code>Style/UnpackFirst</code> aware of safe navigation operator. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                </ul>
+                <h3>Changes</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12522">#12522</a>: Make <code>Style/MethodCallWithoutArgsParentheses</code> allow the parenthesized <code>it</code> method in a block. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                <li><a href="https://redirect.github.com/rubocop/rubocop/pull/12523">#12523</a>: Make <code>Style/RedundantSelf</code> allow the <code>self.it</code> method in a block. ([<a href="https://github.com/koic"><code>@​koic</code></a>][])</li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rubocop/rubocop/commit/e5a164a26f8ecba81d44e974e8e3569c550968cd"><code>e5a164a</code></a> Cut 1.59</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/2912b6e9e90831717b004b4e016fd2723fac5e44"><code>2912b6e</code></a> Update Changelog</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/3bcc171fe5d9ee0251b1c22ffec463aaec495bf7"><code>3bcc171</code></a> [Fix <a href="https://redirect.github.com/rubocop/rubocop/issues/12524">#12524</a>] Fix a false positive for <code>Style/MethodCallWithArgsParentheses</code></li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/0daa4aa05977f67b575d126caff716959e60f00f"><code>0daa4aa</code></a> Make <code>Style/MethodCallWithoutArgsParentheses</code> allow parenthesized <code>it</code></li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/b240a093c0539c1f89c60df6b599d2afd4db4f22"><code>b240a09</code></a> Make <code>Style/RedundantSelf</code> allow <code>self.it</code></li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/a0e1042a34d4d0ff855447d6f9059c98b610258f"><code>a0e1042</code></a> [Fix <a href="https://redirect.github.com/rubocop/rubocop/issues/12526">#12526</a>] Fix incorrect rendering typos</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/b1bcb3134d49a60061d08ef168ae996d70d8ce5c"><code>b1bcb31</code></a> [Fix <a href="https://redirect.github.com/rubocop/rubocop/issues/12444">#12444</a>] Fix false positive for <code>Style/HashEachMethods</code></li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/3b0360bb9fcd9c49e09882c2b1780ba7cbbf64a8"><code>3b0360b</code></a> Add new <code>Lint/ItWithoutArgumentsInBlock</code> cop</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/4e9cfcc6ea39b69474eab3e13b551be32d3217ff"><code>4e9cfcc</code></a> Merge pull request <a href="https://redirect.github.com/rubocop/rubocop/issues/12521">#12521</a> from koic/make_style_select_by_regexp_aware_of_safe...</li>
+                <li><a href="https://github.com/rubocop/rubocop/commit/037c860c1fe2f8a0512dbe15ff329fee2f7c10f6"><code>037c860</code></a> Merge pull request <a href="https://redirect.github.com/rubocop/rubocop/issues/12438">#12438</a> from koic/fix_a_false_positive_for_lint_literal_ass...</li>
+                <li>Additional commits viewable in <a href="https://github.com/rubocop/rubocop/compare/v0.76.0...v1.59.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `rack` from 2.1.4 to v3.1.15
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/rack/rack/blob/main/CHANGELOG.md">rack's changelog</a>.</em></p>
+                <blockquote>
+                <h2>[3.1.15] - 2025-05-18</h2>
+                <ul>
+                <li>Optional support for <code>CGI::Cookie</code> if not available. (<a href="https://redirect.github.com/rack/rack/pull/2327">#2327</a>, <a href="https://redirect.github.com/rack/rack/pull/2333">#2333</a>, [<a href="https://github.com/earlopain"><code>@​earlopain</code></a>])</li>
+                </ul>
+                <h2>[3.1.14] - 2025-05-06</h2>
+                <h3>Security</h3>
+                <ul>
+                <li><a href="https://github.com/rack/rack/security/advisories/GHSA-gjh7-p2fx-99vx">CVE-2025-46727</a> Unbounded parameter parsing in <code>Rack::QueryParser</code> can lead to memory exhaustion.</li>
+                </ul>
+                <h2>[3.1.13] - 2025-04-13</h2>
+                <ul>
+                <li>Ensure <code>Rack::ETag</code> correctly updates response body. (<a href="https://redirect.github.com/rack/rack/pull/2324">#2324</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
+                </ul>
+                <h2>[3.1.12] - 2025-03-11</h2>
+                <h3>Security</h3>
+                <ul>
+                <li><a href="https://github.com/rack/rack/security/advisories/GHSA-7wqh-767x-r66v">CVE-2025-27610</a> Local file inclusion in <code>Rack::Static</code>.</li>
+                </ul>
+                <h2>[3.1.11] - 2025-03-04</h2>
+                <h3>Security</h3>
+                <ul>
+                <li><a href="https://github.com/rack/rack/security/advisories/GHSA-8cgq-6mh2-7j6v">CVE-2025-27111</a> Possible Log Injection in <code>Rack::Sendfile</code>.</li>
+                </ul>
+                <h2>[3.1.10] - 2025-02-12</h2>
+                <h3>Security</h3>
+                <ul>
+                <li><a href="https://github.com/rack/rack/security/advisories/GHSA-7g2v-jj9q-g3rg">CVE-2025-25184</a> Possible Log Injection in <code>Rack::CommonLogger</code>.</li>
+                </ul>
+                <h2>[3.1.9] - 2025-01-31</h2>
+                <h3>Fixed</h3>
+                <ul>
+                <li><code>Rack::MediaType#params</code> now handles parameters without values. (<a href="https://redirect.github.com/rack/rack/pull/2263">#2263</a>, <a href="https://github.com/AllyMarthaJ"><code>@​AllyMarthaJ</code></a>)</li>
+                </ul>
+                <h2>[3.1.8] - 2024-10-14</h2>
+                <h3>Fixed</h3>
+                <ul>
+                <li>Resolve deprecation warnings about uri <code>DEFAULT_PARSER</code>. (<a href="https://redirect.github.com/rack/rack/pull/2249">#2249</a>, [<a href="https://github.com/earlopain"><code>@​earlopain</code></a>])</li>
+                </ul>
+                <h2>[3.1.7] - 2024-07-11</h2>
+                <h3>Fixed</h3>
+                <ul>
+                <li>Do not remove escaped opening/closing quotes for content-disposition filenames. (<a href="https://redirect.github.com/rack/rack/pull/2229">#2229</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
+                <li>Fix encoding setting for non-binary IO-like objects in MockRequest#env_for. (<a href="https://redirect.github.com/rack/rack/pull/2227">#2227</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rack/rack/commit/835e15bf9e51846471e3da63ce474f6836ebd203"><code>835e15b</code></a> Bump patch version.</li>
+                <li><a href="https://github.com/rack/rack/commit/bd60f6e13486fafceb0078fa17f535ac24877b3f"><code>bd60f6e</code></a> Feature detect <code>CGI::Cookie</code>. (<a href="https://redirect.github.com/rack/rack/issues/2333">#2333</a>)</li>
+                <li><a href="https://github.com/rack/rack/commit/3c1a46de3f637f08993d83eb341ddae409cc60c5"><code>3c1a46d</code></a> Replace usage of <code>CGI::Cookie</code> (<a href="https://redirect.github.com/rack/rack/issues/2328">#2328</a>)</li>
+                <li><a href="https://github.com/rack/rack/commit/0ac5c574fd6f0db40d930ac7c32e064435f43d37"><code>0ac5c57</code></a> Test on Ruby v3.4.</li>
+                <li><a href="https://github.com/rack/rack/commit/5440b2c8b006f1c2ef202c2bd60dd70924c9b1c1"><code>5440b2c</code></a> Bump patch version.</li>
+                <li><a href="https://github.com/rack/rack/commit/cd6b70a1f2a1016b73dc906f924869f4902c2d74"><code>cd6b70a</code></a> Merge commit from fork</li>
+                <li><a href="https://github.com/rack/rack/commit/037953789da9cd49c4a3453ade6ede13619276e0"><code>0379537</code></a> Bump patch version.</li>
+                <li><a href="https://github.com/rack/rack/commit/8e3c9b1c08e24e85b90a9c322d36cc2840384de1"><code>8e3c9b1</code></a> Ensure <code>Rack::ETag</code> correctly updates response body. (<a href="https://redirect.github.com/rack/rack/issues/2324">#2324</a>)</li>
+                <li><a href="https://github.com/rack/rack/commit/e8f47608668d507e0f231a932fa37c9ca551c0a5"><code>e8f4760</code></a> Bump patch version.</li>
+                <li><a href="https://github.com/rack/rack/commit/413b8349f18032784b24b32e6c425eea14bb2a2e"><code>413b834</code></a> Update changelog.</li>
+                <li>Additional commits viewable in <a href="https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...3213339b6f18cb24b496bafbfe0756b813a49037">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump the ruleset group in /bundler with 2 updates
+
+                Bumps the ruleset group in /bundler with 2 updates: [rubocop](https://github.com/rubocop/rubocop) and [rack](https://github.com/rack/rack).
+
+
+                Updates `rubocop` from 0.76.0 to 1.59.0
+                - [Release notes](https://github.com/rubocop/rubocop/releases)
+                - [Changelog](https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/rubocop/rubocop/compare/v0.76.0...v1.59.0)
+
+                Updates `rack` from 2.1.4 to v3.1.15
+                - [Release notes](https://github.com/rack/rack/releases)
+                - [Changelog](https://github.com/rack/rack/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...3213339b6f18cb24b496bafbfe0756b813a49037)
+            dependency-group:
+                name: ruleset
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: f558406ea0f067dcb5e223e257dcd91c27ea3a85
+            dependencies:
+                - name: toml-rb
+                  previous-requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: 2.2.0
+                      source: null
+                  previous-version: 2.2.0
+                  requirements:
+                    - file: Gemfile
+                      groups:
+                        - default
+                      requirement: 4.0.0
+                      source: null
+                  version: 4.0.0
+                  directory: /bundler
+            updated-dependency-files:
+                - content: |
+                    # frozen_string_literal: true
+
+                    source "https://rubygems.org"
+
+                    gem "rubocop", "0.76.0"
+                    gem "toml-rb", "4.0.0"
+                    gem 'rack', git: 'git@github.com:rack/rack.git', tag: '2.1.4'
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bundler
+                  name: Gemfile
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    GIT
+                      remote: git@github.com:rack/rack.git
+                      revision: f3cf79d6460dc592767941806d1b2b7008f73e01
+                      tag: 2.1.4
+                      specs:
+                        rack (2.1.4)
+
+                    GEM
+                      remote: https://rubygems.org/
+                      specs:
+                        ast (2.4.2)
+                        citrus (3.0.2)
+                        jaro_winkler (1.5.4)
+                        parallel (1.22.1)
+                        parser (3.1.2.0)
+                          ast (~> 2.4.1)
+                        racc (1.8.1)
+                        rainbow (3.1.1)
+                        rubocop (0.76.0)
+                          jaro_winkler (~> 1.5.1)
+                          parallel (~> 1.10)
+                          parser (>= 2.6)
+                          rainbow (>= 2.2.2, < 4.0)
+                          ruby-progressbar (~> 1.7)
+                          unicode-display_width (>= 1.4.0, < 1.7)
+                        ruby-progressbar (1.11.0)
+                        toml-rb (4.0.0)
+                          citrus (~> 3.0, > 3.0)
+                          racc (~> 1.7)
+                        unicode-display_width (1.6.1)
+
+                    PLATFORMS
+                      ruby
+
+                    DEPENDENCIES
+                      rack!
+                      rubocop (= 0.76.0)
+                      toml-rb (= 4.0.0)
+
+                    BUNDLED WITH
+                       2.1.4
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /bundler
+                  name: Gemfile.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump toml-rb from 2.2.0 to 4.0.0 in /bundler
+            pr-body: |
+                Bumps [toml-rb](https://github.com/emancu/toml-rb) from 2.2.0 to 4.0.0.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/emancu/toml-rb/releases">toml-rb's releases</a>.</em></p>
+                <blockquote>
+                <h2>v4.0.0</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Support array with mixed types by <a href="https://github.com/emancu"><code>@​emancu</code></a> in <a href="https://redirect.github.com/emancu/toml-rb/pull/153">emancu/toml-rb#153</a></li>
+                <li>Update tests by <a href="https://github.com/emancu"><code>@​emancu</code></a> in <a href="https://redirect.github.com/emancu/toml-rb/pull/154">emancu/toml-rb#154</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/emancu/toml-rb/compare/v3.0.1...v4.0.0">https://github.com/emancu/toml-rb/compare/v3.0.1...v4.0.0</a></p>
+                <h2>v3.0.1</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Support empty keys by quoting them. Fixes <a href="https://redirect.github.com/emancu/toml-rb/issues/147">#147</a> by <a href="https://github.com/dreid"><code>@​dreid</code></a> in <a href="https://redirect.github.com/emancu/toml-rb/pull/148">emancu/toml-rb#148</a></li>
+                </ul>
+                <h2>New Contributors</h2>
+                <ul>
+                <li><a href="https://github.com/dreid"><code>@​dreid</code></a> made their first contribution in <a href="https://redirect.github.com/emancu/toml-rb/pull/148">emancu/toml-rb#148</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/emancu/toml-rb/compare/v3.0.0...v3.0.1">https://github.com/emancu/toml-rb/compare/v3.0.0...v3.0.1</a></p>
+                <h2>v3.0.0</h2>
+                <p>The reason for releasing a major version is the fix on <a href="https://redirect.github.com/emancu/toml-rb/issues/146">#146</a>; even if it's an error, it breaks the previous behaviour that worked for a really long time and I don't want to cause unexpected issues to existing users.</p>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Add Ruby 3.2 to CI pipeline by <a href="https://github.com/igor-drozdov"><code>@​igor-drozdov</code></a> in <a href="https://redirect.github.com/emancu/toml-rb/pull/140">emancu/toml-rb#140</a></li>
+                <li>Add ruby 3.3 to testing matrix by <a href="https://github.com/timon"><code>@​timon</code></a> in <a href="https://redirect.github.com/emancu/toml-rb/pull/145">emancu/toml-rb#145</a></li>
+                <li>[147] Dump backslashed keys by <a href="https://github.com/emancu"><code>@​emancu</code></a> in <a href="https://redirect.github.com/emancu/toml-rb/pull/146">emancu/toml-rb#146</a></li>
+                </ul>
+                <h2>New Contributors</h2>
+                <ul>
+                <li><a href="https://github.com/igor-drozdov"><code>@​igor-drozdov</code></a> made their first contribution in <a href="https://redirect.github.com/emancu/toml-rb/pull/140">emancu/toml-rb#140</a></li>
+                <li><a href="https://github.com/timon"><code>@​timon</code></a> made their first contribution in <a href="https://redirect.github.com/emancu/toml-rb/pull/145">emancu/toml-rb#145</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/emancu/toml-rb/compare/v2.2.0...v3.0.0">https://github.com/emancu/toml-rb/compare/v2.2.0...v3.0.0</a></p>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/emancu/toml-rb/commit/36d9d5dc2ed72b6a01a9f1d7fac7a6639b3593b3"><code>36d9d5d</code></a> Bump to v4.0.0</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/a7fc9e567cde22af1307cfadc5c3cb7414b64d0d"><code>a7fc9e5</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/154">#154</a> from emancu/update_tests</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/43d9d9847a45246aaa56d5ffb515cb84e0fb5bc3"><code>43d9d98</code></a> Update tests</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/755c874c0a9356d0f22bc8639df9c77fb2ef0eda"><code>755c874</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/153">#153</a> from emancu/152/support_array_with_mixed_types</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/61dc8de83cc9b4d80cc3d86fb40a03a11be9895f"><code>61dc8de</code></a> Simplify the array parser, now that any type is acceptable.</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/f3bc78ed409a2edb51ea7f4be735213bfe43630c"><code>f3bc78e</code></a> Since the Toml spec v1.0.0 there are some breaking changes</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/28b2ebcaae8fd87cec777500cfe4fa087c6c808b"><code>28b2ebc</code></a> Bump to v3.0.1</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/a9553af968f8e4aa9e69abf6db1e7457da5cae46"><code>a9553af</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/148">#148</a> from dreid/empty-keys</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/6572c457777f61ffb635d50492302d7be0795d5a"><code>6572c45</code></a> Support empty keys by quoting them. Fixes <a href="https://redirect.github.com/emancu/toml-rb/issues/147">#147</a></li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/12b0048158c6c10e68e2ef34c7522c48ec22cb40"><code>12b0048</code></a> Bump to v3.0.0</li>
+                <li>Additional commits viewable in <a href="https://github.com/emancu/toml-rb/compare/v2.2.0...v4.0.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump toml-rb from 2.2.0 to 4.0.0 in /bundler
+
+                Bumps [toml-rb](https://github.com/emancu/toml-rb) from 2.2.0 to 4.0.0.
+                - [Release notes](https://github.com/emancu/toml-rb/releases)
+                - [Commits](https://github.com/emancu/toml-rb/compare/v2.2.0...v4.0.0)
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: unknown
+            base-commit-sha: f558406ea0f067dcb5e223e257dcd91c27ea3a85
