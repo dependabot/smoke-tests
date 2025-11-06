@@ -25,7 +25,7 @@ jobs:
           if [ ! -f "$TEST_FILE" ]; then
             echo "Error: Test file $TEST_FILE does not exist"
             echo "Available tests:"
-            ls tests/ | sed 's/^smoke-//' | sed 's/\.yaml$//' | head -20
+            ls tests/ | sed 's/^smoke-//' | sed 's/\.yaml$//'
             exit 1
           fi
           echo "Test file $TEST_FILE exists"
