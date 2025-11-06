@@ -71,14 +71,19 @@ jobs:
           git commit -m "Regenerate ${{ inputs.test }} test"
           git push origin "$BRANCH_NAME"
 
-          gh pr create \
-            --title "Regenerate ${{ inputs.test }} test" \
-            --body "This PR regenerates the \`${{ inputs.test }}\` test file.
+          PR_BODY=$(cat <<EOF
+          This PR regenerates the \`${{ inputs.test }}\` test file.
 
           **Test regenerated:** \`$TEST_FILE\`
 
           The test was regenerated using \`script/regen.sh\` to update it with the latest dependency information.
 
-          Please review the changes to ensure they are expected." \
+          Please review the changes to ensure they are expected.
+          EOF
+          )
+
+          gh pr create \
+            --title "Regenerate ${{ inputs.test }} test" \
+            --body "$PR_BODY" \
             --base main \
             --head "$BRANCH_NAME"
