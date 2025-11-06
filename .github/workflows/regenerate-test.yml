@@ -9,6 +9,10 @@ on:  # yamllint disable-line rule:truthy
         required: true
         type: string
 
+permissions:
+  contents: write
+  pull-requests: write
+
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -16,9 +20,6 @@ jobs:
   regenerate:
     runs-on: ubuntu-latest
     name: Regenerate ${{ inputs.test }}
-    permissions:
-      contents: write
-      pull-requests: write
     steps:
       - uses: actions/checkout@v4
 
