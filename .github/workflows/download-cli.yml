@@ -1,0 +1,26 @@
+name: Download CLI
+on:  # yamllint disable-line rule:truthy
+  workflow_call:
+    secrets:
+      gh_token:
+        required: true
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      GH_TOKEN: ${{ secrets.gh_token }}
+    steps:
+      - name: Download CLI
+        run: |
+          gh release download --repo dependabot/cli -p "*linux-amd64.tar.gz"
+          tar xzvf *.tar.gz >/dev/null 2>&1
+          ./dependabot --version
+
+      - name: Upload CLI artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependabot-cli
+          path: dependabot
+          retention-days: 1

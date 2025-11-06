@@ -11,9 +11,17 @@ env:
 jobs:
   suites:
     uses: ./.github/workflows/list-suites.yml
+
+  download-cli:
+    uses: ./.github/workflows/download-cli.yml
+    permissions:
+      contents: read
+    secrets:
+      gh_token: ${{ secrets.GITHUB_TOKEN }}
+
   e2e:
     runs-on: ubuntu-latest
-    needs: suites
+    needs: [suites, download-cli]
     strategy:
       # Running serially since GitHub API doesn't like concurrent requests.
       max-parallel: 1
@@ -24,10 +32,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download CLI
+      - name: Download CLI artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dependabot-cli
+
+      - name: Make CLI executable
         run: |
-          gh release download --repo dependabot/cli -p "*linux-amd64.tar.gz"
-          tar xzvf *.tar.gz >/dev/null 2>&1
+          chmod +x dependabot
           ./dependabot --version
 
       # Not downloading the cache first, this job is to bust the cache for all ecosystems.
