@@ -16,6 +16,9 @@ jobs:
   regenerate:
     runs-on: ubuntu-latest
     name: Regenerate ${{ inputs.test }}
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
 
