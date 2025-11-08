@@ -24,7 +24,7 @@ output:
     - type: create_dependency_submission
       expect:
         data:
-            version: 0
+            version: 1
             sha: adefdc01a3f0b0b041832dcf906c1d52fdfa08ec
             ref: refs/heads/main
             job:
@@ -33,7 +33,7 @@ output:
             detector:
                 name: dependabot
                 url: https://github.com/dependabot/dependabot-core
-                version: 0.341.0
+                version: 0.345.0
             manifests:
                 /go/go.mod:
                     file:
@@ -68,17 +68,20 @@ output:
                             relationship: direct
                             scope: runtime
                         golang.org/x/sys:
-                            dependencies: []
+                            dependencies:
+                                - go
                             package_url: pkg:golang/golang.org/x/sys@v0.37.0
                             relationship: indirect
                             scope: runtime
                         golang.org/x/text:
-                            dependencies: []
+                            dependencies:
+                                - golang.org/x/tools
                             package_url: pkg:golang/golang.org/x/text@v0.3.7
                             relationship: indirect
                             scope: runtime
                         rsc.io/quote:
-                            dependencies: []
+                            dependencies:
+                                - rsc.io/sampler
                             package_url: pkg:golang/rsc.io/quote@v1.4.0
                             relationship: direct
                             scope: runtime
