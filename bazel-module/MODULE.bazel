@@ -1,0 +1,21 @@
+"""
+Bazel MODULE.bazel file for Dependabot testing.
+
+This file uses the newer Bzlmod dependency management system.
+Dependencies are intentionally pinned to penultimate versions to test
+Dependabot's update capabilities.
+"""
+
+module(
+    name = "dependabot_test_module",
+    version = "1.0.0",
+)
+
+# rules_cc 0.2.13 (current latest is 0.2.14)
+bazel_dep(name = "rules_cc", version = "0.2.13")
+
+# bazel_skylib 1.8.1 (current latest is 1.8.2)
+bazel_dep(name = "bazel_skylib", version = "1.8.1")
+
+# rules_python 1.6.3 (current latest is 1.7.0-rc4)
+bazel_dep(name = "rules_python", version = "1.6.3")

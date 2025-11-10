@@ -1,0 +1,37 @@
+# WORKSPACE file for Dependabot testing
+# This uses the legacy WORKSPACE dependency management system
+
+workspace(name = "dependabot_test_workspace")
+
+# Load http_archive rule for downloading external dependencies
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+# rules_cc 0.2.13 (penultimate version)
+# Current latest: 0.2.14
+http_archive(
+    name = "rules_cc",
+    urls = ["https://github.com/bazelbuild/rules_cc/releases/download/0.2.13/rules_cc-0.2.13.tar.gz"],
+    sha256 = "472ddca8cec1e64ad78e4f0cabbec55936a3baddbe7bef072764ca91504bd523",
+    strip_prefix = "rules_cc-0.2.13",
+)
+
+# bazel_skylib 1.8.1 (penultimate version)
+# Current latest: 1.8.2
+http_archive(
+    name = "bazel_skylib",
+    urls = ["https://github.com/bazelbuild/bazel-skylib/releases/download/1.8.1/bazel-skylib-1.8.1.tar.gz"],
+    sha256 = "51b5105a760b353773f904d2bbc5e664d0987fbaf22265164de65d43e910d8ac",
+)
+
+# rules_python 1.6.3 (penultimate version)
+# Current latest: 1.7.0-rc4
+http_archive(
+    name = "rules_python",
+    urls = ["https://github.com/bazelbuild/rules_python/releases/download/1.6.3/rules_python-1.6.3.tar.gz"],
+    sha256 = "2f5c284fbb4e86045c2632d3573fc006facbca5d1fa02976e89dc0cd5488b590",
+    strip_prefix = "rules_python-1.6.3",
+)
+
+# Load and setup rules_python
+load("@rules_python//python:repositories.bzl", "py_repositories")
+py_repositories()
