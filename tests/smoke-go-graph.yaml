@@ -1,4 +1,3 @@
-command: graph
 input:
     job:
         command: graph
@@ -12,7 +11,7 @@ input:
             repo: dependabot/smoke-tests
             directories:
                 - go
-            commit: adefdc01a3f0b0b041832dcf906c1d52fdfa08ec
+            commit: 25cce92fce4aa73178b6c9816988b6cb64075cdb
             hostname: github.com
             api-endpoint: https://api.github.com
     credentials:
@@ -25,7 +24,7 @@ output:
       expect:
         data:
             version: 1
-            sha: adefdc01a3f0b0b041832dcf906c1d52fdfa08ec
+            sha: 25cce92fce4aa73178b6c9816988b6cb64075cdb
             ref: refs/heads/main
             job:
                 correlator: dependabot-go_modules-go
@@ -33,7 +32,7 @@ output:
             detector:
                 name: dependabot
                 url: https://github.com/dependabot/dependabot-core
-                version: 0.345.0
+                version: 0.346.0
             manifests:
                 /go/go.mod:
                     file:
@@ -43,8 +42,11 @@ output:
                     name: /go/go.mod
                     resolved:
                         github.com/fatih/color:
-                            dependencies: []
-                            package_url: pkg:golang/github.com/fatih/color@v1.7.0
+                            dependencies:
+                                - github.com/mattn/go-colorable
+                                - github.com/mattn/go-isatty
+                                - golang.org/x/sys
+                            package_url: pkg:golang/github.com/fatih/color@v1.17.0
                             relationship: direct
                             scope: runtime
                         github.com/inconshreveable/mousetrap:
@@ -53,13 +55,16 @@ output:
                             relationship: direct
                             scope: runtime
                         github.com/mattn/go-colorable:
-                            dependencies: []
-                            package_url: pkg:golang/github.com/mattn/go-colorable@v0.0.9
+                            dependencies:
+                                - github.com/mattn/go-isatty
+                            package_url: pkg:golang/github.com/mattn/go-colorable@v0.1.13
                             relationship: indirect
                             scope: runtime
                         github.com/mattn/go-isatty:
-                            dependencies: []
-                            package_url: pkg:golang/github.com/mattn/go-isatty@v0.0.4
+                            dependencies:
+                                - golang.org/x/sys
+                                - golang.org/x/sys
+                            package_url: pkg:golang/github.com/mattn/go-isatty@v0.0.20
                             relationship: indirect
                             scope: runtime
                         golang.org/x/crypto:
@@ -68,14 +73,12 @@ output:
                             relationship: direct
                             scope: runtime
                         golang.org/x/sys:
-                            dependencies:
-                                - go
+                            dependencies: []
                             package_url: pkg:golang/golang.org/x/sys@v0.37.0
                             relationship: indirect
                             scope: runtime
                         golang.org/x/text:
-                            dependencies:
-                                - golang.org/x/tools
+                            dependencies: []
                             package_url: pkg:golang/golang.org/x/text@v0.3.7
                             relationship: indirect
                             scope: runtime
@@ -93,4 +96,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: adefdc01a3f0b0b041832dcf906c1d52fdfa08ec
+            base-commit-sha: 25cce92fce4aa73178b6c9816988b6cb64075cdb
