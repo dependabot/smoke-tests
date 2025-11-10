@@ -47,7 +47,7 @@ jobs:
           LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
-          script/regen.sh "$TEST_FILE"
+          script/regen.sh "$TEST_FILE" || true
 
       - name: Check for changes
         id: check_changes
