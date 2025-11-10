@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: bundler
         allowed-updates:
             - dependency-type: direct
@@ -137,10 +138,10 @@ output:
                       requirement: '>= 0'
                       source:
                         branch: null
-                        ref: v3.1.15
+                        ref: v3.2.4
                         type: git
                         url: git@github.com:rack/rack.git
-                  version: 3213339b6f18cb24b496bafbfe0756b813a49037
+                  version: 03fc311bca9c2884263270716f634a6c0968024a
                   directory: /bundler
             updated-dependency-files:
                 - content: |
@@ -150,7 +151,7 @@ output:
 
                     gem "rubocop", "1.59.0"
                     gem "toml-rb", "2.2.0"
-                    gem 'rack', git: 'git@github.com:rack/rack.git', tag: 'v3.1.15'
+                    gem 'rack', git: 'git@github.com:rack/rack.git', tag: 'v3.2.4'
                   content_encoding: utf-8
                   deleted: false
                   directory: /bundler
@@ -161,27 +162,27 @@ output:
                 - content: |
                     GIT
                       remote: git@github.com:rack/rack.git
-                      revision: 3213339b6f18cb24b496bafbfe0756b813a49037
-                      tag: v3.1.15
+                      revision: 03fc311bca9c2884263270716f634a6c0968024a
+                      tag: v3.2.4
                       specs:
-                        rack (3.1.15)
+                        rack (3.2.4)
 
                     GEM
                       remote: https://rubygems.org/
                       specs:
                         ast (2.4.3)
                         citrus (3.0.2)
-                        json (2.12.2)
+                        json (2.16.0)
                         language_server-protocol (3.17.0.5)
                         parallel (1.27.0)
-                        parser (3.3.8.0)
+                        parser (3.3.10.0)
                           ast (~> 2.4.1)
                           racc
-                        prism (1.4.0)
+                        prism (1.6.0)
                         racc (1.8.1)
                         rainbow (3.1.1)
-                        regexp_parser (2.10.0)
-                        rexml (3.4.1)
+                        regexp_parser (2.11.3)
+                        rexml (3.4.4)
                         rubocop (1.59.0)
                           json (~> 2.3)
                           language_server-protocol (>= 3.17.0)
@@ -193,7 +194,7 @@ output:
                           rubocop-ast (>= 1.30.0, < 2.0)
                           ruby-progressbar (~> 1.7)
                           unicode-display_width (>= 2.4.0, < 3.0)
-                        rubocop-ast (1.44.1)
+                        rubocop-ast (1.48.0)
                           parser (>= 3.3.7.2)
                           prism (~> 1.4)
                         ruby-progressbar (1.13.0)
@@ -355,55 +356,106 @@ output:
                 </details>
                 <br />
 
-                Updates `rack` from 2.1.4 to v3.1.15
+                Updates `rack` from 2.1.4 to v3.2.4
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/rack/rack/releases">rack's releases</a>.</em></p>
+                <blockquote>
+                <h2>v3.2.4</h2>
+                <p>No release notes provided.</p>
+                <h2>v3.0.9.1</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Fixed ReDoS in Accept header parsing [CVE-2024-26146]</li>
+                <li>Fixed ReDoS in Content Type header parsing [CVE-2024-25126]</li>
+                <li>Reject Range headers which are too large [CVE-2024-26141]</li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.9...v3.0.9.1">https://github.com/rack/rack/compare/v3.0.9...v3.0.9.1</a></p>
+                <h2>v3.0.9</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Fix content-length calcuation in Rack:Response#write <a href="https://redirect.github.com/rack/rack/issues/2150">#2150</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.8...v3.0.9">https://github.com/rack/rack/compare/v3.0.8...v3.0.9</a></p>
+                <h2>v3.0.8</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Backport &quot;Fix some unused variable verbose warnings&quot; by <a href="https://github.com/skipkayhil"><code>@​skipkayhil</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2084">rack/rack#2084</a></li>
+                </ul>
+                <h2>New Contributors</h2>
+                <ul>
+                <li><a href="https://github.com/skipkayhil"><code>@​skipkayhil</code></a> made their first contribution in <a href="https://redirect.github.com/rack/rack/pull/2084">rack/rack#2084</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.7...v3.0.8">https://github.com/rack/rack/compare/v3.0.7...v3.0.8</a></p>
+                <h2>v3.0.7</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Backport &quot;Make query parameters without = have nil values&quot;. by <a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2060">rack/rack#2060</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.6.1...v3.0.7">https://github.com/rack/rack/compare/v3.0.6.1...v3.0.7</a></p>
+                <h2>v3.0.6.1</h2>
+                <p>No release notes provided.</p>
+                <h2>v3.0.4.1</h2>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.4...v3.0.4.1">https://github.com/rack/rack/compare/v3.0.4...v3.0.4.1</a></p>
+                <h2>v3.0.4</h2>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.3...v3.0.4">https://github.com/rack/rack/compare/v3.0.3...v3.0.4</a></p>
+                <h2>v3.0.3</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Release v3.0.3 by <a href="https://github.com/ioquatix"><code>@​ioquatix</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2000">rack/rack#2000</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.2...v3.0.3">https://github.com/rack/rack/compare/v3.0.2...v3.0.3</a></p>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
                 <details>
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/rack/rack/blob/main/CHANGELOG.md">rack's changelog</a>.</em></p>
                 <blockquote>
-                <h2>[3.1.15] - 2025-05-18</h2>
-                <ul>
-                <li>Optional support for <code>CGI::Cookie</code> if not available. (<a href="https://redirect.github.com/rack/rack/pull/2327">#2327</a>, <a href="https://redirect.github.com/rack/rack/pull/2333">#2333</a>, [<a href="https://github.com/earlopain"><code>@​earlopain</code></a>])</li>
-                </ul>
-                <h2>[3.1.14] - 2025-05-06</h2>
-                <h3>Security</h3>
-                <ul>
-                <li><a href="https://github.com/rack/rack/security/advisories/GHSA-gjh7-p2fx-99vx">CVE-2025-46727</a> Unbounded parameter parsing in <code>Rack::QueryParser</code> can lead to memory exhaustion.</li>
-                </ul>
-                <h2>[3.1.13] - 2025-04-13</h2>
-                <ul>
-                <li>Ensure <code>Rack::ETag</code> correctly updates response body. (<a href="https://redirect.github.com/rack/rack/pull/2324">#2324</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
-                </ul>
-                <h2>[3.1.12] - 2025-03-11</h2>
-                <h3>Security</h3>
-                <ul>
-                <li><a href="https://github.com/rack/rack/security/advisories/GHSA-7wqh-767x-r66v">CVE-2025-27610</a> Local file inclusion in <code>Rack::Static</code>.</li>
-                </ul>
-                <h2>[3.1.11] - 2025-03-04</h2>
-                <h3>Security</h3>
-                <ul>
-                <li><a href="https://github.com/rack/rack/security/advisories/GHSA-8cgq-6mh2-7j6v">CVE-2025-27111</a> Possible Log Injection in <code>Rack::Sendfile</code>.</li>
-                </ul>
-                <h2>[3.1.10] - 2025-02-12</h2>
-                <h3>Security</h3>
-                <ul>
-                <li><a href="https://github.com/rack/rack/security/advisories/GHSA-7g2v-jj9q-g3rg">CVE-2025-25184</a> Possible Log Injection in <code>Rack::CommonLogger</code>.</li>
-                </ul>
-                <h2>[3.1.9] - 2025-01-31</h2>
+                <h2>[3.2.4] - 2025-11-03</h2>
                 <h3>Fixed</h3>
                 <ul>
-                <li><code>Rack::MediaType#params</code> now handles parameters without values. (<a href="https://redirect.github.com/rack/rack/pull/2263">#2263</a>, <a href="https://github.com/AllyMarthaJ"><code>@​AllyMarthaJ</code></a>)</li>
+                <li>Multipart parser: limit MIME header size check to the unread buffer region to avoid false <code>multipart mime part header too large</code> errors when previously read data accumulates in the scan buffer. (<a href="https://redirect.github.com/rack/rack/pull/2392">#2392</a>, <a href="https://github.com/alpaca-tc"><code>@​alpaca-tc</code></a>, <a href="https://github.com/willnet"><code>@​willnet</code></a>, <a href="https://github.com/krororo"><code>@​krororo</code></a>)</li>
                 </ul>
-                <h2>[3.1.8] - 2024-10-14</h2>
+                <h2>[3.2.3] - 2025-10-10</h2>
+                <h3>Security</h3>
+                <ul>
+                <li><a href="https://github.com/advisories/GHSA-r657-rxjc-j557">CVE-2025-61780</a> Improper handling of headers in <code>Rack::Sendfile</code> may allow proxy bypass.</li>
+                <li><a href="https://github.com/advisories/GHSA-6xw4-3v39-52mm">CVE-2025-61919</a> Unbounded read in <code>Rack::Request</code> form parsing can lead to memory exhaustion.</li>
+                </ul>
+                <h2>[3.2.2] - 2025-10-07</h2>
+                <h3>Security</h3>
+                <ul>
+                <li><a href="https://github.com/advisories/GHSA-wpv5-97wm-hp9c">CVE-2025-61772</a> Multipart parser buffers unbounded per-part headers, enabling DoS (memory exhaustion)</li>
+                <li><a href="https://github.com/advisories/GHSA-w9pc-fmgc-vxvw">CVE-2025-61771</a> Multipart parser buffers large non‑file fields entirely in memory, enabling DoS (memory exhaustion)</li>
+                <li><a href="https://github.com/advisories/GHSA-p543-xpfm-54cp">CVE-2025-61770</a> Unbounded multipart preamble buffering enables DoS (memory exhaustion)</li>
+                </ul>
+                <h2>[3.2.1] -- 2025-09-02</h2>
+                <h3>Added</h3>
+                <ul>
+                <li>Add support for streaming bodies when using <code>Rack::Events</code>. (<a href="https://redirect.github.com/rack/rack/blob/main/redirect.github.com/rack/rack/pull/2375">#2375</a>, <a href="https://github.com/unflxw"><code>@​unflxw</code></a>)</li>
+                </ul>
                 <h3>Fixed</h3>
                 <ul>
-                <li>Resolve deprecation warnings about uri <code>DEFAULT_PARSER</code>. (<a href="https://redirect.github.com/rack/rack/pull/2249">#2249</a>, [<a href="https://github.com/earlopain"><code>@​earlopain</code></a>])</li>
+                <li>Fix an issue where a <code>NoMethodError</code> would be raised when using <code>Rack::Events</code> with streaming bodies. (<a href="https://redirect.github.com/rack/rack/blob/main/redirect.github.com/rack/rack/pull/2375">#2375</a>, <a href="https://github.com/unflxw"><code>@​unflxw</code></a>)</li>
                 </ul>
-                <h2>[3.1.7] - 2024-07-11</h2>
-                <h3>Fixed</h3>
+                <h2>[3.2.0] - 2025-07-31</h2>
+                <p>This release continues Rack's evolution toward a cleaner, more efficient foundation while maintaining backward compatibility for most applications. The breaking changes primarily affect deprecated functionality, so most users should experience a smooth upgrade with improved performance and standards compliance.</p>
+                <h3>SPEC Changes</h3>
                 <ul>
-                <li>Do not remove escaped opening/closing quotes for content-disposition filenames. (<a href="https://redirect.github.com/rack/rack/pull/2229">#2229</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
-                <li>Fix encoding setting for non-binary IO-like objects in MockRequest#env_for. (<a href="https://redirect.github.com/rack/rack/pull/2227">#2227</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
+                <li>Request environment keys must now be strings. (<a href="https://redirect.github.com/rack/rack/issues/2310">#2310</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
+                <li>Add <code>nil</code> as a valid return from a Response <code>body.to_path</code> (<a href="https://redirect.github.com/rack/rack/pull/2318">#2318</a>, [<a href="https://github.com/MSP-Greg"><code>@​MSP-Greg</code></a>])</li>
+                <li><code>Rack::Lint#check_header_value</code> is relaxed, only disallowing CR/LF/NUL characters. (<a href="https://redirect.github.com/rack/rack/pull/2354">#2354</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
                 </ul>
+                <h3>Added</h3>
+                <ul>
+                <li>Introduce <code>Rack::VERSION</code> constant. (<a href="https://redirect.github.com/rack/rack/pull/2199">#2199</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
+                <li><code>ISO-2022-JP</code> encoded parts within MIME Multipart sections of an HTTP request body will now be converted to <code>UTF-8</code>. (<a href="https://redirect.github.com/rack/rack/pull/2245">#2245</a>, <a href="https://github.com/nappa"><code>@​nappa</code></a>)</li>
+                <li>Add <code>Rack::Request#query_parser=</code> to allow setting the query parser to use. (<a href="https://redirect.github.com/rack/rack/pull/2349">#2349</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
+                <li>Add <code>Rack::Request#form_pairs</code> to access form data as raw key-value pairs, preserving duplicate keys. (<a href="https://redirect.github.com/rack/rack/pull/2351">#2351</a>, [<a href="https://github.com/matthewd"><code>@​matthewd</code></a>])</li>
+                </ul>
+                <h3>Changed</h3>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -411,17 +463,17 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/rack/rack/commit/835e15bf9e51846471e3da63ce474f6836ebd203"><code>835e15b</code></a> Bump patch version.</li>
-                <li><a href="https://github.com/rack/rack/commit/bd60f6e13486fafceb0078fa17f535ac24877b3f"><code>bd60f6e</code></a> Feature detect <code>CGI::Cookie</code>. (<a href="https://redirect.github.com/rack/rack/issues/2333">#2333</a>)</li>
-                <li><a href="https://github.com/rack/rack/commit/3c1a46de3f637f08993d83eb341ddae409cc60c5"><code>3c1a46d</code></a> Replace usage of <code>CGI::Cookie</code> (<a href="https://redirect.github.com/rack/rack/issues/2328">#2328</a>)</li>
-                <li><a href="https://github.com/rack/rack/commit/0ac5c574fd6f0db40d930ac7c32e064435f43d37"><code>0ac5c57</code></a> Test on Ruby v3.4.</li>
-                <li><a href="https://github.com/rack/rack/commit/5440b2c8b006f1c2ef202c2bd60dd70924c9b1c1"><code>5440b2c</code></a> Bump patch version.</li>
-                <li><a href="https://github.com/rack/rack/commit/cd6b70a1f2a1016b73dc906f924869f4902c2d74"><code>cd6b70a</code></a> Merge commit from fork</li>
-                <li><a href="https://github.com/rack/rack/commit/037953789da9cd49c4a3453ade6ede13619276e0"><code>0379537</code></a> Bump patch version.</li>
-                <li><a href="https://github.com/rack/rack/commit/8e3c9b1c08e24e85b90a9c322d36cc2840384de1"><code>8e3c9b1</code></a> Ensure <code>Rack::ETag</code> correctly updates response body. (<a href="https://redirect.github.com/rack/rack/issues/2324">#2324</a>)</li>
-                <li><a href="https://github.com/rack/rack/commit/e8f47608668d507e0f231a932fa37c9ca551c0a5"><code>e8f4760</code></a> Bump patch version.</li>
-                <li><a href="https://github.com/rack/rack/commit/413b8349f18032784b24b32e6c425eea14bb2a2e"><code>413b834</code></a> Update changelog.</li>
-                <li>Additional commits viewable in <a href="https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...3213339b6f18cb24b496bafbfe0756b813a49037">compare view</a></li>
+                <li><a href="https://github.com/rack/rack/commit/4c24539777db8833d78f881680cd245878cfba31"><code>4c24539</code></a> Bump patch version.</li>
+                <li><a href="https://github.com/rack/rack/commit/3ba5e4f22f55abac21037bb137e56e5c8e36b673"><code>3ba5e4f</code></a> Allow Multipart head to span read boundary. (<a href="https://redirect.github.com/rack/rack/issues/2392">#2392</a>)</li>
+                <li><a href="https://github.com/rack/rack/commit/32bf8887d00bd86494f0ce08c46cda59a65d332f"><code>32bf888</code></a> Bump patch version.</li>
+                <li><a href="https://github.com/rack/rack/commit/e179614c4a653283286f5f046428cbb85f21146f"><code>e179614</code></a> Unbounded read in <code>Rack::Request</code> form parsing can lead to memory exhaustion.</li>
+                <li><a href="https://github.com/rack/rack/commit/57277b7741581fa827472c5c666f6e6a33abd784"><code>57277b7</code></a> Improper handling of proxy headers in <code>Rack::Sendfile</code> may allow proxy bypass.</li>
+                <li><a href="https://github.com/rack/rack/commit/403b74b2441d666845177ce769036e294f663712"><code>403b74b</code></a> Normalize adivsories links.</li>
+                <li><a href="https://github.com/rack/rack/commit/fb395bb48925bba30d090938380c4090f5ae53de"><code>fb395bb</code></a> Fix handling of <code>Errno::EPIPE</code> in multipart tests.</li>
+                <li><a href="https://github.com/rack/rack/commit/bce149b11154e851c437b5ece1c026c943f4b571"><code>bce149b</code></a> Bump patch version.</li>
+                <li><a href="https://github.com/rack/rack/commit/3beacfcd494ec5600c9022d561cfa2f556a524d1"><code>3beacfc</code></a> Limit amount of retained data when parsing multipart requests</li>
+                <li><a href="https://github.com/rack/rack/commit/589127f4ac8b5cf11cf88fb0cd116ffed4d2181e"><code>589127f</code></a> Fix denial of service vulnerbilties in multipart parsing</li>
+                <li>Additional commits viewable in <a href="https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...03fc311bca9c2884263270716f634a6c0968024a">compare view</a></li>
                 </ul>
                 </details>
                 <br />
@@ -436,10 +488,10 @@ output:
                 - [Changelog](https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md)
                 - [Commits](https://github.com/rubocop/rubocop/compare/v0.76.0...v1.59.0)
 
-                Updates `rack` from 2.1.4 to v3.1.15
+                Updates `rack` from 2.1.4 to v3.2.4
                 - [Release notes](https://github.com/rack/rack/releases)
                 - [Changelog](https://github.com/rack/rack/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...3213339b6f18cb24b496bafbfe0756b813a49037)
+                - [Commits](https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...03fc311bca9c2884263270716f634a6c0968024a)
             dependency-group:
                 name: ruleset
     - type: create_pull_request
@@ -459,9 +511,9 @@ output:
                     - file: Gemfile
                       groups:
                         - default
-                      requirement: 4.0.0
+                      requirement: 4.1.0
                       source: null
-                  version: 4.0.0
+                  version: 4.1.0
                   directory: /bundler
             updated-dependency-files:
                 - content: |
@@ -470,7 +522,7 @@ output:
                     source "https://rubygems.org"
 
                     gem "rubocop", "0.76.0"
-                    gem "toml-rb", "4.0.0"
+                    gem "toml-rb", "4.1.0"
                     gem 'rack', git: 'git@github.com:rack/rack.git', tag: '2.1.4'
                   content_encoding: utf-8
                   deleted: false
@@ -506,7 +558,7 @@ output:
                           ruby-progressbar (~> 1.7)
                           unicode-display_width (>= 1.4.0, < 1.7)
                         ruby-progressbar (1.11.0)
-                        toml-rb (4.0.0)
+                        toml-rb (4.1.0)
                           citrus (~> 3.0, > 3.0)
                           racc (~> 1.7)
                         unicode-display_width (1.6.1)
@@ -517,7 +569,7 @@ output:
                     DEPENDENCIES
                       rack!
                       rubocop (= 0.76.0)
-                      toml-rb (= 4.0.0)
+                      toml-rb (= 4.1.0)
 
                     BUNDLED WITH
                        2.1.4
@@ -528,13 +580,21 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump toml-rb from 2.2.0 to 4.0.0 in /bundler
+            pr-title: Bump toml-rb from 2.2.0 to 4.1.0 in /bundler
             pr-body: |
-                Bumps [toml-rb](https://github.com/emancu/toml-rb) from 2.2.0 to 4.0.0.
+                Bumps [toml-rb](https://github.com/emancu/toml-rb) from 2.2.0 to 4.1.0.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/emancu/toml-rb/releases">toml-rb's releases</a>.</em></p>
                 <blockquote>
+                <h2>v4.1.0</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li><a href="https://redirect.github.com/emancu/toml-rb/issues/155">#155</a>  First working solution to verify we are not overriding dotted keys by <a href="https://github.com/emancu"><code>@​emancu</code></a> in <a href="https://redirect.github.com/emancu/toml-rb/pull/157">emancu/toml-rb#157</a></li>
+                <li><a href="https://redirect.github.com/emancu/toml-rb/issues/149">#149</a>  Undetected key conflict error by <a href="https://github.com/emancu"><code>@​emancu</code></a> in <a href="https://redirect.github.com/emancu/toml-rb/pull/158">emancu/toml-rb#158</a></li>
+                <li><a href="https://redirect.github.com/emancu/toml-rb/issues/150">#150</a>  Fix encoding error by <a href="https://github.com/emancu"><code>@​emancu</code></a> in <a href="https://redirect.github.com/emancu/toml-rb/pull/159">emancu/toml-rb#159</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/emancu/toml-rb/compare/v4.0.0...v4.1.0">https://github.com/emancu/toml-rb/compare/v4.0.0...v4.1.0</a></p>
                 <h2>v4.0.0</h2>
                 <h2>What's Changed</h2>
                 <ul>
@@ -571,26 +631,26 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
+                <li><a href="https://github.com/emancu/toml-rb/commit/39069636cca33ed5761962191a5e17a6f134aadf"><code>3906963</code></a> Bump to v4.1.0</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/61581fa4fbb06786c9accea70531318516758fd2"><code>61581fa</code></a> Fix encoding exception</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/9e0539b5fe2f0b516260625413b134f96a9bf0ed"><code>9e0539b</code></a> Update ruby.yml</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/d1551a741503661e9110e71cac969650a6b7cd59"><code>d1551a7</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/158">#158</a> from emancu/149/undetected_key_conflict_error</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/7183f0fc408d3668e261517adb6366df6b83f91a"><code>7183f0f</code></a> Refactor keyvalue to make it more readable</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/9179f25ac55077df154f3edaace5a5fd46093eb5"><code>9179f25</code></a> Fix <a href="https://redirect.github.com/emancu/toml-rb/issues/149">emancu/toml-rb#149</a> which should be rejected.</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/19fb9ea061d1b7adecf7a945ede58a65d7eb4062"><code>19fb9ea</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/157">#157</a> from emancu/155/merge_dotted_keys</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/75b7c102ddb05727acc51e93853589c50499ebd3"><code>75b7c10</code></a> First working solution to verify we are not overriding dotted keys</li>
                 <li><a href="https://github.com/emancu/toml-rb/commit/36d9d5dc2ed72b6a01a9f1d7fac7a6639b3593b3"><code>36d9d5d</code></a> Bump to v4.0.0</li>
                 <li><a href="https://github.com/emancu/toml-rb/commit/a7fc9e567cde22af1307cfadc5c3cb7414b64d0d"><code>a7fc9e5</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/154">#154</a> from emancu/update_tests</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/43d9d9847a45246aaa56d5ffb515cb84e0fb5bc3"><code>43d9d98</code></a> Update tests</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/755c874c0a9356d0f22bc8639df9c77fb2ef0eda"><code>755c874</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/153">#153</a> from emancu/152/support_array_with_mixed_types</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/61dc8de83cc9b4d80cc3d86fb40a03a11be9895f"><code>61dc8de</code></a> Simplify the array parser, now that any type is acceptable.</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/f3bc78ed409a2edb51ea7f4be735213bfe43630c"><code>f3bc78e</code></a> Since the Toml spec v1.0.0 there are some breaking changes</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/28b2ebcaae8fd87cec777500cfe4fa087c6c808b"><code>28b2ebc</code></a> Bump to v3.0.1</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/a9553af968f8e4aa9e69abf6db1e7457da5cae46"><code>a9553af</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/148">#148</a> from dreid/empty-keys</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/6572c457777f61ffb635d50492302d7be0795d5a"><code>6572c45</code></a> Support empty keys by quoting them. Fixes <a href="https://redirect.github.com/emancu/toml-rb/issues/147">#147</a></li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/12b0048158c6c10e68e2ef34c7522c48ec22cb40"><code>12b0048</code></a> Bump to v3.0.0</li>
-                <li>Additional commits viewable in <a href="https://github.com/emancu/toml-rb/compare/v2.2.0...v4.0.0">compare view</a></li>
+                <li>Additional commits viewable in <a href="https://github.com/emancu/toml-rb/compare/v2.2.0...v4.1.0">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump toml-rb from 2.2.0 to 4.0.0 in /bundler
+                Bump toml-rb from 2.2.0 to 4.1.0 in /bundler
 
-                Bumps [toml-rb](https://github.com/emancu/toml-rb) from 2.2.0 to 4.0.0.
+                Bumps [toml-rb](https://github.com/emancu/toml-rb) from 2.2.0 to 4.1.0.
                 - [Release notes](https://github.com/emancu/toml-rb/releases)
-                - [Commits](https://github.com/emancu/toml-rb/compare/v2.2.0...v4.0.0)
+                - [Commits](https://github.com/emancu/toml-rb/compare/v2.2.0...v4.1.0)
     - type: mark_as_processed
       expect:
         data:
