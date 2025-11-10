@@ -38,6 +38,8 @@ jobs:
         run: |
           gh release download --repo dependabot/cli -p "*linux-amd64.tar.gz"
           tar xzvf *.tar.gz >/dev/null 2>&1
+          chmod +x dependabot
+          echo "$GITHUB_WORKSPACE" >> $GITHUB_PATH
           ./dependabot --version
 
       - name: Regenerate test
