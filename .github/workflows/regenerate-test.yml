@@ -1,0 +1,93 @@
+# Regenerates a single test file and creates a PR for review
+name: Regenerate Test
+
+on:  # yamllint disable-line rule:truthy
+  workflow_dispatch:
+    inputs:
+      test:
+        description: 'Test name to regenerate (e.g. npm, bundler, go, etc.)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    name: Regenerate ${{ inputs.test }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate test exists
+        run: |
+          TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
+          if [ ! -f "$TEST_FILE" ]; then
+            echo "Error: Test file $TEST_FILE does not exist"
+            echo "Available tests:"
+            ls tests/ | sed 's/^smoke-//' | sed 's/\.yaml$//'
+            exit 1
+          fi
+          echo "Test file $TEST_FILE exists"
+
+      - name: Download CLI
+        run: |
+          gh release download --repo dependabot/cli -p "*linux-amd64.tar.gz"
+          tar xzvf *.tar.gz >/dev/null 2>&1
+          ./dependabot --version
+
+      - name: Regenerate test
+        env:
+          LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
+          script/regen.sh "$TEST_FILE"
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
+          if git diff --quiet "$TEST_FILE"; then
+            echo "Error: No changes were made to $TEST_FILE"
+            echo "The test regeneration produced identical results"
+            exit 1
+          fi
+          echo "Changes detected in $TEST_FILE"
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request
+        if: steps.check_changes.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
+          BRANCH_NAME="regenerate-test-${{ inputs.test }}-$(date +%s)"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git checkout -b "$BRANCH_NAME"
+          git add "$TEST_FILE"
+          git commit -m "Regenerate ${{ inputs.test }} test"
+          git push origin "$BRANCH_NAME"
+
+          PR_BODY=$(cat <<EOF
+          This PR regenerates the \`${{ inputs.test }}\` test file.
+
+          **Test regenerated:** \`$TEST_FILE\`
+
+          The test was regenerated using \`script/regen.sh\` to update it with the latest dependency information.
+
+          Please review the changes to ensure they are expected.
+          EOF
+          )
+
+          gh pr create \
+            --title "Regenerate ${{ inputs.test }} test" \
+            --body "$PR_BODY" \
+            --base main \
+            --head "$BRANCH_NAME"
