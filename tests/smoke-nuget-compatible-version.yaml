@@ -17,7 +17,7 @@ input:
             provider: github
             repo: dependabot/smoke-tests
             directory: /nuget/compatible-version
-            commit: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+            commit: 582ce56c6800f3591d79ba09c62d0221a7e26a19
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -101,12 +101,13 @@ output:
                       source: null
                   version: 4.5.0
             dependency_files:
+                - /nuget/compatible-version/global.json
                 - /nuget/compatible-version/library/library.csproj
                 - /nuget/compatible-version/project/project.csproj
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+            base-commit-sha: 582ce56c6800f3591d79ba09c62d0221a7e26a19
             dependencies:
                 - name: Microsoft.AspNetCore.Authentication.JwtBearer
                   previous-requirements:
@@ -137,7 +138,7 @@ output:
                       </PropertyGroup>
 
                       <ItemGroup>
-                        <ProjectReference Include=".\library.csproj" />
+                        <ProjectReference Include="..\library\library.csproj" />
                       </ItemGroup>
 
                       <ItemGroup>
@@ -160,4 +161,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 7dbbef7b02f40ddfa7d32fc3099caf19f370bb9b
+            base-commit-sha: 582ce56c6800f3591d79ba09c62d0221a7e26a19
