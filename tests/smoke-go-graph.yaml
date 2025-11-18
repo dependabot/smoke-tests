@@ -32,7 +32,7 @@ output:
             detector:
                 name: dependabot
                 url: https://github.com/dependabot/dependabot-core
-                version: 0.346.0
+                version: 0.348.1
             manifests:
                 /go/go.mod:
                     file:
@@ -41,54 +41,54 @@ output:
                         ecosystem: go_modules
                     name: /go/go.mod
                     resolved:
-                        github.com/fatih/color:
+                        pkg:golang/github.com/fatih/color@v1.17.0:
                             dependencies:
-                                - github.com/mattn/go-colorable
-                                - github.com/mattn/go-isatty
-                                - golang.org/x/sys
+                                - pkg:golang/github.com/mattn/go-colorable@v0.1.13
+                                - pkg:golang/github.com/mattn/go-isatty@v0.0.20
+                                - pkg:golang/golang.org/x/sys@v0.37.0
                             package_url: pkg:golang/github.com/fatih/color@v1.17.0
                             relationship: direct
                             scope: runtime
-                        github.com/inconshreveable/mousetrap:
+                        pkg:golang/github.com/inconshreveable/mousetrap@v0.0.0-20141017200713-76626ae9c91c:
                             dependencies: []
                             package_url: pkg:golang/github.com/inconshreveable/mousetrap@v0.0.0-20141017200713-76626ae9c91c
                             relationship: direct
                             scope: runtime
-                        github.com/mattn/go-colorable:
+                        pkg:golang/github.com/mattn/go-colorable@v0.1.13:
                             dependencies:
-                                - github.com/mattn/go-isatty
+                                - pkg:golang/github.com/mattn/go-isatty@v0.0.20
                             package_url: pkg:golang/github.com/mattn/go-colorable@v0.1.13
                             relationship: indirect
                             scope: runtime
-                        github.com/mattn/go-isatty:
+                        pkg:golang/github.com/mattn/go-isatty@v0.0.20:
                             dependencies:
-                                - golang.org/x/sys
-                                - golang.org/x/sys
+                                - pkg:golang/golang.org/x/sys@v0.37.0
+                                - pkg:golang/golang.org/x/sys@v0.37.0
                             package_url: pkg:golang/github.com/mattn/go-isatty@v0.0.20
                             relationship: indirect
                             scope: runtime
-                        golang.org/x/crypto:
+                        pkg:golang/golang.org/x/crypto@v0.0.0-20180617042118-027cca12c2d6:
                             dependencies: []
                             package_url: pkg:golang/golang.org/x/crypto@v0.0.0-20180617042118-027cca12c2d6
                             relationship: direct
                             scope: runtime
-                        golang.org/x/sys:
+                        pkg:golang/golang.org/x/sys@v0.37.0:
                             dependencies: []
                             package_url: pkg:golang/golang.org/x/sys@v0.37.0
                             relationship: indirect
                             scope: runtime
-                        golang.org/x/text:
+                        pkg:golang/golang.org/x/text@v0.3.7:
                             dependencies: []
                             package_url: pkg:golang/golang.org/x/text@v0.3.7
                             relationship: indirect
                             scope: runtime
-                        rsc.io/quote:
+                        pkg:golang/rsc.io/quote@v1.4.0:
                             dependencies:
-                                - rsc.io/sampler
+                                - pkg:golang/rsc.io/sampler@v1.0.0
                             package_url: pkg:golang/rsc.io/quote@v1.4.0
                             relationship: direct
                             scope: runtime
-                        rsc.io/sampler:
+                        pkg:golang/rsc.io/sampler@v1.0.0:
                             dependencies: []
                             package_url: pkg:golang/rsc.io/sampler@v1.0.0
                             relationship: indirect
