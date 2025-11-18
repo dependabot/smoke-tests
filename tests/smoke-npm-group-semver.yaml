@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: npm_and_yarn
         allowed-updates:
             - update-type: all
@@ -175,7 +176,7 @@ output:
                   previous-requirements: []
                   previous-version: 4.0.0
                   requirements: []
-                  version: 4.0.4
+                  version: 4.0.5
                   directory: /npm/semver
                 - name: whatwg-fetch
                   previous-requirements: []
@@ -529,9 +530,9 @@ output:
                           }
                         },
                         "node_modules/form-data": {
-                          "version": "4.0.4",
-                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.4.tgz",
-                          "integrity": "sha512-KrGhL9Q4zjj0kiUt5OO4Mr/A/jlI2jDYs5eHBpYHPcBEVSiipAvn2Ko2HnPe20rmcuuvMHNdZFp+4IlGTMF0Ow==",
+                          "version": "4.0.5",
+                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.5.tgz",
+                          "integrity": "sha512-8RipRLol37bNs2bhoV67fiTEvdTrbMUYcFTiy3+wuuOnUog2QBHCZWXDRijWQfAkhBj2Uf5UnVaiWwA5vdd82w==",
                           "license": "MIT",
                           "dependencies": {
                             "asynckit": "^0.4.0",
@@ -990,7 +991,7 @@ output:
                 | fetch-factory | `0.0.1` | `0.2.1` |
                 | [lodash](https://github.com/lodash/lodash) | `4.16.6` | `4.17.21` |
                 | [follow-redirects](https://github.com/follow-redirects/follow-redirects) | `1.15.2` | `1.15.11` |
-                | [form-data](https://github.com/form-data/form-data) | `4.0.0` | `4.0.4` |
+                | [form-data](https://github.com/form-data/form-data) | `4.0.0` | `4.0.5` |
                 | [whatwg-fetch](https://github.com/github/fetch) | `3.6.17` | `3.6.20` |
 
                 Updates `fetch-factory` from 0.0.1 to 0.2.1
@@ -1022,33 +1023,150 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li>See full diff in <a href="https://github.com/follow-redirects/follow-redirects/commits">compare view</a></li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/21ef28a544c5e57f4c34b8476d75f2144609a1eb"><code>21ef28a</code></a> Release version 1.15.11 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/7c88135da3bd0681a7e156ee66b16b2f6f98b480"><code>7c88135</code></a> Roll back tree shaking.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/6e389ba094beec211a8847788a146917a16c1bdb"><code>6e389ba</code></a> Release version 1.15.10 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/5bc496e0229abda823221e0c6267926a3f93f262"><code>5bc496e</code></a> Shake me up before you go-go.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/694d6b47a42bc8377e5ef1480394de451e16bd5b"><code>694d6b4</code></a> Bump minimist from 1.2.5 to 1.2.8</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/e4e55c77b2d849280d105943f49f42e0c735d05d"><code>e4e55c7</code></a> Release version 1.15.9 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/31a1abf2d659ac1c8fcbe7e614a8c8914d80e1e3"><code>31a1abf</code></a> Attempt much more gentle detection.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/d2aaa97439e8a7e4a9cd02513ec7b12f23c17638"><code>d2aaa97</code></a> Fix url field.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/62558f0cd106195f4c17ece3ad255eb93487d37f"><code>62558f0</code></a> Release version 1.15.8 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/a8d1ceed257d46758f913ff555b4f7e1cd758627"><code>a8d1cee</code></a> Return subtlety.</li>
+                <li>Additional commits viewable in <a href="https://github.com/follow-redirects/follow-redirects/compare/v1.15.2...v1.15.11">compare view</a></li>
                 </ul>
                 </details>
                 <br />
 
-                Updates `form-data` from 4.0.0 to 4.0.4
+                Updates `form-data` from 4.0.0 to 4.0.5
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/form-data/form-data/releases">form-data's releases</a>.</em></p>
                 <blockquote>
-                <h2>v4.0.1</h2>
-                <h3>Fixes</h3>
+                <h2>v4.0.4</h2>
+                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.3...v4.0.4">v4.0.4</a> - 2025-07-16</h2>
+                <h3>Commits</h3>
                 <ul>
-                <li>npmignore temporary build files (<a href="https://redirect.github.com/form-data/form-data/issues/532">#532</a>)</li>
-                <li>move util.isArray to Array.isArray (<a href="https://redirect.github.com/form-data/form-data/issues/564">#564</a>)</li>
+                <li>[meta] add <code>auto-changelog</code> <a href="https://github.com/form-data/form-data/commit/811f68282fab0315209d0e2d1c44b6c32ea0d479"><code>811f682</code></a></li>
+                <li>[Tests] handle predict-v8-randomness failures in node &lt; 17 and node &gt; 23 <a href="https://github.com/form-data/form-data/commit/1d11a76434d101f22fdb26b8aef8615f28b98402"><code>1d11a76</code></a></li>
+                <li>[Fix] Switch to using <code>crypto</code> random for boundary values <a href="https://github.com/form-data/form-data/commit/3d1723080e6577a66f17f163ecd345a21d8d0fd0"><code>3d17230</code></a></li>
+                <li>[Tests] fix linting errors <a href="https://github.com/form-data/form-data/commit/5e340800b5f8914213e4e0378c084aae71cfd73a"><code>5e34080</code></a></li>
+                <li>[meta] actually ensure the readme backup isn’t published <a href="https://github.com/form-data/form-data/commit/316c82ba93fd4985af757b771b9a1f26d3b709ef"><code>316c82b</code></a></li>
+                <li>[Dev Deps] update <code>@ljharb/eslint-config</code> <a href="https://github.com/form-data/form-data/commit/58c25d76406a5b0dfdf54045cf252563f2bbda8d"><code>58c25d7</code></a></li>
+                <li>[meta] fix readme capitalization <a href="https://github.com/form-data/form-data/commit/2300ca19595b0ee96431e868fe2a40db79e41c61"><code>2300ca1</code></a></li>
                 </ul>
-                <h3>Tests</h3>
+                <h2>v4.0.3</h2>
+                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.2...v4.0.3">v4.0.3</a> - 2025-06-05</h2>
+                <h3>Fixed</h3>
                 <ul>
-                <li>migrate from travis to GHA</li>
+                <li>[Fix] <code>append</code>: avoid a crash on nullish values <a href="https://redirect.github.com/form-data/form-data/issues/577"><code>[#577](https://github.com/form-data/form-data/issues/577)</code></a></li>
                 </ul>
+                <h3>Commits</h3>
+                <ul>
+                <li>[eslint] use a shared config <a href="https://github.com/form-data/form-data/commit/426ba9ac440f95d1998dac9a5cd8d738043b048f"><code>426ba9a</code></a></li>
+                <li>[eslint] fix some spacing issues <a href="https://github.com/form-data/form-data/commit/20941917f0e9487e68c564ebc3157e23609e2939"><code>2094191</code></a></li>
+                <li>[Refactor] use <code>hasown</code> <a href="https://github.com/form-data/form-data/commit/81ab41b46fdf34f5d89d7ff30b513b0925febfaa"><code>81ab41b</code></a></li>
+                <li>[Fix] validate boundary type in <code>setBoundary()</code> method <a href="https://github.com/form-data/form-data/commit/8d8e4693093519f7f18e3c597d1e8df8c493de9e"><code>8d8e469</code></a></li>
+                <li>[Tests] add tests to check the behavior of <code>getBoundary</code> with non-strings <a href="https://github.com/form-data/form-data/commit/837b8a1f7562bfb8bda74f3fc538adb7a5858995"><code>837b8a1</code></a></li>
+                <li>[Dev Deps] remove unused deps <a href="https://github.com/form-data/form-data/commit/870e4e665935e701bf983a051244ab928e62d58e"><code>870e4e6</code></a></li>
+                <li>[meta] remove local commit hooks <a href="https://github.com/form-data/form-data/commit/e6e83ccb545a5619ed6cd04f31d5c2f655eb633e"><code>e6e83cc</code></a></li>
+                <li>[Dev Deps] update <code>eslint</code> <a href="https://github.com/form-data/form-data/commit/4066fd6f65992b62fa324a6474a9292a4f88c916"><code>4066fd6</code></a></li>
+                <li>[meta] fix scripts to use prepublishOnly <a href="https://github.com/form-data/form-data/commit/c4bbb13c0ef669916657bc129341301b1d331d75"><code>c4bbb13</code></a></li>
+                </ul>
+                <h2>v4.0.2</h2>
+                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.1...v4.0.2">v4.0.2</a> - 2025-02-14</h2>
+                <h3>Merged</h3>
+                <ul>
+                <li>[Fix] set <code>Symbol.toStringTag</code> when available <a href="https://redirect.github.com/form-data/form-data/pull/573"><code>[#573](https://github.com/form-data/form-data/issues/573)</code></a></li>
+                <li>[Fix] set <code>Symbol.toStringTag</code> when available <a href="https://redirect.github.com/form-data/form-data/pull/573"><code>[#573](https://github.com/form-data/form-data/issues/573)</code></a></li>
+                <li>fix (npmignore): ignore temporary build files <a href="https://redirect.github.com/form-data/form-data/pull/532"><code>[#532](https://github.com/form-data/form-data/issues/532)</code></a></li>
+                <li>fix (npmignore): ignore temporary build files <a href="https://redirect.github.com/form-data/form-data/pull/532"><code>[#532](https://github.com/form-data/form-data/issues/532)</code></a></li>
+                </ul>
+                <h3>Fixed</h3>
+                <ul>
+                <li>[Fix] set <code>Symbol.toStringTag</code> when available (<a href="https://redirect.github.com/form-data/form-data/issues/573">#573</a>) <a href="https://redirect.github.com/form-data/form-data/issues/396"><code>[#396](https://github.com/form-data/form-data/issues/396)</code></a></li>
+                <li>[Fix] set <code>Symbol.toStringTag</code> when available (<a href="https://redirect.github.com/form-data/form-data/issues/573">#573</a>) <a href="https://redirect.github.com/form-data/form-data/issues/396"><code>[#396](https://github.com/form-data/form-data/issues/396)</code></a></li>
+                <li>[Fix] set <code>Symbol.toStringTag</code> when available <a href="https://redirect.github.com/form-data/form-data/issues/396"><code>[#396](https://github.com/form-data/form-data/issues/396)</code></a></li>
+                </ul>
+                <h3>Commits</h3>
+                <!-- raw HTML omitted -->
                 </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/form-data/form-data/blob/master/CHANGELOG.md">form-data's changelog</a>.</em></p>
+                <blockquote>
+                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.4...v4.0.5">v4.0.5</a> - 2025-11-17</h2>
+                <h3>Commits</h3>
+                <ul>
+                <li>[Tests] Switch to newer v8 prediction library; enable node 24 testing <a href="https://github.com/form-data/form-data/commit/16e00765342106876f98a1c9703314006c9e937a"><code>16e0076</code></a></li>
+                <li>[Dev Deps] update <code>@ljharb/eslint-config</code>, <code>eslint</code> <a href="https://github.com/form-data/form-data/commit/5822467f0ec21f6ad613c1c90856375e498793c7"><code>5822467</code></a></li>
+                <li>[Fix] set Symbol.toStringTag in the proper place <a href="https://github.com/form-data/form-data/commit/76d0dee43933b5e167f7f09e5d9cbbd1cf911aa7"><code>76d0dee</code></a></li>
+                </ul>
+                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.3...v4.0.4">v4.0.4</a> - 2025-07-16</h2>
+                <h3>Commits</h3>
+                <ul>
+                <li>[meta] add <code>auto-changelog</code> <a href="https://github.com/form-data/form-data/commit/811f68282fab0315209d0e2d1c44b6c32ea0d479"><code>811f682</code></a></li>
+                <li>[Tests] handle predict-v8-randomness failures in node &lt; 17 and node &gt; 23 <a href="https://github.com/form-data/form-data/commit/1d11a76434d101f22fdb26b8aef8615f28b98402"><code>1d11a76</code></a></li>
+                <li>[Fix] Switch to using <code>crypto</code> random for boundary values <a href="https://github.com/form-data/form-data/commit/3d1723080e6577a66f17f163ecd345a21d8d0fd0"><code>3d17230</code></a></li>
+                <li>[Tests] fix linting errors <a href="https://github.com/form-data/form-data/commit/5e340800b5f8914213e4e0378c084aae71cfd73a"><code>5e34080</code></a></li>
+                <li>[meta] actually ensure the readme backup isn’t published <a href="https://github.com/form-data/form-data/commit/316c82ba93fd4985af757b771b9a1f26d3b709ef"><code>316c82b</code></a></li>
+                <li>[Dev Deps] update <code>@ljharb/eslint-config</code> <a href="https://github.com/form-data/form-data/commit/58c25d76406a5b0dfdf54045cf252563f2bbda8d"><code>58c25d7</code></a></li>
+                <li>[meta] fix readme capitalization <a href="https://github.com/form-data/form-data/commit/2300ca19595b0ee96431e868fe2a40db79e41c61"><code>2300ca1</code></a></li>
+                </ul>
+                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.2...v4.0.3">v4.0.3</a> - 2025-06-05</h2>
+                <h3>Fixed</h3>
+                <ul>
+                <li>[Fix] <code>append</code>: avoid a crash on nullish values <a href="https://redirect.github.com/form-data/form-data/issues/577"><code>[#577](https://github.com/form-data/form-data/issues/577)</code></a></li>
+                </ul>
+                <h3>Commits</h3>
+                <ul>
+                <li>[eslint] use a shared config <a href="https://github.com/form-data/form-data/commit/426ba9ac440f95d1998dac9a5cd8d738043b048f"><code>426ba9a</code></a></li>
+                <li>[eslint] fix some spacing issues <a href="https://github.com/form-data/form-data/commit/20941917f0e9487e68c564ebc3157e23609e2939"><code>2094191</code></a></li>
+                <li>[Refactor] use <code>hasown</code> <a href="https://github.com/form-data/form-data/commit/81ab41b46fdf34f5d89d7ff30b513b0925febfaa"><code>81ab41b</code></a></li>
+                <li>[Fix] validate boundary type in <code>setBoundary()</code> method <a href="https://github.com/form-data/form-data/commit/8d8e4693093519f7f18e3c597d1e8df8c493de9e"><code>8d8e469</code></a></li>
+                <li>[Tests] add tests to check the behavior of <code>getBoundary</code> with non-strings <a href="https://github.com/form-data/form-data/commit/837b8a1f7562bfb8bda74f3fc538adb7a5858995"><code>837b8a1</code></a></li>
+                <li>[Dev Deps] remove unused deps <a href="https://github.com/form-data/form-data/commit/870e4e665935e701bf983a051244ab928e62d58e"><code>870e4e6</code></a></li>
+                <li>[meta] remove local commit hooks <a href="https://github.com/form-data/form-data/commit/e6e83ccb545a5619ed6cd04f31d5c2f655eb633e"><code>e6e83cc</code></a></li>
+                <li>[Dev Deps] update <code>eslint</code> <a href="https://github.com/form-data/form-data/commit/4066fd6f65992b62fa324a6474a9292a4f88c916"><code>4066fd6</code></a></li>
+                <li>[meta] fix scripts to use prepublishOnly <a href="https://github.com/form-data/form-data/commit/c4bbb13c0ef669916657bc129341301b1d331d75"><code>c4bbb13</code></a></li>
+                </ul>
+                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.1...v4.0.2">v4.0.2</a> - 2025-02-14</h2>
+                <h3>Merged</h3>
+                <ul>
+                <li>[Fix] set <code>Symbol.toStringTag</code> when available <a href="https://redirect.github.com/form-data/form-data/pull/573"><code>[#573](https://github.com/form-data/form-data/issues/573)</code></a></li>
+                <li>[Fix] set <code>Symbol.toStringTag</code> when available <a href="https://redirect.github.com/form-data/form-data/pull/573"><code>[#573](https://github.com/form-data/form-data/issues/573)</code></a></li>
+                <li>fix (npmignore): ignore temporary build files <a href="https://redirect.github.com/form-data/form-data/pull/532"><code>[#532](https://github.com/form-data/form-data/issues/532)</code></a></li>
+                <li>fix (npmignore): ignore temporary build files <a href="https://redirect.github.com/form-data/form-data/pull/532"><code>[#532](https://github.com/form-data/form-data/issues/532)</code></a></li>
+                </ul>
+                <h3>Fixed</h3>
+                <ul>
+                <li>[Fix] set <code>Symbol.toStringTag</code> when available (<a href="https://redirect.github.com/form-data/form-data/issues/573">#573</a>) <a href="https://redirect.github.com/form-data/form-data/issues/396"><code>[#396](https://github.com/form-data/form-data/issues/396)</code></a></li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
                 </details>
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li>See full diff in <a href="https://github.com/form-data/form-data/commits">compare view</a></li>
+                <li><a href="https://github.com/form-data/form-data/commit/68ff7dda8834d6de095a7008cef0e03bc252ca98"><code>68ff7dd</code></a> v4.0.5</li>
+                <li><a href="https://github.com/form-data/form-data/commit/5822467f0ec21f6ad613c1c90856375e498793c7"><code>5822467</code></a> [Dev Deps] update <code>@ljharb/eslint-config</code>, <code>eslint</code></li>
+                <li><a href="https://github.com/form-data/form-data/commit/76d0dee43933b5e167f7f09e5d9cbbd1cf911aa7"><code>76d0dee</code></a> [Fix] set Symbol.toStringTag in the proper place</li>
+                <li><a href="https://github.com/form-data/form-data/commit/16e00765342106876f98a1c9703314006c9e937a"><code>16e0076</code></a> [Tests] Switch to newer v8 prediction library; enable node 24 testing</li>
+                <li><a href="https://github.com/form-data/form-data/commit/41996f5ac73a867046d48512cab62e64fc846dad"><code>41996f5</code></a> v4.0.4</li>
+                <li><a href="https://github.com/form-data/form-data/commit/316c82ba93fd4985af757b771b9a1f26d3b709ef"><code>316c82b</code></a> [meta] actually ensure the readme backup isn’t published</li>
+                <li><a href="https://github.com/form-data/form-data/commit/2300ca19595b0ee96431e868fe2a40db79e41c61"><code>2300ca1</code></a> [meta] fix readme capitalization</li>
+                <li><a href="https://github.com/form-data/form-data/commit/811f68282fab0315209d0e2d1c44b6c32ea0d479"><code>811f682</code></a> [meta] add <code>auto-changelog</code></li>
+                <li><a href="https://github.com/form-data/form-data/commit/5e340800b5f8914213e4e0378c084aae71cfd73a"><code>5e34080</code></a> [Tests] fix linting errors</li>
+                <li><a href="https://github.com/form-data/form-data/commit/1d11a76434d101f22fdb26b8aef8615f28b98402"><code>1d11a76</code></a> [Tests] handle predict-v8-randomness failures in node &lt; 17 and node &gt; 23</li>
+                <li>Additional commits viewable in <a href="https://github.com/form-data/form-data/compare/v4.0.0...v4.0.5">compare view</a></li>
                 </ul>
+                </details>
+                <details>
+                <summary>Maintainer changes</summary>
+                <p>This version was pushed to npm by <a href="https://www.npmjs.com/~ljharb">ljharb</a>, a new releaser for form-data since your current version.</p>
                 </details>
                 <br />
 
@@ -1130,7 +1248,7 @@ output:
                 | fetch-factory | `0.0.1` | `0.2.1` |
                 | [lodash](https://github.com/lodash/lodash) | `4.16.6` | `4.17.21` |
                 | [follow-redirects](https://github.com/follow-redirects/follow-redirects) | `1.15.2` | `1.15.11` |
-                | [form-data](https://github.com/form-data/form-data) | `4.0.0` | `4.0.4` |
+                | [form-data](https://github.com/form-data/form-data) | `4.0.0` | `4.0.5` |
                 | [whatwg-fetch](https://github.com/github/fetch) | `3.6.17` | `3.6.20` |
 
 
@@ -1142,11 +1260,12 @@ output:
 
                 Updates `follow-redirects` from 1.15.2 to 1.15.11
                 - [Release notes](https://github.com/follow-redirects/follow-redirects/releases)
-                - [Commits](https://github.com/follow-redirects/follow-redirects/commits)
+                - [Commits](https://github.com/follow-redirects/follow-redirects/compare/v1.15.2...v1.15.11)
 
-                Updates `form-data` from 4.0.0 to 4.0.4
+                Updates `form-data` from 4.0.0 to 4.0.5
                 - [Release notes](https://github.com/form-data/form-data/releases)
-                - [Commits](https://github.com/form-data/form-data/commits)
+                - [Changelog](https://github.com/form-data/form-data/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/form-data/form-data/compare/v4.0.0...v4.0.5)
 
                 Updates `whatwg-fetch` from 3.6.17 to 3.6.20
                 - [Release notes](https://github.com/github/fetch/releases)
@@ -1173,11 +1292,11 @@ output:
                     - file: package.json
                       groups:
                         - dependencies
-                      requirement: 1.9.0
+                      requirement: 1.13.2
                       source:
                         type: registry
                         url: https://registry.npmjs.org
-                  version: 1.9.0
+                  version: 1.13.2
                   directory: /npm/semver
             updated-dependency-files:
                 - content: |
@@ -1197,7 +1316,7 @@ output:
                       },
                       "homepage": "https://github.com/dsp-testing/dependabot-all-updates-test",
                       "dependencies": {
-                        "axios": "1.9.0",
+                        "axios": "1.13.2",
                         "fetch-factory": "0.0.1",
                         "lodash": "4.16.6"
                       }
@@ -1221,7 +1340,7 @@ output:
                           "version": "1.0.0",
                           "license": "ISC",
                           "dependencies": {
-                            "axios": "1.9.0",
+                            "axios": "1.13.2",
                             "fetch-factory": "0.0.1",
                             "lodash": "4.16.6"
                           }
@@ -1229,23 +1348,38 @@ output:
                         "node_modules/asynckit": {
                           "version": "0.4.0",
                           "resolved": "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz",
-                          "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
+                          "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==",
+                          "license": "MIT"
                         },
                         "node_modules/axios": {
-                          "version": "1.9.0",
-                          "resolved": "https://registry.npmjs.org/axios/-/axios-1.9.0.tgz",
-                          "integrity": "sha512-re4CqKTJaURpzbLHtIi6XpDv20/CnpXOtjRY5/CU32L8gU8ek9UIivcfvSWvmKEngmVbrUtPpdDwWDWL7DNHvg==",
+                          "version": "1.13.2",
+                          "resolved": "https://registry.npmjs.org/axios/-/axios-1.13.2.tgz",
+                          "integrity": "sha512-VPk9ebNqPcy5lRGuSlKx752IlDatOjT9paPlm8A7yOuW2Fbvp4X3JznJtT4f0GzGLLiWE9W8onz51SqLYwzGaA==",
                           "license": "MIT",
                           "dependencies": {
                             "follow-redirects": "^1.15.6",
-                            "form-data": "^4.0.0",
+                            "form-data": "^4.0.4",
                             "proxy-from-env": "^1.1.0"
+                          }
+                        },
+                        "node_modules/call-bind-apply-helpers": {
+                          "version": "1.0.2",
+                          "resolved": "https://registry.npmjs.org/call-bind-apply-helpers/-/call-bind-apply-helpers-1.0.2.tgz",
+                          "integrity": "sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "es-errors": "^1.3.0",
+                            "function-bind": "^1.1.2"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
                           }
                         },
                         "node_modules/combined-stream": {
                           "version": "1.0.8",
                           "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz",
                           "integrity": "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==",
+                          "license": "MIT",
                           "dependencies": {
                             "delayed-stream": "~1.0.0"
                           },
@@ -1257,8 +1391,23 @@ output:
                           "version": "1.0.0",
                           "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz",
                           "integrity": "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==",
+                          "license": "MIT",
                           "engines": {
                             "node": ">=0.4.0"
+                          }
+                        },
+                        "node_modules/dunder-proto": {
+                          "version": "1.0.1",
+                          "resolved": "https://registry.npmjs.org/dunder-proto/-/dunder-proto-1.0.1.tgz",
+                          "integrity": "sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "call-bind-apply-helpers": "^1.0.1",
+                            "es-errors": "^1.3.0",
+                            "gopd": "^1.2.0"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
                           }
                         },
                         "node_modules/encoding": {
@@ -1267,6 +1416,51 @@ output:
                           "integrity": "sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==",
                           "dependencies": {
                             "iconv-lite": "^0.6.2"
+                          }
+                        },
+                        "node_modules/es-define-property": {
+                          "version": "1.0.1",
+                          "resolved": "https://registry.npmjs.org/es-define-property/-/es-define-property-1.0.1.tgz",
+                          "integrity": "sha512-e3nRfgfUZ4rNGL232gUgX06QNyyez04KdjFrF+LTRoOXmrOgFKDg4BCdsjW8EnT69eqdYGmRpJwiPVYNrCaW3g==",
+                          "license": "MIT",
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
+                        "node_modules/es-errors": {
+                          "version": "1.3.0",
+                          "resolved": "https://registry.npmjs.org/es-errors/-/es-errors-1.3.0.tgz",
+                          "integrity": "sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==",
+                          "license": "MIT",
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
+                        "node_modules/es-object-atoms": {
+                          "version": "1.1.1",
+                          "resolved": "https://registry.npmjs.org/es-object-atoms/-/es-object-atoms-1.1.1.tgz",
+                          "integrity": "sha512-FGgH2h8zKNim9ljj7dankFPcICIK9Cp5bm+c2gQSYePhpaG5+esrLODihIorn+Pe6FGJzWhXQotPv73jTaldXA==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "es-errors": "^1.3.0"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
+                        "node_modules/es-set-tostringtag": {
+                          "version": "2.1.0",
+                          "resolved": "https://registry.npmjs.org/es-set-tostringtag/-/es-set-tostringtag-2.1.0.tgz",
+                          "integrity": "sha512-j6vWzfrGVfyXxge+O0x5sh6cvxAog0a/4Rdd2K36zCMV5eJ+/+tOAngRO8cODMNWbVRdVlmGZQL2YS3yR8bIUA==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "es-errors": "^1.3.0",
+                            "get-intrinsic": "^1.2.6",
+                            "has-tostringtag": "^1.0.2",
+                            "hasown": "^2.0.2"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
                           }
                         },
                         "node_modules/es6-promise": {
@@ -1310,16 +1504,116 @@ output:
                           }
                         },
                         "node_modules/form-data": {
-                          "version": "4.0.0",
-                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz",
-                          "integrity": "sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==",
+                          "version": "4.0.5",
+                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.5.tgz",
+                          "integrity": "sha512-8RipRLol37bNs2bhoV67fiTEvdTrbMUYcFTiy3+wuuOnUog2QBHCZWXDRijWQfAkhBj2Uf5UnVaiWwA5vdd82w==",
+                          "license": "MIT",
                           "dependencies": {
                             "asynckit": "^0.4.0",
                             "combined-stream": "^1.0.8",
+                            "es-set-tostringtag": "^2.1.0",
+                            "hasown": "^2.0.2",
                             "mime-types": "^2.1.12"
                           },
                           "engines": {
                             "node": ">= 6"
+                          }
+                        },
+                        "node_modules/function-bind": {
+                          "version": "1.1.2",
+                          "resolved": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz",
+                          "integrity": "sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==",
+                          "license": "MIT",
+                          "funding": {
+                            "url": "https://github.com/sponsors/ljharb"
+                          }
+                        },
+                        "node_modules/get-intrinsic": {
+                          "version": "1.3.0",
+                          "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.3.0.tgz",
+                          "integrity": "sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "call-bind-apply-helpers": "^1.0.2",
+                            "es-define-property": "^1.0.1",
+                            "es-errors": "^1.3.0",
+                            "es-object-atoms": "^1.1.1",
+                            "function-bind": "^1.1.2",
+                            "get-proto": "^1.0.1",
+                            "gopd": "^1.2.0",
+                            "has-symbols": "^1.1.0",
+                            "hasown": "^2.0.2",
+                            "math-intrinsics": "^1.1.0"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
+                          },
+                          "funding": {
+                            "url": "https://github.com/sponsors/ljharb"
+                          }
+                        },
+                        "node_modules/get-proto": {
+                          "version": "1.0.1",
+                          "resolved": "https://registry.npmjs.org/get-proto/-/get-proto-1.0.1.tgz",
+                          "integrity": "sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "dunder-proto": "^1.0.1",
+                            "es-object-atoms": "^1.0.0"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
+                        "node_modules/gopd": {
+                          "version": "1.2.0",
+                          "resolved": "https://registry.npmjs.org/gopd/-/gopd-1.2.0.tgz",
+                          "integrity": "sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==",
+                          "license": "MIT",
+                          "engines": {
+                            "node": ">= 0.4"
+                          },
+                          "funding": {
+                            "url": "https://github.com/sponsors/ljharb"
+                          }
+                        },
+                        "node_modules/has-symbols": {
+                          "version": "1.1.0",
+                          "resolved": "https://registry.npmjs.org/has-symbols/-/has-symbols-1.1.0.tgz",
+                          "integrity": "sha512-1cDNdwJ2Jaohmb3sg4OmKaMBwuC48sYni5HUw2DvsC8LjGTLK9h+eb1X6RyuOHe4hT0ULCW68iomhjUoKUqlPQ==",
+                          "license": "MIT",
+                          "engines": {
+                            "node": ">= 0.4"
+                          },
+                          "funding": {
+                            "url": "https://github.com/sponsors/ljharb"
+                          }
+                        },
+                        "node_modules/has-tostringtag": {
+                          "version": "1.0.2",
+                          "resolved": "https://registry.npmjs.org/has-tostringtag/-/has-tostringtag-1.0.2.tgz",
+                          "integrity": "sha512-NqADB8VjPFLM2V0VvHUewwwsw0ZWBaIdgo+ieHtK3hasLz4qeCRjYcqfB6AQrBggRKppKF8L52/VqdVsO47Dlw==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "has-symbols": "^1.0.3"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
+                          },
+                          "funding": {
+                            "url": "https://github.com/sponsors/ljharb"
+                          }
+                        },
+                        "node_modules/hasown": {
+                          "version": "2.0.2",
+                          "resolved": "https://registry.npmjs.org/hasown/-/hasown-2.0.2.tgz",
+                          "integrity": "sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "function-bind": "^1.1.2"
+                          },
+                          "engines": {
+                            "node": ">= 0.4"
                           }
                         },
                         "node_modules/iconv-lite": {
@@ -1355,10 +1649,20 @@ output:
                           "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.16.6.tgz",
                           "integrity": "sha512-QXrLkYI2gXjL0QoQ9j932ca+Oh/wCUBeZULjqsJy78KjntrohXawEoOfgA2fXwy4vKh7OTD00p757/pUROtv+w=="
                         },
+                        "node_modules/math-intrinsics": {
+                          "version": "1.1.0",
+                          "resolved": "https://registry.npmjs.org/math-intrinsics/-/math-intrinsics-1.1.0.tgz",
+                          "integrity": "sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==",
+                          "license": "MIT",
+                          "engines": {
+                            "node": ">= 0.4"
+                          }
+                        },
                         "node_modules/mime-db": {
                           "version": "1.52.0",
                           "resolved": "https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz",
                           "integrity": "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==",
+                          "license": "MIT",
                           "engines": {
                             "node": ">= 0.6"
                           }
@@ -1367,6 +1671,7 @@ output:
                           "version": "2.1.35",
                           "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz",
                           "integrity": "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==",
+                          "license": "MIT",
                           "dependencies": {
                             "mime-db": "1.52.0"
                           },
@@ -1408,62 +1713,62 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump axios from 0.27.1 to 1.9.0 in /npm/semver
+            pr-title: Bump axios from 0.27.1 to 1.13.2 in /npm/semver
             pr-body: |
-                Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.9.0.
+                Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.13.2.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/axios/axios/releases">axios's releases</a>.</em></p>
                 <blockquote>
-                <h2>Release v1.9.0</h2>
+                <h2>Release v1.13.2</h2>
                 <h2>Release notes:</h2>
                 <h3>Bug Fixes</h3>
                 <ul>
-                <li><strong>core:</strong> fix the Axios constructor implementation to treat the config argument as optional; (<a href="https://redirect.github.com/axios/axios/issues/6881">#6881</a>) (<a href="https://github.com/axios/axios/commit/6c5d4cd69286868059c5e52d45085cb9a894a983">6c5d4cd</a>)</li>
-                <li><strong>fetch:</strong> fixed ERR_NETWORK mapping for Safari browsers; (<a href="https://redirect.github.com/axios/axios/issues/6767">#6767</a>) (<a href="https://github.com/axios/axios/commit/dfe8411c9a082c3d068bdd1f8d6e73054f387f45">dfe8411</a>)</li>
-                <li><strong>headers:</strong> allow iterable objects to be a data source for the set method; (<a href="https://redirect.github.com/axios/axios/issues/6873">#6873</a>) (<a href="https://github.com/axios/axios/commit/1b1f9ccdc15f1ea745160ec9a5223de9db4673bc">1b1f9cc</a>)</li>
-                <li><strong>headers:</strong> fix <code>getSetCookie</code> by using 'get' method for caseless access; (<a href="https://redirect.github.com/axios/axios/issues/6874">#6874</a>) (<a href="https://github.com/axios/axios/commit/d4f7df4b304af8b373488fdf8e830793ff843eb9">d4f7df4</a>)</li>
-                <li><strong>headers:</strong> fixed support for setting multiple header values from an iterated source; (<a href="https://redirect.github.com/axios/axios/issues/6885">#6885</a>) (<a href="https://github.com/axios/axios/commit/f7a3b5e0f7e5e127b97defa92a132fbf1b55cf15">f7a3b5e</a>)</li>
-                <li><strong>http:</strong> send minimal end multipart boundary (<a href="https://redirect.github.com/axios/axios/issues/6661">#6661</a>) (<a href="https://github.com/axios/axios/commit/987d2e2dd3b362757550f36eab875e60640b6ddc">987d2e2</a>)</li>
-                <li><strong>types:</strong> fix autocomplete for adapter config (<a href="https://redirect.github.com/axios/axios/issues/6855">#6855</a>) (<a href="https://github.com/axios/axios/commit/e61a8934d8f94dd429a2f309b48c67307c700df0">e61a893</a>)</li>
+                <li><strong>http:</strong> fix 'socket hang up' bug for keep-alive requests when using timeouts; (<a href="https://redirect.github.com/axios/axios/issues/7206">#7206</a>) (<a href="https://github.com/axios/axios/commit/8d372335f5c50ecd01e8615f2468a9eb19703117">8d37233</a>)</li>
+                <li><strong>http:</strong> use default export for http2 module to support stubs; (<a href="https://redirect.github.com/axios/axios/issues/7196">#7196</a>) (<a href="https://github.com/axios/axios/commit/0588880ac7ddba7594ef179930493884b7e90bf5">0588880</a>)</li>
+                </ul>
+                <h3>Performance Improvements</h3>
+                <ul>
+                <li><strong>http:</strong> fix early loop exit; (<a href="https://redirect.github.com/axios/axios/issues/7202">#7202</a>) (<a href="https://github.com/axios/axios/commit/12c314b603e7852a157e93e47edb626a471ba6c5">12c314b</a>)</li>
+                </ul>
+                <h3>Contributors to this release</h3>
+                <ul>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+28/-9 ([#7206](https://github.com/axios/axios/issues/7206) [#7202](https://github.com/axios/axios/issues/7202) )">Dmitriy Mozgovoy</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/kasperisager" title="+9/-9 ([#7196](https://github.com/axios/axios/issues/7196) )">Kasper Isager Dalsgarð</a></li>
+                </ul>
+                <h2>Release v1.13.1</h2>
+                <h2>Release notes:</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li><strong>http:</strong> fixed a regression that caused the data stream to be interrupted for responses with non-OK HTTP statuses; (<a href="https://redirect.github.com/axios/axios/issues/7193">#7193</a>) (<a href="https://github.com/axios/axios/commit/bcd5581d208cd372055afdcb2fd10b68ca40613c">bcd5581</a>)</li>
+                </ul>
+                <h3>Contributors to this release</h3>
+                <ul>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/imanchalsingh" title="+220/-111 ([#7173](https://github.com/axios/axios/issues/7173) )">Anchal Singh</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+18/-1 ([#7193](https://github.com/axios/axios/issues/7193) )">Dmitriy Mozgovoy</a></li>
+                </ul>
+                <h2>Release v1.13.0</h2>
+                <h2>Release notes:</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li><strong>fetch:</strong> prevent TypeError when config.env is undefined (<a href="https://redirect.github.com/axios/axios/issues/7155">#7155</a>) (<a href="https://github.com/axios/axios/commit/015faeca9f26db76f9562760f04bb9f8229f4db1">015faec</a>)</li>
+                <li>resolve issue <a href="https://redirect.github.com/axios/axios/issues/7131">#7131</a> (added spacing in mergeConfig.js) (<a href="https://redirect.github.com/axios/axios/issues/7133">#7133</a>) (<a href="https://github.com/axios/axios/commit/9b9ec98548d93e9f2204deea10a5f1528bf3ce62">9b9ec98</a>)</li>
                 </ul>
                 <h3>Features</h3>
                 <ul>
-                <li><strong>AxiosHeaders:</strong> add getSetCookie method to retrieve set-cookie headers values (<a href="https://redirect.github.com/axios/axios/issues/5707">#5707</a>) (<a href="https://github.com/axios/axios/commit/80ea756e72bcf53110fa792f5d7ab76e8b11c996">80ea756</a>)</li>
+                <li><strong>http:</strong> add HTTP2 support; (<a href="https://redirect.github.com/axios/axios/issues/7150">#7150</a>) (<a href="https://github.com/axios/axios/commit/d676df772244726533ca320f42e967f5af056bac">d676df7</a>)</li>
                 </ul>
                 <h3>Contributors to this release</h3>
                 <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+200/-34 ([#6890](https://github.com/axios/axios/issues/6890) [#6889](https://github.com/axios/axios/issues/6889) [#6888](https://github.com/axios/axios/issues/6888) [#6885](https://github.com/axios/axios/issues/6885) [#6881](https://github.com/axios/axios/issues/6881) [#6767](https://github.com/axios/axios/issues/6767) [#6874](https://github.com/axios/axios/issues/6874) [#6873](https://github.com/axios/axios/issues/6873) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/jasonsaayman" title="+26/-1 ()">Jay</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/WillianAgostini" title="+21/-0 ([#5707](https://github.com/axios/axios/issues/5707) )">Willian Agostini</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/Gerhut" title="+3/-3 ([#5096](https://github.com/axios/axios/issues/5096) )">George Cheng</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/FatahChan" title="+2/-2 ([#6855](https://github.com/axios/axios/issues/6855) )">FatahChan</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/igstan" title="+1/-1 ([#6661](https://github.com/axios/axios/issues/6661) )">Ionuț G. Stan</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+794/-180 ([#7186](https://github.com/axios/axios/issues/7186) [#7150](https://github.com/axios/axios/issues/7150) [#7039](https://github.com/axios/axios/issues/7039) )">Dmitriy Mozgovoy</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/noritaka1166" title="+24/-509 ([#7032](https://github.com/axios/axios/issues/7032) )">Noritaka Kobayashi</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/Aviraj2929" title="+211/-93 ([#7136](https://github.com/axios/axios/issues/7136) [#7135](https://github.com/axios/axios/issues/7135) [#7134](https://github.com/axios/axios/issues/7134) [#7112](https://github.com/axios/axios/issues/7112) )">Aviraj2929</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/Prasoon52" title="+167/-6 ([#7099](https://github.com/axios/axios/issues/7099) )">prasoon patel</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/Samy-in" title="+134/-0 ([#7171](https://github.com/axios/axios/issues/7171) )">Samyak Dandge</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/imanchalsingh" title="+53/-56 ([#7170](https://github.com/axios/axios/issues/7170) )">Anchal Singh</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/jaiyankargupta" title="+28/-28 ([#7073](https://github.com/axios/axios/issues/7073) )">Rahul Kumar</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/Amitverma0509" title="+24/-13 ([#7129](https://github.com/axios/axios/issues/7129) )">Amit Verma</a></li>
                 </ul>
-                <h2>Release v1.8.4</h2>
-                <h2>Release notes:</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>buildFullPath:</strong> handle <code>allowAbsoluteUrls: false</code> without <code>baseURL</code> (<a href="https://redirect.github.com/axios/axios/issues/6833">#6833</a>) (<a href="https://github.com/axios/axios/commit/f10c2e0de7fde0051f848609a29c2906d0caa1d9">f10c2e0</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/mhassan1" title="+5/-1 ([#6833](https://github.com/axios/axios/issues/6833) )">Marc Hassan</a></li>
-                </ul>
-                <h2>Release v1.8.3</h2>
-                <h2>Release notes:</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li>add missing type for allowAbsoluteUrls (<a href="https://redirect.github.com/axios/axios/issues/6818">#6818</a>) (<a href="https://github.com/axios/axios/commit/10fa70ef14fe39558b15a179f0e82f5f5e5d11b2">10fa70e</a>)</li>
-                <li><strong>xhr/fetch:</strong> pass <code>allowAbsoluteUrls</code> to <code>buildFullPath</code> in <code>xhr</code> and <code>fetch</code> adapters (<a href="https://redirect.github.com/axios/axios/issues/6814">#6814</a>) (<a href="https://github.com/axios/axios/commit/ec159e507bdf08c04ba1a10fe7710094e9e50ec9">ec159e5</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/Electroid" title="+6/-0 ([#6811](https://github.com/axios/axios/issues/6811) )">Ashcon Partovi</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/StefanBRas" title="+4/-0 ([#6818](https://github.com/axios/axios/issues/6818) )">StefanBRas</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/mhassan1" title="+2/-2 ([#6814](https://github.com/axios/axios/issues/6814) )">Marc Hassan</a></li>
-                </ul>
-                <h2>Release v1.8.2</h2>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -1472,49 +1777,48 @@ output:
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/axios/axios/blob/v1.x/CHANGELOG.md">axios's changelog</a>.</em></p>
                 <blockquote>
-                <h1><a href="https://github.com/axios/axios/compare/v1.8.4...v1.9.0">1.9.0</a> (2025-04-24)</h1>
+                <h2><a href="https://github.com/axios/axios/compare/v1.13.1...v1.13.2">1.13.2</a> (2025-11-04)</h2>
                 <h3>Bug Fixes</h3>
                 <ul>
-                <li><strong>core:</strong> fix the Axios constructor implementation to treat the config argument as optional; (<a href="https://redirect.github.com/axios/axios/issues/6881">#6881</a>) (<a href="https://github.com/axios/axios/commit/6c5d4cd69286868059c5e52d45085cb9a894a983">6c5d4cd</a>)</li>
-                <li><strong>fetch:</strong> fixed ERR_NETWORK mapping for Safari browsers; (<a href="https://redirect.github.com/axios/axios/issues/6767">#6767</a>) (<a href="https://github.com/axios/axios/commit/dfe8411c9a082c3d068bdd1f8d6e73054f387f45">dfe8411</a>)</li>
-                <li><strong>headers:</strong> allow iterable objects to be a data source for the set method; (<a href="https://redirect.github.com/axios/axios/issues/6873">#6873</a>) (<a href="https://github.com/axios/axios/commit/1b1f9ccdc15f1ea745160ec9a5223de9db4673bc">1b1f9cc</a>)</li>
-                <li><strong>headers:</strong> fix <code>getSetCookie</code> by using 'get' method for caseless access; (<a href="https://redirect.github.com/axios/axios/issues/6874">#6874</a>) (<a href="https://github.com/axios/axios/commit/d4f7df4b304af8b373488fdf8e830793ff843eb9">d4f7df4</a>)</li>
-                <li><strong>headers:</strong> fixed support for setting multiple header values from an iterated source; (<a href="https://redirect.github.com/axios/axios/issues/6885">#6885</a>) (<a href="https://github.com/axios/axios/commit/f7a3b5e0f7e5e127b97defa92a132fbf1b55cf15">f7a3b5e</a>)</li>
-                <li><strong>http:</strong> send minimal end multipart boundary (<a href="https://redirect.github.com/axios/axios/issues/6661">#6661</a>) (<a href="https://github.com/axios/axios/commit/987d2e2dd3b362757550f36eab875e60640b6ddc">987d2e2</a>)</li>
-                <li><strong>types:</strong> fix autocomplete for adapter config (<a href="https://redirect.github.com/axios/axios/issues/6855">#6855</a>) (<a href="https://github.com/axios/axios/commit/e61a8934d8f94dd429a2f309b48c67307c700df0">e61a893</a>)</li>
+                <li><strong>http:</strong> fix 'socket hang up' bug for keep-alive requests when using timeouts; (<a href="https://redirect.github.com/axios/axios/issues/7206">#7206</a>) (<a href="https://github.com/axios/axios/commit/8d372335f5c50ecd01e8615f2468a9eb19703117">8d37233</a>)</li>
+                <li><strong>http:</strong> use default export for http2 module to support stubs; (<a href="https://redirect.github.com/axios/axios/issues/7196">#7196</a>) (<a href="https://github.com/axios/axios/commit/0588880ac7ddba7594ef179930493884b7e90bf5">0588880</a>)</li>
+                </ul>
+                <h3>Performance Improvements</h3>
+                <ul>
+                <li><strong>http:</strong> fix early loop exit; (<a href="https://redirect.github.com/axios/axios/issues/7202">#7202</a>) (<a href="https://github.com/axios/axios/commit/12c314b603e7852a157e93e47edb626a471ba6c5">12c314b</a>)</li>
+                </ul>
+                <h3>Contributors to this release</h3>
+                <ul>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+28/-9 ([#7206](https://github.com/axios/axios/issues/7206) [#7202](https://github.com/axios/axios/issues/7202) )">Dmitriy Mozgovoy</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/kasperisager" title="+9/-9 ([#7196](https://github.com/axios/axios/issues/7196) )">Kasper Isager Dalsgarð</a></li>
+                </ul>
+                <h2><a href="https://github.com/axios/axios/compare/v1.13.0...v1.13.1">1.13.1</a> (2025-10-28)</h2>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li><strong>http:</strong> fixed a regression that caused the data stream to be interrupted for responses with non-OK HTTP statuses; (<a href="https://redirect.github.com/axios/axios/issues/7193">#7193</a>) (<a href="https://github.com/axios/axios/commit/bcd5581d208cd372055afdcb2fd10b68ca40613c">bcd5581</a>)</li>
+                </ul>
+                <h3>Contributors to this release</h3>
+                <ul>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/imanchalsingh" title="+220/-111 ([#7173](https://github.com/axios/axios/issues/7173) )">Anchal Singh</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+18/-1 ([#7193](https://github.com/axios/axios/issues/7193) )">Dmitriy Mozgovoy</a></li>
+                </ul>
+                <h1><a href="https://github.com/axios/axios/compare/v1.12.2...v1.13.0">1.13.0</a> (2025-10-27)</h1>
+                <h3>Bug Fixes</h3>
+                <ul>
+                <li><strong>fetch:</strong> prevent TypeError when config.env is undefined (<a href="https://redirect.github.com/axios/axios/issues/7155">#7155</a>) (<a href="https://github.com/axios/axios/commit/015faeca9f26db76f9562760f04bb9f8229f4db1">015faec</a>)</li>
+                <li>resolve issue <a href="https://redirect.github.com/axios/axios/issues/7131">#7131</a> (added spacing in mergeConfig.js) (<a href="https://redirect.github.com/axios/axios/issues/7133">#7133</a>) (<a href="https://github.com/axios/axios/commit/9b9ec98548d93e9f2204deea10a5f1528bf3ce62">9b9ec98</a>)</li>
                 </ul>
                 <h3>Features</h3>
                 <ul>
-                <li><strong>AxiosHeaders:</strong> add getSetCookie method to retrieve set-cookie headers values (<a href="https://redirect.github.com/axios/axios/issues/5707">#5707</a>) (<a href="https://github.com/axios/axios/commit/80ea756e72bcf53110fa792f5d7ab76e8b11c996">80ea756</a>)</li>
+                <li><strong>http:</strong> add HTTP2 support; (<a href="https://redirect.github.com/axios/axios/issues/7150">#7150</a>) (<a href="https://github.com/axios/axios/commit/d676df772244726533ca320f42e967f5af056bac">d676df7</a>)</li>
                 </ul>
                 <h3>Contributors to this release</h3>
                 <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+200/-34 ([#6890](https://github.com/axios/axios/issues/6890) [#6889](https://github.com/axios/axios/issues/6889) [#6888](https://github.com/axios/axios/issues/6888) [#6885](https://github.com/axios/axios/issues/6885) [#6881](https://github.com/axios/axios/issues/6881) [#6767](https://github.com/axios/axios/issues/6767) [#6874](https://github.com/axios/axios/issues/6874) [#6873](https://github.com/axios/axios/issues/6873) )">Dmitriy Mozgovoy</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/jasonsaayman" title="+26/-1 ()">Jay</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/WillianAgostini" title="+21/-0 ([#5707](https://github.com/axios/axios/issues/5707) )">Willian Agostini</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/Gerhut" title="+3/-3 ([#5096](https://github.com/axios/axios/issues/5096) )">George Cheng</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/FatahChan" title="+2/-2 ([#6855](https://github.com/axios/axios/issues/6855) )">FatahChan</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/igstan" title="+1/-1 ([#6661](https://github.com/axios/axios/issues/6661) )">Ionuț G. Stan</a></li>
-                </ul>
-                <h2><a href="https://github.com/axios/axios/compare/v1.8.3...v1.8.4">1.8.4</a> (2025-03-19)</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>buildFullPath:</strong> handle <code>allowAbsoluteUrls: false</code> without <code>baseURL</code> (<a href="https://redirect.github.com/axios/axios/issues/6833">#6833</a>) (<a href="https://github.com/axios/axios/commit/f10c2e0de7fde0051f848609a29c2906d0caa1d9">f10c2e0</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/mhassan1" title="+5/-1 ([#6833](https://github.com/axios/axios/issues/6833) )">Marc Hassan</a></li>
-                </ul>
-                <h2><a href="https://github.com/axios/axios/compare/v1.8.2...v1.8.3">1.8.3</a> (2025-03-10)</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li>add missing type for allowAbsoluteUrls (<a href="https://redirect.github.com/axios/axios/issues/6818">#6818</a>) (<a href="https://github.com/axios/axios/commit/10fa70ef14fe39558b15a179f0e82f5f5e5d11b2">10fa70e</a>)</li>
-                <li><strong>xhr/fetch:</strong> pass <code>allowAbsoluteUrls</code> to <code>buildFullPath</code> in <code>xhr</code> and <code>fetch</code> adapters (<a href="https://redirect.github.com/axios/axios/issues/6814">#6814</a>) (<a href="https://github.com/axios/axios/commit/ec159e507bdf08c04ba1a10fe7710094e9e50ec9">ec159e5</a>)</li>
-                </ul>
-                <h3>Contributors to this release</h3>
-                <ul>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/Electroid" title="+6/-0 ([#6811](https://github.com/axios/axios/issues/6811) )">Ashcon Partovi</a></li>
-                <li><!-- raw HTML omitted --> <a href="https://github.com/StefanBRas" title="+4/-0 ([#6818](https://github.com/axios/axios/issues/6818) )">StefanBRas</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+794/-180 ([#7186](https://github.com/axios/axios/issues/7186) [#7150](https://github.com/axios/axios/issues/7150) [#7039](https://github.com/axios/axios/issues/7039) )">Dmitriy Mozgovoy</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/noritaka1166" title="+24/-509 ([#7032](https://github.com/axios/axios/issues/7032) )">Noritaka Kobayashi</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/Aviraj2929" title="+211/-93 ([#7136](https://github.com/axios/axios/issues/7136) [#7135](https://github.com/axios/axios/issues/7135) [#7134](https://github.com/axios/axios/issues/7134) [#7112](https://github.com/axios/axios/issues/7112) )">Aviraj2929</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/Prasoon52" title="+167/-6 ([#7099](https://github.com/axios/axios/issues/7099) )">prasoon patel</a></li>
+                <li><!-- raw HTML omitted --> <a href="https://github.com/Samy-in" title="+134/-0 ([#7171](https://github.com/axios/axios/issues/7171) )">Samyak Dandge</a></li>
                 </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
@@ -1523,27 +1827,27 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/axios/axios/commit/cdcfd214c169a1acba8e267ab8e77ff4dfec3105"><code>cdcfd21</code></a> chore(release): v1.9.0 (<a href="https://redirect.github.com/axios/axios/issues/6891">#6891</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/987d2e2dd3b362757550f36eab875e60640b6ddc"><code>987d2e2</code></a> fix(http): send minimal end multipart boundary (<a href="https://redirect.github.com/axios/axios/issues/6661">#6661</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/f112edfdfacb5857ac4f91156fe8b116c456dfca"><code>f112edf</code></a> chore(ci): add PR files guard action; (<a href="https://redirect.github.com/axios/axios/issues/6890">#6890</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/61de4c05cc01e2ccd7705bbc87c4a49e6dea7928"><code>61de4c0</code></a> chore(ci): update github actions; (<a href="https://redirect.github.com/axios/axios/issues/6889">#6889</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/c3aba3d8f700337651d906b1a1ad3ecfe88a075e"><code>c3aba3d</code></a> chore(ci): add labeler github action; (<a href="https://redirect.github.com/axios/axios/issues/6888">#6888</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/f7a3b5e0f7e5e127b97defa92a132fbf1b55cf15"><code>f7a3b5e</code></a> fix(headers): fixed support for setting multiple header values from an iterat...</li>
-                <li><a href="https://github.com/axios/axios/commit/e61a8934d8f94dd429a2f309b48c67307c700df0"><code>e61a893</code></a> fix(types): fix autocomplete for adapter config (<a href="https://redirect.github.com/axios/axios/issues/6855">#6855</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/6c5d4cd69286868059c5e52d45085cb9a894a983"><code>6c5d4cd</code></a> fix(core): fix the Axios constructor implementation to treat the config argum...</li>
-                <li><a href="https://github.com/axios/axios/commit/dfe8411c9a082c3d068bdd1f8d6e73054f387f45"><code>dfe8411</code></a> fix(fetch): fixed ERR_NETWORK mapping for Safari browsers; (<a href="https://redirect.github.com/axios/axios/issues/6767">#6767</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/d4f7df4b304af8b373488fdf8e830793ff843eb9"><code>d4f7df4</code></a> fix(headers): fix <code>getSetCookie</code> by using 'get' method for caseless access; (...</li>
-                <li>Additional commits viewable in <a href="https://github.com/axios/axios/compare/v0.27.1...v1.9.0">compare view</a></li>
+                <li><a href="https://github.com/axios/axios/commit/08b84b52d5835d0c7b81049c365c3d271ade8bff"><code>08b84b5</code></a> chore(release): v1.13.2 (<a href="https://redirect.github.com/axios/axios/issues/7207">#7207</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/8d372335f5c50ecd01e8615f2468a9eb19703117"><code>8d37233</code></a> fix(http): fix 'socket hang up' bug for keep-alive requests when using timeou...</li>
+                <li><a href="https://github.com/axios/axios/commit/12c314b603e7852a157e93e47edb626a471ba6c5"><code>12c314b</code></a> perf(http): fix early loop exit; (<a href="https://redirect.github.com/axios/axios/issues/7202">#7202</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/f6d79e773baf70bf4e6d888e72d4bcf589060a84"><code>f6d79e7</code></a> chore(sponsor): update sponsor block (<a href="https://redirect.github.com/axios/axios/issues/7203">#7203</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/0588880ac7ddba7594ef179930493884b7e90bf5"><code>0588880</code></a> fix(http): use default export for http2 module to support stubs; (<a href="https://redirect.github.com/axios/axios/issues/7196">#7196</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/1ef8e7218b085ac28b675b07349c6d7906a7b6ac"><code>1ef8e72</code></a> chore(release): v1.13.1 (<a href="https://redirect.github.com/axios/axios/issues/7194">#7194</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/bcd5581d208cd372055afdcb2fd10b68ca40613c"><code>bcd5581</code></a> fix(http): fixed a regression that caused the data stream to be interrupted f...</li>
+                <li><a href="https://github.com/axios/axios/commit/c9b33712aac00ca6da7e9767426ff2e0a36c7eed"><code>c9b3371</code></a> chore: enhance styling and responsiveness in client.html (<a href="https://redirect.github.com/axios/axios/issues/7173">#7173</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/9ead04d8abbcd53718dbc31b1250ea74300921c8"><code>9ead04d</code></a> [Release] v1.13.0 (<a href="https://redirect.github.com/axios/axios/issues/7189">#7189</a>)</li>
+                <li><a href="https://github.com/axios/axios/commit/d000fbfd0722a9c3bd0bcea3451c6d515813635d"><code>d000fbf</code></a> fix(http2): fix possible race condition when handling http2 stream on almost ...</li>
+                <li>Additional commits viewable in <a href="https://github.com/axios/axios/compare/v0.27.1...v1.13.2">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump axios from 0.27.1 to 1.9.0 in /npm/semver
+                Bump axios from 0.27.1 to 1.13.2 in /npm/semver
 
-                Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.9.0.
+                Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.13.2.
                 - [Release notes](https://github.com/axios/axios/releases)
                 - [Changelog](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
-                - [Commits](https://github.com/axios/axios/compare/v0.27.1...v1.9.0)
+                - [Commits](https://github.com/axios/axios/compare/v0.27.1...v1.13.2)
     - type: mark_as_processed
       expect:
         data:

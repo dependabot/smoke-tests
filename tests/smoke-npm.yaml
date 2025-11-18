@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: npm_and_yarn
         allowed-updates:
             - update-type: all
@@ -3065,7 +3066,17 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li>See full diff in <a href="https://github.com/follow-redirects/follow-redirects/commits">compare view</a></li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/21ef28a544c5e57f4c34b8476d75f2144609a1eb"><code>21ef28a</code></a> Release version 1.15.11 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/7c88135da3bd0681a7e156ee66b16b2f6f98b480"><code>7c88135</code></a> Roll back tree shaking.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/6e389ba094beec211a8847788a146917a16c1bdb"><code>6e389ba</code></a> Release version 1.15.10 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/5bc496e0229abda823221e0c6267926a3f93f262"><code>5bc496e</code></a> Shake me up before you go-go.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/694d6b47a42bc8377e5ef1480394de451e16bd5b"><code>694d6b4</code></a> Bump minimist from 1.2.5 to 1.2.8</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/e4e55c77b2d849280d105943f49f42e0c735d05d"><code>e4e55c7</code></a> Release version 1.15.9 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/31a1abf2d659ac1c8fcbe7e614a8c8914d80e1e3"><code>31a1abf</code></a> Attempt much more gentle detection.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/d2aaa97439e8a7e4a9cd02513ec7b12f23c17638"><code>d2aaa97</code></a> Fix url field.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/62558f0cd106195f4c17ece3ad255eb93487d37f"><code>62558f0</code></a> Release version 1.15.8 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/a8d1ceed257d46758f913ff555b4f7e1cd758627"><code>a8d1cee</code></a> Return subtlety.</li>
+                <li>Additional commits viewable in <a href="https://github.com/follow-redirects/follow-redirects/compare/v1.15.2...v1.15.11">compare view</a></li>
                 </ul>
                 </details>
                 <br />
@@ -3074,7 +3085,7 @@ output:
 
                 Bumps [follow-redirects](https://github.com/follow-redirects/follow-redirects) from 1.15.2 to 1.15.11.
                 - [Release notes](https://github.com/follow-redirects/follow-redirects/releases)
-                - [Commits](https://github.com/follow-redirects/follow-redirects/commits)
+                - [Commits](https://github.com/follow-redirects/follow-redirects/compare/v1.15.2...v1.15.11)
     - type: create_pull_request
       expect:
         data:
@@ -3084,7 +3095,7 @@ output:
                   previous-requirements: []
                   previous-version: 4.0.0
                   requirements: []
-                  version: 4.0.4
+                  version: 4.0.5
                   directory: /npm
             updated-dependency-files:
                 - content: |
@@ -3266,9 +3277,9 @@ output:
                           }
                         },
                         "node_modules/form-data": {
-                          "version": "4.0.4",
-                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.4.tgz",
-                          "integrity": "sha512-KrGhL9Q4zjj0kiUt5OO4Mr/A/jlI2jDYs5eHBpYHPcBEVSiipAvn2Ko2HnPe20rmcuuvMHNdZFp+4IlGTMF0Ow==",
+                          "version": "4.0.5",
+                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.5.tgz",
+                          "integrity": "sha512-8RipRLol37bNs2bhoV67fiTEvdTrbMUYcFTiy3+wuuOnUog2QBHCZWXDRijWQfAkhBj2Uf5UnVaiWwA5vdd82w==",
                           "license": "MIT",
                           "dependencies": {
                             "asynckit": "^0.4.0",
@@ -3569,9 +3580,9 @@ output:
                           "integrity": "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA=="
                         },
                         "form-data": {
-                          "version": "4.0.4",
-                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.4.tgz",
-                          "integrity": "sha512-KrGhL9Q4zjj0kiUt5OO4Mr/A/jlI2jDYs5eHBpYHPcBEVSiipAvn2Ko2HnPe20rmcuuvMHNdZFp+4IlGTMF0Ow==",
+                          "version": "4.0.5",
+                          "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.5.tgz",
+                          "integrity": "sha512-8RipRLol37bNs2bhoV67fiTEvdTrbMUYcFTiy3+wuuOnUog2QBHCZWXDRijWQfAkhBj2Uf5UnVaiWwA5vdd82w==",
                           "requires": {
                             "asynckit": "^0.4.0",
                             "combined-stream": "^1.0.8",
@@ -3702,38 +3713,146 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump form-data from 4.0.0 to 4.0.4 in /npm
+            pr-title: Bump form-data from 4.0.0 to 4.0.5 in /npm
             pr-body: |
-                Bumps [form-data](https://github.com/form-data/form-data) from 4.0.0 to 4.0.4.
+                Bumps [form-data](https://github.com/form-data/form-data) from 4.0.0 to 4.0.5.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/form-data/form-data/releases">form-data's releases</a>.</em></p>
                 <blockquote>
-                <h2>v4.0.1</h2>
-                <h3>Fixes</h3>
+                <h2>v4.0.4</h2>
+                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.3...v4.0.4">v4.0.4</a> - 2025-07-16</h2>
+                <h3>Commits</h3>
                 <ul>
-                <li>npmignore temporary build files (<a href="https://redirect.github.com/form-data/form-data/issues/532">#532</a>)</li>
-                <li>move util.isArray to Array.isArray (<a href="https://redirect.github.com/form-data/form-data/issues/564">#564</a>)</li>
+                <li>[meta] add <code>auto-changelog</code> <a href="https://github.com/form-data/form-data/commit/811f68282fab0315209d0e2d1c44b6c32ea0d479"><code>811f682</code></a></li>
+                <li>[Tests] handle predict-v8-randomness failures in node &lt; 17 and node &gt; 23 <a href="https://github.com/form-data/form-data/commit/1d11a76434d101f22fdb26b8aef8615f28b98402"><code>1d11a76</code></a></li>
+                <li>[Fix] Switch to using <code>crypto</code> random for boundary values <a href="https://github.com/form-data/form-data/commit/3d1723080e6577a66f17f163ecd345a21d8d0fd0"><code>3d17230</code></a></li>
+                <li>[Tests] fix linting errors <a href="https://github.com/form-data/form-data/commit/5e340800b5f8914213e4e0378c084aae71cfd73a"><code>5e34080</code></a></li>
+                <li>[meta] actually ensure the readme backup isn’t published <a href="https://github.com/form-data/form-data/commit/316c82ba93fd4985af757b771b9a1f26d3b709ef"><code>316c82b</code></a></li>
+                <li>[Dev Deps] update <code>@ljharb/eslint-config</code> <a href="https://github.com/form-data/form-data/commit/58c25d76406a5b0dfdf54045cf252563f2bbda8d"><code>58c25d7</code></a></li>
+                <li>[meta] fix readme capitalization <a href="https://github.com/form-data/form-data/commit/2300ca19595b0ee96431e868fe2a40db79e41c61"><code>2300ca1</code></a></li>
                 </ul>
-                <h3>Tests</h3>
+                <h2>v4.0.3</h2>
+                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.2...v4.0.3">v4.0.3</a> - 2025-06-05</h2>
+                <h3>Fixed</h3>
                 <ul>
-                <li>migrate from travis to GHA</li>
+                <li>[Fix] <code>append</code>: avoid a crash on nullish values <a href="https://redirect.github.com/form-data/form-data/issues/577"><code>[#577](https://github.com/form-data/form-data/issues/577)</code></a></li>
                 </ul>
+                <h3>Commits</h3>
+                <ul>
+                <li>[eslint] use a shared config <a href="https://github.com/form-data/form-data/commit/426ba9ac440f95d1998dac9a5cd8d738043b048f"><code>426ba9a</code></a></li>
+                <li>[eslint] fix some spacing issues <a href="https://github.com/form-data/form-data/commit/20941917f0e9487e68c564ebc3157e23609e2939"><code>2094191</code></a></li>
+                <li>[Refactor] use <code>hasown</code> <a href="https://github.com/form-data/form-data/commit/81ab41b46fdf34f5d89d7ff30b513b0925febfaa"><code>81ab41b</code></a></li>
+                <li>[Fix] validate boundary type in <code>setBoundary()</code> method <a href="https://github.com/form-data/form-data/commit/8d8e4693093519f7f18e3c597d1e8df8c493de9e"><code>8d8e469</code></a></li>
+                <li>[Tests] add tests to check the behavior of <code>getBoundary</code> with non-strings <a href="https://github.com/form-data/form-data/commit/837b8a1f7562bfb8bda74f3fc538adb7a5858995"><code>837b8a1</code></a></li>
+                <li>[Dev Deps] remove unused deps <a href="https://github.com/form-data/form-data/commit/870e4e665935e701bf983a051244ab928e62d58e"><code>870e4e6</code></a></li>
+                <li>[meta] remove local commit hooks <a href="https://github.com/form-data/form-data/commit/e6e83ccb545a5619ed6cd04f31d5c2f655eb633e"><code>e6e83cc</code></a></li>
+                <li>[Dev Deps] update <code>eslint</code> <a href="https://github.com/form-data/form-data/commit/4066fd6f65992b62fa324a6474a9292a4f88c916"><code>4066fd6</code></a></li>
+                <li>[meta] fix scripts to use prepublishOnly <a href="https://github.com/form-data/form-data/commit/c4bbb13c0ef669916657bc129341301b1d331d75"><code>c4bbb13</code></a></li>
+                </ul>
+                <h2>v4.0.2</h2>
+                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.1...v4.0.2">v4.0.2</a> - 2025-02-14</h2>
+                <h3>Merged</h3>
+                <ul>
+                <li>[Fix] set <code>Symbol.toStringTag</code> when available <a href="https://redirect.github.com/form-data/form-data/pull/573"><code>[#573](https://github.com/form-data/form-data/issues/573)</code></a></li>
+                <li>[Fix] set <code>Symbol.toStringTag</code> when available <a href="https://redirect.github.com/form-data/form-data/pull/573"><code>[#573](https://github.com/form-data/form-data/issues/573)</code></a></li>
+                <li>fix (npmignore): ignore temporary build files <a href="https://redirect.github.com/form-data/form-data/pull/532"><code>[#532](https://github.com/form-data/form-data/issues/532)</code></a></li>
+                <li>fix (npmignore): ignore temporary build files <a href="https://redirect.github.com/form-data/form-data/pull/532"><code>[#532](https://github.com/form-data/form-data/issues/532)</code></a></li>
+                </ul>
+                <h3>Fixed</h3>
+                <ul>
+                <li>[Fix] set <code>Symbol.toStringTag</code> when available (<a href="https://redirect.github.com/form-data/form-data/issues/573">#573</a>) <a href="https://redirect.github.com/form-data/form-data/issues/396"><code>[#396](https://github.com/form-data/form-data/issues/396)</code></a></li>
+                <li>[Fix] set <code>Symbol.toStringTag</code> when available (<a href="https://redirect.github.com/form-data/form-data/issues/573">#573</a>) <a href="https://redirect.github.com/form-data/form-data/issues/396"><code>[#396](https://github.com/form-data/form-data/issues/396)</code></a></li>
+                <li>[Fix] set <code>Symbol.toStringTag</code> when available <a href="https://redirect.github.com/form-data/form-data/issues/396"><code>[#396](https://github.com/form-data/form-data/issues/396)</code></a></li>
+                </ul>
+                <h3>Commits</h3>
+                <!-- raw HTML omitted -->
                 </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/form-data/form-data/blob/master/CHANGELOG.md">form-data's changelog</a>.</em></p>
+                <blockquote>
+                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.4...v4.0.5">v4.0.5</a> - 2025-11-17</h2>
+                <h3>Commits</h3>
+                <ul>
+                <li>[Tests] Switch to newer v8 prediction library; enable node 24 testing <a href="https://github.com/form-data/form-data/commit/16e00765342106876f98a1c9703314006c9e937a"><code>16e0076</code></a></li>
+                <li>[Dev Deps] update <code>@ljharb/eslint-config</code>, <code>eslint</code> <a href="https://github.com/form-data/form-data/commit/5822467f0ec21f6ad613c1c90856375e498793c7"><code>5822467</code></a></li>
+                <li>[Fix] set Symbol.toStringTag in the proper place <a href="https://github.com/form-data/form-data/commit/76d0dee43933b5e167f7f09e5d9cbbd1cf911aa7"><code>76d0dee</code></a></li>
+                </ul>
+                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.3...v4.0.4">v4.0.4</a> - 2025-07-16</h2>
+                <h3>Commits</h3>
+                <ul>
+                <li>[meta] add <code>auto-changelog</code> <a href="https://github.com/form-data/form-data/commit/811f68282fab0315209d0e2d1c44b6c32ea0d479"><code>811f682</code></a></li>
+                <li>[Tests] handle predict-v8-randomness failures in node &lt; 17 and node &gt; 23 <a href="https://github.com/form-data/form-data/commit/1d11a76434d101f22fdb26b8aef8615f28b98402"><code>1d11a76</code></a></li>
+                <li>[Fix] Switch to using <code>crypto</code> random for boundary values <a href="https://github.com/form-data/form-data/commit/3d1723080e6577a66f17f163ecd345a21d8d0fd0"><code>3d17230</code></a></li>
+                <li>[Tests] fix linting errors <a href="https://github.com/form-data/form-data/commit/5e340800b5f8914213e4e0378c084aae71cfd73a"><code>5e34080</code></a></li>
+                <li>[meta] actually ensure the readme backup isn’t published <a href="https://github.com/form-data/form-data/commit/316c82ba93fd4985af757b771b9a1f26d3b709ef"><code>316c82b</code></a></li>
+                <li>[Dev Deps] update <code>@ljharb/eslint-config</code> <a href="https://github.com/form-data/form-data/commit/58c25d76406a5b0dfdf54045cf252563f2bbda8d"><code>58c25d7</code></a></li>
+                <li>[meta] fix readme capitalization <a href="https://github.com/form-data/form-data/commit/2300ca19595b0ee96431e868fe2a40db79e41c61"><code>2300ca1</code></a></li>
+                </ul>
+                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.2...v4.0.3">v4.0.3</a> - 2025-06-05</h2>
+                <h3>Fixed</h3>
+                <ul>
+                <li>[Fix] <code>append</code>: avoid a crash on nullish values <a href="https://redirect.github.com/form-data/form-data/issues/577"><code>[#577](https://github.com/form-data/form-data/issues/577)</code></a></li>
+                </ul>
+                <h3>Commits</h3>
+                <ul>
+                <li>[eslint] use a shared config <a href="https://github.com/form-data/form-data/commit/426ba9ac440f95d1998dac9a5cd8d738043b048f"><code>426ba9a</code></a></li>
+                <li>[eslint] fix some spacing issues <a href="https://github.com/form-data/form-data/commit/20941917f0e9487e68c564ebc3157e23609e2939"><code>2094191</code></a></li>
+                <li>[Refactor] use <code>hasown</code> <a href="https://github.com/form-data/form-data/commit/81ab41b46fdf34f5d89d7ff30b513b0925febfaa"><code>81ab41b</code></a></li>
+                <li>[Fix] validate boundary type in <code>setBoundary()</code> method <a href="https://github.com/form-data/form-data/commit/8d8e4693093519f7f18e3c597d1e8df8c493de9e"><code>8d8e469</code></a></li>
+                <li>[Tests] add tests to check the behavior of <code>getBoundary</code> with non-strings <a href="https://github.com/form-data/form-data/commit/837b8a1f7562bfb8bda74f3fc538adb7a5858995"><code>837b8a1</code></a></li>
+                <li>[Dev Deps] remove unused deps <a href="https://github.com/form-data/form-data/commit/870e4e665935e701bf983a051244ab928e62d58e"><code>870e4e6</code></a></li>
+                <li>[meta] remove local commit hooks <a href="https://github.com/form-data/form-data/commit/e6e83ccb545a5619ed6cd04f31d5c2f655eb633e"><code>e6e83cc</code></a></li>
+                <li>[Dev Deps] update <code>eslint</code> <a href="https://github.com/form-data/form-data/commit/4066fd6f65992b62fa324a6474a9292a4f88c916"><code>4066fd6</code></a></li>
+                <li>[meta] fix scripts to use prepublishOnly <a href="https://github.com/form-data/form-data/commit/c4bbb13c0ef669916657bc129341301b1d331d75"><code>c4bbb13</code></a></li>
+                </ul>
+                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.1...v4.0.2">v4.0.2</a> - 2025-02-14</h2>
+                <h3>Merged</h3>
+                <ul>
+                <li>[Fix] set <code>Symbol.toStringTag</code> when available <a href="https://redirect.github.com/form-data/form-data/pull/573"><code>[#573](https://github.com/form-data/form-data/issues/573)</code></a></li>
+                <li>[Fix] set <code>Symbol.toStringTag</code> when available <a href="https://redirect.github.com/form-data/form-data/pull/573"><code>[#573](https://github.com/form-data/form-data/issues/573)</code></a></li>
+                <li>fix (npmignore): ignore temporary build files <a href="https://redirect.github.com/form-data/form-data/pull/532"><code>[#532](https://github.com/form-data/form-data/issues/532)</code></a></li>
+                <li>fix (npmignore): ignore temporary build files <a href="https://redirect.github.com/form-data/form-data/pull/532"><code>[#532](https://github.com/form-data/form-data/issues/532)</code></a></li>
+                </ul>
+                <h3>Fixed</h3>
+                <ul>
+                <li>[Fix] set <code>Symbol.toStringTag</code> when available (<a href="https://redirect.github.com/form-data/form-data/issues/573">#573</a>) <a href="https://redirect.github.com/form-data/form-data/issues/396"><code>[#396](https://github.com/form-data/form-data/issues/396)</code></a></li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
                 </details>
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li>See full diff in <a href="https://github.com/form-data/form-data/commits">compare view</a></li>
+                <li><a href="https://github.com/form-data/form-data/commit/68ff7dda8834d6de095a7008cef0e03bc252ca98"><code>68ff7dd</code></a> v4.0.5</li>
+                <li><a href="https://github.com/form-data/form-data/commit/5822467f0ec21f6ad613c1c90856375e498793c7"><code>5822467</code></a> [Dev Deps] update <code>@ljharb/eslint-config</code>, <code>eslint</code></li>
+                <li><a href="https://github.com/form-data/form-data/commit/76d0dee43933b5e167f7f09e5d9cbbd1cf911aa7"><code>76d0dee</code></a> [Fix] set Symbol.toStringTag in the proper place</li>
+                <li><a href="https://github.com/form-data/form-data/commit/16e00765342106876f98a1c9703314006c9e937a"><code>16e0076</code></a> [Tests] Switch to newer v8 prediction library; enable node 24 testing</li>
+                <li><a href="https://github.com/form-data/form-data/commit/41996f5ac73a867046d48512cab62e64fc846dad"><code>41996f5</code></a> v4.0.4</li>
+                <li><a href="https://github.com/form-data/form-data/commit/316c82ba93fd4985af757b771b9a1f26d3b709ef"><code>316c82b</code></a> [meta] actually ensure the readme backup isn’t published</li>
+                <li><a href="https://github.com/form-data/form-data/commit/2300ca19595b0ee96431e868fe2a40db79e41c61"><code>2300ca1</code></a> [meta] fix readme capitalization</li>
+                <li><a href="https://github.com/form-data/form-data/commit/811f68282fab0315209d0e2d1c44b6c32ea0d479"><code>811f682</code></a> [meta] add <code>auto-changelog</code></li>
+                <li><a href="https://github.com/form-data/form-data/commit/5e340800b5f8914213e4e0378c084aae71cfd73a"><code>5e34080</code></a> [Tests] fix linting errors</li>
+                <li><a href="https://github.com/form-data/form-data/commit/1d11a76434d101f22fdb26b8aef8615f28b98402"><code>1d11a76</code></a> [Tests] handle predict-v8-randomness failures in node &lt; 17 and node &gt; 23</li>
+                <li>Additional commits viewable in <a href="https://github.com/form-data/form-data/compare/v4.0.0...v4.0.5">compare view</a></li>
                 </ul>
+                </details>
+                <details>
+                <summary>Maintainer changes</summary>
+                <p>This version was pushed to npm by <a href="https://www.npmjs.com/~ljharb">ljharb</a>, a new releaser for form-data since your current version.</p>
                 </details>
                 <br />
             commit-message: |-
-                Bump form-data from 4.0.0 to 4.0.4 in /npm
+                Bump form-data from 4.0.0 to 4.0.5 in /npm
 
-                Bumps [form-data](https://github.com/form-data/form-data) from 4.0.0 to 4.0.4.
+                Bumps [form-data](https://github.com/form-data/form-data) from 4.0.0 to 4.0.5.
                 - [Release notes](https://github.com/form-data/form-data/releases)
-                - [Commits](https://github.com/form-data/form-data/commits)
+                - [Changelog](https://github.com/form-data/form-data/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/form-data/form-data/compare/v4.0.0...v4.0.5)
     - type: mark_as_processed
       expect:
         data:
