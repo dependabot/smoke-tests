@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: npm_and_yarn
         allowed-updates:
             - update-type: all
@@ -23,8 +24,8 @@ input:
                 update-types:
                     - major
         experiments:
-            record-ecosystem-versions: true
             enable_cooldown_for_npm_and_yarn: true
+            record-ecosystem-versions: true
         ignore-conditions:
             - dependency-name: none
         source:
@@ -43,7 +44,7 @@ output:
         data:
             ecosystem_versions:
                 package_managers:
-                    npm: 10
+                    npm: 11
     - type: update_dependency_list
       expect:
         data:
@@ -159,11 +160,11 @@ output:
                     - file: package.json
                       groups:
                         - dependencies
-                      requirement: ^20.0.3
+                      requirement: ^21.0.0
                       source:
                         type: registry
                         url: https://registry.npmjs.org
-                  version: 20.0.3
+                  version: 21.0.0
                   directory: /npm/angular
                 - name: '@angular/common'
                   previous-requirements:
@@ -179,11 +180,11 @@ output:
                     - file: package.json
                       groups:
                         - dependencies
-                      requirement: ^20.0.3
+                      requirement: ^21.0.0
                       source:
                         type: registry
                         url: https://registry.npmjs.org
-                  version: 20.0.3
+                  version: 21.0.0
                   directory: /npm/angular
                 - name: '@angular/compiler'
                   previous-requirements:
@@ -199,11 +200,11 @@ output:
                     - file: package.json
                       groups:
                         - dependencies
-                      requirement: ^20.0.3
+                      requirement: ^21.0.0
                       source:
                         type: registry
                         url: https://registry.npmjs.org
-                  version: 20.0.3
+                  version: 21.0.0
                   directory: /npm/angular
                 - name: '@angular/core'
                   previous-requirements:
@@ -219,11 +220,11 @@ output:
                     - file: package.json
                       groups:
                         - dependencies
-                      requirement: ^20.0.3
+                      requirement: ^21.0.0
                       source:
                         type: registry
                         url: https://registry.npmjs.org
-                  version: 20.0.3
+                  version: 21.0.0
                   directory: /npm/angular
                 - name: '@angular/forms'
                   previous-requirements:
@@ -239,11 +240,11 @@ output:
                     - file: package.json
                       groups:
                         - dependencies
-                      requirement: ^20.0.3
+                      requirement: ^21.0.0
                       source:
                         type: registry
                         url: https://registry.npmjs.org
-                  version: 20.0.3
+                  version: 21.0.0
                   directory: /npm/angular
                 - name: '@angular/platform-browser'
                   previous-requirements:
@@ -259,11 +260,11 @@ output:
                     - file: package.json
                       groups:
                         - dependencies
-                      requirement: ^20.0.3
+                      requirement: ^21.0.0
                       source:
                         type: registry
                         url: https://registry.npmjs.org
-                  version: 20.0.3
+                  version: 21.0.0
                   directory: /npm/angular
                 - name: '@angular/platform-browser-dynamic'
                   previous-requirements:
@@ -279,11 +280,11 @@ output:
                     - file: package.json
                       groups:
                         - dependencies
-                      requirement: ^20.0.3
+                      requirement: ^21.0.0
                       source:
                         type: registry
                         url: https://registry.npmjs.org
-                  version: 20.0.3
+                  version: 21.0.0
                   directory: /npm/angular
                 - name: '@angular/router'
                   previous-requirements:
@@ -299,11 +300,11 @@ output:
                     - file: package.json
                       groups:
                         - dependencies
-                      requirement: ^20.0.3
+                      requirement: ^21.0.0
                       source:
                         type: registry
                         url: https://registry.npmjs.org
-                  version: 20.0.3
+                  version: 21.0.0
                   directory: /npm/angular
             updated-dependency-files:
                 - content: |
@@ -319,14 +320,14 @@ output:
                       },
                       "private": true,
                       "dependencies": {
-                        "@angular/animations": "^20.0.3",
-                        "@angular/common": "^20.0.3",
-                        "@angular/compiler": "^20.0.3",
-                        "@angular/core": "^20.0.3",
-                        "@angular/forms": "^20.0.3",
-                        "@angular/platform-browser": "^20.0.3",
-                        "@angular/platform-browser-dynamic": "^20.0.3",
-                        "@angular/router": "^20.0.3"
+                        "@angular/animations": "^21.0.0",
+                        "@angular/common": "^21.0.0",
+                        "@angular/compiler": "^21.0.0",
+                        "@angular/core": "^21.0.0",
+                        "@angular/forms": "^21.0.0",
+                        "@angular/platform-browser": "^21.0.0",
+                        "@angular/platform-browser-dynamic": "^21.0.0",
+                        "@angular/router": "^21.0.0"
                       }
                     }
                   content_encoding: utf-8
@@ -347,20 +348,20 @@ output:
                           "name": "my-angular",
                           "version": "0.0.0",
                           "dependencies": {
-                            "@angular/animations": "^20.0.3",
-                            "@angular/common": "^20.0.3",
-                            "@angular/compiler": "^20.0.3",
-                            "@angular/core": "^20.0.3",
-                            "@angular/forms": "^20.0.3",
-                            "@angular/platform-browser": "^20.0.3",
-                            "@angular/platform-browser-dynamic": "^20.0.3",
-                            "@angular/router": "^20.0.3"
+                            "@angular/animations": "^21.0.0",
+                            "@angular/common": "^21.0.0",
+                            "@angular/compiler": "^21.0.0",
+                            "@angular/core": "^21.0.0",
+                            "@angular/forms": "^21.0.0",
+                            "@angular/platform-browser": "^21.0.0",
+                            "@angular/platform-browser-dynamic": "^21.0.0",
+                            "@angular/router": "^21.0.0"
                           }
                         },
                         "node_modules/@angular/animations": {
-                          "version": "20.0.3",
-                          "resolved": "https://registry.npmjs.org/@angular/animations/-/animations-20.0.3.tgz",
-                          "integrity": "sha512-R6yv2RmrH49nW1ybgoOMw5pWzqaRYo8Kn3VtvrUDBty4TXjwc0addaw/t89n0smO3/lmBB4vnlRScePAEQZ/3w==",
+                          "version": "21.0.0",
+                          "resolved": "https://registry.npmjs.org/@angular/animations/-/animations-21.0.0.tgz",
+                          "integrity": "sha512-9AX4HFJmSP8SFNiweKNxasBzn3zbL3xRtwaUxw1I+x/WAzubm4ZziLnXqb+tai7C4UmwV+9XDlRVPfw5WxJ9zg==",
                           "license": "MIT",
                           "dependencies": {
                             "tslib": "^2.3.0"
@@ -369,14 +370,13 @@ output:
                             "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
                           },
                           "peerDependencies": {
-                            "@angular/common": "20.0.3",
-                            "@angular/core": "20.0.3"
+                            "@angular/core": "21.0.0"
                           }
                         },
                         "node_modules/@angular/common": {
-                          "version": "20.0.3",
-                          "resolved": "https://registry.npmjs.org/@angular/common/-/common-20.0.3.tgz",
-                          "integrity": "sha512-HqqVqaj+xzByWJOIrONVRkpvM6mRuGmC+m9wKixhc9f+xXsymVTBR6xg+G/RwyYP2NuC5chxIZbaJTz2Hj+6+g==",
+                          "version": "21.0.0",
+                          "resolved": "https://registry.npmjs.org/@angular/common/-/common-21.0.0.tgz",
+                          "integrity": "sha512-uFvQDYU5X5nEnI9C4Bkdxcu4aIzNesGLJzmFlnwChVxB4BxIRF0uHL0oRhdkInGTIzPDJPH4nF6B/22c5gDVqA==",
                           "license": "MIT",
                           "dependencies": {
                             "tslib": "^2.3.0"
@@ -385,14 +385,14 @@ output:
                             "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
                           },
                           "peerDependencies": {
-                            "@angular/core": "20.0.3",
+                            "@angular/core": "21.0.0",
                             "rxjs": "^6.5.3 || ^7.4.0"
                           }
                         },
                         "node_modules/@angular/compiler": {
-                          "version": "20.0.3",
-                          "resolved": "https://registry.npmjs.org/@angular/compiler/-/compiler-20.0.3.tgz",
-                          "integrity": "sha512-CShPNvqqV5Cleyho8CKtcFlt7l2thHPUdXZPtKHH3Zf43KojvJbJksZLBz6ZbyoQdgxNMYSfbh4h0UbSGtPOzQ==",
+                          "version": "21.0.0",
+                          "resolved": "https://registry.npmjs.org/@angular/compiler/-/compiler-21.0.0.tgz",
+                          "integrity": "sha512-6jCH3UYga5iokj5F40SR4dlwo9ZRMkT8YzHCTijwZuDX9zvugp9jPof092RvIeNsTvCMVfGWuM9yZ1DRUsU/yg==",
                           "license": "MIT",
                           "dependencies": {
                             "tslib": "^2.3.0"
@@ -402,9 +402,9 @@ output:
                           }
                         },
                         "node_modules/@angular/core": {
-                          "version": "20.0.3",
-                          "resolved": "https://registry.npmjs.org/@angular/core/-/core-20.0.3.tgz",
-                          "integrity": "sha512-kB6w1bQgClfmkTbWJeD3vSLqX0e3uSaJD6KJ7XXT1IEaqUs4J+mKRKHQyxpJlpdUb7R+jDaHSM/vrVF15/L2rA==",
+                          "version": "21.0.0",
+                          "resolved": "https://registry.npmjs.org/@angular/core/-/core-21.0.0.tgz",
+                          "integrity": "sha512-bqi8fT4csyITeX8vdN5FJDBWx5wuWzdCg4mKSjHd+onVzZLyZ8bcnuAKz4mklgvjvwuXoRYukmclUurLwfq3Rg==",
                           "license": "MIT",
                           "dependencies": {
                             "tslib": "^2.3.0"
@@ -413,7 +413,7 @@ output:
                             "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
                           },
                           "peerDependencies": {
-                            "@angular/compiler": "20.0.3",
+                            "@angular/compiler": "21.0.0",
                             "rxjs": "^6.5.3 || ^7.4.0",
                             "zone.js": "~0.15.0"
                           },
@@ -427,9 +427,9 @@ output:
                           }
                         },
                         "node_modules/@angular/forms": {
-                          "version": "20.0.3",
-                          "resolved": "https://registry.npmjs.org/@angular/forms/-/forms-20.0.3.tgz",
-                          "integrity": "sha512-tb4M+c+/JnmPmtTb3+Si/DWGttnCEW5rvi4u55q+EFxYGQO0GeHa53yQTl1e2ngQLT9/kgmDAsJ2mt1Ql9N6xg==",
+                          "version": "21.0.0",
+                          "resolved": "https://registry.npmjs.org/@angular/forms/-/forms-21.0.0.tgz",
+                          "integrity": "sha512-kcudwbZs/ddKqaELz4eEW9kOGCsX61qsf9jkQsGTARBEOUcU2K+rM6mX5sTf9azHvQ9wlX4N36h0eYzBA4Y4Qg==",
                           "license": "MIT",
                           "dependencies": {
                             "tslib": "^2.3.0"
@@ -438,16 +438,17 @@ output:
                             "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
                           },
                           "peerDependencies": {
-                            "@angular/common": "20.0.3",
-                            "@angular/core": "20.0.3",
-                            "@angular/platform-browser": "20.0.3",
+                            "@angular/common": "21.0.0",
+                            "@angular/core": "21.0.0",
+                            "@angular/platform-browser": "21.0.0",
+                            "@standard-schema/spec": "^1.0.0",
                             "rxjs": "^6.5.3 || ^7.4.0"
                           }
                         },
                         "node_modules/@angular/platform-browser": {
-                          "version": "20.0.3",
-                          "resolved": "https://registry.npmjs.org/@angular/platform-browser/-/platform-browser-20.0.3.tgz",
-                          "integrity": "sha512-cba0bibw9dJ8b+a2a8mwkiq5/HPiakY9P5OiJEVefN+2V/K9CND/pW+KIbW0/P6KhSSDQ29xgcGRseVtkjYLmg==",
+                          "version": "21.0.0",
+                          "resolved": "https://registry.npmjs.org/@angular/platform-browser/-/platform-browser-21.0.0.tgz",
+                          "integrity": "sha512-KQrANla4RBLhcGkwlndqsKzBwVFOWQr1640CfBVjj2oz4M3dW5hyMtXivBACvuwyUhYU/qJbqlDMBXl/OUSudQ==",
                           "license": "MIT",
                           "dependencies": {
                             "tslib": "^2.3.0"
@@ -456,9 +457,9 @@ output:
                             "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
                           },
                           "peerDependencies": {
-                            "@angular/animations": "20.0.3",
-                            "@angular/common": "20.0.3",
-                            "@angular/core": "20.0.3"
+                            "@angular/animations": "21.0.0",
+                            "@angular/common": "21.0.0",
+                            "@angular/core": "21.0.0"
                           },
                           "peerDependenciesMeta": {
                             "@angular/animations": {
@@ -467,9 +468,9 @@ output:
                           }
                         },
                         "node_modules/@angular/platform-browser-dynamic": {
-                          "version": "20.0.3",
-                          "resolved": "https://registry.npmjs.org/@angular/platform-browser-dynamic/-/platform-browser-dynamic-20.0.3.tgz",
-                          "integrity": "sha512-EUC0q9/L7nBQOJkOi7aKz0cKXym7XIZtZJjZ+K7hCZaE92wb+Uk5YdBfBaq6hJ3aEp896GUs3FVFI6Rxklrm2A==",
+                          "version": "21.0.0",
+                          "resolved": "https://registry.npmjs.org/@angular/platform-browser-dynamic/-/platform-browser-dynamic-21.0.0.tgz",
+                          "integrity": "sha512-H7nfgQvtzl242Tjs34k20XQC3ZNssJCCvYkGTkVowR61khsX87OE5ggKqTSnLiqq1+OoR29hyvvqn5e9truS7w==",
                           "license": "MIT",
                           "dependencies": {
                             "tslib": "^2.3.0"
@@ -478,16 +479,16 @@ output:
                             "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
                           },
                           "peerDependencies": {
-                            "@angular/common": "20.0.3",
-                            "@angular/compiler": "20.0.3",
-                            "@angular/core": "20.0.3",
-                            "@angular/platform-browser": "20.0.3"
+                            "@angular/common": "21.0.0",
+                            "@angular/compiler": "21.0.0",
+                            "@angular/core": "21.0.0",
+                            "@angular/platform-browser": "21.0.0"
                           }
                         },
                         "node_modules/@angular/router": {
-                          "version": "20.0.3",
-                          "resolved": "https://registry.npmjs.org/@angular/router/-/router-20.0.3.tgz",
-                          "integrity": "sha512-FY2kMZjLh7NUKjSaZ1K26azl67T4aVnOD8PE/w1Ih3eQmSIlHniNP1NmCGMUy6t1O/ZV6sCSKkA5AZFv18wzIQ==",
+                          "version": "21.0.0",
+                          "resolved": "https://registry.npmjs.org/@angular/router/-/router-21.0.0.tgz",
+                          "integrity": "sha512-ARx1R2CmTgAezlMkUpV40V4T/IbXhL7dm4SuMVKbuEOsCKZC0TLOSSTsGYY7HKem45JHlJaByv819cJnabFgBg==",
                           "license": "MIT",
                           "dependencies": {
                             "tslib": "^2.3.0"
@@ -496,11 +497,18 @@ output:
                             "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
                           },
                           "peerDependencies": {
-                            "@angular/common": "20.0.3",
-                            "@angular/core": "20.0.3",
-                            "@angular/platform-browser": "20.0.3",
+                            "@angular/common": "21.0.0",
+                            "@angular/core": "21.0.0",
+                            "@angular/platform-browser": "21.0.0",
                             "rxjs": "^6.5.3 || ^7.4.0"
                           }
+                        },
+                        "node_modules/@standard-schema/spec": {
+                          "version": "1.0.0",
+                          "resolved": "https://registry.npmjs.org/@standard-schema/spec/-/spec-1.0.0.tgz",
+                          "integrity": "sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==",
+                          "license": "MIT",
+                          "peer": true
                         },
                         "node_modules/rxjs": {
                           "version": "7.8.1",
@@ -531,129 +539,26 @@ output:
 
                 | Package | From | To |
                 | --- | --- | --- |
-                | [@angular/animations](https://github.com/angular/angular/tree/HEAD/packages/animations) | `15.0.0` | `20.0.3` |
-                | [@angular/common](https://github.com/angular/angular/tree/HEAD/packages/common) | `15.0.0` | `20.0.3` |
-                | [@angular/compiler](https://github.com/angular/angular/tree/HEAD/packages/compiler) | `15.0.0` | `20.0.3` |
-                | [@angular/core](https://github.com/angular/angular/tree/HEAD/packages/core) | `15.0.0` | `20.0.3` |
-                | [@angular/forms](https://github.com/angular/angular/tree/HEAD/packages/forms) | `15.0.0` | `20.0.3` |
-                | [@angular/platform-browser](https://github.com/angular/angular/tree/HEAD/packages/platform-browser) | `15.0.0` | `20.0.3` |
-                | [@angular/platform-browser-dynamic](https://github.com/angular/angular/tree/HEAD/packages/platform-browser-dynamic) | `15.0.0` | `20.0.3` |
-                | [@angular/router](https://github.com/angular/angular/tree/HEAD/packages/router) | `15.0.0` | `20.0.3` |
+                | [@angular/animations](https://github.com/angular/angular/tree/HEAD/packages/animations) | `15.0.0` | `21.0.0` |
+                | [@angular/common](https://github.com/angular/angular/tree/HEAD/packages/common) | `15.0.0` | `21.0.0` |
+                | [@angular/compiler](https://github.com/angular/angular/tree/HEAD/packages/compiler) | `15.0.0` | `21.0.0` |
+                | [@angular/core](https://github.com/angular/angular/tree/HEAD/packages/core) | `15.0.0` | `21.0.0` |
+                | [@angular/forms](https://github.com/angular/angular/tree/HEAD/packages/forms) | `15.0.0` | `21.0.0` |
+                | [@angular/platform-browser](https://github.com/angular/angular/tree/HEAD/packages/platform-browser) | `15.0.0` | `21.0.0` |
+                | [@angular/platform-browser-dynamic](https://github.com/angular/angular/tree/HEAD/packages/platform-browser-dynamic) | `15.0.0` | `21.0.0` |
+                | [@angular/router](https://github.com/angular/angular/tree/HEAD/packages/router) | `15.0.0` | `21.0.0` |
 
-                Updates `@angular/animations` from 15.0.0 to 20.0.3
+                Updates `@angular/animations` from 15.0.0 to 21.0.0
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/angular/angular/releases"><code>@​angular/animations</code>'s releases</a>.</em></p>
                 <blockquote>
-                <h2>20.0.3</h2>
-                <p>No release notes provided.</p>
-                <h2>20.0.2</h2>
-                <h3>core</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/1e8158baee1be48747180eead8d61de328041b2c"><img src="https://img.shields.io/badge/1e8158baee-fix-green" alt="fix - 1e8158baee" /></a></td>
-                <td>components marked for traversal resets reactive context (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61663">#61663</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/1cd23be57e68c50d6c1f3f19d53d83651fa73fd1"><img src="https://img.shields.io/badge/1cd23be57e-fix-green" alt="fix - 1cd23be57e" /></a></td>
-                <td>unregister <code>onDestroy</code> in <code>outputToObservable</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61882">#61882</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h2>20.0.1</h2>
-                <h3>compiler</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/66a0ec6510aa7f2afc675440bd782750100f84d5"><img src="https://img.shields.io/badge/66a0ec6510-fix-green" alt="fix - 66a0ec6510" /></a></td>
-                <td>move defer trigger assertions out of parser (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61747">#61747</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/8ecb1ba0275636d4ca697cd648d8c4c3a6eb27df"><img src="https://img.shields.io/badge/8ecb1ba027-fix-green" alt="fix - 8ecb1ba027" /></a></td>
-                <td>recover invalid parenthesized expressions (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61815">#61815</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>core</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/8c60cbfd1c4fe161936ea9f3b8c126083f2eae5e"><img src="https://img.shields.io/badge/8c60cbfd1c-fix-green" alt="fix - 8c60cbfd1c" /></a></td>
-                <td><code>takeUntilDestroyed</code> completes immediately if DestroyRef already destroyed (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61847">#61847</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/b1d960d082c6d0e52d45d0f1ef24102c16696fa5"><img src="https://img.shields.io/badge/b1d960d082-fix-green" alt="fix - b1d960d082" /></a></td>
-                <td>produce an error when incremental hydration is expected, but not configured (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61741">#61741</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/b4ed62ddf60729fc4e6cfa529a9c7a455ff956d5"><img src="https://img.shields.io/badge/b4ed62ddf6-fix-green" alt="fix - b4ed62ddf6" /></a></td>
-                <td>properly handle the case where getSignalGraph is called on a componentless NodeInjector (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/60772">#60772</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/ddd22bea4813b572bfdff15d4bc9c24589bef1bb"><img src="https://img.shields.io/badge/ddd22bea48-fix-green" alt="fix - ddd22bea48" /></a></td>
-                <td>unregister <code>onDestroy</code> in <code>ResourceImpl</code> when <code>destroy()</code> is called (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61870">#61870</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/5c31e7e28d519df35b52397161e9d0cedc570304"><img src="https://img.shields.io/badge/5c31e7e28d-fix-green" alt="fix - 5c31e7e28d" /></a></td>
-                <td>unregister <code>onDestroy</code> when observable errors in <code>toSignal</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61596">#61596</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>migrations</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/e9820a6d48629df004043adc5fd6d29e37e43731"><img src="https://img.shields.io/badge/e9820a6d48-fix-green" alt="fix - e9820a6d48" /></a></td>
-                <td>avoid trailing whitespaces in unused imports migration (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61698">#61698</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>service-worker</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/b93fa22f2509578342343cc0dcf8225863def793"><img src="https://img.shields.io/badge/b93fa22f25-fix-green" alt="fix - b93fa22f25" /></a></td>
-                <td>prevent duplicate fetches during concurrent update checks (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61443">#61443</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/9743bd1317b7fb397bc1e799a0f9a117ee5d6698"><img src="https://img.shields.io/badge/9743bd1317-fix-green" alt="fix - 9743bd1317" /></a></td>
-                <td>update service worker to handle seeking better for videos (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/60029">#60029</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h2>20.0.0</h2>
-                <p>Blog post: <a href="https://blog.angular.dev/announcing-angular-v20-b5c9c06cf301">https://blog.angular.dev/announcing-angular-v20-b5c9c06cf301</a></p>
+                <h2>VSCode Extension: 21.0.0</h2>
+                <ul>
+                <li>fix(language-service): address potential memory leak during project creation (89095946cf)</li>
+                <li>fix(language-server): fix directory renaming on Windows (3f7111a9c3)</li>
+                </ul>
+                <h2>21.0.0</h2>
                 <h3>common</h3>
                 <table>
                 <thead>
@@ -664,41 +569,164 @@ output:
                 </thead>
                 <tbody>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/2e5362a4695c6d0c5e130f286a52cc9d97d0f721"><img src="https://img.shields.io/badge/2e5362a469-feat-blue" alt="feat - 2e5362a469" /></a></td>
-                <td>accept undefined inputs in NgTemplateOutlet (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61404">#61404</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/c795960ada1a7e21b8bee411e20a08c700b6e385"><img src="https://img.shields.io/badge/c795960ada-feat-blue" alt="feat - c795960ada" /></a></td>
+                <td>Add experimental support for the Navigation API (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/63406">#63406</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/b7d3f3dbfcfc40000ca34087d3b8b42319468177"><img src="https://img.shields.io/badge/b7d3f3dbfc-feat-blue" alt="feat - b7d3f3dbfc" /></a></td>
-                <td>Allow passing ScrollOptions to ViewportScroller (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61002">#61002</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/9eac43cf46993442e9de5764e2ccca98e3837939"><img src="https://img.shields.io/badge/9eac43cf46-feat-blue" alt="feat - 9eac43cf46" /></a></td>
+                <td>Support of optional keys for the KeyValue pipe (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/48814">#48814</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/74cceba5871e83e77a23536d8b64ff8888862dd3"><img src="https://img.shields.io/badge/74cceba587-feat-blue" alt="feat - 74cceba587" /></a></td>
-                <td>throw error for suspicious date patterns (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/59798">#59798</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/a1868c9d13991d24f893499406b29a5f2e0a388b"><img src="https://img.shields.io/badge/a1868c9d13-feat-blue" alt="feat - a1868c9d13" /></a></td>
+                <td>update to cldr 47 (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/64032">#64032</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/255c79e0480b0adc876b526e2a96d5005692e42f"><img src="https://img.shields.io/badge/255c79e048-fix-green" alt="fix - 255c79e048" /></a></td>
-                <td>cleanup <code>updateLatestValue</code> if view is destroyed before promise resolves (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/58041">#58041</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/196fa500a3c282af5158fa2873df8e2a73243493"><img src="https://img.shields.io/badge/196fa500a3-fix-green" alt="fix - 196fa500a3" /></a></td>
+                <td>properly type ngComponentOutlet (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/64561">#64561</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/739cadae62fd7302ef5fffa7897c8c4f2701a556"><img src="https://img.shields.io/badge/739cadae62-fix-green" alt="fix - 739cadae62" /></a></td>
-                <td>Handle errors in async pipe subscriptions (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/60057">#60057</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/7a4b225c57d8e390ec06731f5211d52d14da3a9c"><img src="https://img.shields.io/badge/7a4b225c57-refactor-yellow" alt="refactor - 7a4b225c57" /></a></td>
+                <td>improve typing of <code>ngComponentOutletContent</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/63674">#63674</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/cbbea70fa37b14e89e4f3459ae880116c0e894b1"><img src="https://img.shields.io/badge/cbbea70fa3-fix-green" alt="fix - cbbea70fa3" /></a></td>
-                <td>issue a warning instead of an error when <code>NgOptimizedImage</code> exceeds the preload limit (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/60879">#60879</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/fc4a56d5c5fa270dbb1402c7cafe6d4f2af571eb"><img src="https://img.shields.io/badge/fc4a56d5c5-fix-green" alt="fix - fc4a56d5c5" /></a></td>
-                <td>rename httpResource function in factory (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/60022">#60022</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/785a1110e603a3573261528f2fda28718f548b4a"><img src="https://img.shields.io/badge/785a1110e6-fix-green" alt="fix - 785a1110e6" /></a></td>
-                <td>resolve host binding type issues (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/60481">#60481</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/25f593ce2a623add0cbd4ab3bb0d4987793e4f34"><img src="https://img.shields.io/badge/25f593ce2a-refactor-yellow" alt="refactor - 25f593ce2a" /></a></td>
+                <td>remove<code>ngModuleFactory</code> input of <code>NgComponentOutlet</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/62838">#62838</a>)</td>
                 </tr>
                 </tbody>
                 </table>
                 <h3>compiler</h3>
-                <p>| Commit | Description |</p>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/ecea909bccc3d6a3c33e77e1feb4ad0926e72f9e"><img src="https://img.shields.io/badge/ecea909bcc-fix-green" alt="fix - ecea909bcc" /></a></td>
+                <td>don't choke on unbalanced parens in declaration block</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/04dd75ba948889601bf611254021577aba458d4c"><img src="https://img.shields.io/badge/04dd75ba94-fix-green" alt="fix - 04dd75ba94" /></a></td>
+                <td>support arbitrary nesting in :host-context()</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/f54cc4f28abb9ded190ae33619e5ca7073df08a6"><img src="https://img.shields.io/badge/f54cc4f28a-fix-green" alt="fix - f54cc4f28a" /></a></td>
+                <td>support commas in :host() argument</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/814b2713f56f94372db7e15e0a86f089a88f888d"><img src="https://img.shields.io/badge/814b2713f5-fix-green" alt="fix - 814b2713f5" /></a></td>
+                <td>support complex selectors in :nth-child()</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/aad6ced0ef5e535d1a6eae7c79df4e03ea73b7f2"><img src="https://img.shields.io/badge/aad6ced0ef-fix-green" alt="fix - aad6ced0ef" /></a></td>
+                <td>support one additional level of nesting in :host()</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>compiler-cli</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/563dbd998c86e850b3c4dde4c7cee00d7c9d7581"><img src="https://img.shields.io/badge/563dbd998c-feat-blue" alt="feat - 563dbd998c" /></a></td>
+                <td>Adds diagnostic for misconfigured <code>@defer</code> triggers (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/64069">#64069</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/0571b335b9b11459b73a19679671eae97fbe1683"><img src="https://img.shields.io/badge/0571b335b9-feat-blue" alt="feat - 0571b335b9" /></a></td>
+                <td>enable type checking of host bindings by default (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/63654">#63654</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/5b55200edfd12fa7dcdb6570885e0c52a9cc5ec0"><img src="https://img.shields.io/badge/5b55200edf-fix-green" alt="fix - 5b55200edf" /></a></td>
+                <td>allow value to be set on radio fields</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/ab98b2425f4c4cb59927aa686818ecee99e634c7"><img src="https://img.shields.io/badge/ab98b2425f-fix-green" alt="fix - ab98b2425f" /></a></td>
+                <td>capture metadata for undecorated fields (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/63957">#63957</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/be7110342b61d837822524d4f60f56a7f859f594"><img src="https://img.shields.io/badge/be7110342b-fix-green" alt="fix - be7110342b" /></a></td>
+                <td>disallow compiling with the <code>emitDeclarationOnly</code> TS compiler option enabled (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61609">#61609</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/bd322ca4100c8e51df7c71377161c2c9412d1b83"><img src="https://img.shields.io/badge/bd322ca410-fix-green" alt="fix - bd322ca410" /></a></td>
+                <td>do not flag custom control required inputs as missing when field is present</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/471da8a311fa7f77815bdf0199943cfa50d45181"><img src="https://img.shields.io/badge/471da8a311-fix-green" alt="fix - 471da8a311" /></a></td>
+                <td>infer type of custom field controls</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/96cb0cffda55516e01613958d1268872f1070722"><img src="https://img.shields.io/badge/96cb0cffda-fix-green" alt="fix - 96cb0cffda" /></a></td>
+                <td>infer types of signal forms set on native inputs</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/71ab11ccf0f0daaffb49779d5f90b9e2da76dbd5"><img src="https://img.shields.io/badge/71ab11ccf0-fix-green" alt="fix - 71ab11ccf0" /></a></td>
+                <td>make field detection logic more robust</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/1f389b8b97600ee382ff842e066abc2ca31c442f"><img src="https://img.shields.io/badge/1f389b8b97-fix-green" alt="fix - 1f389b8b97" /></a></td>
+                <td>missingStructuralDirective diagnostic produces false negatives (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/64579">#64579</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/7fd3db04232d63f1b48ec389bbb62d9ca277fcf9"><img src="https://img.shields.io/badge/7fd3db0423-fix-green" alt="fix - 7fd3db0423" /></a></td>
+                <td>remove internal syntax-related flags (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/63787">#63787</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/c371251e4c2e7bc1ab6da7c51b05e047bdfe6068"><img src="https://img.shields.io/badge/c371251e4c-fix-green" alt="fix - c371251e4c" /></a></td>
+                <td>report invalid bindings on form controls</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/01290ab275599ee6887f9c2139a16f833eaa7071"><img src="https://img.shields.io/badge/01290ab275-fix-green" alt="fix - 01290ab275" /></a></td>
+                <td>use any when checking field interface conformance</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>core</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/809a4ed8c110ca930cb1c6bad309f8bfcaf7ceb8"><img src="https://img.shields.io/badge/809a4ed8c1-feat-blue" alt="feat - 809a4ed8c1" /></a></td>
+                <td>Add migration for zoneless by default. (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/63042">#63042</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/2a7a5de53fd6fb5714c06c63dd1dad5718086083"><img src="https://img.shields.io/badge/2a7a5de53f-feat-blue" alt="feat - 2a7a5de53f" /></a></td>
+                <td>Allow passing application providers in <code>bootstrapModule</code> options (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/64354">#64354</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/28926ba92cf3da7e45a7b8938bba49febdf58eb7"><img src="https://img.shields.io/badge/28926ba92c-feat-blue" alt="feat - 28926ba92c" /></a></td>
+                <td>introduce <code>BootstrapContext</code> for improved server bootstrapping (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/63562">#63562</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/c2d376b85aa6eea2c4d7ec3207df6767f5739945"><img src="https://img.shields.io/badge/c2d376b85a-feat-blue" alt="feat - c2d376b85a" /></a></td>
+                <td>make SimpleChanges generic (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/64535">#64535</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/ad2376435b4bcfdb695d841272f8234ab2a7cca5"><img src="https://img.shields.io/badge/ad2376435b-feat-blue" alt="feat - ad2376435b" /></a></td>
+                <td>support IntersectionObserver options in viewport triggers (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/64130">#64130</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/539717f58a9bff1f8aacc857657b7df573d0bb70"><img src="https://img.shields.io/badge/539717f58a-feat-blue" alt="feat - 539717f58a" /></a></td>
+                <td>support regular expressions in templates (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/63887">#63887</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/ab415f3d7f23cef8e00595e9cf6af2c8b764a8ae"><img src="https://img.shields.io/badge/ab415f3d7f-fix-green" alt="fix - ab415f3d7f" /></a></td>
+                <td>control not recognized when input has directive injecting ViewContainerRef (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/64368">#64368</a>)</td>
+                </tr>
+                </tbody>
+                </table>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -707,187 +735,53 @@ output:
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/angular/angular/blob/main/CHANGELOG.md"><code>@​angular/animations</code>'s changelog</a>.</em></p>
                 <blockquote>
-                <h1>20.0.3 (2025-06-11)</h1>
-                <!-- raw HTML omitted -->
-                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-                <h1>20.0.2 (2025-06-06)</h1>
-                <h3>core</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/1e8158baee1be48747180eead8d61de328041b2c">1e8158baee</a></td>
-                <td>fix</td>
-                <td>components marked for traversal resets reactive context (<a href="https://redirect.github.com/angular/angular/pull/61663">#61663</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/1cd23be57e68c50d6c1f3f19d53d83651fa73fd1">1cd23be57e</a></td>
-                <td>fix</td>
-                <td>unregister <code>onDestroy</code> in <code>outputToObservable</code> (<a href="https://redirect.github.com/angular/angular/pull/61882">#61882</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <!-- raw HTML omitted -->
-                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-                <h1>20.1.0-next.0 (2025-06-04)</h1>
-                <h3>compiler</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/5a76826d266b4ed0ef863221571e4b6b1b16182f">5a76826d26</a></td>
-                <td>fix</td>
-                <td>only report parser errors on invalid expression (<a href="https://redirect.github.com/angular/angular/pull/61793">#61793</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/e9fcbb8af12e7b4370d2e03e6004f3f2fe02c981">e9fcbb8af1</a></td>
-                <td>fix</td>
-                <td>remove TypeScript from linker (<a href="https://redirect.github.com/angular/angular/pull/61618">#61618</a>)</td>
-                </tr>
-                </tbody>
-                </table>
+                <h1>21.0.0 (2025-11-19)</h1>
+                <p><a href="http://goo.gle/angular-v21-blog">Blog post &quot;Announcing Angular v21&quot;</a>.</p>
+                <h2>Breaking Changes</h2>
+                <h3>common</h3>
+                <ul>
+                <li>(test only) - <code>TestBed</code> now provides a fake <code>PlatformLocation</code>
+                implementation that supports the Navigation API. This may break some
+                tests, though we have not observed any failures internally. You can revert to the
+                old default for <code>TestBed</code> by providing the <code>MockPlatformLocation</code> from
+                <code>@angular/common/testing</code> in your providers:
+                <code>{provide: PlatformLocation, useClass: MockPlatformLocation}</code></li>
+                <li><code>ngComponentOutletContent</code> is now of type <code>Node[][] | undefined</code> instead of <code>any[][] | undefined</code>.</li>
+                <li>NgModuleFactory has been removed, use NgModule instead.</li>
+                </ul>
                 <h3>compiler-cli</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/e62fb359d6da8e0458b18f24e6bff60602f93fc6">e62fb359d6</a></td>
-                <td>feat</td>
-                <td>add experimental support for fast type declaration emission (<a href="https://redirect.github.com/angular/angular/pull/61334">#61334</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/0cf1001715d2f528c61735108d12e29047907d98">0cf1001715</a></td>
-                <td>feat</td>
-                <td>support host directives with direct external references in fast type declaration emission (<a href="https://redirect.github.com/angular/angular/pull/61469">#61469</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/77fa204ad16fef561c009fcef0ab1fb92a37f986">77fa204ad1</a></td>
-                <td>fix</td>
-                <td>rename flag for enabling fast type declaration emission (<a href="https://redirect.github.com/angular/angular/pull/61353">#61353</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/c439d6938de60cb132f7ae4d305efa5b3d853e36">c439d6938d</a></td>
-                <td>fix</td>
-                <td>symbol builder duplicating host directives (<a href="https://redirect.github.com/angular/angular/pull/61240">#61240</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/3e1baa5a9565f4930507cdf338e6f9ea7e8702a3">3e1baa5a95</a></td>
-                <td>fix</td>
-                <td>typo in NG2026 message (<a href="https://redirect.github.com/angular/angular/pull/61325">#61325</a>)</td>
-                </tr>
-                </tbody>
-                </table>
+                <ul>
+                <li>
+                <ul>
+                <li>Previously hidden type issues in host bindings may show up in your builds. Either resolve the type issues or set <code>&quot;typeCheckHostBindings&quot;: false</code> in the <code>angularCompilerOptions</code> section of your tsconfig.</li>
+                </ul>
+                </li>
+                <li>The Angular compiler now produces an error when the
+                the <code>emitDeclarationOnly</code> TS compiler option is enabled as this mode is
+                not supported.</li>
+                </ul>
                 <h3>core</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/8163a8995e36bbce74e3d852613c19e56027cc24">8163a8995e</a></td>
-                <td>feat</td>
-                <td>Add <code>destroyed</code> property on <code>DestroyRef</code> (<a href="https://redirect.github.com/angular/angular/pull/61849">#61849</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/4356e8545666f13033bb2c4b7fa018d0b97e6f01">4356e85456</a></td>
-                <td>fix</td>
-                <td>fakeAsync should not depend on module import order (<a href="https://redirect.github.com/angular/angular/pull/61375">#61375</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/583b9a7be56310f247dcf83dd1ce297b9c6be682">583b9a7be5</a></td>
-                <td>fix</td>
-                <td>missing useExisting providers throwing for optional calls (<a href="https://redirect.github.com/angular/angular/pull/61137">#61137</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/8f65223bd83ee5cdbff6a3c8e99f85d1c69f5375">8f65223bd8</a></td>
-                <td>fix</td>
-                <td>update min Node.js support to 20.19, 22.12, and 24.0 (<a href="https://redirect.github.com/angular/angular/pull/61499">#61499</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/b785256b9e7f83c9f05fb1afd561f0af49a42e9d">b785256b9e</a></td>
-                <td>perf</td>
-                <td>avoid intermediate arrays in definition (<a href="https://redirect.github.com/angular/angular/pull/61445">#61445</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>forms</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/610bebfce98d879677244b2ef08b24886891ca76">610bebfce9</a></td>
-                <td>fix</td>
-                <td>Allow ControlState as reset arguments for <code>FormGroup</code>/<code>FormRecord</code> (<a href="https://redirect.github.com/angular/angular/pull/55860">#55860</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>language-service</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/cf55d1bdd4201ed99dd876138c50a497b611acb7">cf55d1bdd4</a></td>
-                <td>feat</td>
-                <td>Support importing the external module's export about the angular metadata. (<a href="https://redirect.github.com/angular/angular/pull/61122">#61122</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>service-worker</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/c67dbda8ff76410e0bb7e4b1719125f3197227dd">c67dbda8ff</a></td>
-                <td>feat</td>
-                <td>support notification closes (<a href="https://redirect.github.com/angular/angular/pull/61442">#61442</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/6e1df5479967c2c8b0fadf75e9a9f8c33a342245">6e1df54799</a></td>
-                <td>feat</td>
-                <td>support push subscription changes (<a href="https://redirect.github.com/angular/angular/pull/61856">#61856</a>)</td>
-                </tr>
-                </tbody>
-                </table>
+                <ul>
+                <li>
+                <p>The server-side bootstrapping process has been changed to eliminate the reliance on a global platform injector.</p>
+                <p>Before:</p>
+                <pre lang="ts"><code>const bootstrap = () =&gt; bootstrapApplication(AppComponent, config);
+                </code></pre>
+                <p>After:</p>
+                <pre lang="ts"><code>const bootstrap = (context: BootstrapContext) =&gt;
+                  bootstrapApplication(AppComponent, config, context);
+                </code></pre>
+                <p>A schematic is provided to automatically update <code>main.server.ts</code> files to pass the <code>BootstrapContext</code> to the <code>bootstrapApplication</code> call.</p>
+                <p>In addition, <code>getPlatform()</code> and <code>destroyPlatform()</code> will now return <code>null</code> and be a no-op respectively when running in a server environment.</p>
+                </li>
+                <li>
+                <p>Using a combination of <code>provideZoneChangeDetection</code>
+                while also removing ZoneJS polyfills will no longer result in the
+                internal scheduler being disabled. All Angular applications now
+                consistenly use the same scheduler, and those with the Zone change detection
+                provider include additional automatic scheduling behaviors based on</p>
+                </li>
+                </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -895,135 +789,32 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/angular/angular/commit/8564cf48d819607102de27c0a916a8ae17a9ea13"><code>8564cf4</code></a> build: replace all <code>ng_package</code> with new rule from <code>rules_angular</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61862">#61862</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/e910893fa6ba553958ea6371d956fdf99f1aab02"><code>e910893</code></a> build: adjust bundling tests to use Angular CLI</li>
-                <li><a href="https://github.com/angular/angular/commit/9df5f508ca96272de71ad92914278893d13809f7"><code>9df5f50</code></a> docs: update API examples to modern angular (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61688">#61688</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/30e081287da68d6801f8ebd5a00d495b51d4c68d"><code>30e0812</code></a> fix(core): update min Node.js support to 20.19, 22.12, and 24.0 (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61500">#61500</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/343302147583b4a05ba0c76737e1af84fc29b2f0"><code>3433021</code></a> build: move private testing helpers outside <code>platform-browser/testing</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61476">#61476</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/6f74458e53f2dc9ed01644c04299df6bfd068162"><code>6f74458</code></a> build: migrate animations to use rules_js based toolchain (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61479">#61479</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/bc830cec641825d0ceefda6da4c72eb581aa5150"><code>bc830ce</code></a> refactor(animations): mark non-default <code>new</code> expressions as pure (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61452">#61452</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/051d90a4ccc3d9939f6234b9bb9345fecd6034e3"><code>051d90a</code></a> build: remove irrelevant madge circular deps tests (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61197">#61197</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/4b365c790887d96a3bfea733c5650c6d1bc46be9"><code>4b365c7</code></a> docs: fix non-working link  (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61131">#61131</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/9793693f5b7612d601451c2aa3d3cd950fa32315"><code>9793693</code></a> refactor: add Node.js 24 as supported version (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/61142">#61142</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/angular/angular/commits/20.0.3/packages/animations">compare view</a></li>
+                <li><a href="https://github.com/angular/angular/commit/3bed9f0f166f6698e862cdbd360e3ba9bcceb935"><code>3bed9f0</code></a> build: format md files</li>
+                <li><a href="https://github.com/angular/angular/commit/a4fe078969c750dd069c7086e035fe893379b1fa"><code>a4fe078</code></a> refactor(common): remove unused import (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/64699">#64699</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/70332b04532311276dd025ba00e8fcb6c1350880"><code>70332b0</code></a> fix(core): pass element removal property through in all locations (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/64565">#64565</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/2b257b36590677d436d45e98cefe7ca886c7bd57"><code>2b257b3</code></a> fix(animations): account for <code>Element.animate</code> exceptions (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/64506">#64506</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/dde5badb7133826187314e07fcdc578297aabbc9"><code>dde5bad</code></a> fix(core): prevent animations renderer from impacting <code>animate.leave</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/63921">#63921</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/c3576506b3c13389e18fa4c0c29bdf536f604142"><code>c357650</code></a> refactor(core): Update tests for zoneless by default (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/63668">#63668</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/021ead5399ab1136da160c7348ec8555ef5ee8fd"><code>021ead5</code></a> refactor(animations): remove dependency on <code>@angular/common</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/63248">#63248</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/2fcafb65c5784ba151e01d808348fd68b3c39388"><code>2fcafb6</code></a> build: rename defaults2.bzl to defaults.bzl (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/63383">#63383</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/ec8cd3e1897e005cf2916ba537f91e0c24735d12"><code>ec8cd3e</code></a> refactor(animations): optimize resolveTimeExpression (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/62927">#62927</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/fa8d8b8396c9992d25a2e0256ae895ca7c86ad66"><code>fa8d8b8</code></a> build: migrate all npm packages to use new rules_js based npm_package rule (#...</li>
+                <li>Additional commits viewable in <a href="https://github.com/angular/angular/commits/21.0.0/packages/animations">compare view</a></li>
                 </ul>
                 </details>
                 <br />
 
-                Updates `@angular/common` from 15.0.0 to 20.0.3
+                Updates `@angular/common` from 15.0.0 to 21.0.0
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/angular/angular/releases"><code>@​angular/common</code>'s releases</a>.</em></p>
                 <blockquote>
-                <h2>20.0.3</h2>
-                <p>No release notes provided.</p>
-                <h2>20.0.2</h2>
-                <h3>core</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/1e8158baee1be48747180eead8d61de328041b2c"><img src="https://img.shields.io/badge/1e8158baee-fix-green" alt="fix - 1e8158baee" /></a></td>
-                <td>components marked for traversal resets reactive context (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61663">#61663</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/1cd23be57e68c50d6c1f3f19d53d83651fa73fd1"><img src="https://img.shields.io/badge/1cd23be57e-fix-green" alt="fix - 1cd23be57e" /></a></td>
-                <td>unregister <code>onDestroy</code> in <code>outputToObservable</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61882">#61882</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h2>20.0.1</h2>
-                <h3>compiler</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/66a0ec6510aa7f2afc675440bd782750100f84d5"><img src="https://img.shields.io/badge/66a0ec6510-fix-green" alt="fix - 66a0ec6510" /></a></td>
-                <td>move defer trigger assertions out of parser (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61747">#61747</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/8ecb1ba0275636d4ca697cd648d8c4c3a6eb27df"><img src="https://img.shields.io/badge/8ecb1ba027-fix-green" alt="fix - 8ecb1ba027" /></a></td>
-                <td>recover invalid parenthesized expressions (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61815">#61815</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>core</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/8c60cbfd1c4fe161936ea9f3b8c126083f2eae5e"><img src="https://img.shields.io/badge/8c60cbfd1c-fix-green" alt="fix - 8c60cbfd1c" /></a></td>
-                <td><code>takeUntilDestroyed</code> completes immediately if DestroyRef already destroyed (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61847">#61847</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/b1d960d082c6d0e52d45d0f1ef24102c16696fa5"><img src="https://img.shields.io/badge/b1d960d082-fix-green" alt="fix - b1d960d082" /></a></td>
-                <td>produce an error when incremental hydration is expected, but not configured (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61741">#61741</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/b4ed62ddf60729fc4e6cfa529a9c7a455ff956d5"><img src="https://img.shields.io/badge/b4ed62ddf6-fix-green" alt="fix - b4ed62ddf6" /></a></td>
-                <td>properly handle the case where getSignalGraph is called on a componentless NodeInjector (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/60772">#60772</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/ddd22bea4813b572bfdff15d4bc9c24589bef1bb"><img src="https://img.shields.io/badge/ddd22bea48-fix-green" alt="fix - ddd22bea48" /></a></td>
-                <td>unregister <code>onDestroy</code> in <code>ResourceImpl</code> when <code>destroy()</code> is called (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61870">#61870</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/5c31e7e28d519df35b52397161e9d0cedc570304"><img src="https://img.shields.io/badge/5c31e7e28d-fix-green" alt="fix - 5c31e7e28d" /></a></td>
-                <td>unregister <code>onDestroy</code> when observable errors in <code>toSignal</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61596">#61596</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>migrations</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/e9820a6d48629df004043adc5fd6d29e37e43731"><img src="https://img.shields.io/badge/e9820a6d48-fix-green" alt="fix - e9820a6d48" /></a></td>
-                <td>avoid trailing whitespaces in unused imports migration (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61698">#61698</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>service-worker</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/b93fa22f2509578342343cc0dcf8225863def793"><img src="https://img.shields.io/badge/b93fa22f25-fix-green" alt="fix - b93fa22f25" /></a></td>
-                <td>prevent duplicate fetches during concurrent update checks (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61443">#61443</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/9743bd1317b7fb397bc1e799a0f9a117ee5d6698"><img src="https://img.shields.io/badge/9743bd1317-fix-green" alt="fix - 9743bd1317" /></a></td>
-                <td>update service worker to handle seeking better for videos (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/60029">#60029</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h2>20.0.0</h2>
-                <p>Blog post: <a href="https://blog.angular.dev/announcing-angular-v20-b5c9c06cf301">https://blog.angular.dev/announcing-angular-v20-b5c9c06cf301</a></p>
+                <h2>VSCode Extension: 21.0.0</h2>
+                <ul>
+                <li>fix(language-service): address potential memory leak during project creation (89095946cf)</li>
+                <li>fix(language-server): fix directory renaming on Windows (3f7111a9c3)</li>
+                </ul>
+                <h2>21.0.0</h2>
                 <h3>common</h3>
                 <table>
                 <thead>
@@ -1034,41 +825,164 @@ output:
                 </thead>
                 <tbody>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/2e5362a4695c6d0c5e130f286a52cc9d97d0f721"><img src="https://img.shields.io/badge/2e5362a469-feat-blue" alt="feat - 2e5362a469" /></a></td>
-                <td>accept undefined inputs in NgTemplateOutlet (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61404">#61404</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/c795960ada1a7e21b8bee411e20a08c700b6e385"><img src="https://img.shields.io/badge/c795960ada-feat-blue" alt="feat - c795960ada" /></a></td>
+                <td>Add experimental support for the Navigation API (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/63406">#63406</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/b7d3f3dbfcfc40000ca34087d3b8b42319468177"><img src="https://img.shields.io/badge/b7d3f3dbfc-feat-blue" alt="feat - b7d3f3dbfc" /></a></td>
-                <td>Allow passing ScrollOptions to ViewportScroller (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61002">#61002</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/9eac43cf46993442e9de5764e2ccca98e3837939"><img src="https://img.shields.io/badge/9eac43cf46-feat-blue" alt="feat - 9eac43cf46" /></a></td>
+                <td>Support of optional keys for the KeyValue pipe (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/48814">#48814</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/74cceba5871e83e77a23536d8b64ff8888862dd3"><img src="https://img.shields.io/badge/74cceba587-feat-blue" alt="feat - 74cceba587" /></a></td>
-                <td>throw error for suspicious date patterns (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/59798">#59798</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/a1868c9d13991d24f893499406b29a5f2e0a388b"><img src="https://img.shields.io/badge/a1868c9d13-feat-blue" alt="feat - a1868c9d13" /></a></td>
+                <td>update to cldr 47 (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/64032">#64032</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/255c79e0480b0adc876b526e2a96d5005692e42f"><img src="https://img.shields.io/badge/255c79e048-fix-green" alt="fix - 255c79e048" /></a></td>
-                <td>cleanup <code>updateLatestValue</code> if view is destroyed before promise resolves (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/58041">#58041</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/196fa500a3c282af5158fa2873df8e2a73243493"><img src="https://img.shields.io/badge/196fa500a3-fix-green" alt="fix - 196fa500a3" /></a></td>
+                <td>properly type ngComponentOutlet (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/64561">#64561</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/739cadae62fd7302ef5fffa7897c8c4f2701a556"><img src="https://img.shields.io/badge/739cadae62-fix-green" alt="fix - 739cadae62" /></a></td>
-                <td>Handle errors in async pipe subscriptions (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/60057">#60057</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/7a4b225c57d8e390ec06731f5211d52d14da3a9c"><img src="https://img.shields.io/badge/7a4b225c57-refactor-yellow" alt="refactor - 7a4b225c57" /></a></td>
+                <td>improve typing of <code>ngComponentOutletContent</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/63674">#63674</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/cbbea70fa37b14e89e4f3459ae880116c0e894b1"><img src="https://img.shields.io/badge/cbbea70fa3-fix-green" alt="fix - cbbea70fa3" /></a></td>
-                <td>issue a warning instead of an error when <code>NgOptimizedImage</code> exceeds the preload limit (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/60879">#60879</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/fc4a56d5c5fa270dbb1402c7cafe6d4f2af571eb"><img src="https://img.shields.io/badge/fc4a56d5c5-fix-green" alt="fix - fc4a56d5c5" /></a></td>
-                <td>rename httpResource function in factory (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/60022">#60022</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/785a1110e603a3573261528f2fda28718f548b4a"><img src="https://img.shields.io/badge/785a1110e6-fix-green" alt="fix - 785a1110e6" /></a></td>
-                <td>resolve host binding type issues (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/60481">#60481</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/25f593ce2a623add0cbd4ab3bb0d4987793e4f34"><img src="https://img.shields.io/badge/25f593ce2a-refactor-yellow" alt="refactor - 25f593ce2a" /></a></td>
+                <td>remove<code>ngModuleFactory</code> input of <code>NgComponentOutlet</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/62838">#62838</a>)</td>
                 </tr>
                 </tbody>
                 </table>
                 <h3>compiler</h3>
-                <p>| Commit | Description |</p>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/ecea909bccc3d6a3c33e77e1feb4ad0926e72f9e"><img src="https://img.shields.io/badge/ecea909bcc-fix-green" alt="fix - ecea909bcc" /></a></td>
+                <td>don't choke on unbalanced parens in declaration block</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/04dd75ba948889601bf611254021577aba458d4c"><img src="https://img.shields.io/badge/04dd75ba94-fix-green" alt="fix - 04dd75ba94" /></a></td>
+                <td>support arbitrary nesting in :host-context()</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/f54cc4f28abb9ded190ae33619e5ca7073df08a6"><img src="https://img.shields.io/badge/f54cc4f28a-fix-green" alt="fix - f54cc4f28a" /></a></td>
+                <td>support commas in :host() argument</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/814b2713f56f94372db7e15e0a86f089a88f888d"><img src="https://img.shields.io/badge/814b2713f5-fix-green" alt="fix - 814b2713f5" /></a></td>
+                <td>support complex selectors in :nth-child()</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/aad6ced0ef5e535d1a6eae7c79df4e03ea73b7f2"><img src="https://img.shields.io/badge/aad6ced0ef-fix-green" alt="fix - aad6ced0ef" /></a></td>
+                <td>support one additional level of nesting in :host()</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>compiler-cli</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/563dbd998c86e850b3c4dde4c7cee00d7c9d7581"><img src="https://img.shields.io/badge/563dbd998c-feat-blue" alt="feat - 563dbd998c" /></a></td>
+                <td>Adds diagnostic for misconfigured <code>@defer</code> triggers (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/64069">#64069</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/0571b335b9b11459b73a19679671eae97fbe1683"><img src="https://img.shields.io/badge/0571b335b9-feat-blue" alt="feat - 0571b335b9" /></a></td>
+                <td>enable type checking of host bindings by default (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/63654">#63654</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/5b55200edfd12fa7dcdb6570885e0c52a9cc5ec0"><img src="https://img.shields.io/badge/5b55200edf-fix-green" alt="fix - 5b55200edf" /></a></td>
+                <td>allow value to be set on radio fields</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/ab98b2425f4c4cb59927aa686818ecee99e634c7"><img src="https://img.shields.io/badge/ab98b2425f-fix-green" alt="fix - ab98b2425f" /></a></td>
+                <td>capture metadata for undecorated fields (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/63957">#63957</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/be7110342b61d837822524d4f60f56a7f859f594"><img src="https://img.shields.io/badge/be7110342b-fix-green" alt="fix - be7110342b" /></a></td>
+                <td>disallow compiling with the <code>emitDeclarationOnly</code> TS compiler option enabled (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61609">#61609</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/bd322ca4100c8e51df7c71377161c2c9412d1b83"><img src="https://img.shields.io/badge/bd322ca410-fix-green" alt="fix - bd322ca410" /></a></td>
+                <td>do not flag custom control required inputs as missing when field is present</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/471da8a311fa7f77815bdf0199943cfa50d45181"><img src="https://img.shields.io/badge/471da8a311-fix-green" alt="fix - 471da8a311" /></a></td>
+                <td>infer type of custom field controls</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/96cb0cffda55516e01613958d1268872f1070722"><img src="https://img.shields.io/badge/96cb0cffda-fix-green" alt="fix - 96cb0cffda" /></a></td>
+                <td>infer types of signal forms set on native inputs</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/71ab11ccf0f0daaffb49779d5f90b9e2da76dbd5"><img src="https://img.shields.io/badge/71ab11ccf0-fix-green" alt="fix - 71ab11ccf0" /></a></td>
+                <td>make field detection logic more robust</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/1f389b8b97600ee382ff842e066abc2ca31c442f"><img src="https://img.shields.io/badge/1f389b8b97-fix-green" alt="fix - 1f389b8b97" /></a></td>
+                <td>missingStructuralDirective diagnostic produces false negatives (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/64579">#64579</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/7fd3db04232d63f1b48ec389bbb62d9ca277fcf9"><img src="https://img.shields.io/badge/7fd3db0423-fix-green" alt="fix - 7fd3db0423" /></a></td>
+                <td>remove internal syntax-related flags (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/63787">#63787</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/c371251e4c2e7bc1ab6da7c51b05e047bdfe6068"><img src="https://img.shields.io/badge/c371251e4c-fix-green" alt="fix - c371251e4c" /></a></td>
+                <td>report invalid bindings on form controls</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/01290ab275599ee6887f9c2139a16f833eaa7071"><img src="https://img.shields.io/badge/01290ab275-fix-green" alt="fix - 01290ab275" /></a></td>
+                <td>use any when checking field interface conformance</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>core</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/809a4ed8c110ca930cb1c6bad309f8bfcaf7ceb8"><img src="https://img.shields.io/badge/809a4ed8c1-feat-blue" alt="feat - 809a4ed8c1" /></a></td>
+                <td>Add migration for zoneless by default. (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/63042">#63042</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/2a7a5de53fd6fb5714c06c63dd1dad5718086083"><img src="https://img.shields.io/badge/2a7a5de53f-feat-blue" alt="feat - 2a7a5de53f" /></a></td>
+                <td>Allow passing application providers in <code>bootstrapModule</code> options (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/64354">#64354</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/28926ba92cf3da7e45a7b8938bba49febdf58eb7"><img src="https://img.shields.io/badge/28926ba92c-feat-blue" alt="feat - 28926ba92c" /></a></td>
+                <td>introduce <code>BootstrapContext</code> for improved server bootstrapping (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/63562">#63562</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/c2d376b85aa6eea2c4d7ec3207df6767f5739945"><img src="https://img.shields.io/badge/c2d376b85a-feat-blue" alt="feat - c2d376b85a" /></a></td>
+                <td>make SimpleChanges generic (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/64535">#64535</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/ad2376435b4bcfdb695d841272f8234ab2a7cca5"><img src="https://img.shields.io/badge/ad2376435b-feat-blue" alt="feat - ad2376435b" /></a></td>
+                <td>support IntersectionObserver options in viewport triggers (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/64130">#64130</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/539717f58a9bff1f8aacc857657b7df573d0bb70"><img src="https://img.shields.io/badge/539717f58a-feat-blue" alt="feat - 539717f58a" /></a></td>
+                <td>support regular expressions in templates (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/63887">#63887</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/ab415f3d7f23cef8e00595e9cf6af2c8b764a8ae"><img src="https://img.shields.io/badge/ab415f3d7f-fix-green" alt="fix - ab415f3d7f" /></a></td>
+                <td>control not recognized when input has directive injecting ViewContainerRef (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/64368">#64368</a>)</td>
+                </tr>
+                </tbody>
+                </table>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -1077,187 +991,53 @@ output:
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/angular/angular/blob/main/CHANGELOG.md"><code>@​angular/common</code>'s changelog</a>.</em></p>
                 <blockquote>
-                <h1>20.0.3 (2025-06-11)</h1>
-                <!-- raw HTML omitted -->
-                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-                <h1>20.0.2 (2025-06-06)</h1>
-                <h3>core</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/1e8158baee1be48747180eead8d61de328041b2c">1e8158baee</a></td>
-                <td>fix</td>
-                <td>components marked for traversal resets reactive context (<a href="https://redirect.github.com/angular/angular/pull/61663">#61663</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/1cd23be57e68c50d6c1f3f19d53d83651fa73fd1">1cd23be57e</a></td>
-                <td>fix</td>
-                <td>unregister <code>onDestroy</code> in <code>outputToObservable</code> (<a href="https://redirect.github.com/angular/angular/pull/61882">#61882</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <!-- raw HTML omitted -->
-                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-                <h1>20.1.0-next.0 (2025-06-04)</h1>
-                <h3>compiler</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/5a76826d266b4ed0ef863221571e4b6b1b16182f">5a76826d26</a></td>
-                <td>fix</td>
-                <td>only report parser errors on invalid expression (<a href="https://redirect.github.com/angular/angular/pull/61793">#61793</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/e9fcbb8af12e7b4370d2e03e6004f3f2fe02c981">e9fcbb8af1</a></td>
-                <td>fix</td>
-                <td>remove TypeScript from linker (<a href="https://redirect.github.com/angular/angular/pull/61618">#61618</a>)</td>
-                </tr>
-                </tbody>
-                </table>
+                <h1>21.0.0 (2025-11-19)</h1>
+                <p><a href="http://goo.gle/angular-v21-blog">Blog post &quot;Announcing Angular v21&quot;</a>.</p>
+                <h2>Breaking Changes</h2>
+                <h3>common</h3>
+                <ul>
+                <li>(test only) - <code>TestBed</code> now provides a fake <code>PlatformLocation</code>
+                implementation that supports the Navigation API. This may break some
+                tests, though we have not observed any failures internally. You can revert to the
+                old default for <code>TestBed</code> by providing the <code>MockPlatformLocation</code> from
+                <code>@angular/common/testing</code> in your providers:
+                <code>{provide: PlatformLocation, useClass: MockPlatformLocation}</code></li>
+                <li><code>ngComponentOutletContent</code> is now of type <code>Node[][] | undefined</code> instead of <code>any[][] | undefined</code>.</li>
+                <li>NgModuleFactory has been removed, use NgModule instead.</li>
+                </ul>
                 <h3>compiler-cli</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/e62fb359d6da8e0458b18f24e6bff60602f93fc6">e62fb359d6</a></td>
-                <td>feat</td>
-                <td>add experimental support for fast type declaration emission (<a href="https://redirect.github.com/angular/angular/pull/61334">#61334</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/0cf1001715d2f528c61735108d12e29047907d98">0cf1001715</a></td>
-                <td>feat</td>
-                <td>support host directives with direct external references in fast type declaration emission (<a href="https://redirect.github.com/angular/angular/pull/61469">#61469</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/77fa204ad16fef561c009fcef0ab1fb92a37f986">77fa204ad1</a></td>
-                <td>fix</td>
-                <td>rename flag for enabling fast type declaration emission (<a href="https://redirect.github.com/angular/angular/pull/61353">#61353</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/c439d6938de60cb132f7ae4d305efa5b3d853e36">c439d6938d</a></td>
-                <td>fix</td>
-                <td>symbol builder duplicating host directives (<a href="https://redirect.github.com/angular/angular/pull/61240">#61240</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/3e1baa5a9565f4930507cdf338e6f9ea7e8702a3">3e1baa5a95</a></td>
-                <td>fix</td>
-                <td>typo in NG2026 message (<a href="https://redirect.github.com/angular/angular/pull/61325">#61325</a>)</td>
-                </tr>
-                </tbody>
-                </table>
+                <ul>
+                <li>
+                <ul>
+                <li>Previously hidden type issues in host bindings may show up in your builds. Either resolve the type issues or set <code>&quot;typeCheckHostBindings&quot;: false</code> in the <code>angularCompilerOptions</code> section of your tsconfig.</li>
+                </ul>
+                </li>
+                <li>The Angular compiler now produces an error when the
+                the <code>emitDeclarationOnly</code> TS compiler option is enabled as this mode is
+                not supported.</li>
+                </ul>
                 <h3>core</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/8163a8995e36bbce74e3d852613c19e56027cc24">8163a8995e</a></td>
-                <td>feat</td>
-                <td>Add <code>destroyed</code> property on <code>DestroyRef</code> (<a href="https://redirect.github.com/angular/angular/pull/61849">#61849</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/4356e8545666f13033bb2c4b7fa018d0b97e6f01">4356e85456</a></td>
-                <td>fix</td>
-                <td>fakeAsync should not depend on module import order (<a href="https://redirect.github.com/angular/angular/pull/61375">#61375</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/583b9a7be56310f247dcf83dd1ce297b9c6be682">583b9a7be5</a></td>
-                <td>fix</td>
-                <td>missing useExisting providers throwing for optional calls (<a href="https://redirect.github.com/angular/angular/pull/61137">#61137</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/8f65223bd83ee5cdbff6a3c8e99f85d1c69f5375">8f65223bd8</a></td>
-                <td>fix</td>
-                <td>update min Node.js support to 20.19, 22.12, and 24.0 (<a href="https://redirect.github.com/angular/angular/pull/61499">#61499</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/b785256b9e7f83c9f05fb1afd561f0af49a42e9d">b785256b9e</a></td>
-                <td>perf</td>
-                <td>avoid intermediate arrays in definition (<a href="https://redirect.github.com/angular/angular/pull/61445">#61445</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>forms</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/610bebfce98d879677244b2ef08b24886891ca76">610bebfce9</a></td>
-                <td>fix</td>
-                <td>Allow ControlState as reset arguments for <code>FormGroup</code>/<code>FormRecord</code> (<a href="https://redirect.github.com/angular/angular/pull/55860">#55860</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>language-service</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/cf55d1bdd4201ed99dd876138c50a497b611acb7">cf55d1bdd4</a></td>
-                <td>feat</td>
-                <td>Support importing the external module's export about the angular metadata. (<a href="https://redirect.github.com/angular/angular/pull/61122">#61122</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>service-worker</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/c67dbda8ff76410e0bb7e4b1719125f3197227dd">c67dbda8ff</a></td>
-                <td>feat</td>
-                <td>support notification closes (<a href="https://redirect.github.com/angular/angular/pull/61442">#61442</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/6e1df5479967c2c8b0fadf75e9a9f8c33a342245">6e1df54799</a></td>
-                <td>feat</td>
-                <td>support push subscription changes (<a href="https://redirect.github.com/angular/angular/pull/61856">#61856</a>)</td>
-                </tr>
-                </tbody>
-                </table>
+                <ul>
+                <li>
+                <p>The server-side bootstrapping process has been changed to eliminate the reliance on a global platform injector.</p>
+                <p>Before:</p>
+                <pre lang="ts"><code>const bootstrap = () =&gt; bootstrapApplication(AppComponent, config);
+                </code></pre>
+                <p>After:</p>
+                <pre lang="ts"><code>const bootstrap = (context: BootstrapContext) =&gt;
+                  bootstrapApplication(AppComponent, config, context);
+                </code></pre>
+                <p>A schematic is provided to automatically update <code>main.server.ts</code> files to pass the <code>BootstrapContext</code> to the <code>bootstrapApplication</code> call.</p>
+                <p>In addition, <code>getPlatform()</code> and <code>destroyPlatform()</code> will now return <code>null</code> and be a no-op respectively when running in a server environment.</p>
+                </li>
+                <li>
+                <p>Using a combination of <code>provideZoneChangeDetection</code>
+                while also removing ZoneJS polyfills will no longer result in the
+                internal scheduler being disabled. All Angular applications now
+                consistenly use the same scheduler, and those with the Zone change detection
+                provider include additional automatic scheduling behaviors based on</p>
+                </li>
+                </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -1265,135 +1045,32 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/angular/angular/commit/135c5944431844fec56ab4597f9853a470e1e005"><code>135c594</code></a> refactor: use zone.js from npm instead of packages/zone.js throughout repo (#...</li>
-                <li><a href="https://github.com/angular/angular/commit/8ccd496014f0005c816b00dcd1c183a660b80aa1"><code>8ccd496</code></a> build: remove unnecessary zone.js dep from various build targets (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61903">#61903</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/8564cf48d819607102de27c0a916a8ae17a9ea13"><code>8564cf4</code></a> build: replace all <code>ng_package</code> with new rule from <code>rules_angular</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61862">#61862</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/3f7b77dcd69c02dc48b3866bae9bf86817350539"><code>3f7b77d</code></a> refactor(common): use <code>ngServerMode</code> in <code>HttpInterceptorHandler</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61605">#61605</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/2bf724938ebc74b5d49dc0cdfeff9d398df6712b"><code>2bf7249</code></a> docs: update resource docs (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61846">#61846</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/e910893fa6ba553958ea6371d956fdf99f1aab02"><code>e910893</code></a> build: adjust bundling tests to use Angular CLI</li>
-                <li><a href="https://github.com/angular/angular/commit/308404eca70bea14b9bec13406466806b423fc94"><code>308404e</code></a> build: update common's locales to use rules_js (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61629">#61629</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/2e5362a4695c6d0c5e130f286a52cc9d97d0f721"><code>2e5362a</code></a> feat(common): accept undefined inputs in NgTemplateOutlet (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61404">#61404</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/aa7190d97235a9b46822305ac2570bbf5f097042"><code>aa7190d</code></a> fix(common): avoid injecting ApplicationRef in FetchBackend (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61649">#61649</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/a89f1cff2465cca383765e9f9d7e719970a3a6e4"><code>a89f1cf</code></a> fix(core): narrow error type for resources API (<a href="https://github.com/angular/angular/tree/HEAD/packages/common/issues/61441">#61441</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/angular/angular/commits/20.0.3/packages/common">compare view</a></li>
+                <li><a href="https://github.com/angular/angular/commit/00ffe91c898e182c36f9ce032dd2efc925109b71"><code>00ffe91</code></a> refactor(common): removes unused NgModuleFactory config in NgComponentOutlet</li>
+                <li><a href="https://github.com/angular/angular/commit/8765b66f5ad33e5ad99eb56507ddf9b98f7f0eb2"><code>8765b66</code></a> docs: add reference to Built-in Pipes in multiple pipe files</li>
+                <li><a href="https://github.com/angular/angular/commit/ab98e71c413928dbc75703e3de3131cf93100837"><code>ab98e71</code></a> fix(common): remove placeholder image listeners once view is removed</li>
+                <li><a href="https://github.com/angular/angular/commit/8ab084754b32762fb2e0552f2242cb2bf7039524"><code>8ab0847</code></a> refactor(core): mark <code>VERSION</code> as <code>@__PURE__</code> for better tree-shaking</li>
+                <li><a href="https://github.com/angular/angular/commit/650af71026752525f5b0978782c906c5348a6bbb"><code>650af71</code></a> refactor(http): migrate XSRF classes to use inject() function</li>
+                <li><a href="https://github.com/angular/angular/commit/3bed9f0f166f6698e862cdbd360e3ba9bcceb935"><code>3bed9f0</code></a> build: format md files</li>
+                <li><a href="https://github.com/angular/angular/commit/a3c2fe819ab1e39b3f9a9a26e6aae7b90c207979"><code>a3c2fe8</code></a> Revert &quot;refactor(common): Removes unused imports to clean up dependencies&quot;</li>
+                <li><a href="https://github.com/angular/angular/commit/6d3e0f1a51f60991c7aad8c2518c10b33c89b87c"><code>6d3e0f1</code></a> refactor(common): Removes unused imports to clean up dependencies</li>
+                <li><a href="https://github.com/angular/angular/commit/47578e0967929db04158273cc61508354c2f9592"><code>47578e0</code></a> refactor(common): remove redundant <code>providedIn: 'root'</code> from injection tokens</li>
+                <li><a href="https://github.com/angular/angular/commit/6de14b14e0ee547d66dcbdab849bd96f7b22962b"><code>6de14b1</code></a> refactor(http): simplifies destruction tracking using destroyed property</li>
+                <li>Additional commits viewable in <a href="https://github.com/angular/angular/commits/21.0.0/packages/common">compare view</a></li>
                 </ul>
                 </details>
                 <br />
 
-                Updates `@angular/compiler` from 15.0.0 to 20.0.3
+                Updates `@angular/compiler` from 15.0.0 to 21.0.0
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/angular/angular/releases"><code>@​angular/compiler</code>'s releases</a>.</em></p>
                 <blockquote>
-                <h2>20.0.3</h2>
-                <p>No release notes provided.</p>
-                <h2>20.0.2</h2>
-                <h3>core</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/1e8158baee1be48747180eead8d61de328041b2c"><img src="https://img.shields.io/badge/1e8158baee-fix-green" alt="fix - 1e8158baee" /></a></td>
-                <td>components marked for traversal resets reactive context (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61663">#61663</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/1cd23be57e68c50d6c1f3f19d53d83651fa73fd1"><img src="https://img.shields.io/badge/1cd23be57e-fix-green" alt="fix - 1cd23be57e" /></a></td>
-                <td>unregister <code>onDestroy</code> in <code>outputToObservable</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61882">#61882</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h2>20.0.1</h2>
-                <h3>compiler</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/66a0ec6510aa7f2afc675440bd782750100f84d5"><img src="https://img.shields.io/badge/66a0ec6510-fix-green" alt="fix - 66a0ec6510" /></a></td>
-                <td>move defer trigger assertions out of parser (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61747">#61747</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/8ecb1ba0275636d4ca697cd648d8c4c3a6eb27df"><img src="https://img.shields.io/badge/8ecb1ba027-fix-green" alt="fix - 8ecb1ba027" /></a></td>
-                <td>recover invalid parenthesized expressions (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61815">#61815</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>core</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/8c60cbfd1c4fe161936ea9f3b8c126083f2eae5e"><img src="https://img.shields.io/badge/8c60cbfd1c-fix-green" alt="fix - 8c60cbfd1c" /></a></td>
-                <td><code>takeUntilDestroyed</code> completes immediately if DestroyRef already destroyed (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61847">#61847</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/b1d960d082c6d0e52d45d0f1ef24102c16696fa5"><img src="https://img.shields.io/badge/b1d960d082-fix-green" alt="fix - b1d960d082" /></a></td>
-                <td>produce an error when incremental hydration is expected, but not configured (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61741">#61741</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/b4ed62ddf60729fc4e6cfa529a9c7a455ff956d5"><img src="https://img.shields.io/badge/b4ed62ddf6-fix-green" alt="fix - b4ed62ddf6" /></a></td>
-                <td>properly handle the case where getSignalGraph is called on a componentless NodeInjector (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/60772">#60772</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/ddd22bea4813b572bfdff15d4bc9c24589bef1bb"><img src="https://img.shields.io/badge/ddd22bea48-fix-green" alt="fix - ddd22bea48" /></a></td>
-                <td>unregister <code>onDestroy</code> in <code>ResourceImpl</code> when <code>destroy()</code> is called (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61870">#61870</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/5c31e7e28d519df35b52397161e9d0cedc570304"><img src="https://img.shields.io/badge/5c31e7e28d-fix-green" alt="fix - 5c31e7e28d" /></a></td>
-                <td>unregister <code>onDestroy</code> when observable errors in <code>toSignal</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61596">#61596</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>migrations</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/e9820a6d48629df004043adc5fd6d29e37e43731"><img src="https://img.shields.io/badge/e9820a6d48-fix-green" alt="fix - e9820a6d48" /></a></td>
-                <td>avoid trailing whitespaces in unused imports migration (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61698">#61698</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>service-worker</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/b93fa22f2509578342343cc0dcf8225863def793"><img src="https://img.shields.io/badge/b93fa22f25-fix-green" alt="fix - b93fa22f25" /></a></td>
-                <td>prevent duplicate fetches during concurrent update checks (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61443">#61443</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/9743bd1317b7fb397bc1e799a0f9a117ee5d6698"><img src="https://img.shields.io/badge/9743bd1317-fix-green" alt="fix - 9743bd1317" /></a></td>
-                <td>update service worker to handle seeking better for videos (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/60029">#60029</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h2>20.0.0</h2>
-                <p>Blog post: <a href="https://blog.angular.dev/announcing-angular-v20-b5c9c06cf301">https://blog.angular.dev/announcing-angular-v20-b5c9c06cf301</a></p>
+                <h2>VSCode Extension: 21.0.0</h2>
+                <ul>
+                <li>fix(language-service): address potential memory leak during project creation (89095946cf)</li>
+                <li>fix(language-server): fix directory renaming on Windows (3f7111a9c3)</li>
+                </ul>
+                <h2>21.0.0</h2>
                 <h3>common</h3>
                 <table>
                 <thead>
@@ -1404,41 +1081,164 @@ output:
                 </thead>
                 <tbody>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/2e5362a4695c6d0c5e130f286a52cc9d97d0f721"><img src="https://img.shields.io/badge/2e5362a469-feat-blue" alt="feat - 2e5362a469" /></a></td>
-                <td>accept undefined inputs in NgTemplateOutlet (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61404">#61404</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/c795960ada1a7e21b8bee411e20a08c700b6e385"><img src="https://img.shields.io/badge/c795960ada-feat-blue" alt="feat - c795960ada" /></a></td>
+                <td>Add experimental support for the Navigation API (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/63406">#63406</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/b7d3f3dbfcfc40000ca34087d3b8b42319468177"><img src="https://img.shields.io/badge/b7d3f3dbfc-feat-blue" alt="feat - b7d3f3dbfc" /></a></td>
-                <td>Allow passing ScrollOptions to ViewportScroller (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61002">#61002</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/9eac43cf46993442e9de5764e2ccca98e3837939"><img src="https://img.shields.io/badge/9eac43cf46-feat-blue" alt="feat - 9eac43cf46" /></a></td>
+                <td>Support of optional keys for the KeyValue pipe (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/48814">#48814</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/74cceba5871e83e77a23536d8b64ff8888862dd3"><img src="https://img.shields.io/badge/74cceba587-feat-blue" alt="feat - 74cceba587" /></a></td>
-                <td>throw error for suspicious date patterns (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/59798">#59798</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/a1868c9d13991d24f893499406b29a5f2e0a388b"><img src="https://img.shields.io/badge/a1868c9d13-feat-blue" alt="feat - a1868c9d13" /></a></td>
+                <td>update to cldr 47 (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/64032">#64032</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/255c79e0480b0adc876b526e2a96d5005692e42f"><img src="https://img.shields.io/badge/255c79e048-fix-green" alt="fix - 255c79e048" /></a></td>
-                <td>cleanup <code>updateLatestValue</code> if view is destroyed before promise resolves (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/58041">#58041</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/196fa500a3c282af5158fa2873df8e2a73243493"><img src="https://img.shields.io/badge/196fa500a3-fix-green" alt="fix - 196fa500a3" /></a></td>
+                <td>properly type ngComponentOutlet (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/64561">#64561</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/739cadae62fd7302ef5fffa7897c8c4f2701a556"><img src="https://img.shields.io/badge/739cadae62-fix-green" alt="fix - 739cadae62" /></a></td>
-                <td>Handle errors in async pipe subscriptions (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/60057">#60057</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/7a4b225c57d8e390ec06731f5211d52d14da3a9c"><img src="https://img.shields.io/badge/7a4b225c57-refactor-yellow" alt="refactor - 7a4b225c57" /></a></td>
+                <td>improve typing of <code>ngComponentOutletContent</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/63674">#63674</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/cbbea70fa37b14e89e4f3459ae880116c0e894b1"><img src="https://img.shields.io/badge/cbbea70fa3-fix-green" alt="fix - cbbea70fa3" /></a></td>
-                <td>issue a warning instead of an error when <code>NgOptimizedImage</code> exceeds the preload limit (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/60879">#60879</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/fc4a56d5c5fa270dbb1402c7cafe6d4f2af571eb"><img src="https://img.shields.io/badge/fc4a56d5c5-fix-green" alt="fix - fc4a56d5c5" /></a></td>
-                <td>rename httpResource function in factory (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/60022">#60022</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/785a1110e603a3573261528f2fda28718f548b4a"><img src="https://img.shields.io/badge/785a1110e6-fix-green" alt="fix - 785a1110e6" /></a></td>
-                <td>resolve host binding type issues (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/60481">#60481</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/25f593ce2a623add0cbd4ab3bb0d4987793e4f34"><img src="https://img.shields.io/badge/25f593ce2a-refactor-yellow" alt="refactor - 25f593ce2a" /></a></td>
+                <td>remove<code>ngModuleFactory</code> input of <code>NgComponentOutlet</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/62838">#62838</a>)</td>
                 </tr>
                 </tbody>
                 </table>
                 <h3>compiler</h3>
-                <p>| Commit | Description |</p>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/ecea909bccc3d6a3c33e77e1feb4ad0926e72f9e"><img src="https://img.shields.io/badge/ecea909bcc-fix-green" alt="fix - ecea909bcc" /></a></td>
+                <td>don't choke on unbalanced parens in declaration block</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/04dd75ba948889601bf611254021577aba458d4c"><img src="https://img.shields.io/badge/04dd75ba94-fix-green" alt="fix - 04dd75ba94" /></a></td>
+                <td>support arbitrary nesting in :host-context()</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/f54cc4f28abb9ded190ae33619e5ca7073df08a6"><img src="https://img.shields.io/badge/f54cc4f28a-fix-green" alt="fix - f54cc4f28a" /></a></td>
+                <td>support commas in :host() argument</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/814b2713f56f94372db7e15e0a86f089a88f888d"><img src="https://img.shields.io/badge/814b2713f5-fix-green" alt="fix - 814b2713f5" /></a></td>
+                <td>support complex selectors in :nth-child()</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/aad6ced0ef5e535d1a6eae7c79df4e03ea73b7f2"><img src="https://img.shields.io/badge/aad6ced0ef-fix-green" alt="fix - aad6ced0ef" /></a></td>
+                <td>support one additional level of nesting in :host()</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>compiler-cli</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/563dbd998c86e850b3c4dde4c7cee00d7c9d7581"><img src="https://img.shields.io/badge/563dbd998c-feat-blue" alt="feat - 563dbd998c" /></a></td>
+                <td>Adds diagnostic for misconfigured <code>@defer</code> triggers (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/64069">#64069</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/0571b335b9b11459b73a19679671eae97fbe1683"><img src="https://img.shields.io/badge/0571b335b9-feat-blue" alt="feat - 0571b335b9" /></a></td>
+                <td>enable type checking of host bindings by default (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/63654">#63654</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/5b55200edfd12fa7dcdb6570885e0c52a9cc5ec0"><img src="https://img.shields.io/badge/5b55200edf-fix-green" alt="fix - 5b55200edf" /></a></td>
+                <td>allow value to be set on radio fields</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/ab98b2425f4c4cb59927aa686818ecee99e634c7"><img src="https://img.shields.io/badge/ab98b2425f-fix-green" alt="fix - ab98b2425f" /></a></td>
+                <td>capture metadata for undecorated fields (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/63957">#63957</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/be7110342b61d837822524d4f60f56a7f859f594"><img src="https://img.shields.io/badge/be7110342b-fix-green" alt="fix - be7110342b" /></a></td>
+                <td>disallow compiling with the <code>emitDeclarationOnly</code> TS compiler option enabled (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61609">#61609</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/bd322ca4100c8e51df7c71377161c2c9412d1b83"><img src="https://img.shields.io/badge/bd322ca410-fix-green" alt="fix - bd322ca410" /></a></td>
+                <td>do not flag custom control required inputs as missing when field is present</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/471da8a311fa7f77815bdf0199943cfa50d45181"><img src="https://img.shields.io/badge/471da8a311-fix-green" alt="fix - 471da8a311" /></a></td>
+                <td>infer type of custom field controls</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/96cb0cffda55516e01613958d1268872f1070722"><img src="https://img.shields.io/badge/96cb0cffda-fix-green" alt="fix - 96cb0cffda" /></a></td>
+                <td>infer types of signal forms set on native inputs</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/71ab11ccf0f0daaffb49779d5f90b9e2da76dbd5"><img src="https://img.shields.io/badge/71ab11ccf0-fix-green" alt="fix - 71ab11ccf0" /></a></td>
+                <td>make field detection logic more robust</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/1f389b8b97600ee382ff842e066abc2ca31c442f"><img src="https://img.shields.io/badge/1f389b8b97-fix-green" alt="fix - 1f389b8b97" /></a></td>
+                <td>missingStructuralDirective diagnostic produces false negatives (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/64579">#64579</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/7fd3db04232d63f1b48ec389bbb62d9ca277fcf9"><img src="https://img.shields.io/badge/7fd3db0423-fix-green" alt="fix - 7fd3db0423" /></a></td>
+                <td>remove internal syntax-related flags (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/63787">#63787</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/c371251e4c2e7bc1ab6da7c51b05e047bdfe6068"><img src="https://img.shields.io/badge/c371251e4c-fix-green" alt="fix - c371251e4c" /></a></td>
+                <td>report invalid bindings on form controls</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/01290ab275599ee6887f9c2139a16f833eaa7071"><img src="https://img.shields.io/badge/01290ab275-fix-green" alt="fix - 01290ab275" /></a></td>
+                <td>use any when checking field interface conformance</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>core</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/809a4ed8c110ca930cb1c6bad309f8bfcaf7ceb8"><img src="https://img.shields.io/badge/809a4ed8c1-feat-blue" alt="feat - 809a4ed8c1" /></a></td>
+                <td>Add migration for zoneless by default. (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/63042">#63042</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/2a7a5de53fd6fb5714c06c63dd1dad5718086083"><img src="https://img.shields.io/badge/2a7a5de53f-feat-blue" alt="feat - 2a7a5de53f" /></a></td>
+                <td>Allow passing application providers in <code>bootstrapModule</code> options (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/64354">#64354</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/28926ba92cf3da7e45a7b8938bba49febdf58eb7"><img src="https://img.shields.io/badge/28926ba92c-feat-blue" alt="feat - 28926ba92c" /></a></td>
+                <td>introduce <code>BootstrapContext</code> for improved server bootstrapping (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/63562">#63562</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/c2d376b85aa6eea2c4d7ec3207df6767f5739945"><img src="https://img.shields.io/badge/c2d376b85a-feat-blue" alt="feat - c2d376b85a" /></a></td>
+                <td>make SimpleChanges generic (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/64535">#64535</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/ad2376435b4bcfdb695d841272f8234ab2a7cca5"><img src="https://img.shields.io/badge/ad2376435b-feat-blue" alt="feat - ad2376435b" /></a></td>
+                <td>support IntersectionObserver options in viewport triggers (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/64130">#64130</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/539717f58a9bff1f8aacc857657b7df573d0bb70"><img src="https://img.shields.io/badge/539717f58a-feat-blue" alt="feat - 539717f58a" /></a></td>
+                <td>support regular expressions in templates (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/63887">#63887</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/ab415f3d7f23cef8e00595e9cf6af2c8b764a8ae"><img src="https://img.shields.io/badge/ab415f3d7f-fix-green" alt="fix - ab415f3d7f" /></a></td>
+                <td>control not recognized when input has directive injecting ViewContainerRef (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/64368">#64368</a>)</td>
+                </tr>
+                </tbody>
+                </table>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -1447,187 +1247,53 @@ output:
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/angular/angular/blob/main/CHANGELOG.md"><code>@​angular/compiler</code>'s changelog</a>.</em></p>
                 <blockquote>
-                <h1>20.0.3 (2025-06-11)</h1>
-                <!-- raw HTML omitted -->
-                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-                <h1>20.0.2 (2025-06-06)</h1>
-                <h3>core</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/1e8158baee1be48747180eead8d61de328041b2c">1e8158baee</a></td>
-                <td>fix</td>
-                <td>components marked for traversal resets reactive context (<a href="https://redirect.github.com/angular/angular/pull/61663">#61663</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/1cd23be57e68c50d6c1f3f19d53d83651fa73fd1">1cd23be57e</a></td>
-                <td>fix</td>
-                <td>unregister <code>onDestroy</code> in <code>outputToObservable</code> (<a href="https://redirect.github.com/angular/angular/pull/61882">#61882</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <!-- raw HTML omitted -->
-                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-                <h1>20.1.0-next.0 (2025-06-04)</h1>
-                <h3>compiler</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/5a76826d266b4ed0ef863221571e4b6b1b16182f">5a76826d26</a></td>
-                <td>fix</td>
-                <td>only report parser errors on invalid expression (<a href="https://redirect.github.com/angular/angular/pull/61793">#61793</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/e9fcbb8af12e7b4370d2e03e6004f3f2fe02c981">e9fcbb8af1</a></td>
-                <td>fix</td>
-                <td>remove TypeScript from linker (<a href="https://redirect.github.com/angular/angular/pull/61618">#61618</a>)</td>
-                </tr>
-                </tbody>
-                </table>
+                <h1>21.0.0 (2025-11-19)</h1>
+                <p><a href="http://goo.gle/angular-v21-blog">Blog post &quot;Announcing Angular v21&quot;</a>.</p>
+                <h2>Breaking Changes</h2>
+                <h3>common</h3>
+                <ul>
+                <li>(test only) - <code>TestBed</code> now provides a fake <code>PlatformLocation</code>
+                implementation that supports the Navigation API. This may break some
+                tests, though we have not observed any failures internally. You can revert to the
+                old default for <code>TestBed</code> by providing the <code>MockPlatformLocation</code> from
+                <code>@angular/common/testing</code> in your providers:
+                <code>{provide: PlatformLocation, useClass: MockPlatformLocation}</code></li>
+                <li><code>ngComponentOutletContent</code> is now of type <code>Node[][] | undefined</code> instead of <code>any[][] | undefined</code>.</li>
+                <li>NgModuleFactory has been removed, use NgModule instead.</li>
+                </ul>
                 <h3>compiler-cli</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/e62fb359d6da8e0458b18f24e6bff60602f93fc6">e62fb359d6</a></td>
-                <td>feat</td>
-                <td>add experimental support for fast type declaration emission (<a href="https://redirect.github.com/angular/angular/pull/61334">#61334</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/0cf1001715d2f528c61735108d12e29047907d98">0cf1001715</a></td>
-                <td>feat</td>
-                <td>support host directives with direct external references in fast type declaration emission (<a href="https://redirect.github.com/angular/angular/pull/61469">#61469</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/77fa204ad16fef561c009fcef0ab1fb92a37f986">77fa204ad1</a></td>
-                <td>fix</td>
-                <td>rename flag for enabling fast type declaration emission (<a href="https://redirect.github.com/angular/angular/pull/61353">#61353</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/c439d6938de60cb132f7ae4d305efa5b3d853e36">c439d6938d</a></td>
-                <td>fix</td>
-                <td>symbol builder duplicating host directives (<a href="https://redirect.github.com/angular/angular/pull/61240">#61240</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/3e1baa5a9565f4930507cdf338e6f9ea7e8702a3">3e1baa5a95</a></td>
-                <td>fix</td>
-                <td>typo in NG2026 message (<a href="https://redirect.github.com/angular/angular/pull/61325">#61325</a>)</td>
-                </tr>
-                </tbody>
-                </table>
+                <ul>
+                <li>
+                <ul>
+                <li>Previously hidden type issues in host bindings may show up in your builds. Either resolve the type issues or set <code>&quot;typeCheckHostBindings&quot;: false</code> in the <code>angularCompilerOptions</code> section of your tsconfig.</li>
+                </ul>
+                </li>
+                <li>The Angular compiler now produces an error when the
+                the <code>emitDeclarationOnly</code> TS compiler option is enabled as this mode is
+                not supported.</li>
+                </ul>
                 <h3>core</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/8163a8995e36bbce74e3d852613c19e56027cc24">8163a8995e</a></td>
-                <td>feat</td>
-                <td>Add <code>destroyed</code> property on <code>DestroyRef</code> (<a href="https://redirect.github.com/angular/angular/pull/61849">#61849</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/4356e8545666f13033bb2c4b7fa018d0b97e6f01">4356e85456</a></td>
-                <td>fix</td>
-                <td>fakeAsync should not depend on module import order (<a href="https://redirect.github.com/angular/angular/pull/61375">#61375</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/583b9a7be56310f247dcf83dd1ce297b9c6be682">583b9a7be5</a></td>
-                <td>fix</td>
-                <td>missing useExisting providers throwing for optional calls (<a href="https://redirect.github.com/angular/angular/pull/61137">#61137</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/8f65223bd83ee5cdbff6a3c8e99f85d1c69f5375">8f65223bd8</a></td>
-                <td>fix</td>
-                <td>update min Node.js support to 20.19, 22.12, and 24.0 (<a href="https://redirect.github.com/angular/angular/pull/61499">#61499</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/b785256b9e7f83c9f05fb1afd561f0af49a42e9d">b785256b9e</a></td>
-                <td>perf</td>
-                <td>avoid intermediate arrays in definition (<a href="https://redirect.github.com/angular/angular/pull/61445">#61445</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>forms</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/610bebfce98d879677244b2ef08b24886891ca76">610bebfce9</a></td>
-                <td>fix</td>
-                <td>Allow ControlState as reset arguments for <code>FormGroup</code>/<code>FormRecord</code> (<a href="https://redirect.github.com/angular/angular/pull/55860">#55860</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>language-service</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/cf55d1bdd4201ed99dd876138c50a497b611acb7">cf55d1bdd4</a></td>
-                <td>feat</td>
-                <td>Support importing the external module's export about the angular metadata. (<a href="https://redirect.github.com/angular/angular/pull/61122">#61122</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>service-worker</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/c67dbda8ff76410e0bb7e4b1719125f3197227dd">c67dbda8ff</a></td>
-                <td>feat</td>
-                <td>support notification closes (<a href="https://redirect.github.com/angular/angular/pull/61442">#61442</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/6e1df5479967c2c8b0fadf75e9a9f8c33a342245">6e1df54799</a></td>
-                <td>feat</td>
-                <td>support push subscription changes (<a href="https://redirect.github.com/angular/angular/pull/61856">#61856</a>)</td>
-                </tr>
-                </tbody>
-                </table>
+                <ul>
+                <li>
+                <p>The server-side bootstrapping process has been changed to eliminate the reliance on a global platform injector.</p>
+                <p>Before:</p>
+                <pre lang="ts"><code>const bootstrap = () =&gt; bootstrapApplication(AppComponent, config);
+                </code></pre>
+                <p>After:</p>
+                <pre lang="ts"><code>const bootstrap = (context: BootstrapContext) =&gt;
+                  bootstrapApplication(AppComponent, config, context);
+                </code></pre>
+                <p>A schematic is provided to automatically update <code>main.server.ts</code> files to pass the <code>BootstrapContext</code> to the <code>bootstrapApplication</code> call.</p>
+                <p>In addition, <code>getPlatform()</code> and <code>destroyPlatform()</code> will now return <code>null</code> and be a no-op respectively when running in a server environment.</p>
+                </li>
+                <li>
+                <p>Using a combination of <code>provideZoneChangeDetection</code>
+                while also removing ZoneJS polyfills will no longer result in the
+                internal scheduler being disabled. All Angular applications now
+                consistenly use the same scheduler, and those with the Zone change detection
+                provider include additional automatic scheduling behaviors based on</p>
+                </li>
+                </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -1635,135 +1301,32 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/angular/angular/commit/8564cf48d819607102de27c0a916a8ae17a9ea13"><code>8564cf4</code></a> build: replace all <code>ng_package</code> with new rule from <code>rules_angular</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61862">#61862</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/a9a7654cbf3711e5cdca2742d9da32f29fc1e14d"><code>a9a7654</code></a> build: migrate <code>packages/compiler-cli</code> to <code>ts_project</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61862">#61862</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/32230e637d2877c7b30b43c6f23f0c1e8502fe3d"><code>32230e6</code></a> build: add missing import (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61838">#61838</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/8ecb1ba0275636d4ca697cd648d8c4c3a6eb27df"><code>8ecb1ba</code></a> fix(compiler): recover invalid parenthesized expressions (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61815">#61815</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/66a0ec6510aa7f2afc675440bd782750100f84d5"><code>66a0ec6</code></a> fix(compiler): move defer trigger assertions out of parser (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61747">#61747</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/e910893fa6ba553958ea6371d956fdf99f1aab02"><code>e910893</code></a> build: adjust bundling tests to use Angular CLI</li>
-                <li><a href="https://github.com/angular/angular/commit/845f8dfd380569a2330d9a177f50a310b78f1110"><code>845f8df</code></a> build: fix <code>app_bundle</code> rule after migrating <code>packages/compiler</code></li>
-                <li><a href="https://github.com/angular/angular/commit/aa0c46f4f3aa12195b2762b435ed67c9e48c608d"><code>aa0c46f</code></a> build: migrate <code>packages/compiler</code> to <code>ts_project</code></li>
-                <li><a href="https://github.com/angular/angular/commit/6ca7590666cffcc5b1c7715867e036ac6f4ceb34"><code>6ca7590</code></a> fix(compiler): lexer support for template literals in object literals (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61601">#61601</a>)</li>
-                <li><a href="https://github.com/angular/angular/commit/117e570ded155d29212f7f507e9a840fd879caaa"><code>117e570</code></a> refactor(core): replace propertyInterpolateX with property (<a href="https://github.com/angular/angular/tree/HEAD/packages/compiler/issues/61639">#61639</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/angular/angular/commits/20.0.3/packages/compiler">compare view</a></li>
+                <li><a href="https://github.com/angular/angular/commit/ecea909bccc3d6a3c33e77e1feb4ad0926e72f9e"><code>ecea909</code></a> fix(compiler): don't choke on unbalanced parens in declaration block</li>
+                <li><a href="https://github.com/angular/angular/commit/afda85f24cde8bb9bc855d88ce571510355df96a"><code>afda85f</code></a> refactor(core): remove unused type</li>
+                <li><a href="https://github.com/angular/angular/commit/c05cf4145b322e5ba6c06a050d495f6a29c3cc55"><code>c05cf41</code></a> refactor(core): render additional WAI-ARIA 1.3 property bindings as attributes</li>
+                <li><a href="https://github.com/angular/angular/commit/814b2713f56f94372db7e15e0a86f089a88f888d"><code>814b271</code></a> fix(compiler): support complex selectors in :nth-child()</li>
+                <li><a href="https://github.com/angular/angular/commit/20319fea85039c70ad3ae4db44e58a93d8b2aef3"><code>20319fe</code></a> refactor(compiler): remove unused code</li>
+                <li><a href="https://github.com/angular/angular/commit/6213cbf1a881c89be1336f763f509872bc481dd9"><code>6213cbf</code></a> refactor(core): rename <code>ExperimentalIsolatedShadowDom</code> to <code>IsolatedShadowDom</code></li>
+                <li><a href="https://github.com/angular/angular/commit/b69763c728a7fac0ee79f9d40efce0284f03f9b2"><code>b69763c</code></a> test(compiler): add test for :host:has(&gt; .foo)</li>
+                <li><a href="https://github.com/angular/angular/commit/f54cc4f28abb9ded190ae33619e5ca7073df08a6"><code>f54cc4f</code></a> fix(compiler): support commas in :host() argument</li>
+                <li><a href="https://github.com/angular/angular/commit/aad6ced0ef5e535d1a6eae7c79df4e03ea73b7f2"><code>aad6ced</code></a> fix(compiler): support one additional level of nesting in :host()</li>
+                <li><a href="https://github.com/angular/angular/commit/3bed9f0f166f6698e862cdbd360e3ba9bcceb935"><code>3bed9f0</code></a> build: format md files</li>
+                <li>Additional commits viewable in <a href="https://github.com/angular/angular/commits/21.0.0/packages/compiler">compare view</a></li>
                 </ul>
                 </details>
                 <br />
 
-                Updates `@angular/core` from 15.0.0 to 20.0.3
+                Updates `@angular/core` from 15.0.0 to 21.0.0
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/angular/angular/releases"><code>@​angular/core</code>'s releases</a>.</em></p>
                 <blockquote>
-                <h2>20.0.3</h2>
-                <p>No release notes provided.</p>
-                <h2>20.0.2</h2>
-                <h3>core</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/1e8158baee1be48747180eead8d61de328041b2c"><img src="https://img.shields.io/badge/1e8158baee-fix-green" alt="fix - 1e8158baee" /></a></td>
-                <td>components marked for traversal resets reactive context (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/61663">#61663</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/1cd23be57e68c50d6c1f3f19d53d83651fa73fd1"><img src="https://img.shields.io/badge/1cd23be57e-fix-green" alt="fix - 1cd23be57e" /></a></td>
-                <td>unregister <code>onDestroy</code> in <code>outputToObservable</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/61882">#61882</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h2>20.0.1</h2>
-                <h3>compiler</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/66a0ec6510aa7f2afc675440bd782750100f84d5"><img src="https://img.shields.io/badge/66a0ec6510-fix-green" alt="fix - 66a0ec6510" /></a></td>
-                <td>move defer trigger assertions out of parser (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/61747">#61747</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/8ecb1ba0275636d4ca697cd648d8c4c3a6eb27df"><img src="https://img.shields.io/badge/8ecb1ba027-fix-green" alt="fix - 8ecb1ba027" /></a></td>
-                <td>recover invalid parenthesized expressions (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/61815">#61815</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>core</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/8c60cbfd1c4fe161936ea9f3b8c126083f2eae5e"><img src="https://img.shields.io/badge/8c60cbfd1c-fix-green" alt="fix - 8c60cbfd1c" /></a></td>
-                <td><code>takeUntilDestroyed</code> completes immediately if DestroyRef already destroyed (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/61847">#61847</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/b1d960d082c6d0e52d45d0f1ef24102c16696fa5"><img src="https://img.shields.io/badge/b1d960d082-fix-green" alt="fix - b1d960d082" /></a></td>
-                <td>produce an error when incremental hydration is expected, but not configured (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/61741">#61741</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/b4ed62ddf60729fc4e6cfa529a9c7a455ff956d5"><img src="https://img.shields.io/badge/b4ed62ddf6-fix-green" alt="fix - b4ed62ddf6" /></a></td>
-                <td>properly handle the case where getSignalGraph is called on a componentless NodeInjector (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/60772">#60772</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/ddd22bea4813b572bfdff15d4bc9c24589bef1bb"><img src="https://img.shields.io/badge/ddd22bea48-fix-green" alt="fix - ddd22bea48" /></a></td>
-                <td>unregister <code>onDestroy</code> in <code>ResourceImpl</code> when <code>destroy()</code> is called (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/61870">#61870</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/5c31e7e28d519df35b52397161e9d0cedc570304"><img src="https://img.shields.io/badge/5c31e7e28d-fix-green" alt="fix - 5c31e7e28d" /></a></td>
-                <td>unregister <code>onDestroy</code> when observable errors in <code>toSignal</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/61596">#61596</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>migrations</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/e9820a6d48629df004043adc5fd6d29e37e43731"><img src="https://img.shields.io/badge/e9820a6d48-fix-green" alt="fix - e9820a6d48" /></a></td>
-                <td>avoid trailing whitespaces in unused imports migration (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/61698">#61698</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h3>service-worker</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/b93fa22f2509578342343cc0dcf8225863def793"><img src="https://img.shields.io/badge/b93fa22f25-fix-green" alt="fix - b93fa22f25" /></a></td>
-                <td>prevent duplicate fetches during concurrent update checks (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/61443">#61443</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/9743bd1317b7fb397bc1e799a0f9a117ee5d6698"><img src="https://img.shields.io/badge/9743bd1317-fix-green" alt="fix - 9743bd1317" /></a></td>
-                <td>update service worker to handle seeking better for videos (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/60029">#60029</a>)</td>
-                </tr>
-                </tbody>
-                </table>
-                <h2>20.0.0</h2>
-                <p>Blog post: <a href="https://blog.angular.dev/announcing-angular-v20-b5c9c06cf301">https://blog.angular.dev/announcing-angular-v20-b5c9c06cf301</a></p>
+                <h2>VSCode Extension: 21.0.0</h2>
+                <ul>
+                <li>fix(language-service): address potential memory leak during project creation (89095946cf)</li>
+                <li>fix(language-server): fix directory renaming on Windows (3f7111a9c3)</li>
+                </ul>
+                <h2>21.0.0</h2>
                 <h3>common</h3>
                 <table>
                 <thead>
@@ -1774,41 +1337,164 @@ output:
                 </thead>
                 <tbody>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/2e5362a4695c6d0c5e130f286a52cc9d97d0f721"><img src="https://img.shields.io/badge/2e5362a469-feat-blue" alt="feat - 2e5362a469" /></a></td>
-                <td>accept undefined inputs in NgTemplateOutlet (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/61404">#61404</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/c795960ada1a7e21b8bee411e20a08c700b6e385"><img src="https://img.shields.io/badge/c795960ada-feat-blue" alt="feat - c795960ada" /></a></td>
+                <td>Add experimental support for the Navigation API (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/63406">#63406</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/b7d3f3dbfcfc40000ca34087d3b8b42319468177"><img src="https://img.shields.io/badge/b7d3f3dbfc-feat-blue" alt="feat - b7d3f3dbfc" /></a></td>
-                <td>Allow passing ScrollOptions to ViewportScroller (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/61002">#61002</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/9eac43cf46993442e9de5764e2ccca98e3837939"><img src="https://img.shields.io/badge/9eac43cf46-feat-blue" alt="feat - 9eac43cf46" /></a></td>
+                <td>Support of optional keys for the KeyValue pipe (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/48814">#48814</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/74cceba5871e83e77a23536d8b64ff8888862dd3"><img src="https://img.shields.io/badge/74cceba587-feat-blue" alt="feat - 74cceba587" /></a></td>
-                <td>throw error for suspicious date patterns (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/59798">#59798</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/a1868c9d13991d24f893499406b29a5f2e0a388b"><img src="https://img.shields.io/badge/a1868c9d13-feat-blue" alt="feat - a1868c9d13" /></a></td>
+                <td>update to cldr 47 (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/64032">#64032</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/255c79e0480b0adc876b526e2a96d5005692e42f"><img src="https://img.shields.io/badge/255c79e048-fix-green" alt="fix - 255c79e048" /></a></td>
-                <td>cleanup <code>updateLatestValue</code> if view is destroyed before promise resolves (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/58041">#58041</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/196fa500a3c282af5158fa2873df8e2a73243493"><img src="https://img.shields.io/badge/196fa500a3-fix-green" alt="fix - 196fa500a3" /></a></td>
+                <td>properly type ngComponentOutlet (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/64561">#64561</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/739cadae62fd7302ef5fffa7897c8c4f2701a556"><img src="https://img.shields.io/badge/739cadae62-fix-green" alt="fix - 739cadae62" /></a></td>
-                <td>Handle errors in async pipe subscriptions (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/60057">#60057</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/7a4b225c57d8e390ec06731f5211d52d14da3a9c"><img src="https://img.shields.io/badge/7a4b225c57-refactor-yellow" alt="refactor - 7a4b225c57" /></a></td>
+                <td>improve typing of <code>ngComponentOutletContent</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/63674">#63674</a>)</td>
                 </tr>
                 <tr>
-                <td><a href="https://github.com/angular/angular/commit/cbbea70fa37b14e89e4f3459ae880116c0e894b1"><img src="https://img.shields.io/badge/cbbea70fa3-fix-green" alt="fix - cbbea70fa3" /></a></td>
-                <td>issue a warning instead of an error when <code>NgOptimizedImage</code> exceeds the preload limit (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/60879">#60879</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/fc4a56d5c5fa270dbb1402c7cafe6d4f2af571eb"><img src="https://img.shields.io/badge/fc4a56d5c5-fix-green" alt="fix - fc4a56d5c5" /></a></td>
-                <td>rename httpResource function in factory (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/60022">#60022</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/785a1110e603a3573261528f2fda28718f548b4a"><img src="https://img.shields.io/badge/785a1110e6-fix-green" alt="fix - 785a1110e6" /></a></td>
-                <td>resolve host binding type issues (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/60481">#60481</a>)</td>
+                <td><a href="https://github.com/angular/angular/commit/25f593ce2a623add0cbd4ab3bb0d4987793e4f34"><img src="https://img.shields.io/badge/25f593ce2a-refactor-yellow" alt="refactor - 25f593ce2a" /></a></td>
+                <td>remove<code>ngModuleFactory</code> input of <code>NgComponentOutlet</code> (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/62838">#62838</a>)</td>
                 </tr>
                 </tbody>
                 </table>
                 <h3>compiler</h3>
-                <p>| Commit | Description |</p>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/ecea909bccc3d6a3c33e77e1feb4ad0926e72f9e"><img src="https://img.shields.io/badge/ecea909bcc-fix-green" alt="fix - ecea909bcc" /></a></td>
+                <td>don't choke on unbalanced parens in declaration block</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/04dd75ba948889601bf611254021577aba458d4c"><img src="https://img.shields.io/badge/04dd75ba94-fix-green" alt="fix - 04dd75ba94" /></a></td>
+                <td>support arbitrary nesting in :host-context()</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/f54cc4f28abb9ded190ae33619e5ca7073df08a6"><img src="https://img.shields.io/badge/f54cc4f28a-fix-green" alt="fix - f54cc4f28a" /></a></td>
+                <td>support commas in :host() argument</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/814b2713f56f94372db7e15e0a86f089a88f888d"><img src="https://img.shields.io/badge/814b2713f5-fix-green" alt="fix - 814b2713f5" /></a></td>
+                <td>support complex selectors in :nth-child()</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/aad6ced0ef5e535d1a6eae7c79df4e03ea73b7f2"><img src="https://img.shields.io/badge/aad6ced0ef-fix-green" alt="fix - aad6ced0ef" /></a></td>
+                <td>support one additional level of nesting in :host()</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>compiler-cli</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/563dbd998c86e850b3c4dde4c7cee00d7c9d7581"><img src="https://img.shields.io/badge/563dbd998c-feat-blue" alt="feat - 563dbd998c" /></a></td>
+                <td>Adds diagnostic for misconfigured <code>@defer</code> triggers (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/64069">#64069</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/0571b335b9b11459b73a19679671eae97fbe1683"><img src="https://img.shields.io/badge/0571b335b9-feat-blue" alt="feat - 0571b335b9" /></a></td>
+                <td>enable type checking of host bindings by default (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/63654">#63654</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/5b55200edfd12fa7dcdb6570885e0c52a9cc5ec0"><img src="https://img.shields.io/badge/5b55200edf-fix-green" alt="fix - 5b55200edf" /></a></td>
+                <td>allow value to be set on radio fields</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/ab98b2425f4c4cb59927aa686818ecee99e634c7"><img src="https://img.shields.io/badge/ab98b2425f-fix-green" alt="fix - ab98b2425f" /></a></td>
+                <td>capture metadata for undecorated fields (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/63957">#63957</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/be7110342b61d837822524d4f60f56a7f859f594"><img src="https://img.shields.io/badge/be7110342b-fix-green" alt="fix - be7110342b" /></a></td>
+                <td>disallow compiling with the <code>emitDeclarationOnly</code> TS compiler option enabled (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/61609">#61609</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/bd322ca4100c8e51df7c71377161c2c9412d1b83"><img src="https://img.shields.io/badge/bd322ca410-fix-green" alt="fix - bd322ca410" /></a></td>
+                <td>do not flag custom control required inputs as missing when field is present</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/471da8a311fa7f77815bdf0199943cfa50d45181"><img src="https://img.shields.io/badge/471da8a311-fix-green" alt="fix - 471da8a311" /></a></td>
+                <td>infer type of custom field controls</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/96cb0cffda55516e01613958d1268872f1070722"><img src="https://img.shields.io/badge/96cb0cffda-fix-green" alt="fix - 96cb0cffda" /></a></td>
+                <td>infer types of signal forms set on native inputs</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/71ab11ccf0f0daaffb49779d5f90b9e2da76dbd5"><img src="https://img.shields.io/badge/71ab11ccf0-fix-green" alt="fix - 71ab11ccf0" /></a></td>
+                <td>make field detection logic more robust</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/1f389b8b97600ee382ff842e066abc2ca31c442f"><img src="https://img.shields.io/badge/1f389b8b97-fix-green" alt="fix - 1f389b8b97" /></a></td>
+                <td>missingStructuralDirective diagnostic produces false negatives (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/64579">#64579</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/7fd3db04232d63f1b48ec389bbb62d9ca277fcf9"><img src="https://img.shields.io/badge/7fd3db0423-fix-green" alt="fix - 7fd3db0423" /></a></td>
+                <td>remove internal syntax-related flags (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/63787">#63787</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/c371251e4c2e7bc1ab6da7c51b05e047bdfe6068"><img src="https://img.shields.io/badge/c371251e4c-fix-green" alt="fix - c371251e4c" /></a></td>
+                <td>report invalid bindings on form controls</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/01290ab275599ee6887f9c2139a16f833eaa7071"><img src="https://img.shields.io/badge/01290ab275-fix-green" alt="fix - 01290ab275" /></a></td>
+                <td>use any when checking field interface conformance</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>core</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/809a4ed8c110ca930cb1c6bad309f8bfcaf7ceb8"><img src="https://img.shields.io/badge/809a4ed8c1-feat-blue" alt="feat - 809a4ed8c1" /></a></td>
+                <td>Add migration for zoneless by default. (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/63042">#63042</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/2a7a5de53fd6fb5714c06c63dd1dad5718086083"><img src="https://img.shields.io/badge/2a7a5de53f-feat-blue" alt="feat - 2a7a5de53f" /></a></td>
+                <td>Allow passing application providers in <code>bootstrapModule</code> options (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/64354">#64354</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/28926ba92cf3da7e45a7b8938bba49febdf58eb7"><img src="https://img.shields.io/badge/28926ba92c-feat-blue" alt="feat - 28926ba92c" /></a></td>
+                <td>introduce <code>BootstrapContext</code> for improved server bootstrapping (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/63562">#63562</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/c2d376b85aa6eea2c4d7ec3207df6767f5739945"><img src="https://img.shields.io/badge/c2d376b85a-feat-blue" alt="feat - c2d376b85a" /></a></td>
+                <td>make SimpleChanges generic (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/64535">#64535</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/ad2376435b4bcfdb695d841272f8234ab2a7cca5"><img src="https://img.shields.io/badge/ad2376435b-feat-blue" alt="feat - ad2376435b" /></a></td>
+                <td>support IntersectionObserver options in viewport triggers (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/64130">#64130</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/539717f58a9bff1f8aacc857657b7df573d0bb70"><img src="https://img.shields.io/badge/539717f58a-feat-blue" alt="feat - 539717f58a" /></a></td>
+                <td>support regular expressions in templates (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/63887">#63887</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/ab415f3d7f23cef8e00595e9cf6af2c8b764a8ae"><img src="https://img.shields.io/badge/ab415f3d7f-fix-green" alt="fix - ab415f3d7f" /></a></td>
+                <td>control not recognized when input has directive injecting ViewContainerRef (<a href="https://github.com/angular/angular/tree/HEAD/packages/core/issues/64368">#64368</a>)</td>
+                </tr>
+                </tbody>
+                </table>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -1817,35 +1503,79 @@ output:
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/angular/angular/blob/main/CHANGELOG.md"><code>@​angular/core</code>'s changelog</a>.</em></p>
                 <blockquote>
-                <h1>20.0.3 (2025-06-11)</h1>
-                <!-- raw HTML omitted -->
-                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-                <h1>20.0.2 (2025-06-06)</h1>
+                <h1>21.0.0 (2025-11-19)</h1>
+                <p><a href="http://goo.gle/angular-v21-blog">Blog post &quot;Announcing Angular v21&quot;</a>.</p>
+                <h2>Breaking Changes</h2>
+                <h3>common</h3>
+                <ul>
+                <li>(test only) - <code>TestBed</code> now provides a fake <code>PlatformLocation</code>
+                implementation that supports the Navigation API. This may break some
+                tests, though we have not observed any failures internally. You can revert to the
+                old default for <code>TestBed</code> by providing the <code>MockPlatformLocation</code> from
+                <code>@angular/common/testing</code> in your providers:
+                <code>{provide: PlatformLocation, useClass: MockPlatformLocation}</code></li>
+                <li><code>ngComponentOutletContent</code> is now of type <code>Node[][] | undefined</code> instead of <code>any[][] | undefined</code>.</li>
+                <li>NgModuleFactory has been removed, use NgModule instead.</li>
+                </ul>
+                <h3>compiler-cli</h3>
+                <ul>
+                <li>
+                <ul>
+                <li>Previously hidden type issues in host bindings may show up in your builds. Either resolve the type issues or set <code>&quot;typeCheckHostBindings&quot;: false</code> in the <code>angularCompilerOptions</code> section of your tsconfig.</li>
+                </ul>
+                </li>
+                <li>The Angular compiler now produces an error when the
+                the <code>emitDeclarationOnly</code> TS compiler option is enabled as this mode is
+                not supported.</li>
+                </ul>
                 <h3>core</h3>
-                <table>
-                <thead>
-                <tr>
-                <th>Commit</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/1e8158baee1be48747180eead8d61de328041b2c">1e8158baee</a></td>
-                <td>fix</td>
-                <td>components marked for traversal resets reactive context (<a href="https://redirect.github.com/angular/angular/pull/61663">#61663</a>)</td>
-                </tr>
-                <tr>
-                <td><a href="https://github.com/angular/angular/commit/1cd23be57e68c50d6c1f3f19d53d83651fa73fd1">1cd23be57e</a></td>
-                <td>fix</td>
-                <td>unregister <code>onDestroy</code> in <code>outputToObservable</code> (<a href="https://redirect.github.com/angular/angular/pull/61882">#61882</a>)</td>
-                </tr>
-                </tbody>
-                </table>
+                <ul>
+                <li>
+                <p>The server-side bootstrapping process has been changed to eliminate the reliance on a global platform injector.</p>
+                <p>Before:</p>
+                <pre lang="ts"><code>const bootstrap = () =&gt; bootstrapApplication(AppComponent, config);
+                </code></pre>
+                <p>After:</p>
+                <pre lang="ts"><code>const bootstrap = (context: BootstrapContext) =&gt;
+                  bootstrapApplication(AppComponent, config, context);
+                </code></pre>
+                <p>A schematic is provided to automatically update <code>main.server.ts</code> files to pass the <code>BootstrapContext</code> to the <code>bootstrapApplication</code> call.</p>
+                <p>In addition, <code>getPlatform()</code> and <code>destroyPlatform()</code> will now return <code>null</code> and be a no-op respectively when running in a server environment.</p>
+                </li>
+                <li>
+                <p>Using a combination of <code>provideZoneChangeDetection</code>
+                while also removing ZoneJS polyfills will no longer result in the
+                internal scheduler being disabled. All Angular applications now
+                consistenly use the same scheduler, and those with the Zone change detection
+                provider include additional automatic scheduling behaviors based on</p>
+                </li>
+                </ul>
                 <!-- raw HTML omitted -->
-                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-                <h1>20.1.0...
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/angular/angular/commit/77fc03ffb6431303a9c1b77009377ec83246edb6"><code>77fc03f</code></a> build: update cross-repo angular dependencies</li>
+                <li><a href="https://github.com/angular/angular/commit/1b43bfbbab483ad29a6dc973d3e6caab7fa54454"><code>1b43bfb</code></a> build: update cross-repo angular dependencies</li>
+                <li><a href="https://github.com/angular/angular/commit/127cadd3fc55006e63169590f93318c427c5f714"><code>127cadd</code></a> Revert &quot;refactor(core): let the profiler handle asymmetric events leniently&quot;</li>
+                <li><a href="https://github.com/angular/angular/commit/e430d69603c6fd18e7b2345072ae3c6d1ee90ffb"><code>e430d69</code></a> Revert &quot;fix(core): notify profiler events in case of errors&quot;</li>
+                <li><a href="https://github.com/angular/angular/commit/035e07e3be0f338cf8f00a0ee082f2387eb608e5"><code>035e07e</code></a> refactor(core): promote the custom track profiler to stable.</li>
+                <li><a href="https://github.com/angular/angular/commit/6aa4b7ea635d900471c6194a874bd64d701f7d66"><code>6aa4b7e</code></a> refactor(forms): avoid console warnings when setting NaN</li>
+                <li><a href="https://github.com/angular/angular/commit/e682f00e29093bda29ac59c1cf685637d06e61b2"><code>e682f00</code></a> refactor(forms): reduce boilerplate needed to define custom controls</li>
+                <li><a href="https://github.com/angular/angular/commit/780e37241fc6dc69da355704e85ea40670ee134e"><code>780e372</code></a> refactor(core): let the profiler handle asymmetric events leniently</li>
+                <li><a href="https://github.com/angular/angular/commit/7ada2519f130c9c4f77c759cd4ad00f17305375a"><code>7ada251</code></a> fix(core): notify profiler events in case of errors</li>
+                <li><a href="https://github.com/angular/angular/commit/a7dddcca51578927e1220c330ebb77fe2c0d44ab"><code>a7dddcc</code></a> docs: Adds links to relevant guides for APIs in core package</li>
+                <li>Additional commits viewable in <a href="https://github.com/angular/angular/commits/21.0.0/packages/core">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `@angular/forms` from 15.0.0 to 21.0.0
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a ...
 
                 _Description has been truncated_
             commit-message: |-
@@ -1855,55 +1585,55 @@ output:
 
                 | Package | From | To |
                 | --- | --- | --- |
-                | [@angular/animations](https://github.com/angular/angular/tree/HEAD/packages/animations) | `15.0.0` | `20.0.3` |
-                | [@angular/common](https://github.com/angular/angular/tree/HEAD/packages/common) | `15.0.0` | `20.0.3` |
-                | [@angular/compiler](https://github.com/angular/angular/tree/HEAD/packages/compiler) | `15.0.0` | `20.0.3` |
-                | [@angular/core](https://github.com/angular/angular/tree/HEAD/packages/core) | `15.0.0` | `20.0.3` |
-                | [@angular/forms](https://github.com/angular/angular/tree/HEAD/packages/forms) | `15.0.0` | `20.0.3` |
-                | [@angular/platform-browser](https://github.com/angular/angular/tree/HEAD/packages/platform-browser) | `15.0.0` | `20.0.3` |
-                | [@angular/platform-browser-dynamic](https://github.com/angular/angular/tree/HEAD/packages/platform-browser-dynamic) | `15.0.0` | `20.0.3` |
-                | [@angular/router](https://github.com/angular/angular/tree/HEAD/packages/router) | `15.0.0` | `20.0.3` |
+                | [@angular/animations](https://github.com/angular/angular/tree/HEAD/packages/animations) | `15.0.0` | `21.0.0` |
+                | [@angular/common](https://github.com/angular/angular/tree/HEAD/packages/common) | `15.0.0` | `21.0.0` |
+                | [@angular/compiler](https://github.com/angular/angular/tree/HEAD/packages/compiler) | `15.0.0` | `21.0.0` |
+                | [@angular/core](https://github.com/angular/angular/tree/HEAD/packages/core) | `15.0.0` | `21.0.0` |
+                | [@angular/forms](https://github.com/angular/angular/tree/HEAD/packages/forms) | `15.0.0` | `21.0.0` |
+                | [@angular/platform-browser](https://github.com/angular/angular/tree/HEAD/packages/platform-browser) | `15.0.0` | `21.0.0` |
+                | [@angular/platform-browser-dynamic](https://github.com/angular/angular/tree/HEAD/packages/platform-browser-dynamic) | `15.0.0` | `21.0.0` |
+                | [@angular/router](https://github.com/angular/angular/tree/HEAD/packages/router) | `15.0.0` | `21.0.0` |
 
 
-                Updates `@angular/animations` from 15.0.0 to 20.0.3
+                Updates `@angular/animations` from 15.0.0 to 21.0.0
                 - [Release notes](https://github.com/angular/angular/releases)
                 - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/angular/angular/commits/20.0.3/packages/animations)
+                - [Commits](https://github.com/angular/angular/commits/21.0.0/packages/animations)
 
-                Updates `@angular/common` from 15.0.0 to 20.0.3
+                Updates `@angular/common` from 15.0.0 to 21.0.0
                 - [Release notes](https://github.com/angular/angular/releases)
                 - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/angular/angular/commits/20.0.3/packages/common)
+                - [Commits](https://github.com/angular/angular/commits/21.0.0/packages/common)
 
-                Updates `@angular/compiler` from 15.0.0 to 20.0.3
+                Updates `@angular/compiler` from 15.0.0 to 21.0.0
                 - [Release notes](https://github.com/angular/angular/releases)
                 - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/angular/angular/commits/20.0.3/packages/compiler)
+                - [Commits](https://github.com/angular/angular/commits/21.0.0/packages/compiler)
 
-                Updates `@angular/core` from 15.0.0 to 20.0.3
+                Updates `@angular/core` from 15.0.0 to 21.0.0
                 - [Release notes](https://github.com/angular/angular/releases)
                 - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/angular/angular/commits/20.0.3/packages/core)
+                - [Commits](https://github.com/angular/angular/commits/21.0.0/packages/core)
 
-                Updates `@angular/forms` from 15.0.0 to 20.0.3
+                Updates `@angular/forms` from 15.0.0 to 21.0.0
                 - [Release notes](https://github.com/angular/angular/releases)
                 - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/angular/angular/commits/20.0.3/packages/forms)
+                - [Commits](https://github.com/angular/angular/commits/21.0.0/packages/forms)
 
-                Updates `@angular/platform-browser` from 15.0.0 to 20.0.3
+                Updates `@angular/platform-browser` from 15.0.0 to 21.0.0
                 - [Release notes](https://github.com/angular/angular/releases)
                 - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/angular/angular/commits/20.0.3/packages/platform-browser)
+                - [Commits](https://github.com/angular/angular/commits/21.0.0/packages/platform-browser)
 
-                Updates `@angular/platform-browser-dynamic` from 15.0.0 to 20.0.3
+                Updates `@angular/platform-browser-dynamic` from 15.0.0 to 21.0.0
                 - [Release notes](https://github.com/angular/angular/releases)
                 - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/angular/angular/commits/20.0.3/packages/platform-browser-dynamic)
+                - [Commits](https://github.com/angular/angular/commits/21.0.0/packages/platform-browser-dynamic)
 
-                Updates `@angular/router` from 15.0.0 to 20.0.3
+                Updates `@angular/router` from 15.0.0 to 21.0.0
                 - [Release notes](https://github.com/angular/angular/releases)
                 - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/angular/angular/commits/20.0.3/packages/router)
+                - [Commits](https://github.com/angular/angular/commits/21.0.0/packages/router)
             dependency-group:
                 name: major
     - type: create_pull_request

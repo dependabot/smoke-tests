@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: npm_and_yarn
         allowed-updates:
             - update-type: indirect
@@ -9,8 +10,8 @@ input:
                 patterns:
                     - '@hapi/*'
         experiments:
-            record-ecosystem-versions: true
             enable_cooldown_for_npm_and_yarn: true
+            record-ecosystem-versions: true
         ignore-conditions:
             - dependency-name: '@hapi/hoek'
               source: tests/smoke-npm-group-transitive.yaml
@@ -43,7 +44,7 @@ output:
         data:
             ecosystem_versions:
                 package_managers:
-                    npm: 10
+                    npm: 11
     - type: update_dependency_list
       expect:
         data:
@@ -236,13 +237,35 @@ output:
                     - file: package.json
                       groups:
                         - dependencies
-                      requirement: ^17.9.2
+                      requirement: ^18.0.2
                       source:
                         type: registry
                         url: https://registry.npmjs.org
-                  version: 17.13.3
+                  version: 18.0.2
                   directory: /npm/transitive
             updated-dependency-files:
+                - content: |
+                    {
+                      "name": "transitive",
+                      "version": "1.0.0",
+                      "description": "",
+                      "main": "index.js",
+                      "scripts": {
+                        "test": "echo \"Error: no test specified\" && exit 1"
+                      },
+                      "author": "",
+                      "license": "ISC",
+                      "dependencies": {
+                        "joi": "^18.0.2"
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /npm/transitive
+                  name: package.json
+                  operation: update
+                  support_file: false
+                  type: file
                 - content: |
                     {
                       "name": "transitive",
@@ -255,55 +278,80 @@ output:
                           "version": "1.0.0",
                           "license": "ISC",
                           "dependencies": {
-                            "joi": "^17.9.2"
+                            "joi": "^18.0.2"
                           }
                         },
-                        "node_modules/@hapi/hoek": {
-                          "version": "9.3.0",
-                          "resolved": "https://registry.npmjs.org/@hapi/hoek/-/hoek-9.3.0.tgz",
-                          "integrity": "sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ==",
+                        "node_modules/@hapi/address": {
+                          "version": "5.1.1",
+                          "resolved": "https://registry.npmjs.org/@hapi/address/-/address-5.1.1.tgz",
+                          "integrity": "sha512-A+po2d/dVoY7cYajycYI43ZbYMXukuopIsqCjh5QzsBCipDtdofHntljDlpccMjIfTy6UOkg+5KPriwYch2bXA==",
+                          "license": "BSD-3-Clause",
+                          "dependencies": {
+                            "@hapi/hoek": "^11.0.2"
+                          },
+                          "engines": {
+                            "node": ">=14.0.0"
+                          }
+                        },
+                        "node_modules/@hapi/formula": {
+                          "version": "3.0.2",
+                          "resolved": "https://registry.npmjs.org/@hapi/formula/-/formula-3.0.2.tgz",
+                          "integrity": "sha512-hY5YPNXzw1He7s0iqkRQi+uMGh383CGdyyIGYtB+W5N3KHPXoqychklvHhKCC9M3Xtv0OCs/IHw+r4dcHtBYWw==",
                           "license": "BSD-3-Clause"
                         },
+                        "node_modules/@hapi/hoek": {
+                          "version": "11.0.7",
+                          "resolved": "https://registry.npmjs.org/@hapi/hoek/-/hoek-11.0.7.tgz",
+                          "integrity": "sha512-HV5undWkKzcB4RZUusqOpcgxOaq6VOAH7zhhIr2g3G8NF/MlFO75SjOr2NfuSx0Mh40+1FqCkagKLJRykUWoFQ==",
+                          "license": "BSD-3-Clause"
+                        },
+                        "node_modules/@hapi/pinpoint": {
+                          "version": "2.0.1",
+                          "resolved": "https://registry.npmjs.org/@hapi/pinpoint/-/pinpoint-2.0.1.tgz",
+                          "integrity": "sha512-EKQmr16tM8s16vTT3cA5L0kZZcTMU5DUOZTuvpnY738m+jyP3JIUj+Mm1xc1rsLkGBQ/gVnfKYPwOmPg1tUR4Q==",
+                          "license": "BSD-3-Clause"
+                        },
+                        "node_modules/@hapi/tlds": {
+                          "version": "1.1.4",
+                          "resolved": "https://registry.npmjs.org/@hapi/tlds/-/tlds-1.1.4.tgz",
+                          "integrity": "sha512-Fq+20dxsxLaUn5jSSWrdtSRcIUba2JquuorF9UW1wIJS5cSUwxIsO2GIhaWynPRflvxSzFN+gxKte2HEW1OuoA==",
+                          "license": "BSD-3-Clause",
+                          "engines": {
+                            "node": ">=14.0.0"
+                          }
+                        },
                         "node_modules/@hapi/topo": {
-                          "version": "5.1.0",
-                          "resolved": "https://registry.npmjs.org/@hapi/topo/-/topo-5.1.0.tgz",
-                          "integrity": "sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==",
+                          "version": "6.0.2",
+                          "resolved": "https://registry.npmjs.org/@hapi/topo/-/topo-6.0.2.tgz",
+                          "integrity": "sha512-KR3rD5inZbGMrHmgPxsJ9dbi6zEK+C3ZwUwTa+eMwWLz7oijWUTWD2pMSNNYJAU6Qq+65NkxXjqHr/7LM2Xkqg==",
                           "license": "BSD-3-Clause",
                           "dependencies": {
-                            "@hapi/hoek": "^9.0.0"
+                            "@hapi/hoek": "^11.0.2"
                           }
                         },
-                        "node_modules/@sideway/address": {
-                          "version": "4.1.5",
-                          "resolved": "https://registry.npmjs.org/@sideway/address/-/address-4.1.5.tgz",
-                          "integrity": "sha512-IqO/DUQHUkPeixNQ8n0JA6102hT9CmaljNTPmQ1u8MEhBo/R4Q8eKLN/vGZxuebwOroDB4cbpjheD4+/sKFK4Q==",
-                          "license": "BSD-3-Clause",
-                          "dependencies": {
-                            "@hapi/hoek": "^9.0.0"
-                          }
-                        },
-                        "node_modules/@sideway/pinpoint": {
-                          "version": "2.0.0",
-                          "resolved": "https://registry.npmjs.org/@sideway/pinpoint/-/pinpoint-2.0.0.tgz",
-                          "integrity": "sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ=="
+                        "node_modules/@standard-schema/spec": {
+                          "version": "1.0.0",
+                          "resolved": "https://registry.npmjs.org/@standard-schema/spec/-/spec-1.0.0.tgz",
+                          "integrity": "sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==",
+                          "license": "MIT"
                         },
                         "node_modules/joi": {
-                          "version": "17.13.3",
-                          "resolved": "https://registry.npmjs.org/joi/-/joi-17.13.3.tgz",
-                          "integrity": "sha512-otDA4ldcIx+ZXsKHWmp0YizCweVRZG96J10b0FevjfuncLO1oX59THoAmHkNubYJ+9gWsYsp5k8v4ib6oDv1fA==",
+                          "version": "18.0.2",
+                          "resolved": "https://registry.npmjs.org/joi/-/joi-18.0.2.tgz",
+                          "integrity": "sha512-RuCOQMIt78LWnktPoeBL0GErkNaJPTBGcYuyaBvUOQSpcpcLfWrHPPihYdOGbV5pam9VTWbeoF7TsGiHugcjGA==",
                           "license": "BSD-3-Clause",
                           "dependencies": {
-                            "@hapi/hoek": "^9.3.0",
-                            "@hapi/topo": "^5.1.0",
-                            "@sideway/address": "^4.1.5",
-                            "@sideway/formula": "^3.0.1",
-                            "@sideway/pinpoint": "^2.0.0"
+                            "@hapi/address": "^5.1.1",
+                            "@hapi/formula": "^3.0.2",
+                            "@hapi/hoek": "^11.0.7",
+                            "@hapi/pinpoint": "^2.0.1",
+                            "@hapi/tlds": "^1.1.1",
+                            "@hapi/topo": "^6.0.2",
+                            "@standard-schema/spec": "^1.0.0"
+                          },
+                          "engines": {
+                            "node": ">= 20"
                           }
-                        },
-                        "node_modules/joi/node_modules/@sideway/formula": {
-                          "version": "3.0.1",
-                          "resolved": "https://registry.npmjs.org/@sideway/formula/-/formula-3.0.1.tgz",
-                          "integrity": "sha512-/poHZJJVjx3L+zVD6g9KgHfYnb443oi7wLu/XKojDviHy6HOEOA6z1Trk5aR1dGcmPenJEgb2sK2I80LeS3MIg=="
                         }
                       }
                     }
@@ -314,31 +362,31 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump joi from 17.9.2 to 17.13.3 in /npm/transitive
+            pr-title: Bump joi from 17.9.2 to 18.0.2 in /npm/transitive
             pr-body: |
-                Bumps [joi](https://github.com/hapijs/joi) from 17.9.2 to 17.13.3.
+                Bumps [joi](https://github.com/hapijs/joi) from 17.9.2 to 18.0.2.
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/hapijs/joi/commit/3cb73d6cded39fa49a46069b64d638a0ba0f7d14"><code>3cb73d6</code></a> 17.13.3</li>
-                <li><a href="https://github.com/hapijs/joi/commit/1653c478486227728942ebd8544bb068448cb814"><code>1653c47</code></a> fix: correct function type in alternatives error (<a href="https://redirect.github.com/hapijs/joi/issues/3043">#3043</a>)</li>
-                <li><a href="https://github.com/hapijs/joi/commit/7373136d149be0cc727096325f22f748d22aef46"><code>7373136</code></a> 17.13.2</li>
-                <li><a href="https://github.com/hapijs/joi/commit/add65979a3d2f93a08e60824ed1a02e56536fa69"><code>add6597</code></a> <code>strictUnknown</code> should honor local explicit <code>.unknown(false)</code></li>
-                <li><a href="https://github.com/hapijs/joi/commit/0066a4ef16706b722b81818a8608aea1129f4cc7"><code>0066a4e</code></a> 17.13.1</li>
-                <li><a href="https://github.com/hapijs/joi/commit/2d260302e75ed50e1f2658887dcd11fcc5b5e05c"><code>2d26030</code></a> fix: label false should also hide explicit labels (<a href="https://redirect.github.com/hapijs/joi/issues/3034">#3034</a>)</li>
-                <li><a href="https://github.com/hapijs/joi/commit/f02df4c011253d3573be19261a45c6765157d054"><code>f02df4c</code></a> 17.13.0</li>
-                <li><a href="https://github.com/hapijs/joi/commit/1ed2d4e615920c57d78ad139b6d53f62c1dec489"><code>1ed2d4e</code></a> feat: support encoding uri (follow-up to <a href="https://redirect.github.com/hapijs/joi/issues/3027">#3027</a>) (<a href="https://redirect.github.com/hapijs/joi/issues/3032">#3032</a>)</li>
-                <li><a href="https://github.com/hapijs/joi/commit/9af6f1f2347a4ffa4a131231b74978e1242fd585"><code>9af6f1f</code></a> feat: Support encoding uri (<a href="https://redirect.github.com/hapijs/joi/issues/3027">#3027</a>)</li>
-                <li><a href="https://github.com/hapijs/joi/commit/554a437a5569015479887f69033bcd1357fb55d6"><code>554a437</code></a> 17.12.3</li>
-                <li>Additional commits viewable in <a href="https://github.com/hapijs/joi/compare/v17.9.2...v17.13.3">compare view</a></li>
+                <li><a href="https://github.com/hapijs/joi/commit/481e270e6c4ff8728d6fda248fd83f6ff70f7ed9"><code>481e270</code></a> 18.0.2</li>
+                <li><a href="https://github.com/hapijs/joi/commit/32bac2f992fa3126b79b6f996ee9294d67b21232"><code>32bac2f</code></a> Merge pull request <a href="https://redirect.github.com/hapijs/joi/issues/3092">#3092</a> from AnslemHack/bug-coerceStringsWithEmptySpaces</li>
+                <li><a href="https://github.com/hapijs/joi/commit/aa1f2b0c43fadf914bdfd83125a599095717018f"><code>aa1f2b0</code></a> Remove empty string to false coercion in boolean validation</li>
+                <li><a href="https://github.com/hapijs/joi/commit/43e83672f712c615f3edbf07329c3d3eb33c2d0e"><code>43e8367</code></a> fix: handle whitespace in boolean string coercion</li>
+                <li><a href="https://github.com/hapijs/joi/commit/1b923c1336fb3957733b920a8290c2e2ac68dc88"><code>1b923c1</code></a> 18.0.1</li>
+                <li><a href="https://github.com/hapijs/joi/commit/1ceea4ed8c738103348bfc5eada4e612dbe640c7"><code>1ceea4e</code></a> Merge pull request <a href="https://redirect.github.com/hapijs/joi/issues/3087">#3087</a> from hapijs/fix/array-types</li>
+                <li><a href="https://github.com/hapijs/joi/commit/c8bee2955a287e285d7614f6b0e8efec914adef0"><code>c8bee29</code></a> fix: proper types for more complex cases of array</li>
+                <li><a href="https://github.com/hapijs/joi/commit/0ffadefd03fe07178ea3ba94ecce3e3076b82ccd"><code>0ffadef</code></a> chore: run prettier on types</li>
+                <li><a href="https://github.com/hapijs/joi/commit/55b0096347c8bd963a9fc04060985344bb69f9ad"><code>55b0096</code></a> 18.0.0</li>
+                <li><a href="https://github.com/hapijs/joi/commit/8ccad731774111f44b244297badd5b1e3f2b2ed8"><code>8ccad73</code></a> chore: add guid wrapper types</li>
+                <li>Additional commits viewable in <a href="https://github.com/hapijs/joi/compare/v17.9.2...v18.0.2">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump joi from 17.9.2 to 17.13.3 in /npm/transitive
+                Bump joi from 17.9.2 to 18.0.2 in /npm/transitive
 
-                Bumps [joi](https://github.com/hapijs/joi) from 17.9.2 to 17.13.3.
-                - [Commits](https://github.com/hapijs/joi/compare/v17.9.2...v17.13.3)
+                Bumps [joi](https://github.com/hapijs/joi) from 17.9.2 to 18.0.2.
+                - [Commits](https://github.com/hapijs/joi/compare/v17.9.2...v18.0.2)
     - type: create_pull_request
       expect:
         data:
