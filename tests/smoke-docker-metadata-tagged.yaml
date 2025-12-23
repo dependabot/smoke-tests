@@ -13,7 +13,7 @@ input:
             repo: dependabot/smoke-tests
             directories:
                 - docker/metadata/tagged
-            commit: 482c04f682a2e3bbb78be52774064f3e3b635426
+            commit: 99ab537d9d2501502eed5212c1d87aad54fb9c63
             hostname: github.com
             api-endpoint: https://api.github.com
     credentials:
@@ -40,7 +40,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 482c04f682a2e3bbb78be52774064f3e3b635426
+            base-commit-sha: 99ab537d9d2501502eed5212c1d87aad54fb9c63
             dependencies:
                 - name: dependabot-fixtures/docker-with-source
                   previous-requirements:
@@ -97,4 +97,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 482c04f682a2e3bbb78be52774064f3e3b635426
+            base-commit-sha: 99ab537d9d2501502eed5212c1d87aad54fb9c63
