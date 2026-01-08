@@ -1,12 +1,13 @@
 input:
     job:
+        command: update
         package-manager: gradle
         allowed-updates:
             - update-type: all
-        experiments:
-            gradle_lockfile_updater: true
         dependencies:
             - com.google.code.gson:gson
+        experiments:
+            gradle_lockfile_updater: true
         ignore-conditions:
             - dependency-name: com.google.code.gson:gson
               source: tests/result.yaml
