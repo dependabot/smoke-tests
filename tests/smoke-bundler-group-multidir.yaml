@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: bundler
         allowed-updates:
             - dependency-type: direct
@@ -205,7 +206,7 @@ output:
                         nokogiri (1.11.1)
                           mini_portile2 (~> 2.5.0)
                           racc (~> 1.4)
-                        racc (1.7.3)
+                        racc (1.8.1)
                         rack (1.6.13)
                         sinatra (1.2.3)
                           rack (~> 1.1)
@@ -250,7 +251,7 @@ output:
                         nokogiri (1.11.1)
                           mini_portile2 (~> 2.5.0)
                           racc (~> 1.4)
-                        racc (1.7.3)
+                        racc (1.8.1)
                         rack (3.0.7)
 
                     PLATFORMS
@@ -335,12 +336,12 @@ output:
                 </details>
                 <details>
                 <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md">nokogiri's changelog</a>.</em></p>
+                <p><em>Sourced from <a href="https://github.com/sparklemotion/nokogiri/blob/v1.11.1/CHANGELOG.md">nokogiri's changelog</a>.</em></p>
                 <blockquote>
-                <h2>1.11.1 / 2021-01-06</h2>
+                <h2>v1.11.1 / 2021-01-06</h2>
                 <h3>Fixed</h3>
                 <ul>
-                <li>[CRuby] If <code>libxml-ruby</code> is loaded before <code>nokogiri</code>, the SAX and Push parsers no longer call <code>libxml-ruby</code>'s handlers. Instead, they defensively override the libxml2 global handler before parsing. <a href="https://redirect.github.com/sparklemotion/nokogiri/issues/2168">#2168</a></li>
+                <li>[CRuby] If <code>libxml-ruby</code> is loaded before <code>nokogiri</code>, the SAX and Push parsers no longer call <code>libxml-ruby</code>'s handlers. Instead, they defensively override the libxml2 global handler before parsing. [<a href="https://redirect.github.com/sparklemotion/nokogiri/issues/2168">#2168</a>]</li>
                 </ul>
                 </blockquote>
                 </details>
@@ -386,12 +387,12 @@ output:
                 </details>
                 <details>
                 <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md">nokogiri's changelog</a>.</em></p>
+                <p><em>Sourced from <a href="https://github.com/sparklemotion/nokogiri/blob/v1.11.1/CHANGELOG.md">nokogiri's changelog</a>.</em></p>
                 <blockquote>
-                <h2>1.11.1 / 2021-01-06</h2>
+                <h2>v1.11.1 / 2021-01-06</h2>
                 <h3>Fixed</h3>
                 <ul>
-                <li>[CRuby] If <code>libxml-ruby</code> is loaded before <code>nokogiri</code>, the SAX and Push parsers no longer call <code>libxml-ruby</code>'s handlers. Instead, they defensively override the libxml2 global handler before parsing. <a href="https://redirect.github.com/sparklemotion/nokogiri/issues/2168">#2168</a></li>
+                <li>[CRuby] If <code>libxml-ruby</code> is loaded before <code>nokogiri</code>, the SAX and Push parsers no longer call <code>libxml-ruby</code>'s handlers. Instead, they defensively override the libxml2 global handler before parsing. [<a href="https://redirect.github.com/sparklemotion/nokogiri/issues/2168">#2168</a>]</li>
                 </ul>
                 </blockquote>
                 </details>
@@ -449,6 +450,7 @@ output:
                 <li>Make query parameters without <code>=</code> have <code>nil</code> values. (<a href="https://redirect.github.com/rack/rack/pull/2059">#2059</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
                 </ul>
                 <h2>[3.0.6.1] - 2023-03-13</h2>
+                <h3>Security</h3>
                 <ul>
                 <li>[CVE-2023-27539] Avoid ReDoS in header parsing</li>
                 </ul>
@@ -461,10 +463,12 @@ output:
                 <li>Split form/query parsing into two steps. (<a href="https://redirect.github.com/rack/rack/pull/2038">#2038</a>, <a href="https://github.com/matthewd"><code>@​matthewd</code></a>)</li>
                 </ul>
                 <h2>[3.0.4.2] - 2023-03-02</h2>
+                <h3>Security</h3>
                 <ul>
                 <li>[CVE-2023-27530] Introduce multipart_total_part_limit to limit total parts</li>
                 </ul>
                 <h2>[3.0.4.1] - 2023-01-17</h2>
+                <h3>Security</h3>
                 <ul>
                 <li>[CVE-2022-44571] Fix ReDoS vulnerability in multipart parser</li>
                 <li>[CVE-2022-44570] Fix ReDoS in Rack::Utils.get_byte_ranges</li>
@@ -481,16 +485,11 @@ output:
                 <ul>
                 <li><code>Rack::URLMap</code> uses non-deprecated form of <code>Regexp.new</code>. (<a href="https://redirect.github.com/rack/rack/pull/1998">#1998</a>, <a href="https://github.com/weizheheng"><code>@​weizheheng</code></a>)</li>
                 </ul>
-                <h2>[3.0.2] -2022-12-05</h2>
+                <h2>[3.0.2] - 2022-12-05</h2>
                 <h3>Fixed</h3>
                 <ul>
                 <li><code>Utils.build_nested_query</code> URL-encodes nested field names including the square brackets.</li>
                 <li>Allow <code>Rack::Response</code> to pass through streaming bodies. (<a href="https://redirect.github.com/rack/rack/pull/1993">#1993</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
-                </ul>
-                <h2>[3.0.1] - 2022-11-18</h2>
-                <h3>Fixed</h3>
-                <ul>
-                <li><code>MethodOverride</code> does not look for an override if a request does not include form/parseable data.</li>
                 </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
@@ -526,12 +525,12 @@ output:
 
                 Updates `nokogiri` from 1.11.0 to 1.11.1
                 - [Release notes](https://github.com/sparklemotion/nokogiri/releases)
-                - [Changelog](https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md)
+                - [Changelog](https://github.com/sparklemotion/nokogiri/blob/v1.11.1/CHANGELOG.md)
                 - [Commits](https://github.com/sparklemotion/nokogiri/compare/v1.11.0...v1.11.1)
 
                 Updates `nokogiri` from 1.11.0 to 1.11.1
                 - [Release notes](https://github.com/sparklemotion/nokogiri/releases)
-                - [Changelog](https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md)
+                - [Changelog](https://github.com/sparklemotion/nokogiri/blob/v1.11.1/CHANGELOG.md)
                 - [Commits](https://github.com/sparklemotion/nokogiri/compare/v1.11.0...v1.11.1)
 
                 Updates `rack` from 3.0.0 to 3.0.7
