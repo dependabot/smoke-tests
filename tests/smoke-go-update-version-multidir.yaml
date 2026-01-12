@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: go_modules
         allowed-updates:
             - dependency-type: direct
@@ -43,7 +44,7 @@ input:
                 - /go/multi-dir/foo
                 - /go/multi-dir/bar
             branch: main
-            commit: d4717051e948175ba02bacd662ceb9bbd62f4b98
+            commit: 0c2115f14189548b864736e1dc239b22631d66dc
         updating-a-pull-request: true
     credentials:
         - host: github.com
@@ -121,7 +122,7 @@ output:
     - type: update_pull_request
       expect:
         data:
-            base-commit-sha: d4717051e948175ba02bacd662ceb9bbd62f4b98
+            base-commit-sha: 0c2115f14189548b864736e1dc239b22631d66dc
             dependency-names:
                 - rsc.io/qr
                 - rsc.io/quote
@@ -173,4 +174,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: d4717051e948175ba02bacd662ceb9bbd62f4b98
+            base-commit-sha: 0c2115f14189548b864736e1dc239b22631d66dc
