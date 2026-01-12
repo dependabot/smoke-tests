@@ -11,7 +11,7 @@ input:
             repo: dependabot/smoke-tests
             directories:
                 - go
-            commit: 25cce92fce4aa73178b6c9816988b6cb64075cdb
+            commit: 0c2115f14189548b864736e1dc239b22631d66dc
             hostname: github.com
             api-endpoint: https://api.github.com
     credentials:
@@ -24,7 +24,7 @@ output:
       expect:
         data:
             version: 1
-            sha: 25cce92fce4aa73178b6c9816988b6cb64075cdb
+            sha: 0c2115f14189548b864736e1dc239b22631d66dc
             ref: refs/heads/main
             job:
                 correlator: dependabot-go_modules-go
@@ -32,7 +32,7 @@ output:
             detector:
                 name: dependabot
                 url: https://github.com/dependabot/dependabot-core
-                version: 0.348.1
+                version: 0.356.0
             manifests:
                 /go/go.mod:
                     file:
@@ -94,8 +94,8 @@ output:
                             relationship: indirect
                             scope: runtime
             metadata:
-                status: "ok"
+                status: ok
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 25cce92fce4aa73178b6c9816988b6cb64075cdb
+            base-commit-sha: 0c2115f14189548b864736e1dc239b22631d66dc
