@@ -715,11 +715,79 @@ output:
                   type: file
             pr-title: Bump gradle-wrapper from 7.5 to 9.2.0 in /gradle-wrapper
             pr-body: |
-                Bumps gradle-wrapper from 7.5 to 9.2.0.
+                Bumps [gradle-wrapper](https://github.com/gradle/gradle) from 7.5 to 9.2.0.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/gradle/gradle/releases">gradle-wrapper's releases</a>.</em></p>
+                <blockquote>
+                <h2>9.2.0</h2>
+                <p>The Gradle team is excited to announce Gradle 9.2.0.</p>
+                <p>Here are the highlights of this release:</p>
+                <ul>
+                <li>Windows ARM support</li>
+                <li>Improved publishing APIs</li>
+                <li>Better guidance for dependency verification failures</li>
+                </ul>
+                <p><a href="https://docs.gradle.org/9.2.0/release-notes.html">Read the Release Notes</a></p>
+                <p>We would like to thank the following community members for their contributions to this release of Gradle:
+                <a href="https://github.com/aSemy">Adam</a>,
+                <a href="https://github.com/Vampire">Björn Kautler</a>,
+                <a href="https://github.com/hasunzo">hasunzo</a>,
+                <a href="https://github.com/iohyeon">HYEON</a>,
+                <a href="https://github.com/academey">Hyunjoon Park</a>,
+                <a href="https://github.com/guswns1659">HYUNJUN SON</a>,
+                <a href="https://github.com/jjohannes">Jendrik Johannes</a>,
+                <a href="https://github.com/gavvvr">Kirill Gavrilov</a>,
+                <a href="https://github.com/vmadalin">Madalin Valceleanu</a>,
+                <a href="https://github.com/martinbonnin">Martin Bonnin</a>,
+                <a href="https://github.com/3flex">Matthew Haughton</a>,
+                <a href="https://github.com/mipo256">Mikhail Polivakha</a>,
+                <a href="https://github.com/NaMinhyeok">Na Minhyeok</a>,
+                <a href="https://github.com/hfhbd">Philip Wedemann</a>,
+                <a href="https://github.com/p-schneider">Philipp Schneider</a>,
+                <a href="https://github.com/TWiStErRob">Róbert Papp</a>,
+                <a href="https://github.com/SimonMarquis">Simon Marquis</a>,
+                <a href="https://github.com/TheGoesen">TheGoesen</a>,
+                <a href="https://github.com/Pankraz76">Vincent Potucek</a>,
+                <a href="https://github.com/scaventz">Xin Wang</a>.</p>
+                <h2>Upgrade instructions</h2>
+                <p>Switch your build to use Gradle 9.2.0 by updating your wrapper:</p>
+                <pre><code>./gradlew wrapper --gradle-version=9.2.0 &amp;&amp; ./gradlew wrapper
+                </code></pre>
+                <p>See the Gradle <a href="https://docs.gradle.org/9.2.0/userguide/upgrading_version_9.html">9.x upgrade guide</a> to learn about deprecations, breaking changes and other considerations when upgrading.</p>
+                <p>For Java, Groovy, Kotlin and Android compatibility, see the <a href="https://docs.gradle.org/9.2.0/userguide/compatibility.html">full compatibility notes</a>.</p>
+                <h2>Reporting problems</h2>
+                <p>If you find a problem with this release, please file a bug on <a href="https://github.com/gradle/gradle/issues">GitHub Issues</a> adhering to our issue guidelines.
+                If you're not sure you're encountering a bug, please use the <a href="https://discuss.gradle.org/c/help-discuss">forum</a>.</p>
+                <p>We hope you will build happiness with Gradle, and we look forward to your feedback via <a href="https://twitter.com/gradle">Twitter</a> or on <a href="https://github.com/gradle">GitHub</a>.</p>
+                <h2>9.2.0 RC3</h2>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/gradle/gradle/commit/d9d6bbce03b3d88c67ef5a0ff31f7ae5e332d6bf"><code>d9d6bbc</code></a> Release Notes: add performance improvement (<a href="https://redirect.github.com/gradle/gradle/issues/35499">#35499</a>)</li>
+                <li><a href="https://github.com/gradle/gradle/commit/8ab62944bef57966fc06066fc15ef85fa329c974"><code>8ab6294</code></a> fix RN images ident</li>
+                <li><a href="https://github.com/gradle/gradle/commit/0c471daff35bc2d1862101c176d92942bc56657a"><code>0c471da</code></a> Release Notes: add performance improvement</li>
+                <li><a href="https://github.com/gradle/gradle/commit/a99aea550baefa4c2545aee37332e09d54037eaf"><code>a99aea5</code></a> Fix documentation part5_add_dataflow_action link - cherry-pick of <a href="https://redirect.github.com/gradle/gradle/issues/35458">#35458</a> to r...</li>
+                <li><a href="https://github.com/gradle/gradle/commit/c6262690775a83fd14fadef29e5d9ec1e848279a"><code>c626269</code></a> Fix documentation part5_add_dataflow_action link (<a href="https://redirect.github.com/gradle/gradle/issues/35458">#35458</a>)</li>
+                <li><a href="https://github.com/gradle/gradle/commit/0c0a863242afb8cc1dddec3e023543e56a8e55dd"><code>0c0a863</code></a> Remove dependency on Gradle internal class (<a href="https://redirect.github.com/gradle/gradle/issues/35454">#35454</a>)</li>
+                <li><a href="https://github.com/gradle/gradle/commit/53404bb4544508f217c0636588d1744c0ec54395"><code>53404bb</code></a> Update Gradle wrapper to version 9.2.0-rc-3 (<a href="https://redirect.github.com/gradle/gradle/issues/35457">#35457</a>)</li>
+                <li><a href="https://github.com/gradle/gradle/commit/277fc03cda3405f483f9858be88b6e1058b36205"><code>277fc03</code></a> Update Gradle wrapper to version 9.2.0-rc-3</li>
+                <li><a href="https://github.com/gradle/gradle/commit/f94c8f47804642916a5dcbc2b9b64f3632052f27"><code>f94c8f4</code></a> Remove dependency on Gradle internal class</li>
+                <li><a href="https://github.com/gradle/gradle/commit/8a6b6c9294de54f1eae1b62e4155ee02153f1f6c"><code>8a6b6c9</code></a> Prepare Release Notes and Upgrade Guide for 9.2.0 RC3 (<a href="https://redirect.github.com/gradle/gradle/issues/35449">#35449</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/gradle/gradle/compare/v7.5.0...v9.2.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
             commit-message: |-
                 Bump gradle-wrapper from 7.5 to 9.2.0 in /gradle-wrapper
 
-                Bumps gradle-wrapper from 7.5 to 9.2.0.
+                Bumps [gradle-wrapper](https://github.com/gradle/gradle) from 7.5 to 9.2.0.
+                - [Release notes](https://github.com/gradle/gradle/releases)
+                - [Commits](https://github.com/gradle/gradle/compare/v7.5.0...v9.2.0)
     - type: mark_as_processed
       expect:
         data:
