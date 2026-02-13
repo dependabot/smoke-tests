@@ -46,6 +46,9 @@ input:
             - dependency-name: org.jmailen.kotlinter
               source: tests/smoke-gradle-version-catalog.yaml
               version-requirement: '>3.13.0'
+            - dependency-name: gradle-distribution
+              source: tests/smoke-gradle-version-catalog.yaml
+              version-requirement: '>7.5'
         source:
             provider: github
             repo: dependabot/smoke-tests
@@ -197,11 +200,24 @@ output:
                       requirement: 3.11.0
                       source: null
                   version: 3.11.0
+                - name: gradle-distribution
+                  requirements:
+                    - file: gradle/wrapper/gradle-wrapper.properties
+                      groups: []
+                      requirement: 7.5
+                      source:
+                        type: gradle-distribution
+                        url: https://services.gradle.org/distributions/gradle-7.5-bin.zip
+                  version: 7.5
             dependency_files:
                 - /gradle-version-catalog/build.gradle
                 - /gradle-version-catalog/settings.gradle
                 - /gradle-version-catalog/gradle/libs.versions.toml
                 - /gradle-version-catalog/app/build.gradle
+                - /gradle-version-catalog/gradlew
+                - /gradle-version-catalog/gradlew.bat
+                - /gradle-version-catalog/gradle/wrapper/gradle-wrapper.jar
+                - /gradle-version-catalog/gradle/wrapper/gradle-wrapper.properties
     - type: create_pull_request
       expect:
         data:
