@@ -1173,15 +1173,15 @@ output:
                 <summary>Maintainer changes</summary>
                 <p>This version was pushed to npm by <a href="https://www.npmjs.com/~ljharb">ljharb</a>, a new releaser for form-data since your current version.</p>
                 </details>
+                <details>
+                <summary>Install script changes</summary>
+                <p>This version modifies <code>prepublish</code> script that runs during installation. Review the package contents before updating.</p>
+                </details>
                 <br />
 
                 Updates `whatwg-fetch` from 3.6.17 to 3.6.20
                 <details>
                 <summary>Release notes</summary>
-                <details>
-                <summary>Install script changes</summary>
-                <p>This version modifies <code>prepublish</code> script that runs during installation. Review the package contents before updating.</p>
-                </details>
                 <p><em>Sourced from <a href="https://github.com/github/fetch/releases">whatwg-fetch's releases</a>.</em></p>
                 <blockquote>
                 <h2>v3.6.20</h2>
@@ -1849,6 +1849,10 @@ output:
                 <li>Additional commits viewable in <a href="https://github.com/axios/axios/compare/v0.27.1...v1.13.2">compare view</a></li>
                 </ul>
                 </details>
+                <details>
+                <summary>Install script changes</summary>
+                <p>This version adds <code>prepare</code> script that runs during installation. Review the package contents before updating.</p>
+                </details>
                 <br />
             commit-message: |-
                 Bump axios from 0.27.1 to 1.13.2 in /npm/semver
@@ -1858,10 +1862,6 @@ output:
                 - [Changelog](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
                 - [Commits](https://github.com/axios/axios/compare/v0.27.1...v1.13.2)
     - type: mark_as_processed
-                <details>
-                <summary>Install script changes</summary>
-                <p>This version adds <code>prepare</code> script that runs during installation. Review the package contents before updating.</p>
-                </details>
       expect:
         data:
             base-commit-sha: deb769e795beb877414bdc5aea2df16d4ff8d4df
