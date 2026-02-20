@@ -18,6 +18,12 @@ input:
             - dependency-name: rubocop
               source: tests/smoke-bundler-group-vendoring.yaml
               version-requirement: '> 1.53.1'
+            - dependency-name: rack
+              source: tests/smoke-bundler-group-vendoring.yaml
+              version-requirement: '>3.2.5'
+            - dependency-name: toml-rb
+              source: tests/smoke-bundler-group-vendoring.yaml
+              version-requirement: '>4.1.0'
         source:
             provider: github
             repo: dependabot/smoke-tests

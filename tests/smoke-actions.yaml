@@ -19,6 +19,12 @@ input:
             - dependency-name: actions/setup-node
               source: tests/smoke-actions.yaml
               version-requirement: '>2.0.0'
+            - dependency-name: actions/setup-ruby
+              source: tests/smoke-actions.yaml
+              version-requirement: '>1.1.3'
+            - dependency-name: actions/setup-go
+              source: tests/smoke-actions.yaml
+              version-requirement: '>6.2.0'
         source:
             provider: github
             repo: dependabot/smoke-tests
