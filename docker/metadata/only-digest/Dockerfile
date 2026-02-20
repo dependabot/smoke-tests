@@ -1,0 +1,1 @@
+FROM ghcr.io/regclient/regctl@sha256:85c2b62eef4c196736b9303c899755dc23c45775fb5fbcf5378535cf7000e078

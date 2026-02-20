@@ -1,0 +1,100 @@
+input:
+    job:
+        command: update
+        package-manager: docker
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: dependabot-fixtures/docker-with-source
+              source: tests/smoke-docker-metadata-tagged.yaml
+              version-requirement: '>v0.0.2'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - docker/metadata/tagged
+            commit: 99ab537d9d2501502eed5212c1d87aad54fb9c63
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: dependabot-fixtures/docker-with-source
+                  requirements:
+                    - file: Dockerfile
+                      groups: []
+                      requirement: null
+                      source:
+                        registry: ghcr.io
+                        tag: v0.0.1
+                  version: v0.0.1
+            dependency_files:
+                - /docker/metadata/tagged/Dockerfile
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 99ab537d9d2501502eed5212c1d87aad54fb9c63
+            dependencies:
+                - name: dependabot-fixtures/docker-with-source
+                  previous-requirements:
+                    - file: Dockerfile
+                      groups: []
+                      requirement: null
+                      source:
+                        registry: ghcr.io
+                        tag: v0.0.1
+                  previous-version: v0.0.1
+                  requirements:
+                    - file: Dockerfile
+                      groups: []
+                      requirement: null
+                      source:
+                        registry: ghcr.io
+                        tag: v0.0.2
+                  version: v0.0.2
+                  directory: /docker/metadata/tagged
+            updated-dependency-files:
+                - content: FROM ghcr.io/dependabot-fixtures/docker-with-source:v0.0.2
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /docker/metadata/tagged
+                  name: Dockerfile
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump dependabot-fixtures/docker-with-source from v0.0.1 to v0.0.2 in /docker/metadata/tagged
+            pr-body: |
+                Bumps [dependabot-fixtures/docker-with-source](https://github.com/dependabot-fixtures/docker-with-source) from v0.0.1 to v0.0.2.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/dependabot-fixtures/docker-with-source/releases">dependabot-fixtures/docker-with-source's releases</a>.</em></p>
+                <blockquote>
+                <h2>v0.0.2</h2>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/dependabot-fixtures/docker-with-source/compare/v0.0.1...v0.0.2">https://github.com/dependabot-fixtures/docker-with-source/compare/v0.0.1...v0.0.2</a></p>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/dependabot-fixtures/docker-with-source/commit/78f2e16e17061cb1baf040a259ce41ccb87d986f"><code>78f2e16</code></a> Add OCI description</li>
+                <li>See full diff in <a href="https://github.com/dependabot-fixtures/docker-with-source/compare/v0.0.1...v0.0.2">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump dependabot-fixtures/docker-with-source in /docker/metadata/tagged
+
+                Bumps [dependabot-fixtures/docker-with-source](https://github.com/dependabot-fixtures/docker-with-source) from v0.0.1 to v0.0.2.
+                - [Release notes](https://github.com/dependabot-fixtures/docker-with-source/releases)
+                - [Commits](https://github.com/dependabot-fixtures/docker-with-source/compare/v0.0.1...v0.0.2)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 99ab537d9d2501502eed5212c1d87aad54fb9c63

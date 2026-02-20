@@ -1,0 +1,91 @@
+input:
+    job:
+        command: update
+        package-manager: docker
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: regclient/regctl
+              source: tests/smoke-docker-metadata-only-digest.yaml
+              version-requirement: '>a734f285c0962e46557bff24489fa0b0521455733f72d9eb30c4f7a5027aeed6'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - docker/metadata/only-digest
+            commit: 99ab537d9d2501502eed5212c1d87aad54fb9c63
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: regclient/regctl
+                  requirements:
+                    - file: Dockerfile
+                      groups: []
+                      requirement: null
+                      source:
+                        digest: 85c2b62eef4c196736b9303c899755dc23c45775fb5fbcf5378535cf7000e078
+                        registry: ghcr.io
+                  version: 85c2b62eef4c196736b9303c899755dc23c45775fb5fbcf5378535cf7000e078
+            dependency_files:
+                - /docker/metadata/only-digest/Dockerfile
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 99ab537d9d2501502eed5212c1d87aad54fb9c63
+            dependencies:
+                - name: regclient/regctl
+                  previous-requirements:
+                    - file: Dockerfile
+                      groups: []
+                      requirement: null
+                      source:
+                        digest: 85c2b62eef4c196736b9303c899755dc23c45775fb5fbcf5378535cf7000e078
+                        registry: ghcr.io
+                  previous-version: 85c2b62eef4c196736b9303c899755dc23c45775fb5fbcf5378535cf7000e078
+                  requirements:
+                    - file: Dockerfile
+                      groups: []
+                      requirement: null
+                      source:
+                        digest: a734f285c0962e46557bff24489fa0b0521455733f72d9eb30c4f7a5027aeed6
+                        registry: ghcr.io
+                  version: a734f285c0962e46557bff24489fa0b0521455733f72d9eb30c4f7a5027aeed6
+                  directory: /docker/metadata/only-digest
+            updated-dependency-files:
+                - content: FROM ghcr.io/regclient/regctl@sha256:a734f285c0962e46557bff24489fa0b0521455733f72d9eb30c4f7a5027aeed6
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /docker/metadata/only-digest
+                  name: Dockerfile
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump regclient/regctl from `85c2b62` to `a734f28` in /docker/metadata/only-digest
+            pr-body: |
+                Bumps [regclient/regctl](https://github.com/regclient/regclient) from `85c2b62` to `a734f28`.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/regclient/regclient/commits">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump regclient/regctl in /docker/metadata/only-digest
+
+                Bumps [regclient/regctl](https://github.com/regclient/regclient) from `85c2b62` to `a734f28`.
+                - [Release notes](https://github.com/regclient/regclient/releases)
+                - [Commits](https://github.com/regclient/regclient/commits)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 99ab537d9d2501502eed5212c1d87aad54fb9c63
