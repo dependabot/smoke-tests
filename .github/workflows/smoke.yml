@@ -1,7 +1,7 @@
 # Runs all ecosystems cached and concurrently.
 name: Smoke
 
-on:  # yamllint disable-line rule:truthy
+on: # yamllint disable-line rule:truthy
   workflow_dispatch:
   pull_request:
     branches: ["main"]
@@ -27,6 +27,7 @@ jobs:
     needs: [suites, download-cli]
     strategy:
       fail-fast: false
+      max-parallel: 10
       matrix:
         suite: ${{ fromJSON(needs.suites.outputs.suites) }}
     steps:
