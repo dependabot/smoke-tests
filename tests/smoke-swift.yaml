@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: swift
         allowed-updates:
             - update-type: all
@@ -372,70 +373,7 @@ output:
                   support_file: false
                   type: file
             pr-title: Bump github.com/quick/quick from 4.0.0 to 7.2.0 in /swift
-            pr-body: |
-                Bumps [github.com/quick/quick](https://github.com/Quick/Quick) from 4.0.0 to 7.2.0.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/Quick/Quick/releases">github.com/quick/quick's releases</a>.</em></p>
-                <blockquote>
-                <h2>v7.2.0 - TestState property wrapper</h2>
-                <h1>Highlight</h1>
-                <p>You can now use the <code>@TestState</code> property wrapper to automatically deconstruct test variables. For example:</p>
-                <pre lang="swift"><code>describe(&quot;using TestState&quot;) {
-                    @TestState var subject: SomeObject?
-                }
-                </code></pre>
-                <p>Is functionally equivalent to:</p>
-                <pre lang="swift"><code>describe(&quot;using TestState&quot;) {
-                    var subject: SomeObject?
-                    afterEach {
-                        subject = nil
-                    }
-                }
-                </code></pre>
-                <p>You can also specify an initial value, and <code>TestState</code> will act as an <code>aroundEach</code>: setting the wrapped variable to the value, then setting it to nil at test teardown.</p>
-                <pre lang="swift"><code>describe(&quot;using TestState&quot;) {
-                    @TestState(1) var value: Int?
-                <pre><code>it(&amp;quot;is already configured&amp;quot;) {
-                    expect(value).to(equal(1))
-                }
-                </code></pre>
-                <p>}
-                </code></pre></p>
-                <p>Thanks <a href="https://github.com/CraigSiemens"><code>@​CraigSiemens</code></a> for their contribution!</p>
-                <h1>Automated Release Notes</h1>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Added a TestState property wrapper, again :D by <a href="https://github.com/CraigSiemens"><code>@​CraigSiemens</code></a> in <a href="https://redirect.github.com/Quick/Quick/pull/1233">Quick/Quick#1233</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/Quick/Quick/compare/v7.1.0...v7.2.0">https://github.com/Quick/Quick/compare/v7.1.0...v7.2.0</a></p>
-                <h2>v7.1.0</h2>
-                <h1>Highlights</h1>
-                <h2>New Features</h2>
-                <ul>
-                <li>You can now use <code>throw</code> in <code>beforeEach</code>, <code>justBeforeEach</code>, and <code>afterEach</code> blocks.</li>
-                </ul>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/Quick/Quick/commit/494eff9ad74a37047782b0d5d8d84c7ff49a60e4"><code>494eff9</code></a> [v7.2.0] Update docs and podspec</li>
-                <li><a href="https://github.com/Quick/Quick/commit/c6a3fbadb3dc6e32baef29aa48d1f32457751eb8"><code>c6a3fba</code></a> Merge pull request <a href="https://redirect.github.com/Quick/Quick/issues/1233">#1233</a> from CraigSiemens/test-state-property-wrapper</li>
-                <li><a href="https://github.com/Quick/Quick/commit/fbdda51c0e678fa63ed82b74d905fd5872103258"><code>fbdda51</code></a> Added a TestState property wrapper.</li>
-                <li><a href="https://github.com/Quick/Quick/commit/9913828ef3554e6cc1a57797c9f8dfd136c6c9d6"><code>9913828</code></a> [v7.1.0] Update docs &amp; podspec</li>
-                <li><a href="https://github.com/Quick/Quick/commit/4121c3ffb911f7542983de9b0179eebfd8e05d80"><code>4121c3f</code></a> Merge pull request <a href="https://redirect.github.com/Quick/Quick/issues/1232">#1232</a> from Quick/task/759-specify-ordering</li>
-                <li><a href="https://github.com/Quick/Quick/commit/345ab6485aba7fe5322519d70fd884d68093ad60"><code>345ab64</code></a> The test ordering page should more strongly suggest that you enable Randomize...</li>
-                <li><a href="https://github.com/Quick/Quick/commit/d3bddab9d204c70dc885962c286809bf12044396"><code>d3bddab</code></a> Attempt to run tests within a QuickSpec or AsyncSpec in the order they are de...</li>
-                <li><a href="https://github.com/Quick/Quick/commit/6d3524d4c16feba42a44c3ef3ab8f91acb4874e4"><code>6d3524d</code></a> Merge pull request <a href="https://redirect.github.com/Quick/Quick/issues/1230">#1230</a> from Quick/bugfix/1227-xitBehavesLike-on-dslusers</li>
-                <li><a href="https://github.com/Quick/Quick/commit/0fdeeebb0adc007f0b7cd22483026c074dc85be4"><code>0fdeeeb</code></a> Merge pull request <a href="https://redirect.github.com/Quick/Quick/issues/1231">#1231</a> from Quick/documentation/774-installation-instructions</li>
-                <li><a href="https://github.com/Quick/Quick/commit/e9420da4c4702c1ed33d5f9e144e521819246575"><code>e9420da</code></a> Improve documentation for installing Quick and Nimble via Cocoapods in the RE...</li>
-                <li>Additional commits viewable in <a href="https://github.com/Quick/Quick/compare/v4.0.0...v7.2.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
+            pr-body: "Bumps [github.com/quick/quick](https://github.com/Quick/Quick) from 4.0.0 to 7.2.0.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/Quick/Quick/releases\">github.com/quick/quick's releases</a>.</em></p>\n<blockquote>\n<h2>v7.2.0 - TestState property wrapper</h2>\n<h1>Highlight</h1>\n<p>You can now use the <code>@TestState</code> property wrapper to automatically deconstruct test variables. For example:</p>\n<pre lang=\"swift\"><code>describe(&quot;using TestState&quot;) {\r\n    @TestState var subject: SomeObject?\r\n}\r\n</code></pre>\n<p>Is functionally equivalent to:</p>\n<pre lang=\"swift\"><code>describe(&quot;using TestState&quot;) {\r\n    var subject: SomeObject?\r\n    afterEach {\r\n        subject = nil\r\n    }\r\n}\r\n</code></pre>\n<p>You can also specify an initial value, and <code>TestState</code> will act as an <code>aroundEach</code>: setting the wrapped variable to the value, then setting it to nil at test teardown.</p>\n<pre lang=\"swift\"><code>describe(&quot;using TestState&quot;) {\r\n    @TestState(1) var value: Int?\r\n<pre><code>it(&amp;quot;is already configured&amp;quot;) {\r\n    expect(value).to(equal(1))\r\n}\n</code></pre>\n<p>}\n</code></pre></p>\n<p>Thanks <a href=\"https://github.com/CraigSiemens\"><code>@​CraigSiemens</code></a> for their contribution!</p>\n<h1>Automated Release Notes</h1>\n<h2>What's Changed</h2>\n<ul>\n<li>Added a TestState property wrapper, again :D by <a href=\"https://github.com/CraigSiemens\"><code>@​CraigSiemens</code></a> in <a href=\"https://redirect.github.com/Quick/Quick/pull/1233\">Quick/Quick#1233</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/Quick/Quick/compare/v7.1.0...v7.2.0\">https://github.com/Quick/Quick/compare/v7.1.0...v7.2.0</a></p>\n<h2>v7.1.0</h2>\n<h1>Highlights</h1>\n<h2>New Features</h2>\n<ul>\n<li>You can now use <code>throw</code> in <code>beforeEach</code>, <code>justBeforeEach</code>, and <code>afterEach</code> blocks.</li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/Quick/Quick/commit/494eff9ad74a37047782b0d5d8d84c7ff49a60e4\"><code>494eff9</code></a> [v7.2.0] Update docs and podspec</li>\n<li><a href=\"https://github.com/Quick/Quick/commit/c6a3fbadb3dc6e32baef29aa48d1f32457751eb8\"><code>c6a3fba</code></a> Merge pull request <a href=\"https://redirect.github.com/Quick/Quick/issues/1233\">#1233</a> from CraigSiemens/test-state-property-wrapper</li>\n<li><a href=\"https://github.com/Quick/Quick/commit/fbdda51c0e678fa63ed82b74d905fd5872103258\"><code>fbdda51</code></a> Added a TestState property wrapper.</li>\n<li><a href=\"https://github.com/Quick/Quick/commit/9913828ef3554e6cc1a57797c9f8dfd136c6c9d6\"><code>9913828</code></a> [v7.1.0] Update docs &amp; podspec</li>\n<li><a href=\"https://github.com/Quick/Quick/commit/4121c3ffb911f7542983de9b0179eebfd8e05d80\"><code>4121c3f</code></a> Merge pull request <a href=\"https://redirect.github.com/Quick/Quick/issues/1232\">#1232</a> from Quick/task/759-specify-ordering</li>\n<li><a href=\"https://github.com/Quick/Quick/commit/345ab6485aba7fe5322519d70fd884d68093ad60\"><code>345ab64</code></a> The test ordering page should more strongly suggest that you enable Randomize...</li>\n<li><a href=\"https://github.com/Quick/Quick/commit/d3bddab9d204c70dc885962c286809bf12044396\"><code>d3bddab</code></a> Attempt to run tests within a QuickSpec or AsyncSpec in the order they are de...</li>\n<li><a href=\"https://github.com/Quick/Quick/commit/6d3524d4c16feba42a44c3ef3ab8f91acb4874e4\"><code>6d3524d</code></a> Merge pull request <a href=\"https://redirect.github.com/Quick/Quick/issues/1230\">#1230</a> from Quick/bugfix/1227-xitBehavesLike-on-dslusers</li>\n<li><a href=\"https://github.com/Quick/Quick/commit/0fdeeebb0adc007f0b7cd22483026c074dc85be4\"><code>0fdeeeb</code></a> Merge pull request <a href=\"https://redirect.github.com/Quick/Quick/issues/1231\">#1231</a> from Quick/documentation/774-installation-instructions</li>\n<li><a href=\"https://github.com/Quick/Quick/commit/e9420da4c4702c1ed33d5f9e144e521819246575\"><code>e9420da</code></a> Improve documentation for installing Quick and Nimble via Cocoapods in the RE...</li>\n<li>Additional commits viewable in <a href=\"https://github.com/Quick/Quick/compare/v4.0.0...v7.2.0\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
             commit-message: |-
                 Bump github.com/quick/quick from 4.0.0 to 7.2.0 in /swift
 
@@ -562,81 +500,7 @@ output:
                   support_file: false
                   type: file
             pr-title: Bump github.com/quick/nimble from 9.2.1 to 12.2.0 in /swift
-            pr-body: |
-                Bumps [github.com/quick/nimble](https://github.com/Quick/Nimble) from 9.2.1 to 12.2.0.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/Quick/Nimble/releases">github.com/quick/nimble's releases</a>.</em></p>
-                <blockquote>
-                <h2>v12.2.0</h2>
-                <h1>Highlights</h1>
-                <p>the <code>equal</code> matcher now supports arrays of tuples. For example:</p>
-                <pre lang="swift"><code>expect([
-                    (1, 2),
-                    (3, 4)
-                ]).to(equal([
-                    (1, 2),
-                    (3, 4)
-                ]))
-                </code></pre>
-                <p>Thanks <a href="https://github.com/faroman"><code>@​faroman</code></a> for their contribution!</p>
-                <h1>Automatically Generated Release Notes</h1>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Fix typo in README.md by <a href="https://github.com/nemesis"><code>@​nemesis</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1066">Quick/Nimble#1066</a></li>
-                <li>Equal predicate for array of tuples by <a href="https://github.com/faroman"><code>@​faroman</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1065">Quick/Nimble#1065</a></li>
-                </ul>
-                <h2>New Contributors</h2>
-                <ul>
-                <li><a href="https://github.com/nemesis"><code>@​nemesis</code></a> made their first contribution in <a href="https://redirect.github.com/Quick/Nimble/pull/1066">Quick/Nimble#1066</a></li>
-                <li><a href="https://github.com/faroman"><code>@​faroman</code></a> made their first contribution in <a href="https://redirect.github.com/Quick/Nimble/pull/1065">Quick/Nimble#1065</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/Quick/Nimble/compare/v12.1.0...v12.2.0">https://github.com/Quick/Nimble/compare/v12.1.0...v12.2.0</a></p>
-                <h2>v12.1.0 - AsyncPredicate</h2>
-                <h2>Highlights</h2>
-                <ul>
-                <li>You can now create Predicates that run in async contexts.</li>
-                </ul>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Add AsyncPredicate - Matchers with AsyncExpressions by <a href="https://github.com/younata"><code>@​younata</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1056">Quick/Nimble#1056</a></li>
-                <li>Remove unused constant by <a href="https://github.com/peterringset"><code>@​peterringset</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1064">Quick/Nimble#1064</a></li>
-                </ul>
-                <h2>New Contributors</h2>
-                <ul>
-                <li><a href="https://github.com/peterringset"><code>@​peterringset</code></a> made their first contribution in <a href="https://redirect.github.com/Quick/Nimble/pull/1064">Quick/Nimble#1064</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/Quick/Nimble/compare/v12.0.1...v12.1.0">https://github.com/Quick/Nimble/compare/v12.0.1...v12.1.0</a></p>
-                <h2>v12.0.1</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Fix wasm build by <a href="https://github.com/ikesyo"><code>@​ikesyo</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1053">Quick/Nimble#1053</a></li>
-                <li>Bump cocoapods from 1.12.0 to 1.12.1 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1054">Quick/Nimble#1054</a></li>
-                <li>Bump swiftwasm/swiftwasm-action from 5.7 to 5.8 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1057">Quick/Nimble#1057</a></li>
-                <li>Make the async version of poll concurrency-safe by wrapping it in an actor by <a href="https://github.com/younata"><code>@​younata</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1059">Quick/Nimble#1059</a></li>
-                <li>cast an empty array to avoid a warning during compile time by <a href="https://github.com/younata"><code>@​younata</code></a> in <a href="https://redirect.github.com/Quick/Nimble/pull/1060">Quick/Nimble#1060</a></li>
-                </ul>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/Quick/Nimble/commit/f552a16f434eef1f18b62985172489f41d37a18e"><code>f552a16</code></a> [v12.2.0] Update docs and podspec</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/02f1aa9d0006f6ed926de244638014ab6cc6965d"><code>02f1aa9</code></a> Equal predicate for array of tuples (<a href="https://redirect.github.com/Quick/Nimble/issues/1065">#1065</a>)</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/941c1fdc1b5ec3d12b963c2c45e16134043505a4"><code>941c1fd</code></a> Fix typo in README.md (<a href="https://redirect.github.com/Quick/Nimble/issues/1066">#1066</a>)</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/831000dd1939bc2096df572c5fd156f41d858bfa"><code>831000d</code></a> [v12.1.0] Update docs and podspec</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/670c1f8ab1db3486fca8aab2de0bcd62c768fd5a"><code>670c1f8</code></a> Remove unused constant (<a href="https://redirect.github.com/Quick/Nimble/issues/1064">#1064</a>)</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/7f0621bc3f6c4315f01343a0cab0aabbf07f0567"><code>7f0621b</code></a> Add AsyncPredicate - Matchers with AsyncExpressions (<a href="https://redirect.github.com/Quick/Nimble/issues/1056">#1056</a>)</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/371f7d278ba95a5511c248aaeec84f5dbe770491"><code>371f7d2</code></a> [v12.0.1] Update docs and podspec</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/5176df5b2e654b6047e17a90ce7b16a516cf479e"><code>5176df5</code></a> cast an empty array to avoid a warning during compile time (<a href="https://redirect.github.com/Quick/Nimble/issues/1060">#1060</a>)</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/1aea01458f2a34eda6fdc4a3d4bc0142936e46ba"><code>1aea014</code></a> Make the async version of poll concurrency-safe by wrapping it in an actor (#...</li>
-                <li><a href="https://github.com/Quick/Nimble/commit/3f372afc6b9866296fcebbe2a46279c6b7271ddd"><code>3f372af</code></a> Bump swiftwasm/swiftwasm-action from 5.7 to 5.8 (<a href="https://redirect.github.com/Quick/Nimble/issues/1057">#1057</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/Quick/Nimble/compare/v9.2.1...v12.2.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
+            pr-body: "Bumps [github.com/quick/nimble](https://github.com/Quick/Nimble) from 9.2.1 to 12.2.0.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/Quick/Nimble/releases\">github.com/quick/nimble's releases</a>.</em></p>\n<blockquote>\n<h2>v12.2.0</h2>\n<h1>Highlights</h1>\n<p>the <code>equal</code> matcher now supports arrays of tuples. For example:</p>\n<pre lang=\"swift\"><code>expect([\r\n    (1, 2),\r\n    (3, 4)\r\n]).to(equal([\r\n    (1, 2),\r\n    (3, 4)\r\n]))\r\n</code></pre>\n<p>Thanks <a href=\"https://github.com/faroman\"><code>@​faroman</code></a> for their contribution!</p>\n<h1>Automatically Generated Release Notes</h1>\n<h2>What's Changed</h2>\n<ul>\n<li>Fix typo in README.md by <a href=\"https://github.com/nemesis\"><code>@​nemesis</code></a> in <a href=\"https://redirect.github.com/Quick/Nimble/pull/1066\">Quick/Nimble#1066</a></li>\n<li>Equal predicate for array of tuples by <a href=\"https://github.com/faroman\"><code>@​faroman</code></a> in <a href=\"https://redirect.github.com/Quick/Nimble/pull/1065\">Quick/Nimble#1065</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a href=\"https://github.com/nemesis\"><code>@​nemesis</code></a> made their first contribution in <a href=\"https://redirect.github.com/Quick/Nimble/pull/1066\">Quick/Nimble#1066</a></li>\n<li><a href=\"https://github.com/faroman\"><code>@​faroman</code></a> made their first contribution in <a href=\"https://redirect.github.com/Quick/Nimble/pull/1065\">Quick/Nimble#1065</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/Quick/Nimble/compare/v12.1.0...v12.2.0\">https://github.com/Quick/Nimble/compare/v12.1.0...v12.2.0</a></p>\n<h2>v12.1.0 - AsyncPredicate</h2>\n<h2>Highlights</h2>\n<ul>\n<li>You can now create Predicates that run in async contexts.</li>\n</ul>\n<h2>What's Changed</h2>\n<ul>\n<li>Add AsyncPredicate - Matchers with AsyncExpressions by <a href=\"https://github.com/younata\"><code>@​younata</code></a> in <a href=\"https://redirect.github.com/Quick/Nimble/pull/1056\">Quick/Nimble#1056</a></li>\n<li>Remove unused constant by <a href=\"https://github.com/peterringset\"><code>@​peterringset</code></a> in <a href=\"https://redirect.github.com/Quick/Nimble/pull/1064\">Quick/Nimble#1064</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a href=\"https://github.com/peterringset\"><code>@​peterringset</code></a> made their first contribution in <a href=\"https://redirect.github.com/Quick/Nimble/pull/1064\">Quick/Nimble#1064</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/Quick/Nimble/compare/v12.0.1...v12.1.0\">https://github.com/Quick/Nimble/compare/v12.0.1...v12.1.0</a></p>\n<h2>v12.0.1</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Fix wasm build by <a href=\"https://github.com/ikesyo\"><code>@​ikesyo</code></a> in <a href=\"https://redirect.github.com/Quick/Nimble/pull/1053\">Quick/Nimble#1053</a></li>\n<li>Bump cocoapods from 1.12.0 to 1.12.1 by <a href=\"https://github.com/dependabot\"><code>@​dependabot</code></a> in <a href=\"https://redirect.github.com/Quick/Nimble/pull/1054\">Quick/Nimble#1054</a></li>\n<li>Bump swiftwasm/swiftwasm-action from 5.7 to 5.8 by <a href=\"https://github.com/dependabot\"><code>@​dependabot</code></a> in <a href=\"https://redirect.github.com/Quick/Nimble/pull/1057\">Quick/Nimble#1057</a></li>\n<li>Make the async version of poll concurrency-safe by wrapping it in an actor by <a href=\"https://github.com/younata\"><code>@​younata</code></a> in <a href=\"https://redirect.github.com/Quick/Nimble/pull/1059\">Quick/Nimble#1059</a></li>\n<li>cast an empty array to avoid a warning during compile time by <a href=\"https://github.com/younata\"><code>@​younata</code></a> in <a href=\"https://redirect.github.com/Quick/Nimble/pull/1060\">Quick/Nimble#1060</a></li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/Quick/Nimble/commit/f552a16f434eef1f18b62985172489f41d37a18e\"><code>f552a16</code></a> [v12.2.0] Update docs and podspec</li>\n<li><a href=\"https://github.com/Quick/Nimble/commit/02f1aa9d0006f6ed926de244638014ab6cc6965d\"><code>02f1aa9</code></a> Equal predicate for array of tuples (<a href=\"https://redirect.github.com/Quick/Nimble/issues/1065\">#1065</a>)</li>\n<li><a href=\"https://github.com/Quick/Nimble/commit/941c1fdc1b5ec3d12b963c2c45e16134043505a4\"><code>941c1fd</code></a> Fix typo in README.md (<a href=\"https://redirect.github.com/Quick/Nimble/issues/1066\">#1066</a>)</li>\n<li><a href=\"https://github.com/Quick/Nimble/commit/831000dd1939bc2096df572c5fd156f41d858bfa\"><code>831000d</code></a> [v12.1.0] Update docs and podspec</li>\n<li><a href=\"https://github.com/Quick/Nimble/commit/670c1f8ab1db3486fca8aab2de0bcd62c768fd5a\"><code>670c1f8</code></a> Remove unused constant (<a href=\"https://redirect.github.com/Quick/Nimble/issues/1064\">#1064</a>)</li>\n<li><a href=\"https://github.com/Quick/Nimble/commit/7f0621bc3f6c4315f01343a0cab0aabbf07f0567\"><code>7f0621b</code></a> Add AsyncPredicate - Matchers with AsyncExpressions (<a href=\"https://redirect.github.com/Quick/Nimble/issues/1056\">#1056</a>)</li>\n<li><a href=\"https://github.com/Quick/Nimble/commit/371f7d278ba95a5511c248aaeec84f5dbe770491\"><code>371f7d2</code></a> [v12.0.1] Update docs and podspec</li>\n<li><a href=\"https://github.com/Quick/Nimble/commit/5176df5b2e654b6047e17a90ce7b16a516cf479e\"><code>5176df5</code></a> cast an empty array to avoid a warning during compile time (<a href=\"https://redirect.github.com/Quick/Nimble/issues/1060\">#1060</a>)</li>\n<li><a href=\"https://github.com/Quick/Nimble/commit/1aea01458f2a34eda6fdc4a3d4bc0142936e46ba\"><code>1aea014</code></a> Make the async version of poll concurrency-safe by wrapping it in an actor (#...</li>\n<li><a href=\"https://github.com/Quick/Nimble/commit/3f372afc6b9866296fcebbe2a46279c6b7271ddd\"><code>3f372af</code></a> Bump swiftwasm/swiftwasm-action from 5.7 to 5.8 (<a href=\"https://redirect.github.com/Quick/Nimble/issues/1057\">#1057</a>)</li>\n<li>Additional commits viewable in <a href=\"https://github.com/Quick/Nimble/compare/v9.2.1...v12.2.0\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
             commit-message: |-
                 Bump github.com/quick/nimble from 9.2.1 to 12.2.0 in /swift
 

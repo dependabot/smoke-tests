@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: cargo
         allowed-updates:
             - update-type: all
@@ -233,18 +234,18 @@ output:
 
                     [[package]]
                     name = "proc-macro2"
-                    version = "1.0.95"
+                    version = "1.0.106"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "02b3e5e68a3a1a02aad3ec490a98007cbc13c37cbe84a3cd7b8e406d76e7f778"
+                    checksum = "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934"
                     dependencies = [
                      "unicode-ident",
                     ]
 
                     [[package]]
                     name = "quote"
-                    version = "1.0.40"
+                    version = "1.0.44"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "1885c039570dc00dcb4ff087a89e185fd56bae234ddc7f056a945bf36467248d"
+                    checksum = "21b2ebcf727b7760c461f091f9f0f539b77b8e87f2fd88131e7f1b433b3cece4"
                     dependencies = [
                      "proc-macro2",
                     ]
@@ -304,18 +305,27 @@ output:
 
                     [[package]]
                     name = "serde"
-                    version = "1.0.219"
+                    version = "1.0.228"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "5f0e2c6ed6606019b4e29e69dbaba95b11854410e5347d525002456dbbb786b6"
+                    checksum = "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e"
+                    dependencies = [
+                     "serde_core",
+                    ]
+
+                    [[package]]
+                    name = "serde_core"
+                    version = "1.0.228"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad"
                     dependencies = [
                      "serde_derive",
                     ]
 
                     [[package]]
                     name = "serde_derive"
-                    version = "1.0.219"
+                    version = "1.0.228"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "5b0276cf7f2c73365f7157c8123c21cd9a50fbbd844757af28ca1f5925fc2a00"
+                    checksum = "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79"
                     dependencies = [
                      "proc-macro2",
                      "quote",
@@ -324,9 +334,9 @@ output:
 
                     [[package]]
                     name = "syn"
-                    version = "2.0.101"
+                    version = "2.0.117"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "8ce2b7fc941b3a24138a0a7cf8e858bfc6a992e7978a068a5c760deb0ed43caf"
+                    checksum = "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99"
                     dependencies = [
                      "proc-macro2",
                      "quote",
@@ -351,9 +361,9 @@ output:
 
                     [[package]]
                     name = "unicode-ident"
-                    version = "1.0.18"
+                    version = "1.0.24"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "5a5f39404a5da50712a4c1eecf25e90dd62b613502b7e925fd4e4d19b5c96512"
+                    checksum = "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75"
 
                     [[package]]
                     name = "wasi"
@@ -790,10 +800,10 @@ output:
                       requirement: null
                       source:
                         branch: null
-                        ref: 0.9.1
+                        ref: 0.10.0
                         type: git
                         url: ssh://git@github.com/rust-random/rand.git
-                  version: db993ec12676119251eaf9f2cba8389a1b07abef
+                  version: acc5f246d3338ffea40aa0f25a46f84d6d19db8d
                   directory: /cargo
             updated-dependency-files:
                 - content: |
@@ -805,7 +815,7 @@ output:
                     [dependencies]
                     time = "=0.3.0-alpha-2"
                     regex = ">=1.6.0, <1.7.0"
-                    rand = { git = "ssh://git@github.com/rust-random/rand.git", tag = "0.9.1" }
+                    rand = { git = "ssh://git@github.com/rust-random/rand.git", tag = "0.10.0" }
                     itoa = { git = "https://github.com/dtolnay/itoa.git", tag = "1.0.5" }
                   content_encoding: utf-8
                   deleted: false
@@ -829,10 +839,16 @@ output:
                     ]
 
                     [[package]]
-                    name = "bitflags"
-                    version = "2.9.1"
+                    name = "anyhow"
+                    version = "1.0.102"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "1b8e56985ec62d17e9c1001dc89c88ecd7dc08e47eba5ec7c29c7b5eeecde967"
+                    checksum = "7f202df86484c868dbad7eaa557ef785d5c66295e41b460ef922eca0723b842c"
+
+                    [[package]]
+                    name = "bitflags"
+                    version = "2.11.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "843867be96c8daad0d758b57df9392b6d8d271134fce549de6ce169ff98a92af"
 
                     [[package]]
                     name = "cfg-if"
@@ -841,16 +857,36 @@ output:
                     checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
                     [[package]]
+                    name = "chacha20"
+                    version = "0.10.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "6f8d983286843e49675a4b7a2d174efe136dc93a18d69130dd18198a6c167601"
+                    dependencies = [
+                     "cfg-if",
+                     "cpufeatures",
+                     "rand_core",
+                    ]
+
+                    [[package]]
                     name = "const_fn"
                     version = "0.4.9"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
                     checksum = "fbdcdcb6d86f71c5e97409ad45898af11cbc995b4ee8112d59095a28d376c935"
 
                     [[package]]
+                    name = "cpufeatures"
+                    version = "0.3.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "8b2a41393f66f16b0823bb79094d54ac5fbd34ab292ddafb9a0456ac9f87d201"
+                    dependencies = [
+                     "libc",
+                    ]
+
+                    [[package]]
                     name = "dependabot"
                     version = "0.1.0"
                     dependencies = [
-                     "itoa",
+                     "itoa 1.0.5",
                      "rand",
                      "regex",
                      "time",
@@ -863,15 +899,68 @@ output:
                     checksum = "53aff6fdc1b181225acdcb5b14c47106726fd8e486707315b1b138baed68ee31"
 
                     [[package]]
-                    name = "getrandom"
-                    version = "0.3.3"
+                    name = "equivalent"
+                    version = "1.0.2"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "26145e563e54f2cadc477553f1ec5ee650b00862f0a58bcd12cbdc5f0ea2d2f4"
+                    checksum = "877a4ace8713b0bcf2a4e7eec82529c029f1d0619886d18145fea96c3ffe5c0f"
+
+                    [[package]]
+                    name = "foldhash"
+                    version = "0.1.5"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "d9c4f5dac5e15c24eb999c26181a6ca40b39fe946cbe4c263c7209467bc83af2"
+
+                    [[package]]
+                    name = "getrandom"
+                    version = "0.4.1"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "139ef39800118c7683f2fd3c98c1b23c09ae076556b435f8e9064ae108aaeeec"
                     dependencies = [
                      "cfg-if",
                      "libc",
                      "r-efi",
-                     "wasi",
+                     "rand_core",
+                     "wasip2",
+                     "wasip3",
+                    ]
+
+                    [[package]]
+                    name = "hashbrown"
+                    version = "0.15.5"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "9229cfe53dfd69f0609a49f65461bd93001ea1ef889cd5529dd176593f5338a1"
+                    dependencies = [
+                     "foldhash",
+                    ]
+
+                    [[package]]
+                    name = "hashbrown"
+                    version = "0.16.1"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "841d1cc9bed7f9236f321df977030373f4a4163ae1a7dbfe1a51a2c1a51d9100"
+
+                    [[package]]
+                    name = "heck"
+                    version = "0.5.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea"
+
+                    [[package]]
+                    name = "id-arena"
+                    version = "2.3.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "3d3067d79b975e8844ca9eb072e16b31c3c1c36928edf9c6789548c524d0d954"
+
+                    [[package]]
+                    name = "indexmap"
+                    version = "2.13.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "7714e70437a7dc3ac8eb7e6f8df75fd8eb422675fc7678aff7364301092b1017"
+                    dependencies = [
+                     "equivalent",
+                     "hashbrown 0.16.1",
+                     "serde",
+                     "serde_core",
                     ]
 
                     [[package]]
@@ -880,10 +969,28 @@ output:
                     source = "git+https://github.com/dtolnay/itoa.git?tag=1.0.5#ef4faeda61024dfb38b3897e46aeda8140828dc6"
 
                     [[package]]
-                    name = "libc"
-                    version = "0.2.172"
+                    name = "itoa"
+                    version = "1.0.17"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "d750af042f7ef4f724306de029d18836c26c1765a54a6a3f094cbd23a7267ffa"
+                    checksum = "92ecc6618181def0457392ccd0ee51198e065e016d1d527a7ac1b6dc7c1f09d2"
+
+                    [[package]]
+                    name = "leb128fmt"
+                    version = "0.1.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "09edd9e8b54e49e587e4f6295a7d29c3ea94d469cb40ab8ca70b288248a81db2"
+
+                    [[package]]
+                    name = "libc"
+                    version = "0.2.182"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "6800badb6cb2082ffd7b6a67e6125bb39f18782f793520caee8cb8846be06112"
+
+                    [[package]]
+                    name = "log"
+                    version = "0.4.29"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "5e5032e24019045c762d3c0f28f5b6b8bbf38563a65908389bf7978758920897"
 
                     [[package]]
                     name = "memchr"
@@ -892,42 +999,54 @@ output:
                     checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
 
                     [[package]]
-                    name = "ppv-lite86"
-                    version = "0.2.17"
+                    name = "prettyplease"
+                    version = "0.2.37"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
-
-                    [[package]]
-                    name = "r-efi"
-                    version = "5.2.0"
-                    source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "74765f6d916ee2faa39bc8e68e4f3ed8949b48cccdac59983d287a7cb71ce9c5"
-
-                    [[package]]
-                    name = "rand"
-                    version = "0.9.1"
-                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.9.1#db993ec12676119251eaf9f2cba8389a1b07abef"
+                    checksum = "479ca8adacdd7ce8f1fb39ce9ecccbfe93a3f1344b3d0d97f20bc0196208f62b"
                     dependencies = [
-                     "rand_chacha",
-                     "rand_core",
+                     "proc-macro2",
+                     "syn",
                     ]
 
                     [[package]]
-                    name = "rand_chacha"
-                    version = "0.9.0"
-                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.9.1#db993ec12676119251eaf9f2cba8389a1b07abef"
+                    name = "proc-macro2"
+                    version = "1.0.106"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934"
                     dependencies = [
-                     "ppv-lite86",
+                     "unicode-ident",
+                    ]
+
+                    [[package]]
+                    name = "quote"
+                    version = "1.0.44"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "21b2ebcf727b7760c461f091f9f0f539b77b8e87f2fd88131e7f1b433b3cece4"
+                    dependencies = [
+                     "proc-macro2",
+                    ]
+
+                    [[package]]
+                    name = "r-efi"
+                    version = "5.3.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "69cdb34c158ceb288df11e18b4bd39de994f6657d83847bdffdbd7f346754b0f"
+
+                    [[package]]
+                    name = "rand"
+                    version = "0.10.0"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.10.0#acc5f246d3338ffea40aa0f25a46f84d6d19db8d"
+                    dependencies = [
+                     "chacha20",
+                     "getrandom",
                      "rand_core",
                     ]
 
                     [[package]]
                     name = "rand_core"
-                    version = "0.9.3"
-                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.9.1#db993ec12676119251eaf9f2cba8389a1b07abef"
-                    dependencies = [
-                     "getrandom",
-                    ]
+                    version = "0.10.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "0c8d0fd677905edcbeedbf2edb6494d676f0e98d54d5cf9bda0b061cb8fb8aba"
 
                     [[package]]
                     name = "regex"
@@ -947,6 +1066,54 @@ output:
                     checksum = "f162c6dd7b008981e4d40210aca20b4bd0f9b60ca9271061b07f78537722f2e1"
 
                     [[package]]
+                    name = "semver"
+                    version = "1.0.27"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "d767eb0aabc880b29956c35734170f26ed551a859dbd361d140cdbeca61ab1e2"
+
+                    [[package]]
+                    name = "serde"
+                    version = "1.0.228"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e"
+                    dependencies = [
+                     "serde_core",
+                    ]
+
+                    [[package]]
+                    name = "serde_core"
+                    version = "1.0.228"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad"
+                    dependencies = [
+                     "serde_derive",
+                    ]
+
+                    [[package]]
+                    name = "serde_derive"
+                    version = "1.0.228"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79"
+                    dependencies = [
+                     "proc-macro2",
+                     "quote",
+                     "syn",
+                    ]
+
+                    [[package]]
+                    name = "serde_json"
+                    version = "1.0.149"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "83fc039473c5595ace860d8c4fafa220ff474b3fc6bfdb4293327f1a37e94d86"
+                    dependencies = [
+                     "itoa 1.0.17",
+                     "memchr",
+                     "serde",
+                     "serde_core",
+                     "zmij",
+                    ]
+
+                    [[package]]
                     name = "standback"
                     version = "0.3.5"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -954,6 +1121,17 @@ output:
                     dependencies = [
                      "easy-ext",
                      "version_check",
+                    ]
+
+                    [[package]]
+                    name = "syn"
+                    version = "2.0.117"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99"
+                    dependencies = [
+                     "proc-macro2",
+                     "quote",
+                     "unicode-ident",
                     ]
 
                     [[package]]
@@ -968,28 +1146,168 @@ output:
                     ]
 
                     [[package]]
+                    name = "unicode-ident"
+                    version = "1.0.24"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75"
+
+                    [[package]]
+                    name = "unicode-xid"
+                    version = "0.2.6"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "ebc1c04c71510c7f702b52b7c350734c9ff1295c464a03335b00bb84fc54f853"
+
+                    [[package]]
                     name = "version_check"
                     version = "0.9.4"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
                     checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
 
                     [[package]]
-                    name = "wasi"
-                    version = "0.14.2+wasi-0.2.4"
+                    name = "wasip2"
+                    version = "1.0.2+wasi-0.2.9"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "9683f9a5a998d873c0d21fcbe3c083009670149a8fab228644b8bd36b2c48cb3"
+                    checksum = "9517f9239f02c069db75e65f174b3da828fe5f5b945c4dd26bd25d89c03ebcf5"
                     dependencies = [
-                     "wit-bindgen-rt",
+                     "wit-bindgen",
                     ]
 
                     [[package]]
-                    name = "wit-bindgen-rt"
-                    version = "0.39.0"
+                    name = "wasip3"
+                    version = "0.4.0+wasi-0.3.0-rc-2026-01-06"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "6f42320e61fe2cfd34354ecb597f86f413484a798ba44a8ca1165c58d42da6c1"
+                    checksum = "5428f8bf88ea5ddc08faddef2ac4a67e390b88186c703ce6dbd955e1c145aca5"
+                    dependencies = [
+                     "wit-bindgen",
+                    ]
+
+                    [[package]]
+                    name = "wasm-encoder"
+                    version = "0.244.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "990065f2fe63003fe337b932cfb5e3b80e0b4d0f5ff650e6985b1048f62c8319"
+                    dependencies = [
+                     "leb128fmt",
+                     "wasmparser",
+                    ]
+
+                    [[package]]
+                    name = "wasm-metadata"
+                    version = "0.244.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "bb0e353e6a2fbdc176932bbaab493762eb1255a7900fe0fea1a2f96c296cc909"
+                    dependencies = [
+                     "anyhow",
+                     "indexmap",
+                     "wasm-encoder",
+                     "wasmparser",
+                    ]
+
+                    [[package]]
+                    name = "wasmparser"
+                    version = "0.244.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "47b807c72e1bac69382b3a6fb3dbe8ea4c0ed87ff5629b8685ae6b9a611028fe"
                     dependencies = [
                      "bitflags",
+                     "hashbrown 0.15.5",
+                     "indexmap",
+                     "semver",
                     ]
+
+                    [[package]]
+                    name = "wit-bindgen"
+                    version = "0.51.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "d7249219f66ced02969388cf2bb044a09756a083d0fab1e566056b04d9fbcaa5"
+                    dependencies = [
+                     "wit-bindgen-rust-macro",
+                    ]
+
+                    [[package]]
+                    name = "wit-bindgen-core"
+                    version = "0.51.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "ea61de684c3ea68cb082b7a88508a8b27fcc8b797d738bfc99a82facf1d752dc"
+                    dependencies = [
+                     "anyhow",
+                     "heck",
+                     "wit-parser",
+                    ]
+
+                    [[package]]
+                    name = "wit-bindgen-rust"
+                    version = "0.51.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "b7c566e0f4b284dd6561c786d9cb0142da491f46a9fbed79ea69cdad5db17f21"
+                    dependencies = [
+                     "anyhow",
+                     "heck",
+                     "indexmap",
+                     "prettyplease",
+                     "syn",
+                     "wasm-metadata",
+                     "wit-bindgen-core",
+                     "wit-component",
+                    ]
+
+                    [[package]]
+                    name = "wit-bindgen-rust-macro"
+                    version = "0.51.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "0c0f9bfd77e6a48eccf51359e3ae77140a7f50b1e2ebfe62422d8afdaffab17a"
+                    dependencies = [
+                     "anyhow",
+                     "prettyplease",
+                     "proc-macro2",
+                     "quote",
+                     "syn",
+                     "wit-bindgen-core",
+                     "wit-bindgen-rust",
+                    ]
+
+                    [[package]]
+                    name = "wit-component"
+                    version = "0.244.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "9d66ea20e9553b30172b5e831994e35fbde2d165325bec84fc43dbf6f4eb9cb2"
+                    dependencies = [
+                     "anyhow",
+                     "bitflags",
+                     "indexmap",
+                     "log",
+                     "serde",
+                     "serde_derive",
+                     "serde_json",
+                     "wasm-encoder",
+                     "wasm-metadata",
+                     "wasmparser",
+                     "wit-parser",
+                    ]
+
+                    [[package]]
+                    name = "wit-parser"
+                    version = "0.244.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "ecc8ac4bc1dc3381b7f59c34f00b67e18f910c2c0f50015669dde7def656a736"
+                    dependencies = [
+                     "anyhow",
+                     "id-arena",
+                     "indexmap",
+                     "log",
+                     "semver",
+                     "serde",
+                     "serde_derive",
+                     "serde_json",
+                     "unicode-xid",
+                     "wasmparser",
+                    ]
+
+                    [[package]]
+                    name = "zmij"
+                    version = "1.0.21"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "b8848ee67ecc8aedbaf3e4122217aff892639231befc6a1b58d29fff4c2cabaa"
                   content_encoding: utf-8
                   deleted: false
                   directory: /cargo
@@ -997,71 +1315,63 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump rand from 0.8.4 to 0.9.1 in /cargo
+            pr-title: Bump rand from 0.8.4 to 0.10.0 in /cargo
             pr-body: |
-                Bumps [rand](https://github.com/rust-random/rand) from 0.8.4 to 0.9.1.
+                Bumps [rand](https://github.com/rust-random/rand) from 0.8.4 to 0.10.0.
                 <details>
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/rust-random/rand/blob/master/CHANGELOG.md">rand's changelog</a>.</em></p>
                 <blockquote>
-                <h2>[0.9.1] - 2025-04-17</h2>
-                <h3>Security and unsafe</h3>
-                <ul>
-                <li>Revise &quot;not a crypto library&quot; policy again (<a href="https://redirect.github.com/rust-random/rand/issues/1565">#1565</a>)</li>
-                <li>Remove <code>zerocopy</code> dependency from <code>rand</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1579">#1579</a>)</li>
-                </ul>
-                <h3>Fixes</h3>
-                <ul>
-                <li>Fix feature <code>simd_support</code> for recent nightly rust (<a href="https://redirect.github.com/rust-random/rand/issues/1586">#1586</a>)</li>
-                </ul>
+                <h2>[0.10.0] - 2026-02-08</h2>
                 <h3>Changes</h3>
                 <ul>
-                <li>Allow <code>fn rand::seq::index::sample_weighted</code> and <code>fn IndexedRandom::choose_multiple_weighted</code> to return fewer than <code>amount</code> results (<a href="https://redirect.github.com/rust-random/rand/issues/1623">#1623</a>), reverting an undocumented change (<a href="https://redirect.github.com/rust-random/rand/issues/1382">#1382</a>) to the previous release.</li>
+                <li>The dependency on <code>rand_chacha</code> has been replaced with a dependency on <code>chacha20</code>. This changes the implementation behind <code>StdRng</code>, but the output remains the same. There may be some API breakage when using the ChaCha-types directly as these are now the ones in <code>chacha20</code> instead of <code>rand_chacha</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1642">#1642</a>).</li>
+                <li>Rename fns <code>IndexedRandom::choose_multiple</code> -&gt; <code>sample</code>, <code>choose_multiple_array</code> -&gt; <code>sample_array</code>, <code>choose_multiple_weighted</code> -&gt; <code>sample_weighted</code>, struct <code>SliceChooseIter</code> -&gt; <code>IndexedSamples</code> and fns <code>IteratorRandom::choose_multiple</code> -&gt; <code>sample</code>, <code>choose_multiple_fill</code> -&gt; <code>sample_fill</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1632">#1632</a>)</li>
+                <li>Use Edition 2024 and MSRV 1.85 (<a href="https://redirect.github.com/rust-random/rand/issues/1653">#1653</a>)</li>
+                <li>Let <code>Fill</code> be implemented for element types, not sliceable types (<a href="https://redirect.github.com/rust-random/rand/issues/1652">#1652</a>)</li>
+                <li>Fix <code>OsError::raw_os_error</code> on UEFI targets by returning <code>Option&lt;usize&gt;</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1665">#1665</a>)</li>
+                <li>Replace fn <code>TryRngCore::read_adapter(..) -&gt; RngReadAdapter</code> with simpler struct <code>RngReader</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1669">#1669</a>)</li>
+                <li>Remove fns <code>SeedableRng::from_os_rng</code>, <code>try_from_os_rng</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1674">#1674</a>)</li>
+                <li>Remove <code>Clone</code> support for <code>StdRng</code>, <code>ReseedingRng</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1677">#1677</a>)</li>
+                <li>Use <code>postcard</code> instead of <code>bincode</code> to test the serde feature (<a href="https://redirect.github.com/rust-random/rand/issues/1693">#1693</a>)</li>
+                <li>Avoid excessive allocation in <code>IteratorRandom::sample</code> when <code>amount</code> is much larger than iterator size (<a href="https://redirect.github.com/rust-random/rand/issues/1695">#1695</a>)</li>
+                <li>Rename <code>os_rng</code> -&gt; <code>sys_rng</code>, <code>OsRng</code> -&gt; <code>SysRng</code>, <code>OsError</code> -&gt; <code>SysError</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1697">#1697</a>)</li>
+                <li>Rename <code>Rng</code> -&gt; <code>RngExt</code> as upstream <code>rand_core</code> has renamed <code>RngCore</code> -&gt; <code>Rng</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1717">#1717</a>)</li>
                 </ul>
                 <h3>Additions</h3>
                 <ul>
-                <li>Add <code>rand::distr::Alphabetic</code> distribution. (<a href="https://redirect.github.com/rust-random/rand/issues/1587">#1587</a>)</li>
-                <li>Re-export <code>rand_core</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1604">#1604</a>)</li>
+                <li>Add fns <code>IndexedRandom::choose_iter</code>, <code>choose_weighted_iter</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1632">#1632</a>)</li>
+                <li>Pub export <code>Xoshiro128PlusPlus</code>, <code>Xoshiro256PlusPlus</code> prngs (<a href="https://redirect.github.com/rust-random/rand/issues/1649">#1649</a>)</li>
+                <li>Pub export <code>ChaCha8Rng</code>, <code>ChaCha12Rng</code>, <code>ChaCha20Rng</code> behind <code>chacha</code> feature (<a href="https://redirect.github.com/rust-random/rand/issues/1659">#1659</a>)</li>
+                <li>Fn <code>rand::make_rng() -&gt; R where R: SeedableRng</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1734">#1734</a>)</li>
                 </ul>
-                <h2>[0.9.0] - 2025-01-27</h2>
-                <h3>Security and unsafe</h3>
+                <h3>Removals</h3>
                 <ul>
-                <li>Policy: &quot;rand is not a crypto library&quot; (<a href="https://redirect.github.com/rust-random/rand/issues/1514">#1514</a>)</li>
-                <li>Remove fork-protection from <code>ReseedingRng</code> and <code>ThreadRng</code>. Instead, it is recommended to call <code>ThreadRng::reseed</code> on fork. (<a href="https://redirect.github.com/rust-random/rand/issues/1379">#1379</a>)</li>
-                <li>Use <code>zerocopy</code> to replace some <code>unsafe</code> code (<a href="https://redirect.github.com/rust-random/rand/issues/1349">#1349</a>, <a href="https://redirect.github.com/rust-random/rand/issues/1393">#1393</a>, <a href="https://redirect.github.com/rust-random/rand/issues/1446">#1446</a>, <a href="https://redirect.github.com/rust-random/rand/issues/1502">#1502</a>)</li>
+                <li>Removed <code>ReseedingRng</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1722">#1722</a>)</li>
+                <li>Removed unused feature &quot;nightly&quot; (<a href="https://redirect.github.com/rust-random/rand/issues/1732">#1732</a>)</li>
+                <li>Removed feature <code>small_rng</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1732">#1732</a>)</li>
                 </ul>
-                <h3>Dependencies</h3>
+                <p><a href="https://redirect.github.com/rust-random/rand/issues/1632">#1632</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1632">rust-random/rand#1632</a>
+                <a href="https://redirect.github.com/rust-random/rand/issues/1642">#1642</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1642">rust-random/rand#1642</a>
+                <a href="https://redirect.github.com/rust-random/rand/issues/1649">#1649</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1649">rust-random/rand#1649</a>
+                <a href="https://redirect.github.com/rust-random/rand/issues/1652">#1652</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1652">rust-random/rand#1652</a>
+                <a href="https://redirect.github.com/rust-random/rand/issues/1653">#1653</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1653">rust-random/rand#1653</a>
+                <a href="https://redirect.github.com/rust-random/rand/issues/1659">#1659</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1659">rust-random/rand#1659</a>
+                <a href="https://redirect.github.com/rust-random/rand/issues/1665">#1665</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1665">rust-random/rand#1665</a>
+                <a href="https://redirect.github.com/rust-random/rand/issues/1669">#1669</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1669">rust-random/rand#1669</a>
+                <a href="https://redirect.github.com/rust-random/rand/issues/1674">#1674</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1674">rust-random/rand#1674</a>
+                <a href="https://redirect.github.com/rust-random/rand/issues/1677">#1677</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1677">rust-random/rand#1677</a>
+                <a href="https://redirect.github.com/rust-random/rand/issues/1693">#1693</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1693">rust-random/rand#1693</a>
+                <a href="https://redirect.github.com/rust-random/rand/issues/1695">#1695</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1695">rust-random/rand#1695</a>
+                <a href="https://redirect.github.com/rust-random/rand/issues/1697">#1697</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1697">rust-random/rand#1697</a>
+                <a href="https://redirect.github.com/rust-random/rand/issues/1717">#1717</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1717">rust-random/rand#1717</a>
+                <a href="https://redirect.github.com/rust-random/rand/issues/1722">#1722</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1722">rust-random/rand#1722</a>
+                <a href="https://redirect.github.com/rust-random/rand/issues/1732">#1732</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1732">rust-random/rand#1732</a>
+                <a href="https://redirect.github.com/rust-random/rand/issues/1734">#1734</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1734">rust-random/rand#1734</a></p>
+                <h2>[0.9.2] - 2025-07-20</h2>
+                <h3>Deprecated</h3>
                 <ul>
-                <li>Bump the MSRV to 1.63.0 (<a href="https://redirect.github.com/rust-random/rand/issues/1207">#1207</a>, <a href="https://redirect.github.com/rust-random/rand/issues/1246">#1246</a>, <a href="https://redirect.github.com/rust-random/rand/issues/1269">#1269</a>, <a href="https://redirect.github.com/rust-random/rand/issues/1341">#1341</a>, <a href="https://redirect.github.com/rust-random/rand/issues/1416">#1416</a>, <a href="https://redirect.github.com/rust-random/rand/issues/1536">#1536</a>); note that 1.60.0 may work for dependents when using <code>--ignore-rust-version</code></li>
-                <li>Update to <code>rand_core</code> v0.9.0 (<a href="https://redirect.github.com/rust-random/rand/issues/1558">#1558</a>)</li>
-                </ul>
-                <h3>Features</h3>
-                <ul>
-                <li>Support <code>std</code> feature without <code>getrandom</code> or <code>rand_chacha</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1354">#1354</a>)</li>
-                <li>Enable feature <code>small_rng</code> by default (<a href="https://redirect.github.com/rust-random/rand/issues/1455">#1455</a>)</li>
-                <li>Remove implicit feature <code>rand_chacha</code>; use <code>std_rng</code> instead. (<a href="https://redirect.github.com/rust-random/rand/issues/1473">#1473</a>)</li>
-                <li>Rename feature <code>serde1</code> to <code>serde</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1477">#1477</a>)</li>
-                <li>Rename feature <code>getrandom</code> to <code>os_rng</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1537">#1537</a>)</li>
-                <li>Add feature <code>thread_rng</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1547">#1547</a>)</li>
-                </ul>
-                <h3>API changes: rand_core traits</h3>
-                <ul>
-                <li>Add fn <code>RngCore::read_adapter</code> implementing <code>std::io::Read</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1267">#1267</a>)</li>
-                <li>Add trait <code>CryptoBlockRng: BlockRngCore</code>; make <code>trait CryptoRng: RngCore</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1273">#1273</a>)</li>
-                <li>Add traits <code>TryRngCore</code>, <code>TryCryptoRng</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1424">#1424</a>, <a href="https://redirect.github.com/rust-random/rand/issues/1499">#1499</a>)</li>
-                <li>Rename <code>fn SeedableRng::from_rng</code> -&gt; <code>try_from_rng</code> and add infallible variant <code>fn from_rng</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1424">#1424</a>)</li>
-                <li>Rename <code>fn SeedableRng::from_entropy</code> -&gt; <code>from_os_rng</code> and add fallible variant <code>fn try_from_os_rng</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1424">#1424</a>)</li>
-                <li>Add bounds <code>Clone</code> and <code>AsRef</code> to associated type <code>SeedableRng::Seed</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1491">#1491</a>)</li>
-                </ul>
-                <h3>API changes: Rng trait and top-level fns</h3>
-                <ul>
-                <li>Rename fn <code>rand::thread_rng()</code> to <code>rand::rng()</code> and remove from the prelude (<a href="https://redirect.github.com/rust-random/rand/issues/1506">#1506</a>)</li>
-                <li>Remove fn <code>rand::random()</code> from the prelude (<a href="https://redirect.github.com/rust-random/rand/issues/1506">#1506</a>)</li>
-                <li>Add top-level fns <code>random_iter</code>, <code>random_range</code>, <code>random_bool</code>, <code>random_ratio</code>, <code>fill</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1488">#1488</a>)</li>
-                <li>Re-introduce fn <code>Rng::gen_iter</code> as <code>random_iter</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1305">#1305</a>, <a href="https://redirect.github.com/rust-random/rand/issues/1500">#1500</a>)</li>
-                <li>Rename fn <code>Rng::gen</code> to <code>random</code> to avoid conflict with the new <code>gen</code> keyword in Rust 2024 (<a href="https://redirect.github.com/rust-random/rand/issues/1438">#1438</a>)</li>
-                <li>Rename fns <code>Rng::gen_range</code> to <code>random_range</code>, <code>gen_bool</code> to <code>random_bool</code>, <code>gen_ratio</code> to <code>random_ratio</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1505">#1505</a>)</li>
-                <li>Annotate panicking methods with <code>#[track_caller]</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1442">#1442</a>, <a href="https://redirect.github.com/rust-random/rand/issues/1447">#1447</a>)</li>
+                <li>Deprecate <code>rand::rngs::mock</code> module and <code>StepRng</code> generator (<a href="https://redirect.github.com/rust-random/rand/issues/1634">#1634</a>)</li>
                 </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
@@ -1070,27 +1380,27 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/rust-random/rand/commit/db993ec12676119251eaf9f2cba8389a1b07abef"><code>db993ec</code></a> Prepare rand v0.9.1 (<a href="https://redirect.github.com/rust-random/rand/issues/1629">#1629</a>)</li>
-                <li><a href="https://github.com/rust-random/rand/commit/3057641020408f64a4618b1c582cad45a9304811"><code>3057641</code></a> Remove zerocopy from rand (<a href="https://redirect.github.com/rust-random/rand/issues/1579">#1579</a>)</li>
-                <li><a href="https://github.com/rust-random/rand/commit/f812984caac14103cde19c3bebaeae1f2d4ce899"><code>f812984</code></a> readme: replace relative links with absolute (<a href="https://redirect.github.com/rust-random/rand/issues/1627">#1627</a>)</li>
-                <li><a href="https://github.com/rust-random/rand/commit/d468501cac5bff2ef56613f1567cc2aeca1bb0cc"><code>d468501</code></a> Fix documentation of fns rand_core::le::read_u*_into (<a href="https://redirect.github.com/rust-random/rand/issues/1626">#1626</a>)</li>
-                <li><a href="https://github.com/rust-random/rand/commit/5f5b580a13336f33fe7dcc410ac6522c439f3731"><code>5f5b580</code></a> Allow fn choose_multiple_weighted to return fewer than amount elts (<a href="https://redirect.github.com/rust-random/rand/issues/1623">#1623</a>)</li>
-                <li><a href="https://github.com/rust-random/rand/commit/7808f4e1f7d9578e3c08405b1f4e575720d58a51"><code>7808f4e</code></a> Update README.md Default Features (<a href="https://redirect.github.com/rust-random/rand/issues/1618">#1618</a>)</li>
-                <li><a href="https://github.com/rust-random/rand/commit/afcfbb26b08303703bf245b880a3a7fb979fc55a"><code>afcfbb2</code></a> Add 'unbiased' to 'Crate Features' section (<a href="https://redirect.github.com/rust-random/rand/issues/1616">#1616</a>)</li>
-                <li><a href="https://github.com/rust-random/rand/commit/17fea2b6b3aa88ab0d08f0999d926ac645b89857"><code>17fea2b</code></a> Add 'unbiased' to 'Crate Features' section</li>
-                <li><a href="https://github.com/rust-random/rand/commit/9c953d47ce733f45ed68576eb10bfdba9215db01"><code>9c953d4</code></a> Update rand_core version number in Readme (<a href="https://redirect.github.com/rust-random/rand/issues/1613">#1613</a>)</li>
-                <li><a href="https://github.com/rust-random/rand/commit/340849e53b71da0f15af448d10511c2e62e50ba1"><code>340849e</code></a> Prepare rand_core v0.9.3 (<a href="https://redirect.github.com/rust-random/rand/issues/1608">#1608</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/rust-random/rand/compare/8792268dfe57e49bb4518190bf4fe66176759a44...db993ec12676119251eaf9f2cba8389a1b07abef">compare view</a></li>
+                <li><a href="https://github.com/rust-random/rand/commit/acc5f246d3338ffea40aa0f25a46f84d6d19db8d"><code>acc5f24</code></a> Prepare v0.10.0 releases (<a href="https://redirect.github.com/rust-random/rand/issues/1729">#1729</a>)</li>
+                <li><a href="https://github.com/rust-random/rand/commit/95c51651c904ca8e77cdec5ebb6f218bb505f18f"><code>95c5165</code></a> Add fn rand::make_rng (<a href="https://redirect.github.com/rust-random/rand/issues/1734">#1734</a>)</li>
+                <li><a href="https://github.com/rust-random/rand/commit/146da581490e534332a6018c15d7765b4c16851e"><code>146da58</code></a> CHANGELOG: add PR links (<a href="https://redirect.github.com/rust-random/rand/issues/1738">#1738</a>)</li>
+                <li><a href="https://github.com/rust-random/rand/commit/8cacd6da6df9256d13d8ceb499310844227379fd"><code>8cacd6d</code></a> README tweaks (<a href="https://redirect.github.com/rust-random/rand/issues/1737">#1737</a>)</li>
+                <li><a href="https://github.com/rust-random/rand/commit/28e3df866fdf2a1892abce84a0832c1eb15511ef"><code>28e3df8</code></a> Update chacha20: use ChaChaCore directly; remove bytes_until_reseed field (<a href="https://redirect.github.com/rust-random/rand/issues/1">#1</a>...</li>
+                <li><a href="https://github.com/rust-random/rand/commit/03db3110d0224cf5c9ae7b4462e58f4dca4a5293"><code>03db311</code></a> Replace fn reseed_and_generate with try_to_reseed</li>
+                <li><a href="https://github.com/rust-random/rand/commit/b14483e6abd464c2745ed701cebf214a0f6fb374"><code>b14483e</code></a> Apply inline attr to fn generate</li>
+                <li><a href="https://github.com/rust-random/rand/commit/fda8f74872f759cf72514c84dec30033c04f60d1"><code>fda8f74</code></a> Remove bytes_until_reseed field</li>
+                <li><a href="https://github.com/rust-random/rand/commit/213bb3bd4270df73bdd4885c2bf5682dce73c03d"><code>213bb3b</code></a> Bump chacha20 to 0.10.0-rc.11</li>
+                <li><a href="https://github.com/rust-random/rand/commit/72afe1e973fcd83d840cf597888223072bbdb04c"><code>72afe1e</code></a> Minor tweaks; prepare v0.10.0-rc.9 (<a href="https://redirect.github.com/rust-random/rand/issues/1736">#1736</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/rust-random/rand/compare/8792268dfe57e49bb4518190bf4fe66176759a44...acc5f246d3338ffea40aa0f25a46f84d6d19db8d">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump rand from 0.8.4 to 0.9.1 in /cargo
+                Bump rand from 0.8.4 to 0.10.0 in /cargo
 
-                Bumps [rand](https://github.com/rust-random/rand) from 0.8.4 to 0.9.1.
+                Bumps [rand](https://github.com/rust-random/rand) from 0.8.4 to 0.10.0.
                 - [Release notes](https://github.com/rust-random/rand/releases)
                 - [Changelog](https://github.com/rust-random/rand/blob/master/CHANGELOG.md)
-                - [Commits](https://github.com/rust-random/rand/compare/8792268dfe57e49bb4518190bf4fe66176759a44...db993ec12676119251eaf9f2cba8389a1b07abef)
+                - [Commits](https://github.com/rust-random/rand/compare/8792268dfe57e49bb4518190bf4fe66176759a44...acc5f246d3338ffea40aa0f25a46f84d6d19db8d)
     - type: create_pull_request
       expect:
         data:
@@ -1115,10 +1425,10 @@ output:
                       requirement: null
                       source:
                         branch: null
-                        ref: 1.0.15
+                        ref: 1.0.17
                         type: git
                         url: https://github.com/dtolnay/itoa.git
-                  version: e2766b868e4ac1ae2bf5bea1ac43d4c0da23b899
+                  version: 21d610902fb79eb16b7c155d25574fb7376d9e97
                   directory: /cargo
             updated-dependency-files:
                 - content: |
@@ -1131,7 +1441,7 @@ output:
                     time = "=0.3.0-alpha-2"
                     regex = ">=1.6.0, <1.7.0"
                     rand = { git = "ssh://git@github.com/rust-random/rand.git", tag = "0.8.4" }
-                    itoa = { git = "https://github.com/dtolnay/itoa.git", tag = "1.0.15" }
+                    itoa = { git = "https://github.com/dtolnay/itoa.git", tag = "1.0.17" }
                   content_encoding: utf-8
                   deleted: false
                   directory: /cargo
@@ -1194,8 +1504,8 @@ output:
 
                     [[package]]
                     name = "itoa"
-                    version = "1.0.15"
-                    source = "git+https://github.com/dtolnay/itoa.git?tag=1.0.15#e2766b868e4ac1ae2bf5bea1ac43d4c0da23b899"
+                    version = "1.0.17"
+                    source = "git+https://github.com/dtolnay/itoa.git?tag=1.0.17#21d610902fb79eb16b7c155d25574fb7376d9e97"
 
                     [[package]]
                     name = "libc"
@@ -1307,13 +1617,17 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump itoa from 1.0.5 to 1.0.15 in /cargo
+            pr-title: Bump itoa from 1.0.5 to 1.0.17 in /cargo
             pr-body: |
-                Bumps [itoa](https://github.com/dtolnay/itoa) from 1.0.5 to 1.0.15.
+                Bumps [itoa](https://github.com/dtolnay/itoa) from 1.0.5 to 1.0.17.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/dtolnay/itoa/releases">itoa's releases</a>.</em></p>
                 <blockquote>
+                <h2>1.0.16</h2>
+                <ul>
+                <li>Synchronize algorithm improvements from libcore (<a href="https://redirect.github.com/dtolnay/itoa/issues/65">#65</a>)</li>
+                </ul>
                 <h2>1.0.15</h2>
                 <ul>
                 <li>Documentation improvements</li>
@@ -1359,26 +1673,288 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/dtolnay/itoa/commit/e2766b868e4ac1ae2bf5bea1ac43d4c0da23b899"><code>e2766b8</code></a> Release 1.0.15</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/a136ce878236ce25f3e983abe2995c63a22e5c8c"><code>a136ce8</code></a> Point standard library links to stable</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/ecc7faece72e592916d43efe8e6081c83e3c7fb6"><code>ecc7fae</code></a> Convert html links to intra-doc links</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/94fea8f9bf4852f05f4adf81f2b566e5041c9e1d"><code>94fea8f</code></a> Unset doc-scrape-examples for lib target</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/758499d5663211927f5c4e3b5694542b7e755952"><code>758499d</code></a> More precise gitignore patterns</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/7e6b2580b1ac3ad7d6f25887af01a09686c0ea5c"><code>7e6b258</code></a> Release 1.0.14</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/6f07cf652163703a8aeab6d174617d6930ac8946"><code>6f07cf6</code></a> Merge pull request <a href="https://redirect.github.com/dtolnay/itoa/issues/56">#56</a> from dtolnay/hidebuffer</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/d2f97a873e2d365349a6b5bb99293e00a177229e"><code>d2f97a8</code></a> Try to prevent Integer&lt;Buffer = ...&gt; IDE suggestion</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/d49fc1d6ba09586cb6e0936ee092e98958b2de51"><code>d49fc1d</code></a> Release 1.0.13</li>
-                <li><a href="https://github.com/dtolnay/itoa/commit/3118ea63cdb9f8a94a111a3c1d16f7d1bcb2980b"><code>3118ea6</code></a> Merge pull request <a href="https://redirect.github.com/dtolnay/itoa/issues/55">#55</a> from dtolnay/isize</li>
-                <li>Additional commits viewable in <a href="https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...e2766b868e4ac1ae2bf5bea1ac43d4c0da23b899">compare view</a></li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/21d610902fb79eb16b7c155d25574fb7376d9e97"><code>21d6109</code></a> Release 1.0.17</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/55c15a1bfcdf2bcbe0029ebc0260bb8ee85fd85d"><code>55c15a1</code></a> Use performance chart from itoa-benchmark</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/cf33343af9e83440e548bf5a53b8fe5307a525fb"><code>cf33343</code></a> Update ryu links to zmij</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/2dff2490315043aa2e4ecf5c7d4c890c32c668a0"><code>2dff249</code></a> Set repr(C) on DECIMAL_PAIRS</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/4c18677446fda341479596e11d5e917aba5456e8"><code>4c18677</code></a> Release 1.0.16</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/2e6134dbb58450c38464c4e040425cc0b01311f5"><code>2e6134d</code></a> Exclude benchmark dependencies from being compiled by miri</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/2c7311bba97f8118b647b9c8062f0f315aec5dd0"><code>2c7311b</code></a> Merge pull request <a href="https://redirect.github.com/dtolnay/itoa/issues/65">#65</a> from dtolnay/up</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/bb76a9cc0fa6dea696243455101ab8456bb1515d"><code>bb76a9c</code></a> Update libcore implementation links</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/83539d13dcbef95fbbce448ab02e2a536c725678"><code>83539d1</code></a> Ignore cast_lossless pedantic clippy lint</li>
+                <li><a href="https://github.com/dtolnay/itoa/commit/4394758d0860c9a77a251292efd5b810e89ca1d9"><code>4394758</code></a> Update benchmark chart</li>
+                <li>Additional commits viewable in <a href="https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...21d610902fb79eb16b7c155d25574fb7376d9e97">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump itoa from 1.0.5 to 1.0.15 in /cargo
+                Bump itoa from 1.0.5 to 1.0.17 in /cargo
 
-                Bumps [itoa](https://github.com/dtolnay/itoa) from 1.0.5 to 1.0.15.
+                Bumps [itoa](https://github.com/dtolnay/itoa) from 1.0.5 to 1.0.17.
                 - [Release notes](https://github.com/dtolnay/itoa/releases)
-                - [Commits](https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...e2766b868e4ac1ae2bf5bea1ac43d4c0da23b899)
+                - [Commits](https://github.com/dtolnay/itoa/compare/ef4faeda61024dfb38b3897e46aeda8140828dc6...21d610902fb79eb16b7c155d25574fb7376d9e97)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 3d44220c5ab8e3c592b63373354a596b781f6e09
+            dependencies:
+                - name: cfg-if
+                  previous-requirements: []
+                  previous-version: 1.0.0
+                  requirements: []
+                  version: 1.0.4
+                  directory: /cargo
+            updated-dependency-files:
+                - content: |
+                    # This file is automatically @generated by Cargo.
+                    # It is not intended for manual editing.
+                    version = 4
+
+                    [[package]]
+                    name = "aho-corasick"
+                    version = "0.7.20"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "cc936419f96fa211c1b9166887b38e5e40b19958e5b895be7c1f93adec7071ac"
+                    dependencies = [
+                     "memchr",
+                    ]
+
+                    [[package]]
+                    name = "cfg-if"
+                    version = "1.0.4"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801"
+
+                    [[package]]
+                    name = "const_fn"
+                    version = "0.4.9"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "fbdcdcb6d86f71c5e97409ad45898af11cbc995b4ee8112d59095a28d376c935"
+
+                    [[package]]
+                    name = "dependabot"
+                    version = "0.1.0"
+                    dependencies = [
+                     "itoa",
+                     "rand",
+                     "regex",
+                     "time",
+                    ]
+
+                    [[package]]
+                    name = "easy-ext"
+                    version = "0.2.9"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "53aff6fdc1b181225acdcb5b14c47106726fd8e486707315b1b138baed68ee31"
+
+                    [[package]]
+                    name = "getrandom"
+                    version = "0.2.9"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "c85e1d9ab2eadba7e5040d4e09cbd6d072b76a557ad64e797c2cb9d4da21d7e4"
+                    dependencies = [
+                     "cfg-if",
+                     "libc",
+                     "wasi",
+                    ]
+
+                    [[package]]
+                    name = "itoa"
+                    version = "1.0.5"
+                    source = "git+https://github.com/dtolnay/itoa.git?tag=1.0.5#ef4faeda61024dfb38b3897e46aeda8140828dc6"
+
+                    [[package]]
+                    name = "libc"
+                    version = "0.2.141"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "3304a64d199bb964be99741b7a14d26972741915b3649639149b2479bb46f4b5"
+
+                    [[package]]
+                    name = "memchr"
+                    version = "2.5.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
+
+                    [[package]]
+                    name = "ppv-lite86"
+                    version = "0.2.17"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
+
+                    [[package]]
+                    name = "rand"
+                    version = "0.8.4"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "libc",
+                     "rand_chacha",
+                     "rand_core",
+                     "rand_hc",
+                    ]
+
+                    [[package]]
+                    name = "rand_chacha"
+                    version = "0.3.1"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "ppv-lite86",
+                     "rand_core",
+                    ]
+
+                    [[package]]
+                    name = "rand_core"
+                    version = "0.6.3"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "getrandom",
+                    ]
+
+                    [[package]]
+                    name = "rand_hc"
+                    version = "0.3.1"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "rand_core",
+                    ]
+
+                    [[package]]
+                    name = "regex"
+                    version = "1.6.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "4c4eb3267174b8c6c2f654116623910a0fef09c4753f8dd83db29c48a0df988b"
+                    dependencies = [
+                     "aho-corasick",
+                     "memchr",
+                     "regex-syntax",
+                    ]
+
+                    [[package]]
+                    name = "regex-syntax"
+                    version = "0.6.29"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "f162c6dd7b008981e4d40210aca20b4bd0f9b60ca9271061b07f78537722f2e1"
+
+                    [[package]]
+                    name = "standback"
+                    version = "0.3.5"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "a66b810a718e8ba519476ec4df79e2f380f568b83106b812b8182090e4bfba8d"
+                    dependencies = [
+                     "easy-ext",
+                     "version_check",
+                    ]
+
+                    [[package]]
+                    name = "time"
+                    version = "0.3.0-alpha-2"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "0f906d7af3f9c93ef57452c3c7d577f0dcfa1700516dcd15c7ba75ede4f0ed08"
+                    dependencies = [
+                     "const_fn",
+                     "libc",
+                     "standback",
+                    ]
+
+                    [[package]]
+                    name = "version_check"
+                    version = "0.9.4"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
+
+                    [[package]]
+                    name = "wasi"
+                    version = "0.11.0+wasi-snapshot-preview1"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /cargo
+                  name: Cargo.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump cfg-if from 1.0.0 to 1.0.4 in /cargo
+            pr-body: |
+                Bumps [cfg-if](https://github.com/rust-lang/cfg-if) from 1.0.0 to 1.0.4.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/rust-lang/cfg-if/releases">cfg-if's releases</a>.</em></p>
+                <blockquote>
+                <h2>v1.0.4</h2>
+                <ul>
+                <li>Support <code>cfg(true)</code> and <code>cfg(false)</code> (<a href="https://redirect.github.com/rust-lang/cfg-if/pull/99">#99</a>)</li>
+                <li>Set and test a MSRV of 1.32</li>
+                <li>Have a single top-level rule</li>
+                </ul>
+                <h2>v1.0.3</h2>
+                <ul>
+                <li>Revert &quot;Remove <code>@__identity</code> rule.&quot;</li>
+                </ul>
+                <h2>v1.0.2</h2>
+                <ul>
+                <li>Remove <code>@__identity</code> rule.</li>
+                </ul>
+                <h2>v1.0.1</h2>
+                <h3>Other</h3>
+                <ul>
+                <li>Remove <code>compiler-builtins</code> from <code>rustc-dep-of-std</code> dependencies</li>
+                <li>Remove redundant configuration from Cargo.toml</li>
+                <li>More readable formatting and identifier names. (<a href="https://redirect.github.com/rust-lang/cfg-if/pull/39">#39</a>)</li>
+                <li>Add expanded example to readme (<a href="https://redirect.github.com/rust-lang/cfg-if/pull/38">#38</a>)</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/rust-lang/cfg-if/blob/main/CHANGELOG.md">cfg-if's changelog</a>.</em></p>
+                <blockquote>
+                <h2><a href="https://github.com/rust-lang/cfg-if/compare/v1.0.3...v1.0.4">1.0.4</a> - 2025-10-15</h2>
+                <ul>
+                <li>Support <code>cfg(true)</code> and <code>cfg(false)</code> (<a href="https://redirect.github.com/rust-lang/cfg-if/pull/99">#99</a>)</li>
+                <li>Set and test a MSRV of 1.32</li>
+                <li>Have a single top-level rule</li>
+                </ul>
+                <h2><a href="https://github.com/rust-lang/cfg-if/compare/v1.0.2...v1.0.3">1.0.3</a> - 2025-08-19</h2>
+                <ul>
+                <li>Revert &quot;Remove <code>@__identity</code> rule.&quot;</li>
+                </ul>
+                <h2><a href="https://github.com/rust-lang/cfg-if/compare/v1.0.1...v1.0.2">1.0.2</a> - 2025-08-19</h2>
+                <ul>
+                <li>Remove <code>@__identity</code> rule.</li>
+                </ul>
+                <h2><a href="https://github.com/rust-lang/cfg-if/compare/v1.0.0...v1.0.1">1.0.1</a> - 2025-06-09</h2>
+                <ul>
+                <li>Remove <code>compiler-builtins</code> from <code>rustc-dep-of-std</code> dependencies</li>
+                <li>Remove redundant configuration from Cargo.toml</li>
+                <li>More readable formatting and identifier names. (<a href="https://redirect.github.com/rust-lang/cfg-if/pull/39">#39</a>)</li>
+                <li>Add expanded example to readme (<a href="https://redirect.github.com/rust-lang/cfg-if/pull/38">#38</a>)</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rust-lang/cfg-if/commit/3510ca6abea34cbbc702509a4e50ea9709925eda"><code>3510ca6</code></a> chore: release v1.0.4 (<a href="https://redirect.github.com/rust-lang/cfg-if/issues/95">#95</a>)</li>
+                <li><a href="https://github.com/rust-lang/cfg-if/commit/15aec4a67e633254e726bf477b8b86c65687bfc6"><code>15aec4a</code></a> Support <code>cfg(true)</code> and <code>cfg(false)</code> (<a href="https://redirect.github.com/rust-lang/cfg-if/issues/99">#99</a>)</li>
+                <li><a href="https://github.com/rust-lang/cfg-if/commit/036c64ec85ed9eb80692c85ff6b29da3a3a1bfcf"><code>036c64e</code></a> Set and test a MSRV of 1.32</li>
+                <li><a href="https://github.com/rust-lang/cfg-if/commit/5fd566f9f02cb0d2194b0ccb4b3b81857f479c0d"><code>5fd566f</code></a> Set <code>-Dwarnings</code> via CI env rather than <code>cfg</code></li>
+                <li><a href="https://github.com/rust-lang/cfg-if/commit/8ef8e9ffa8fb39c823ff61b4ad2a85c2f0a376c4"><code>8ef8e9f</code></a> Have a single top-level rule.</li>
+                <li><a href="https://github.com/rust-lang/cfg-if/commit/2400b383890ba7ab7f71bc2437549f4a080a543b"><code>2400b38</code></a> Document and test for a subtle case.</li>
+                <li><a href="https://github.com/rust-lang/cfg-if/commit/9c7bb0bf7184698c16ba60aad424b9b8263ac6db"><code>9c7bb0b</code></a> chore: release v1.0.3 (<a href="https://redirect.github.com/rust-lang/cfg-if/issues/93">#93</a>)</li>
+                <li><a href="https://github.com/rust-lang/cfg-if/commit/145894c77e6c5d080e9b634f153e5583086f6000"><code>145894c</code></a> Revert &quot;Remove <code>@__identity</code> rule.&quot;</li>
+                <li><a href="https://github.com/rust-lang/cfg-if/commit/9f747fecddfd28eae608f60970987b14252457f5"><code>9f747fe</code></a> chore: release v1.0.2 (<a href="https://redirect.github.com/rust-lang/cfg-if/issues/88">#88</a>)</li>
+                <li><a href="https://github.com/rust-lang/cfg-if/commit/97739b8388a715ab9ccab767e1fe45838d97dcb8"><code>97739b8</code></a> Fix some ugly and inconsistent formatting.</li>
+                <li>Additional commits viewable in <a href="https://github.com/rust-lang/cfg-if/compare/1.0.0...v1.0.4">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump cfg-if from 1.0.0 to 1.0.4 in /cargo
+
+                Bumps [cfg-if](https://github.com/rust-lang/cfg-if) from 1.0.0 to 1.0.4.
+                - [Release notes](https://github.com/rust-lang/cfg-if/releases)
+                - [Changelog](https://github.com/rust-lang/cfg-if/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/rust-lang/cfg-if/compare/1.0.0...v1.0.4)
     - type: create_pull_request
       expect:
         data:
@@ -1633,7 +2209,7 @@ output:
                   previous-requirements: []
                   previous-version: 0.2.9
                   requirements: []
-                  version: 0.2.16
+                  version: 0.2.17
                   directory: /cargo
             updated-dependency-files:
                 - content: |
@@ -1680,9 +2256,9 @@ output:
 
                     [[package]]
                     name = "getrandom"
-                    version = "0.2.16"
+                    version = "0.2.17"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "335ff9f135e4384c8150d6f27c6daed433577f86b4750418338c01a1a2528592"
+                    checksum = "ff2abc00be7fca6ebc474524697ae276ad847ad0a6b3faa4bcb027e9a4614ad0"
                     dependencies = [
                      "cfg-if",
                      "libc",
@@ -1696,9 +2272,9 @@ output:
 
                     [[package]]
                     name = "libc"
-                    version = "0.2.172"
+                    version = "0.2.182"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "d750af042f7ef4f724306de029d18836c26c1765a54a6a3f094cbd23a7267ffa"
+                    checksum = "6800badb6cb2082ffd7b6a67e6125bb39f18782f793520caee8cb8846be06112"
 
                     [[package]]
                     name = "memchr"
@@ -1804,20 +2380,29 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump getrandom from 0.2.9 to 0.2.16 in /cargo
+            pr-title: Bump getrandom from 0.2.9 to 0.2.17 in /cargo
             pr-body: |
-                Bumps [getrandom](https://github.com/rust-random/getrandom) from 0.2.9 to 0.2.16.
+                Bumps [getrandom](https://github.com/rust-random/getrandom) from 0.2.9 to 0.2.17.
                 <details>
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/rust-random/getrandom/blob/master/CHANGELOG.md">getrandom's changelog</a>.</em></p>
                 <blockquote>
-                <h2>[0.2.16] - 2025-04-22</h2>
+                <h2><a href="https://github.com/rust-random/getrandom/compare/v0.2.16...v0.2.17">0.2.17</a> - 2026-01-12</h2>
+                <h3>Fixed</h3>
+                <ul>
+                <li>Use <code>doc_cfg</code> instead of <code>doc_auto_cfg</code> (partial backport of <a href="https://redirect.github.com/rust-random/getrandom/issues/732">#732</a>) <a href="https://redirect.github.com/rust-random/getrandom/issues/768">#768</a></li>
+                <li><code>BCryptGenRandom</code> signature <a href="https://redirect.github.com/rust-random/getrandom/issues/778">#778</a></li>
+                </ul>
+                <p><a href="https://redirect.github.com/rust-random/getrandom/issues/732">#732</a>: <a href="https://redirect.github.com/rust-random/getrandom/pull/732">rust-random/getrandom#732</a>
+                <a href="https://redirect.github.com/rust-random/getrandom/issues/768">#768</a>: <a href="https://redirect.github.com/rust-random/getrandom/pull/768">rust-random/getrandom#768</a>
+                <a href="https://redirect.github.com/rust-random/getrandom/issues/778">#778</a>: <a href="https://redirect.github.com/rust-random/getrandom/pull/778">rust-random/getrandom#778</a></p>
+                <h2><a href="https://github.com/rust-random/getrandom/compare/v0.2.15...v0.2.16">0.2.16</a> - 2025-04-22</h2>
                 <h3>Added</h3>
                 <ul>
                 <li>Cygwin support (backport of <a href="https://redirect.github.com/rust-random/getrandom/issues/626">#626</a>) <a href="https://redirect.github.com/rust-random/getrandom/issues/654">#654</a></li>
                 </ul>
                 <p><a href="https://redirect.github.com/rust-random/getrandom/issues/654">#654</a>: <a href="https://redirect.github.com/rust-random/getrandom/pull/654">rust-random/getrandom#654</a></p>
-                <h2>[0.2.15] - 2024-05-06</h2>
+                <h2><a href="https://github.com/rust-random/getrandom/compare/v0.2.14...v0.2.15">0.2.15</a> - 2024-05-06</h2>
                 <h3>Added</h3>
                 <ul>
                 <li>Apple visionOS support <a href="https://redirect.github.com/rust-random/getrandom/issues/410">#410</a></li>
@@ -1833,7 +2418,7 @@ output:
                 <a href="https://redirect.github.com/rust-random/getrandom/issues/417">#417</a>: <a href="https://redirect.github.com/rust-random/getrandom/pull/417">rust-random/getrandom#417</a>
                 <a href="https://redirect.github.com/rust-random/getrandom/issues/418">#418</a>: <a href="https://redirect.github.com/rust-random/getrandom/pull/418">rust-random/getrandom#418</a>
                 <a href="https://redirect.github.com/rust-random/getrandom/issues/420">#420</a>: <a href="https://redirect.github.com/rust-random/getrandom/pull/420">rust-random/getrandom#420</a></p>
-                <h2>[0.2.14] - 2024-04-08</h2>
+                <h2><a href="https://github.com/rust-random/getrandom/compare/v0.2.13...v0.2.14">0.2.14</a> - 2024-04-08</h2>
                 <h3>Fixed</h3>
                 <ul>
                 <li>Enable <code>/dev/urandom</code> fallback for MUSL-based Linux targets <a href="https://redirect.github.com/rust-random/getrandom/issues/408">#408</a></li>
@@ -1850,21 +2435,8 @@ output:
                 <ul>
                 <li>Disable <code>/dev/urandom</code> fallback for Linux targets outside of the following <code>target_arch</code>es:
                 <code>aarch64</code>, <code>arm</code>, <code>powerpc</code>, <code>powerpc64</code>, <code>s390x</code>, <code>x86</code>, <code>x86_64</code> <a href="https://redirect.github.com/rust-random/getrandom/issues/396">#396</a></li>
-                <li>Do not catch <code>EPERM</code> error code on Android while checking availability of
-                the <code>getrandom</code> syscall <a href="https://redirect.github.com/rust-random/getrandom/issues/396">#396</a></li>
+                <li>Do not catch <code>EPERM</code> error code on Android while checking availability of</li>
                 </ul>
-                <p><a href="https://redirect.github.com/rust-random/getrandom/issues/396">#396</a>: <a href="https://redirect.github.com/rust-random/getrandom/pull/396">rust-random/getrandom#396</a></p>
-                <h2>[0.2.12] - 2024-01-09</h2>
-                <h3>Fixed</h3>
-                <ul>
-                <li>Custom backend for targets without atomics <a href="https://redirect.github.com/rust-random/getrandom/issues/385">#385</a></li>
-                </ul>
-                <h3>Changed</h3>
-                <ul>
-                <li>Improve robustness of the Hermit backend and <code>sys_fill_exact</code> <a href="https://redirect.github.com/rust-random/getrandom/issues/386">#386</a></li>
-                <li>Raise minimum supported Apple OS versions to macOS 10.12 and iOS 10 <a href="https://redirect.github.com/rust-random/getrandom/issues/388">#388</a></li>
-                </ul>
-                <h3>Added</h3>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -1872,6 +2444,9 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
+                <li><a href="https://github.com/rust-random/getrandom/commit/b625985d852600a3eeb68556811e59e7c9a6a098"><code>b625985</code></a> Release 0.2.17 (<a href="https://redirect.github.com/rust-random/getrandom/issues/774">#774</a>)</li>
+                <li><a href="https://github.com/rust-random/getrandom/commit/e7200ad523fcf0a800d28a2d8c9cfe3e375ad916"><code>e7200ad</code></a> windows: fix <code>BCryptGenRandom</code> signature (<a href="https://redirect.github.com/rust-random/getrandom/issues/778">#778</a>)</li>
+                <li><a href="https://github.com/rust-random/getrandom/commit/3ae6e752897928871d0d4ee93e2c179c9a126fa0"><code>3ae6e75</code></a> Backport <a href="https://redirect.github.com/rust-random/getrandom/issues/768">#768</a> (doc_cfg)</li>
                 <li><a href="https://github.com/rust-random/getrandom/commit/ce4144b2c16fe1422037c93e267e6a52336e0834"><code>ce4144b</code></a> Release v0.2.16 (<a href="https://redirect.github.com/rust-random/getrandom/issues/655">#655</a>)</li>
                 <li><a href="https://github.com/rust-random/getrandom/commit/a55ea8dcb8daef83a95603e77a563a346b4a2785"><code>a55ea8d</code></a> Backport Cygwin support (<a href="https://redirect.github.com/rust-random/getrandom/issues/654">#654</a>)</li>
                 <li><a href="https://github.com/rust-random/getrandom/commit/cf65e83f9df8954df101320de86f80dccfc6b68a"><code>cf65e83</code></a> Release v0.2.15 (<a href="https://redirect.github.com/rust-random/getrandom/issues/419">#419</a>)</li>
@@ -1879,19 +2454,16 @@ output:
                 <li><a href="https://github.com/rust-random/getrandom/commit/229d87004d33316664fd5c891f96b6b29972c080"><code>229d870</code></a> Use libc::getrandom on Solaris and update docs. (<a href="https://redirect.github.com/rust-random/getrandom/issues/420">#420</a>)</li>
                 <li><a href="https://github.com/rust-random/getrandom/commit/924c88d761b90d87b9fe9d15c7c8a5e15d28d8a8"><code>924c88d</code></a> Unconditionally use <code>libc::getrandom</code> on Illumos and <code>libc::geentropy</code> on Sol...</li>
                 <li><a href="https://github.com/rust-random/getrandom/commit/20c22138d5c48993e6d03bb3ce23f87ee3e0887f"><code>20c2213</code></a> Unify getentropy-based implementations (<a href="https://redirect.github.com/rust-random/getrandom/issues/418">#418</a>)</li>
-                <li><a href="https://github.com/rust-random/getrandom/commit/dca49613a00bd687e10641c22d68364aebbb7583"><code>dca4961</code></a> Unconditionally use libc::getrandom on FreeBSD (<a href="https://redirect.github.com/rust-random/getrandom/issues/416">#416</a>)</li>
-                <li><a href="https://github.com/rust-random/getrandom/commit/d4b0ef09dfdae5e4bb95ce2c93d75299678dd254"><code>d4b0ef0</code></a> Use libc::getrandom on DragonflyBSD (<a href="https://redirect.github.com/rust-random/getrandom/issues/411">#411</a>)</li>
-                <li><a href="https://github.com/rust-random/getrandom/commit/0d559231f6dee7693a7721d40da3f147264c7390"><code>0d55923</code></a> Add Apple visionOS support (<a href="https://redirect.github.com/rust-random/getrandom/issues/410">#410</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/rust-random/getrandom/compare/v0.2.9...v0.2.16">compare view</a></li>
+                <li>Additional commits viewable in <a href="https://github.com/rust-random/getrandom/compare/v0.2.9...v0.2.17">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump getrandom from 0.2.9 to 0.2.16 in /cargo
+                Bump getrandom from 0.2.9 to 0.2.17 in /cargo
 
-                Bumps [getrandom](https://github.com/rust-random/getrandom) from 0.2.9 to 0.2.16.
+                Bumps [getrandom](https://github.com/rust-random/getrandom) from 0.2.9 to 0.2.17.
                 - [Changelog](https://github.com/rust-random/getrandom/blob/master/CHANGELOG.md)
-                - [Commits](https://github.com/rust-random/getrandom/compare/v0.2.9...v0.2.16)
+                - [Commits](https://github.com/rust-random/getrandom/compare/v0.2.9...v0.2.17)
     - type: create_pull_request
       expect:
         data:
@@ -1901,7 +2473,7 @@ output:
                   previous-requirements: []
                   previous-version: 0.2.141
                   requirements: []
-                  version: 0.2.172
+                  version: 0.2.182
                   directory: /cargo
             updated-dependency-files:
                 - content: |
@@ -1964,9 +2536,9 @@ output:
 
                     [[package]]
                     name = "libc"
-                    version = "0.2.172"
+                    version = "0.2.182"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "d750af042f7ef4f724306de029d18836c26c1765a54a6a3f094cbd23a7267ffa"
+                    checksum = "6800badb6cb2082ffd7b6a67e6125bb39f18782f793520caee8cb8846be06112"
 
                     [[package]]
                     name = "memchr"
@@ -2072,120 +2644,116 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump libc from 0.2.141 to 0.2.172 in /cargo
+            pr-title: Bump libc from 0.2.141 to 0.2.182 in /cargo
             pr-body: |
-                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.141 to 0.2.172.
+                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.141 to 0.2.182.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/rust-lang/libc/releases">libc's releases</a>.</em></p>
                 <blockquote>
-                <h2>0.2.172</h2>
+                <h2>0.2.182</h2>
                 <h3>Added</h3>
                 <ul>
-                <li>Android: Add <code>getauxval</code> for 32-bit targets (<a href="https://redirect.github.com/rust-lang/libc/pull/4338">#4338</a>)</li>
-                <li>Android: Add <code>if_tun.h</code> ioctls (<a href="https://redirect.github.com/rust-lang/libc/pull/4379">#4379</a>)</li>
-                <li>Android: Define <code>SO_BINDTOIFINDEX</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4391">#4391</a>)</li>
-                <li>Cygwin: Add <code>posix_spawn_file_actions_add[f]chdir[_np]</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4387">#4387</a>)</li>
-                <li>Cygwin: Add new socket options (<a href="https://redirect.github.com/rust-lang/libc/pull/4350">#4350</a>)</li>
-                <li>Cygwin: Add statfs &amp; fcntl (<a href="https://redirect.github.com/rust-lang/libc/pull/4321">#4321</a>)</li>
-                <li>FreeBSD: Add <code>filedesc</code> and <code>fdescenttbl</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4327">#4327</a>)</li>
-                <li>Glibc: Add unstable support for _FILE_OFFSET_BITS=64 (<a href="https://redirect.github.com/rust-lang/libc/pull/4345">#4345</a>)</li>
-                <li>Hermit: Add <code>AF_UNSPEC</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4344">#4344</a>)</li>
-                <li>Hermit: Add <code>AF_VSOCK</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4344">#4344</a>)</li>
-                <li>Illumos, NetBSD: Add <code>timerfd</code> APIs (<a href="https://redirect.github.com/rust-lang/libc/pull/4333">#4333</a>)</li>
-                <li>Linux: Add <code>_IO</code>, <code>_IOW</code>, <code>_IOR</code>, <code>_IOWR</code> to the exported API (<a href="https://redirect.github.com/rust-lang/libc/pull/4325">#4325</a>)</li>
-                <li>Linux: Add <code>tcp_info</code> to uClibc bindings (<a href="https://redirect.github.com/rust-lang/libc/pull/4347">#4347</a>)</li>
-                <li>Linux: Add further BPF program flags (<a href="https://redirect.github.com/rust-lang/libc/pull/4356">#4356</a>)</li>
-                <li>Linux: Add missing INPUT_PROP_XXX flags from <code>input-event-codes.h</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4326">#4326</a>)</li>
-                <li>Linux: Add missing TLS bindings (<a href="https://redirect.github.com/rust-lang/libc/pull/4296">#4296</a>)</li>
-                <li>Linux: Add more constants from <code>seccomp.h</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4330">#4330</a>)</li>
-                <li>Linux: Add more glibc <code>ptrace_sud_config</code> and related <code>PTRACE_*ET_SYSCALL_USER_DISPATCH_CONFIG</code>. (<a href="https://redirect.github.com/rust-lang/libc/pull/4386">#4386</a>)</li>
-                <li>Linux: Add new netlink flags (<a href="https://redirect.github.com/rust-lang/libc/pull/4288">#4288</a>)</li>
-                <li>Linux: Define ioctl codes on more architectures (<a href="https://redirect.github.com/rust-lang/libc/pull/4382">#4382</a>)</li>
-                <li>Linux: Add missing <code>pthread_attr_setstack</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4349">#4349</a>)</li>
-                <li>Musl: Add missing <code>utmpx</code> API (<a href="https://redirect.github.com/rust-lang/libc/pull/4332">#4332</a>)</li>
-                <li>Musl: Enable <code>getrandom</code> on all platforms (<a href="https://redirect.github.com/rust-lang/libc/pull/4346">#4346</a>)</li>
-                <li>NuttX: Add more signal constants (<a href="https://redirect.github.com/rust-lang/libc/pull/4353">#4353</a>)</li>
-                <li>QNX: Add QNX 7.1-iosock and 8.0 to list of additional cfgs (<a href="https://redirect.github.com/rust-lang/libc/pull/4169">#4169</a>)</li>
-                <li>QNX: Add support for alternative Neutrino network stack <code>io-sock</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4169">#4169</a>)</li>
-                <li>Redox: Add more <code>sys/socket.h</code> and <code>sys/uio.h</code> definitions (<a href="https://redirect.github.com/rust-lang/libc/pull/4388">#4388</a>)</li>
-                <li>Solaris: Temporarily define <code>O_DIRECT</code> and <code>SIGINFO</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4348">#4348</a>)</li>
-                <li>Solarish: Add <code>secure_getenv</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4342">#4342</a>)</li>
-                <li>VxWorks: Add missing <code>d_type</code> member to <code>dirent</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4352">#4352</a>)</li>
-                <li>VxWorks: Add missing signal-related constsants (<a href="https://redirect.github.com/rust-lang/libc/pull/4352">#4352</a>)</li>
-                <li>VxWorks: Add more error codes (<a href="https://redirect.github.com/rust-lang/libc/pull/4337">#4337</a>)</li>
+                <li>Android, Linux: Add <code>tgkill</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4970">#4970</a>)</li>
+                <li>Redox: Add <code>RENAME_NOREPLACE</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4968">#4968</a>)</li>
+                <li>Redox: Add <code>renameat2</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4968">#4968</a>)</li>
                 </ul>
-                <h3>Deprecated</h3>
+                <h2>0.2.181</h2>
+                <h3>Added</h3>
                 <ul>
-                <li>FreeBSD: Deprecate <code>TCP_PCAP_OUT</code> and <code>TCP_PCAP_IN</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4381">#4381</a>)</li>
+                <li>Apple: Add <code>MADV_ZERO</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4924">#4924</a>)</li>
+                <li>Redox: Add <code>makedev</code>, <code>major</code>, and <code>minor</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4928">#4928</a>)</li>
+                <li>GLibc: Add <code>PTRACE_SET_SYSCALL_INFO</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4933">#4933</a>)</li>
+                <li>OpenBSD: Add more kqueue related constants for (<a href="https://redirect.github.com/rust-lang/libc/pull/4945">#4945</a>)</li>
+                <li>Linux: add CAN error types (<a href="https://redirect.github.com/rust-lang/libc/pull/4944">#4944</a>)</li>
+                <li>OpenBSD: Add siginfo_t::si_status (<a href="https://redirect.github.com/rust-lang/libc/pull/4946">#4946</a>)</li>
+                <li>QNX NTO: Add <code>max_align_t</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4927">#4927</a>)</li>
+                <li>Illumos: Add <code>_CS_PATH</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4956">#4956</a>)</li>
+                <li>OpenBSD: add <code>ppoll</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4957">#4957</a>)</li>
                 </ul>
                 <h3>Fixed</h3>
                 <ul>
-                <li>Cygwin: Fix member types of <code>statfs</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4324">#4324</a>)</li>
-                <li>Cygwin: Fix tests  (<a href="https://redirect.github.com/rust-lang/libc/pull/4357">#4357</a>)</li>
-                <li>Hermit: Make <code>AF_INET = 3</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4344">#4344</a>)</li>
-                <li>Musl: Fix the syscall table on RISC-V-32 (<a href="https://redirect.github.com/rust-lang/libc/pull/4335">#4335</a>)</li>
-                <li>Musl: Fix the value of <code>SA_ONSTACK</code> on RISC-V-32 (<a href="https://redirect.github.com/rust-lang/libc/pull/4335">#4335</a>)</li>
-                <li>VxWorks: Fix a typo in the <code>waitpid</code> parameter name (<a href="https://redirect.github.com/rust-lang/libc/pull/4334">#4334</a>)</li>
+                <li><strong>Breaking</strong>: Redox: Fix the type of <code>dev_t</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4928">#4928</a>)</li>
+                <li>AIX: Change 'tv_nsec' of 'struct timespec' to type 'c_long' (<a href="https://redirect.github.com/rust-lang/libc/pull/4931">#4931</a>)</li>
+                <li>AIX: Use 'struct st_timespec' in 'struct stat{,64}' (<a href="https://redirect.github.com/rust-lang/libc/pull/4931">#4931</a>)</li>
+                <li>Glibc: Link old version of <code>tc{g,s}etattr</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4938">#4938</a>)</li>
+                <li>Glibc: Link the correct version of <code>cf{g,s}et{i,o}speed</code> on mips{32,64}r6 (<a href="https://redirect.github.com/rust-lang/libc/pull/4938">#4938</a>)</li>
+                <li>OpenBSD: Fix constness of tm.tm_zone (<a href="https://redirect.github.com/rust-lang/libc/pull/4948">#4948</a>)</li>
+                <li>OpenBSD: Fix the definition of <code>ptrace_thread_state</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4947">#4947</a>)</li>
+                <li>QuRT: Fix type visibility and defs (<a href="https://redirect.github.com/rust-lang/libc/pull/4932">#4932</a>)</li>
+                <li>Redox: Fix values for <code>PTHREAD_MUTEX_{NORMAL, RECURSIVE}</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4943">#4943</a>)</li>
+                <li>Various: Mark additional fields as private padding (<a href="https://redirect.github.com/rust-lang/libc/pull/4922">#4922</a>)</li>
                 </ul>
-                <h3>Removed</h3>
+                <h3>Changed</h3>
+                <ul>
+                <li>Fuchsia: Update <code>SO_*</code> constants (<a href="https://redirect.github.com/rust-lang/libc/pull/4937">#4937</a>)</li>
+                <li>Revert &quot;musl: convert inline timespecs to timespec&quot; (resolves build issues on targets only supported by Musl 1.2.3+ ) (<a href="https://redirect.github.com/rust-lang/libc/pull/4958">#4958</a>)</li>
+                </ul>
+                <h2>0.2.180</h2>
+                <h3>Added</h3>
+                <ul>
+                <li>QNX: Add missing BPF and ifreq structures (<a href="https://redirect.github.com/rust-lang/libc/pull/4769">#4769</a>)</li>
+                </ul>
+                <h3>Fixed</h3>
+                <ul>
+                <li>Linux, L4Re: address soundness issues of <code>CMSG_NXTHDR</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4903">#4903</a>)</li>
+                <li>Linux-like: Handle zero-sized payload differences in <code>CMSG_NXTHDR</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4903">#4903</a>)</li>
+                <li>Musl: Fix incorrect definitions of struct stat on some 32-bit architectures (<a href="https://redirect.github.com/rust-lang/libc/pull/4914">#4914</a>)</li>
+                <li>NetBSD: RISC-V 64: Correct <code>mcontext</code> type definitions (<a href="https://redirect.github.com/rust-lang/libc/pull/4886">#4886</a>)</li>
+                <li>uClibc: Re-enable <code>__SIZEOF_PTHREAD_COND_T</code> on non-L4Re uclibc (<a href="https://redirect.github.com/rust-lang/libc/pull/4915">#4915</a>)</li>
+                </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
                 </details>
                 <details>
                 <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/rust-lang/libc/blob/0.2.172/CHANGELOG.md">libc's changelog</a>.</em></p>
+                <p><em>Sourced from <a href="https://github.com/rust-lang/libc/blob/0.2.182/CHANGELOG.md">libc's changelog</a>.</em></p>
                 <blockquote>
-                <h2><a href="https://github.com/rust-lang/libc/compare/0.2.171...0.2.172">0.2.172</a> - 2025-04-14</h2>
+                <h2><a href="https://github.com/rust-lang/libc/compare/0.2.181...0.2.182">0.2.182</a> - 2026-02-13</h2>
                 <h3>Added</h3>
                 <ul>
-                <li>Android: Add <code>getauxval</code> for 32-bit targets (<a href="https://redirect.github.com/rust-lang/libc/pull/4338">#4338</a>)</li>
-                <li>Android: Add <code>if_tun.h</code> ioctls (<a href="https://redirect.github.com/rust-lang/libc/pull/4379">#4379</a>)</li>
-                <li>Android: Define <code>SO_BINDTOIFINDEX</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4391">#4391</a>)</li>
-                <li>Cygwin: Add <code>posix_spawn_file_actions_add[f]chdir[_np]</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4387">#4387</a>)</li>
-                <li>Cygwin: Add new socket options (<a href="https://redirect.github.com/rust-lang/libc/pull/4350">#4350</a>)</li>
-                <li>Cygwin: Add statfs &amp; fcntl (<a href="https://redirect.github.com/rust-lang/libc/pull/4321">#4321</a>)</li>
-                <li>FreeBSD: Add <code>filedesc</code> and <code>fdescenttbl</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4327">#4327</a>)</li>
-                <li>Glibc: Add unstable support for _FILE_OFFSET_BITS=64 (<a href="https://redirect.github.com/rust-lang/libc/pull/4345">#4345</a>)</li>
-                <li>Hermit: Add <code>AF_UNSPEC</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4344">#4344</a>)</li>
-                <li>Hermit: Add <code>AF_VSOCK</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4344">#4344</a>)</li>
-                <li>Illumos, NetBSD: Add <code>timerfd</code> APIs (<a href="https://redirect.github.com/rust-lang/libc/pull/4333">#4333</a>)</li>
-                <li>Linux: Add <code>_IO</code>, <code>_IOW</code>, <code>_IOR</code>, <code>_IOWR</code> to the exported API (<a href="https://redirect.github.com/rust-lang/libc/pull/4325">#4325</a>)</li>
-                <li>Linux: Add <code>tcp_info</code> to uClibc bindings (<a href="https://redirect.github.com/rust-lang/libc/pull/4347">#4347</a>)</li>
-                <li>Linux: Add further BPF program flags (<a href="https://redirect.github.com/rust-lang/libc/pull/4356">#4356</a>)</li>
-                <li>Linux: Add missing INPUT_PROP_XXX flags from <code>input-event-codes.h</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4326">#4326</a>)</li>
-                <li>Linux: Add missing TLS bindings (<a href="https://redirect.github.com/rust-lang/libc/pull/4296">#4296</a>)</li>
-                <li>Linux: Add more constants from <code>seccomp.h</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4330">#4330</a>)</li>
-                <li>Linux: Add more glibc <code>ptrace_sud_config</code> and related <code>PTRACE_*ET_SYSCALL_USER_DISPATCH_CONFIG</code>. (<a href="https://redirect.github.com/rust-lang/libc/pull/4386">#4386</a>)</li>
-                <li>Linux: Add new netlink flags (<a href="https://redirect.github.com/rust-lang/libc/pull/4288">#4288</a>)</li>
-                <li>Linux: Define ioctl codes on more architectures (<a href="https://redirect.github.com/rust-lang/libc/pull/4382">#4382</a>)</li>
-                <li>Linux: Add missing <code>pthread_attr_setstack</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4349">#4349</a>)</li>
-                <li>Musl: Add missing <code>utmpx</code> API (<a href="https://redirect.github.com/rust-lang/libc/pull/4332">#4332</a>)</li>
-                <li>Musl: Enable <code>getrandom</code> on all platforms (<a href="https://redirect.github.com/rust-lang/libc/pull/4346">#4346</a>)</li>
-                <li>NuttX: Add more signal constants (<a href="https://redirect.github.com/rust-lang/libc/pull/4353">#4353</a>)</li>
-                <li>QNX: Add QNX 7.1-iosock and 8.0 to list of additional cfgs (<a href="https://redirect.github.com/rust-lang/libc/pull/4169">#4169</a>)</li>
-                <li>QNX: Add support for alternative Neutrino network stack <code>io-sock</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4169">#4169</a>)</li>
-                <li>Redox: Add more <code>sys/socket.h</code> and <code>sys/uio.h</code> definitions (<a href="https://redirect.github.com/rust-lang/libc/pull/4388">#4388</a>)</li>
-                <li>Solaris: Temporarily define <code>O_DIRECT</code> and <code>SIGINFO</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4348">#4348</a>)</li>
-                <li>Solarish: Add <code>secure_getenv</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4342">#4342</a>)</li>
-                <li>VxWorks: Add missing <code>d_type</code> member to <code>dirent</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4352">#4352</a>)</li>
-                <li>VxWorks: Add missing signal-related constsants (<a href="https://redirect.github.com/rust-lang/libc/pull/4352">#4352</a>)</li>
-                <li>VxWorks: Add more error codes (<a href="https://redirect.github.com/rust-lang/libc/pull/4337">#4337</a>)</li>
+                <li>Android, Linux: Add <code>tgkill</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4970">#4970</a>)</li>
+                <li>Redox: Add <code>RENAME_NOREPLACE</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4968">#4968</a>)</li>
+                <li>Redox: Add <code>renameat2</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4968">#4968</a>)</li>
                 </ul>
-                <h3>Deprecated</h3>
+                <h2><a href="https://github.com/rust-lang/libc/compare/0.2.180...0.2.181">0.2.181</a> - 2026-02-09</h2>
+                <h3>Added</h3>
                 <ul>
-                <li>FreeBSD: Deprecate <code>TCP_PCAP_OUT</code> and <code>TCP_PCAP_IN</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4381">#4381</a>)</li>
+                <li>Apple: Add <code>MADV_ZERO</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4924">#4924</a>)</li>
+                <li>Redox: Add <code>makedev</code>, <code>major</code>, and <code>minor</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4928">#4928</a>)</li>
+                <li>GLibc: Add <code>PTRACE_SET_SYSCALL_INFO</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4933">#4933</a>)</li>
+                <li>OpenBSD: Add more kqueue related constants for (<a href="https://redirect.github.com/rust-lang/libc/pull/4945">#4945</a>)</li>
+                <li>Linux: add CAN error types (<a href="https://redirect.github.com/rust-lang/libc/pull/4944">#4944</a>)</li>
+                <li>OpenBSD: Add siginfo_t::si_status (<a href="https://redirect.github.com/rust-lang/libc/pull/4946">#4946</a>)</li>
+                <li>QNX NTO: Add <code>max_align_t</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4927">#4927</a>)</li>
+                <li>Illumos: Add <code>_CS_PATH</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4956">#4956</a>)</li>
+                <li>OpenBSD: add <code>ppoll</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4957">#4957</a>)</li>
                 </ul>
                 <h3>Fixed</h3>
                 <ul>
-                <li>Cygwin: Fix member types of <code>statfs</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4324">#4324</a>)</li>
-                <li>Cygwin: Fix tests  (<a href="https://redirect.github.com/rust-lang/libc/pull/4357">#4357</a>)</li>
-                <li>Hermit: Make <code>AF_INET = 3</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4344">#4344</a>)</li>
-                <li>Musl: Fix the syscall table on RISC-V-32 (<a href="https://redirect.github.com/rust-lang/libc/pull/4335">#4335</a>)</li>
-                <li>Musl: Fix the value of <code>SA_ONSTACK</code> on RISC-V-32 (<a href="https://redirect.github.com/rust-lang/libc/pull/4335">#4335</a>)</li>
-                <li>VxWorks: Fix a typo in the <code>waitpid</code> parameter name (<a href="https://redirect.github.com/rust-lang/libc/pull/4334">#4334</a>)</li>
+                <li><strong>breaking</strong>: Redox: Fix the type of dev_t (<a href="https://redirect.github.com/rust-lang/libc/pull/4928">#4928</a>)</li>
+                <li>AIX: Change 'tv_nsec' of 'struct timespec' to type 'c_long' (<a href="https://redirect.github.com/rust-lang/libc/pull/4931">#4931</a>)</li>
+                <li>AIX: Use 'struct st_timespec' in 'struct stat{,64}' (<a href="https://redirect.github.com/rust-lang/libc/pull/4931">#4931</a>)</li>
+                <li>Glibc: Link old version of <code>tc{g,s}etattr</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4938">#4938</a>)</li>
+                <li>Glibc: Link the correct version of <code>cf{g,s}et{i,o}speed</code> on mips{32,64}r6 (<a href="https://redirect.github.com/rust-lang/libc/pull/4938">#4938</a>)</li>
+                <li>OpenBSD: Fix constness of tm.tm_zone (<a href="https://redirect.github.com/rust-lang/libc/pull/4948">#4948</a>)</li>
+                <li>OpenBSD: Fix the definition of <code>ptrace_thread_state</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4947">#4947</a>)</li>
+                <li>QuRT: Fix type visibility and defs (<a href="https://redirect.github.com/rust-lang/libc/pull/4932">#4932</a>)</li>
+                <li>Redox: Fix values for <code>PTHREAD_MUTEX_{NORMAL, RECURSIVE}</code> (<a href="https://redirect.github.com/rust-lang/libc/pull/4943">#4943</a>)</li>
+                <li>Various: Mark additional fields as private padding (<a href="https://redirect.github.com/rust-lang/libc/pull/4922">#4922</a>)</li>
                 </ul>
+                <h3>Changed</h3>
+                <ul>
+                <li>Fuchsia: Update <code>SO_*</code> constants (<a href="https://redirect.github.com/rust-lang/libc/pull/4937">#4937</a>)</li>
+                <li>Revert &quot;musl: convert inline timespecs to timespec&quot; (resolves build issues on targets only supported by Musl 1.2.3+ ) (<a href="https://redirect.github.com/rust-lang/libc/pull/4958">#4958</a>)</li>
+                </ul>
+                <h2><a href="https://github.com/rust-lang/libc/compare/0.2.179...0.2.180">0.2.180</a> - 2026-01-08</h2>
+                <h3>Added</h3>
+                <ul>
+                <li>QNX: Add missing BPF and ifreq structures (<a href="https://redirect.github.com/rust-lang/libc/pull/4769">#4769</a>)</li>
+                </ul>
+                <h3>Fixed</h3>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -2193,27 +2761,27 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/rust-lang/libc/commit/a5eab581f9c9c03f29e3edd4a4d4f850d748f2e9"><code>a5eab58</code></a> Merge pull request <a href="https://redirect.github.com/rust-lang/libc/issues/4410">#4410</a> from tgross35/release-libc</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/481eca7cc3382b3a8e367a16f1e20440810d70fd"><code>481eca7</code></a> chore: release libc 0.2.172</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/ce2edbbaa9bbc3273e356694b6dd2c39fc7b788b"><code>ce2edbb</code></a> Merge pull request <a href="https://redirect.github.com/rust-lang/libc/issues/4399">#4399</a> from tgross35/backport-triagebot-branch-warn</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/31b32009070ffbdfdea2752d10bc51c2a580991c"><code>31b3200</code></a> Suggest stable-nominated in the PR template</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/3bffe1d58a9e86521cee10b697270403e2429f76"><code>3bffe1d</code></a> Make triagebot warn on non-default branches</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/03e6ffc8c4679f5f70d53971002e2e4814da9dc3"><code>03e6ffc</code></a> Merge pull request <a href="https://redirect.github.com/rust-lang/libc/issues/4396">#4396</a> from tgross35/backport-serrano</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/f9a47ac8113e45fc9c6871911bc1e0b7de858972"><code>f9a47ac</code></a> Define SO_BINDTOIFINDEX on Android</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/a358dae479b3b886caa1410d4f80fa546db31660"><code>a358dae</code></a> Add missing utmpx apis for linux musl</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/1ff2f2181ae33067ee8e25bee4cbcab535c34160"><code>1ff2f21</code></a> adding linux glibc ptrace_sud_config and related PTRACE_*ET_SYSCALL_USER_DISP...</li>
-                <li><a href="https://github.com/rust-lang/libc/commit/55c58c956d72819faea79fd49ff8dbb779c8a577"><code>55c58c9</code></a> Add more redox sys/socket.h and sys/uio.h definitions</li>
-                <li>Additional commits viewable in <a href="https://github.com/rust-lang/libc/compare/0.2.141...0.2.172">compare view</a></li>
+                <li><a href="https://github.com/rust-lang/libc/commit/e879ee90b6cd8f79b352d4d4d1f8ca05f94f2f53"><code>e879ee9</code></a> chore: Release libc 0.2.182</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/2efe72f4dae6feebacaf5ec8a4ec5fdc79569e7b"><code>2efe72f</code></a> remove copyright year in LICENSE-MIT</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/634bc4e66e944d54ebc3d1610175c8c6d390bd29"><code>634bc4e</code></a> ci: Update the list of tested and documented targets</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/d7aa109ab5074dbbd35fb52cc72620e29961e76d"><code>d7aa109</code></a> Revert &quot;Disable hexagon-unknown-linux-musl testing for now&quot;</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/14e2f5641e2d4356953b0c95959ccfc86af5dcc3"><code>14e2f56</code></a> Revert &quot;ci: Skip hexagon-unknown-linux-musl&quot;</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/b7807c369b468c369661e81ea6f9f649f3b3ddf3"><code>b7807c3</code></a> Revert &quot;aix: Temporarily skip checking powerpc64-ibm-aix builds&quot;</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/abe93a0bfedfe6159252d43e5c4273d0b0833ca4"><code>abe93a0</code></a> feat(linux): add <code>tgkill</code> for Linux and Android</li>
+                <li><a href="https://github.com/rust-lang/libc/commit/25f7dde943988c81871d95aaea1afd49cf11425d"><code>25f7dde</code></a> feat(redox): add <code>RENAME_NOREPLACE</code></li>
+                <li><a href="https://github.com/rust-lang/libc/commit/4b4ce4f2205d22121c5e913b118f8fc776d39897"><code>4b4ce4f</code></a> feat(redox): add <code>renameat2</code></li>
+                <li><a href="https://github.com/rust-lang/libc/commit/ab8c36c49327eeee2b5c3818d6706b499dd890a4"><code>ab8c36c</code></a> build(deps): bump vmactions/solaris-vm from 1.2.8 to 1.3.0</li>
+                <li>Additional commits viewable in <a href="https://github.com/rust-lang/libc/compare/0.2.141...0.2.182">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump libc from 0.2.141 to 0.2.172 in /cargo
+                Bump libc from 0.2.141 to 0.2.182 in /cargo
 
-                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.141 to 0.2.172.
+                Bumps [libc](https://github.com/rust-lang/libc) from 0.2.141 to 0.2.182.
                 - [Release notes](https://github.com/rust-lang/libc/releases)
-                - [Changelog](https://github.com/rust-lang/libc/blob/0.2.172/CHANGELOG.md)
-                - [Commits](https://github.com/rust-lang/libc/compare/0.2.141...0.2.172)
+                - [Changelog](https://github.com/rust-lang/libc/blob/0.2.182/CHANGELOG.md)
+                - [Commits](https://github.com/rust-lang/libc/compare/0.2.141...0.2.182)
     - type: create_pull_request
       expect:
         data:
@@ -2223,7 +2791,7 @@ output:
                   previous-requirements: []
                   previous-version: 2.5.0
                   requirements: []
-                  version: 2.7.4
+                  version: 2.8.0
                   directory: /cargo
             updated-dependency-files:
                 - content: |
@@ -2292,9 +2860,9 @@ output:
 
                     [[package]]
                     name = "memchr"
-                    version = "2.7.4"
+                    version = "2.8.0"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "78ca9ab1a0babb1e7d5695e3530886289c18cf2f87ec19a575a0abdce112e3a3"
+                    checksum = "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79"
 
                     [[package]]
                     name = "ppv-lite86"
@@ -2394,31 +2962,31 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump memchr from 2.5.0 to 2.7.4 in /cargo
+            pr-title: Bump memchr from 2.5.0 to 2.8.0 in /cargo
             pr-body: |
-                Bumps [memchr](https://github.com/BurntSushi/memchr) from 2.5.0 to 2.7.4.
+                Bumps [memchr](https://github.com/BurntSushi/memchr) from 2.5.0 to 2.8.0.
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/BurntSushi/memchr/commit/8ad339524d857a2dd9e7231b497ed92aa0f5c334"><code>8ad3395</code></a> 2.7.4</li>
-                <li><a href="https://github.com/BurntSushi/memchr/commit/b0af902c7f773c6400ef46c5c488ce89e5b58ece"><code>b0af902</code></a> perf: revert fallback optimization</li>
-                <li><a href="https://github.com/BurntSushi/memchr/commit/aee9f95641495d2763d167a2e716fd0b9df7bf30"><code>aee9f95</code></a> arch: add a second big endian regression test</li>
-                <li><a href="https://github.com/BurntSushi/memchr/commit/92edbb6551d5cc0a014cb6d221f7f9912a4b4647"><code>92edbb6</code></a> arch: add big endian regression test</li>
-                <li><a href="https://github.com/BurntSushi/memchr/commit/4836ac3e28bcb6942470d3b20e643be42e372511"><code>4836ac3</code></a> ci: use cross when enabled</li>
-                <li><a href="https://github.com/BurntSushi/memchr/commit/cf1373e3abeddf1e598bbe5970084750953ed2d3"><code>cf1373e</code></a> benchmarks: bump version</li>
-                <li><a href="https://github.com/BurntSushi/memchr/commit/ad08893ecd23a21dc2fdb27cdaf04f64f4834270"><code>ad08893</code></a> 2.7.3</li>
-                <li><a href="https://github.com/BurntSushi/memchr/commit/a05cc640c1d4d720cc5d822526553ce5ebb280a7"><code>a05cc64</code></a> lint: remove unused BITS associated constant</li>
-                <li><a href="https://github.com/BurntSushi/memchr/commit/345fab74bc3223ec95518686cbe6ac2b7fe7a467"><code>345fab7</code></a> all: improve perf of memchr fallback</li>
-                <li><a href="https://github.com/BurntSushi/memchr/commit/e8bdf6b7f7cca21bbd20dd773223a24f285bc956"><code>e8bdf6b</code></a> benchmarks: bump dependencies</li>
-                <li>Additional commits viewable in <a href="https://github.com/BurntSushi/memchr/compare/2.5.0...2.7.4">compare view</a></li>
+                <li><a href="https://github.com/BurntSushi/memchr/commit/886ca4ca4820297191c6e9f7b023dc356f31a4d1"><code>886ca4c</code></a> 2.8.0</li>
+                <li><a href="https://github.com/BurntSushi/memchr/commit/7de50d0f7a762a34d49568e08327a6546fa5181f"><code>7de50d0</code></a> memmem: add owned finder constructor variants</li>
+                <li><a href="https://github.com/BurntSushi/memchr/commit/1230fc5c638a4d922f4e00a87adf8929007f2417"><code>1230fc5</code></a> benchmarks: fix date in file name</li>
+                <li><a href="https://github.com/BurntSushi/memchr/commit/43300c6cb6996fd8dca75cb99b3f444ac93abab1"><code>43300c6</code></a> benchmarks: add latest x86-64 benchmark results</li>
+                <li><a href="https://github.com/BurntSushi/memchr/commit/9bf2301912e38b24bb25cd4db6a16023ab0da3a7"><code>9bf2301</code></a> benchmarks: update everything</li>
+                <li><a href="https://github.com/BurntSushi/memchr/commit/9ba486e4ba7e865c0510305c5dacba73988d9f31"><code>9ba486e</code></a> 2.7.6</li>
+                <li><a href="https://github.com/BurntSushi/memchr/commit/ec25b8077f7124340e0ec6398b5dd89296775744"><code>ec25b80</code></a> aarch64: fix NEON optimization on big-endian</li>
+                <li><a href="https://github.com/BurntSushi/memchr/commit/3962118774ac511580c5b40fd14323e31629fa52"><code>3962118</code></a> 2.7.5</li>
+                <li><a href="https://github.com/BurntSushi/memchr/commit/599d9d92aa2a1b4d6178b3b10e3a49c264caa7bf"><code>599d9d9</code></a> cargo: remove <code>compiler-builtins</code> from <code>rustc-dep-of-std</code> dependencies</li>
+                <li><a href="https://github.com/BurntSushi/memchr/commit/ceef3c921b5685847ea39647b6361033dfe1aa36"><code>ceef3c9</code></a> ci: fix wasm32 environment variables</li>
+                <li>Additional commits viewable in <a href="https://github.com/BurntSushi/memchr/compare/2.5.0...2.8.0">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump memchr from 2.5.0 to 2.7.4 in /cargo
+                Bump memchr from 2.5.0 to 2.8.0 in /cargo
 
-                Bumps [memchr](https://github.com/BurntSushi/memchr) from 2.5.0 to 2.7.4.
-                - [Commits](https://github.com/BurntSushi/memchr/compare/2.5.0...2.7.4)
+                Bumps [memchr](https://github.com/BurntSushi/memchr) from 2.5.0 to 2.8.0.
+                - [Commits](https://github.com/BurntSushi/memchr/compare/2.5.0...2.8.0)
     - type: create_pull_request
       expect:
         data:
@@ -2512,18 +3080,18 @@ output:
 
                     [[package]]
                     name = "proc-macro2"
-                    version = "1.0.95"
+                    version = "1.0.106"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "02b3e5e68a3a1a02aad3ec490a98007cbc13c37cbe84a3cd7b8e406d76e7f778"
+                    checksum = "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934"
                     dependencies = [
                      "unicode-ident",
                     ]
 
                     [[package]]
                     name = "quote"
-                    version = "1.0.40"
+                    version = "1.0.44"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "1885c039570dc00dcb4ff087a89e185fd56bae234ddc7f056a945bf36467248d"
+                    checksum = "21b2ebcf727b7760c461f091f9f0f539b77b8e87f2fd88131e7f1b433b3cece4"
                     dependencies = [
                      "proc-macro2",
                     ]
@@ -2593,9 +3161,9 @@ output:
 
                     [[package]]
                     name = "syn"
-                    version = "2.0.101"
+                    version = "2.0.117"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "8ce2b7fc941b3a24138a0a7cf8e858bfc6a992e7978a068a5c760deb0ed43caf"
+                    checksum = "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99"
                     dependencies = [
                      "proc-macro2",
                      "quote",
@@ -2615,9 +3183,9 @@ output:
 
                     [[package]]
                     name = "unicode-ident"
-                    version = "1.0.18"
+                    version = "1.0.24"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "5a5f39404a5da50712a4c1eecf25e90dd62b613502b7e925fd4e4d19b5c96512"
+                    checksum = "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75"
 
                     [[package]]
                     name = "version_check"
@@ -2633,18 +3201,18 @@ output:
 
                     [[package]]
                     name = "zerocopy"
-                    version = "0.8.25"
+                    version = "0.8.39"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "a1702d9583232ddb9174e01bb7c15a2ab8fb1bc6f227aa1233858c351a3ba0cb"
+                    checksum = "db6d35d663eadb6c932438e763b262fe1a70987f9ae936e60158176d710cae4a"
                     dependencies = [
                      "zerocopy-derive",
                     ]
 
                     [[package]]
                     name = "zerocopy-derive"
-                    version = "0.8.25"
+                    version = "0.8.39"
                     source = "registry+https://github.com/rust-lang/crates.io-index"
-                    checksum = "28a6e20d751156648aa063f3800b706ee209a32c0b4d9f24be3d980b01be55ef"
+                    checksum = "4122cd3169e94605190e77839c9a40d40ed048d305bfdc146e7df40ab0f3e517"
                     dependencies = [
                      "proc-macro2",
                      "quote",
@@ -2869,6 +3437,203 @@ output:
 
                 Bumps [version_check](https://github.com/SergioBenitez/version_check) from 0.9.4 to 0.9.5.
                 - [Commits](https://github.com/SergioBenitez/version_check/compare/v0.9.4...v0.9.5)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 3d44220c5ab8e3c592b63373354a596b781f6e09
+            dependencies:
+                - name: wasi
+                  previous-requirements: []
+                  previous-version: 0.11.0+wasi-snapshot-preview1
+                  requirements: []
+                  version: 0.11.1+wasi-snapshot-preview1
+                  directory: /cargo
+            updated-dependency-files:
+                - content: |
+                    # This file is automatically @generated by Cargo.
+                    # It is not intended for manual editing.
+                    version = 4
+
+                    [[package]]
+                    name = "aho-corasick"
+                    version = "0.7.20"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "cc936419f96fa211c1b9166887b38e5e40b19958e5b895be7c1f93adec7071ac"
+                    dependencies = [
+                     "memchr",
+                    ]
+
+                    [[package]]
+                    name = "cfg-if"
+                    version = "1.0.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
+
+                    [[package]]
+                    name = "const_fn"
+                    version = "0.4.9"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "fbdcdcb6d86f71c5e97409ad45898af11cbc995b4ee8112d59095a28d376c935"
+
+                    [[package]]
+                    name = "dependabot"
+                    version = "0.1.0"
+                    dependencies = [
+                     "itoa",
+                     "rand",
+                     "regex",
+                     "time",
+                    ]
+
+                    [[package]]
+                    name = "easy-ext"
+                    version = "0.2.9"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "53aff6fdc1b181225acdcb5b14c47106726fd8e486707315b1b138baed68ee31"
+
+                    [[package]]
+                    name = "getrandom"
+                    version = "0.2.9"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "c85e1d9ab2eadba7e5040d4e09cbd6d072b76a557ad64e797c2cb9d4da21d7e4"
+                    dependencies = [
+                     "cfg-if",
+                     "libc",
+                     "wasi",
+                    ]
+
+                    [[package]]
+                    name = "itoa"
+                    version = "1.0.5"
+                    source = "git+https://github.com/dtolnay/itoa.git?tag=1.0.5#ef4faeda61024dfb38b3897e46aeda8140828dc6"
+
+                    [[package]]
+                    name = "libc"
+                    version = "0.2.141"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "3304a64d199bb964be99741b7a14d26972741915b3649639149b2479bb46f4b5"
+
+                    [[package]]
+                    name = "memchr"
+                    version = "2.5.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
+
+                    [[package]]
+                    name = "ppv-lite86"
+                    version = "0.2.17"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
+
+                    [[package]]
+                    name = "rand"
+                    version = "0.8.4"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "libc",
+                     "rand_chacha",
+                     "rand_core",
+                     "rand_hc",
+                    ]
+
+                    [[package]]
+                    name = "rand_chacha"
+                    version = "0.3.1"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "ppv-lite86",
+                     "rand_core",
+                    ]
+
+                    [[package]]
+                    name = "rand_core"
+                    version = "0.6.3"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "getrandom",
+                    ]
+
+                    [[package]]
+                    name = "rand_hc"
+                    version = "0.3.1"
+                    source = "git+ssh://git@github.com/rust-random/rand.git?tag=0.8.4#8792268dfe57e49bb4518190bf4fe66176759a44"
+                    dependencies = [
+                     "rand_core",
+                    ]
+
+                    [[package]]
+                    name = "regex"
+                    version = "1.6.0"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "4c4eb3267174b8c6c2f654116623910a0fef09c4753f8dd83db29c48a0df988b"
+                    dependencies = [
+                     "aho-corasick",
+                     "memchr",
+                     "regex-syntax",
+                    ]
+
+                    [[package]]
+                    name = "regex-syntax"
+                    version = "0.6.29"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "f162c6dd7b008981e4d40210aca20b4bd0f9b60ca9271061b07f78537722f2e1"
+
+                    [[package]]
+                    name = "standback"
+                    version = "0.3.5"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "a66b810a718e8ba519476ec4df79e2f380f568b83106b812b8182090e4bfba8d"
+                    dependencies = [
+                     "easy-ext",
+                     "version_check",
+                    ]
+
+                    [[package]]
+                    name = "time"
+                    version = "0.3.0-alpha-2"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "0f906d7af3f9c93ef57452c3c7d577f0dcfa1700516dcd15c7ba75ede4f0ed08"
+                    dependencies = [
+                     "const_fn",
+                     "libc",
+                     "standback",
+                    ]
+
+                    [[package]]
+                    name = "version_check"
+                    version = "0.9.4"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
+
+                    [[package]]
+                    name = "wasi"
+                    version = "0.11.1+wasi-snapshot-preview1"
+                    source = "registry+https://github.com/rust-lang/crates.io-index"
+                    checksum = "ccf3ec651a847eb01de73ccad15eb7d99f80485de043efb2f370cd654f4ea44b"
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /cargo
+                  name: Cargo.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump wasi from 0.11.0+wasi-snapshot-preview1 to 0.11.1+wasi-snapshot-preview1 in /cargo
+            pr-body: |
+                Bumps [wasi](https://github.com/bytecodealliance/wasi-rs) from 0.11.0+wasi-snapshot-preview1 to 0.11.1+wasi-snapshot-preview1.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/bytecodealliance/wasi-rs/commit/f136a81add9706ed0b36ac3c4b0da943de8e690d"><code>f136a81</code></a> Bump to 0.11.1</li>
+                <li><a href="https://github.com/bytecodealliance/wasi-rs/commit/c47e942e4c309b80258c278fae5717a65816f544"><code>c47e942</code></a> Remove <code>compiler-builtins</code> from <code>rustc-dep-of-std</code> dependencies (<a href="https://redirect.github.com/bytecodealliance/wasi-rs/issues/108">#108</a>)</li>
+                <li>See full diff in <a href="https://github.com/bytecodealliance/wasi-rs/compare/0.11.0...0.11.1">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump wasi in /cargo
+
+                Bumps [wasi](https://github.com/bytecodealliance/wasi-rs) from 0.11.0+wasi-snapshot-preview1 to 0.11.1+wasi-snapshot-preview1.
+                - [Commits](https://github.com/bytecodealliance/wasi-rs/compare/0.11.0...0.11.1)
     - type: mark_as_processed
       expect:
         data:

@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: go_modules
         allowed-updates:
             - dependency-type: direct
@@ -236,77 +237,7 @@ output:
                   support_file: false
                   type: file
             pr-title: Bump the ruleset group in /go with 3 updates
-            pr-body: |
-                Bumps the ruleset group in /go with 3 updates: [github.com/fatih/color](https://github.com/fatih/color), [github.com/inconshreveable/mousetrap](https://github.com/inconshreveable/mousetrap) and [golang.org/x/crypto](https://github.com/golang/crypto).
-
-                Updates `github.com/fatih/color` from 1.7.0 to 1.13.0
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/fatih/color/releases">github.com/fatih/color's releases</a>.</em></p>
-                <blockquote>
-                <h2>v1.13.0</h2>
-                <p>This release updates the following dependencies:</p>
-                <pre><code>github.com/mattn/go-colorable v0.1.9
-                github.com/mattn/go-isatty v0.0.14
-                </code></pre>
-                <h2>v1.12.0</h2>
-                <p>This release adds support for the <code>NO_COLOR</code>. For more information check out: <a href="https://no-color.org">https://no-color.org</a> The pull request adding this change is: <a href="https://redirect.github.com/fatih/color/pull/137">fatih/color#137</a></p>
-                <h2>v1.11.0</h2>
-                <p>This release removes the <code>vendor/</code> folder introduced by the PR: <a href="https://redirect.github.com/fatih/color/pull/138">fatih/color#138</a></p>
-                <h2>v1.10.0</h2>
-                <p>This release includes the changes from: <a href="https://redirect.github.com/fatih/color/issues/115">#115</a> which upgrades the go-colorable and go-isatty dependencies with various bug fixes and improvements</p>
-                <pre><code>github.com/mattn/go-colorable v0.1.8
-                github.com/mattn/go-isatty v0.0.12
-                </code></pre>
-                <h2>v1.9.0</h2>
-                <p>Includes the changes from: <a href="https://redirect.github.com/fatih/color/pull/109">fatih/color#109</a> which upgrades the <code>go-colorable</code> and <code>go-isatty</code> dependencies to fix WASM compilation issues:</p>
-                <pre><code>github.com/mattn/go-colorable v0.1.4
-                github.com/mattn/go-isatty v0.0.11
-                </code></pre>
-                <h2>v1.8.0</h2>
-                <p>Includes changes from <a href="https://redirect.github.com/fatih/color/pull/108">fatih/color#108</a>, most notable:</p>
-                <ul>
-                <li>Add Go module support</li>
-                <li>Update <code>/vendor</code> folder content according to the new Go modules rules.</li>
-                <li>Replace .travis.yml with GitHub Actions</li>
-                </ul>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/fatih/color/commit/a05da93ebe62ca9fc6791d3376ec4dad01196448"><code>a05da93</code></a> Merge pull request <a href="https://redirect.github.com/fatih/color/issues/146">#146</a> from fatih/dependabot/go_modules/github.com/mattn/go-...</li>
-                <li><a href="https://github.com/fatih/color/commit/cef423d21f9a62a1f58bf90e0a8b76674942a64d"><code>cef423d</code></a> Bump github.com/mattn/go-colorable from 0.1.8 to 0.1.9</li>
-                <li><a href="https://github.com/fatih/color/commit/503f53695e59c9ece7e740a690cdf36a0620d948"><code>503f536</code></a> Merge pull request <a href="https://redirect.github.com/fatih/color/issues/145">#145</a> from DrKhyz/fix/typo-readme</li>
-                <li><a href="https://github.com/fatih/color/commit/65d7546db8df142ad95e7799cf250ef2913c8806"><code>65d7546</code></a> typo/ add 'color' in front FgBlue to be declared</li>
-                <li><a href="https://github.com/fatih/color/commit/063d6361a761c38029f5327ed605ae1d551595ce"><code>063d636</code></a> Merge pull request <a href="https://redirect.github.com/fatih/color/issues/144">#144</a> from fatih/dependabot/go_modules/github.com/mattn/go-...</li>
-                <li><a href="https://github.com/fatih/color/commit/ab503e9325a87c026ea6540824e17f9b37ee4f65"><code>ab503e9</code></a> Bump github.com/mattn/go-isatty from 0.0.13 to 0.0.14</li>
-                <li><a href="https://github.com/fatih/color/commit/30388e0cee19cb5904d644c24b83e69f54433314"><code>30388e0</code></a> Merge pull request <a href="https://redirect.github.com/fatih/color/issues/140">#140</a> from fatih/dependabot/go_modules/github.com/mattn/go-...</li>
-                <li><a href="https://github.com/fatih/color/commit/351c3d7bb134ef30224f2dba751b3a7f424027a1"><code>351c3d7</code></a> Bump github.com/mattn/go-isatty from 0.0.12 to 0.0.13</li>
-                <li><a href="https://github.com/fatih/color/commit/cf452350f542986d689fb53db88dbb0212f141db"><code>cf45235</code></a> Merge pull request <a href="https://redirect.github.com/fatih/color/issues/137">#137</a> from fatih/add-no-color-support</li>
-                <li><a href="https://github.com/fatih/color/commit/f4c431696a22e834b83444f720bd144b2dbbccff"><code>f4c4316</code></a> Merge pull request <a href="https://redirect.github.com/fatih/color/issues/139">#139</a> from fatih/improve-ci</li>
-                <li>Additional commits viewable in <a href="https://github.com/fatih/color/compare/v1.7.0...v1.13.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-
-                Updates `github.com/inconshreveable/mousetrap` from 0.0.0-20141017200713-76626ae9c91c to 1.1.0
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li>See full diff in <a href="https://github.com/inconshreveable/mousetrap/commits/v1.1">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-
-                Updates `golang.org/x/crypto` from 0.0.0-20180617042118-027cca12c2d6 to 0.6.0
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li>See full diff in <a href="https://github.com/golang/crypto/commits/v0.6.0">compare view</a></li>
-                </ul>
-                </details>
-                <br />
+            pr-body: "Bumps the ruleset group in /go with 3 updates: [github.com/fatih/color](https://github.com/fatih/color), [github.com/inconshreveable/mousetrap](https://github.com/inconshreveable/mousetrap) and [golang.org/x/crypto](https://github.com/golang/crypto).\n\nUpdates `github.com/fatih/color` from 1.7.0 to 1.13.0\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/fatih/color/releases\">github.com/fatih/color's releases</a>.</em></p>\n<blockquote>\n<h2>v1.13.0</h2>\n<p>This release updates the following dependencies:</p>\n<pre><code>github.com/mattn/go-colorable v0.1.9\r\ngithub.com/mattn/go-isatty v0.0.14\r\n</code></pre>\n<h2>v1.12.0</h2>\n<p>This release adds support for the <code>NO_COLOR</code>. For more information check out: <a href=\"https://no-color.org\">https://no-color.org</a> The pull request adding this change is: <a href=\"https://redirect.github.com/fatih/color/pull/137\">fatih/color#137</a></p>\n<h2>v1.11.0</h2>\n<p>This release removes the <code>vendor/</code> folder introduced by the PR: <a href=\"https://redirect.github.com/fatih/color/pull/138\">fatih/color#138</a></p>\n<h2>v1.10.0</h2>\n<p>This release includes the changes from: <a href=\"https://redirect.github.com/fatih/color/issues/115\">#115</a> which upgrades the go-colorable and go-isatty dependencies with various bug fixes and improvements</p>\n<pre><code>github.com/mattn/go-colorable v0.1.8\r\ngithub.com/mattn/go-isatty v0.0.12\r\n</code></pre>\n<h2>v1.9.0</h2>\n<p>Includes the changes from: <a href=\"https://redirect.github.com/fatih/color/pull/109\">fatih/color#109</a> which upgrades the <code>go-colorable</code> and <code>go-isatty</code> dependencies to fix WASM compilation issues:</p>\n<pre><code>github.com/mattn/go-colorable v0.1.4\r\ngithub.com/mattn/go-isatty v0.0.11\r\n</code></pre>\n<h2>v1.8.0</h2>\n<p>Includes changes from <a href=\"https://redirect.github.com/fatih/color/pull/108\">fatih/color#108</a>, most notable:</p>\n<ul>\n<li>Add Go module support</li>\n<li>Update <code>/vendor</code> folder content according to the new Go modules rules.</li>\n<li>Replace .travis.yml with GitHub Actions</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/fatih/color/commit/a05da93ebe62ca9fc6791d3376ec4dad01196448\"><code>a05da93</code></a> Merge pull request <a href=\"https://redirect.github.com/fatih/color/issues/146\">#146</a> from fatih/dependabot/go_modules/github.com/mattn/go-...</li>\n<li><a href=\"https://github.com/fatih/color/commit/cef423d21f9a62a1f58bf90e0a8b76674942a64d\"><code>cef423d</code></a> Bump github.com/mattn/go-colorable from 0.1.8 to 0.1.9</li>\n<li><a href=\"https://github.com/fatih/color/commit/503f53695e59c9ece7e740a690cdf36a0620d948\"><code>503f536</code></a> Merge pull request <a href=\"https://redirect.github.com/fatih/color/issues/145\">#145</a> from DrKhyz/fix/typo-readme</li>\n<li><a href=\"https://github.com/fatih/color/commit/65d7546db8df142ad95e7799cf250ef2913c8806\"><code>65d7546</code></a> typo/ add 'color' in front FgBlue to be declared</li>\n<li><a href=\"https://github.com/fatih/color/commit/063d6361a761c38029f5327ed605ae1d551595ce\"><code>063d636</code></a> Merge pull request <a href=\"https://redirect.github.com/fatih/color/issues/144\">#144</a> from fatih/dependabot/go_modules/github.com/mattn/go-...</li>\n<li><a href=\"https://github.com/fatih/color/commit/ab503e9325a87c026ea6540824e17f9b37ee4f65\"><code>ab503e9</code></a> Bump github.com/mattn/go-isatty from 0.0.13 to 0.0.14</li>\n<li><a href=\"https://github.com/fatih/color/commit/30388e0cee19cb5904d644c24b83e69f54433314\"><code>30388e0</code></a> Merge pull request <a href=\"https://redirect.github.com/fatih/color/issues/140\">#140</a> from fatih/dependabot/go_modules/github.com/mattn/go-...</li>\n<li><a href=\"https://github.com/fatih/color/commit/351c3d7bb134ef30224f2dba751b3a7f424027a1\"><code>351c3d7</code></a> Bump github.com/mattn/go-isatty from 0.0.12 to 0.0.13</li>\n<li><a href=\"https://github.com/fatih/color/commit/cf452350f542986d689fb53db88dbb0212f141db\"><code>cf45235</code></a> Merge pull request <a href=\"https://redirect.github.com/fatih/color/issues/137\">#137</a> from fatih/add-no-color-support</li>\n<li><a href=\"https://github.com/fatih/color/commit/f4c431696a22e834b83444f720bd144b2dbbccff\"><code>f4c4316</code></a> Merge pull request <a href=\"https://redirect.github.com/fatih/color/issues/139\">#139</a> from fatih/improve-ci</li>\n<li>Additional commits viewable in <a href=\"https://github.com/fatih/color/compare/v1.7.0...v1.13.0\">compare view</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `github.com/inconshreveable/mousetrap` from 0.0.0-20141017200713-76626ae9c91c to 1.1.0\n<details>\n<summary>Commits</summary>\n<ul>\n<li>See full diff in <a href=\"https://github.com/inconshreveable/mousetrap/commits/v1.1\">compare view</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `golang.org/x/crypto` from 0.0.0-20180617042118-027cca12c2d6 to 0.6.0\n<details>\n<summary>Commits</summary>\n<ul>\n<li>See full diff in <a href=\"https://github.com/golang/crypto/commits/v0.6.0\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
             commit-message: |-
                 Bump the ruleset group in /go with 3 updates
 

@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: gradle
         allowed-updates:
             - dependency-type: direct
@@ -217,11 +218,11 @@ output:
                   requirements:
                     - file: build.gradle
                       groups: []
-                      requirement: 7.2.1.202505142326-r
+                      requirement: 7.5.0.202512021534-r
                       source:
                         type: maven_repo
                         url: https://repo.maven.apache.org/maven2
-                  version: 7.2.1.202505142326-r
+                  version: 7.5.0.202512021534-r
                   directory: /gradle/multi-dir/bar
                 - name: org.hibernate:hibernate-core
                   previous-requirements:
@@ -346,7 +347,7 @@ output:
                         compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
                         compile group: 'de.davidbilge', name: 'jskill', version: '1.1-SNAPSHOT'
                         compile group: 'net.kyori', name: 'text', version: '1.12-1.6.5'
-                        compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '7.2.1.202505142326-r'
+                        compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '7.5.0.202512021534-r'
                         compile group: 'org.hibernate', name: 'hibernate-core', version: '6.4.0.Final'
 
                         compile(group: 'org.inventivetalent', name: 'menubuilder', version: '1.0.2') {
@@ -444,21 +445,21 @@ output:
                 </details>
                 <br />
 
-                Updates `org.eclipse.jgit:org.eclipse.jgit` from 4.11.0.201803080745-r to 7.2.1.202505142326-r
+                Updates `org.eclipse.jgit:org.eclipse.jgit` from 4.11.0.201803080745-r to 7.5.0.202512021534-r
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/eclipse-jgit/jgit/commit/c212ced3806862cacfa8cb85cf221061c7898b91"><code>c212ced</code></a> JGit v7.2.1.202505142326-r</li>
-                <li><a href="https://github.com/eclipse-jgit/jgit/commit/c6fc3607079022e95b018b60c830b3da63bf6fef"><code>c6fc360</code></a> AmazonS3: Do not accept DOCTYPE and entities</li>
-                <li><a href="https://github.com/eclipse-jgit/jgit/commit/dab4f52d49a4638142027b916e31a5a470df7f03"><code>dab4f52</code></a> ManifestParser: Do not accept DOCTYPE and entities</li>
-                <li><a href="https://github.com/eclipse-jgit/jgit/commit/46a6378789fdc75e5b00d8009b136462bdd97174"><code>46a6378</code></a> Fix package name of spring boot JarLauncher class in jgit.sh</li>
-                <li><a href="https://github.com/eclipse-jgit/jgit/commit/79736e412e971cea1d034e18d784f1d4d12b3a0f"><code>79736e4</code></a> Prepare 7.2.1-SNAPSHOT builds</li>
-                <li><a href="https://github.com/eclipse-jgit/jgit/commit/fddef06ccb0034b6b747a62532025d3d712dbe47"><code>fddef06</code></a> JGit v7.2.0.202503040940-r</li>
-                <li><a href="https://github.com/eclipse-jgit/jgit/commit/c43126fc84a5f123b2dec8afe1b3815ffba865d0"><code>c43126f</code></a> JGit v7.2.0.202503040805-r</li>
-                <li><a href="https://github.com/eclipse-jgit/jgit/commit/28136bc499832d6031e1b99d98d0328c17d469d3"><code>28136bc</code></a> CacheRegion: fix non translatable text warnings</li>
-                <li><a href="https://github.com/eclipse-jgit/jgit/commit/1468a80ff7859995c3a2e2018bbfea81312c76e9"><code>1468a80</code></a> Merge branch 'master' into stable-7.2</li>
-                <li><a href="https://github.com/eclipse-jgit/jgit/commit/4ef88700db1da4ab07917b084057769a43735682"><code>4ef8870</code></a> Ensure access to autoRefresh is thread-safe</li>
-                <li>Additional commits viewable in <a href="https://github.com/eclipse-jgit/jgit/compare/v4.11.0.201803080745-r...v7.2.1.202505142326-r">compare view</a></li>
+                <li><a href="https://github.com/eclipse-jgit/jgit/commit/402b0dd5c8e167cb0808fd6139e2270ada6611cc"><code>402b0dd</code></a> JGit v7.5.0.202512021534-r</li>
+                <li><a href="https://github.com/eclipse-jgit/jgit/commit/8e4499732c940c2673c2c39dd5e980f956e0de3a"><code>8e44997</code></a> Merge branch 'master' into stable-7.5</li>
+                <li><a href="https://github.com/eclipse-jgit/jgit/commit/34f169fa83000142f37fb12bba76814264d3ab87"><code>34f169f</code></a> [ignore patterns] Backslash is a general escape</li>
+                <li><a href="https://github.com/eclipse-jgit/jgit/commit/68422990e49804b0ca3e4396da97c9b0dea11fe7"><code>6842299</code></a> Merge branch 'stable-7.4'</li>
+                <li><a href="https://github.com/eclipse-jgit/jgit/commit/4189f39fbcf081d6925c6b58ea2c52a7539138ed"><code>4189f39</code></a> Merge branch 'stable-7.3' into stable-7.4</li>
+                <li><a href="https://github.com/eclipse-jgit/jgit/commit/85b454b811b23261979ccd55c331e1ad1406e693"><code>85b454b</code></a> Merge branch 'stable-7.2' into stable-7.3</li>
+                <li><a href="https://github.com/eclipse-jgit/jgit/commit/6b8d2a5b00895141323164cdd0ec1f94f9798cd5"><code>6b8d2a5</code></a> Merge branch 'stable-7.1' into stable-7.2</li>
+                <li><a href="https://github.com/eclipse-jgit/jgit/commit/052c4117cd3ad45388f09205d1fa5af29b1448c1"><code>052c411</code></a> Merge branch 'stable-7.0' into stable-7.1</li>
+                <li><a href="https://github.com/eclipse-jgit/jgit/commit/4eb080250ae1bbded00a50b6e81a6c29bf25cd12"><code>4eb0802</code></a> Merge branch 'stable-6.10' into stable-7.0</li>
+                <li><a href="https://github.com/eclipse-jgit/jgit/commit/ffebbe7f4275c9a8672754c1aede75ae67d36ec1"><code>ffebbe7</code></a> Prepare 7.5.0-SNAPSHOT builds</li>
+                <li>Additional commits viewable in <a href="https://github.com/eclipse-jgit/jgit/compare/v4.11.0.201803080745-r...v7.5.0.202512021534-r">compare view</a></li>
                 </ul>
                 </details>
                 <br />
@@ -468,30 +469,36 @@ output:
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/hibernate/hibernate-orm/releases">org.hibernate:hibernate-core's releases</a>.</em></p>
                 <blockquote>
-                <h1>Hibernate ORM 6.2.38.Final released</h1>
-                <p>Today, we published a new release of Hibernate ORM 6.2: 6.2.38.Final.</p>
-                <p>You can find the full list of 6.2.38.Final changes <a href="https://hibernate.atlassian.net/issues/?jql=project%20%3D%20HHH%20AND%20fixVersion%20%3D%206.2.38">here</a>.</p>
+                <h2>Release 6.2.49</h2>
+                <h1>Hibernate ORM 6.2.49.Final released</h1>
+                <p>Today, we published a new release of Hibernate ORM 6.2: 6.2.49.Final.</p>
+                <p>You can find the full list of 6.2.49.Final changes <a href="https://hibernate.atlassian.net/issues/?jql=project%20%3D%20HHH%20AND%20fixVersion%20%3D%206.2.49">here</a>.</p>
                 <h2>What's new</h2>
-                <p>This release introduces a few minor improvements as well as bug fixes.</p>
+                <ul>
+                <li>See the <a href="https://hibernate.org/orm/releases/6.2">website</a> for requirements and compatibilities.</li>
+                <li>See the <a href="https://hibernate.org/orm/releases/6.2/#whats-new">What's New</a> guide for details about new features and capabilities.</li>
+                <li>See the <a href="https://docs.hibernate.org/orm/6.2/migration-guide/">Migration Guide</a> for details about migration to 6.2 version.</li>
+                </ul>
                 <h2>Conclusion</h2>
                 <p>For additional details, see:</p>
                 <ul>
                 <li>the <a href="https://hibernate.org/orm/releases/6.2/">release page</a></li>
-                <li>the <a href="https://docs.jboss.org/hibernate/orm/6.2/migration-guide/migration-guide.html">Migration Guide</a></li>
-                <li>the <a href="https://docs.jboss.org/hibernate/orm/6.2/introduction/html_single/Hibernate_Introduction.html">Introduction Guide</a></li>
-                <li>the <a href="https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html">User Guide</a></li>
+                <li>the <a href="https://docs.hibernate.org/orm/6.2/migration-guide/">Migration Guide</a></li>
+                <li>the <a href="https://docs.hibernate.org/orm/6.2/introduction/html_single/">Introduction Guide</a></li>
+                <li>the <a href="https://docs.hibernate.org/orm/6.2/userguide/html_single/">User Guide</a></li>
+                <li>the <a href="https://docs.hibernate.org/orm/6.2/javadocs">API docs</a></li>
                 </ul>
                 <p>See also the following resources related to supported APIs:</p>
                 <ul>
                 <li>the <a href="https://hibernate.org/community/compatibility-policy/">compatibility policy</a></li>
-                <li>the <a href="https://docs.jboss.org/hibernate/orm/6.2/incubating/incubating.txt">incubating API report</a> (<code>@Incubating</code>)</li>
-                <li>the <a href="https://docs.jboss.org/hibernate/orm/6.2/deprecated/deprecated.txt">deprecated API report</a> (<code>@Deprecated</code> + <code>@Remove</code>)</li>
-                <li>the <a href="https://docs.jboss.org/hibernate/orm/6.2/internals/internal.txt">internal API report</a> (internal packages, <code>@Internal</code>)</li>
+                <li>the <a href="https://docs.hibernate.org/orm/6.2/incubating/incubating.txt">incubating API report</a> (<code>@Incubating</code>)</li>
+                <li>the <a href="https://docs.hibernate.org/orm/6.2/deprecated/deprecated.txt">deprecated API report</a> (<code>@Deprecated</code> + <code>@Remove</code>)</li>
+                <li>the <a href="https://docs.hibernate.org/orm/6.2/internals/internal.txt">internal API report</a> (internal packages, <code>@Internal</code>)</li>
                 </ul>
                 <p>Visit the <a href="https://hibernate.org/community/">website</a> for details on getting in touch with us.</p>
-                <h1>Hibernate ORM 6.2.37.Final released</h1>
-                <p>Today, we published a new release of Hibernate ORM 6.2: 6.2.37.Final.</p>
-                <p>You can find the full list of 6.2.37.Final changes <a href="https://hibernate.atlassian.net/issues/?jql=project%20%3D%20HHH%20AND%20fixVersion%20%3D%206.2.37">here</a>.</p>
+                <h1>Hibernate ORM 6.2.48.Final released</h1>
+                <p>Today, we published a new release of Hibernate ORM 6.2: 6.2.48.Final.</p>
+                <p>You can find the full list of 6.2.48.Final changes <a href="https://hibernate.atlassian.net/issues/?jql=project%20%3D%20HHH%20AND%20fixVersion%20%3D%206.2.48">here</a>.</p>
                 <h2>What's new</h2>
                 <p>This release introduces a few minor improvements as well as bug fixes.</p>
                 <h2>Conclusion</h2>
@@ -500,11 +507,6 @@ output:
                 <li>the <a href="https://hibernate.org/orm/releases/6.2/">release page</a></li>
                 <li>the <a href="https://docs.jboss.org/hibernate/orm/6.2/migration-guide/migration-guide.html">Migration Guide</a></li>
                 <li>the <a href="https://docs.jboss.org/hibernate/orm/6.2/introduction/html_single/Hibernate_Introduction.html">Introduction Guide</a></li>
-                <li>the <a href="https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html">User Guide</a></li>
-                </ul>
-                <p>See also the following resources related to supported APIs:</p>
-                <ul>
-                <li>the <a href="https://hibernate.org/community/compatibility-policy/">compatibility policy</a></li>
                 </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
@@ -586,8 +588,8 @@ output:
                 - [Release notes](https://github.com/KyoriPowered/text/releases)
                 - [Commits](https://github.com/KyoriPowered/text/commits)
 
-                Updates `org.eclipse.jgit:org.eclipse.jgit` from 4.11.0.201803080745-r to 7.2.1.202505142326-r
-                - [Commits](https://github.com/eclipse-jgit/jgit/compare/v4.11.0.201803080745-r...v7.2.1.202505142326-r)
+                Updates `org.eclipse.jgit:org.eclipse.jgit` from 4.11.0.201803080745-r to 7.5.0.202512021534-r
+                - [Commits](https://github.com/eclipse-jgit/jgit/compare/v4.11.0.201803080745-r...v7.5.0.202512021534-r)
 
                 Updates `org.hibernate:hibernate-core` from 5.3.0.CR1 to 6.4.0.Final
                 - [Release notes](https://github.com/hibernate/hibernate-orm/releases)
