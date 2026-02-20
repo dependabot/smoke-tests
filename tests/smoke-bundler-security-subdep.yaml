@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: bundler
         allowed-updates:
             - dependency-type: direct
@@ -38,6 +39,11 @@ input:
             repo: dependabot/smoke-tests
             directory: /bundler/security-subdep
             commit: d68acbc60726e366810a710835479ae8165cd14a
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
 output:
     - type: record_ecosystem_versions
       expect:
@@ -311,7 +317,7 @@ output:
                         sass-listen (4.0.0)
                           rb-fsevent (~> 0.9, >= 0.9.4)
                           rb-inotify (~> 0.9, >= 0.9.7)
-                        strscan (3.1.2)
+                        strscan (3.1.7)
                         terminal-table (3.0.2)
                           unicode-display_width (>= 1.1.1, < 3)
                         unicode-display_width (2.5.0)
