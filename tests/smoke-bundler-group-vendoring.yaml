@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: bundler
         allowed-updates:
             - dependency-type: direct
@@ -17,6 +18,12 @@ input:
             - dependency-name: rubocop
               source: tests/smoke-bundler-group-vendoring.yaml
               version-requirement: '> 1.53.1'
+            - dependency-name: rack
+              source: tests/smoke-bundler-group-vendoring.yaml
+              version-requirement: '>3.2.5'
+            - dependency-name: toml-rb
+              source: tests/smoke-bundler-group-vendoring.yaml
+              version-requirement: '>4.1.0'
         source:
             provider: github
             repo: dependabot/smoke-tests
@@ -127,9 +134,9 @@ output:
                     - file: Gemfile
                       groups:
                         - default
-                      requirement: 3.1.8
+                      requirement: 3.2.5
                       source: null
-                  version: 3.1.8
+                  version: 3.2.5
                   directory: /bundler-vendored
             updated-dependency-files:
                 - content: |
@@ -139,7 +146,7 @@ output:
 
                     gem "rubocop", "1.53.1"
                     gem "toml-rb", "2.1.0"
-                    gem 'rack', '3.1.8'
+                    gem 'rack', '3.2.5'
                   content_encoding: utf-8
                   deleted: false
                   directory: /bundler-vendored
@@ -151,19 +158,20 @@ output:
                     GEM
                       remote: https://rubygems.org/
                       specs:
-                        ast (2.4.2)
+                        ast (2.4.3)
                         citrus (3.0.2)
-                        json (2.9.1)
-                        language_server-protocol (3.17.0.3)
-                        parallel (1.26.3)
-                        parser (3.3.6.0)
+                        json (2.18.1)
+                        language_server-protocol (3.17.0.5)
+                        parallel (1.27.0)
+                        parser (3.3.10.2)
                           ast (~> 2.4.1)
                           racc
+                        prism (1.9.0)
                         racc (1.8.1)
-                        rack (3.1.8)
+                        rack (3.2.5)
                         rainbow (3.1.1)
-                        regexp_parser (2.9.3)
-                        rexml (3.4.0)
+                        regexp_parser (2.11.3)
+                        rexml (3.4.4)
                         rubocop (1.53.1)
                           json (~> 2.3)
                           language_server-protocol (>= 3.17.0)
@@ -175,8 +183,9 @@ output:
                           rubocop-ast (>= 1.28.0, < 2.0)
                           ruby-progressbar (~> 1.7)
                           unicode-display_width (>= 2.4.0, < 3.0)
-                        rubocop-ast (1.37.0)
-                          parser (>= 3.3.1.0)
+                        rubocop-ast (1.49.0)
+                          parser (>= 3.3.7.2)
+                          prism (~> 1.7)
                         ruby-progressbar (1.13.0)
                         toml-rb (2.1.0)
                           citrus (~> 3.0, > 3.0)
@@ -186,7 +195,7 @@ output:
                       ruby
 
                     DEPENDENCIES
-                      rack (= 3.1.8)
+                      rack (= 3.2.5)
                       rubocop (= 1.53.1)
                       toml-rb (= 2.1.0)
 
@@ -197,6 +206,14 @@ output:
                   directory: /bundler-vendored
                   name: Gemfile.lock
                   operation: update
+                  support_file: false
+                  type: file
+                - content: ""
+                  content_encoding: ""
+                  deleted: true
+                  directory: /bundler-vendored
+                  name: vendor/cache/ast-2.4.2.gem
+                  operation: delete
                   support_file: false
                   type: file
                 - content: ""
@@ -247,35 +264,51 @@ output:
                   operation: delete
                   support_file: false
                   type: file
-                - content: 7f97cce93940a4fa4abb85a93e8013b4db5237b0f9909a326101d5380c74d3b9
+                - content: 2130f6a29488023a2b7fac8a9cc76c0a2643d812271a0154e73266a1674de4ac
                   content_encoding: sha256
                   deleted: false
                   directory: /bundler-vendored
-                  name: vendor/cache/json-2.9.1.gem
+                  name: vendor/cache/ast-2.4.3.gem
                   operation: create
                   support_file: false
                   type: file
-                - content: ef4c05b1bb7e25b701d110bc9854410b379710137c6abd93f693754c67c9c249
+                - content: 0a3a4b3feabf284934f80796e0dd89541bd05697f244ed391366f451647561f8
                   content_encoding: sha256
                   deleted: false
                   directory: /bundler-vendored
-                  name: vendor/cache/language_server-protocol-3.17.0.3.gem
+                  name: vendor/cache/json-2.18.1.gem
                   operation: create
                   support_file: false
                   type: file
-                - content: d42d747dc52b03e730db490a4cb4ca4b8e195f510ff13e2b8a54e8e485a735eb
+                - content: fc400d3d310d2c3cb4afd84cb244a00d47fe01c0b21e091d6381b00b735fc583
                   content_encoding: sha256
                   deleted: false
                   directory: /bundler-vendored
-                  name: vendor/cache/parallel-1.26.3.gem
+                  name: vendor/cache/language_server-protocol-3.17.0.5.gem
                   operation: create
                   support_file: false
                   type: file
-                - content: 33250e191ff0aefd450f3dec621777853343802d3f2ecbb7723d14fc6fa33bd3
+                - content: c3e47918ed0cff7c3f3dff1cd8d0f971d26d6bb6eca110923f1318d7afbc24c1
                   content_encoding: sha256
                   deleted: false
                   directory: /bundler-vendored
-                  name: vendor/cache/parser-3.3.6.0.gem
+                  name: vendor/cache/parallel-1.27.0.gem
+                  operation: create
+                  support_file: false
+                  type: file
+                - content: d951233fe4e98d9f3b2a5102ca2252eb09849b57ed24c012fc64c24835460271
+                  content_encoding: sha256
+                  deleted: false
+                  directory: /bundler-vendored
+                  name: vendor/cache/parser-3.3.10.2.gem
+                  operation: create
+                  support_file: false
+                  type: file
+                - content: 9a95b0ca4daebe5e1d7702e5ddf41f6d007dc3176849fef2350bfdbfd799bdf0
+                  content_encoding: sha256
+                  deleted: false
+                  directory: /bundler-vendored
+                  name: vendor/cache/prism-1.9.0.gem
                   operation: create
                   support_file: false
                   type: file
@@ -287,19 +320,19 @@ output:
                   operation: create
                   support_file: false
                   type: file
-                - content: 74f609cb44dc9992d88cfa14d1f20fa0877555fcae2bf7565205479aefd1ab3e
+                - content: 901523d01fab66bb109f7e6c6678a1116d6107ffbbda7dbe9b67a9303693535b
                   content_encoding: sha256
                   deleted: false
                   directory: /bundler-vendored
-                  name: vendor/cache/regexp_parser-2.9.3.gem
+                  name: vendor/cache/regexp_parser-2.11.3.gem
                   operation: create
                   support_file: false
                   type: file
-                - content: e2654239493a0e4419cadbc29afa89f2df9412fb264ab66c3b7ef91c3a0f46ca
+                - content: bd8bb1d7e65d12a8251a3cdf5815cbcb386838d6f5e79f158e379162f7f02f5e
                   content_encoding: sha256
                   deleted: false
                   directory: /bundler-vendored
-                  name: vendor/cache/rexml-3.4.0.gem
+                  name: vendor/cache/rexml-3.4.4.gem
                   operation: create
                   support_file: false
                   type: file
@@ -311,11 +344,11 @@ output:
                   operation: create
                   support_file: false
                   type: file
-                - content: a90436f53f3ab003ccddf924d7b22ef5d1e397859edccda12416a46e94a1240f
+                - content: 2f879a0def82797c57980f1b4ebc1ac2382c012bd6f4c7a4b68c3c8971b74f1c
                   content_encoding: sha256
                   deleted: false
                   directory: /bundler-vendored
-                  name: vendor/cache/rubocop-ast-1.37.0.gem
+                  name: vendor/cache/rubocop-ast-1.49.0.gem
                   operation: create
                   support_file: false
                   type: file
@@ -343,11 +376,11 @@ output:
                   operation: delete
                   support_file: false
                   type: file
-                - content: 1317da80b59e7ca3bc319cbc120f159677b801b01f79ad13bde888d04d656b86
+                - content: 28b8a710117e9897c86c540c1d7f123fe7bfdebf8567e08c2151420d70c9c77d
                   content_encoding: sha256
                   deleted: false
                   directory: /bundler-vendored
-                  name: vendor/cache/rack-3.1.8.gem
+                  name: vendor/cache/rack-3.2.5.gem
                   operation: create
                   support_file: false
                   type: file
@@ -477,11 +510,13 @@ output:
                 </details>
                 <br />
 
-                Updates `rack` from 2.1.4 to 3.1.8
+                Updates `rack` from 2.1.4 to 3.2.5
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/rack/rack/releases">rack's releases</a>.</em></p>
                 <blockquote>
+                <h2>v3.2.4</h2>
+                <p>No release notes provided.</p>
                 <h2>v3.0.9.1</h2>
                 <h2>What's Changed</h2>
                 <ul>
@@ -524,59 +559,6 @@ output:
                 <li>Release v3.0.3 by <a href="https://github.com/ioquatix"><code>@​ioquatix</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2000">rack/rack#2000</a></li>
                 </ul>
                 <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.2...v3.0.3">https://github.com/rack/rack/compare/v3.0.2...v3.0.3</a></p>
-                <h2>v3.0.2</h2>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.1...v3.0.2">https://github.com/rack/rack/compare/v3.0.1...v3.0.2</a></p>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/rack/rack/blob/main/CHANGELOG.md">rack's changelog</a>.</em></p>
-                <blockquote>
-                <h2>[3.1.8] - 2024-10-14</h2>
-                <h3>Fixed</h3>
-                <ul>
-                <li>Resolve deprecation warnings about uri <code>DEFAULT_PARSER</code>. (<a href="https://redirect.github.com/rack/rack/pull/2249">#2249</a>, [<a href="https://github.com/earlopain"><code>@​earlopain</code></a>])</li>
-                </ul>
-                <h2>[3.1.7] - 2024-07-11</h2>
-                <h3>Fixed</h3>
-                <ul>
-                <li>Do not remove escaped opening/closing quotes for content-disposition filenames. (<a href="https://redirect.github.com/rack/rack/pull/2229">#2229</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
-                <li>Fix encoding setting for non-binary IO-like objects in MockRequest#env_for. (<a href="https://redirect.github.com/rack/rack/pull/2227">#2227</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
-                <li><code>Rack::Response</code> should not generate invalid <code>content-length</code> header. (<a href="https://redirect.github.com/rack/rack/pull/2219">#2219</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
-                <li>Allow empty PATH_INFO. (<a href="https://redirect.github.com/rack/rack/pull/2214">#2214</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
-                </ul>
-                <h2>[3.1.6] - 2024-07-03</h2>
-                <h3>Fixed</h3>
-                <ul>
-                <li>Fix several edge cases in <code>Rack::Request#parse_http_accept_header</code>'s implementation. (<a href="https://redirect.github.com/rack/rack/pull/2226">#2226</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
-                </ul>
-                <h2>[3.1.5] - 2024-07-02</h2>
-                <h3>Security</h3>
-                <ul>
-                <li>Fix potential ReDoS attack in <code>Rack::Request#parse_http_accept_header</code>. (<a href="https://github.com/rack/rack/security/advisories/GHSA-cj83-2ww7-mvq7">GHSA-cj83-2ww7-mvq7</a>, <a href="https://github.com/dwisiswant0"><code>@​dwisiswant0</code></a>)</li>
-                </ul>
-                <h2>[3.1.4] - 2024-06-22</h2>
-                <h3>Fixed</h3>
-                <ul>
-                <li>Fix <code>Rack::Lint</code> matching some paths incorrectly as authority form. (<a href="https://redirect.github.com/rack/rack/pull/2220">#2220</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
-                </ul>
-                <h2>[3.1.3] - 2024-06-12</h2>
-                <h3>Fixed</h3>
-                <ul>
-                <li>Fix passing non-strings to <code>Rack::Utils.escape_html</code>. (<a href="https://redirect.github.com/rack/rack/pull/2202">#2202</a>, [<a href="https://github.com/earlopain"><code>@​earlopain</code></a>])</li>
-                <li><code>Rack::MockResponse</code> gracefully handles empty cookies (<a href="https://redirect.github.com/rack/rack/pull/2203">#2203</a> [<a href="https://github.com/wynksaiddestroy"><code>@​wynksaiddestroy</code></a>])</li>
-                </ul>
-                <h2>[3.1.2] - 2024-06-11</h2>
-                <ul>
-                <li><code>Rack::Response</code> will take in to consideration chunked encoding responses (<a href="https://redirect.github.com/rack/rack/pull/2204">#2204</a>, [<a href="https://github.com/tenderlove"><code>@​tenderlove</code></a>])</li>
-                </ul>
-                <h2>[3.1.1] - 2024-06-11</h2>
-                <ul>
-                <li>Oops! I shouldn't have shipped that</li>
-                </ul>
-                <h2>[3.1.0] - 2024-06-11</h2>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -584,17 +566,17 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/rack/rack/commit/0eabeb73b3fb590e187dacfd9a890fbb7ffb9477"><code>0eabeb7</code></a> Bump patch version.</li>
-                <li><a href="https://github.com/rack/rack/commit/f4f71031585647a0e76cc5e1a6b343f78475716d"><code>f4f7103</code></a> Resolve deprecation warnings about uri <code>DEFAULT_PARSER</code> (<a href="https://redirect.github.com/rack/rack/issues/2242">#2242</a>) (<a href="https://redirect.github.com/rack/rack/issues/2249">#2249</a>)</li>
-                <li><a href="https://github.com/rack/rack/commit/4bb2f723fa103de1351acd6a53d1889fd5578848"><code>4bb2f72</code></a> Bump patch version.</li>
-                <li><a href="https://github.com/rack/rack/commit/1c1e4136b6436bf582ae4b67c244e12612230d7d"><code>1c1e413</code></a> Ignore external tests directory.</li>
-                <li><a href="https://github.com/rack/rack/commit/b4a10369921a632ba25da7ad7c8eba0579c63146"><code>b4a1036</code></a> Prepare for 3.1.7 release.</li>
-                <li><a href="https://github.com/rack/rack/commit/d0da91bef014161dc4881447d32480386617c3ca"><code>d0da91b</code></a> Add more external tests.</li>
-                <li><a href="https://github.com/rack/rack/commit/f6f15103ab9962cea6a07c666b9421ebcde878dc"><code>f6f1510</code></a> Improve <code>Rack::Response</code> content-length header generation. (<a href="https://redirect.github.com/rack/rack/issues/2219">#2219</a>)</li>
-                <li><a href="https://github.com/rack/rack/commit/fb339e03391181432ae5000b26e3bbc21e7ab5e7"><code>fb339e0</code></a> Fix encoding setting for non-binary IO-like objects in MockRequest#env_for</li>
-                <li><a href="https://github.com/rack/rack/commit/e21872d0eaea5eea9815bb2e3edf6a51e1f93cc3"><code>e21872d</code></a> Do not remove escaped opening/closing quotes for content-disposition filenames</li>
-                <li><a href="https://github.com/rack/rack/commit/5c3d79fb8abdf48107a9b8adbba19ebf6ad240de"><code>5c3d79f</code></a> Synchronize changelog with HEAD.</li>
-                <li>Additional commits viewable in <a href="https://github.com/rack/rack/compare/2.1.4...v3.1.8">compare view</a></li>
+                <li><a href="https://github.com/rack/rack/commit/bb5f3555bd12b9065112353e829298b3b5623ceb"><code>bb5f355</code></a> Bump patch version.</li>
+                <li><a href="https://github.com/rack/rack/commit/f9bde3bc2dde2771185ac1a7b7602a4d9fa0a0d8"><code>f9bde3b</code></a> Prevent directory traversal via root prefix bypass.</li>
+                <li><a href="https://github.com/rack/rack/commit/93a68f58aa82aa48f09b751501f19f5e760dd406"><code>93a68f5</code></a> XSS injection via malicious filename in <code>Rack::Directory</code>.</li>
+                <li><a href="https://github.com/rack/rack/commit/3b8b0d22d68a7fb30fdea40f838d0f95a05c134d"><code>3b8b0d2</code></a> Fix MockResponse#body when the body is a Proc (<a href="https://redirect.github.com/rack/rack/issues/2420">#2420</a>)</li>
+                <li><a href="https://github.com/rack/rack/commit/4c24539777db8833d78f881680cd245878cfba31"><code>4c24539</code></a> Bump patch version.</li>
+                <li><a href="https://github.com/rack/rack/commit/3ba5e4f22f55abac21037bb137e56e5c8e36b673"><code>3ba5e4f</code></a> Allow Multipart head to span read boundary. (<a href="https://redirect.github.com/rack/rack/issues/2392">#2392</a>)</li>
+                <li><a href="https://github.com/rack/rack/commit/32bf8887d00bd86494f0ce08c46cda59a65d332f"><code>32bf888</code></a> Bump patch version.</li>
+                <li><a href="https://github.com/rack/rack/commit/e179614c4a653283286f5f046428cbb85f21146f"><code>e179614</code></a> Unbounded read in <code>Rack::Request</code> form parsing can lead to memory exhaustion.</li>
+                <li><a href="https://github.com/rack/rack/commit/57277b7741581fa827472c5c666f6e6a33abd784"><code>57277b7</code></a> Improper handling of proxy headers in <code>Rack::Sendfile</code> may allow proxy bypass.</li>
+                <li><a href="https://github.com/rack/rack/commit/403b74b2441d666845177ce769036e294f663712"><code>403b74b</code></a> Normalize adivsories links.</li>
+                <li>Additional commits viewable in <a href="https://github.com/rack/rack/compare/2.1.4...v3.2.5">compare view</a></li>
                 </ul>
                 </details>
                 <br />
@@ -609,10 +591,10 @@ output:
                 - [Changelog](https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md)
                 - [Commits](https://github.com/rubocop/rubocop/compare/v0.76.0...v1.53.1)
 
-                Updates `rack` from 2.1.4 to 3.1.8
+                Updates `rack` from 2.1.4 to 3.2.5
                 - [Release notes](https://github.com/rack/rack/releases)
                 - [Changelog](https://github.com/rack/rack/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/rack/rack/compare/2.1.4...v3.1.8)
+                - [Commits](https://github.com/rack/rack/compare/2.1.4...v3.2.5)
             dependency-group:
                 name: ruleset
     - type: create_pull_request
@@ -632,9 +614,9 @@ output:
                     - file: Gemfile
                       groups:
                         - default
-                      requirement: 3.0.1
+                      requirement: 4.1.0
                       source: null
-                  version: 3.0.1
+                  version: 4.1.0
                   directory: /bundler-vendored
             updated-dependency-files:
                 - content: |
@@ -643,7 +625,7 @@ output:
                     source "https://rubygems.org"
 
                     gem "rubocop", "0.76.0"
-                    gem "toml-rb", "3.0.1"
+                    gem "toml-rb", "4.1.0"
                     gem 'rack', '2.1.4'
                   content_encoding: utf-8
                   deleted: false
@@ -673,7 +655,7 @@ output:
                           ruby-progressbar (~> 1.7)
                           unicode-display_width (>= 1.4.0, < 1.7)
                         ruby-progressbar (1.11.0)
-                        toml-rb (3.0.1)
+                        toml-rb (4.1.0)
                           citrus (~> 3.0, > 3.0)
                           racc (~> 1.7)
                         unicode-display_width (1.6.1)
@@ -684,7 +666,7 @@ output:
                     DEPENDENCIES
                       rack (= 2.1.4)
                       rubocop (= 0.76.0)
-                      toml-rb (= 3.0.1)
+                      toml-rb (= 4.1.0)
 
                     BUNDLED WITH
                        2.1.4
@@ -711,21 +693,36 @@ output:
                   operation: create
                   support_file: false
                   type: file
-                - content: 3fa7edff0e4e823ea56d7eea96d70ca6fdb6ba24f554d1514a8881ca67fcdd10
+                - content: 4b5ce4f99a5f260d1fe81b0353c836ec985cf5e2b3d868f549efbb7edb670e4d
                   content_encoding: sha256
                   deleted: false
                   directory: /bundler-vendored
-                  name: vendor/cache/toml-rb-3.0.1.gem
+                  name: vendor/cache/toml-rb-4.1.0.gem
                   operation: create
                   support_file: false
                   type: file
-            pr-title: Bump toml-rb from 2.1.0 to 3.0.1 in /bundler-vendored
+            pr-title: Bump toml-rb from 2.1.0 to 4.1.0 in /bundler-vendored
             pr-body: |
-                Bumps [toml-rb](https://github.com/emancu/toml-rb) from 2.1.0 to 3.0.1.
+                Bumps [toml-rb](https://github.com/emancu/toml-rb) from 2.1.0 to 4.1.0.
                 <details>
                 <summary>Release notes</summary>
                 <p><em>Sourced from <a href="https://github.com/emancu/toml-rb/releases">toml-rb's releases</a>.</em></p>
                 <blockquote>
+                <h2>v4.1.0</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li><a href="https://redirect.github.com/emancu/toml-rb/issues/155">#155</a>  First working solution to verify we are not overriding dotted keys by <a href="https://github.com/emancu"><code>@​emancu</code></a> in <a href="https://redirect.github.com/emancu/toml-rb/pull/157">emancu/toml-rb#157</a></li>
+                <li><a href="https://redirect.github.com/emancu/toml-rb/issues/149">#149</a>  Undetected key conflict error by <a href="https://github.com/emancu"><code>@​emancu</code></a> in <a href="https://redirect.github.com/emancu/toml-rb/pull/158">emancu/toml-rb#158</a></li>
+                <li><a href="https://redirect.github.com/emancu/toml-rb/issues/150">#150</a>  Fix encoding error by <a href="https://github.com/emancu"><code>@​emancu</code></a> in <a href="https://redirect.github.com/emancu/toml-rb/pull/159">emancu/toml-rb#159</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/emancu/toml-rb/compare/v4.0.0...v4.1.0">https://github.com/emancu/toml-rb/compare/v4.0.0...v4.1.0</a></p>
+                <h2>v4.0.0</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Support array with mixed types by <a href="https://github.com/emancu"><code>@​emancu</code></a> in <a href="https://redirect.github.com/emancu/toml-rb/pull/153">emancu/toml-rb#153</a></li>
+                <li>Update tests by <a href="https://github.com/emancu"><code>@​emancu</code></a> in <a href="https://redirect.github.com/emancu/toml-rb/pull/154">emancu/toml-rb#154</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/emancu/toml-rb/compare/v3.0.1...v4.0.0">https://github.com/emancu/toml-rb/compare/v3.0.1...v4.0.0</a></p>
                 <h2>v3.0.1</h2>
                 <h2>What's Changed</h2>
                 <ul>
@@ -757,32 +754,33 @@ output:
                 Thanks <a href="https://github.com/shanyungyang"><code>@​shanyungyang</code></a></p>
                 <p><a href="https://redirect.github.com/emancu/toml-rb/pull/136">emancu/toml-rb#136</a></p>
                 <h2>Fixing errors caused by frozen-strings</h2>
-                <p>Thanks to <a href="https://github.com/bastelfreak"><code>@​bastelfreak</code></a> and <a href="https://github.com/ekohl"><code>@​ekohl</code></a> for <a href="https://redirect.github.com/emancu/toml-rb/pull/134">fixing this</a>.</p>
+                <!-- raw HTML omitted -->
                 </blockquote>
+                <p>... (truncated)</p>
                 </details>
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/emancu/toml-rb/commit/28b2ebcaae8fd87cec777500cfe4fa087c6c808b"><code>28b2ebc</code></a> Bump to v3.0.1</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/a9553af968f8e4aa9e69abf6db1e7457da5cae46"><code>a9553af</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/148">#148</a> from dreid/empty-keys</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/6572c457777f61ffb635d50492302d7be0795d5a"><code>6572c45</code></a> Support empty keys by quoting them. Fixes <a href="https://redirect.github.com/emancu/toml-rb/issues/147">#147</a></li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/12b0048158c6c10e68e2ef34c7522c48ec22cb40"><code>12b0048</code></a> Bump to v3.0.0</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/bb568127b6f28ad0315009d567e835b153d2feab"><code>bb56812</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/146">#146</a> from emancu/issue-143/dump_backslashed_keys</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/d3861291a10b7266a4bd6c42f06207ed636304ff"><code>d386129</code></a> Fix error</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/5883615ebfa0a603c2fd8437a9a678058692a6dd"><code>5883615</code></a> [147] Dump backslashed keys</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/3e73482ea89c923df0a4d2ac144c43731c777c6c"><code>3e73482</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/145">#145</a> from timon/feature/ruby-3.3-support</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/ef4a5c57ccb045791646bddbec52c6839ab5d518"><code>ef4a5c5</code></a> Explicitly list racc as a dependency</li>
-                <li><a href="https://github.com/emancu/toml-rb/commit/a2d73ac1b417c29352816a84841e4d0726582c42"><code>a2d73ac</code></a> Add ruby 3.3 to testing matrix</li>
-                <li>Additional commits viewable in <a href="https://github.com/emancu/toml-rb/compare/v2.1.0...v3.0.1">compare view</a></li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/39069636cca33ed5761962191a5e17a6f134aadf"><code>3906963</code></a> Bump to v4.1.0</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/61581fa4fbb06786c9accea70531318516758fd2"><code>61581fa</code></a> Fix encoding exception</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/9e0539b5fe2f0b516260625413b134f96a9bf0ed"><code>9e0539b</code></a> Update ruby.yml</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/d1551a741503661e9110e71cac969650a6b7cd59"><code>d1551a7</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/158">#158</a> from emancu/149/undetected_key_conflict_error</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/7183f0fc408d3668e261517adb6366df6b83f91a"><code>7183f0f</code></a> Refactor keyvalue to make it more readable</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/9179f25ac55077df154f3edaace5a5fd46093eb5"><code>9179f25</code></a> Fix <a href="https://redirect.github.com/emancu/toml-rb/issues/149">emancu/toml-rb#149</a> which should be rejected.</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/19fb9ea061d1b7adecf7a945ede58a65d7eb4062"><code>19fb9ea</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/157">#157</a> from emancu/155/merge_dotted_keys</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/75b7c102ddb05727acc51e93853589c50499ebd3"><code>75b7c10</code></a> First working solution to verify we are not overriding dotted keys</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/36d9d5dc2ed72b6a01a9f1d7fac7a6639b3593b3"><code>36d9d5d</code></a> Bump to v4.0.0</li>
+                <li><a href="https://github.com/emancu/toml-rb/commit/a7fc9e567cde22af1307cfadc5c3cb7414b64d0d"><code>a7fc9e5</code></a> Merge pull request <a href="https://redirect.github.com/emancu/toml-rb/issues/154">#154</a> from emancu/update_tests</li>
+                <li>Additional commits viewable in <a href="https://github.com/emancu/toml-rb/compare/v2.1.0...v4.1.0">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump toml-rb from 2.1.0 to 3.0.1 in /bundler-vendored
+                Bump toml-rb from 2.1.0 to 4.1.0 in /bundler-vendored
 
-                Bumps [toml-rb](https://github.com/emancu/toml-rb) from 2.1.0 to 3.0.1.
+                Bumps [toml-rb](https://github.com/emancu/toml-rb) from 2.1.0 to 4.1.0.
                 - [Release notes](https://github.com/emancu/toml-rb/releases)
-                - [Commits](https://github.com/emancu/toml-rb/compare/v2.1.0...v3.0.1)
+                - [Commits](https://github.com/emancu/toml-rb/compare/v2.1.0...v4.1.0)
     - type: mark_as_processed
       expect:
         data:

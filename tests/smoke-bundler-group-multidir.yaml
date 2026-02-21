@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: bundler
         allowed-updates:
             - dependency-type: direct
@@ -205,7 +206,7 @@ output:
                         nokogiri (1.11.1)
                           mini_portile2 (~> 2.5.0)
                           racc (~> 1.4)
-                        racc (1.7.3)
+                        racc (1.8.1)
                         rack (1.6.13)
                         sinatra (1.2.3)
                           rack (~> 1.1)
@@ -250,7 +251,7 @@ output:
                         nokogiri (1.11.1)
                           mini_portile2 (~> 2.5.0)
                           racc (~> 1.4)
-                        racc (1.7.3)
+                        racc (1.8.1)
                         rack (3.0.7)
 
                     PLATFORMS
@@ -270,249 +271,7 @@ output:
                   support_file: false
                   type: file
             pr-title: Bump the bundler group across 2 directories with 3 updates
-            pr-body: |
-                Bumps the bundler group with 2 updates in the /bundler/multi-dir/foo directory: [sinatra](https://github.com/sinatra/sinatra) and [nokogiri](https://github.com/sparklemotion/nokogiri).
-                Bumps the bundler group with 2 updates in the /bundler/multi-dir/bar directory: [nokogiri](https://github.com/sparklemotion/nokogiri) and [rack](https://github.com/rack/rack).
-
-                Updates `sinatra` from 1.2.2 to 1.2.3
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/sinatra/sinatra/blob/main/CHANGELOG.md">sinatra's changelog</a>.</em></p>
-                <blockquote>
-                <h2>1.2.3 / 2011-04-13</h2>
-                <ul>
-                <li>
-                <p>This release is compatible with Tilt 1.3, it will still work with Tilt 1.2.2,
-                however, if you want to use a newer Tilt version, you have to upgrade to at
-                least this version of Sinatra. (Konstantin Haase)</p>
-                </li>
-                <li>
-                <p>Helpers dealing with time, like <code>expires</code>, handle objects that pretend to be
-                numbers, like <code>ActiveSupport::Duration</code>, better. (Konstantin Haase)</p>
-                </li>
-                </ul>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/sinatra/sinatra/commit/95d5205ac5a7d34c518ff5ba57072daf315e6c91"><code>95d5205</code></a> 1.2.3 release</li>
-                <li><a href="https://github.com/sinatra/sinatra/commit/f30a82095eb20f85412a9816c5b904f67b127e1f"><code>f30a820</code></a> update CHANGES</li>
-                <li><a href="https://github.com/sinatra/sinatra/commit/c3fa2f3050693743f7a6be35bfa0ab0e924768f3"><code>c3fa2f3</code></a> Remove has_rdoc= method from gemspec</li>
-                <li><a href="https://github.com/sinatra/sinatra/commit/bed6292d8e71f7dd59b35625d497058fcb815a8f"><code>bed6292</code></a> update CHANGES</li>
-                <li><a href="https://github.com/sinatra/sinatra/commit/9773e20c6ae5864b0b93d5c8b51282d9eccefd12"><code>9773e20</code></a> missing templates only raise Errno::ENOENT</li>
-                <li><a href="https://github.com/sinatra/sinatra/commit/94bdb1cb0beada9ee77197f4b42217f99e3e1063"><code>94bdb1c</code></a> prepare for Tilt 1.3 (while remaining compatible with 1.2)</li>
-                <li><a href="https://github.com/sinatra/sinatra/commit/1c1fa17b57b940ba3b9aa7114bd148f538516c0b"><code>1c1fa17</code></a> allow setting tilt version via env var</li>
-                <li><a href="https://github.com/sinatra/sinatra/commit/904b280b4bab65bf43943e64bbe9a98c893e0d59"><code>904b280</code></a> typo</li>
-                <li><a href="https://github.com/sinatra/sinatra/commit/420ff6c8adb4da1bead4a5ccd4f3f8e648e3f2e2"><code>420ff6c</code></a> fix failing spec</li>
-                <li><a href="https://github.com/sinatra/sinatra/commit/f467587016510ecf5b02e032310a495ea9b138b1"><code>f467587</code></a> make time_for always raise an ArgumentError if something goes wrong</li>
-                <li>Additional commits viewable in <a href="https://github.com/sinatra/sinatra/compare/1.2.2...1.2.3">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-
-                Updates `nokogiri` from 1.11.0 to 1.11.1
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/sparklemotion/nokogiri/releases">nokogiri's releases</a>.</em></p>
-                <blockquote>
-                <h2>v1.11.1 / 2021-01-06</h2>
-                <h3>Fixed</h3>
-                <ul>
-                <li>[CRuby] If <code>libxml-ruby</code> is loaded before <code>nokogiri</code>, the SAX and Push parsers no longer call <code>libxml-ruby</code>'s handlers. Instead, they defensively override the libxml2 global handler before parsing. [<a href="https://redirect.github.com/sparklemotion/nokogiri/issues/2168">#2168</a>]</li>
-                </ul>
-                <h3>SHA-256 Checksums of published gems</h3>
-                <pre><code>a41091292992cb99be1b53927e1de4abe5912742ded956b0ba3383ce4f29711c  nokogiri-1.11.1-arm64-darwin.gem
-                d44fccb8475394eb71f29dfa7bb3ac32ee50795972c4557ffe54122ce486479d  nokogiri-1.11.1-java.gem
-                f760285e3db732ee0d6e06370f89407f656d5181a55329271760e82658b4c3fc  nokogiri-1.11.1-x64-mingw32.gem
-                dd48343bc4628936d371ba7256c4f74513b6fa642e553ad7401ce0d9b8d26e1f  nokogiri-1.11.1-x86-linux.gem
-                7f49138821d714fe2c5d040dda4af24199ae207960bf6aad4a61483f896bb046  nokogiri-1.11.1-x86-mingw32.gem
-                5c26111f7f26831508cc5234e273afd93f43fbbfd0dcae5394490038b88d28e7  nokogiri-1.11.1-x86_64-darwin.gem
-                c3617c0680af1dd9fda5c0fd7d72a0da68b422c0c0b4cebcd7c45ff5082ea6d2  nokogiri-1.11.1-x86_64-linux.gem
-                42c2a54dd3ef03ef2543177bee3b5308313214e99f0d1aa85f984324329e5caa  nokogiri-1.11.1.gem
-                </code></pre>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md">nokogiri's changelog</a>.</em></p>
-                <blockquote>
-                <h2>1.11.1 / 2021-01-06</h2>
-                <h3>Fixed</h3>
-                <ul>
-                <li>[CRuby] If <code>libxml-ruby</code> is loaded before <code>nokogiri</code>, the SAX and Push parsers no longer call <code>libxml-ruby</code>'s handlers. Instead, they defensively override the libxml2 global handler before parsing. <a href="https://redirect.github.com/sparklemotion/nokogiri/issues/2168">#2168</a></li>
-                </ul>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/7be6f04aa2700e818f8a3bfe82801b5bd6e8c4f4"><code>7be6f04</code></a> version bump to v1.11.1</li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/aa0c3991953c5955b0c2e778af961a2ca3225467"><code>aa0c399</code></a> dev: overhaul .gitignore</li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/3d90c6d1bc871ad41c117efbd95c7d7b5a63344d"><code>3d90c6d</code></a> Merge pull request <a href="https://redirect.github.com/sparklemotion/nokogiri/issues/2169">#2169</a> from sparklemotion/2168-active-support-test-failure</li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/bbf850c6297347461df92b1f208f4e8fc744e1c8"><code>bbf850c</code></a> changelog: update for <a href="https://redirect.github.com/sparklemotion/nokogiri/issues/2168">#2168</a></li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/ee697726dc35f2996d5f5cf6b8c8e0516a79eadf"><code>ee69772</code></a> ci: another valgrind suppression</li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/f9a2c4e050f337e30f08ac32f19e1e10f229723a"><code>f9a2c4e</code></a> fix: restore proper error handling in the SAX push parser</li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/35aa88b75e7d8436217471ef6ff58f814466b26e"><code>35aa88b</code></a> fix(cruby): reset libxml2's error handler in sax and push parsers</li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/07459fd0e0db1d488748726d1f4accd9bac18646"><code>07459fd</code></a> fix(test): clobber libxml2's global error handler before every test</li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/b682ac5afeabfc636edf282700f05fd5923fa396"><code>b682ac5</code></a> ci: ensure all tests are running <code>setup</code></li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/007662fc216902a5ae186cb78b0d46f7f48b8d92"><code>007662f</code></a> github: update &quot;installation difficulty&quot; issue template</li>
-                <li>Additional commits viewable in <a href="https://github.com/sparklemotion/nokogiri/compare/v1.11.0...v1.11.1">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-
-                Updates `nokogiri` from 1.11.0 to 1.11.1
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/sparklemotion/nokogiri/releases">nokogiri's releases</a>.</em></p>
-                <blockquote>
-                <h2>v1.11.1 / 2021-01-06</h2>
-                <h3>Fixed</h3>
-                <ul>
-                <li>[CRuby] If <code>libxml-ruby</code> is loaded before <code>nokogiri</code>, the SAX and Push parsers no longer call <code>libxml-ruby</code>'s handlers. Instead, they defensively override the libxml2 global handler before parsing. [<a href="https://redirect.github.com/sparklemotion/nokogiri/issues/2168">#2168</a>]</li>
-                </ul>
-                <h3>SHA-256 Checksums of published gems</h3>
-                <pre><code>a41091292992cb99be1b53927e1de4abe5912742ded956b0ba3383ce4f29711c  nokogiri-1.11.1-arm64-darwin.gem
-                d44fccb8475394eb71f29dfa7bb3ac32ee50795972c4557ffe54122ce486479d  nokogiri-1.11.1-java.gem
-                f760285e3db732ee0d6e06370f89407f656d5181a55329271760e82658b4c3fc  nokogiri-1.11.1-x64-mingw32.gem
-                dd48343bc4628936d371ba7256c4f74513b6fa642e553ad7401ce0d9b8d26e1f  nokogiri-1.11.1-x86-linux.gem
-                7f49138821d714fe2c5d040dda4af24199ae207960bf6aad4a61483f896bb046  nokogiri-1.11.1-x86-mingw32.gem
-                5c26111f7f26831508cc5234e273afd93f43fbbfd0dcae5394490038b88d28e7  nokogiri-1.11.1-x86_64-darwin.gem
-                c3617c0680af1dd9fda5c0fd7d72a0da68b422c0c0b4cebcd7c45ff5082ea6d2  nokogiri-1.11.1-x86_64-linux.gem
-                42c2a54dd3ef03ef2543177bee3b5308313214e99f0d1aa85f984324329e5caa  nokogiri-1.11.1.gem
-                </code></pre>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md">nokogiri's changelog</a>.</em></p>
-                <blockquote>
-                <h2>1.11.1 / 2021-01-06</h2>
-                <h3>Fixed</h3>
-                <ul>
-                <li>[CRuby] If <code>libxml-ruby</code> is loaded before <code>nokogiri</code>, the SAX and Push parsers no longer call <code>libxml-ruby</code>'s handlers. Instead, they defensively override the libxml2 global handler before parsing. <a href="https://redirect.github.com/sparklemotion/nokogiri/issues/2168">#2168</a></li>
-                </ul>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/7be6f04aa2700e818f8a3bfe82801b5bd6e8c4f4"><code>7be6f04</code></a> version bump to v1.11.1</li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/aa0c3991953c5955b0c2e778af961a2ca3225467"><code>aa0c399</code></a> dev: overhaul .gitignore</li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/3d90c6d1bc871ad41c117efbd95c7d7b5a63344d"><code>3d90c6d</code></a> Merge pull request <a href="https://redirect.github.com/sparklemotion/nokogiri/issues/2169">#2169</a> from sparklemotion/2168-active-support-test-failure</li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/bbf850c6297347461df92b1f208f4e8fc744e1c8"><code>bbf850c</code></a> changelog: update for <a href="https://redirect.github.com/sparklemotion/nokogiri/issues/2168">#2168</a></li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/ee697726dc35f2996d5f5cf6b8c8e0516a79eadf"><code>ee69772</code></a> ci: another valgrind suppression</li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/f9a2c4e050f337e30f08ac32f19e1e10f229723a"><code>f9a2c4e</code></a> fix: restore proper error handling in the SAX push parser</li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/35aa88b75e7d8436217471ef6ff58f814466b26e"><code>35aa88b</code></a> fix(cruby): reset libxml2's error handler in sax and push parsers</li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/07459fd0e0db1d488748726d1f4accd9bac18646"><code>07459fd</code></a> fix(test): clobber libxml2's global error handler before every test</li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/b682ac5afeabfc636edf282700f05fd5923fa396"><code>b682ac5</code></a> ci: ensure all tests are running <code>setup</code></li>
-                <li><a href="https://github.com/sparklemotion/nokogiri/commit/007662fc216902a5ae186cb78b0d46f7f48b8d92"><code>007662f</code></a> github: update &quot;installation difficulty&quot; issue template</li>
-                <li>Additional commits viewable in <a href="https://github.com/sparklemotion/nokogiri/compare/v1.11.0...v1.11.1">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-
-                Updates `rack` from 3.0.0 to 3.0.7
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/rack/rack/releases">rack's releases</a>.</em></p>
-                <blockquote>
-                <h2>v3.0.7</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Backport &quot;Make query parameters without = have nil values&quot;. by <a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2060">rack/rack#2060</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.6.1...v3.0.7">https://github.com/rack/rack/compare/v3.0.6.1...v3.0.7</a></p>
-                <h2>v3.0.6.1</h2>
-                <p>No release notes provided.</p>
-                <h2>v3.0.4.1</h2>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.4...v3.0.4.1">https://github.com/rack/rack/compare/v3.0.4...v3.0.4.1</a></p>
-                <h2>v3.0.4</h2>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.3...v3.0.4">https://github.com/rack/rack/compare/v3.0.3...v3.0.4</a></p>
-                <h2>v3.0.3</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Release v3.0.3 by <a href="https://github.com/ioquatix"><code>@​ioquatix</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2000">rack/rack#2000</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.2...v3.0.3">https://github.com/rack/rack/compare/v3.0.2...v3.0.3</a></p>
-                <h2>v3.0.2</h2>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.1...v3.0.2">https://github.com/rack/rack/compare/v3.0.1...v3.0.2</a></p>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/rack/rack/blob/main/CHANGELOG.md">rack's changelog</a>.</em></p>
-                <blockquote>
-                <h2>[3.0.7] - 2023-03-16</h2>
-                <ul>
-                <li>Make query parameters without <code>=</code> have <code>nil</code> values. (<a href="https://redirect.github.com/rack/rack/pull/2059">#2059</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
-                </ul>
-                <h2>[3.0.6.1] - 2023-03-13</h2>
-                <ul>
-                <li>[CVE-2023-27539] Avoid ReDoS in header parsing</li>
-                </ul>
-                <h2>[3.0.6] - 2023-03-13</h2>
-                <ul>
-                <li>Add <code>QueryParser#missing_value</code> for handling missing values + tests. (<a href="https://redirect.github.com/rack/rack/pull/2052">#2052</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
-                </ul>
-                <h2>[3.0.5] - 2023-03-13</h2>
-                <ul>
-                <li>Split form/query parsing into two steps. (<a href="https://redirect.github.com/rack/rack/pull/2038">#2038</a>, <a href="https://github.com/matthewd"><code>@​matthewd</code></a>)</li>
-                </ul>
-                <h2>[3.0.4.2] - 2023-03-02</h2>
-                <ul>
-                <li>[CVE-2023-27530] Introduce multipart_total_part_limit to limit total parts</li>
-                </ul>
-                <h2>[3.0.4.1] - 2023-01-17</h2>
-                <ul>
-                <li>[CVE-2022-44571] Fix ReDoS vulnerability in multipart parser</li>
-                <li>[CVE-2022-44570] Fix ReDoS in Rack::Utils.get_byte_ranges</li>
-                <li>[CVE-2022-44572] Forbid control characters in attributes (also ReDoS)</li>
-                </ul>
-                <h2>[3.0.4] - 2023-01-17</h2>
-                <ul>
-                <li><code>Rack::Request#POST</code> should consistently raise errors. Cache errors that occur when invoking <code>Rack::Request#POST</code> so they can be raised again later. (<a href="https://redirect.github.com/rack/rack/pull/2010">#2010</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
-                <li>Fix <code>Rack::Lint</code> error message for <code>HTTP_CONTENT_TYPE</code> and <code>HTTP_CONTENT_LENGTH</code>. (<a href="https://redirect.github.com/rack/rack/pull/2007">#2007</a>, <a href="https://github.com/byroot"><code>@​byroot</code></a>)</li>
-                <li>Extend <code>Rack::MethodOverride</code> to handle <code>QueryParser::ParamsTooDeepError</code> error. (<a href="https://redirect.github.com/rack/rack/pull/2006">#2006</a>, <a href="https://github.com/byroot"><code>@​byroot</code></a>)</li>
-                </ul>
-                <h2>[3.0.3] - 2022-12-27</h2>
-                <h3>Fixed</h3>
-                <ul>
-                <li><code>Rack::URLMap</code> uses non-deprecated form of <code>Regexp.new</code>. (<a href="https://redirect.github.com/rack/rack/pull/1998">#1998</a>, <a href="https://github.com/weizheheng"><code>@​weizheheng</code></a>)</li>
-                </ul>
-                <h2>[3.0.2] -2022-12-05</h2>
-                <h3>Fixed</h3>
-                <ul>
-                <li><code>Utils.build_nested_query</code> URL-encodes nested field names including the square brackets.</li>
-                <li>Allow <code>Rack::Response</code> to pass through streaming bodies. (<a href="https://redirect.github.com/rack/rack/pull/1993">#1993</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
-                </ul>
-                <h2>[3.0.1] - 2022-11-18</h2>
-                <h3>Fixed</h3>
-                <ul>
-                <li><code>MethodOverride</code> does not look for an override if a request does not include form/parseable data.</li>
-                </ul>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/rack/rack/commit/2429b7ba38e402fc2e29405cab69395134020aed"><code>2429b7b</code></a> Bump patch version.</li>
-                <li><a href="https://github.com/rack/rack/commit/94dd78b30794d0e2f3855e92afdf98cdb4835f79"><code>94dd78b</code></a> Update changelog.</li>
-                <li><a href="https://github.com/rack/rack/commit/d38b45615d9c71b7a4f692ab5845b8d06a22d774"><code>d38b456</code></a> Make query parameters without = have nil values (<a href="https://redirect.github.com/rack/rack/issues/2059">#2059</a>) (<a href="https://redirect.github.com/rack/rack/issues/2060">#2060</a>)</li>
-                <li><a href="https://github.com/rack/rack/commit/51e7a0f92edcccf91ab3b79d36751866699de76e"><code>51e7a0f</code></a> Merge branch '3-0-sec' into 3-0-stable</li>
-                <li><a href="https://github.com/rack/rack/commit/098d8e12c1553411ee198d7890c1fd9f1e8cf979"><code>098d8e1</code></a> bump version</li>
-                <li><a href="https://github.com/rack/rack/commit/231ef369ad0b542575fb36c74fcfcfabcf6c530c"><code>231ef36</code></a> Avoid ReDoS problem</li>
-                <li><a href="https://github.com/rack/rack/commit/54a9ed22035c6d10bc1bb8f1815f81307fd9d99b"><code>54a9ed2</code></a> Update changelog.</li>
-                <li><a href="https://github.com/rack/rack/commit/e9e9ae663d83f142d7666aee49622287828fa06f"><code>e9e9ae6</code></a> Bump patch version.</li>
-                <li><a href="https://github.com/rack/rack/commit/848c9c00562edbe54e72f83fcf253fcdc9449f74"><code>848c9c0</code></a> Add <code>QueryParser#missing_value</code> for handling missing values + tests. (<a href="https://redirect.github.com/rack/rack/issues/2052">#2052</a>)</li>
-                <li><a href="https://github.com/rack/rack/commit/9f8ba5e1fdf860338af7a65519278b32de00f516"><code>9f8ba5e</code></a> Bump patch version.</li>
-                <li>Additional commits viewable in <a href="https://github.com/rack/rack/compare/3.0.0...v3.0.7">compare view</a></li>
-                </ul>
-                </details>
-                <br />
+            pr-body: "Bumps the bundler group with 2 updates in the /bundler/multi-dir/foo directory: [sinatra](https://github.com/sinatra/sinatra) and [nokogiri](https://github.com/sparklemotion/nokogiri).\nBumps the bundler group with 2 updates in the /bundler/multi-dir/bar directory: [nokogiri](https://github.com/sparklemotion/nokogiri) and [rack](https://github.com/rack/rack).\n\nUpdates `sinatra` from 1.2.2 to 1.2.3\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a href=\"https://github.com/sinatra/sinatra/blob/main/CHANGELOG.md\">sinatra's changelog</a>.</em></p>\n<blockquote>\n<h2>1.2.3 / 2011-04-13</h2>\n<ul>\n<li>\n<p>This release is compatible with Tilt 1.3, it will still work with Tilt 1.2.2,\nhowever, if you want to use a newer Tilt version, you have to upgrade to at\nleast this version of Sinatra. (Konstantin Haase)</p>\n</li>\n<li>\n<p>Helpers dealing with time, like <code>expires</code>, handle objects that pretend to be\nnumbers, like <code>ActiveSupport::Duration</code>, better. (Konstantin Haase)</p>\n</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/sinatra/sinatra/commit/95d5205ac5a7d34c518ff5ba57072daf315e6c91\"><code>95d5205</code></a> 1.2.3 release</li>\n<li><a href=\"https://github.com/sinatra/sinatra/commit/f30a82095eb20f85412a9816c5b904f67b127e1f\"><code>f30a820</code></a> update CHANGES</li>\n<li><a href=\"https://github.com/sinatra/sinatra/commit/c3fa2f3050693743f7a6be35bfa0ab0e924768f3\"><code>c3fa2f3</code></a> Remove has_rdoc= method from gemspec</li>\n<li><a href=\"https://github.com/sinatra/sinatra/commit/bed6292d8e71f7dd59b35625d497058fcb815a8f\"><code>bed6292</code></a> update CHANGES</li>\n<li><a href=\"https://github.com/sinatra/sinatra/commit/9773e20c6ae5864b0b93d5c8b51282d9eccefd12\"><code>9773e20</code></a> missing templates only raise Errno::ENOENT</li>\n<li><a href=\"https://github.com/sinatra/sinatra/commit/94bdb1cb0beada9ee77197f4b42217f99e3e1063\"><code>94bdb1c</code></a> prepare for Tilt 1.3 (while remaining compatible with 1.2)</li>\n<li><a href=\"https://github.com/sinatra/sinatra/commit/1c1fa17b57b940ba3b9aa7114bd148f538516c0b\"><code>1c1fa17</code></a> allow setting tilt version via env var</li>\n<li><a href=\"https://github.com/sinatra/sinatra/commit/904b280b4bab65bf43943e64bbe9a98c893e0d59\"><code>904b280</code></a> typo</li>\n<li><a href=\"https://github.com/sinatra/sinatra/commit/420ff6c8adb4da1bead4a5ccd4f3f8e648e3f2e2\"><code>420ff6c</code></a> fix failing spec</li>\n<li><a href=\"https://github.com/sinatra/sinatra/commit/f467587016510ecf5b02e032310a495ea9b138b1\"><code>f467587</code></a> make time_for always raise an ArgumentError if something goes wrong</li>\n<li>Additional commits viewable in <a href=\"https://github.com/sinatra/sinatra/compare/1.2.2...1.2.3\">compare view</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `nokogiri` from 1.11.0 to 1.11.1\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/sparklemotion/nokogiri/releases\">nokogiri's releases</a>.</em></p>\n<blockquote>\n<h2>v1.11.1 / 2021-01-06</h2>\n<h3>Fixed</h3>\n<ul>\n<li>[CRuby] If <code>libxml-ruby</code> is loaded before <code>nokogiri</code>, the SAX and Push parsers no longer call <code>libxml-ruby</code>'s handlers. Instead, they defensively override the libxml2 global handler before parsing. [<a href=\"https://redirect.github.com/sparklemotion/nokogiri/issues/2168\">#2168</a>]</li>\n</ul>\n<h3>SHA-256 Checksums of published gems</h3>\n<pre><code>a41091292992cb99be1b53927e1de4abe5912742ded956b0ba3383ce4f29711c  nokogiri-1.11.1-arm64-darwin.gem\r\nd44fccb8475394eb71f29dfa7bb3ac32ee50795972c4557ffe54122ce486479d  nokogiri-1.11.1-java.gem\r\nf760285e3db732ee0d6e06370f89407f656d5181a55329271760e82658b4c3fc  nokogiri-1.11.1-x64-mingw32.gem\r\ndd48343bc4628936d371ba7256c4f74513b6fa642e553ad7401ce0d9b8d26e1f  nokogiri-1.11.1-x86-linux.gem\r\n7f49138821d714fe2c5d040dda4af24199ae207960bf6aad4a61483f896bb046  nokogiri-1.11.1-x86-mingw32.gem\r\n5c26111f7f26831508cc5234e273afd93f43fbbfd0dcae5394490038b88d28e7  nokogiri-1.11.1-x86_64-darwin.gem\r\nc3617c0680af1dd9fda5c0fd7d72a0da68b422c0c0b4cebcd7c45ff5082ea6d2  nokogiri-1.11.1-x86_64-linux.gem\r\n42c2a54dd3ef03ef2543177bee3b5308313214e99f0d1aa85f984324329e5caa  nokogiri-1.11.1.gem\r\n</code></pre>\n</blockquote>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a href=\"https://github.com/sparklemotion/nokogiri/blob/v1.11.1/CHANGELOG.md\">nokogiri's changelog</a>.</em></p>\n<blockquote>\n<h2>v1.11.1 / 2021-01-06</h2>\n<h3>Fixed</h3>\n<ul>\n<li>[CRuby] If <code>libxml-ruby</code> is loaded before <code>nokogiri</code>, the SAX and Push parsers no longer call <code>libxml-ruby</code>'s handlers. Instead, they defensively override the libxml2 global handler before parsing. [<a href=\"https://redirect.github.com/sparklemotion/nokogiri/issues/2168\">#2168</a>]</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/7be6f04aa2700e818f8a3bfe82801b5bd6e8c4f4\"><code>7be6f04</code></a> version bump to v1.11.1</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/aa0c3991953c5955b0c2e778af961a2ca3225467\"><code>aa0c399</code></a> dev: overhaul .gitignore</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/3d90c6d1bc871ad41c117efbd95c7d7b5a63344d\"><code>3d90c6d</code></a> Merge pull request <a href=\"https://redirect.github.com/sparklemotion/nokogiri/issues/2169\">#2169</a> from sparklemotion/2168-active-support-test-failure</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/bbf850c6297347461df92b1f208f4e8fc744e1c8\"><code>bbf850c</code></a> changelog: update for <a href=\"https://redirect.github.com/sparklemotion/nokogiri/issues/2168\">#2168</a></li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/ee697726dc35f2996d5f5cf6b8c8e0516a79eadf\"><code>ee69772</code></a> ci: another valgrind suppression</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/f9a2c4e050f337e30f08ac32f19e1e10f229723a\"><code>f9a2c4e</code></a> fix: restore proper error handling in the SAX push parser</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/35aa88b75e7d8436217471ef6ff58f814466b26e\"><code>35aa88b</code></a> fix(cruby): reset libxml2's error handler in sax and push parsers</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/07459fd0e0db1d488748726d1f4accd9bac18646\"><code>07459fd</code></a> fix(test): clobber libxml2's global error handler before every test</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/b682ac5afeabfc636edf282700f05fd5923fa396\"><code>b682ac5</code></a> ci: ensure all tests are running <code>setup</code></li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/007662fc216902a5ae186cb78b0d46f7f48b8d92\"><code>007662f</code></a> github: update &quot;installation difficulty&quot; issue template</li>\n<li>Additional commits viewable in <a href=\"https://github.com/sparklemotion/nokogiri/compare/v1.11.0...v1.11.1\">compare view</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `nokogiri` from 1.11.0 to 1.11.1\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/sparklemotion/nokogiri/releases\">nokogiri's releases</a>.</em></p>\n<blockquote>\n<h2>v1.11.1 / 2021-01-06</h2>\n<h3>Fixed</h3>\n<ul>\n<li>[CRuby] If <code>libxml-ruby</code> is loaded before <code>nokogiri</code>, the SAX and Push parsers no longer call <code>libxml-ruby</code>'s handlers. Instead, they defensively override the libxml2 global handler before parsing. [<a href=\"https://redirect.github.com/sparklemotion/nokogiri/issues/2168\">#2168</a>]</li>\n</ul>\n<h3>SHA-256 Checksums of published gems</h3>\n<pre><code>a41091292992cb99be1b53927e1de4abe5912742ded956b0ba3383ce4f29711c  nokogiri-1.11.1-arm64-darwin.gem\r\nd44fccb8475394eb71f29dfa7bb3ac32ee50795972c4557ffe54122ce486479d  nokogiri-1.11.1-java.gem\r\nf760285e3db732ee0d6e06370f89407f656d5181a55329271760e82658b4c3fc  nokogiri-1.11.1-x64-mingw32.gem\r\ndd48343bc4628936d371ba7256c4f74513b6fa642e553ad7401ce0d9b8d26e1f  nokogiri-1.11.1-x86-linux.gem\r\n7f49138821d714fe2c5d040dda4af24199ae207960bf6aad4a61483f896bb046  nokogiri-1.11.1-x86-mingw32.gem\r\n5c26111f7f26831508cc5234e273afd93f43fbbfd0dcae5394490038b88d28e7  nokogiri-1.11.1-x86_64-darwin.gem\r\nc3617c0680af1dd9fda5c0fd7d72a0da68b422c0c0b4cebcd7c45ff5082ea6d2  nokogiri-1.11.1-x86_64-linux.gem\r\n42c2a54dd3ef03ef2543177bee3b5308313214e99f0d1aa85f984324329e5caa  nokogiri-1.11.1.gem\r\n</code></pre>\n</blockquote>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a href=\"https://github.com/sparklemotion/nokogiri/blob/v1.11.1/CHANGELOG.md\">nokogiri's changelog</a>.</em></p>\n<blockquote>\n<h2>v1.11.1 / 2021-01-06</h2>\n<h3>Fixed</h3>\n<ul>\n<li>[CRuby] If <code>libxml-ruby</code> is loaded before <code>nokogiri</code>, the SAX and Push parsers no longer call <code>libxml-ruby</code>'s handlers. Instead, they defensively override the libxml2 global handler before parsing. [<a href=\"https://redirect.github.com/sparklemotion/nokogiri/issues/2168\">#2168</a>]</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/7be6f04aa2700e818f8a3bfe82801b5bd6e8c4f4\"><code>7be6f04</code></a> version bump to v1.11.1</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/aa0c3991953c5955b0c2e778af961a2ca3225467\"><code>aa0c399</code></a> dev: overhaul .gitignore</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/3d90c6d1bc871ad41c117efbd95c7d7b5a63344d\"><code>3d90c6d</code></a> Merge pull request <a href=\"https://redirect.github.com/sparklemotion/nokogiri/issues/2169\">#2169</a> from sparklemotion/2168-active-support-test-failure</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/bbf850c6297347461df92b1f208f4e8fc744e1c8\"><code>bbf850c</code></a> changelog: update for <a href=\"https://redirect.github.com/sparklemotion/nokogiri/issues/2168\">#2168</a></li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/ee697726dc35f2996d5f5cf6b8c8e0516a79eadf\"><code>ee69772</code></a> ci: another valgrind suppression</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/f9a2c4e050f337e30f08ac32f19e1e10f229723a\"><code>f9a2c4e</code></a> fix: restore proper error handling in the SAX push parser</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/35aa88b75e7d8436217471ef6ff58f814466b26e\"><code>35aa88b</code></a> fix(cruby): reset libxml2's error handler in sax and push parsers</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/07459fd0e0db1d488748726d1f4accd9bac18646\"><code>07459fd</code></a> fix(test): clobber libxml2's global error handler before every test</li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/b682ac5afeabfc636edf282700f05fd5923fa396\"><code>b682ac5</code></a> ci: ensure all tests are running <code>setup</code></li>\n<li><a href=\"https://github.com/sparklemotion/nokogiri/commit/007662fc216902a5ae186cb78b0d46f7f48b8d92\"><code>007662f</code></a> github: update &quot;installation difficulty&quot; issue template</li>\n<li>Additional commits viewable in <a href=\"https://github.com/sparklemotion/nokogiri/compare/v1.11.0...v1.11.1\">compare view</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `rack` from 3.0.0 to 3.0.7\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/rack/rack/releases\">rack's releases</a>.</em></p>\n<blockquote>\n<h2>v3.0.7</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Backport &quot;Make query parameters without = have nil values&quot;. by <a href=\"https://github.com/jeremyevans\"><code>@​jeremyevans</code></a> in <a href=\"https://redirect.github.com/rack/rack/pull/2060\">rack/rack#2060</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/rack/rack/compare/v3.0.6.1...v3.0.7\">https://github.com/rack/rack/compare/v3.0.6.1...v3.0.7</a></p>\n<h2>v3.0.6.1</h2>\n<p>No release notes provided.</p>\n<h2>v3.0.4.1</h2>\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/rack/rack/compare/v3.0.4...v3.0.4.1\">https://github.com/rack/rack/compare/v3.0.4...v3.0.4.1</a></p>\n<h2>v3.0.4</h2>\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/rack/rack/compare/v3.0.3...v3.0.4\">https://github.com/rack/rack/compare/v3.0.3...v3.0.4</a></p>\n<h2>v3.0.3</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Release v3.0.3 by <a href=\"https://github.com/ioquatix\"><code>@​ioquatix</code></a> in <a href=\"https://redirect.github.com/rack/rack/pull/2000\">rack/rack#2000</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/rack/rack/compare/v3.0.2...v3.0.3\">https://github.com/rack/rack/compare/v3.0.2...v3.0.3</a></p>\n<h2>v3.0.2</h2>\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/rack/rack/compare/v3.0.1...v3.0.2\">https://github.com/rack/rack/compare/v3.0.1...v3.0.2</a></p>\n</blockquote>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a href=\"https://github.com/rack/rack/blob/main/CHANGELOG.md\">rack's changelog</a>.</em></p>\n<blockquote>\n<h2>[3.0.7] - 2023-03-16</h2>\n<ul>\n<li>Make query parameters without <code>=</code> have <code>nil</code> values. (<a href=\"https://redirect.github.com/rack/rack/pull/2059\">#2059</a>, [<a href=\"https://github.com/jeremyevans\"><code>@​jeremyevans</code></a>])</li>\n</ul>\n<h2>[3.0.6.1] - 2023-03-13</h2>\n<h3>Security</h3>\n<ul>\n<li>[CVE-2023-27539] Avoid ReDoS in header parsing</li>\n</ul>\n<h2>[3.0.6] - 2023-03-13</h2>\n<ul>\n<li>Add <code>QueryParser#missing_value</code> for handling missing values + tests. (<a href=\"https://redirect.github.com/rack/rack/pull/2052\">#2052</a>, [<a href=\"https://github.com/ioquatix\"><code>@​ioquatix</code></a>])</li>\n</ul>\n<h2>[3.0.5] - 2023-03-13</h2>\n<ul>\n<li>Split form/query parsing into two steps. (<a href=\"https://redirect.github.com/rack/rack/pull/2038\">#2038</a>, <a href=\"https://github.com/matthewd\"><code>@​matthewd</code></a>)</li>\n</ul>\n<h2>[3.0.4.2] - 2023-03-02</h2>\n<h3>Security</h3>\n<ul>\n<li>[CVE-2023-27530] Introduce multipart_total_part_limit to limit total parts</li>\n</ul>\n<h2>[3.0.4.1] - 2023-01-17</h2>\n<h3>Security</h3>\n<ul>\n<li>[CVE-2022-44571] Fix ReDoS vulnerability in multipart parser</li>\n<li>[CVE-2022-44570] Fix ReDoS in Rack::Utils.get_byte_ranges</li>\n<li>[CVE-2022-44572] Forbid control characters in attributes (also ReDoS)</li>\n</ul>\n<h2>[3.0.4] - 2023-01-17</h2>\n<ul>\n<li><code>Rack::Request#POST</code> should consistently raise errors. Cache errors that occur when invoking <code>Rack::Request#POST</code> so they can be raised again later. (<a href=\"https://redirect.github.com/rack/rack/pull/2010\">#2010</a>, [<a href=\"https://github.com/ioquatix\"><code>@​ioquatix</code></a>])</li>\n<li>Fix <code>Rack::Lint</code> error message for <code>HTTP_CONTENT_TYPE</code> and <code>HTTP_CONTENT_LENGTH</code>. (<a href=\"https://redirect.github.com/rack/rack/pull/2007\">#2007</a>, <a href=\"https://github.com/byroot\"><code>@​byroot</code></a>)</li>\n<li>Extend <code>Rack::MethodOverride</code> to handle <code>QueryParser::ParamsTooDeepError</code> error. (<a href=\"https://redirect.github.com/rack/rack/pull/2006\">#2006</a>, <a href=\"https://github.com/byroot\"><code>@​byroot</code></a>)</li>\n</ul>\n<h2>[3.0.3] - 2022-12-27</h2>\n<h3>Fixed</h3>\n<ul>\n<li><code>Rack::URLMap</code> uses non-deprecated form of <code>Regexp.new</code>. (<a href=\"https://redirect.github.com/rack/rack/pull/1998\">#1998</a>, <a href=\"https://github.com/weizheheng\"><code>@​weizheheng</code></a>)</li>\n</ul>\n<h2>[3.0.2] - 2022-12-05</h2>\n<h3>Fixed</h3>\n<ul>\n<li><code>Utils.build_nested_query</code> URL-encodes nested field names including the square brackets.</li>\n<li>Allow <code>Rack::Response</code> to pass through streaming bodies. (<a href=\"https://redirect.github.com/rack/rack/pull/1993\">#1993</a>, [<a href=\"https://github.com/ioquatix\"><code>@​ioquatix</code></a>])</li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/rack/rack/commit/2429b7ba38e402fc2e29405cab69395134020aed\"><code>2429b7b</code></a> Bump patch version.</li>\n<li><a href=\"https://github.com/rack/rack/commit/94dd78b30794d0e2f3855e92afdf98cdb4835f79\"><code>94dd78b</code></a> Update changelog.</li>\n<li><a href=\"https://github.com/rack/rack/commit/d38b45615d9c71b7a4f692ab5845b8d06a22d774\"><code>d38b456</code></a> Make query parameters without = have nil values (<a href=\"https://redirect.github.com/rack/rack/issues/2059\">#2059</a>) (<a href=\"https://redirect.github.com/rack/rack/issues/2060\">#2060</a>)</li>\n<li><a href=\"https://github.com/rack/rack/commit/51e7a0f92edcccf91ab3b79d36751866699de76e\"><code>51e7a0f</code></a> Merge branch '3-0-sec' into 3-0-stable</li>\n<li><a href=\"https://github.com/rack/rack/commit/098d8e12c1553411ee198d7890c1fd9f1e8cf979\"><code>098d8e1</code></a> bump version</li>\n<li><a href=\"https://github.com/rack/rack/commit/231ef369ad0b542575fb36c74fcfcfabcf6c530c\"><code>231ef36</code></a> Avoid ReDoS problem</li>\n<li><a href=\"https://github.com/rack/rack/commit/54a9ed22035c6d10bc1bb8f1815f81307fd9d99b\"><code>54a9ed2</code></a> Update changelog.</li>\n<li><a href=\"https://github.com/rack/rack/commit/e9e9ae663d83f142d7666aee49622287828fa06f\"><code>e9e9ae6</code></a> Bump patch version.</li>\n<li><a href=\"https://github.com/rack/rack/commit/848c9c00562edbe54e72f83fcf253fcdc9449f74\"><code>848c9c0</code></a> Add <code>QueryParser#missing_value</code> for handling missing values + tests. (<a href=\"https://redirect.github.com/rack/rack/issues/2052\">#2052</a>)</li>\n<li><a href=\"https://github.com/rack/rack/commit/9f8ba5e1fdf860338af7a65519278b32de00f516\"><code>9f8ba5e</code></a> Bump patch version.</li>\n<li>Additional commits viewable in <a href=\"https://github.com/rack/rack/compare/3.0.0...v3.0.7\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
             commit-message: |-
                 Bump the bundler group across 2 directories with 3 updates
 
@@ -526,12 +285,12 @@ output:
 
                 Updates `nokogiri` from 1.11.0 to 1.11.1
                 - [Release notes](https://github.com/sparklemotion/nokogiri/releases)
-                - [Changelog](https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md)
+                - [Changelog](https://github.com/sparklemotion/nokogiri/blob/v1.11.1/CHANGELOG.md)
                 - [Commits](https://github.com/sparklemotion/nokogiri/compare/v1.11.0...v1.11.1)
 
                 Updates `nokogiri` from 1.11.0 to 1.11.1
                 - [Release notes](https://github.com/sparklemotion/nokogiri/releases)
-                - [Changelog](https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md)
+                - [Changelog](https://github.com/sparklemotion/nokogiri/blob/v1.11.1/CHANGELOG.md)
                 - [Commits](https://github.com/sparklemotion/nokogiri/compare/v1.11.0...v1.11.1)
 
                 Updates `rack` from 3.0.0 to 3.0.7

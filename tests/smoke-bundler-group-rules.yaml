@@ -18,6 +18,12 @@ input:
             - dependency-name: rubocop
               source: tests/smoke-bundler-group-rules.yaml
               version-requirement: '>1.59.0'
+            - dependency-name: rack
+              source: tests/smoke-bundler-group-rules.yaml
+              version-requirement: '>3.2.5'
+            - dependency-name: toml-rb
+              source: tests/smoke-bundler-group-rules.yaml
+              version-requirement: '>4.1.0'
         source:
             provider: github
             repo: dependabot/smoke-tests
@@ -138,10 +144,10 @@ output:
                       requirement: '>= 0'
                       source:
                         branch: null
-                        ref: v3.2.4
+                        ref: v3.2.5
                         type: git
                         url: git@github.com:rack/rack.git
-                  version: 03fc311bca9c2884263270716f634a6c0968024a
+                  version: d4dbd79978308a8811fe5cb1fe49082896685dca
                   directory: /bundler
             updated-dependency-files:
                 - content: |
@@ -151,7 +157,7 @@ output:
 
                     gem "rubocop", "1.59.0"
                     gem "toml-rb", "2.2.0"
-                    gem 'rack', git: 'git@github.com:rack/rack.git', tag: 'v3.2.4'
+                    gem 'rack', git: 'git@github.com:rack/rack.git', tag: 'v3.2.5'
                   content_encoding: utf-8
                   deleted: false
                   directory: /bundler
@@ -162,23 +168,23 @@ output:
                 - content: |
                     GIT
                       remote: git@github.com:rack/rack.git
-                      revision: 03fc311bca9c2884263270716f634a6c0968024a
-                      tag: v3.2.4
+                      revision: d4dbd79978308a8811fe5cb1fe49082896685dca
+                      tag: v3.2.5
                       specs:
-                        rack (3.2.4)
+                        rack (3.2.5)
 
                     GEM
                       remote: https://rubygems.org/
                       specs:
                         ast (2.4.3)
                         citrus (3.0.2)
-                        json (2.16.0)
+                        json (2.18.1)
                         language_server-protocol (3.17.0.5)
                         parallel (1.27.0)
-                        parser (3.3.10.0)
+                        parser (3.3.10.2)
                           ast (~> 2.4.1)
                           racc
-                        prism (1.6.0)
+                        prism (1.9.0)
                         racc (1.8.1)
                         rainbow (3.1.1)
                         regexp_parser (2.11.3)
@@ -194,9 +200,9 @@ output:
                           rubocop-ast (>= 1.30.0, < 2.0)
                           ruby-progressbar (~> 1.7)
                           unicode-display_width (>= 2.4.0, < 3.0)
-                        rubocop-ast (1.48.0)
+                        rubocop-ast (1.49.0)
                           parser (>= 3.3.7.2)
-                          prism (~> 1.4)
+                          prism (~> 1.7)
                         ruby-progressbar (1.13.0)
                         toml-rb (2.2.0)
                           citrus (~> 3.0, > 3.0)
@@ -356,63 +362,46 @@ output:
                 </details>
                 <br />
 
-                Updates `rack` from 2.1.4 to v3.2.4
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/rack/rack/releases">rack's releases</a>.</em></p>
-                <blockquote>
-                <h2>v3.2.4</h2>
-                <p>No release notes provided.</p>
-                <h2>v3.0.9.1</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Fixed ReDoS in Accept header parsing [CVE-2024-26146]</li>
-                <li>Fixed ReDoS in Content Type header parsing [CVE-2024-25126]</li>
-                <li>Reject Range headers which are too large [CVE-2024-26141]</li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.9...v3.0.9.1">https://github.com/rack/rack/compare/v3.0.9...v3.0.9.1</a></p>
-                <h2>v3.0.9</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Fix content-length calcuation in Rack:Response#write <a href="https://redirect.github.com/rack/rack/issues/2150">#2150</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.8...v3.0.9">https://github.com/rack/rack/compare/v3.0.8...v3.0.9</a></p>
-                <h2>v3.0.8</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Backport &quot;Fix some unused variable verbose warnings&quot; by <a href="https://github.com/skipkayhil"><code>@​skipkayhil</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2084">rack/rack#2084</a></li>
-                </ul>
-                <h2>New Contributors</h2>
-                <ul>
-                <li><a href="https://github.com/skipkayhil"><code>@​skipkayhil</code></a> made their first contribution in <a href="https://redirect.github.com/rack/rack/pull/2084">rack/rack#2084</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.7...v3.0.8">https://github.com/rack/rack/compare/v3.0.7...v3.0.8</a></p>
-                <h2>v3.0.7</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Backport &quot;Make query parameters without = have nil values&quot;. by <a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2060">rack/rack#2060</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.6.1...v3.0.7">https://github.com/rack/rack/compare/v3.0.6.1...v3.0.7</a></p>
-                <h2>v3.0.6.1</h2>
-                <p>No release notes provided.</p>
-                <h2>v3.0.4.1</h2>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.4...v3.0.4.1">https://github.com/rack/rack/compare/v3.0.4...v3.0.4.1</a></p>
-                <h2>v3.0.4</h2>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.3...v3.0.4">https://github.com/rack/rack/compare/v3.0.3...v3.0.4</a></p>
-                <h2>v3.0.3</h2>
-                <h2>What's Changed</h2>
-                <ul>
-                <li>Release v3.0.3 by <a href="https://github.com/ioquatix"><code>@​ioquatix</code></a> in <a href="https://redirect.github.com/rack/rack/pull/2000">rack/rack#2000</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/rack/rack/compare/v3.0.2...v3.0.3">https://github.com/rack/rack/compare/v3.0.2...v3.0.3</a></p>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
+                Updates `rack` from 2.1.4 to v3.2.5
                 <details>
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/rack/rack/blob/main/CHANGELOG.md">rack's changelog</a>.</em></p>
                 <blockquote>
+                <h1>Changelog</h1>
+                <p>All notable changes to this project will be documented in this file. For info on how to format all future additions to this file please reference <a href="https://keepachangelog.com/en/1.0.0/">Keep A Changelog</a>.</p>
+                <h2>Unreleased</h2>
+                <h3>Security</h3>
+                <ul>
+                <li><a href="https://github.com/advisories/GHSA-r657-rxjc-j557">CVE-2025-61780</a> Improper handling of headers in <code>Rack::Sendfile</code> may allow proxy bypass.</li>
+                <li><a href="https://github.com/advisories/GHSA-6xw4-3v39-52mm">CVE-2025-61919</a> Unbounded read in <code>Rack::Request</code> form parsing can lead to memory exhaustion.</li>
+                <li><a href="https://github.com/advisories/GHSA-whrj-4476-wvmp">CVE-2026-25500</a> XSS injection via malicious filename in <code>Rack::Directory</code>.</li>
+                <li><a href="https://github.com/advisories/GHSA-mxw3-3hh2-x2mh">CVE-2026-22860</a> Directory traversal via root prefix bypass in <code>Rack::Directory</code>.</li>
+                </ul>
+                <h3>SPEC Changes</h3>
+                <ul>
+                <li>Define <code>rack.response_finished</code> callback arguments more strictly. (<a href="https://redirect.github.com/rack/rack/pull/2365">#2365</a>, <a href="https://github.com/skipkayhil"><code>@​skipkayhil</code></a>)</li>
+                </ul>
+                <h3>Added</h3>
+                <ul>
+                <li>Add <code>Rack::Files#assign_headers</code> to allow overriding how the configured file headers are set. (<a href="https://redirect.github.com/rack/rack/pull/2377">#2377</a>, <a href="https://github.com/codergeek121"><code>@​codergeek121</code></a>)</li>
+                <li>Add support for <code>rack.response_finished</code> to <code>Rack::TempfileReaper</code>. (<a href="https://redirect.github.com/rack/rack/pull/2363">#2363</a>, <a href="https://github.com/skipkayhil"><code>@​skipkayhil</code></a>)</li>
+                <li>Add support for streaming bodies when using <code>Rack::Events</code>. (<a href="https://redirect.github.com/rack/rack/blob/main/redirect.github.com/rack/rack/pull/2375">#2375</a>, <a href="https://github.com/unflxw"><code>@​unflxw</code></a>)</li>
+                <li>Add <code>deflaters</code> option to <code>Rack::Deflater</code> to enable custom compression algorithms like zstd. (<a href="https://redirect.github.com/rack/rack/issues/2168">#2168</a>, <a href="https://github.com/alexanderadam"><code>@​alexanderadam</code></a>)</li>
+                <li>Add <code>Rack::Request#prefetch?</code> for identifying requests with <code>Sec-Purpose: prefetch</code> header set. (<a href="https://redirect.github.com/rack/rack/pull/2405">#2405</a>, <a href="https://github.com/glaszig"><code>@​glaszig</code></a>)</li>
+                <li>Add <code>rack.request.trusted_proxy</code> environment key to indicate whether the request is coming from a trusted proxy.</li>
+                </ul>
+                <h3>Changed</h3>
+                <ul>
+                <li>Raise before exceeding a part limit, not after. (<a href="https://redirect.github.com/rack/rack/pull/2362">#2362</a>, <a href="https://github.com/matthew-puku"><code>@​matthew-puku</code></a>)</li>
+                <li>Rack::Deflater now uses a fixed GZip mtime value. (<a href="https://redirect.github.com/rack/rack/pull/2372">#2372</a>, <a href="https://github.com/bensheldon"><code>@​bensheldon</code></a>)</li>
+                <li>Multipart parser drops support for RFC 2231 <code>filename*</code> parameter (prohibited by RFC 7578) and now properly handles UTF-8 encoded filenames via percent-encoding and direct UTF-8 bytes. (<a href="https://redirect.github.com/rack/rack/pull/2398">#2398</a>, <a href="https://github.com/wtn"><code>@​wtn</code></a>)</li>
+                <li>The query parser now raises <code>Rack::QueryParser::IncompatibleEncodingError</code> if we try to parse params that are not ASCII compatible. (<a href="https://redirect.github.com/rack/rack/pull/2416">#2416</a>, <a href="https://github.com/bquorning"><code>@​bquorning</code></a>)</li>
+                </ul>
+                <h3>Fixed</h3>
+                <ul>
+                <li>Multipart parser: limit MIME header size check to the unread buffer region to avoid false <code>multipart mime part header too large</code> errors when previously read data accumulates in the scan buffer. (<a href="https://redirect.github.com/rack/rack/pull/2392">#2392</a>, <a href="https://github.com/alpaca-tc"><code>@​alpaca-tc</code></a>, <a href="https://github.com/willnet"><code>@​willnet</code></a>, <a href="https://github.com/krororo"><code>@​krororo</code></a>)</li>
+                <li>Fix <code>Rack::MockResponse#body</code> when the body is a Proc. (<a href="https://redirect.github.com/rack/rack/pull/2420">#2420</a>, <a href="https://redirect.github.com/rack/rack/pull/2423">#2423</a>, <a href="https://github.com/tavianator"><code>@​tavianator</code></a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
+                </ul>
                 <h2>[3.2.4] - 2025-11-03</h2>
                 <h3>Fixed</h3>
                 <ul>
@@ -424,38 +413,6 @@ output:
                 <li><a href="https://github.com/advisories/GHSA-r657-rxjc-j557">CVE-2025-61780</a> Improper handling of headers in <code>Rack::Sendfile</code> may allow proxy bypass.</li>
                 <li><a href="https://github.com/advisories/GHSA-6xw4-3v39-52mm">CVE-2025-61919</a> Unbounded read in <code>Rack::Request</code> form parsing can lead to memory exhaustion.</li>
                 </ul>
-                <h2>[3.2.2] - 2025-10-07</h2>
-                <h3>Security</h3>
-                <ul>
-                <li><a href="https://github.com/advisories/GHSA-wpv5-97wm-hp9c">CVE-2025-61772</a> Multipart parser buffers unbounded per-part headers, enabling DoS (memory exhaustion)</li>
-                <li><a href="https://github.com/advisories/GHSA-w9pc-fmgc-vxvw">CVE-2025-61771</a> Multipart parser buffers large non‑file fields entirely in memory, enabling DoS (memory exhaustion)</li>
-                <li><a href="https://github.com/advisories/GHSA-p543-xpfm-54cp">CVE-2025-61770</a> Unbounded multipart preamble buffering enables DoS (memory exhaustion)</li>
-                </ul>
-                <h2>[3.2.1] -- 2025-09-02</h2>
-                <h3>Added</h3>
-                <ul>
-                <li>Add support for streaming bodies when using <code>Rack::Events</code>. (<a href="https://redirect.github.com/rack/rack/blob/main/redirect.github.com/rack/rack/pull/2375">#2375</a>, <a href="https://github.com/unflxw"><code>@​unflxw</code></a>)</li>
-                </ul>
-                <h3>Fixed</h3>
-                <ul>
-                <li>Fix an issue where a <code>NoMethodError</code> would be raised when using <code>Rack::Events</code> with streaming bodies. (<a href="https://redirect.github.com/rack/rack/blob/main/redirect.github.com/rack/rack/pull/2375">#2375</a>, <a href="https://github.com/unflxw"><code>@​unflxw</code></a>)</li>
-                </ul>
-                <h2>[3.2.0] - 2025-07-31</h2>
-                <p>This release continues Rack's evolution toward a cleaner, more efficient foundation while maintaining backward compatibility for most applications. The breaking changes primarily affect deprecated functionality, so most users should experience a smooth upgrade with improved performance and standards compliance.</p>
-                <h3>SPEC Changes</h3>
-                <ul>
-                <li>Request environment keys must now be strings. (<a href="https://redirect.github.com/rack/rack/issues/2310">#2310</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
-                <li>Add <code>nil</code> as a valid return from a Response <code>body.to_path</code> (<a href="https://redirect.github.com/rack/rack/pull/2318">#2318</a>, [<a href="https://github.com/MSP-Greg"><code>@​MSP-Greg</code></a>])</li>
-                <li><code>Rack::Lint#check_header_value</code> is relaxed, only disallowing CR/LF/NUL characters. (<a href="https://redirect.github.com/rack/rack/pull/2354">#2354</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
-                </ul>
-                <h3>Added</h3>
-                <ul>
-                <li>Introduce <code>Rack::VERSION</code> constant. (<a href="https://redirect.github.com/rack/rack/pull/2199">#2199</a>, [<a href="https://github.com/ioquatix"><code>@​ioquatix</code></a>])</li>
-                <li><code>ISO-2022-JP</code> encoded parts within MIME Multipart sections of an HTTP request body will now be converted to <code>UTF-8</code>. (<a href="https://redirect.github.com/rack/rack/pull/2245">#2245</a>, <a href="https://github.com/nappa"><code>@​nappa</code></a>)</li>
-                <li>Add <code>Rack::Request#query_parser=</code> to allow setting the query parser to use. (<a href="https://redirect.github.com/rack/rack/pull/2349">#2349</a>, [<a href="https://github.com/jeremyevans"><code>@​jeremyevans</code></a>])</li>
-                <li>Add <code>Rack::Request#form_pairs</code> to access form data as raw key-value pairs, preserving duplicate keys. (<a href="https://redirect.github.com/rack/rack/pull/2351">#2351</a>, [<a href="https://github.com/matthewd"><code>@​matthewd</code></a>])</li>
-                </ul>
-                <h3>Changed</h3>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -463,17 +420,17 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
+                <li><a href="https://github.com/rack/rack/commit/bb5f3555bd12b9065112353e829298b3b5623ceb"><code>bb5f355</code></a> Bump patch version.</li>
+                <li><a href="https://github.com/rack/rack/commit/f9bde3bc2dde2771185ac1a7b7602a4d9fa0a0d8"><code>f9bde3b</code></a> Prevent directory traversal via root prefix bypass.</li>
+                <li><a href="https://github.com/rack/rack/commit/93a68f58aa82aa48f09b751501f19f5e760dd406"><code>93a68f5</code></a> XSS injection via malicious filename in <code>Rack::Directory</code>.</li>
+                <li><a href="https://github.com/rack/rack/commit/3b8b0d22d68a7fb30fdea40f838d0f95a05c134d"><code>3b8b0d2</code></a> Fix MockResponse#body when the body is a Proc (<a href="https://redirect.github.com/rack/rack/issues/2420">#2420</a>)</li>
                 <li><a href="https://github.com/rack/rack/commit/4c24539777db8833d78f881680cd245878cfba31"><code>4c24539</code></a> Bump patch version.</li>
                 <li><a href="https://github.com/rack/rack/commit/3ba5e4f22f55abac21037bb137e56e5c8e36b673"><code>3ba5e4f</code></a> Allow Multipart head to span read boundary. (<a href="https://redirect.github.com/rack/rack/issues/2392">#2392</a>)</li>
                 <li><a href="https://github.com/rack/rack/commit/32bf8887d00bd86494f0ce08c46cda59a65d332f"><code>32bf888</code></a> Bump patch version.</li>
                 <li><a href="https://github.com/rack/rack/commit/e179614c4a653283286f5f046428cbb85f21146f"><code>e179614</code></a> Unbounded read in <code>Rack::Request</code> form parsing can lead to memory exhaustion.</li>
                 <li><a href="https://github.com/rack/rack/commit/57277b7741581fa827472c5c666f6e6a33abd784"><code>57277b7</code></a> Improper handling of proxy headers in <code>Rack::Sendfile</code> may allow proxy bypass.</li>
                 <li><a href="https://github.com/rack/rack/commit/403b74b2441d666845177ce769036e294f663712"><code>403b74b</code></a> Normalize adivsories links.</li>
-                <li><a href="https://github.com/rack/rack/commit/fb395bb48925bba30d090938380c4090f5ae53de"><code>fb395bb</code></a> Fix handling of <code>Errno::EPIPE</code> in multipart tests.</li>
-                <li><a href="https://github.com/rack/rack/commit/bce149b11154e851c437b5ece1c026c943f4b571"><code>bce149b</code></a> Bump patch version.</li>
-                <li><a href="https://github.com/rack/rack/commit/3beacfcd494ec5600c9022d561cfa2f556a524d1"><code>3beacfc</code></a> Limit amount of retained data when parsing multipart requests</li>
-                <li><a href="https://github.com/rack/rack/commit/589127f4ac8b5cf11cf88fb0cd116ffed4d2181e"><code>589127f</code></a> Fix denial of service vulnerbilties in multipart parsing</li>
-                <li>Additional commits viewable in <a href="https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...03fc311bca9c2884263270716f634a6c0968024a">compare view</a></li>
+                <li>Additional commits viewable in <a href="https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...d4dbd79978308a8811fe5cb1fe49082896685dca">compare view</a></li>
                 </ul>
                 </details>
                 <br />
@@ -488,10 +445,10 @@ output:
                 - [Changelog](https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md)
                 - [Commits](https://github.com/rubocop/rubocop/compare/v0.76.0...v1.59.0)
 
-                Updates `rack` from 2.1.4 to v3.2.4
+                Updates `rack` from 2.1.4 to v3.2.5
                 - [Release notes](https://github.com/rack/rack/releases)
                 - [Changelog](https://github.com/rack/rack/blob/main/CHANGELOG.md)
-                - [Commits](https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...03fc311bca9c2884263270716f634a6c0968024a)
+                - [Commits](https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...d4dbd79978308a8811fe5cb1fe49082896685dca)
             dependency-group:
                 name: ruleset
     - type: create_pull_request
