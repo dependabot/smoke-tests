@@ -11,8 +11,7 @@ input:
             repo: dependabot/smoke-tests
             directories:
                 - /uv
-            branch: main
-            commit: e924078da83639ab3af466a57508c545bf3bbfed
+            commit: 45a96e140b9237c96ef6df790c6f08ba6113e18f
             hostname: github.com
             api-endpoint: https://api.github.com
     credentials:
@@ -25,7 +24,7 @@ output:
       expect:
         data:
             version: 1
-            sha: e924078da83639ab3af466a57508c545bf3bbfed
+            sha: 45a96e140b9237c96ef6df790c6f08ba6113e18f
             ref: refs/heads/main
             job:
                 correlator: dependabot-uv-uv
@@ -142,4 +141,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: e924078da83639ab3af466a57508c545bf3bbfed
+            base-commit-sha: 45a96e140b9237c96ef6df790c6f08ba6113e18f
