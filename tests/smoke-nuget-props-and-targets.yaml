@@ -101,6 +101,19 @@ output:
                 Performed the following updates:
                 - Updated Microsoft.CodeAnalysis.Analyzers from 3.3.0 to 3.3.4
             commit-message: Bump Microsoft.CodeAnalysis.Analyzers from 3.3.0 to 3.3.4
+    - type: record_ecosystem_meta
+      expect:
+        data:
+            - ecosystem:
+                name: nuget
+                package_manager:
+                    name: nuget
+                    version: 1.0.0
+                    raw_version: 1.0.0
+                language:
+                    name: dotnet
+                    version: 8.0.300
+                    raw_version: 8.0.300
     - type: create_pull_request
       expect:
         data:
@@ -149,6 +162,19 @@ output:
                 Performed the following updates:
                 - Updated NuGet.Versioning from 6.1.0 to 6.8.0
             commit-message: Bump NuGet.Versioning from 6.1.0 to 6.8.0
+    - type: record_ecosystem_meta
+      expect:
+        data:
+            - ecosystem:
+                name: nuget
+                package_manager:
+                    name: nuget
+                    version: 1.0.0
+                    raw_version: 1.0.0
+                language:
+                    name: dotnet
+                    version: 8.0.300
+                    raw_version: 8.0.300
     - type: mark_as_processed
       expect:
         data:

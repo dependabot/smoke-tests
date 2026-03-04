@@ -160,6 +160,19 @@ output:
                 Bump ghcr.io/codspace/versioning/foo in /devcontainers
 
                 Bumps ghcr.io/codspace/versioning/foo from 1.1.0 to 2.11.1.
+    - type: record_ecosystem_meta
+      expect:
+        data:
+            - ecosystem:
+                name: devcontainers
+                package_manager:
+                    name: devcontainers
+                    version: N/A
+                    raw_version: N/A
+                language:
+                    name: node
+                    version: 22.22.0
+                    raw_version: 22.22.0
     - type: create_pull_request
       expect:
         data:
@@ -232,6 +245,19 @@ output:
                 Bump ghcr.io/codspace/versioning/baz in /devcontainers
 
                 Bumps ghcr.io/codspace/versioning/baz from 1.0.0 to 2.0.0.
+    - type: record_ecosystem_meta
+      expect:
+        data:
+            - ecosystem:
+                name: devcontainers
+                package_manager:
+                    name: devcontainers
+                    version: N/A
+                    raw_version: N/A
+                language:
+                    name: node
+                    version: 22.22.0
+                    raw_version: 22.22.0
     - type: mark_as_processed
       expect:
         data:

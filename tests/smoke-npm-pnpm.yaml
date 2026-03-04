@@ -1155,6 +1155,19 @@ output:
                 - [Release notes](https://github.com/ota-meshi/eslint-plugin-yml/releases)
                 - [Changelog](https://github.com/ota-meshi/eslint-plugin-yml/blob/master/CHANGELOG.md)
                 - [Commits](https://github.com/ota-meshi/eslint-plugin-yml/compare/v1.5.0...v1.7.0)
+    - type: record_ecosystem_meta
+      expect:
+        data:
+            - ecosystem:
+                name: npm_and_yarn
+                package_manager:
+                    name: pnpm
+                    version: 9
+                    raw_version: 9.15.9
+                language:
+                    name: node
+                    version: 22.22.0
+                    raw_version: 22.22.0
     - type: mark_as_processed
       expect:
         data:

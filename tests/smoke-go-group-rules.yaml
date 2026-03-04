@@ -256,6 +256,19 @@ output:
                 - [Commits](https://github.com/golang/crypto/commits/v0.6.0)
             dependency-group:
                 name: ruleset
+    - type: record_ecosystem_meta
+      expect:
+        data:
+            - ecosystem:
+                name: go
+                package_manager:
+                    name: gomod
+                    version: 1.24
+                    raw_version: 1.24.4
+                language:
+                    name: go
+                    version: 1.24
+                    raw_version: 1.24.4
     - type: create_pull_request
       expect:
         data:
@@ -350,6 +363,19 @@ output:
 
                 Bumps [rsc.io/quote](https://github.com/rsc/quote) from 1.4.0 to 1.5.2.
                 - [Commits](https://github.com/rsc/quote/compare/v1.4.0...v1.5.2)
+    - type: record_ecosystem_meta
+      expect:
+        data:
+            - ecosystem:
+                name: go
+                package_manager:
+                    name: gomod
+                    version: 1.24
+                    raw_version: 1.24.4
+                language:
+                    name: go
+                    version: 1.24
+                    raw_version: 1.24.4
     - type: mark_as_processed
       expect:
         data:

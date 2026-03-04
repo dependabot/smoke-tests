@@ -195,6 +195,19 @@ output:
                 - [Commits](https://github.com/rsc/quote/compare/v1.5.0...v1.5.1)
             dependency-group:
                 name: go_modules
+    - type: record_ecosystem_meta
+      expect:
+        data:
+            - ecosystem:
+                name: go
+                package_manager:
+                    name: gomod
+                    version: 1.24
+                    raw_version: 1.24.4
+                language:
+                    name: go
+                    version: 1.24
+                    raw_version: 1.24.4
     - type: mark_as_processed
       expect:
         data:
