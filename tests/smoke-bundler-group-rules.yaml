@@ -451,6 +451,15 @@ output:
                 - [Commits](https://github.com/rack/rack/compare/f3cf79d6460dc592767941806d1b2b7008f73e01...d4dbd79978308a8811fe5cb1fe49082896685dca)
             dependency-group:
                 name: ruleset
+    - type: record_ecosystem_meta
+      expect:
+        data:
+          - ecosystem:
+            name: bundler
+            package_manager:
+              name: bundler
+              version: "2.7.2"
+              raw_version: "2.7.2"
     - type: create_pull_request
       expect:
         data:
@@ -608,6 +617,15 @@ output:
                 Bumps [toml-rb](https://github.com/emancu/toml-rb) from 2.2.0 to 4.1.0.
                 - [Release notes](https://github.com/emancu/toml-rb/releases)
                 - [Commits](https://github.com/emancu/toml-rb/compare/v2.2.0...v4.1.0)
+    - type: record_ecosystem_meta
+      expect:
+        data:
+          - ecosystem:
+            name: bundler
+            package_manager:
+              name: bundler
+              version: "2.7.2"
+              raw_version: "2.7.2"
     - type: mark_as_processed
       expect:
         data:

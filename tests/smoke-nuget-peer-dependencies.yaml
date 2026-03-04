@@ -205,6 +205,19 @@ output:
 
                 Bumps Microsoft.Extensions.Http from 2.2.0 to 8.0.0
                 Bumps Microsoft.Extensions.Logging from 2.2.0 to 8.0.0
+    - type: record_ecosystem_meta
+      expect:
+        data:
+          - ecosystem:
+            name: nuget
+            package_manager:
+              name: nuget
+              version: "1.0.0"
+              raw_version: "1.0.0"
+            language:
+              name: dotnet
+              version: "8.0.300"
+              raw_version: "8.0.300"
     - type: create_pull_request
       expect:
         data:
@@ -256,6 +269,19 @@ output:
                 Performed the following updates:
                 - Updated Microsoft.Extensions.Logging from 2.2.0 to 8.0.0
             commit-message: Bump Microsoft.Extensions.Logging from 2.2.0 to 8.0.0
+    - type: record_ecosystem_meta
+      expect:
+        data:
+          - ecosystem:
+            name: nuget
+            package_manager:
+              name: nuget
+              version: "1.0.0"
+              raw_version: "1.0.0"
+            language:
+              name: dotnet
+              version: "8.0.300"
+              raw_version: "8.0.300"
     - type: mark_as_processed
       expect:
         data:

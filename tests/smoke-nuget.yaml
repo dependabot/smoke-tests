@@ -87,6 +87,19 @@ output:
                 Performed the following updates:
                 - Updated NuGet.Versioning from 6.1.0 to 6.2.2
             commit-message: Bump NuGet.Versioning from 6.1.0 to 6.2.2
+    - type: record_ecosystem_meta
+      expect:
+        data:
+          - ecosystem:
+            name: nuget
+            package_manager:
+              name: nuget
+              version: "1.0.0"
+              raw_version: "1.0.0"
+            language:
+              name: dotnet
+              version: "8.0.300"
+              raw_version: "8.0.300"
     - type: mark_as_processed
       expect:
         data:

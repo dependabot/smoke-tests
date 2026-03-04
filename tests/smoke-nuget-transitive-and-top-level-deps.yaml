@@ -111,6 +111,19 @@ output:
                 Performed the following updates:
                 - Updated Newtonsoft.Json from 12.0.1 to 13.0.1
             commit-message: Bump Newtonsoft.Json from 12.0.1 to 13.0.1
+    - type: record_ecosystem_meta
+      expect:
+        data:
+          - ecosystem:
+            name: nuget
+            package_manager:
+              name: nuget
+              version: "1.0.0"
+              raw_version: "1.0.0"
+            language:
+              name: dotnet
+              version: "8.0.300"
+              raw_version: "8.0.300"
     - type: mark_as_processed
       expect:
         data:

@@ -493,6 +493,19 @@ output:
                 Bump fetch-factory from 0.0.1 to 0.2.1 in /yarn/subdir
 
                 Bumps fetch-factory from 0.0.1 to 0.2.1.
+    - type: record_ecosystem_meta
+      expect:
+        data:
+          - ecosystem:
+            name: npm_and_yarn
+            package_manager:
+              name: yarn
+              version: "1"
+              raw_version: "1.22.22"
+            language:
+              name: node
+              version: "22.22.0"
+              raw_version: "22.22.0"
     - type: create_pull_request
       expect:
         data:
@@ -793,6 +806,19 @@ output:
                 - [Release notes](https://github.com/jshttp/etag/releases)
                 - [Changelog](https://github.com/jshttp/etag/blob/master/HISTORY.md)
                 - [Commits](https://github.com/jshttp/etag/compare/v1.0.0...v1.8.1)
+    - type: record_ecosystem_meta
+      expect:
+        data:
+          - ecosystem:
+            name: npm_and_yarn
+            package_manager:
+              name: yarn
+              version: "1"
+              raw_version: "1.22.22"
+            language:
+              name: node
+              version: "22.22.0"
+              raw_version: "22.22.0"
     - type: mark_as_processed
       expect:
         data:

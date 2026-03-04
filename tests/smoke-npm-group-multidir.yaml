@@ -336,6 +336,19 @@ output:
                 Updates `@dependabot/dummy-pkg-a` from 1.0.0 to 1.1.0
             dependency-group:
                 name: npm_and_yarn
+    - type: record_ecosystem_meta
+      expect:
+        data:
+          - ecosystem:
+            name: npm_and_yarn
+            package_manager:
+              name: npm
+              version: "10"
+              raw_version: "10.9.2"
+            language:
+              name: node
+              version: "22.22.0"
+              raw_version: "22.22.0"
     - type: mark_as_processed
       expect:
         data:

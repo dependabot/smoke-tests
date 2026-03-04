@@ -169,6 +169,19 @@ output:
                 Bumps NuGet.Versioning to 6.2.4
             dependency-group:
                 name: nuget
+    - type: record_ecosystem_meta
+      expect:
+        data:
+          - ecosystem:
+            name: nuget
+            package_manager:
+              name: nuget
+              version: "1.0.0"
+              raw_version: "1.0.0"
+            language:
+              name: dotnet
+              version: "8.0.300"
+              raw_version: "8.0.300"
     - type: update_dependency_list
       expect:
         data:

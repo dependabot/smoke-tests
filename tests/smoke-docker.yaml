@@ -91,6 +91,15 @@ output:
                 Bump ubuntu from 17.04 to 22.04
 
                 Bumps ubuntu from 17.04 to 22.04.
+    - type: record_ecosystem_meta
+      expect:
+        data:
+          - ecosystem:
+            name: docker
+            package_manager:
+              name: docker
+              version: "1.0.0"
+              raw_version: "1.0.0"
     - type: mark_as_processed
       expect:
         data:
