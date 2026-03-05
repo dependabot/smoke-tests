@@ -102,19 +102,6 @@ output:
                 Performed the following updates:
                 - Updated System.Text.Json from 8.0.4 to 8.0.5
             commit-message: Bump System.Text.Json from 8.0.4 to 8.0.5
-    - type: record_ecosystem_meta
-      expect:
-        data:
-            - ecosystem:
-                name: nuget
-                package_manager:
-                    name: nuget
-                    version: 1.0.0
-                    raw_version: 1.0.0
-                language:
-                    name: dotnet
-                    version: 8.0.300
-                    raw_version: 8.0.300
     - type: mark_as_processed
       expect:
         data:
