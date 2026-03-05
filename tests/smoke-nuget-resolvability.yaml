@@ -289,19 +289,6 @@ output:
                 Performed the following updates:
                 - Updated AspNetCore.HealthChecks.Rabbitmq from 5.0.2 to 7.0.0
             commit-message: Bump AspNetCore.HealthChecks.Rabbitmq from 5.0.2 to 7.0.0
-    - type: record_ecosystem_meta
-      expect:
-        data:
-            - ecosystem:
-                name: nuget
-                package_manager:
-                    name: nuget
-                    version: 1.0.0
-                    raw_version: 1.0.0
-                language:
-                    name: dotnet
-                    version: 8.0.300
-                    raw_version: 8.0.300
     - type: create_pull_request
       expect:
         data:
@@ -348,19 +335,6 @@ output:
                 Performed the following updates:
                 - Updated Microsoft.Extensions.Diagnostics.HealthChecks from 5.0.17 to 7.0.9
             commit-message: Bump Microsoft.Extensions.Diagnostics.HealthChecks from 5.0.17 to 7.0.9
-    - type: record_ecosystem_meta
-      expect:
-        data:
-            - ecosystem:
-                name: nuget
-                package_manager:
-                    name: nuget
-                    version: 1.0.0
-                    raw_version: 1.0.0
-                language:
-                    name: dotnet
-                    version: 8.0.300
-                    raw_version: 8.0.300
     - type: mark_as_processed
       expect:
         data:

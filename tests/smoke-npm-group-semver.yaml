@@ -1278,19 +1278,6 @@ output:
                 - [Commits](https://github.com/github/fetch/compare/v3.6.17...v3.6.20)
             dependency-group:
                 name: not major
-    - type: record_ecosystem_meta
-      expect:
-        data:
-            - ecosystem:
-                name: npm_and_yarn
-                package_manager:
-                    name: npm
-                    version: 10
-                    raw_version: 10.9.2
-                language:
-                    name: node
-                    version: 22.22.0
-                    raw_version: 22.22.0
     - type: create_pull_request
       expect:
         data:
@@ -1828,19 +1815,6 @@ output:
                 - [Release notes](https://github.com/axios/axios/releases)
                 - [Changelog](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
                 - [Commits](https://github.com/axios/axios/compare/v0.27.1...v1.13.5)
-    - type: record_ecosystem_meta
-      expect:
-        data:
-            - ecosystem:
-                name: npm_and_yarn
-                package_manager:
-                    name: npm
-                    version: 10
-                    raw_version: 10.9.2
-                language:
-                    name: node
-                    version: 22.22.0
-                    raw_version: 22.22.0
     - type: mark_as_processed
       expect:
         data:
