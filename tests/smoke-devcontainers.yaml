@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: devcontainers
         allowed-updates:
             - update-type: all
@@ -167,8 +168,21 @@ output:
                 name: devcontainers
                 package_manager:
                     name: devcontainers
-                    version: N/A
-                    raw_version: N/A
+                    version: 0.83.3
+                    raw_version: 0.83.3
+                language:
+                    name: node
+                    version: 22.22.0
+                    raw_version: 22.22.0
+    - type: record_ecosystem_meta
+      expect:
+        data:
+            - ecosystem:
+                name: devcontainers
+                package_manager:
+                    name: devcontainers
+                    version: 0.83.3
+                    raw_version: 0.83.3
                 language:
                     name: node
                     version: 22.22.0
@@ -252,8 +266,8 @@ output:
                 name: devcontainers
                 package_manager:
                     name: devcontainers
-                    version: N/A
-                    raw_version: N/A
+                    version: 0.83.3
+                    raw_version: 0.83.3
                 language:
                     name: node
                     version: 22.22.0
