@@ -262,13 +262,13 @@ output:
             - ecosystem:
                 name: go
                 package_manager:
-                    name: gomod
-                    version: 1.24
-                    raw_version: 1.24.4
+                    name: go_modules
+                    version: 1.26.0
+                    raw_version: 1.26.0
                 language:
                     name: go
-                    version: 1.24
-                    raw_version: 1.24.4
+                    version: "1.12"
+                    raw_version: "1.12"
     - type: create_pull_request
       expect:
         data:
@@ -369,13 +369,13 @@ output:
             - ecosystem:
                 name: go
                 package_manager:
-                    name: gomod
-                    version: 1.24
-                    raw_version: 1.24.4
+                    name: go_modules
+                    version: 1.26.0
+                    raw_version: 1.26.0
                 language:
                     name: go
-                    version: 1.24
-                    raw_version: 1.24.4
+                    version: "1.12"
+                    raw_version: "1.12"
     - type: mark_as_processed
       expect:
         data:
