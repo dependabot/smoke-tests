@@ -1,6 +1,7 @@
 # Regenerates a single test file and creates a PR for review.
-# Optionally accepts a dependabot-core branch name to use a custom updater image
-# built from that branch, enabling smoke test updates before merging core PRs.
+# Optionally accepts a dependabot-core PR number to use a custom updater image
+# built from that PR, enabling smoke test updates before merging core PRs.
+# Works with both internal and external contributor (fork) PRs.
 name: Regenerate Test
 
 on:  # yamllint disable-line rule:truthy
@@ -10,10 +11,10 @@ on:  # yamllint disable-line rule:truthy
         description: 'Test name to regenerate (e.g. npm, bundler, go, etc.)'
         required: true
         type: string
-      core-branch:
-        description: 'dependabot-core branch to use (leave empty for latest release)'
+      core-pr-number:
+        description: 'dependabot-core PR number (leave empty for latest release)'
         required: false
-        type: string
+        type: number
 
 permissions:
   contents: write
@@ -50,7 +51,7 @@ jobs:
 
       - name: Resolve updater image
         id: resolve_image
-        if: inputs.core-branch != ''
+        if: inputs.core-pr-number != ''
         run: |
           # Map test names to ecosystem image suffixes
           declare -A ECOSYSTEM_MAP=(
@@ -97,17 +98,18 @@ jobs:
           fi
           echo "Matched test '$TEST' to ecosystem '$ECOSYSTEM' (via key '$MATCH')"
 
-          # Get the latest commit SHA from the dependabot-core branch
-          BRANCH="${{ inputs.core-branch }}"
-          SHA=$(gh api repos/dependabot/dependabot-core/commits/"$BRANCH" --jq .sha)
+          # Get the head SHA from the dependabot-core PR
+          PR_NUMBER="${{ inputs.core-pr-number }}"
+          SHA=$(gh api repos/dependabot/dependabot-core/pulls/"$PR_NUMBER" --jq .head.sha)
           if [ -z "$SHA" ]; then
-            echo "Error: Could not resolve branch '$BRANCH' in dependabot/dependabot-core"
+            echo "Error: Could not resolve PR #$PR_NUMBER in dependabot/dependabot-core"
             exit 1
           fi
-          echo "Resolved branch '$BRANCH' to SHA: $SHA"
+          echo "Resolved PR #$PR_NUMBER to SHA: $SHA"
 
           IMAGE="ghcr.io/dependabot/dependabot-updater-${ECOSYSTEM}:${SHA}"
           echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
+          echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
           echo "Using updater image: $IMAGE"
 
       - name: Regenerate test
@@ -149,17 +151,17 @@ jobs:
           git commit -m "Regenerate ${{ inputs.test }} test"
           git push origin "$BRANCH_NAME"
 
-          CORE_BRANCH_NOTE=""
-          if [ -n "${{ inputs.core-branch }}" ]; then
-            CORE_BRANCH_NOTE=$'\n**dependabot-core branch:** `${{ inputs.core-branch }}`'
-            CORE_BRANCH_NOTE+=$'\n**Updater image:** `${{ steps.resolve_image.outputs.image }}`\n'
+          CORE_PR_NOTE=""
+          if [ -n "${{ inputs.core-pr-number }}" ]; then
+            CORE_PR_NOTE=$'\n**dependabot-core PR:** https://github.com/dependabot/dependabot-core/pull/${{ inputs.core-pr-number }}'
+            CORE_PR_NOTE+=$'\n**Updater image:** `${{ steps.resolve_image.outputs.image }}`\n'
           fi
 
           PR_BODY=$(cat <<EOF
           This PR regenerates the \`${{ inputs.test }}\` test file.
 
           **Test regenerated:** \`$TEST_FILE\`
-          ${CORE_BRANCH_NOTE}
+          ${CORE_PR_NOTE}
           The test was regenerated using \`dependabot test\` to update it with the latest dependency information.
 
           Please review the changes to ensure they are expected.
