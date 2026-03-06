@@ -1,6 +1,7 @@
 # Regenerates a single test file and creates a PR for review.
 # Optionally accepts a dependabot-core branch name to use a custom updater image
 # built from that branch, enabling smoke test updates before merging core PRs.
+# For fork branches, use the format "owner:branch" (e.g. edgarrmondragon:uv-0.10.9).
 name: Regenerate Test
 
 on:  # yamllint disable-line rule:truthy
@@ -11,7 +12,7 @@ on:  # yamllint disable-line rule:truthy
         required: true
         type: string
       core-branch:
-        description: 'dependabot-core branch to use (leave empty for latest release)'
+        description: 'dependabot-core branch (e.g. my-branch or user:branch for forks)'
         required: false
         type: string
 
@@ -97,14 +98,23 @@ jobs:
           fi
           echo "Matched test '$TEST' to ecosystem '$ECOSYSTEM' (via key '$MATCH')"
 
-          # Get the latest commit SHA from the dependabot-core branch
+          # Resolve branch to commit SHA
+          # Supports fork branches in "owner:branch" format (e.g. edgarrmondragon:uv-0.10.9)
           BRANCH="${{ inputs.core-branch }}"
-          SHA=$(gh api repos/dependabot/dependabot-core/commits/"$BRANCH" --jq .sha)
+          if [[ "$BRANCH" == *:* ]]; then
+            FORK_OWNER="${BRANCH%%:*}"
+            FORK_BRANCH="${BRANCH#*:}"
+            echo "Resolving fork branch '$FORK_BRANCH' from '$FORK_OWNER/dependabot-core'"
+            SHA=$(gh api "repos/$FORK_OWNER/dependabot-core/commits/$FORK_BRANCH" --jq .sha)
+          else
+            echo "Resolving branch '$BRANCH' from 'dependabot/dependabot-core'"
+            SHA=$(gh api "repos/dependabot/dependabot-core/commits/$BRANCH" --jq .sha)
+          fi
           if [ -z "$SHA" ]; then
-            echo "Error: Could not resolve branch '$BRANCH' in dependabot/dependabot-core"
+            echo "Error: Could not resolve branch '$BRANCH'"
             exit 1
           fi
-          echo "Resolved branch '$BRANCH' to SHA: $SHA"
+          echo "Resolved to SHA: $SHA"
 
           IMAGE="ghcr.io/dependabot/dependabot-updater-${ECOSYSTEM}:${SHA}"
           echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
