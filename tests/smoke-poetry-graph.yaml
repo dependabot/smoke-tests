@@ -1,0 +1,161 @@
+input:
+    job:
+        command: update
+        package-manager: pip
+        allowed-updates:
+            - update-type: all
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /poetry-graph
+            commit: 8d52bb6e30995979e5f6185ec7555920bdb71078
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: requests
+                  requirements:
+                    - file: pyproject.toml
+                      groups:
+                        - dependencies
+                      requirement: 2.31.0
+                      source: null
+                  version: 2.31.0
+                - name: flask
+                  requirements:
+                    - file: pyproject.toml
+                      groups:
+                        - dependencies
+                      requirement: 3.0.0
+                      source: null
+                  version: 3.0.0
+                - name: blinker
+                  requirements: []
+                  version: 1.9.0
+                - name: certifi
+                  requirements: []
+                  version: 2026.2.25
+                - name: charset-normalizer
+                  requirements: []
+                  version: 3.4.5
+                - name: click
+                  requirements: []
+                  version: 8.1.8
+                - name: colorama
+                  requirements: []
+                  version: 0.4.6
+                - name: idna
+                  requirements: []
+                  version: "3.11"
+                - name: importlib-metadata
+                  requirements: []
+                  version: 8.7.1
+                - name: itsdangerous
+                  requirements: []
+                  version: 2.2.0
+                - name: jinja2
+                  requirements: []
+                  version: 3.1.6
+                - name: markupsafe
+                  requirements: []
+                  version: 3.0.3
+                - name: urllib3
+                  requirements: []
+                  version: 2.6.3
+                - name: werkzeug
+                  requirements: []
+                  version: 3.1.6
+                - name: zipp
+                  requirements: []
+                  version: 3.23.0
+            dependency_files:
+                - /poetry-graph/pyproject.toml
+                - /poetry-graph/poetry.lock
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: unknown_error
+            error-details: {}
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: unknown_error
+            error-details: {}
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: unknown_error
+            error-details: {}
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: unknown_error
+            error-details: {}
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: unknown_error
+            error-details: {}
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: unknown_error
+            error-details: {}
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: unknown_error
+            error-details: {}
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: unknown_error
+            error-details: {}
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: unknown_error
+            error-details: {}
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: unknown_error
+            error-details: {}
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: unknown_error
+            error-details: {}
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: unknown_error
+            error-details: {}
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: unknown_error
+            error-details: {}
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: unknown_error
+            error-details: {}
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: unknown_error
+            error-details: {}
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 8d52bb6e30995979e5f6185ec7555920bdb71078
