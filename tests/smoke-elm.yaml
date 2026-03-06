@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: elm
         allowed-updates:
             - update-type: all
@@ -10,6 +11,9 @@ input:
             - dependency-name: elm/core
               source: tests/smoke-elm.yaml
               version-requirement: '>1.0.5'
+            - dependency-name: elm/html
+              source: tests/smoke-elm.yaml
+              version-requirement: '>1.0.0'
             - dependency-name: elm/json
               source: tests/smoke-elm.yaml
               version-requirement: '>1.1.3'
