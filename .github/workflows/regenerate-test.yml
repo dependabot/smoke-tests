@@ -41,6 +41,10 @@ jobs:
           fi
           echo "Test file $TEST_FILE exists"
 
+      - name: Download cache
+        run: |
+          script/download-cache.sh "${{ inputs.test }}" || echo "No cache found, proceeding without cache"
+
       - name: Download CLI
         run: |
           gh release download --repo dependabot/cli -p "*linux-amd64.tar.gz"
@@ -121,7 +125,7 @@ jobs:
           if [ -n "${{ steps.resolve_image.outputs.image }}" ]; then
             EXTRA_ARGS="--updater-image=${{ steps.resolve_image.outputs.image }}"
           fi
-          dependabot test -f "$TEST_FILE" -o "$TEST_FILE" $EXTRA_ARGS || true
+          dependabot test -f "$TEST_FILE" -o "$TEST_FILE" --cache cache $EXTRA_ARGS || true
 
       - name: Check for changes
         id: check_changes
