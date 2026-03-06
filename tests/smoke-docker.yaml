@@ -1,6 +1,5 @@
 input:
     job:
-        command: update
         package-manager: docker
         allowed-updates:
             - update-type: all
@@ -13,6 +12,9 @@ input:
             repo: dependabot/smoke-tests
             directory: /
             commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+        credentials-metadata:
+            - host: github.com
+              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -82,11 +84,11 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: bump ubuntu from 17.04 to 22.04
+            pr-title: Bump ubuntu from 17.04 to 22.04
             pr-body: |
                 Bumps ubuntu from 17.04 to 22.04.
             commit-message: |-
-                bump ubuntu from 17.04 to 22.04
+                Bump ubuntu from 17.04 to 22.04
 
                 Bumps ubuntu from 17.04 to 22.04.
     - type: mark_as_processed
