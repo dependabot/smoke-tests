@@ -17,7 +17,14 @@ esac
 
 PATTERN="*${OS}-${ARCH}.tar.gz"
 echo "Downloading latest Dependabot CLI for ${OS}-${ARCH}..."
-gh release download --repo dependabot/cli -p "$PATTERN" --clobber
+if ! gh release download --repo dependabot/cli -p "$PATTERN" --clobber; then
+  echo "Failed to download Dependabot CLI. Check that gh is authenticated."
+  exit 1
+fi
 tar xzf ./*"${OS}-${ARCH}.tar.gz"
 rm -f ./*"${OS}-${ARCH}.tar.gz"
+if [ ! -x ./dependabot ]; then
+  echo "Failed to extract Dependabot CLI binary."
+  exit 1
+fi
 echo "Downloaded $(./dependabot --version)"
