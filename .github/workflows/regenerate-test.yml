@@ -22,6 +22,7 @@ on:  # yamllint disable-line rule:truthy
 
 permissions:
   contents: write
+  packages: read
   pull-requests: write
 
 env:
@@ -105,42 +106,80 @@ jobs:
           fi
           echo "Matched test '$TEST' to ecosystem '$ECOSYSTEM' (via key '$MATCH')"
 
-          # Resolve the commit SHA from either branch name or PR number
-          if [ -n "${{ inputs.core-branch }}" ]; then
-            BRANCH="${{ inputs.core-branch }}"
-            echo "Resolving branch '$BRANCH' from 'dependabot/dependabot-core'"
-            SHA=$(gh api "repos/dependabot/dependabot-core/commits/$BRANCH" --jq .sha)
-            if [ -z "$SHA" ]; then
-              echo "Error: Could not resolve branch '$BRANCH'"
-              exit 1
-            fi
-            echo "source=branch:$BRANCH" >> "$GITHUB_OUTPUT"
-          elif [ -n "${{ inputs.core-pr-number }}" ]; then
+          # Resolve the PR number from either direct input or branch lookup
+          if [ -n "${{ inputs.core-pr-number }}" ]; then
             PR_NUMBER="${{ inputs.core-pr-number }}"
-            echo "Resolving PR #$PR_NUMBER from 'dependabot/dependabot-core'"
-            SHA=$(gh api "repos/dependabot/dependabot-core/pulls/$PR_NUMBER" --jq .head.sha)
-            if [ -z "$SHA" ]; then
-              echo "Error: Could not resolve PR #$PR_NUMBER"
+            echo "Using PR #$PR_NUMBER directly"
+            echo "source=pr:#$PR_NUMBER" >> "$GITHUB_OUTPUT"
+          elif [ -n "${{ inputs.core-branch }}" ]; then
+            BRANCH="${{ inputs.core-branch }}"
+            echo "Finding PR for branch '$BRANCH' in 'dependabot/dependabot-core'"
+            PR_NUMBER=$(gh pr list --repo dependabot/dependabot-core --head "$BRANCH" --state open --json number --jq '.[0].number')
+            if [ -z "$PR_NUMBER" ]; then
+              echo "Error: No open PR found for branch '$BRANCH'. Images are only built for branches with open PRs."
               exit 1
             fi
-            echo "source=pr:#$PR_NUMBER" >> "$GITHUB_OUTPUT"
+            echo "Found PR #$PR_NUMBER for branch '$BRANCH'"
+            echo "source=branch:$BRANCH (PR #$PR_NUMBER)" >> "$GITHUB_OUTPUT"
           fi
-          echo "Resolved to SHA: $SHA"
+
+          # Get the merge commit SHA — this is what images-branch.yml uses to tag images
+          # (github.sha for pull_request events = merge commit at refs/pull/N/merge)
+          echo "Resolving merge commit SHA for PR #$PR_NUMBER"
+          SHA=$(gh api "repos/dependabot/dependabot-core/git/ref/pull/$PR_NUMBER/merge" --jq .object.sha 2>/dev/null)
+          if [ -z "$SHA" ]; then
+            echo "Error: Could not resolve merge commit for PR #$PR_NUMBER. Is the PR mergeable?"
+            exit 1
+          fi
+          echo "Resolved merge commit SHA: $SHA"
 
           IMAGE="ghcr.io/dependabot/dependabot-updater-${ECOSYSTEM}:${SHA}"
           echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
           echo "Using updater image: $IMAGE"
+
+      - name: Login to GHCR
+        if: steps.resolve_image.outputs.image != ''
+        uses: docker/login-action@b45d80f862d83dbcd57f89517bcf500b2ab88fb2 # v4.0.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Validate updater image exists
+        if: steps.resolve_image.outputs.image != ''
+        run: |
+          echo "Pulling image: ${{ steps.resolve_image.outputs.image }}"
+          if ! docker pull "${{ steps.resolve_image.outputs.image }}"; then
+            echo "Error: Image ${{ steps.resolve_image.outputs.image }} not found."
+            echo ""
+            echo "This can happen if:"
+            echo "  - The PR hasn't been approved yet (images-branch.yml requires approval)"
+            echo "  - The images-branch.yml workflow hasn't finished building"
+            echo "  - The branch was rebased and images-branch.yml needs to run again"
+            exit 1
+          fi
+          echo "Image pulled successfully"
 
       - name: Regenerate test
         env:
           LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
+          RESULT_FILE="result-${{ inputs.test }}.yaml"
           EXTRA_ARGS=""
           if [ -n "${{ steps.resolve_image.outputs.image }}" ]; then
             EXTRA_ARGS="--updater-image=${{ steps.resolve_image.outputs.image }}"
           fi
-          dependabot test -f "$TEST_FILE" -o "$TEST_FILE" --cache cache $EXTRA_ARGS || true
+          dependabot test -f "$TEST_FILE" -o "$RESULT_FILE" --cache cache --timeout 20m $EXTRA_ARGS 2>&1 | tee -a regen.log
+
+          # Validate the result has an output section (not wiped)
+          if ! grep -q "^output:" "$RESULT_FILE"; then
+            echo "Error: Regenerated file has no output section. The updater may have failed."
+            echo "Last 50 lines of log:"
+            tail -50 regen.log
+            exit 1
+          fi
+          cp "$RESULT_FILE" "$TEST_FILE"
 
       - name: Check for changes
         id: check_changes
