@@ -34,13 +34,11 @@ jobs:
           fi
           echo "Test file $TEST_FILE exists"
 
-      - name: Download CLI
-        run: |
-          gh release download --repo dependabot/cli -p "*linux-amd64.tar.gz"
-          tar xzvf *.tar.gz >/dev/null 2>&1
-          chmod +x dependabot
-          echo "$GITHUB_WORKSPACE" >> $GITHUB_PATH
-          ./dependabot --version
+      - name: Add Go bin to PATH
+        run: echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+
+      - name: Install Dependabot CLI
+        run: go install github.com/dependabot/cli/cmd/dependabot@latest
 
       - name: Regenerate test
         env:

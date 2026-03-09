@@ -3,7 +3,7 @@
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 DEPENDABOT=$(command -v dependabot || echo "$REPO_ROOT/dependabot")
 if [ ! -x "$DEPENDABOT" ]; then
-  echo "Dependabot CLI not found. Run script/download-cli.sh first."
+  echo "Dependabot CLI not found. Install it with: go install github.com/dependabot/cli/cmd/dependabot@latest"
   exit 1
 fi
 
