@@ -1,7 +1,7 @@
 # Regenerates a single test file and creates a PR for review.
-# Optionally accepts a dependabot-core branch name to use a custom updater image
-# built from that branch, enabling smoke test updates before merging core PRs.
-# For fork branches, use the format "owner:branch" (e.g. edgarrmondragon:uv-0.10.9).
+# Optionally specify a dependabot-core branch or PR number to use a custom updater
+# image, enabling smoke test updates before merging core PRs.
+# Use core-branch for internal branches, core-pr-number for contributor/fork PRs.
 name: Regenerate Test
 
 on:  # yamllint disable-line rule:truthy
@@ -12,9 +12,13 @@ on:  # yamllint disable-line rule:truthy
         required: true
         type: string
       core-branch:
-        description: 'dependabot-core branch (e.g. my-branch or user:branch for forks)'
+        description: 'dependabot-core branch name (for internal branches)'
         required: false
         type: string
+      core-pr-number:
+        description: 'dependabot-core PR number (for contributor/fork PRs)'
+        required: false
+        type: number
 
 permissions:
   contents: write
@@ -55,7 +59,7 @@ jobs:
 
       - name: Resolve updater image
         id: resolve_image
-        if: inputs.core-branch != ''
+        if: inputs.core-branch != '' || inputs.core-pr-number != ''
         run: |
           # Map test names to ecosystem image suffixes
           declare -A ECOSYSTEM_MAP=(
@@ -87,7 +91,6 @@ jobs:
           ECOSYSTEM=""
           for key in "${!ECOSYSTEM_MAP[@]}"; do
             if [[ "$TEST" == "$key" || "$TEST" == "$key"-* ]]; then
-              # Pick the longest matching key
               if [ ${#key} -gt ${#ECOSYSTEM} ]; then
                 ECOSYSTEM="${ECOSYSTEM_MAP[$key]}"
                 MATCH="$key"
@@ -102,21 +105,25 @@ jobs:
           fi
           echo "Matched test '$TEST' to ecosystem '$ECOSYSTEM' (via key '$MATCH')"
 
-          # Resolve branch to commit SHA
-          # Supports fork branches in "owner:branch" format (e.g. edgarrmondragon:uv-0.10.9)
-          BRANCH="${{ inputs.core-branch }}"
-          if [[ "$BRANCH" == *:* ]]; then
-            FORK_OWNER="${BRANCH%%:*}"
-            FORK_BRANCH="${BRANCH#*:}"
-            echo "Resolving fork branch '$FORK_BRANCH' from '$FORK_OWNER/dependabot-core'"
-            SHA=$(gh api "repos/$FORK_OWNER/dependabot-core/commits/$FORK_BRANCH" --jq .sha)
-          else
+          # Resolve the commit SHA from either branch name or PR number
+          if [ -n "${{ inputs.core-branch }}" ]; then
+            BRANCH="${{ inputs.core-branch }}"
             echo "Resolving branch '$BRANCH' from 'dependabot/dependabot-core'"
             SHA=$(gh api "repos/dependabot/dependabot-core/commits/$BRANCH" --jq .sha)
-          fi
-          if [ -z "$SHA" ]; then
-            echo "Error: Could not resolve branch '$BRANCH'"
-            exit 1
+            if [ -z "$SHA" ]; then
+              echo "Error: Could not resolve branch '$BRANCH'"
+              exit 1
+            fi
+            echo "source=branch:$BRANCH" >> "$GITHUB_OUTPUT"
+          elif [ -n "${{ inputs.core-pr-number }}" ]; then
+            PR_NUMBER="${{ inputs.core-pr-number }}"
+            echo "Resolving PR #$PR_NUMBER from 'dependabot/dependabot-core'"
+            SHA=$(gh api "repos/dependabot/dependabot-core/pulls/$PR_NUMBER" --jq .head.sha)
+            if [ -z "$SHA" ]; then
+              echo "Error: Could not resolve PR #$PR_NUMBER"
+              exit 1
+            fi
+            echo "source=pr:#$PR_NUMBER" >> "$GITHUB_OUTPUT"
           fi
           echo "Resolved to SHA: $SHA"
 
@@ -163,17 +170,20 @@ jobs:
           git commit -m "Regenerate ${{ inputs.test }} test"
           git push origin "$BRANCH_NAME"
 
-          CORE_BRANCH_NOTE=""
+          CORE_NOTE=""
           if [ -n "${{ inputs.core-branch }}" ]; then
-            CORE_BRANCH_NOTE=$'\n**dependabot-core branch:** `${{ inputs.core-branch }}`'
-            CORE_BRANCH_NOTE+=$'\n**Updater image:** `${{ steps.resolve_image.outputs.image }}`\n'
+            CORE_NOTE=$'\n**dependabot-core branch:** `${{ inputs.core-branch }}`'
+            CORE_NOTE+=$'\n**Updater image:** `${{ steps.resolve_image.outputs.image }}`\n'
+          elif [ -n "${{ inputs.core-pr-number }}" ]; then
+            CORE_NOTE=$'\n**dependabot-core PR:** https://github.com/dependabot/dependabot-core/pull/${{ inputs.core-pr-number }}'
+            CORE_NOTE+=$'\n**Updater image:** `${{ steps.resolve_image.outputs.image }}`\n'
           fi
 
           PR_BODY=$(cat <<EOF
           This PR regenerates the \`${{ inputs.test }}\` test file.
 
           **Test regenerated:** \`$TEST_FILE\`
-          ${CORE_BRANCH_NOTE}
+          ${CORE_NOTE}
           The test was regenerated using \`dependabot test\` to update it with the latest dependency information.
 
           Please review the changes to ensure they are expected.
