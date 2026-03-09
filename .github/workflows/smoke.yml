@@ -15,16 +15,9 @@ jobs:
   suites:
     uses: ./.github/workflows/list-suites.yml
 
-  download-cli:
-    uses: ./.github/workflows/download-cli.yml
-    permissions:
-      contents: read
-    secrets:
-      gh_token: ${{ secrets.GITHUB_TOKEN }}
-
   smoke:
     runs-on: ubuntu-latest
-    needs: [suites, download-cli]
+    needs: [suites]
     strategy:
       fail-fast: false
       max-parallel: 10
@@ -33,15 +26,13 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Download CLI artifact
-        uses: actions/download-artifact@v7
+      - name: Set up Go
+        uses: actions/setup-go@7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5 # v6.2.0
         with:
-          name: dependabot-cli
+          go-version: stable
 
-      - name: Make CLI executable
-        run: |
-          chmod +x dependabot
-          ./dependabot --version
+      - name: Install Dependabot CLI
+        run: go install github.com/dependabot/cli/cmd/dependabot@latest
 
       # Download the Proxy cache. The job is ideally 100% cached so no real calls are made.
       - name: Download artifacts
@@ -58,7 +49,7 @@ jobs:
           LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -o pipefail
-          ./dependabot test -f=tests/smoke-${{ matrix.suite }}.yaml -o=result.yaml --timeout 20m --cache=cache 2>&1 | tee -a log.txt
+          dependabot test -f=tests/smoke-${{ matrix.suite }}.yaml -o=result.yaml --timeout 20m --cache=cache 2>&1 | tee -a log.txt
 
       - name: Diff
         if: always()

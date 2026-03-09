@@ -12,16 +12,9 @@ jobs:
   suites:
     uses: ./.github/workflows/list-suites.yml
 
-  download-cli:
-    uses: ./.github/workflows/download-cli.yml
-    permissions:
-      contents: read
-    secrets:
-      gh_token: ${{ secrets.GITHUB_TOKEN }}
-
   e2e:
     runs-on: ubuntu-latest
-    needs: [suites, download-cli]
+    needs: [suites]
     strategy:
       # Running serially since GitHub API doesn't like concurrent requests.
       max-parallel: 1
@@ -32,21 +25,19 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Download CLI artifact
-        uses: actions/download-artifact@v7
+      - name: Set up Go
+        uses: actions/setup-go@7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5 # v6.2.0
         with:
-          name: dependabot-cli
+          go-version: stable
 
-      - name: Make CLI executable
-        run: |
-          chmod +x dependabot
-          ./dependabot --version
+      - name: Install Dependabot CLI
+        run: go install github.com/dependabot/cli/cmd/dependabot@latest
 
       # Not downloading the cache first, this job is to bust the cache for all ecosystems.
       - name: Smoke ${{ matrix.suite }}
         env:
           LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./dependabot test -f=tests/smoke-${{ matrix.suite }}.yaml --cache=cache
+        run: dependabot test -f=tests/smoke-${{ matrix.suite }}.yaml --cache=cache
 
       - uses: actions/upload-artifact@v6
         with:

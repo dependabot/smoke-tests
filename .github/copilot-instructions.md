@@ -8,7 +8,7 @@ This repo contains smoke tests for Dependabot. Each test is a YAML file in `test
 
 Before running or regenerating any smoke tests, you must:
 
-1. **Download the Dependabot CLI** by running `script/download-cli.sh`. This downloads the latest binary to the repo root (it is gitignored). Requires `gh` to be installed and authenticated.
+1. **Install the Dependabot CLI** by running `go install github.com/dependabot/cli/cmd/dependabot@latest`. This installs the latest released version onto your `$PATH`. Requires Go to be installed.
 
 2. **Set up TLS certificates** by running `script/setup-tls.sh`. In sandboxed environments (GitHub Codespaces, GitHub Actions) a TLS-intercepting proxy re-signs all outbound HTTPS traffic with a mkcert CA. This script disables the runc shim's certificate bind mounts so the Dependabot CLI's containers keep their original cert stores. The helper scripts (`script/run-one.sh`, `script/regen.sh`) automatically detect the mkcert CA and pass `--proxy-cert` to the CLI.
 
