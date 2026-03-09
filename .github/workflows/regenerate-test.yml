@@ -1,7 +1,6 @@
 # Regenerates a single test file and creates a PR for review.
-# Optionally specify a dependabot-core branch or PR number to use a custom updater
-# image, enabling smoke test updates before merging core PRs.
-# Use core-branch for internal branches, core-pr-number for contributor/fork PRs.
+# Optionally specify a dependabot-core branch or PR number to build a custom updater
+# image locally, enabling smoke test updates before merging core PRs.
 name: Regenerate Test
 
 on:  # yamllint disable-line rule:truthy
@@ -16,13 +15,12 @@ on:  # yamllint disable-line rule:truthy
         required: false
         type: string
       core-pr-number:
-        description: 'dependabot-core PR number (for contributor/fork PRs)'
+        description: 'dependabot-core PR number (for any PR including forks)'
         required: false
         type: number
 
 permissions:
   contents: write
-  packages: read
   pull-requests: write
 
 env:
@@ -58,11 +56,33 @@ jobs:
           echo "$GITHUB_WORKSPACE" >> $GITHUB_PATH
           ./dependabot --version
 
-      - name: Resolve updater image
-        id: resolve_image
-        if: inputs.core-branch != '' || inputs.core-pr-number != ''
+      - name: Resolve ecosystem names
+        id: ecosystem
         run: |
-          # Map test names to ecosystem image suffixes
+          # Map test names to core directory names (for script/build) and ecosystem image suffixes
+          declare -A CORE_MAP=(
+            ["actions"]="github_actions"
+            ["bundler"]="bundler"
+            ["cargo"]="cargo"
+            ["composer"]="composer"
+            ["devcontainers"]="devcontainers"
+            ["docker"]="docker"
+            ["dotnet-sdk"]="dotnet_sdk"
+            ["elm"]="elm"
+            ["go"]="go_modules"
+            ["gradle"]="gradle"
+            ["hex"]="hex"
+            ["maven"]="maven"
+            ["npm"]="npm_and_yarn"
+            ["nuget"]="nuget"
+            ["pub"]="pub"
+            ["python"]="python"
+            ["rust-toolchain"]="rust_toolchain"
+            ["submodules"]="git_submodules"
+            ["swift"]="swift"
+            ["terraform"]="terraform"
+            ["vcpkg"]="vcpkg"
+          )
           declare -A ECOSYSTEM_MAP=(
             ["actions"]="github-actions"
             ["bundler"]="bundler"
@@ -89,76 +109,56 @@ jobs:
 
           # Extract base test name (e.g. npm-group-rules -> npm, dotnet-sdk-security -> dotnet-sdk)
           TEST="${{ inputs.test }}"
-          ECOSYSTEM=""
-          for key in "${!ECOSYSTEM_MAP[@]}"; do
+          MATCHED_KEY=""
+          for key in "${!CORE_MAP[@]}"; do
             if [[ "$TEST" == "$key" || "$TEST" == "$key"-* ]]; then
-              if [ ${#key} -gt ${#ECOSYSTEM} ]; then
-                ECOSYSTEM="${ECOSYSTEM_MAP[$key]}"
-                MATCH="$key"
+              if [ ${#key} -gt ${#MATCHED_KEY} ]; then
+                MATCHED_KEY="$key"
               fi
             fi
           done
 
-          if [ -z "$ECOSYSTEM" ]; then
+          if [ -z "$MATCHED_KEY" ]; then
             echo "Error: Could not determine ecosystem for test '$TEST'"
-            echo "Supported base test names: ${!ECOSYSTEM_MAP[*]}"
+            echo "Supported base test names: ${!CORE_MAP[*]}"
             exit 1
           fi
-          echo "Matched test '$TEST' to ecosystem '$ECOSYSTEM' (via key '$MATCH')"
 
-          # Resolve the PR number from either direct input or branch lookup
-          if [ -n "${{ inputs.core-pr-number }}" ]; then
-            PR_NUMBER="${{ inputs.core-pr-number }}"
-            echo "Using PR #$PR_NUMBER directly"
-            echo "source=pr:#$PR_NUMBER" >> "$GITHUB_OUTPUT"
-          elif [ -n "${{ inputs.core-branch }}" ]; then
-            BRANCH="${{ inputs.core-branch }}"
-            echo "Finding PR for branch '$BRANCH' in 'dependabot/dependabot-core'"
-            PR_NUMBER=$(gh pr list --repo dependabot/dependabot-core --head "$BRANCH" --state open --json number --jq '.[0].number')
-            if [ -z "$PR_NUMBER" ]; then
-              echo "Error: No open PR found for branch '$BRANCH'. Images are only built for branches with open PRs."
-              exit 1
-            fi
-            echo "Found PR #$PR_NUMBER for branch '$BRANCH'"
-            echo "source=branch:$BRANCH (PR #$PR_NUMBER)" >> "$GITHUB_OUTPUT"
-          fi
+          CORE="${CORE_MAP[$MATCHED_KEY]}"
+          ECOSYSTEM="${ECOSYSTEM_MAP[$MATCHED_KEY]}"
+          echo "Matched test '$TEST' -> core='$CORE', ecosystem='$ECOSYSTEM'"
+          echo "core=$CORE" >> "$GITHUB_OUTPUT"
+          echo "ecosystem=$ECOSYSTEM" >> "$GITHUB_OUTPUT"
 
-          # Get the merge commit SHA — this is what images-branch.yml uses to tag images
-          # (github.sha for pull_request events = merge commit at refs/pull/N/merge)
-          echo "Resolving merge commit SHA for PR #$PR_NUMBER"
-          SHA=$(gh api "repos/dependabot/dependabot-core/git/ref/pull/$PR_NUMBER/merge" --jq .object.sha 2>/dev/null)
-          if [ -z "$SHA" ]; then
-            echo "Error: Could not resolve merge commit for PR #$PR_NUMBER. Is the PR mergeable?"
-            exit 1
-          fi
-          echo "Resolved merge commit SHA: $SHA"
-
-          IMAGE="ghcr.io/dependabot/dependabot-updater-${ECOSYSTEM}:${SHA}"
-          echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
-          echo "Using updater image: $IMAGE"
-
-      - name: Login to GHCR
-        if: steps.resolve_image.outputs.image != ''
-        uses: docker/login-action@b45d80f862d83dbcd57f89517bcf500b2ab88fb2 # v4.0.0
+      - name: Checkout dependabot-core
+        if: inputs.core-branch != '' || inputs.core-pr-number != ''
+        uses: actions/checkout@v6
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          repository: dependabot/dependabot-core
+          path: dependabot-core
+          submodules: recursive
 
-      - name: Validate updater image exists
-        if: steps.resolve_image.outputs.image != ''
+      - name: Checkout core branch or PR
+        if: inputs.core-branch != '' || inputs.core-pr-number != ''
+        working-directory: dependabot-core
         run: |
-          echo "Pulling image: ${{ steps.resolve_image.outputs.image }}"
-          if ! docker pull "${{ steps.resolve_image.outputs.image }}"; then
-            echo "Error: Image ${{ steps.resolve_image.outputs.image }} not found."
-            echo ""
-            echo "This can happen if:"
-            echo "  - The PR hasn't been approved yet (images-branch.yml requires approval)"
-            echo "  - The images-branch.yml workflow hasn't finished building"
-            echo "  - The branch was rebased and images-branch.yml needs to run again"
-            exit 1
+          if [ -n "${{ inputs.core-pr-number }}" ]; then
+            echo "Checking out PR #${{ inputs.core-pr-number }}"
+            gh pr checkout ${{ inputs.core-pr-number }} --repo dependabot/dependabot-core
+          elif [ -n "${{ inputs.core-branch }}" ]; then
+            echo "Checking out branch '${{ inputs.core-branch }}'"
+            git fetch origin "${{ inputs.core-branch }}"
+            git checkout "${{ inputs.core-branch }}"
           fi
-          echo "Image pulled successfully"
+          echo "Checked out commit: $(git rev-parse HEAD)"
+
+      - name: Build updater image
+        if: inputs.core-branch != '' || inputs.core-pr-number != ''
+        working-directory: dependabot-core
+        run: |
+          echo "Building updater image for ${{ steps.ecosystem.outputs.core }}..."
+          script/build ${{ steps.ecosystem.outputs.core }}
+          echo "Image built: ghcr.io/dependabot/dependabot-updater-${{ steps.ecosystem.outputs.ecosystem }}:latest"
 
       - name: Regenerate test
         env:
@@ -167,8 +167,8 @@ jobs:
           TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
           RESULT_FILE="result-${{ inputs.test }}.yaml"
           EXTRA_ARGS=""
-          if [ -n "${{ steps.resolve_image.outputs.image }}" ]; then
-            EXTRA_ARGS="--updater-image=${{ steps.resolve_image.outputs.image }}"
+          if [ -n "${{ inputs.core-branch }}" ] || [ -n "${{ inputs.core-pr-number }}" ]; then
+            EXTRA_ARGS="--updater-image=ghcr.io/dependabot/dependabot-updater-${{ steps.ecosystem.outputs.ecosystem }}:latest"
           fi
           dependabot test -f "$TEST_FILE" -o "$RESULT_FILE" --cache cache --timeout 20m $EXTRA_ARGS 2>&1 | tee -a regen.log
 
@@ -186,9 +186,9 @@ jobs:
         run: |
           TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
           if git diff --quiet "$TEST_FILE"; then
-            echo "Error: No changes were made to $TEST_FILE"
+            echo "No changes were made to $TEST_FILE"
             echo "The test regeneration produced identical results"
-            exit 1
+            exit 0
           fi
           echo "Changes detected in $TEST_FILE"
           echo "has_changes=true" >> $GITHUB_OUTPUT
@@ -211,11 +211,9 @@ jobs:
 
           CORE_NOTE=""
           if [ -n "${{ inputs.core-branch }}" ]; then
-            CORE_NOTE=$'\n**dependabot-core branch:** `${{ inputs.core-branch }}`'
-            CORE_NOTE+=$'\n**Updater image:** `${{ steps.resolve_image.outputs.image }}`\n'
+            CORE_NOTE=$'\n**dependabot-core branch:** `${{ inputs.core-branch }}`\n'
           elif [ -n "${{ inputs.core-pr-number }}" ]; then
-            CORE_NOTE=$'\n**dependabot-core PR:** https://github.com/dependabot/dependabot-core/pull/${{ inputs.core-pr-number }}'
-            CORE_NOTE+=$'\n**Updater image:** `${{ steps.resolve_image.outputs.image }}`\n'
+            CORE_NOTE=$'\n**dependabot-core PR:** https://github.com/dependabot/dependabot-core/pull/${{ inputs.core-pr-number }}\n'
           fi
 
           PR_BODY=$(cat <<EOF
