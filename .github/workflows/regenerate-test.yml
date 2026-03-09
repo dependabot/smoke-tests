@@ -34,8 +34,10 @@ jobs:
           fi
           echo "Test file $TEST_FILE exists"
 
-      - name: Add Go bin to PATH
-        run: echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - name: Set up Go
+        uses: actions/setup-go@7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5 # v6.2.0
+        with:
+          go-version: stable
 
       - name: Install Dependabot CLI
         run: go install github.com/dependabot/cli/cmd/dependabot@latest
