@@ -1,4 +1,6 @@
-# Regenerates a single test file and creates a PR for review
+# Regenerates a single test file and creates a PR for review.
+# Optionally specify a dependabot-core branch or PR number to build a custom updater
+# image locally, enabling smoke test updates before merging core PRs.
 name: Regenerate Test
 
 on:  # yamllint disable-line rule:truthy
@@ -8,6 +10,14 @@ on:  # yamllint disable-line rule:truthy
         description: 'Test name to regenerate (e.g. npm, bundler, go, etc.)'
         required: true
         type: string
+      core-branch:
+        description: 'dependabot-core branch name (for internal branches)'
+        required: false
+        type: string
+      core-pr-number:
+        description: 'dependabot-core PR number (for any PR including forks)'
+        required: false
+        type: number
 
 permissions:
   contents: write
@@ -34,6 +44,10 @@ jobs:
           fi
           echo "Test file $TEST_FILE exists"
 
+      - name: Download cache
+        run: |
+          script/download-cache.sh "${{ inputs.test }}" || echo "No cache found, proceeding without cache"
+
       - name: Set up Go
         uses: actions/setup-go@7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5 # v6.2.0
         with:
@@ -42,21 +56,140 @@ jobs:
       - name: Install Dependabot CLI
         run: go install github.com/dependabot/cli/cmd/dependabot@latest
 
+      - name: Resolve ecosystem names
+        id: ecosystem
+        if: inputs.core-branch != '' || inputs.core-pr-number != ''
+        run: |
+          # Map test names to core directory names (for script/build) and ecosystem image suffixes
+          declare -A CORE_MAP=(
+            ["actions"]="github_actions"
+            ["bundler"]="bundler"
+            ["cargo"]="cargo"
+            ["composer"]="composer"
+            ["devcontainers"]="devcontainers"
+            ["docker"]="docker"
+            ["dotnet-sdk"]="dotnet_sdk"
+            ["elm"]="elm"
+            ["go"]="go_modules"
+            ["gradle"]="gradle"
+            ["hex"]="hex"
+            ["maven"]="maven"
+            ["npm"]="npm_and_yarn"
+            ["nuget"]="nuget"
+            ["pub"]="pub"
+            ["python"]="python"
+            ["rust-toolchain"]="rust_toolchain"
+            ["submodules"]="git_submodules"
+            ["swift"]="swift"
+            ["terraform"]="terraform"
+            ["vcpkg"]="vcpkg"
+          )
+          declare -A ECOSYSTEM_MAP=(
+            ["actions"]="github-actions"
+            ["bundler"]="bundler"
+            ["cargo"]="cargo"
+            ["composer"]="composer"
+            ["devcontainers"]="devcontainers"
+            ["docker"]="docker"
+            ["dotnet-sdk"]="dotnet-sdk"
+            ["elm"]="elm"
+            ["go"]="gomod"
+            ["gradle"]="gradle"
+            ["hex"]="mix"
+            ["maven"]="maven"
+            ["npm"]="npm"
+            ["nuget"]="nuget"
+            ["pub"]="pub"
+            ["python"]="pip"
+            ["rust-toolchain"]="rust-toolchain"
+            ["submodules"]="gitsubmodule"
+            ["swift"]="swift"
+            ["terraform"]="terraform"
+            ["vcpkg"]="vcpkg"
+          )
+
+          # Extract base test name (e.g. npm-group-rules -> npm, dotnet-sdk-security -> dotnet-sdk)
+          TEST="${{ inputs.test }}"
+          MATCHED_KEY=""
+          for key in "${!CORE_MAP[@]}"; do
+            if [[ "$TEST" == "$key" || "$TEST" == "$key"-* ]]; then
+              if [ ${#key} -gt ${#MATCHED_KEY} ]; then
+                MATCHED_KEY="$key"
+              fi
+            fi
+          done
+
+          if [ -z "$MATCHED_KEY" ]; then
+            echo "Error: Could not determine ecosystem for test '$TEST'"
+            echo "Supported base test names: ${!CORE_MAP[*]}"
+            exit 1
+          fi
+
+          CORE="${CORE_MAP[$MATCHED_KEY]}"
+          ECOSYSTEM="${ECOSYSTEM_MAP[$MATCHED_KEY]}"
+          echo "Matched test '$TEST' -> core='$CORE', ecosystem='$ECOSYSTEM'"
+          echo "core=$CORE" >> "$GITHUB_OUTPUT"
+          echo "ecosystem=$ECOSYSTEM" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout dependabot-core
+        if: inputs.core-branch != '' || inputs.core-pr-number != ''
+        uses: actions/checkout@v6
+        with:
+          repository: dependabot/dependabot-core
+          path: dependabot-core
+          submodules: recursive
+
+      - name: Checkout core branch or PR
+        if: inputs.core-branch != '' || inputs.core-pr-number != ''
+        working-directory: dependabot-core
+        run: |
+          if [ -n "${{ inputs.core-pr-number }}" ]; then
+            echo "Checking out PR #${{ inputs.core-pr-number }}"
+            gh pr checkout ${{ inputs.core-pr-number }} --repo dependabot/dependabot-core
+          elif [ -n "${{ inputs.core-branch }}" ]; then
+            echo "Checking out branch '${{ inputs.core-branch }}'"
+            git fetch origin "${{ inputs.core-branch }}"
+            git checkout "${{ inputs.core-branch }}"
+          fi
+          echo "Checked out commit: $(git rev-parse HEAD)"
+
+      - name: Build updater image
+        if: inputs.core-branch != '' || inputs.core-pr-number != ''
+        working-directory: dependabot-core
+        run: |
+          echo "Building updater image for ${{ steps.ecosystem.outputs.core }}..."
+          script/build ${{ steps.ecosystem.outputs.core }}
+          echo "Image built: ghcr.io/dependabot/dependabot-updater-${{ steps.ecosystem.outputs.ecosystem }}:latest"
+
       - name: Regenerate test
         env:
           LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
-          script/regen.sh "$TEST_FILE" || true
+          RESULT_FILE="result-${{ inputs.test }}.yaml"
+          EXTRA_ARGS=""
+          if [ -n "${{ inputs.core-branch }}" ] || [ -n "${{ inputs.core-pr-number }}" ]; then
+            EXTRA_ARGS="--updater-image=ghcr.io/dependabot/dependabot-updater-${{ steps.ecosystem.outputs.ecosystem }}:latest"
+          fi
+          dependabot test -f "$TEST_FILE" -o "$RESULT_FILE" --cache cache --timeout 20m $EXTRA_ARGS 2>&1 | tee -a regen.log
+
+          # Validate the result has an output section (not wiped)
+          if ! grep -q "^output:" "$RESULT_FILE"; then
+            echo "Error: Regenerated file has no output section. The updater may have failed."
+            echo "Last 50 lines of log:"
+            tail -50 regen.log
+            exit 1
+          fi
+          cp "$RESULT_FILE" "$TEST_FILE"
 
       - name: Check for changes
         id: check_changes
         run: |
           TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
           if git diff --quiet "$TEST_FILE"; then
-            echo "Error: No changes were made to $TEST_FILE"
+            echo "No changes were made to $TEST_FILE"
             echo "The test regeneration produced identical results"
-            exit 1
+            exit 0
           fi
           echo "Changes detected in $TEST_FILE"
           echo "has_changes=true" >> $GITHUB_OUTPUT
@@ -77,12 +210,19 @@ jobs:
           git commit -m "Regenerate ${{ inputs.test }} test"
           git push origin "$BRANCH_NAME"
 
+          CORE_NOTE=""
+          if [ -n "${{ inputs.core-branch }}" ]; then
+            CORE_NOTE=$'\n**dependabot-core branch:** `${{ inputs.core-branch }}`\n'
+          elif [ -n "${{ inputs.core-pr-number }}" ]; then
+            CORE_NOTE=$'\n**dependabot-core PR:** https://github.com/dependabot/dependabot-core/pull/${{ inputs.core-pr-number }}\n'
+          fi
+
           PR_BODY=$(cat <<EOF
           This PR regenerates the \`${{ inputs.test }}\` test file.
 
           **Test regenerated:** \`$TEST_FILE\`
-
-          The test was regenerated using \`script/regen.sh\` to update it with the latest dependency information.
+          ${CORE_NOTE}
+          The test was regenerated using \`dependabot test\` to update it with the latest dependency information.
 
           Please review the changes to ensure they are expected.
           EOF
