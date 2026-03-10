@@ -1,27 +1,6 @@
 # Copilot Instructions for dependabot/smoke-tests
 
-## Repository Overview
-
-This repo contains smoke tests for Dependabot. Each test is a YAML file in `tests/` that records the expected inputs and outputs of a Dependabot CLI run against manifest files in this repo.
-
-## Setup
-
-Before running or regenerating any smoke tests, you must:
-
-1. **Install the Dependabot CLI** by running `go install github.com/dependabot/cli/cmd/dependabot@latest`. This installs the latest released version onto your `$PATH`. Requires Go to be installed.
-
-2. **Set up TLS certificates** by running `script/setup-tls.sh`. In sandboxed environments (GitHub Codespaces, GitHub Actions) a TLS-intercepting proxy re-signs all outbound HTTPS traffic with a mkcert CA. This script disables the runc shim's certificate bind mounts so the Dependabot CLI's containers keep their original cert stores. The helper scripts (`script/run-one.sh`, `script/regen.sh`) automatically detect the mkcert CA and pass `--proxy-cert` to the CLI.
-
-Both steps are required every time a new environment is created (e.g. a fresh Codespace or a new CI job).
-
-## Running and Regenerating Tests
-
-- **Run a single test:** `script/run-one.sh tests/smoke-<name>.yaml`
-- **Run with cache:** `script/run-one.sh tests/smoke-<name>.yaml --with-cache`
-- **Regenerate a test:** `script/regen.sh tests/smoke-<name>.yaml`
-- **Regenerate multiple:** `script/regen.sh tests/smoke-a.yaml tests/smoke-b.yaml`
-
-These scripts automatically pass `--proxy-cert` when a mkcert CA is detected.
+Read the [README](../README.md) for setup instructions, how tests work, and how to run/regenerate them.
 
 ## Test File Conventions
 
@@ -30,6 +9,6 @@ These scripts automatically pass `--proxy-cert` when a mkcert CA is detected.
 - Ignore conditions use the `>` operator to cap versions (allows updates up to and including the specified version).
 - A `record_ecosystem_meta` entry follows every `create_pull_request`, `update_pull_request`, or `close_pull_request` output entry.
 
-## Troubleshooting TLS
+## TLS in Sandboxed Environments
 
-If you see errors like `Cannot handshake client`, `CAfile: none`, or `server certificate verification failed` when running smoke tests, make sure you have run both setup steps above. The `--proxy-cert` flag passes the mkcert CA to the Dependabot proxy so it can verify the infrastructure's MITM certificates on outbound connections.
+In sandboxed environments (e.g. the Copilot coding agent) with TLS interception, run `script/setup-tls.sh` first. After running it, pass `--proxy-cert /home/runner/work/_temp/runtime-logs/mkcert/rootCA.pem` to all `dependabot` commands. If you see errors like `Cannot handshake client`, `CAfile: none`, or `server certificate verification failed`, that script has not been run.

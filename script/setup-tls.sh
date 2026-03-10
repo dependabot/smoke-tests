@@ -1,8 +1,8 @@
 #!/bin/bash
-# Sets up TLS certificates for running Dependabot CLI in sandboxed environments
-# (GitHub Codespaces / GitHub Actions with TLS interception).
+# Sets up TLS certificates for running Dependabot CLI in the Copilot coding
+# agent's sandboxed environment, which uses TLS interception.
 #
-# In these environments, a runc shim intercepts container creation and replaces
+# In this environment, a runc shim intercepts container creation and replaces
 # /etc/ssl/certs/ with only a mkcert CA cert. This breaks the Dependabot CLI's
 # proxy<->updater trust chain because the proxy's dynamic MITM CA (dbot-ca.crt)
 # gets overwritten.
