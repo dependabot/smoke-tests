@@ -47,7 +47,7 @@ jobs:
           LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
-          script/regen.sh "$TEST_FILE" || true
+          dependabot test -f "$TEST_FILE" -o "$TEST_FILE" || true
 
       - name: Check for changes
         id: check_changes
@@ -82,7 +82,7 @@ jobs:
 
           **Test regenerated:** \`$TEST_FILE\`
 
-          The test was regenerated using \`script/regen.sh\` to update it with the latest dependency information.
+          The test was regenerated using \`dependabot test\` to update it with the latest dependency information.
 
           Please review the changes to ensure they are expected.
           EOF

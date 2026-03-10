@@ -9,6 +9,10 @@
 This repo contains manifest files for various package managers
 and is used to perform end-to-end tests for Dependabot.
 
+## Setup
+
+Install the [Dependabot CLI](https://github.com/dependabot/cli#installation).
+
 ## How does this work?
 
 Dependabot CLI has the capability to generate and consume test files.
@@ -55,11 +59,13 @@ To see the percentage of caching on each test, go to the [Smoke tests](https://g
 
 Sometimes after a test has been uncached for a while, it will break because the dependencies have changed, and recaching won't fix it. Also some package-managers seem to get around the caching after a while.
 
-In this case we will need to regenerate the failing test locally with `dependabot test -f tests/smoke-bundler.yaml -o tests/smoke-bundler.yaml` then push it up, and recache that test with the "Cache" workflows.
+In this case, regenerate the failing test locally and push it up, then recache with the "Cache" workflows:
+
+```console
+dependabot test -f tests/smoke-bundler.yaml -o tests/smoke-bundler.yaml
+```
 
 Where possible try to add additional ignore_conditions and allowed_updates so even when uncached the tests will not fail.
-
-For convenience there's a `script/regen.sh` which will regenerate all of the tests.
 
 ### How to add new tests
 
@@ -72,7 +78,7 @@ To create a new test:
    - $previous_commit_sha is the commit SHA that contains the manifest files under test
    - $testname is a descriptive name for the test
 3. Commit the resulting test
-4. Run the [Cache-One](https://github.com/dependabot/smoke-tests/actions/workflows/cache-one.yml) Workflow to cache the test, so it won't break due to dependency changes before the PR merges 
+4. Run the [Cache-One](https://github.com/dependabot/smoke-tests/actions/workflows/cache-one.yml) Workflow to cache the test, so it won't break due to dependency changes before the PR merges
 5. When merging, be sure to make a merge commit, don't squash or rebase! This will change the $previous_commit_sha.
 
 The reason we do it this way is the commit under test is in the API calls in the `output` section. So we must pin the test to a commit or a change to this repo will break all the tests.
