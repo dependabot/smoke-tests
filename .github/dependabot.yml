@@ -6,3 +6,8 @@ updates:
       interval: "weekly"
       day: "monday"
       time: "16:00"
+    ignore:
+      # These are intentionally pinned to old versions for the smoke test fixture: .github/workflows/i-am-a-smoke-test.yml
+      - dependency-name: "actions/setup-python"
+      - dependency-name: "actions/setup-ruby"
+      - dependency-name: "actions/setup-node"
