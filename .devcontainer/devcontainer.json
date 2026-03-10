@@ -1,16 +1,13 @@
 // For format details, see https://aka.ms/devcontainer.json.
 {
 	"name": "Dependabot Smoke Tests",
-	"image": "mcr.microsoft.com/devcontainers/go:dev-1.26",
+	"image": "mcr.microsoft.com/devcontainers/universal:2",
 
 	"postCreateCommand": "bash .devcontainer/post-create.sh",
 
-	"remoteUser": "vscode",
 	"features": {
 		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
 			"moby": false
-		},
-		"ghcr.io/devcontainers/features/github-cli:1": {},
-		"ghcr.io/devcontainers/features/sshd:1": {}
+		}
 	}
 }
