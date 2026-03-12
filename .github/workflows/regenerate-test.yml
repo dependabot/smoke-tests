@@ -32,6 +32,10 @@ permissions:
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  INPUT_TEST: ${{ inputs.test }}
+  INPUT_ECOSYSTEM: ${{ inputs.ecosystem }}
+  INPUT_CORE_BRANCH: ${{ inputs['core-branch'] }}
+  INPUT_CORE_PR: ${{ inputs['core-pr-number'] }}
 
 jobs:
   regenerate:
@@ -43,44 +47,44 @@ jobs:
       - name: Resolve test list
         id: tests
         run: |
-          if [ -z "${{ inputs.test }}" ] && [ -z "${{ inputs.ecosystem }}" ]; then
+          if [ -z "$INPUT_TEST" ] && [ -z "$INPUT_ECOSYSTEM" ]; then
             echo "Error: Provide either 'test' or 'ecosystem'."
             exit 1
           fi
 
-          if [ -n "${{ inputs.test }}" ] && [ -n "${{ inputs.ecosystem }}" ]; then
+          if [ -n "$INPUT_TEST" ] && [ -n "$INPUT_ECOSYSTEM" ]; then
             echo "Error: Provide only one of 'test' or 'ecosystem', not both."
             exit 1
           fi
 
-          if [ -n "${{ inputs.core-branch }}" ] && [ -n "${{ inputs.core-pr-number }}" ]; then
+          if [ -n "$INPUT_CORE_BRANCH" ] && [ -n "$INPUT_CORE_PR" ]; then
             echo "Error: Provide only one of 'core-branch' or 'core-pr-number', not both."
             exit 1
           fi
 
-          if [ -n "${{ inputs.test }}" ]; then
-            TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
+          if [ -n "$INPUT_TEST" ]; then
+            TEST_FILE="tests/smoke-${INPUT_TEST}.yaml"
             if [ ! -f "$TEST_FILE" ]; then
               echo "::error::Test file '$TEST_FILE' does not exist."
               echo "Available tests:"
               ls tests/smoke-*.yaml | sed 's|tests/smoke-||;s|\.yaml||'
               exit 1
             fi
-            echo "list=${{ inputs.test }}" >> "$GITHUB_OUTPUT"
-            echo "label=${{ inputs.test }}" >> "$GITHUB_OUTPUT"
+            echo "list=${INPUT_TEST}" >> "$GITHUB_OUTPUT"
+            echo "label=${INPUT_TEST}" >> "$GITHUB_OUTPUT"
           else
-            MATCHES=$(grep -rl "package-manager: ${{ inputs.ecosystem }}" tests/smoke-*.yaml \
+            MATCHES=$(grep -rl "package-manager: ${INPUT_ECOSYSTEM}" tests/smoke-*.yaml \
               | sed 's|tests/smoke-||;s|\.yaml||' | sort)
             if [ -z "$MATCHES" ]; then
-              echo "::error::No tests found with package-manager '${{ inputs.ecosystem }}'."
+              echo "::error::No tests found with package-manager '${INPUT_ECOSYSTEM}'."
               echo "Available package-managers:"
               grep -rh 'package-manager:' tests/smoke-*.yaml | awk '{print $2}' | sort -u
               exit 1
             fi
-            echo "Found tests for '${{ inputs.ecosystem }}':"
+            echo "Found tests for '${INPUT_ECOSYSTEM}':"
             echo "$MATCHES"
             echo "list=$(echo $MATCHES | tr '\n' ' ')" >> "$GITHUB_OUTPUT"
-            echo "label=${{ inputs.ecosystem }}" >> "$GITHUB_OUTPUT"
+            echo "label=${INPUT_ECOSYSTEM}" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Set up Go
@@ -106,23 +110,25 @@ jobs:
         if: inputs.core-branch != '' || inputs.core-pr-number != ''
         working-directory: dependabot-core
         run: |
-          if [ -n "${{ inputs.core-pr-number }}" ]; then
-            echo "Checking out PR #${{ inputs.core-pr-number }}"
-            gh pr checkout ${{ inputs.core-pr-number }} --repo dependabot/dependabot-core
+          if [ -n "$INPUT_CORE_PR" ]; then
+            echo "Checking out PR #${INPUT_CORE_PR}"
+            gh pr checkout "$INPUT_CORE_PR" --repo dependabot/dependabot-core
           else
-            echo "Checking out branch '${{ inputs.core-branch }}'"
-            git fetch origin "${{ inputs.core-branch }}"
-            git checkout -B "${{ inputs.core-branch }}" FETCH_HEAD
+            echo "Checking out branch '${INPUT_CORE_BRANCH}'"
+            git fetch origin "$INPUT_CORE_BRANCH"
+            git checkout -B "$INPUT_CORE_BRANCH" FETCH_HEAD
           fi
           echo "Checked out commit: $(git rev-parse HEAD)"
 
       - name: Build updater image
         id: build
         if: inputs.core-branch != '' || inputs.core-pr-number != ''
+        env:
+          TEST_LIST: ${{ steps.tests.outputs.list }}
         run: |
           # All tests for an ecosystem share the same package-manager by
           # construction (the resolve step greps for it), so the first is safe.
-          FIRST_TEST=$(echo "${{ steps.tests.outputs.list }}" | awk '{print $1}')
+          FIRST_TEST=$(echo "$TEST_LIST" | awk '{print $1}')
           PKG_MGR=$(grep 'package-manager:' "tests/smoke-${FIRST_TEST}.yaml" | head -1 | awk '{print $2}')
           echo "Building image for package-manager: $PKG_MGR"
           cd dependabot-core
@@ -138,14 +144,16 @@ jobs:
       - name: Regenerate tests
         env:
           LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TEST_LIST: ${{ steps.tests.outputs.list }}
+          UPDATER_IMAGE: ${{ steps.build.outputs.image }}
         run: |
           UPDATER_IMAGE_ARG=""
-          if [ -n "${{ steps.build.outputs.image }}" ]; then
-            UPDATER_IMAGE_ARG="--updater-image=${{ steps.build.outputs.image }}"
+          if [ -n "$UPDATER_IMAGE" ]; then
+            UPDATER_IMAGE_ARG="--updater-image=$UPDATER_IMAGE"
           fi
 
           FAILED=""
-          for TEST in ${{ steps.tests.outputs.list }}; do
+          for TEST in $TEST_LIST; do
             echo "::group::Regenerating $TEST"
             TEST_FILE="tests/smoke-${TEST}.yaml"
             RESULT_FILE="result-${TEST}.yaml"
@@ -181,16 +189,21 @@ jobs:
 
       - name: Diff
         continue-on-error: true
+        env:
+          TEST_LIST: ${{ steps.tests.outputs.list }}
         run: |
-          for TEST in ${{ steps.tests.outputs.list }}; do
+          for TEST in $TEST_LIST; do
             echo "--- $TEST ---"
             git diff "tests/smoke-${TEST}.yaml" || true
           done
 
       - name: Create Pull Request
+        env:
+          TEST_LIST: ${{ steps.tests.outputs.list }}
+          TEST_LABEL: ${{ steps.tests.outputs.label }}
         run: |
           CHANGED=""
-          for TEST in ${{ steps.tests.outputs.list }}; do
+          for TEST in $TEST_LIST; do
             if ! git diff --quiet "tests/smoke-${TEST}.yaml"; then
               CHANGED="$CHANGED $TEST"
             fi
@@ -201,7 +214,7 @@ jobs:
             exit 0
           fi
 
-          LABEL="${{ steps.tests.outputs.label }}"
+          LABEL="$TEST_LABEL"
           BRANCH_NAME="regenerate-test-${LABEL}-$(date +%s)"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -219,10 +232,10 @@ jobs:
           git push origin "$BRANCH_NAME"
 
           CORE_NOTE=""
-          if [ -n "${{ inputs.core-branch }}" ]; then
-            CORE_NOTE=$'\n**dependabot-core branch:** `${{ inputs.core-branch }}`\n'
-          elif [ -n "${{ inputs.core-pr-number }}" ]; then
-            CORE_NOTE=$'\n**dependabot-core PR:** https://github.com/dependabot/dependabot-core/pull/${{ inputs.core-pr-number }}\n'
+          if [ -n "$INPUT_CORE_BRANCH" ]; then
+            CORE_NOTE=$'\n'"**dependabot-core branch:** \`${INPUT_CORE_BRANCH}\`"$'\n'
+          elif [ -n "$INPUT_CORE_PR" ]; then
+            CORE_NOTE=$'\n'"**dependabot-core PR:** https://github.com/dependabot/dependabot-core/pull/${INPUT_CORE_PR}"$'\n'
           fi
 
           TESTS_LIST=""
