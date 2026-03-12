@@ -134,13 +134,10 @@ jobs:
             TEST_FILE="tests/smoke-${TEST}.yaml"
             RESULT_FILE="result-${TEST}.yaml"
 
-            script/download-cache.sh "$TEST" || true
-
             set +e
             dependabot test \
               -f="$TEST_FILE" \
               -o="$RESULT_FILE" \
-              --cache=cache \
               --timeout=20m \
               $UPDATER_IMAGE_ARG \
               2>&1 | tee "regen-${TEST}.log"
