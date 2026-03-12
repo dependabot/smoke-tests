@@ -150,17 +150,12 @@ jobs:
             TEST_FILE="tests/smoke-${TEST}.yaml"
             RESULT_FILE="result-${TEST}.yaml"
 
-            set +e
-            set -o pipefail
             dependabot test \
               -f="$TEST_FILE" \
               -o="$RESULT_FILE" \
               --timeout=20m \
               $UPDATER_IMAGE_ARG \
-              2>&1 | tee "regen-${TEST}.log"
-            EXIT_CODE=$?
-            set +o pipefail
-            set -e
+              2>&1 | tee "regen-${TEST}.log" || true
 
             if ! grep -q "^output:" "$RESULT_FILE" 2>/dev/null; then
               echo "::error::Failed to regenerate $TEST"
