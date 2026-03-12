@@ -48,6 +48,11 @@ jobs:
             exit 1
           fi
 
+          if [ -n "${{ inputs.test }}" ] && [ -n "${{ inputs.ecosystem }}" ]; then
+            echo "Error: Provide only one of 'test' or 'ecosystem', not both."
+            exit 1
+          fi
+
           if [ -n "${{ inputs.test }}" ]; then
             TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
             if [ ! -f "$TEST_FILE" ]; then
@@ -102,7 +107,7 @@ jobs:
           else
             echo "Checking out branch '${{ inputs.core-branch }}'"
             git fetch origin "${{ inputs.core-branch }}"
-            git checkout "${{ inputs.core-branch }}"
+            git checkout -B "${{ inputs.core-branch }}" FETCH_HEAD
           fi
           echo "Checked out commit: $(git rev-parse HEAD)"
 
@@ -116,6 +121,10 @@ jobs:
           cd dependabot-core
           script/build "$PKG_MGR"
           IMAGE=$(docker images --format '{{.Repository}}:{{.Tag}}' | grep 'dependabot-updater-' | grep ':latest$' | head -1)
+          if [ -z "$IMAGE" ]; then
+            echo "::error::No dependabot updater image found after building '$PKG_MGR'"
+            exit 1
+          fi
           echo "Built image: $IMAGE"
           echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
 
@@ -135,6 +144,7 @@ jobs:
             RESULT_FILE="result-${TEST}.yaml"
 
             set +e
+            set -o pipefail
             dependabot test \
               -f="$TEST_FILE" \
               -o="$RESULT_FILE" \
@@ -142,6 +152,7 @@ jobs:
               $UPDATER_IMAGE_ARG \
               2>&1 | tee "regen-${TEST}.log"
             EXIT_CODE=$?
+            set +o pipefail
             set -e
 
             if [ $EXIT_CODE -ne 0 ] || ! grep -q "^output:" "$RESULT_FILE" 2>/dev/null; then
@@ -214,15 +225,13 @@ jobs:
 
           TESTS_LIST=""
           for TEST in $CHANGED; do
-            TESTS_LIST="${TESTS_LIST}
-          - ${TEST}"
+            TESTS_LIST="${TESTS_LIST}"$'\n'"- ${TEST}"
           done
+
+          BODY="$(printf 'This PR regenerates the following smoke tests:\n%s\n\n%s\nPlease review the changes to ensure they are expected.' "$TESTS_LIST" "$CORE_NOTE")"
 
           gh pr create \
             --title "Regenerate ${LABEL} tests" \
-            --body "This PR regenerates the following smoke tests:
-          ${TESTS_LIST}
-          ${CORE_NOTE}
-          Please review the changes to ensure they are expected." \
+            --body "$BODY" \
             --base main \
             --head "$BRANCH_NAME"
