@@ -53,6 +53,11 @@ jobs:
             exit 1
           fi
 
+          if [ -n "${{ inputs.core-branch }}" ] && [ -n "${{ inputs.core-pr-number }}" ]; then
+            echo "Error: Provide only one of 'core-branch' or 'core-pr-number', not both."
+            exit 1
+          fi
+
           if [ -n "${{ inputs.test }}" ]; then
             TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
             if [ ! -f "$TEST_FILE" ]; then
@@ -115,6 +120,8 @@ jobs:
         id: build
         if: inputs.core-branch != '' || inputs.core-pr-number != ''
         run: |
+          # All tests for an ecosystem share the same package-manager by
+          # construction (the resolve step greps for it), so the first is safe.
           FIRST_TEST=$(echo "${{ steps.tests.outputs.list }}" | awk '{print $1}')
           PKG_MGR=$(grep 'package-manager:' "tests/smoke-${FIRST_TEST}.yaml" | head -1 | awk '{print $2}')
           echo "Building image for package-manager: $PKG_MGR"
