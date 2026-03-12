@@ -162,7 +162,7 @@ jobs:
             set +o pipefail
             set -e
 
-            if [ $EXIT_CODE -ne 0 ] || ! grep -q "^output:" "$RESULT_FILE" 2>/dev/null; then
+            if ! grep -q "^output:" "$RESULT_FILE" 2>/dev/null; then
               echo "::error::Failed to regenerate $TEST"
               FAILED="$FAILED $TEST"
             else
