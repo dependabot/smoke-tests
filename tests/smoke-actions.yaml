@@ -3,7 +3,7 @@ input:
         command: update
         package-manager: github_actions
         allowed-updates:
-            - dependency-name: actions/setup-go
+            - dependency-name: actions/setup-python
             - dependency-name: actions/setup-ruby
             - dependency-name: actions/setup-node
         dependency-groups:
@@ -22,14 +22,14 @@ input:
             - dependency-name: actions/setup-ruby
               source: tests/smoke-actions.yaml
               version-requirement: '>1.1.3'
-            - dependency-name: actions/setup-go
+            - dependency-name: actions/setup-python
               source: tests/smoke-actions.yaml
               version-requirement: '>6.2.0'
         source:
             provider: github
             repo: dependabot/smoke-tests
             directory: /.
-            commit: 9e96615658c7e573f451797088c5d078cb496c8a
+            commit: caa72918c699114c49d47a7271c2c420cc04388c
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -45,178 +45,189 @@ output:
                     - file: .github/workflows/cache-all.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/checkout@v4
+                        declaration_string: actions/checkout@v6
                       requirement: null
                       source:
                         branch: null
-                        ref: v4
+                        ref: v6
                         type: git
                         url: https://github.com/actions/checkout
                     - file: .github/workflows/cache-one.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/checkout@v4
+                        declaration_string: actions/checkout@v6
                       requirement: null
                       source:
                         branch: null
-                        ref: v4
+                        ref: v6
                         type: git
                         url: https://github.com/actions/checkout
                     - file: .github/workflows/dry-run.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/checkout@v4
+                        declaration_string: actions/checkout@v6
                       requirement: null
                       source:
                         branch: null
-                        ref: v4
+                        ref: v6
                         type: git
                         url: https://github.com/actions/checkout
                     - file: .github/workflows/list-suites.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/checkout@v4
+                        declaration_string: actions/checkout@v6
                       requirement: null
                       source:
                         branch: null
-                        ref: v4
+                        ref: v6
                         type: git
                         url: https://github.com/actions/checkout
                     - file: .github/workflows/refresh-artifacts.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/checkout@v4
+                        declaration_string: actions/checkout@v6
                       requirement: null
                       source:
                         branch: null
-                        ref: v4
+                        ref: v6
+                        type: git
+                        url: https://github.com/actions/checkout
+                    - file: .github/workflows/regenerate-test.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/checkout@v6
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v6
                         type: git
                         url: https://github.com/actions/checkout
                     - file: .github/workflows/smoke.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/checkout@v4
+                        declaration_string: actions/checkout@v6
                       requirement: null
                       source:
                         branch: null
-                        ref: v4
+                        ref: v6
                         type: git
                         url: https://github.com/actions/checkout
                     - file: .github/workflows/yamllint.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/checkout@v4
+                        declaration_string: actions/checkout@v6
                       requirement: null
                       source:
                         branch: null
-                        ref: v4
+                        ref: v6
                         type: git
                         url: https://github.com/actions/checkout
-                  version: "4"
+                  version: "6"
+                - name: actions/setup-go
+                  requirements:
+                    - file: .github/workflows/cache-all.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/setup-go@7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5
+                        type: git
+                        url: https://github.com/actions/setup-go
+                    - file: .github/workflows/cache-one.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/setup-go@7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5
+                        type: git
+                        url: https://github.com/actions/setup-go
+                    - file: .github/workflows/dry-run.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/setup-go@7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5
+                        type: git
+                        url: https://github.com/actions/setup-go
+                    - file: .github/workflows/regenerate-test.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/setup-go@7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5
+                        type: git
+                        url: https://github.com/actions/setup-go
+                    - file: .github/workflows/smoke.yml
+                      groups: []
+                      metadata:
+                        declaration_string: actions/setup-go@7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: 7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5
+                        type: git
+                        url: https://github.com/actions/setup-go
+                  version: 6.2.0
                 - name: actions/upload-artifact
                   requirements:
                     - file: .github/workflows/cache-all.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/upload-artifact@v3
+                        declaration_string: actions/upload-artifact@v6
                       requirement: null
                       source:
                         branch: null
-                        ref: v3
+                        ref: v6
                         type: git
                         url: https://github.com/actions/upload-artifact
                     - file: .github/workflows/cache-one.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/upload-artifact@v3
+                        declaration_string: actions/upload-artifact@v6
                       requirement: null
                       source:
                         branch: null
-                        ref: v3
+                        ref: v6
                         type: git
                         url: https://github.com/actions/upload-artifact
                     - file: .github/workflows/refresh-artifacts.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/upload-artifact@v3
+                        declaration_string: actions/upload-artifact@v6
                       requirement: null
                       source:
                         branch: null
-                        ref: v3
+                        ref: v6
                         type: git
                         url: https://github.com/actions/upload-artifact
-                  version: "3"
-                - name: actions/setup-go
+                  version: "6"
+                - name: actions/setup-python
                   requirements:
                     - file: .github/workflows/i-am-a-smoke-test.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9
+                        declaration_string: actions/setup-python@d09bd5e6005b175076f227b13d9730d56e9dcfcb
                       requirement: null
                       source:
                         branch: null
-                        ref: 4d34df0c2316fe8122ab82dc22947d607c0c91f9
+                        ref: d09bd5e6005b175076f227b13d9730d56e9dcfcb
                         type: git
-                        url: https://github.com/actions/setup-go
+                        url: https://github.com/actions/setup-python
                   version: 4.0.0
                 - name: actions/setup-ruby
                   requirements:
                     - file: .github/workflows/i-am-a-smoke-test.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/setup-ruby@5f29a1cd8dfebf420691c4c9a0e832e2fae5a526
-                      requirement: null
-                      source:
-                        branch: null
-                        ref: 5f29a1cd8dfebf420691c4c9a0e832e2fae5a526
-                        type: git
-                        url: https://github.com/actions/setup-ruby
-                  version: 1.1.2
-                - name: actions/setup-node
-                  requirements:
-                    - file: .github/workflows/i-am-a-smoke-test.yml
-                      groups: []
-                      metadata:
-                        declaration_string: actions/setup-node@v1
-                      requirement: null
-                      source:
-                        branch: null
-                        ref: v1
-                        type: git
-                        url: https://github.com/actions/setup-node
-                  version: "1"
-            dependency_files:
-                - /.github/workflows/cache-all.yml
-                - /.github/workflows/cache-one.yml
-                - /.github/workflows/dry-run.yml
-                - /.github/workflows/i-am-a-smoke-test.yml
-                - /.github/workflows/list-suites.yml
-                - /.github/workflows/refresh-artifacts.yml
-                - /.github/workflows/smoke.yml
-                - /.github/workflows/yamllint.yml
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: 9e96615658c7e573f451797088c5d078cb496c8a
-            dependencies:
-                - name: actions/setup-ruby
-                  previous-requirements:
-                    - file: .github/workflows/i-am-a-smoke-test.yml
-                      groups: []
-                      metadata:
-                        declaration_string: actions/setup-ruby@5f29a1cd8dfebf420691c4c9a0e832e2fae5a526
-                      requirement: null
-                      source:
-                        branch: null
-                        ref: 5f29a1cd8dfebf420691c4c9a0e832e2fae5a526
-                        type: git
-                        url: https://github.com/actions/setup-ruby
-                  previous-version: 1.1.2
-                  requirements:
-                    - file: .github/workflows/i-am-a-smoke-test.yml
-                      groups: []
-                      metadata:
-                        declaration_string: actions/setup-ruby@5f29a1cd8dfebf420691c4c9a0e832e2fae5a526
+                        declaration_string: actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543
                       requirement: null
                       source:
                         branch: null
@@ -224,163 +235,58 @@ output:
                         type: git
                         url: https://github.com/actions/setup-ruby
                   version: 1.1.3
-                  directory: /
                 - name: actions/setup-node
-                  previous-requirements:
-                    - file: .github/workflows/i-am-a-smoke-test.yml
-                      groups: []
-                      metadata:
-                        declaration_string: actions/setup-node@v1
-                      requirement: null
-                      source:
-                        branch: null
-                        ref: v1
-                        type: git
-                        url: https://github.com/actions/setup-node
-                  previous-version: "1"
                   requirements:
                     - file: .github/workflows/i-am-a-smoke-test.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/setup-node@v1
+                        declaration_string: actions/setup-node@v6
                       requirement: null
                       source:
                         branch: null
-                        ref: v2
+                        ref: v6
                         type: git
                         url: https://github.com/actions/setup-node
-                  version: "2"
-                  directory: /
-            updated-dependency-files:
-                - content: |
-                    name: Smoke test manifest
-                    on: workflow_dispatch
-
-                    permissions:
-                      contents: read
-
-                    jobs:
-                      body-moving:
-                        name: This is a smoke test
-                        runs-on: ubuntu-latest
-                        steps:
-                          - name: Setup Go
-                            uses: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9
-                          - name: Setup Ruby
-                            uses: actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543
-                          - name: Setup Node
-                            uses: actions/setup-node@v2
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /
-                  name: .github/workflows/i-am-a-smoke-test.yml
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump the setup group with 2 updates
-            pr-body: |
-                Bumps the setup group with 2 updates: [actions/setup-ruby](https://github.com/actions/setup-ruby) and [actions/setup-node](https://github.com/actions/setup-node).
-
-                Updates `actions/setup-ruby` from 1.1.2 to 1.1.3
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/actions/setup-ruby/releases">actions/setup-ruby's releases</a>.</em></p>
-                <blockquote>
-                <h2>v1.1.3</h2>
-                <p>Added deprecation log message.</p>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/actions/setup-ruby/commit/e932e7af67fc4a8fc77bd86b744acd4e42fe3543"><code>e932e7a</code></a> Deprecation of action</li>
-                <li><a href="https://github.com/actions/setup-ruby/commit/628c631e13a1d362b811e1e41ba32f24c464d081"><code>628c631</code></a> updated wording, fixed matrix</li>
-                <li><a href="https://github.com/actions/setup-ruby/commit/4ac0d0173e81bd32ff8390db373bb9a5e0be4c1e"><code>4ac0d01</code></a> updated deprecation messaging</li>
-                <li><a href="https://github.com/actions/setup-ruby/commit/92304077785efe655f4759c009c7e6088f4a260a"><code>9230407</code></a> updated dist/index.js</li>
-                <li><a href="https://github.com/actions/setup-ruby/commit/c48caba78306a49398939180b6e45aa88a1988c3"><code>c48caba</code></a> prettier run</li>
-                <li><a href="https://github.com/actions/setup-ruby/commit/c624fe2900d5b4cc609ba5aefbd10ad0ed9fe0a8"><code>c624fe2</code></a> reverted gitignore updates</li>
-                <li><a href="https://github.com/actions/setup-ruby/commit/e0c4d78b1a56494f4824df890edda6c3130dd628"><code>e0c4d78</code></a> added core.info</li>
-                <li><a href="https://github.com/actions/setup-ruby/commit/836363748e965effcffb8832228e423486613046"><code>8363637</code></a> added deprecation message</li>
-                <li>See full diff in <a href="https://github.com/actions/setup-ruby/compare/5f29a1cd8dfebf420691c4c9a0e832e2fae5a526...e932e7af67fc4a8fc77bd86b744acd4e42fe3543">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-
-                Updates `actions/setup-node` from 1 to 2
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/actions/setup-node/releases">actions/setup-node's releases</a>.</em></p>
-                <blockquote>
-                <h2>v2.0.0 (beta)</h2>
-                <p>This is a beta release.</p>
-                <ul>
-                <li>Downloads LTS versions from <code>node-versions</code> releases for reliability.  Falls back to nodejs.org dist on misses or failures</li>
-                <li>Full semver spec support</li>
-                <li>Support for upcoming GHES</li>
-                </ul>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/actions/setup-node/commit/7c12f8017d5436eb855f1ed4399f037a36fbd9e8"><code>7c12f80</code></a> Update actions/core dependencies for releases/v2 (<a href="https://redirect.github.com/actions/setup-node/issues/713">#713</a>)</li>
-                <li><a href="https://github.com/actions/setup-node/commit/1f8c6b94b26d0feae1e387ca63ccbdc44d27b561"><code>1f8c6b9</code></a> Pass to warning uncaught exceptions (<a href="https://redirect.github.com/actions/setup-node/issues/359">#359</a>)</li>
-                <li><a href="https://github.com/actions/setup-node/commit/9a74eb4e6473f91fbde564f97c2662fd1dc4875c"><code>9a74eb4</code></a> Throw error only if exit code is note zero.  (<a href="https://redirect.github.com/actions/setup-node/issues/358">#358</a>)</li>
-                <li><a href="https://github.com/actions/setup-node/commit/04c56d2f954f1e4c69436aa54cfef261a018f458"><code>04c56d2</code></a> update cache to 1.0.8 (<a href="https://redirect.github.com/actions/setup-node/issues/367">#367</a>)</li>
-                <li><a href="https://github.com/actions/setup-node/commit/d08cf222111d5c1d21b3cd4b958937f818d10d9a"><code>d08cf22</code></a> Adding Node.js version file support (<a href="https://redirect.github.com/actions/setup-node/issues/338">#338</a>)</li>
-                <li><a href="https://github.com/actions/setup-node/commit/360ab8b75b056fc18d368ee27a78d34e29c0b2d9"><code>360ab8b</code></a> Fix typo in the <code>bug_report</code> template (<a href="https://redirect.github.com/actions/setup-node/issues/353">#353</a>)</li>
-                <li><a href="https://github.com/actions/setup-node/commit/fd4bd829f2dd6b6c1420bd94a93449c54612ffc2"><code>fd4bd82</code></a> Add issue and pull request templates (<a href="https://redirect.github.com/actions/setup-node/issues/344">#344</a>)</li>
-                <li><a href="https://github.com/actions/setup-node/commit/a4b8ed2f4e9dd97eeae325f6967ce23d5478bd53"><code>a4b8ed2</code></a> Update dependencies (<a href="https://redirect.github.com/actions/setup-node/issues/346">#346</a>)</li>
-                <li><a href="https://github.com/actions/setup-node/commit/270253e841af726300e85d718a5f606959b2903c"><code>270253e</code></a> Merge pull request <a href="https://redirect.github.com/actions/setup-node/issues/327">#327</a> from WtfJoke/addCacheHitOutPut</li>
-                <li><a href="https://github.com/actions/setup-node/commit/d1178716dbbe024f9d459612c22072517a781faa"><code>d117871</code></a> Add 'cache-hit' as output</li>
-                <li>Additional commits viewable in <a href="https://github.com/actions/setup-node/compare/v1...v2">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump the setup group with 2 updates
-
-                Bumps the setup group with 2 updates: [actions/setup-ruby](https://github.com/actions/setup-ruby) and [actions/setup-node](https://github.com/actions/setup-node).
-
-
-                Updates `actions/setup-ruby` from 1.1.2 to 1.1.3
-                - [Release notes](https://github.com/actions/setup-ruby/releases)
-                - [Commits](https://github.com/actions/setup-ruby/compare/5f29a1cd8dfebf420691c4c9a0e832e2fae5a526...e932e7af67fc4a8fc77bd86b744acd4e42fe3543)
-
-                Updates `actions/setup-node` from 1 to 2
-                - [Release notes](https://github.com/actions/setup-node/releases)
-                - [Commits](https://github.com/actions/setup-node/compare/v1...v2)
-            dependency-group:
-                name: setup
+                  version: "6"
+            dependency_files:
+                - /.github/workflows/cache-all.yml
+                - /.github/workflows/cache-one.yml
+                - /.github/workflows/dry-run.yml
+                - /.github/workflows/i-am-a-smoke-test.yml
+                - /.github/workflows/list-suites.yml
+                - /.github/workflows/refresh-artifacts.yml
+                - /.github/workflows/regenerate-test.yml
+                - /.github/workflows/smoke.yml
+                - /.github/workflows/yamllint.yml
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 9e96615658c7e573f451797088c5d078cb496c8a
+            base-commit-sha: caa72918c699114c49d47a7271c2c420cc04388c
             dependencies:
-                - name: actions/setup-go
+                - name: actions/setup-python
                   previous-requirements:
                     - file: .github/workflows/i-am-a-smoke-test.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9
+                        declaration_string: actions/setup-python@d09bd5e6005b175076f227b13d9730d56e9dcfcb
                       requirement: null
                       source:
                         branch: null
-                        ref: 4d34df0c2316fe8122ab82dc22947d607c0c91f9
+                        ref: d09bd5e6005b175076f227b13d9730d56e9dcfcb
                         type: git
-                        url: https://github.com/actions/setup-go
+                        url: https://github.com/actions/setup-python
                   previous-version: 4.0.0
                   requirements:
                     - file: .github/workflows/i-am-a-smoke-test.yml
                       groups: []
                       metadata:
-                        declaration_string: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9
+                        declaration_string: actions/setup-python@d09bd5e6005b175076f227b13d9730d56e9dcfcb
                       requirement: null
                       source:
                         branch: null
-                        ref: 7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5
+                        ref: a309ff8b426b58ec0e2a45f0f869d46889d02405
                         type: git
-                        url: https://github.com/actions/setup-go
+                        url: https://github.com/actions/setup-python
                   version: 6.2.0
                   directory: /
             updated-dependency-files:
@@ -396,12 +302,12 @@ output:
                         name: This is a smoke test
                         runs-on: ubuntu-latest
                         steps:
-                          - name: Setup Go
-                            uses: actions/setup-go@7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5
+                          - name: Setup Python
+                            uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
                           - name: Setup Ruby
-                            uses: actions/setup-ruby@5f29a1cd8dfebf420691c4c9a0e832e2fae5a526
+                            uses: actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543
                           - name: Setup Node
-                            uses: actions/setup-node@v1
+                            uses: actions/setup-node@v6
                   content_encoding: utf-8
                   deleted: false
                   directory: /
@@ -409,64 +315,72 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump actions/setup-go from 4.0.0 to 6.2.0
+            pr-title: Bump actions/setup-python from 4.0.0 to 6.2.0
             pr-body: |
-                Bumps [actions/setup-go](https://github.com/actions/setup-go) from 4.0.0 to 6.2.0.
+                Bumps [actions/setup-python](https://github.com/actions/setup-python) from 4.0.0 to 6.2.0.
                 <details>
                 <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/actions/setup-go/releases">actions/setup-go's releases</a>.</em></p>
+                <p><em>Sourced from <a href="https://github.com/actions/setup-python/releases">actions/setup-python's releases</a>.</em></p>
                 <blockquote>
                 <h2>v6.2.0</h2>
                 <h2>What's Changed</h2>
-                <h3>Enhancements</h3>
+                <h3>Dependency Upgrades</h3>
                 <ul>
-                <li>Example for restore-only cache in documentation  by <a href="https://github.com/aparnajyothi-y"><code>@​aparnajyothi-y</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/696">actions/setup-go#696</a></li>
-                <li>Update Node.js version in action.yml by <a href="https://github.com/ccoVeille"><code>@​ccoVeille</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/691">actions/setup-go#691</a></li>
-                <li>Documentation update of actions/checkout by <a href="https://github.com/deining"><code>@​deining</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/683">actions/setup-go#683</a></li>
+                <li>Upgrade dependencies to Node 24 compatible versions by <a href="https://github.com/salmanmkc"><code>@​salmanmkc</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1259">actions/setup-python#1259</a></li>
+                <li>Upgrade urllib3 from 2.5.0 to 2.6.3 in <code>/__tests__/data</code> by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1253">actions/setup-python#1253</a> and <a href="https://redirect.github.com/actions/setup-python/pull/1264">actions/setup-python#1264</a></li>
                 </ul>
-                <h3>Dependency updates</h3>
-                <ul>
-                <li>Upgrade js-yaml from 3.14.1 to 3.14.2 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/682">actions/setup-go#682</a></li>
-                <li>Upgrade <code>@​actions/cache</code> to v5 by <a href="https://github.com/salmanmkc"><code>@​salmanmkc</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/695">actions/setup-go#695</a></li>
-                <li>Upgrade actions/checkout from 5 to 6 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/686">actions/setup-go#686</a></li>
-                <li>Upgrade qs from 6.14.0 to 6.14.1 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/703">actions/setup-go#703</a></li>
-                </ul>
-                <h2>New Contributors</h2>
-                <ul>
-                <li><a href="https://github.com/ccoVeille"><code>@​ccoVeille</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/691">actions/setup-go#691</a></li>
-                <li><a href="https://github.com/deining"><code>@​deining</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/683">actions/setup-go#683</a></li>
-                </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/setup-go/compare/v6...v6.2.0">https://github.com/actions/setup-go/compare/v6...v6.2.0</a></p>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/setup-python/compare/v6...v6.2.0">https://github.com/actions/setup-python/compare/v6...v6.2.0</a></p>
                 <h2>v6.1.0</h2>
                 <h2>What's Changed</h2>
-                <h3>Enhancements</h3>
+                <h3>Enhancements:</h3>
                 <ul>
-                <li>Fall back to downloading from go.dev/dl instead of storage.googleapis.com/golang by <a href="https://github.com/nicholasngai"><code>@​nicholasngai</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/665">actions/setup-go#665</a></li>
-                <li>Add support for .tool-versions file and update workflow by <a href="https://github.com/priya-kinthali"><code>@​priya-kinthali</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/673">actions/setup-go#673</a></li>
-                <li>Add comprehensive breaking changes documentation for v6 by <a href="https://github.com/mahabaleshwars"><code>@​mahabaleshwars</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/674">actions/setup-go#674</a></li>
+                <li>Add support for <code>pip-install</code> input by <a href="https://github.com/gowridurgad"><code>@​gowridurgad</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1201">actions/setup-python#1201</a></li>
+                <li>Add graalpy early-access and windows builds by <a href="https://github.com/timfel"><code>@​timfel</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/880">actions/setup-python#880</a></li>
                 </ul>
-                <h3>Dependency updates</h3>
+                <h3>Dependency and Documentation updates:</h3>
                 <ul>
-                <li>Upgrade eslint-config-prettier from 10.0.1 to 10.1.8 and document breaking changes in v6 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/617">actions/setup-go#617</a></li>
-                <li>Upgrade actions/publish-action from 0.3.0 to 0.4.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/641">actions/setup-go#641</a></li>
-                <li>Upgrade semver and <code>@​types/semver</code> by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/652">actions/setup-go#652</a></li>
+                <li>Enhanced wording and updated example usage for <code>allow-prereleases</code> by <a href="https://github.com/yarikoptic"><code>@​yarikoptic</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/979">actions/setup-python#979</a></li>
+                <li>Upgrade urllib3 from 1.26.19 to 2.5.0 and document breaking changes in v6 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1139">actions/setup-python#1139</a></li>
+                <li>Upgrade typescript from 5.4.2 to 5.9.3 and Documentation update by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1094">actions/setup-python#1094</a></li>
+                <li>Upgrade actions/publish-action from 0.3.0 to 0.4.0 &amp; Documentation update for pip-install input by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1199">actions/setup-python#1199</a></li>
+                <li>Upgrade requests from 2.32.2 to 2.32.4 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1130">actions/setup-python#1130</a></li>
+                <li>Upgrade prettier from 3.5.3 to 3.6.2 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1234">actions/setup-python#1234</a></li>
+                <li>Upgrade <code>@​types/node</code> from 24.1.0 to 24.9.1 and update macos-13 to macos-15-intel by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1235">actions/setup-python#1235</a></li>
                 </ul>
                 <h2>New Contributors</h2>
                 <ul>
-                <li><a href="https://github.com/nicholasngai"><code>@​nicholasngai</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/665">actions/setup-go#665</a></li>
-                <li><a href="https://github.com/priya-kinthali"><code>@​priya-kinthali</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/673">actions/setup-go#673</a></li>
-                <li><a href="https://github.com/mahabaleshwars"><code>@​mahabaleshwars</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-go/pull/674">actions/setup-go#674</a></li>
+                <li><a href="https://github.com/yarikoptic"><code>@​yarikoptic</code></a> made their first contribution in <a href="https://redirect.github.com/actions/setup-python/pull/979">actions/setup-python#979</a></li>
                 </ul>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/setup-go/compare/v6...v6.1.0">https://github.com/actions/setup-go/compare/v6...v6.1.0</a></p>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/actions/setup-python/compare/v6...v6.1.0">https://github.com/actions/setup-python/compare/v6...v6.1.0</a></p>
                 <h2>v6.0.0</h2>
                 <h2>What's Changed</h2>
                 <h3>Breaking Changes</h3>
                 <ul>
-                <li>Improve toolchain handling to ensure more reliable and consistent toolchain selection and management by <a href="https://github.com/matthewhughes934"><code>@​matthewhughes934</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/460">actions/setup-go#460</a></li>
-                <li>Upgrade Nodejs runtime from node20 to node 24 by <a href="https://github.com/salmanmkc"><code>@​salmanmkc</code></a> in <a href="https://redirect.github.com/actions/setup-go/pull/624">actions/setup-go#624</a></li>
+                <li>Upgrade to node 24 by <a href="https://github.com/salmanmkc"><code>@​salmanmkc</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1164">actions/setup-python#1164</a></li>
                 </ul>
                 <p>Make sure your runner is on version v2.327.1 or later to ensure compatibility with this release. <a href="https://github.com/actions/runner/releases/tag/v2.327.1">See Release Notes</a></p>
-                <h3>Dependency Upgrades</h3>
+                <h3>Enhancements:</h3>
+                <ul>
+                <li>Add support for <code>pip-version</code>  by <a href="https://github.com/priyagupta108"><code>@​priyagupta108</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1129">actions/setup-python#1129</a></li>
+                <li>Enhance reading from .python-version by <a href="https://github.com/krystof-k"><code>@​krystof-k</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/787">actions/setup-python#787</a></li>
+                <li>Add version parsing from Pipfile by <a href="https://github.com/aradkdj"><code>@​aradkdj</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1067">actions/setup-python#1067</a></li>
+                </ul>
+                <h3>Bug fixes:</h3>
+                <ul>
+                <li>Clarify pythonLocation behaviour for PyPy and GraalPy in environment variables by <a href="https://github.com/aparnajyothi-y"><code>@​aparnajyothi-y</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1183">actions/setup-python#1183</a></li>
+                <li>Change missing cache directory error to warning  by <a href="https://github.com/aparnajyothi-y"><code>@​aparnajyothi-y</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1182">actions/setup-python#1182</a></li>
+                <li>Add Architecture-Specific PATH Management for Python with --user Flag on Windows by <a href="https://github.com/aparnajyothi-y"><code>@​aparnajyothi-y</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1122">actions/setup-python#1122</a></li>
+                <li>Include python version in PyPy python-version output by <a href="https://github.com/cdce8p"><code>@​cdce8p</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1110">actions/setup-python#1110</a></li>
+                <li>Update docs: clarification on pip authentication with setup-python by <a href="https://github.com/priya-kinthali"><code>@​priya-kinthali</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1156">actions/setup-python#1156</a></li>
+                </ul>
+                <h3>Dependency updates:</h3>
+                <ul>
+                <li>Upgrade idna from 2.9 to 3.7 in /<strong>tests</strong>/data by <a href="https://github.com/dependabot"><code>@​dependabot</code></a>[bot] in <a href="https://redirect.github.com/actions/setup-python/pull/843">actions/setup-python#843</a></li>
+                <li>Upgrade form-data to fix critical vulnerabilities <a href="https://redirect.github.com/actions/setup-python/issues/182">#182</a> &amp; <a href="https://redirect.github.com/actions/setup-python/issues/183">#183</a> by <a href="https://github.com/aparnajyothi-y"><code>@​aparnajyothi-y</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1163">actions/setup-python#1163</a></li>
+                <li>Upgrade setuptools to 78.1.1 to fix path traversal vulnerability in PackageIndex.download by <a href="https://github.com/aparnajyothi-y"><code>@​aparnajyothi-y</code></a> in <a href="https://redirect.github.com/actions/setup-python/pull/1165">actions/setup-python#1165</a></li>
+                <li>Upgrade actions/checkout from 4 to 5 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a>[bot] in <a href="https://redirect.github.com/actions/setup-python/pull/1181">actions/setup-python#1181</a></li>
+                <li>Upgrade <code>@​actions/tool-cache</code> from 2.0.1 to 2.0.2 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a>[bot] in <a href="https://redirect.github.com/actions/setup-python/pull/1095">actions/setup-python#1095</a></li>
+                </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -474,27 +388,27 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/actions/setup-go/commit/7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5"><code>7a3fe6c</code></a> Bump qs from 6.14.0 to 6.14.1 (<a href="https://redirect.github.com/actions/setup-go/issues/703">#703</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/b9adafd441833a027479ddd0db37eaece68d35cb"><code>b9adafd</code></a> Bump actions/checkout from 5 to 6 (<a href="https://redirect.github.com/actions/setup-go/issues/686">#686</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/d73f6bcfc2b419b74f47075f8a487b40cc4680f8"><code>d73f6bc</code></a> README.md: correct to actions/checkout@v6 (<a href="https://redirect.github.com/actions/setup-go/issues/683">#683</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/ae252ee6fb24babc50e89fc67c4aa608e69fbf8f"><code>ae252ee</code></a> Bump <code>@​actions/cache</code> to v5 (<a href="https://redirect.github.com/actions/setup-go/issues/695">#695</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/bf7446afafbce8902019569bc0aab5a59380c516"><code>bf7446a</code></a> Bump js-yaml from 3.14.1 to 3.14.2 (<a href="https://redirect.github.com/actions/setup-go/issues/682">#682</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/02aadfee7f572f67453450365b688df2c3f95730"><code>02aadfe</code></a> Fix Node.js version in action.yml (<a href="https://redirect.github.com/actions/setup-go/issues/691">#691</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/4aaadf42668403795cdfdb15b1c4250e9fed12b9"><code>4aaadf4</code></a> Example for restore-only cache in documentation  (<a href="https://redirect.github.com/actions/setup-go/issues/696">#696</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/4dc6199c7b1a012772edbd06daecab0f50c9053c"><code>4dc6199</code></a> Bump semver and <code>@​types/semver</code> (<a href="https://redirect.github.com/actions/setup-go/issues/652">#652</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/f3787be646645f6c7bfecfa3e48f82a00d113834"><code>f3787be</code></a> Add comprehensive breaking changes documentation for v6 (<a href="https://redirect.github.com/actions/setup-go/issues/674">#674</a>)</li>
-                <li><a href="https://github.com/actions/setup-go/commit/3a0c2c82458cbb45a3cbfeeb2b91ce8f85420560"><code>3a0c2c8</code></a> Bump actions/publish-action from 0.3.0 to 0.4.0 (<a href="https://redirect.github.com/actions/setup-go/issues/641">#641</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5">compare view</a></li>
+                <li><a href="https://github.com/actions/setup-python/commit/a309ff8b426b58ec0e2a45f0f869d46889d02405"><code>a309ff8</code></a> Bump urllib3 from 2.6.0 to 2.6.3 in /<strong>tests</strong>/data (<a href="https://redirect.github.com/actions/setup-python/issues/1264">#1264</a>)</li>
+                <li><a href="https://github.com/actions/setup-python/commit/bfe8cc55a7890e3d6672eda6460ef37bfcc70755"><code>bfe8cc5</code></a> Upgrade <a href="https://github.com/actions"><code>@​actions</code></a> dependencies to Node 24 compatible versions (<a href="https://redirect.github.com/actions/setup-python/issues/1259">#1259</a>)</li>
+                <li><a href="https://github.com/actions/setup-python/commit/4f41a90a1f38628c7ccc608d05fbafe701bc20ae"><code>4f41a90</code></a> Bump urllib3 from 2.5.0 to 2.6.0 in /<strong>tests</strong>/data (<a href="https://redirect.github.com/actions/setup-python/issues/1253">#1253</a>)</li>
+                <li><a href="https://github.com/actions/setup-python/commit/83679a892e2d95755f2dac6acb0bfd1e9ac5d548"><code>83679a8</code></a> Bump <code>@​types/node</code> from 24.1.0 to 24.9.1 and update macos-13 to macos-15-intel ...</li>
+                <li><a href="https://github.com/actions/setup-python/commit/bfc4944b43a5d84377eca3cf6ab5b7992ba61923"><code>bfc4944</code></a> Bump prettier from 3.5.3 to 3.6.2 (<a href="https://redirect.github.com/actions/setup-python/issues/1234">#1234</a>)</li>
+                <li><a href="https://github.com/actions/setup-python/commit/97aeb3efb8a852c559869050c7fb175b4efcc8cf"><code>97aeb3e</code></a> Bump requests from 2.32.2 to 2.32.4 in /<strong>tests</strong>/data (<a href="https://redirect.github.com/actions/setup-python/issues/1130">#1130</a>)</li>
+                <li><a href="https://github.com/actions/setup-python/commit/443da59188462e2402e2942686db5aa6723f4bed"><code>443da59</code></a> Bump actions/publish-action from 0.3.0 to 0.4.0 &amp; Documentation update for pi...</li>
+                <li><a href="https://github.com/actions/setup-python/commit/cfd55ca82492758d853442341ad4d8010466803a"><code>cfd55ca</code></a> graalpy: add graalpy early-access and windows builds (<a href="https://redirect.github.com/actions/setup-python/issues/880">#880</a>)</li>
+                <li><a href="https://github.com/actions/setup-python/commit/bba65e51ff35d50c6dbaaacd8a4681db13aa7cb4"><code>bba65e5</code></a> Bump typescript from 5.4.2 to 5.9.3 and update docs/advanced-usage.md (<a href="https://redirect.github.com/actions/setup-python/issues/1094">#1094</a>)</li>
+                <li><a href="https://github.com/actions/setup-python/commit/18566f86b301499665bd3eb1a2247e0849c64fa5"><code>18566f8</code></a> Improve wording and &quot;fix example&quot; (remove 3.13) on testing against pre-releas...</li>
+                <li>Additional commits viewable in <a href="https://github.com/actions/setup-python/compare/d09bd5e6005b175076f227b13d9730d56e9dcfcb...a309ff8b426b58ec0e2a45f0f869d46889d02405">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump actions/setup-go from 4.0.0 to 6.2.0
+                Bump actions/setup-python from 4.0.0 to 6.2.0
 
-                Bumps [actions/setup-go](https://github.com/actions/setup-go) from 4.0.0 to 6.2.0.
-                - [Release notes](https://github.com/actions/setup-go/releases)
-                - [Commits](https://github.com/actions/setup-go/compare/4d34df0c2316fe8122ab82dc22947d607c0c91f9...7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5)
+                Bumps [actions/setup-python](https://github.com/actions/setup-python) from 4.0.0 to 6.2.0.
+                - [Release notes](https://github.com/actions/setup-python/releases)
+                - [Commits](https://github.com/actions/setup-python/compare/d09bd5e6005b175076f227b13d9730d56e9dcfcb...a309ff8b426b58ec0e2a45f0f869d46889d02405)
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 9e96615658c7e573f451797088c5d078cb496c8a
+            base-commit-sha: caa72918c699114c49d47a7271c2c420cc04388c
