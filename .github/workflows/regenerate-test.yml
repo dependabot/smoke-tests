@@ -1,13 +1,30 @@
-# Regenerates a single test file and creates a PR for review
+# Regenerates smoke test file(s) and creates a PR with the changes.
+# Optionally builds a custom updater image from a dependabot-core branch or PR
+# to regenerate tests before merging core changes.
+#
+# Provide 'test' for a single test, or 'ecosystem' to regenerate all tests
+# sharing a package-manager (e.g. npm_and_yarn → npm, npm-group-rules, etc.)
 name: Regenerate Test
 
 on:  # yamllint disable-line rule:truthy
   workflow_dispatch:
     inputs:
       test:
-        description: 'Test name to regenerate (e.g. npm, bundler, go, etc.)'
-        required: true
+        description: 'Test name (e.g. npm, bundler, go). Leave empty if using ecosystem.'
+        required: false
         type: string
+      ecosystem:
+        description: 'Regenerate ALL tests for this package-manager (e.g. npm_and_yarn, go_modules, pip)'
+        required: false
+        type: string
+      core-branch:
+        description: 'dependabot-core branch name (for internal branches)'
+        required: false
+        type: string
+      core-pr-number:
+        description: 'dependabot-core PR number (for any PR including forks)'
+        required: false
+        type: number
 
 permissions:
   contents: write
@@ -15,24 +32,60 @@ permissions:
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  INPUT_TEST: ${{ inputs.test }}
+  INPUT_ECOSYSTEM: ${{ inputs.ecosystem }}
+  INPUT_CORE_BRANCH: ${{ inputs['core-branch'] }}
+  INPUT_CORE_PR: ${{ inputs['core-pr-number'] }}
 
 jobs:
   regenerate:
     runs-on: ubuntu-latest
-    name: Regenerate ${{ inputs.test }}
+    name: Regenerate ${{ inputs.test || inputs.ecosystem }}
     steps:
       - uses: actions/checkout@v6
 
-      - name: Validate test exists
+      - name: Resolve test list
+        id: tests
         run: |
-          TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
-          if [ ! -f "$TEST_FILE" ]; then
-            echo "Error: Test file $TEST_FILE does not exist"
-            echo "Available tests:"
-            ls tests/ | sed 's/^smoke-//' | sed 's/\.yaml$//'
+          if [ -z "$INPUT_TEST" ] && [ -z "$INPUT_ECOSYSTEM" ]; then
+            echo "Error: Provide either 'test' or 'ecosystem'."
             exit 1
           fi
-          echo "Test file $TEST_FILE exists"
+
+          if [ -n "$INPUT_TEST" ] && [ -n "$INPUT_ECOSYSTEM" ]; then
+            echo "Error: Provide only one of 'test' or 'ecosystem', not both."
+            exit 1
+          fi
+
+          if [ -n "$INPUT_CORE_BRANCH" ] && [ -n "$INPUT_CORE_PR" ]; then
+            echo "Error: Provide only one of 'core-branch' or 'core-pr-number', not both."
+            exit 1
+          fi
+
+          if [ -n "$INPUT_TEST" ]; then
+            TEST_FILE="tests/smoke-${INPUT_TEST}.yaml"
+            if [ ! -f "$TEST_FILE" ]; then
+              echo "::error::Test file '$TEST_FILE' does not exist."
+              echo "Available tests:"
+              ls tests/smoke-*.yaml | sed 's|tests/smoke-||;s|\.yaml||'
+              exit 1
+            fi
+            echo "list=${INPUT_TEST}" >> "$GITHUB_OUTPUT"
+            echo "label=${INPUT_TEST}" >> "$GITHUB_OUTPUT"
+          else
+            MATCHES=$(grep -rl "package-manager: ${INPUT_ECOSYSTEM}" tests/smoke-*.yaml \
+              | sed 's|tests/smoke-||;s|\.yaml||' | sort)
+            if [ -z "$MATCHES" ]; then
+              echo "::error::No tests found with package-manager '${INPUT_ECOSYSTEM}'."
+              echo "Available package-managers:"
+              grep -rh 'package-manager:' tests/smoke-*.yaml | awk '{print $2}' | sort -u
+              exit 1
+            fi
+            echo "Found tests for '${INPUT_ECOSYSTEM}':"
+            echo "$MATCHES"
+            echo "list=$(echo $MATCHES | tr '\n' ' ')" >> "$GITHUB_OUTPUT"
+            echo "label=${INPUT_ECOSYSTEM}" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Set up Go
         uses: actions/setup-go@7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5 # v6.2.0
@@ -42,54 +95,158 @@ jobs:
       - name: Install Dependabot CLI
         run: go install github.com/dependabot/cli/cmd/dependabot@latest
 
-      - name: Regenerate test
-        env:
-          LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
-          script/regen.sh "$TEST_FILE" || true
+      # When a core branch or PR is specified, check out dependabot-core and
+      # build the updater image locally — the same approach used by
+      # dependabot-core's own smoke pipeline.
+      - name: Checkout dependabot-core
+        if: inputs.core-branch != '' || inputs.core-pr-number != ''
+        uses: actions/checkout@v6
+        with:
+          repository: dependabot/dependabot-core
+          path: dependabot-core
+          submodules: recursive
 
-      - name: Check for changes
-        id: check_changes
+      - name: Checkout core branch or PR
+        if: inputs.core-branch != '' || inputs.core-pr-number != ''
+        working-directory: dependabot-core
         run: |
-          TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
-          if git diff --quiet "$TEST_FILE"; then
-            echo "Error: No changes were made to $TEST_FILE"
-            echo "The test regeneration produced identical results"
+          if [ -n "$INPUT_CORE_PR" ]; then
+            echo "Checking out PR #${INPUT_CORE_PR}"
+            gh pr checkout "$INPUT_CORE_PR" --repo dependabot/dependabot-core
+          else
+            echo "Checking out branch '${INPUT_CORE_BRANCH}'"
+            git fetch origin "$INPUT_CORE_BRANCH"
+            git checkout -B "$INPUT_CORE_BRANCH" FETCH_HEAD
+          fi
+          echo "Checked out commit: $(git rev-parse HEAD)"
+
+      - name: Build updater image
+        id: build
+        if: inputs.core-branch != '' || inputs.core-pr-number != ''
+        env:
+          TEST_LIST: ${{ steps.tests.outputs.list }}
+        run: |
+          # All tests for an ecosystem share the same package-manager by
+          # construction (the resolve step greps for it), so the first is safe.
+          FIRST_TEST=$(echo "$TEST_LIST" | awk '{print $1}')
+          PKG_MGR=$(grep 'package-manager:' "tests/smoke-${FIRST_TEST}.yaml" | head -1 | awk '{print $2}')
+          echo "Building image for package-manager: $PKG_MGR"
+          cd dependabot-core
+          script/build "$PKG_MGR"
+          IMAGE=$(docker images --format '{{.Repository}}:{{.Tag}}' | grep 'dependabot-updater-' | grep ':latest$' | head -1)
+          if [ -z "$IMAGE" ]; then
+            echo "::error::No dependabot updater image found after building '$PKG_MGR'"
             exit 1
           fi
-          echo "Changes detected in $TEST_FILE"
-          echo "has_changes=true" >> $GITHUB_OUTPUT
+          echo "Built image: $IMAGE"
+          echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
+
+      - name: Regenerate tests
+        env:
+          LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TEST_LIST: ${{ steps.tests.outputs.list }}
+          UPDATER_IMAGE: ${{ steps.build.outputs.image }}
+        run: |
+          UPDATER_IMAGE_ARG=""
+          if [ -n "$UPDATER_IMAGE" ]; then
+            UPDATER_IMAGE_ARG="--updater-image=$UPDATER_IMAGE"
+          fi
+
+          FAILED=""
+          for TEST in $TEST_LIST; do
+            echo "::group::Regenerating $TEST"
+            TEST_FILE="tests/smoke-${TEST}.yaml"
+            RESULT_FILE="result-${TEST}.yaml"
+
+            dependabot test \
+              -f="$TEST_FILE" \
+              -o="$RESULT_FILE" \
+              --timeout=20m \
+              $UPDATER_IMAGE_ARG \
+              2>&1 | tee "regen-${TEST}.log" || true
+
+            if ! grep -q "^output:" "$RESULT_FILE" 2>/dev/null; then
+              echo "::error::Failed to regenerate $TEST"
+              FAILED="$FAILED $TEST"
+            else
+              # Strip 'command: update' if it wasn't in the original — newer CLI
+              # versions write this implicit default explicitly, causing noise.
+              if ! grep -q 'command: update' "$TEST_FILE"; then
+                sed -i '/^        command: update$/d' "$RESULT_FILE"
+              fi
+              cp "$RESULT_FILE" "$TEST_FILE"
+              echo "✓ $TEST regenerated successfully"
+            fi
+
+            rm -rf cache
+            echo "::endgroup::"
+          done
+
+          if [ -n "$FAILED" ]; then
+            echo "::error::Failed tests:$FAILED"
+            exit 1
+          fi
+
+      - name: Diff
+        continue-on-error: true
+        env:
+          TEST_LIST: ${{ steps.tests.outputs.list }}
+        run: |
+          for TEST in $TEST_LIST; do
+            echo "--- $TEST ---"
+            git diff "tests/smoke-${TEST}.yaml" || true
+          done
 
       - name: Create Pull Request
-        if: steps.check_changes.outputs.has_changes == 'true'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TEST_LIST: ${{ steps.tests.outputs.list }}
+          TEST_LABEL: ${{ steps.tests.outputs.label }}
         run: |
-          TEST_FILE="tests/smoke-${{ inputs.test }}.yaml"
-          BRANCH_NAME="regenerate-test-${{ inputs.test }}-$(date +%s)"
+          CHANGED=""
+          for TEST in $TEST_LIST; do
+            if ! git diff --quiet "tests/smoke-${TEST}.yaml"; then
+              CHANGED="$CHANGED $TEST"
+            fi
+          done
 
+          if [ -z "$CHANGED" ]; then
+            echo "No changes detected — nothing to do."
+            exit 0
+          fi
+
+          LABEL="$TEST_LABEL"
+          BRANCH_NAME="regenerate-test-${LABEL}-$(date +%s)"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git checkout -b "$BRANCH_NAME"
-          git add "$TEST_FILE"
-          git commit -m "Regenerate ${{ inputs.test }} test"
+          for TEST in $CHANGED; do
+            cp "tests/smoke-${TEST}.yaml" "/tmp/smoke-${TEST}.yaml"
+          done
+          git fetch origin main
+          git checkout -B "$BRANCH_NAME" origin/main
+          for TEST in $CHANGED; do
+            cp "/tmp/smoke-${TEST}.yaml" "tests/smoke-${TEST}.yaml"
+            git add "tests/smoke-${TEST}.yaml"
+          done
+          git commit -m "Regenerate ${LABEL} tests"
           git push origin "$BRANCH_NAME"
 
-          PR_BODY=$(cat <<EOF
-          This PR regenerates the \`${{ inputs.test }}\` test file.
+          CORE_NOTE=""
+          if [ -n "$INPUT_CORE_BRANCH" ]; then
+            CORE_NOTE=$'\n'"**dependabot-core branch:** \`${INPUT_CORE_BRANCH}\`"$'\n'
+          elif [ -n "$INPUT_CORE_PR" ]; then
+            CORE_NOTE=$'\n'"**dependabot-core PR:** https://github.com/dependabot/dependabot-core/pull/${INPUT_CORE_PR}"$'\n'
+          fi
 
-          **Test regenerated:** \`$TEST_FILE\`
+          TESTS_LIST=""
+          for TEST in $CHANGED; do
+            TESTS_LIST="${TESTS_LIST}"$'\n'"- ${TEST}"
+          done
 
-          The test was regenerated using \`script/regen.sh\` to update it with the latest dependency information.
-
-          Please review the changes to ensure they are expected.
-          EOF
-          )
+          BODY="$(printf 'This PR regenerates the following smoke tests:\n%s\n\n%s\nPlease review the changes to ensure they are expected.' "$TESTS_LIST" "$CORE_NOTE")"
 
           gh pr create \
-            --title "Regenerate ${{ inputs.test }} test" \
-            --body "$PR_BODY" \
+            --title "Regenerate ${LABEL} tests" \
+            --body "$BODY" \
             --base main \
             --head "$BRANCH_NAME"
