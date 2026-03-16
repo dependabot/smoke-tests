@@ -54,9 +54,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /gradle-version-catalog/
             commit: 943c1eaeb4ed9383ec77c0ffe95ec727c1f7c5e6
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -453,54 +450,56 @@ output:
                 </details>
                 <details>
                 <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/JetBrains/kotlin/blob/master/ChangeLog.md">org.jetbrains.kotlin.android's changelog</a>.</em></p>
+                <p><em>Sourced from <a href="https://github.com/JetBrains/kotlin/blob/v1.8.10/ChangeLog.md">org.jetbrains.kotlin.android's changelog</a>.</em></p>
                 <blockquote>
-                <h2>1.8.21</h2>
+                <h2>1.8.10</h2>
                 <h3>Compiler</h3>
                 <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-57848"><code>KT-57848</code></a> Native: compilation of dynamic/static library fails with Xcode 14.3</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-57875"><code>KT-57875</code></a> Native compilation failure: Suspend functions should be lowered out at this point, but FUN LOCAL_FUNCTION_FOR_LAMBDA</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-57946"><code>KT-57946</code></a> KAPT: &quot;RuntimeException: No type for expression&quot; with delegate</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55483"><code>KT-55483</code></a> K2: Fir is not initialized for FirRegularClassSymbol java/lang/invoke/LambdaMetafactory</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55729"><code>KT-55729</code></a> &quot;None of the following functions can be called with the arguments supplied:&quot; in 1.8.0</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55769"><code>KT-55769</code></a> &quot;ERROR: Could not find accessor&quot;: Android DataBinding fails with Kotlin 1.8.0</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55308"><code>KT-55308</code></a> InnerClass attributes should be sorted (innermost last)</li>
                 </ul>
                 <h3>JavaScript</h3>
                 <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-57356"><code>KT-57356</code></a> KJS: StackOverflowException on <a href="https://github.com/JsExport"><code>@​JsExport</code></a> with type parameters referring to one another</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-56282"><code>KT-56282</code></a> KJS: Invalidate incremental cache in case of compiler internal errors</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55852"><code>KT-55852</code></a> JS: &quot;IllegalStateException: Unexpected ir type argument&quot; caused by List with star projection type</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55716"><code>KT-55716</code></a> KJS / IC: &quot;Cannot read properties of undefined&quot; with overriding variables with 1.8.0</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55758"><code>KT-55758</code></a> KJS / IR: Checking implemented interface on a class implementing a <a href="https://github.com/JsExport"><code>@​JsExport</code></a> interface returns the wrong result</li>
+                </ul>
+                <h3>Reflection</h3>
+                <ul>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-56093"><code>KT-56093</code></a> Metaspace leak in a Gradle plugin built with Kotlin 1.8.0</li>
                 </ul>
                 <h3>Tools. Compiler plugins. Serialization</h3>
                 <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-58067"><code>KT-58067</code></a> Serialization: NullPointerException caused by <a href="https://github.com/Contextual"><code>@​Contextual</code></a> property with type with generic</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-57730"><code>KT-57730</code></a> Serialization: &quot;IllegalStateException: Serializer for element of type <!-- raw HTML omitted -->.Foo has not been found&quot; caused by serialization of Java type</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-56347"><code>KT-56347</code></a> [Kotlin 1.8] Regression kotlinx.serialization compiler plugin internal error</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55681"><code>KT-55681</code></a> Serialization: NullPointerException after update to 1.8.0 caused by <code>@Serializer(forClass= ..)</code></li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-56244"><code>KT-56244</code></a> kotlinx.serialization compiler intrinsic does not work with encodeToString function in 1.8.0</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55683"><code>KT-55683</code></a> Serialization: &quot;IllegalStateException: Expected to have a primary constructor&quot; with expect class and companion object</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55682"><code>KT-55682</code></a> Serialization: &quot;IllegalStateException: Function has no body: FUN name:serializer&quot; with 1.8.0</li>
                 </ul>
-                <h3>Tools. Gradle. JS</h3>
+                <h3>Tools. Gradle</h3>
                 <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-57766"><code>KT-57766</code></a> KJS / Gradle &quot;Module not found: Error: Can't resolve 'kotlin-kotlin-stdlib-js-ir'&quot; when using &quot;useEsModules&quot;</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55697"><code>KT-55697</code></a> KGP 1.8.0 adds compileOnly dependencies to unit test compile classpath</li>
+                </ul>
+                <h3>Tools. Gradle. Multiplatform</h3>
+                <ul>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55730"><code>KT-55730</code></a> MPP / Gradle: compileKotlinMetadata fails to resolve symbols in additional source sets</li>
+                </ul>
+                <h3>Tools. Gradle. Native</h3>
+                <ul>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-56280"><code>KT-56280</code></a> Gradle: freeCompilerArgs are no longer propagated from compilations to Native binaries</li>
                 </ul>
                 <h3>Tools. Kapt</h3>
                 <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-58027"><code>KT-58027</code></a> Kotlin 1.8.20 kapt issue &quot;null: KtCallExpression: build()&quot;</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-48013"><code>KT-48013</code></a> Kapt generates illegal stubs for private interface methods</li>
                 </ul>
-                <h3>Tools. Maven</h3>
+                <h2>1.8.0-RC2</h2>
+                <h3>Compiler</h3>
                 <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-58048"><code>KT-58048</code></a> Maven: &quot;Too many source module declarations found&quot; after upgrading to 1.8.20</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-58101"><code>KT-58101</code></a> 'Unable to access class' in kotlin-maven-plugin after updating to Kotlin 1.8.20</li>
+                <li><a href="https://youtrack.jetbrains.com/issue/KT-55357"><code>KT-55357</code></a> IllegalStateException when reading a class that delegates to a Java class with a definitely-not-null type with a flexible upper bound</li>
                 </ul>
-                <h2>1.8.20</h2>
-                <h3>Analysis API</h3>
-                <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-55510"><code>KT-55510</code></a> K2: Lost designation for local classes</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-55191"><code>KT-55191</code></a> AA: add an API to compare symbol pointers</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-55487"><code>KT-55487</code></a> K2: symbol pointer restoring doesn't work for static members</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-55336"><code>KT-55336</code></a> K2 IDE: &quot;java.lang.IllegalStateException: Required value was null.&quot; exception while importing a compiled JPS project</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-55098"><code>KT-55098</code></a> AA: KtDeclarationRenderer should render a context receivers</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-51181"><code>KT-51181</code></a> LL API: errors for SAM with suspend function from another module</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-50250"><code>KT-50250</code></a> Analysis API: Implement Analysis API of KtExpression.isUsedAsExpression</li>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-54360"><code>KT-54360</code></a> KtPropertySymbol: support JvmField in javaSetterName and javaGetterName</li>
-                </ul>
-                <h3>Analysis API. FE1.0</h3>
-                <ul>
-                <li><a href="https://youtrack.jetbrains.com/issue/KT-55825"><code>KT-55825</code></a> AA FE1.0: stackoverflow when resolution to a function with a recursive type parameter</li>
-                </ul>
-                <h3>Analysis API. FIR</h3>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -527,7 +526,7 @@ output:
 
                 Bumps [org.jetbrains.kotlin.android](https://github.com/JetBrains/kotlin) from 1.7.0 to 1.8.10.
                 - [Release notes](https://github.com/JetBrains/kotlin/releases)
-                - [Changelog](https://github.com/JetBrains/kotlin/blob/master/ChangeLog.md)
+                - [Changelog](https://github.com/JetBrains/kotlin/blob/v1.8.10/ChangeLog.md)
                 - [Commits](https://github.com/JetBrains/kotlin/compare/v1.7.0...v1.8.10)
     - type: create_pull_request
       expect:
@@ -996,12 +995,13 @@ output:
                   support_file: false
                   type: file
             pr-title: Bump gradle-wrapper from 7.5 to 9.3.1 in /gradle-version-catalog
-            pr-body: |
-                Bumps gradle-wrapper from 7.5 to 9.3.1.
+            pr-body: "Bumps [gradle-wrapper](https://github.com/gradle/gradle) from 7.5 to 9.3.1.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/gradle/gradle/releases\">gradle-wrapper's releases</a>.</em></p>\n<blockquote>\n<h2>9.3.1</h2>\n<p>This is a patch release for 9.3.0. We recommend using 9.3.1 instead of 9.3.0.</p>\n<p>The following issues were resolved:</p>\n<ul>\n<li><a href=\"https://redirect.github.com/gradle/gradle/issues/36320\">Cannot find testcases from Android Screenshot Test plugin since Gradle 9.3.0</a></li>\n<li><a href=\"https://redirect.github.com/gradle/gradle/issues/36331\">Excluding dependencies from included builds doesn't work in Gradle 9.3.0</a></li>\n<li><a href=\"https://redirect.github.com/gradle/gradle/issues/36359\">ExternalDependency and DependencyConstraint cannot be passed to DependencyResolveDetails#useTarget</a></li>\n<li><a href=\"https://redirect.github.com/gradle/gradle/issues/36379\">Gradle 9.3.0 generate JUnit test result files with wrong name</a></li>\n<li><a href=\"https://redirect.github.com/gradle/gradle/issues/36387\">Build cache cannot handle outputs with non-BMP characters in the filename</a></li>\n<li><a href=\"https://redirect.github.com/gradle/gradle/issues/36395\">Emojis in test names should not break build caching</a></li>\n<li><a href=\"https://redirect.github.com/gradle/gradle/issues/36399\">Non utf-8 c code is no longer buildable</a></li>\n<li><a href=\"https://redirect.github.com/gradle/gradle/issues/36428\">Breaking change in 9.3.0 regarding cross-project dependency manipulation</a></li>\n<li><a href=\"https://redirect.github.com/gradle/gradle/issues/36451\">JUnit3 tests cannot be run with Gradle 9.3.0</a></li>\n<li><a href=\"https://redirect.github.com/gradle/gradle/issues/36508\">Test.setScanForTestClasses(false) causes all junit4 tests to be skipped</a></li>\n</ul>\n<p><a href=\"https://docs.gradle.org/9.3.1/release-notes.html\">Read the Release Notes</a></p>\n<h2>Upgrade instructions</h2>\n<p>Switch your build to use Gradle 9.3.1 by updating your wrapper:</p>\n<pre><code>./gradlew wrapper --gradle-version=9.3.1 &amp;&amp; ./gradlew wrapper\r\n</code></pre>\n<p>See the Gradle <a href=\"https://docs.gradle.org/9.3.1/userguide/upgrading_version_9.html\">9.x upgrade guide</a> to learn about deprecations, breaking changes and other considerations when upgrading.</p>\n<p>For Java, Groovy, Kotlin and Android compatibility, see the <a href=\"https://docs.gradle.org/9.3.1/userguide/compatibility.html\">full compatibility notes</a>.</p>\n<h2>Reporting problems</h2>\n<p>If you find a problem with this release, please file a bug on <a href=\"https://github.com/gradle/gradle/issues\">GitHub Issues</a> adhering to our issue guidelines.\nIf you're not sure you're encountering a bug, please use the <a href=\"https://discuss.gradle.org/c/help-discuss\">forum</a>.</p>\n<p>We hope you will build happiness with Gradle, and we look forward to your feedback via <a href=\"https://twitter.com/gradle\">Twitter</a> or on <a href=\"https://github.com/gradle\">GitHub</a>.</p>\n<h2>9.3.0</h2>\n<p>The Gradle team is excited to announce Gradle 9.3.0.</p>\n<p>Here are the highlights of this release:</p>\n<ul>\n<li>Test reporting improvements</li>\n<li>Error and warning improvements</li>\n<li>Build authoring improvements</li>\n</ul>\n<p><a href=\"https://docs.gradle.org/9.3.0/release-notes.html\">Read the Release Notes</a></p>\n<p>We would like to thank the following community members for their contributions to this release of Gradle:\n<a href=\"https://github.com/adam-enko\">Adam</a>,\n<a href=\"https://github.com/aSemy\">Adam</a>,\n<a href=\"https://github.com/Ahar28\">Aharnish Solanki</a>,</p>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/gradle/gradle/commit/44f4e8d3122ee6e7cbf5a248d7e20b4ca666bda3\"><code>44f4e8d</code></a> Release notes for 9.3.1 (<a href=\"https://redirect.github.com/gradle/gradle/issues/36516\">#36516</a>)</li>\n<li><a href=\"https://github.com/gradle/gradle/commit/6c94aa8760b0be0ff905c1d3da16be30cb38836f\"><code>6c94aa8</code></a> Release notes for 9.3.1</li>\n<li><a href=\"https://github.com/gradle/gradle/commit/5f30c912516d5b256280de61e5b3cf4dd6a612e9\"><code>5f30c91</code></a> Use JDK API for reading a link instead of readlink (<a href=\"https://redirect.github.com/gradle/gradle/issues/36504\">#36504</a>)</li>\n<li><a href=\"https://github.com/gradle/gradle/commit/b490fd49df3959115c4592ecca9f46406891b404\"><code>b490fd4</code></a> Use JDK API for reading a link instead of readlink</li>\n<li><a href=\"https://github.com/gradle/gradle/commit/987b770776880fdf63db3712c0a5c228370311b0\"><code>987b770</code></a> Reproduce and fix <a href=\"https://redirect.github.com/gradle/gradle/issues/36428\">#36428</a> (<a href=\"https://redirect.github.com/gradle/gradle/issues/36494\">#36494</a>)</li>\n<li><a href=\"https://github.com/gradle/gradle/commit/5ba4768d7d2b5ac08f16885f0b2cce6e16de5678\"><code>5ba4768</code></a> Add documentation to DependencyCollector about strict mutation behavior</li>\n<li><a href=\"https://github.com/gradle/gradle/commit/8d6c5f580aff954a494fccae27f8b8b9b08b0f17\"><code>8d6c5f5</code></a> Reproduce and fix <a href=\"https://redirect.github.com/gradle/gradle/issues/36428\">#36428</a></li>\n<li><a href=\"https://github.com/gradle/gradle/commit/6d8ef39daefc9a7be0fe37ada7cb6c4a90aa6bbf\"><code>6d8ef39</code></a> Note on Project referential equality for 9.3.0 - cherry-pick of <a href=\"https://redirect.github.com/gradle/gradle/issues/36459\">#36459</a> to rel...</li>\n<li><a href=\"https://github.com/gradle/gradle/commit/a9556e5542e9af8379e772f5333f367b49ecad67\"><code>a9556e5</code></a> Note on Project referential equality for 9.3.0 (<a href=\"https://redirect.github.com/gradle/gradle/issues/36459\">#36459</a>)</li>\n<li><a href=\"https://github.com/gradle/gradle/commit/752114225850d4bc1668a80016c96134ea9b5d15\"><code>7521142</code></a> Upgrade commons-lang3 3.20.0 (<a href=\"https://redirect.github.com/gradle/gradle/issues/36479\">#36479</a>)</li>\n<li>Additional commits viewable in <a href=\"https://github.com/gradle/gradle/compare/v7.5.0...v9.3.1\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
             commit-message: |-
                 Bump gradle-wrapper from 7.5 to 9.3.1 in /gradle-version-catalog
 
-                Bumps gradle-wrapper from 7.5 to 9.3.1.
+                Bumps [gradle-wrapper](https://github.com/gradle/gradle) from 7.5 to 9.3.1.
+                - [Release notes](https://github.com/gradle/gradle/releases)
+                - [Commits](https://github.com/gradle/gradle/compare/v7.5.0...v9.3.1)
     - type: create_pull_request
       expect:
         data:
