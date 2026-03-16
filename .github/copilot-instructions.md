@@ -20,6 +20,9 @@ Both steps are required every time a new environment is created (e.g. a fresh Co
 - **Run with cache:** `script/run-one.sh tests/smoke-<name>.yaml --with-cache`
 - **Regenerate a test:** `script/regen.sh tests/smoke-<name>.yaml`
 - **Regenerate multiple:** `script/regen.sh tests/smoke-a.yaml tests/smoke-b.yaml`
+- **Regenerate with a local core checkout:** `script/regen.sh --local-core ../dependabot-core tests/smoke-<name>.yaml`
+- **Regenerate with a core PR:** `script/regen.sh --core-pr 12345 tests/smoke-<name>.yaml`
+- **Regenerate with a pre-built image:** `script/regen.sh --updater-image <image> tests/smoke-<name>.yaml`
 
 These scripts automatically pass `--proxy-cert` when a mkcert CA is detected.
 

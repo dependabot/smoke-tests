@@ -63,6 +63,32 @@ Where possible try to add additional ignore_conditions and allowed_updates so ev
 
 For convenience there's a `script/regen.sh` which will regenerate tests locally.
 
+#### `script/regen.sh` (local)
+
+The `script/regen.sh` script regenerates one or more smoke test files locally. It also supports building and using a custom updater image from a `dependabot-core` checkout or PR, which is useful for contributors who need to regenerate tests against unreleased core changes.
+
+```console
+# Basic usage — regenerate with the released CLI
+script/regen.sh tests/smoke-bundler.yaml
+
+# Use a pre-built updater image
+script/regen.sh --updater-image my-image:latest tests/smoke-bundler.yaml
+
+# Build the updater from a local dependabot-core checkout
+script/regen.sh --local-core ../dependabot-core tests/smoke-pip.yaml
+
+# Build the updater from a dependabot-core PR
+script/regen.sh --core-pr 12345 tests/smoke-pip.yaml tests/smoke-pip-compile.yaml
+```
+
+| Option | Description |
+|---|---|
+| `--updater-image <image>` | Use a pre-built updater Docker image. |
+| `--local-core <path>` | Path to a local `dependabot-core` checkout. The script runs `script/build` inside it to produce the updater image. |
+| `--core-pr <number>` | A `dependabot-core` PR number. The script clones the repo, checks out the PR, and builds the updater image. Requires `gh` CLI. |
+
+> **Note:** `--local-core` and `--core-pr` are mutually exclusive with each other and with `--updater-image`.
+
 #### Regenerate Test workflow (CI)
 
 The **Regenerate Test** workflow (`Actions → Regenerate Test`) lets maintainers regenerate smoke tests directly from GitHub Actions without any local setup. It runs the Dependabot CLI, updates the test file(s), and opens a PR with the changes.
