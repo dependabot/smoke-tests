@@ -165,11 +165,6 @@ do
   "$DEPENDABOT" test -f "$file" -o "$RESULT_FILE" "${PROXY_CERT_ARGS[@]}" "${UPDATER_IMAGE_ARG[@]}"
 
   if grep -q "^output:" "$RESULT_FILE" 2>/dev/null; then
-    # Strip 'command: update' if it wasn't in the original — newer CLI
-    # versions write this implicit default explicitly, causing noise.
-    if ! grep -q 'command: update' "$file"; then
-      sed -i'' -e '/^        command: update$/d' "$RESULT_FILE"
-    fi
     cp "$RESULT_FILE" "$file"
   fi
   rm -f "$RESULT_FILE"
