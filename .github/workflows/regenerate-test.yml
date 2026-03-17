@@ -169,11 +169,6 @@ jobs:
               echo "::error::Failed to regenerate $TEST"
               FAILED="$FAILED $TEST"
             else
-              # Strip 'command: update' if it wasn't in the original — newer CLI
-              # versions write this implicit default explicitly, causing noise.
-              if ! grep -q 'command: update' "$TEST_FILE"; then
-                sed -i '/^        command: update$/d' "$RESULT_FILE"
-              fi
               cp "$RESULT_FILE" "$TEST_FILE"
               echo "✓ $TEST regenerated successfully"
             fi
@@ -250,3 +245,12 @@ jobs:
             --body "$BODY" \
             --base main \
             --head "$BRANCH_NAME"
+
+          # Rebuild the proxy cache for each changed test so the smoke CI
+          # runs against fresh caches that match the regenerated output.
+          for TEST in $CHANGED; do
+            echo "Triggering cache rebuild for $TEST on $BRANCH_NAME"
+            gh workflow run cache-one.yml \
+              -f git-ref="$BRANCH_NAME" \
+              -f package_manager="$TEST"
+          done
