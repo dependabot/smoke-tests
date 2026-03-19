@@ -89,9 +89,8 @@ The **Regenerate Test** workflow (`Actions → Regenerate Test`) lets maintainer
 1. Resolves which test file(s) to regenerate.
 2. Installs the Dependabot CLI.
 3. If a core branch or PR is provided, checks out `dependabot-core`, builds the updater image for the relevant ecosystem.
-4. Runs `dependabot test -f <file> -o <result>` for each test.
+4. Downloads the existing proxy cache and runs `dependabot test -f <file> -o <result> --cache=cache` for each test — the same way the Smoke workflow runs.
 5. Opens a PR with the regenerated test file(s) for review.
-6. Triggers the **Cache One** workflow for each changed test so the proxy cache matches the regenerated output.
 
 ### How to add new tests
 
