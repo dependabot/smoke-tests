@@ -27,7 +27,6 @@ on:  # yamllint disable-line rule:truthy
         type: number
 
 permissions:
-  actions: write
   contents: write
   pull-requests: write
 
@@ -159,10 +158,15 @@ jobs:
             TEST_FILE="tests/smoke-${TEST}.yaml"
             RESULT_FILE="result-${TEST}.yaml"
 
+            # Download existing proxy cache, same as the Smoke workflow.
+            rm -rf cache
+            script/download-cache.sh "$TEST" || true
+
             dependabot test \
               -f="$TEST_FILE" \
               -o="$RESULT_FILE" \
               --timeout=20m \
+              --cache=cache \
               $UPDATER_IMAGE_ARG \
               2>&1 | tee "regen-${TEST}.log" || true
 
@@ -174,7 +178,6 @@ jobs:
               echo "✓ $TEST regenerated successfully"
             fi
 
-            rm -rf cache
             echo "::endgroup::"
           done
 
@@ -246,12 +249,3 @@ jobs:
             --body "$BODY" \
             --base main \
             --head "$BRANCH_NAME"
-
-          # Rebuild the proxy cache for each changed test so the smoke CI
-          # runs against fresh caches that match the regenerated output.
-          for TEST in $CHANGED; do
-            echo "Triggering cache rebuild for $TEST on $BRANCH_NAME"
-            gh workflow run cache-one.yml \
-              -f git-ref="$BRANCH_NAME" \
-              -f package_manager="$TEST"
-          done
