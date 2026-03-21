@@ -162,7 +162,14 @@ fi
 for file in "${FILES[@]}"
 do
   RESULT_FILE=$(mktemp)
-  "$DEPENDABOT" test -f "$file" -o "$RESULT_FILE" "${PROXY_CERT_ARGS[@]}" "${UPDATER_IMAGE_ARG[@]}"
+
+  # Download existing proxy cache and run with --cache=cache, same as the
+  # Smoke workflow, so regenerated output matches what cached CI produces.
+  rm -rf cache
+  SUITE=$(basename "$file" .yaml | sed 's/^smoke-//')
+  "$REPO_ROOT/script/download-cache.sh" "$SUITE" 2>/dev/null || true
+
+  "$DEPENDABOT" test -f "$file" -o "$RESULT_FILE" --cache=cache "${PROXY_CERT_ARGS[@]}" "${UPDATER_IMAGE_ARG[@]}"
 
   if grep -q "^output:" "$RESULT_FILE" 2>/dev/null; then
     cp "$RESULT_FILE" "$file"
