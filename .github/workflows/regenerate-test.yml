@@ -158,10 +158,15 @@ jobs:
             TEST_FILE="tests/smoke-${TEST}.yaml"
             RESULT_FILE="result-${TEST}.yaml"
 
+            # Download existing proxy cache, same as the Smoke workflow.
+            rm -rf cache
+            script/download-cache.sh "$TEST" || true
+
             dependabot test \
               -f="$TEST_FILE" \
               -o="$RESULT_FILE" \
               --timeout=20m \
+              --cache=cache \
               $UPDATER_IMAGE_ARG \
               2>&1 | tee "regen-${TEST}.log" || true
 
@@ -169,16 +174,10 @@ jobs:
               echo "::error::Failed to regenerate $TEST"
               FAILED="$FAILED $TEST"
             else
-              # Strip 'command: update' if it wasn't in the original — newer CLI
-              # versions write this implicit default explicitly, causing noise.
-              if ! grep -q 'command: update' "$TEST_FILE"; then
-                sed -i '/^        command: update$/d' "$RESULT_FILE"
-              fi
               cp "$RESULT_FILE" "$TEST_FILE"
               echo "✓ $TEST regenerated successfully"
             fi
 
-            rm -rf cache
             echo "::endgroup::"
           done
 

@@ -48,6 +48,8 @@ This repo has several workflows used to manage the caches that are stored as bui
   - This runs all of the smoke tests and cache the results, which is useful when a large change happens.
 - Smoke
   - This test downloads the cache from the build artifacts before running each test in parallel. This was designed to run after each Pull Request.
+- Regenerate Test
+  - Regenerates one or more smoke tests and opens a PR with the changes. Supports building a custom updater image from a `dependabot-core` branch or PR. See [Regenerating tests](#regenerating-tests) for details.
 
 To see the percentage of caching on each test, go to the [Smoke tests](https://github.com/dependabot/smoke-tests/actions/workflows/smoke.yml) summary view. If the test has low cache coverage then it is more likely to fail in the future. Rerun the Cache one workflow to recache it, or debug why it is uncachable.
 
@@ -55,11 +57,40 @@ To see the percentage of caching on each test, go to the [Smoke tests](https://g
 
 Sometimes after a test has been uncached for a while, it will break because the dependencies have changed, and recaching won't fix it. Also some package-managers seem to get around the caching after a while.
 
-In this case we will need to regenerate the failing test locally with `dependabot test -f tests/smoke-bundler.yaml -o tests/smoke-bundler.yaml` then push it up, and recache that test with the "Cache" workflows.
+In this case we will need to regenerate the failing test. The preferred approach is the **[Regenerate Test](https://github.com/dependabot/smoke-tests/actions/workflows/regenerate-test.yml)** workflow (see below), but you can also do it locally with `dependabot test -f tests/smoke-bundler.yaml -o tests/smoke-bundler.yaml` then push and recache with the "Cache" workflows.
 
 Where possible try to add additional ignore_conditions and allowed_updates so even when uncached the tests will not fail.
 
-For convenience there's a `script/regen.sh` which will regenerate all of the tests.
+For convenience there's a `script/regen.sh` which will regenerate tests locally.
+
+#### Regenerate Test workflow (CI)
+
+The **Regenerate Test** workflow (`Actions → Regenerate Test`) lets maintainers regenerate smoke tests directly from GitHub Actions without any local setup. It runs the Dependabot CLI, updates the test file(s), and opens a PR with the changes.
+
+**Inputs** (all provided via `workflow_dispatch`):
+
+| Input | Description |
+|---|---|
+| `test` | Single test name, e.g. `npm`, `bundler`, `go`. Maps to `tests/smoke-<name>.yaml`. |
+| `ecosystem` | Regenerate **all** tests for a package-manager, e.g. `npm_and_yarn`, `go_modules`, `pip`. |
+| `core-branch` | A `dependabot-core` branch name to build a custom updater image from (for internal branches). |
+| `core-pr-number` | A `dependabot-core` PR number to build a custom updater image from (for any PR including forks). |
+
+> **Note:** Provide either `test` or `ecosystem`, not both. Similarly, provide at most one of `core-branch` or `core-pr-number`.
+
+**Examples:**
+
+- **Regenerate a single test:** Set `test` to `bundler` → regenerates `tests/smoke-bundler.yaml`.
+- **Regenerate all tests for an ecosystem:** Set `ecosystem` to `npm_and_yarn` → regenerates every test whose `package-manager` is `npm_and_yarn`.
+- **Regenerate against a core PR:** Set `test` to `pip-compile` and `core-pr-number` to `12345` → builds the updater image from that PR and regenerates the test with it. This is useful for updating smoke tests *before* a core change merges.
+
+**What it does:**
+
+1. Resolves which test file(s) to regenerate.
+2. Installs the Dependabot CLI.
+3. If a core branch or PR is provided, checks out `dependabot-core`, builds the updater image for the relevant ecosystem.
+4. Downloads the existing proxy cache and runs `dependabot test -f <file> -o <result> --cache=cache` for each test — the same way the Smoke workflow runs.
+5. Opens a PR with the regenerated test file(s) for review.
 
 ### How to add new tests
 
