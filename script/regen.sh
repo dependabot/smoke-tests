@@ -96,6 +96,13 @@ if [ -n "$LOCAL_CORE" ] || [ -n "$CORE_PR" ]; then
     exit 1
   fi
 
+  # Map package-manager names to dependabot-core build directory names
+  case "$PKG_MGR" in
+    pip) BUILD_ECO="python" ;;
+    submodules) BUILD_ECO="git_submodules" ;;
+    *) BUILD_ECO="$PKG_MGR" ;;
+  esac
+
   CORE_DIR=""
   if [ -n "$LOCAL_CORE" ]; then
     CORE_DIR=$(cd "$LOCAL_CORE" 2>/dev/null && pwd)
@@ -113,12 +120,15 @@ if [ -n "$LOCAL_CORE" ] || [ -n "$CORE_PR" ]; then
     echo "Cloning dependabot-core and checking out PR #${CORE_PR}..."
     git clone --depth=1 --recurse-submodules https://github.com/dependabot/dependabot-core.git "$CORE_DIR"
     cd "$CORE_DIR"
-    gh pr checkout "$CORE_PR" --repo dependabot/dependabot-core
-    git submodule update --init --recursive
+    if ! gh pr checkout "$CORE_PR" --repo dependabot/dependabot-core --detach --recurse-submodules; then
+      echo "Error: Failed to checkout PR #${CORE_PR}."
+      cd "$REPO_ROOT"
+      exit 1
+    fi
     cd "$REPO_ROOT"
   fi
 
-  echo "Building updater image for package-manager: $PKG_MGR"
+  echo "Building updater image for ecosystem: $BUILD_ECO (package-manager: $PKG_MGR)"
 
   # Dependabot only produces linux/amd64 images, so force the platform on
   # ARM64 machines to build via emulation rather than failing.
@@ -130,8 +140,8 @@ if [ -n "$LOCAL_CORE" ] || [ -n "$CORE_PR" ]; then
   BEFORE_IMAGES=$(docker images --format '{{.Repository}}:{{.Tag}}' | grep 'dependabot-updater-' | grep ':latest$' | sort)
 
   cd "$CORE_DIR"
-  if ! script/build "$PKG_MGR"; then
-    echo "Error: Failed to build updater image for '$PKG_MGR'."
+  if ! script/build "$BUILD_ECO"; then
+    echo "Error: Failed to build updater image for '$BUILD_ECO'."
     cd "$REPO_ROOT"
     exit 1
   fi
@@ -148,7 +158,7 @@ if [ -n "$LOCAL_CORE" ] || [ -n "$CORE_PR" ]; then
   fi
 
   if [ -z "$UPDATER_IMAGE" ]; then
-    echo "Error: No updater image found after building '$PKG_MGR'."
+    echo "Error: No updater image found after building '$BUILD_ECO'."
     exit 1
   fi
   echo "Built image: $UPDATER_IMAGE"
