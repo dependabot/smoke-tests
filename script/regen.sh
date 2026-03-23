@@ -31,7 +31,7 @@ usage() {
   echo "  $0 --updater-image my-image:latest tests/smoke-bundler.yaml"
   echo "  $0 --local-core ../dependabot-core tests/smoke-python-pip.yaml"
   echo "  $0 --core-pr 12345 tests/smoke-python-pip.yaml tests/smoke-python-pip-compile.yaml"
-  exit 1
+  exit "${1:-1}"
 }
 
 UPDATER_IMAGE=""
@@ -66,7 +66,7 @@ while [[ $# -gt 0 ]]; do
       shift 2
       ;;
     -h|--help)
-      usage
+      usage 0
       ;;
     *)
       FILES+=("$1")
@@ -108,6 +108,16 @@ if [ -n "$LOCAL_CORE" ] || [ -n "$CORE_PR" ]; then
     exit 1
   fi
 
+  # Validate all files share the same package-manager
+  for f in "${FILES[@]:1}"; do
+    OTHER_PKG=$(grep 'package-manager:' "$f" | head -1 | awk '{print $2}')
+    if [ "$OTHER_PKG" != "$PKG_MGR" ]; then
+      echo "Error: All test files must use the same package-manager when building from core."
+      echo "  ${FILES[0]} uses '$PKG_MGR' but $f uses '$OTHER_PKG'."
+      exit 1
+    fi
+  done
+
   # Map package-manager names to dependabot-core build directory names
   case "$PKG_MGR" in
     pip) BUILD_ECO="python" ;;
@@ -130,7 +140,10 @@ if [ -n "$LOCAL_CORE" ] || [ -n "$CORE_PR" ]; then
     CORE_DIR=$(mktemp -d)
     CLEANUP_DIR="$CORE_DIR"
     echo "Cloning dependabot-core and checking out PR #${CORE_PR}..."
-    git clone --depth=1 --recurse-submodules https://github.com/dependabot/dependabot-core.git "$CORE_DIR"
+    if ! git clone --depth=1 --recurse-submodules https://github.com/dependabot/dependabot-core.git "$CORE_DIR"; then
+      echo "Error: Failed to clone dependabot-core."
+      exit 1
+    fi
     cd "$CORE_DIR"
     if ! gh pr checkout "$CORE_PR" --repo dependabot/dependabot-core --detach --recurse-submodules; then
       echo "Error: Failed to checkout PR #${CORE_PR}."
