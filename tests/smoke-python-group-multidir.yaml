@@ -42,7 +42,7 @@ input:
             directories:
                 - /pip/multi-dir/foo
                 - /pip/multi-dir/bar
-            commit: 7b8e1971f18f6a47430796ec0e430e005d2d97f3
+            commit: 0962713db3cb346a729e68bc86706ac7372f9067
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -61,7 +61,7 @@ output:
                       requirement: ==1.0
                       source: null
                   version: "1.0"
-                - name: flask
+                - name: flask[async]
                   requirements:
                     - file: requirements.txt
                       groups:
@@ -69,7 +69,7 @@ output:
                       requirement: ==2.0.0
                       source: null
                   version: 2.0.0
-                - name: urllib3
+                - name: urllib3[socks]
                   requirements:
                     - file: requirements.txt
                       groups:
@@ -91,7 +91,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 7b8e1971f18f6a47430796ec0e430e005d2d97f3
+            base-commit-sha: 0962713db3cb346a729e68bc86706ac7372f9067
             dependencies:
                 - name: urllib3
                   previous-requirements:
@@ -109,22 +109,6 @@ output:
                       source: null
                   version: 1.0.1
                   directory: /pip/multi-dir/foo
-                - name: urllib3
-                  previous-requirements:
-                    - file: requirements.txt
-                      groups:
-                        - dependencies
-                      requirement: ==1.0
-                      source: null
-                  previous-version: "1.0"
-                  requirements:
-                    - file: requirements.txt
-                      groups:
-                        - dependencies
-                      requirement: ==1.0.1
-                      source: null
-                  version: 1.0.1
-                  directory: /pip/multi-dir/bar
                 - name: numpy
                   previous-requirements:
                     - file: requirements.txt
@@ -144,7 +128,7 @@ output:
             updated-dependency-files:
                 - content: |
                     urllib3==1.0.1
-                    Flask==2.0.0
+                    Flask[async]==2.0.0
                   content_encoding: utf-8
                   deleted: false
                   directory: /pip/multi-dir/foo
@@ -153,7 +137,7 @@ output:
                   support_file: false
                   type: file
                 - content: |
-                    urllib3==1.0.1
+                    urllib3[socks]==1.0
                     numpy==1.3.0
                   content_encoding: utf-8
                   deleted: false
@@ -165,30 +149,7 @@ output:
             pr-title: Bump the pip group across 2 directories with 2 updates
             pr-body: |
                 Bumps the pip group with 1 update in the /pip/multi-dir/foo directory: [urllib3](https://github.com/urllib3/urllib3).
-                Bumps the pip group with 2 updates in the /pip/multi-dir/bar directory: [urllib3](https://github.com/urllib3/urllib3) and [numpy](https://github.com/numpy/numpy).
-
-                Updates `urllib3` from 1.0 to 1.0.1
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/urllib3/urllib3/blob/main/CHANGES.rst">urllib3's changelog</a>.</em></p>
-                <blockquote>
-                <h1>1.0.1 (2011-10-10)</h1>
-                <ul>
-                <li>Fixed a bug where the same connection would get returned into the pool twice,
-                causing extraneous &quot;HttpConnectionPool is full&quot; log warnings.</li>
-                </ul>
-                </blockquote>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/urllib3/urllib3/commit/9f6e2eaae4b8ef84b6d3dddf55197c4d17946ca1"><code>9f6e2ea</code></a> Version bump to 1.0.1</li>
-                <li><a href="https://github.com/urllib3/urllib3/commit/231b75492c85692ec307fb9606dbaabff0a80754"><code>231b754</code></a> Added test which fails when double release bug exists.</li>
-                <li><a href="https://github.com/urllib3/urllib3/commit/9f7306fed618577ca89d0d355e8f51027aaeb54d"><code>9f7306f</code></a> Bug fix: Connection was double-released when preload_content=True.</li>
-                <li>See full diff in <a href="https://github.com/urllib3/urllib3/compare/1.0...1.0.1">compare view</a></li>
-                </ul>
-                </details>
-                <br />
+                Bumps the pip group with 1 update in the /pip/multi-dir/bar directory: [numpy](https://github.com/numpy/numpy).
 
                 Updates `urllib3` from 1.0 to 1.0.1
                 <details>
@@ -235,13 +196,8 @@ output:
                 Bump the pip group across 2 directories with 2 updates
 
                 Bumps the pip group with 1 update in the /pip/multi-dir/foo directory: [urllib3](https://github.com/urllib3/urllib3).
-                Bumps the pip group with 2 updates in the /pip/multi-dir/bar directory: [urllib3](https://github.com/urllib3/urllib3) and [numpy](https://github.com/numpy/numpy).
+                Bumps the pip group with 1 update in the /pip/multi-dir/bar directory: [numpy](https://github.com/numpy/numpy).
 
-
-                Updates `urllib3` from 1.0 to 1.0.1
-                - [Release notes](https://github.com/urllib3/urllib3/releases)
-                - [Changelog](https://github.com/urllib3/urllib3/blob/main/CHANGES.rst)
-                - [Commits](https://github.com/urllib3/urllib3/compare/1.0...1.0.1)
 
                 Updates `urllib3` from 1.0 to 1.0.1
                 - [Release notes](https://github.com/urllib3/urllib3/releases)
@@ -257,4 +213,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 7b8e1971f18f6a47430796ec0e430e005d2d97f3
+            base-commit-sha: 0962713db3cb346a729e68bc86706ac7372f9067

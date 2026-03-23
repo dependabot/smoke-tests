@@ -4,14 +4,18 @@ input:
         package-manager: pip
         allowed-updates:
             - dependency-name: numpy
+            - dependency-name: requests
         ignore-conditions:
             - dependency-name: numpy
               version-requirement: '>2.1.3'
+            - dependency-name: requests
+              source: tests/smoke-python-pipenv.yaml
+              version-requirement: '>2.32.3'
         source:
             provider: github
             repo: dependabot/smoke-tests
             directory: /pipenv/
-            commit: 113644b5dc5b87f8858cc256153815a69f2e18f5
+            commit: 0962713db3cb346a729e68bc86706ac7372f9067
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -36,7 +40,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 113644b5dc5b87f8858cc256153815a69f2e18f5
+            base-commit-sha: 0962713db3cb346a729e68bc86706ac7372f9067
             dependencies:
                 - name: numpy
                   previous-requirements:
@@ -63,6 +67,7 @@ output:
 
                     [packages]
                     numpy = "2.1.3"
+                    requests = {version = "==2.28.0", extras = ["socks"]}
 
                     [dev-packages]
 
@@ -79,7 +84,7 @@ output:
                     {
                         "_meta": {
                             "hash": {
-                                "sha256": "4e1c55cffef3151686b89286f26a168bf072d70340cb6744d69c7872e7192a4d"
+                                "sha256": "b17a02665137f487179cadd4f33b257b1fbc1ed22a3dd3c24b7ee90fc7a7de6f"
                             },
                             "pipfile-spec": 6,
                             "requires": {
@@ -250,4 +255,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 113644b5dc5b87f8858cc256153815a69f2e18f5
+            base-commit-sha: 0962713db3cb346a729e68bc86706ac7372f9067
