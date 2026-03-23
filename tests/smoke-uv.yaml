@@ -1,0 +1,29 @@
+input:
+    job:
+        package-manager: uv
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: flask
+              source: tests/smoke-uv.yaml
+              version-requirement: '>3.1.3'
+            - dependency-name: requests
+              source: tests/smoke-uv.yaml
+              version-requirement: '>2.32.5'
+            - dependency-name: ruff
+              source: tests/smoke-uv.yaml
+              version-requirement: '>0.15.4'
+            - dependency-name: ty
+              source: tests/smoke-uv.yaml
+              version-requirement: '>0.0.20'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /uv
+            commit: 174abae1109481dbfcacd68f88bfa55e324320fe
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output: []
