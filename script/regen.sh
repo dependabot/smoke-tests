@@ -29,8 +29,8 @@ usage() {
   echo "Examples:"
   echo "  $0 tests/smoke-bundler.yaml"
   echo "  $0 --updater-image my-image:latest tests/smoke-bundler.yaml"
-  echo "  $0 --local-core ../dependabot-core tests/smoke-pip.yaml"
-  echo "  $0 --core-pr 12345 tests/smoke-pip.yaml tests/smoke-pip-compile.yaml"
+  echo "  $0 --local-core ../dependabot-core tests/smoke-python-pip.yaml"
+  echo "  $0 --core-pr 12345 tests/smoke-python-pip.yaml tests/smoke-python-pip-compile.yaml"
   exit 1
 }
 
@@ -42,14 +42,26 @@ FILES=()
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --updater-image)
+      if [[ -z "${2:-}" || "$2" == -* ]]; then
+        echo "Error: --updater-image requires a non-empty argument."
+        usage
+      fi
       UPDATER_IMAGE="$2"
       shift 2
       ;;
     --local-core)
+      if [[ -z "${2:-}" || "$2" == -* ]]; then
+        echo "Error: --local-core requires a non-empty argument."
+        usage
+      fi
       LOCAL_CORE="$2"
       shift 2
       ;;
     --core-pr)
+      if [[ -z "${2:-}" || "$2" == -* ]]; then
+        echo "Error: --core-pr requires a non-empty argument."
+        usage
+      fi
       CORE_PR="$2"
       shift 2
       ;;
