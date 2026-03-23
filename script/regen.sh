@@ -142,12 +142,6 @@ if [ -n "$LOCAL_CORE" ] || [ -n "$CORE_PR" ]; then
 
   echo "Building updater image for ecosystem: $BUILD_ECO (package-manager: $PKG_MGR)"
 
-  # Dependabot only produces linux/amd64 images, so force the platform on
-  # ARM64 machines to build via emulation rather than failing.
-  if [ "$(uname -m)" != "x86_64" ]; then
-    export DOCKER_BUILD_ARGS="${DOCKER_BUILD_ARGS:-} --platform linux/amd64"
-  fi
-
   # Snapshot existing updater images so we can detect the newly built one
   BEFORE_IMAGES=$(docker images --format '{{.Repository}}:{{.Tag}}' | grep 'dependabot-updater-' | grep ':latest$' | sort)
 

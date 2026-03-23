@@ -75,10 +75,10 @@ script/regen.sh tests/smoke-bundler.yaml
 script/regen.sh --updater-image my-image:latest tests/smoke-bundler.yaml
 
 # Build the updater from a local dependabot-core checkout
-script/regen.sh --local-core ../dependabot-core tests/smoke-pip.yaml
+script/regen.sh --local-core ../dependabot-core tests/smoke-python-pip.yaml
 
 # Build the updater from a dependabot-core PR
-script/regen.sh --core-pr 12345 tests/smoke-pip.yaml tests/smoke-pip-compile.yaml
+script/regen.sh --core-pr 12345 tests/smoke-python-pip.yaml tests/smoke-python-pip-compile.yaml
 ```
 
 | Option | Description |
