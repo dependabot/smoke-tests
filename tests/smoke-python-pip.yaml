@@ -19,7 +19,7 @@ input:
             provider: github
             repo: dependabot/smoke-tests
             directory: /pip/
-            commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            commit: 0962713db3cb346a729e68bc86706ac7372f9067
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -38,14 +38,14 @@ output:
                       requirement: <4.0,>=3.1
                       source: null
                   version: null
-                - name: requests
+                - name: requests[socks]
                   requirements:
                     - file: requirements.txt
                       groups:
                         - dependencies
-                      requirement: null
+                      requirement: ==2.28.0
                       source: null
-                  version: null
+                  version: 2.28.0
                 - name: pyyaml
                   requirements:
                     - file: requirements.txt
@@ -75,7 +75,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 0962713db3cb346a729e68bc86706ac7372f9067
             dependencies:
                 - name: django
                   previous-requirements:
@@ -95,7 +95,7 @@ output:
             updated-dependency-files:
                 - content: |
                     Django>=3.1,<5.0
-                    requests
+                    requests[socks]==2.28.0
                     pyyaml
                     pytest
                     numpy==1.23.0
@@ -106,35 +106,49 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Update django requirement from <4.0,>=3.1 to >=3.1,<5.0 in /pip
-            pr-body: |
-                Updates the requirements on [django](https://github.com/django/django) to permit the latest version.
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/django/django/commit/caad462feaa84ba78ed658a9595a4a4363dad2db"><code>caad462</code></a> [4.0.x] Bumped version for 4.0.6 release.</li>
-                <li><a href="https://github.com/django/django/commit/c73215272a723b939548fe22c607a732530ce04f"><code>c732152</code></a> [4.0.x] Updated man page for Django 4.0.6.</li>
-                <li><a href="https://github.com/django/django/commit/0dc9c016fadb71a067e5a42be30164e3f96c0492"><code>0dc9c01</code></a> [4.0.x] Fixed CVE-2022-34265 -- Protected Trunc(kind)/Extract(lookup_name) ag...</li>
-                <li><a href="https://github.com/django/django/commit/a2b88d7be6fc9b443794518d2f75fd2f3d9e677a"><code>a2b88d7</code></a> [4.0.x] Fixed typo in docs/topics/signals.txt.</li>
-                <li><a href="https://github.com/django/django/commit/2b901c1be462a12cad39af40a57a454ffe185406"><code>2b901c1</code></a> [4.0.x] Fixed GEOSTest.test_emptyCollections() on GEOS 3.8.0.</li>
-                <li><a href="https://github.com/django/django/commit/4d20d2f7c2b8e74c3e85bd0716ebdcb3b35a70e6"><code>4d20d2f</code></a> [4.0.x] Fixed docs build with sphinxcontrib-spelling 7.5.0+.</li>
-                <li><a href="https://github.com/django/django/commit/8a294ee2e0e30f073f764310c74899e385a302ec"><code>8a294ee</code></a> [4.0.x] Added stub release notes and release date for 4.0.6 and 3.2.14.</li>
-                <li><a href="https://github.com/django/django/commit/1c28443fc92e57588fb9b37b700f97be9fde5982"><code>1c28443</code></a> [4.0.x] Fixed CoveringIndexTests.test_covering_partial_index() when DEFAULT_I...</li>
-                <li><a href="https://github.com/django/django/commit/0f3b25044c34fd17b6fcde0cb53db0181f212b20"><code>0f3b250</code></a> [4.0.x] Fixed <a href="https://redirect.github.com/django/django/issues/33789">#33789</a> -- Doc'd changes in quoting table/column names on Oracle...</li>
-                <li><a href="https://github.com/django/django/commit/6661c48a20d788dc76397ab4ec334b28b51db872"><code>6661c48</code></a> [4.0.x] Updated OWASP Top 10 link in security topic.</li>
-                <li>Additional commits viewable in <a href="https://github.com/django/django/compare/3.1...4.0.6">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Update django requirement from <4.0,>=3.1 to >=3.1,<5.0 in /pip
-
-                Updates the requirements on [django](https://github.com/django/django) to permit the latest version.
-                - [Commits](https://github.com/django/django/compare/3.1...4.0.6)
+            pr-title: update django requirement from <4.0,>=3.1 to >=3.1,<5.0 in /pip
+            commit-message: update django requirement from <4.0,>=3.1 to >=3.1,<5.0 in /pip
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 0962713db3cb346a729e68bc86706ac7372f9067
+            dependencies:
+                - name: requests[socks]
+                  previous-requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==2.28.0
+                      source: null
+                  previous-version: 2.28.0
+                  requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==2.32.3
+                      source: null
+                  version: 2.32.3
+                  directory: /pip
+            updated-dependency-files:
+                - content: |
+                    Django>=3.1,<4.0
+                    requests[socks]==2.32.3
+                    pyyaml
+                    pytest
+                    numpy==1.23.0
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /pip
+                  name: requirements.txt
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: bump requests[socks] from 2.28.0 to 2.32.3 in /pip
+            commit-message: bump requests[socks] from 2.28.0 to 2.32.3 in /pip
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 0962713db3cb346a729e68bc86706ac7372f9067
             dependencies:
                 - name: numpy
                   previous-requirements:
@@ -155,7 +169,7 @@ output:
             updated-dependency-files:
                 - content: |
                     Django>=3.1,<4.0
-                    requests
+                    requests[socks]==2.28.0
                     pyyaml
                     pytest
                     numpy==2.4.2
@@ -166,124 +180,9 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump numpy from 1.23.0 to 2.4.2 in /pip
-            pr-body: |
-                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 2.4.2.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/numpy/numpy/releases">numpy's releases</a>.</em></p>
-                <blockquote>
-                <h2>2.4.2 (Feb 1, 2026)</h2>
-                <h1>NumPy 2.4.2 Release Notes</h1>
-                <p>The NumPy 2.4.2 is a patch release that fixes bugs discovered after the
-                2.4.1 release. Highlights are:</p>
-                <ul>
-                <li>Fixes memory leaks</li>
-                <li>Updates OpenBLAS to fix hangs</li>
-                </ul>
-                <p>This release supports Python versions 3.11-3.14</p>
-                <h2>Contributors</h2>
-                <p>A total of 9 people contributed to this release. People with a &quot;+&quot; by their
-                names contributed a patch for the first time.</p>
-                <ul>
-                <li>Charles Harris</li>
-                <li>Daniel Tang +</li>
-                <li>Joren Hammudoglu</li>
-                <li>Kumar Aditya</li>
-                <li>Matti Picus</li>
-                <li>Nathan Goldbaum</li>
-                <li>Ralf Gommers</li>
-                <li>Sebastian Berg</li>
-                <li>Vikram Kumar +</li>
-                </ul>
-                <h2>Pull requests merged</h2>
-                <p>A total of 12 pull requests were merged for this release.</p>
-                <ul>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/30629">#30629</a>: MAINT: Prepare 2.4.x for further development</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/30636">#30636</a>: TYP: <code>arange</code>: accept datetime strings</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/30657">#30657</a>: MAINT: avoid possible race condition by not touching <code>os.environ</code>...</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/30700">#30700</a>: BUG: validate contraction axes in tensordot (<a href="https://redirect.github.com/numpy/numpy/issues/30521">#30521</a>)</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/30701">#30701</a>: DOC: __array_namespace__info__: set_module not __module__ (<a href="https://redirect.github.com/numpy/numpy/issues/30679">#30679</a>)</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/30702">#30702</a>: BUG: fix free-threaded PyObject layout in replace_scalar_type_names...</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/30703">#30703</a>: TST: fix limited API example in tests for latest Cython</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/30709">#30709</a>: BUG: Fix some bugs found via valgrind (<a href="https://redirect.github.com/numpy/numpy/issues/30680">#30680</a>)</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/30712">#30712</a>: MAINT: replace ob_type access with Py_TYPE in PyArray_CheckExact</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/30713">#30713</a>: BUG: Fixup the quantile promotion fixup</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/30736">#30736</a>: BUG: fix thread safety of <code>array_getbuffer</code> (<a href="https://redirect.github.com/numpy/numpy/issues/30667">#30667</a>)</li>
-                <li><a href="https://redirect.github.com/numpy/numpy/pull/30737">#30737</a>: backport scipy-openblas version change</li>
-                </ul>
-                <h2>2.4.1 (Jan 10, 2026)</h2>
-                <h1>NumPy 2.4.1 Release Notes</h1>
-                <p>The NumPy 2.4.1 is a patch release that fixes bugs discoved after the
-                2.4.0 release. In particular, the typo <code>SeedlessSequence</code> is preserved to
-                enable wheels using the random Cython API and built against NumPy &lt; 2.4.0
-                to run without errors.</p>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/numpy/numpy/blob/main/doc/RELEASE_WALKTHROUGH.rst">numpy's changelog</a>.</em></p>
-                <blockquote>
-                <p>This is a walkthrough of the NumPy 2.4.0 release on Linux, which will be the
-                first feature release using the <code>numpy/numpy-release &lt;https://github.com/numpy/numpy-release&gt;</code>__ repository.</p>
-                <p>The commands can be copied into the command line, but be sure to replace 2.4.0
-                with the correct version. This should be read together with the
-                :ref:<code>general release guide &lt;prepare_release&gt;</code>.</p>
-                <h1>Facility preparation</h1>
-                <p>Before beginning to make a release, use the <code>requirements/*_requirements.txt</code> files to
-                ensure that you have the needed software. Most software can be installed with
-                pip, but some will require apt-get, dnf, or whatever your system uses for
-                software. You will also need a GitHub personal access token (PAT) to push the
-                documentation. There are a few ways to streamline things:</p>
-                <ul>
-                <li>Git can be set up to use a keyring to store your GitHub personal access token.
-                Search online for the details.</li>
-                </ul>
-                <h1>Prior to release</h1>
-                <h2>Add/drop Python versions</h2>
-                <p>When adding or dropping Python versions, multiple config and CI files need to
-                be edited in addition to changing the minimum version in <code>pyproject.toml</code>.
-                Make these changes in an ordinary PR against main and backport if necessary.
-                We currently release wheels for new Python versions after the first Python RC
-                once manylinux and cibuildwheel support that new Python version.</p>
-                <h2>Backport pull requests</h2>
-                <p>Changes that have been marked for this release must be backported to the
-                maintenance/2.4.x branch.</p>
-                <h2>Update 2.4.0 milestones</h2>
-                <p>Look at the issues/prs with 2.4.0 milestones and either push them off to a
-                later version, or maybe remove the milestone. You may need to add a milestone.</p>
-                <h2>Check the numpy-release repo</h2>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/numpy/numpy/commit/c81c49f77451340651a751e76bca607d85e4fd55"><code>c81c49f</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/30757">#30757</a> from charris/prepare-2.4.2</li>
-                <li><a href="https://github.com/numpy/numpy/commit/b3ae9c59de627110458653836f1be81280222f85"><code>b3ae9c5</code></a> REL: Prepare for the NumPy 2.4.2 release</li>
-                <li><a href="https://github.com/numpy/numpy/commit/9de89843c3918fa133f1aab9fb4435c38a3b0ba6"><code>9de8984</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/30737">#30737</a> from mattip/scipy-openblas-backport</li>
-                <li><a href="https://github.com/numpy/numpy/commit/b7be329895e32de44578742b2745fb307cdf8625"><code>b7be329</code></a> backport scipy-openblas version change</li>
-                <li><a href="https://github.com/numpy/numpy/commit/7ff98637f80dc1ff7a18fce8025ffabdded76094"><code>7ff9863</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/30736">#30736</a> from charris/backport-30667</li>
-                <li><a href="https://github.com/numpy/numpy/commit/431fffbe91d86c04738f039e0048441f8f9b5fff"><code>431fffb</code></a> MAINT: Skip tests that require <strong>buffer</strong>.</li>
-                <li><a href="https://github.com/numpy/numpy/commit/127235fcd9b2e80764da8f6c64f942a6bddb093a"><code>127235f</code></a> BUG: fix thread safety of <code>array_getbuffer</code> (<a href="https://redirect.github.com/numpy/numpy/issues/30667">#30667</a>)</li>
-                <li><a href="https://github.com/numpy/numpy/commit/18bdb2e675b68daa5afc3250c41982ff77b3867f"><code>18bdb2e</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/30713">#30713</a> from charris/backport-30710</li>
-                <li><a href="https://github.com/numpy/numpy/commit/41dd7512de6dc3dd665b71d4e3a321aa1150dc48"><code>41dd751</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/30712">#30712</a> from charris/backport-30705</li>
-                <li><a href="https://github.com/numpy/numpy/commit/7a278da99943376313b8f631905c3baaa7a82a30"><code>7a278da</code></a> BUG: Fixup the quantile promotion fixup</li>
-                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.23.0...v2.4.2">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump numpy from 1.23.0 to 2.4.2 in /pip
-
-                Bumps [numpy](https://github.com/numpy/numpy) from 1.23.0 to 2.4.2.
-                - [Release notes](https://github.com/numpy/numpy/releases)
-                - [Changelog](https://github.com/numpy/numpy/blob/main/doc/RELEASE_WALKTHROUGH.rst)
-                - [Commits](https://github.com/numpy/numpy/compare/v1.23.0...v2.4.2)
+            pr-title: bump numpy from 1.23.0 to 2.4.2 in /pip
+            commit-message: bump numpy from 1.23.0 to 2.4.2 in /pip
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            base-commit-sha: 0962713db3cb346a729e68bc86706ac7372f9067

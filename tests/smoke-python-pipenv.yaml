@@ -15,7 +15,7 @@ input:
             provider: github
             repo: dependabot/smoke-tests
             directory: /pipenv/
-            commit: 113644b5dc5b87f8858cc256153815a69f2e18f5
+            commit: 0962713db3cb346a729e68bc86706ac7372f9067
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -40,7 +40,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 113644b5dc5b87f8858cc256153815a69f2e18f5
+            base-commit-sha: 0962713db3cb346a729e68bc86706ac7372f9067
             dependencies:
                 - name: numpy
                   previous-requirements:
@@ -67,6 +67,7 @@ output:
 
                     [packages]
                     numpy = "2.1.3"
+                    requests = {version = "==2.28.0", extras = ["socks"]}
 
                     [dev-packages]
 
@@ -83,7 +84,7 @@ output:
                     {
                         "_meta": {
                             "hash": {
-                                "sha256": "4e1c55cffef3151686b89286f26a168bf072d70340cb6744d69c7872e7192a4d"
+                                "sha256": "b17a02665137f487179cadd4f33b257b1fbc1ed22a3dd3c24b7ee90fc7a7de6f"
                             },
                             "pipfile-spec": 6,
                             "requires": {
@@ -170,88 +171,9 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump numpy from 1.25.0 to 2.1.3 in /pipenv
-            pr-body: |
-                Bumps [numpy](https://github.com/numpy/numpy) from 1.25.0 to 2.1.3.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/numpy/numpy/releases">numpy's releases</a>.</em></p>
-                <blockquote>
-                <h2>2.1.3 (Nov 2, 2024)</h2>
-                <h1>NumPy 2.1.3 Release Notes</h1>
-                <p>NumPy 2.1.3 is a maintenance release that fixes bugs and regressions
-                discovered after the 2.1.2 release. This release also adds support
-                for free threaded Python 3.13 on Windows.</p>
-                <p>The Python versions supported by this release are 3.10-3.13.</p>
-                <h2>Improvements</h2>
-                <ul>
-                <li>
-                <p>Fixed a number of issues around promotion for string ufuncs with
-                StringDType arguments. Mixing StringDType and the fixed-width DTypes
-                using the string ufuncs should now generate much more uniform
-                results.</p>
-                <p>(<a href="https://redirect.github.com/numpy/numpy/pull/27636">gh-27636</a>)</p>
-                </li>
-                </ul>
-                <h2>Changes</h2>
-                <ul>
-                <li>
-                <p><code>numpy.fix</code> now won't perform casting to a floating
-                data-type for integer and boolean data-type input arrays.</p>
-                <p>(<a href="https://redirect.github.com/numpy/numpy/pull/26766">gh-26766</a>)</p>
-                </li>
-                </ul>
-                <h2>Contributors</h2>
-                <p>A total of 15 people contributed to this release. People with a &quot;+&quot; by
-                their names contributed a patch for the first time.</p>
-                <ul>
-                <li>Abhishek Kumar +</li>
-                <li>Austin +</li>
-                <li>Benjamin A. Beasley +</li>
-                <li>Charles Harris</li>
-                <li>Christian Lorentzen</li>
-                <li>Marcel Telka +</li>
-                <li>Matti Picus</li>
-                <li>Michael Davidsaver +</li>
-                <li>Nathan Goldbaum</li>
-                <li>Peter Hawkins</li>
-                <li>Raghuveer Devulapalli</li>
-                <li>Ralf Gommers</li>
-                <li>Sebastian Berg</li>
-                <li>dependabot[bot]</li>
-                <li>kp2pml30 +</li>
-                </ul>
-                <h2>Pull requests merged</h2>
-                <p>A total of 21 pull requests were merged for this release.</p>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/numpy/numpy/commit/98464cc0cbc1f211482a0756ded305bed1599f18"><code>98464cc</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/27690">#27690</a> from charris/prepare-2.1.3</li>
-                <li><a href="https://github.com/numpy/numpy/commit/cbda85b3551910a8e0d80b89c727b62d66aec20f"><code>cbda85b</code></a> REL: Prepare for the NumPy 2.1.3 release [wheel build]</li>
-                <li><a href="https://github.com/numpy/numpy/commit/daa8699a4145299ea8ff850b94de31c1c208cb65"><code>daa8699</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/27672">#27672</a> from charris/backport-27666</li>
-                <li><a href="https://github.com/numpy/numpy/commit/614ca19a3ae5469ed2b19cf1ebbc22ba81606b7d"><code>614ca19</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/27673">#27673</a> from charris/backport-27636</li>
-                <li><a href="https://github.com/numpy/numpy/commit/e6b02d7ba6d8a34b169113f9874d015ef875d67e"><code>e6b02d7</code></a> DOC: add release note</li>
-                <li><a href="https://github.com/numpy/numpy/commit/54fd7291022e8e8c0cc80d651ebf7afd4dd152b3"><code>54fd729</code></a> BUG: substantially simplify and fix issue with justification promoter</li>
-                <li><a href="https://github.com/numpy/numpy/commit/a90fe7cc6e52be410321b5fffe4e85e76acedb0a"><code>a90fe7c</code></a> BUG: fix more issues with string ufunc promotion</li>
-                <li><a href="https://github.com/numpy/numpy/commit/a121864b22b6fe5da2d2ae8924b58a31d1b67bf0"><code>a121864</code></a> BUG: fixes for StringDType/unicode promoters</li>
-                <li><a href="https://github.com/numpy/numpy/commit/f055fb97531bd89ab0d97f3a5a9f6a11dab4b6ec"><code>f055fb9</code></a> BUG: Fix a reference count leak in npy_find_descr_for_scalar.</li>
-                <li><a href="https://github.com/numpy/numpy/commit/5895c021934b3321dd9abb6be979bf6d2abbc8a4"><code>5895c02</code></a> Merge pull request <a href="https://redirect.github.com/numpy/numpy/issues/27669">#27669</a> from charris/backport-27663</li>
-                <li>Additional commits viewable in <a href="https://github.com/numpy/numpy/compare/v1.25.0...v2.1.3">compare view</a></li>
-                </ul>
-                </details>
-                <br />
-            commit-message: |-
-                Bump numpy from 1.25.0 to 2.1.3 in /pipenv
-
-                Bumps [numpy](https://github.com/numpy/numpy) from 1.25.0 to 2.1.3.
-                - [Release notes](https://github.com/numpy/numpy/releases)
-                - [Changelog](https://github.com/numpy/numpy/blob/main/doc/RELEASE_WALKTHROUGH.rst)
-                - [Commits](https://github.com/numpy/numpy/compare/v1.25.0...v2.1.3)
+            pr-title: bump numpy from 1.25.0 to 2.1.3 in /pipenv
+            commit-message: bump numpy from 1.25.0 to 2.1.3 in /pipenv
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 113644b5dc5b87f8858cc256153815a69f2e18f5
+            base-commit-sha: 0962713db3cb346a729e68bc86706ac7372f9067
