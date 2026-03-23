@@ -15,14 +15,47 @@ jobs:
   suites:
     uses: ./.github/workflows/list-suites.yml
 
-  smoke:
+  filter:
     runs-on: ubuntu-latest
     needs: [suites]
+    outputs:
+      suites: ${{ steps.filter.outputs.suites }}
+    steps:
+      - name: Filter suites for PRs
+        id: filter
+        env:
+          ALL_SUITES: ${{ needs.suites.outputs.suites }}
+        run: |
+          if [ "${{ github.event_name }}" != "pull_request" ]; then
+            echo "suites=$ALL_SUITES" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          CHANGED_FILES=$(gh api "repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files" --paginate --jq '.[].filename')
+
+          # If any non-test files changed, run all suites since those changes could affect any test
+          NON_TEST=$(echo "$CHANGED_FILES" | grep -v '^tests/' || true)
+          if [ -n "$NON_TEST" ]; then
+            echo "suites=$ALL_SUITES" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Only test files changed — extract the suite names from the filenames
+          SUITES=$(echo "$CHANGED_FILES" | grep '^tests/smoke-.*\.yaml$' | sed 's/^tests\/smoke-//' | sed 's/\.yaml$//' | jq -R | jq -sc)
+          if [ "$SUITES" = "[]" ] || [ -z "$SUITES" ]; then
+            echo "suites=$ALL_SUITES" >> "$GITHUB_OUTPUT"
+          else
+            echo "suites=$SUITES" >> "$GITHUB_OUTPUT"
+          fi
+
+  smoke:
+    runs-on: ubuntu-latest
+    needs: [filter]
     strategy:
       fail-fast: false
       max-parallel: 10
       matrix:
-        suite: ${{ fromJSON(needs.suites.outputs.suites) }}
+        suite: ${{ fromJSON(needs.filter.outputs.suites) }}
     steps:
       - uses: actions/checkout@v6
 
