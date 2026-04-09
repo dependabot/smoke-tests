@@ -1,11 +1,12 @@
 input:
     job:
+        command: update
         package-manager: npm_and_yarn
         allowed-updates:
             - update-type: all
         experiments:
-            record-ecosystem-versions: true
             enable_cooldown_for_npm_and_yarn: true
+            record-ecosystem-versions: true
         ignore-conditions:
             - dependency-name: fetch-factory
               source: tests/smoke-yarn.yaml
@@ -18,9 +19,6 @@ input:
             repo: dependabot/smoke-tests
             directory: /yarn/subdir
             commit: 689859ec8625145882baf9dc1d407ece646392ae
-        credentials-metadata:
-            - host: github.com
-              type: git_source
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN

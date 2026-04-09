@@ -1,11 +1,12 @@
 input:
     job:
+        command: update
         package-manager: npm_and_yarn
         allowed-updates:
             - dependency-name: jquery
         experiments:
-            record-ecosystem-versions: true
             enable_cooldown_for_npm_and_yarn: true
+            record-ecosystem-versions: true
         ignore-conditions:
             - dependency-name: jquery
               version-requirement: '>3.6.3'
