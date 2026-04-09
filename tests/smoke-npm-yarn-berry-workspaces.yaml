@@ -1,12 +1,13 @@
 input:
     job:
+        command: update
         package-manager: npm_and_yarn
         allowed-updates:
             - dependency-name: '@types/lodash'
               update-type: all
         experiments:
-            record-ecosystem-versions: true
             enable_cooldown_for_npm_and_yarn: true
+            record-ecosystem-versions: true
         ignore-conditions:
             - dependency-name: '@types/lodash'
               source: output.yaml
