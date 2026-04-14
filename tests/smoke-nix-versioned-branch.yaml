@@ -8,12 +8,12 @@ input:
         ignore-conditions:
             - dependency-name: nixpkgs
               source: tests/smoke-nix-versioned-branch.yaml
-              version-requirement: '>0.0.0-0.1'
+              version-requirement: '>= 24'
         source:
             provider: github
             repo: dependabot/smoke-tests
             directory: /nix-versioned-branch
-            commit: b23be6858f96a0d210331ef540f7c184d41a2ba8
+            commit: ecda8782c19c1a493a39a1e5bc51e4092f738c04
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -31,17 +31,17 @@ output:
                       requirement: null
                       source:
                         branch: null
-                        ref: nixos-24.05
+                        ref: nixos-23.05
                         type: git
                         url: https://github.com/NixOS/nixpkgs
-                  version: b134951a4c9f3c995fd7be05f3243f8ecd65d798
+                  version: 70bdadeb94ffc8806c0570eb5c2695ad29f0e421
             dependency_files:
                 - /nix-versioned-branch/flake.nix
                 - /nix-versioned-branch/flake.lock
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: b23be6858f96a0d210331ef540f7c184d41a2ba8
+            base-commit-sha: ecda8782c19c1a493a39a1e5bc51e4092f738c04
             dependencies:
                 - name: nixpkgs
                   previous-requirements:
@@ -50,25 +50,25 @@ output:
                       requirement: null
                       source:
                         branch: null
-                        ref: nixos-24.05
+                        ref: nixos-23.05
                         type: git
                         url: https://github.com/NixOS/nixpkgs
-                  previous-version: b134951a4c9f3c995fd7be05f3243f8ecd65d798
+                  previous-version: 70bdadeb94ffc8806c0570eb5c2695ad29f0e421
                   requirements:
                     - file: flake.lock
                       groups: []
                       requirement: null
                       source:
                         branch: null
-                        ref: nixos-25.11
+                        ref: nixos-23.11
                         type: git
                         url: https://github.com/NixOS/nixpkgs
-                  version: 54170c54449ea4d6725efd30d719c5e505f1c10e
+                  version: 205fd4226592cc83fd4c0885a3e4c9c400efabb5
                   directory: /nix-versioned-branch
             updated-dependency-files:
                 - content: |
                     {
-                      inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+                      inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
 
                       outputs = { ... }: { };
                     }
@@ -84,16 +84,16 @@ output:
                       "nodes": {
                         "nixpkgs": {
                           "locked": {
-                            "lastModified": 1775811116,
-                            "narHash": "sha256-t+HZK42pB6N+i5RGbuy7Xluez/VvWbembBdvzsc23Ss=",
+                            "lastModified": 1720535198,
+                            "narHash": "sha256-zwVvxrdIzralnSbcpghA92tWu2DV2lwv89xZc8MTrbg=",
                             "owner": "NixOS",
                             "repo": "nixpkgs",
-                            "rev": "54170c54449ea4d6725efd30d719c5e505f1c10e",
+                            "rev": "205fd4226592cc83fd4c0885a3e4c9c400efabb5",
                             "type": "github"
                           },
                           "original": {
                             "owner": "NixOS",
-                            "ref": "nixos-25.11",
+                            "ref": "nixos-23.11",
                             "repo": "nixpkgs",
                             "type": "github"
                           }
@@ -114,32 +114,32 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump nixpkgs from nixos-24.05 to nixos-25.11 in /nix-versioned-branch
+            pr-title: Bump nixpkgs from nixos-23.05 to nixos-23.11 in /nix-versioned-branch
             pr-body: |
-                Bumps [nixpkgs](https://github.com/NixOS/nixpkgs) from nixos-24.05 to nixos-25.11.
+                Bumps [nixpkgs](https://github.com/NixOS/nixpkgs) from nixos-23.05 to nixos-23.11.
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/54170c54449ea4d6725efd30d719c5e505f1c10e"><code>54170c5</code></a> [Backport release-25.11] matrix-authentication-service: 1.14.0 -&gt; 1.15.0 (<a href="https://redirect.github.com/NixOS/nixpkgs/issues/50">#50</a>...</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/863c462d78dd3e9de7ca3516b28764ef0346a763"><code>863c462</code></a> [Backport release-25.11] batman-adv: 2026.0 -&gt; 2026.1 (<a href="https://redirect.github.com/NixOS/nixpkgs/issues/508128">#508128</a>)</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/11cda251ebadef1877a8adad04d175cc54fae7d3"><code>11cda25</code></a> [Backport release-25.11] gitlab: 18.10.1 -&gt; 18.10.3 (<a href="https://redirect.github.com/NixOS/nixpkgs/issues/508293">#508293</a>)</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/ecf622c2d15709b03a43f31c29665b52a49b1293"><code>ecf622c</code></a> matrix-authentication-service: 1.14.0 -&gt; 1.15.0</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/74b87959b2d16f59f54d8559cf3cf26b9d907949"><code>74b8795</code></a> [Backport release-25.11] dn42-registry-wizard: 0.4.19 -&gt; 0.4.20 (<a href="https://redirect.github.com/NixOS/nixpkgs/issues/508346">#508346</a>)</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/b7f6edc092a35a0ba645fcc2e8699c8fb5baac90"><code>b7f6edc</code></a> dn42-registry-wizard: 0.4.19 -&gt; 0.4.20</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/2b40e62526b4ceebc63e66a8752c3057a2420ed3"><code>2b40e62</code></a> gitlab: 18.10.1 -&gt; 18.10.3</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/0d5a853f7004a5fc57b61a97ccb02832f8e7ed9d"><code>0d5a853</code></a> [25.11] zammad: 7.0.0 -&gt; 7.0.1 (<a href="https://redirect.github.com/NixOS/nixpkgs/issues/508275">#508275</a>)</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/6bd442f9189fff2726ee7a847860d8cc4e46664f"><code>6bd442f</code></a> zammad: 7.0.0 -&gt; 7.0.1</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/ba005e7fb54f635a5507fcc197210b0da20de5ab"><code>ba005e7</code></a> [Backport release-25.11] signal-cli: 0.13.24 -&gt; 0.14.2 (<a href="https://redirect.github.com/NixOS/nixpkgs/issues/507524">#507524</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/NixOS/nixpkgs/compare/b134951a4c9f3c995fd7be05f3243f8ecd65d798...54170c54449ea4d6725efd30d719c5e505f1c10e">compare view</a></li>
+                <li><a href="https://github.com/NixOS/nixpkgs/commit/205fd4226592cc83fd4c0885a3e4c9c400efabb5"><code>205fd42</code></a> Merge #325769: staging-next-23.11 iteration 10</li>
+                <li><a href="https://github.com/NixOS/nixpkgs/commit/72f84695f83e0cd56a270890cd1eb06bfe6f2f5b"><code>72f8469</code></a> Merge branch 'release-23.11' into staging-next-23.11</li>
+                <li><a href="https://github.com/NixOS/nixpkgs/commit/f6ee1e79691a5c7ee284830c2ca3daf9b7e50e06"><code>f6ee1e7</code></a> Merge branch 'staging-23.11' into staging-next-23.11</li>
+                <li><a href="https://github.com/NixOS/nixpkgs/commit/7144d6241f02d171d25fba3edeaf15e0f2592105"><code>7144d62</code></a> python3Packages.clustershell: remove blocking test</li>
+                <li><a href="https://github.com/NixOS/nixpkgs/commit/28f8f3531ebdbea069995c20bd946a295699f275"><code>28f8f35</code></a> openssh_{hpn,gssapi}: add backported security fix patches</li>
+                <li><a href="https://github.com/NixOS/nixpkgs/commit/763fc33f3612bc404d24d8333f4ab314cc79f90b"><code>763fc33</code></a> Merge pull request <a href="https://redirect.github.com/NixOS/nixpkgs/issues/323765">#323765</a> from emilazy/openssh-security-backport-23.11</li>
+                <li><a href="https://github.com/NixOS/nixpkgs/commit/c21c340818954576c6401ad460a9d42bab030bc4"><code>c21c340</code></a> openssh: add backported security fix patches</li>
+                <li><a href="https://github.com/NixOS/nixpkgs/commit/50f6d728651282b8c57effb49c8e6d4df94e1d9a"><code>50f6d72</code></a> Merge staging-next-23.11 into staging-23.11</li>
+                <li><a href="https://github.com/NixOS/nixpkgs/commit/5ef86cf835ce0956cc5563724dce216af0e035e3"><code>5ef86cf</code></a> Merge release-23.11 into staging-next-23.11</li>
+                <li><a href="https://github.com/NixOS/nixpkgs/commit/83725a49ebd58a56ffc865ae5c59ce7977351b6b"><code>83725a4</code></a> Merge pull request <a href="https://redirect.github.com/NixOS/nixpkgs/issues/323649">#323649</a> from NixOS/backport-322037-to-release-23.11</li>
+                <li>Additional commits viewable in <a href="https://github.com/NixOS/nixpkgs/compare/70bdadeb94ffc8806c0570eb5c2695ad29f0e421...205fd4226592cc83fd4c0885a3e4c9c400efabb5">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump nixpkgs from nixos-24.05 to nixos-25.11 in /nix-versioned-branch
+                Bump nixpkgs from nixos-23.05 to nixos-23.11 in /nix-versioned-branch
 
-                Bumps [nixpkgs](https://github.com/NixOS/nixpkgs) from nixos-24.05 to nixos-25.11.
-                - [Commits](https://github.com/NixOS/nixpkgs/compare/b134951a4c9f3c995fd7be05f3243f8ecd65d798...54170c54449ea4d6725efd30d719c5e505f1c10e)
+                Bumps [nixpkgs](https://github.com/NixOS/nixpkgs) from nixos-23.05 to nixos-23.11.
+                - [Commits](https://github.com/NixOS/nixpkgs/compare/70bdadeb94ffc8806c0570eb5c2695ad29f0e421...205fd4226592cc83fd4c0885a3e4c9c400efabb5)
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: b23be6858f96a0d210331ef540f7c184d41a2ba8
+            base-commit-sha: ecda8782c19c1a493a39a1e5bc51e4092f738c04
