@@ -1,6 +1,5 @@
 input:
     job:
-        command: update
         package-manager: nix
         allowed-updates:
             - update-type: all
@@ -10,7 +9,7 @@ input:
             provider: github
             repo: dependabot/smoke-tests
             directory: /nix
-            commit: 8d857a01c9c034aaf4bb100007479ab5f5a1c623
+            commit: b23be6858f96a0d210331ef540f7c184d41a2ba8
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -21,70 +20,87 @@ output:
       expect:
         data:
             dependencies:
-                - name: nixpkgs
+                - name: flake-utils
                   requirements:
                     - file: flake.lock
                       groups: []
                       requirement: null
                       source:
-                        branch: nixos-24.11
-                        ref: nixos-24.11
+                        branch: null
+                        ref: null
                         type: git
-                        url: https://github.com/NixOS/nixpkgs
-                  version: 8b27c1239e5c421a2bbc2c65d52e4a6fbf2ff296
+                        url: https://github.com/numtide/flake-utils
+                  version: c1dfcf08411b08f6b8615f7d8971a2bfa81d5e8a
             dependency_files:
                 - /nix/flake.nix
                 - /nix/flake.lock
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 8d857a01c9c034aaf4bb100007479ab5f5a1c623
+            base-commit-sha: b23be6858f96a0d210331ef540f7c184d41a2ba8
             dependencies:
-                - name: nixpkgs
+                - name: flake-utils
                   previous-requirements:
                     - file: flake.lock
                       groups: []
                       requirement: null
                       source:
-                        branch: nixos-24.11
-                        ref: nixos-24.11
+                        branch: null
+                        ref: null
                         type: git
-                        url: https://github.com/NixOS/nixpkgs
-                  previous-version: 8b27c1239e5c421a2bbc2c65d52e4a6fbf2ff296
+                        url: https://github.com/numtide/flake-utils
+                  previous-version: c1dfcf08411b08f6b8615f7d8971a2bfa81d5e8a
                   requirements:
                     - file: flake.lock
                       groups: []
                       requirement: null
                       source:
-                        branch: nixos-24.11
-                        ref: nixos-24.11
+                        branch: null
+                        ref: null
                         type: git
-                        url: https://github.com/NixOS/nixpkgs
-                  version: 50ab793786d9de88ee30ec4e4c24fb4236fc2674
+                        url: https://github.com/numtide/flake-utils
+                  version: 11707dc2f618dd54ca8739b309ec4fc024de578b
                   directory: /nix
             updated-dependency-files:
                 - content: |
                     {
                       "nodes": {
-                        "nixpkgs": {
+                        "flake-utils": {
+                          "inputs": {
+                            "systems": "systems"
+                          },
                           "locked": {
-                            "lastModified": 1751274312,
-                            "narHash": "sha256-/bVBlRpECLVzjV19t5KMdMFWSwKLtb5RyXdjz3LJT+g=",
-                            "owner": "NixOS",
-                            "repo": "nixpkgs",
-                            "rev": "50ab793786d9de88ee30ec4e4c24fb4236fc2674",
+                            "lastModified": 1731533236,
+                            "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+                            "owner": "numtide",
+                            "repo": "flake-utils",
+                            "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
                             "type": "github"
                           },
                           "original": {
-                            "owner": "NixOS",
-                            "ref": "nixos-24.11",
-                            "repo": "nixpkgs",
+                            "owner": "numtide",
+                            "repo": "flake-utils",
                             "type": "github"
                           }
                         },
                         "root": {
                           "inputs": {
-                            "nixpkgs": "nixpkgs"
+                            "flake-utils": "flake-utils"
+                          }
+                        },
+                        "systems": {
+                          "locked": {
+                            "lastModified": 1681028828,
+                            "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+                            "owner": "nix-systems",
+                            "repo": "default",
+                            "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+                            "type": "github"
+                          },
+                          "original": {
+                            "owner": "nix-systems",
+                            "repo": "default",
+                            "type": "github"
                           }
                         }
                       },
@@ -98,32 +114,24 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump nixpkgs from `8b27c12` to `50ab793` in /nix
+            pr-title: Bump flake-utils from `c1dfcf0` to `11707dc` in /nix
             pr-body: |
-                Bumps [nixpkgs](https://github.com/NixOS/nixpkgs) from `8b27c12` to `50ab793`.
+                Bumps [flake-utils](https://github.com/numtide/flake-utils) from `c1dfcf0` to `11707dc`.
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/50ab793786d9de88ee30ec4e4c24fb4236fc2674"><code>50ab793</code></a> [24.11] Lix CVE-2025-46415 (critical) bug fixes (<a href="https://redirect.github.com/NixOS/nixpkgs/issues/421137">#421137</a>)</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/1d1ef5040b240dcee4769adc6943ba5af0adbb37"><code>1d1ef50</code></a> [Backport release-24.11] librewolf-unwrapped: 139.0.4-1 -&gt; 140.0.2-1 (<a href="https://redirect.github.com/NixOS/nixpkgs/issues/421086">#421086</a>)</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/b79ee9f063c5205184201cab03005036a8d466ec"><code>b79ee9f</code></a> lixVersions_2_91: patch for the critical correctness bug</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/dc92673fc043e800b76d12a80bfc0c27cfb7685c"><code>dc92673</code></a> [Backport release-24.11] ci/README.md: one sentence per line (<a href="https://redirect.github.com/NixOS/nixpkgs/issues/421097">#421097</a>)</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/3bcaebc6035750592b759f2ad3e8c009ba074520"><code>3bcaebc</code></a> .github/workflows/README.md: one sentence per line</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/11ccc438638e165b918d7a5f48748ec34086ba59"><code>11ccc43</code></a> ci/eval/README.md: one sentence per line</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/2e07c7808660e42ebfec4906ca9b76b88ed5e27b"><code>2e07c78</code></a> ci/README.md: one sentence per line</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/9ea8e31fefc452f94040d380974ac565b69c61e1"><code>9ea8e31</code></a> librewolf-unwrapped: 139.0.4-1 -&gt; 140.0.2-1</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/0ac77cd1ecb7504ee2ea66fa5bb40cf44eedf12d"><code>0ac77cd</code></a> [Backport release-24.11] nexus: mark as insecure and remove inactive maintain...</li>
-                <li><a href="https://github.com/NixOS/nixpkgs/commit/e062c07692562320c9625645b12bdd45e0b3cec0"><code>e062c07</code></a> nexus: mark as insecure and remove maintainers</li>
-                <li>Additional commits viewable in <a href="https://github.com/NixOS/nixpkgs/compare/8b27c1239e5c421a2bbc2c65d52e4a6fbf2ff296...50ab793786d9de88ee30ec4e4c24fb4236fc2674">compare view</a></li>
+                <li><a href="https://github.com/numtide/flake-utils/commit/11707dc2f618dd54ca8739b309ec4fc024de578b"><code>11707dc</code></a> README: add new logo (<a href="https://redirect.github.com/numtide/flake-utils/issues/120">#120</a>)</li>
+                <li>See full diff in <a href="https://github.com/numtide/flake-utils/compare/c1dfcf08411b08f6b8615f7d8971a2bfa81d5e8a...11707dc2f618dd54ca8739b309ec4fc024de578b">compare view</a></li>
                 </ul>
                 </details>
                 <br />
             commit-message: |-
-                Bump nixpkgs from `8b27c12` to `50ab793` in /nix
+                Bump flake-utils from `c1dfcf0` to `11707dc` in /nix
 
-                Bumps [nixpkgs](https://github.com/NixOS/nixpkgs) from `8b27c12` to `50ab793`.
-                - [Commits](https://github.com/NixOS/nixpkgs/compare/8b27c1239e5c421a2bbc2c65d52e4a6fbf2ff296...50ab793786d9de88ee30ec4e4c24fb4236fc2674)
+                Bumps [flake-utils](https://github.com/numtide/flake-utils) from `c1dfcf0` to `11707dc`.
+                - [Release notes](https://github.com/numtide/flake-utils/releases)
+                - [Commits](https://github.com/numtide/flake-utils/compare/c1dfcf08411b08f6b8615f7d8971a2bfa81d5e8a...11707dc2f618dd54ca8739b309ec4fc024de578b)
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 8d857a01c9c034aaf4bb100007479ab5f5a1c623
+            base-commit-sha: b23be6858f96a0d210331ef540f7c184d41a2ba8

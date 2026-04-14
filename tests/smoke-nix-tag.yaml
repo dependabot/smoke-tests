@@ -1,0 +1,137 @@
+input:
+    job:
+        package-manager: nix
+        allowed-updates:
+            - update-type: all
+        experiments:
+            enable_beta_ecosystems: true
+        ignore-conditions:
+            - dependency-name: flake-compat
+              source: tests/smoke-nix-tag.yaml
+              version-requirement: '>1.0.1'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /nix-tag
+            commit: b23be6858f96a0d210331ef540f7c184d41a2ba8
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: flake-compat
+                  requirements:
+                    - file: flake.lock
+                      groups: []
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v1.0.0
+                        type: git
+                        url: https://github.com/edolstra/flake-compat
+                  version: 4f910c9827911b1ec2bf26b5a062cd09f8d89f85
+            dependency_files:
+                - /nix-tag/flake.nix
+                - /nix-tag/flake.lock
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: b23be6858f96a0d210331ef540f7c184d41a2ba8
+            dependencies:
+                - name: flake-compat
+                  previous-requirements:
+                    - file: flake.lock
+                      groups: []
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v1.0.0
+                        type: git
+                        url: https://github.com/edolstra/flake-compat
+                  previous-version: 4f910c9827911b1ec2bf26b5a062cd09f8d89f85
+                  requirements:
+                    - file: flake.lock
+                      groups: []
+                      requirement: null
+                      source:
+                        branch: null
+                        ref: v1.0.1
+                        type: git
+                        url: https://github.com/edolstra/flake-compat
+                  version: 0f9255e01c2351cc7d116c072cb317785dd33b33
+                  directory: /nix-tag
+            updated-dependency-files:
+                - content: |
+                    {
+                      inputs.flake-compat.url = "github:edolstra/flake-compat/v1.0.1";
+
+                      outputs = { ... }: { };
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nix-tag
+                  name: flake.nix
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    {
+                      "nodes": {
+                        "flake-compat": {
+                          "locked": {
+                            "lastModified": 1696426674,
+                            "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
+                            "owner": "edolstra",
+                            "repo": "flake-compat",
+                            "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
+                            "type": "github"
+                          },
+                          "original": {
+                            "owner": "edolstra",
+                            "ref": "v1.0.1",
+                            "repo": "flake-compat",
+                            "type": "github"
+                          }
+                        },
+                        "root": {
+                          "inputs": {
+                            "flake-compat": "flake-compat"
+                          }
+                        }
+                      },
+                      "root": "root",
+                      "version": 7
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nix-tag
+                  name: flake.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump flake-compat from v1.0.0 to v1.0.1 in /nix-tag
+            pr-body: |
+                Bumps [flake-compat](https://github.com/edolstra/flake-compat) from v1.0.0 to v1.0.1.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/NixOS/flake-compat/commit/0f9255e01c2351cc7d116c072cb317785dd33b33"><code>0f9255e</code></a> Force root sources like &quot;./.&quot; into the Nix store</li>
+                <li><a href="https://github.com/NixOS/flake-compat/commit/5a16547d46553d7bdd1dfc2cf418f5f7d236f6ad"><code>5a16547</code></a> Prevent double copying and work around an apparent Nix bug</li>
+                <li>See full diff in <a href="https://github.com/edolstra/flake-compat/compare/4f910c9827911b1ec2bf26b5a062cd09f8d89f85...0f9255e01c2351cc7d116c072cb317785dd33b33">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump flake-compat from v1.0.0 to v1.0.1 in /nix-tag
+
+                Bumps [flake-compat](https://github.com/edolstra/flake-compat) from v1.0.0 to v1.0.1.
+                - [Commits](https://github.com/edolstra/flake-compat/compare/4f910c9827911b1ec2bf26b5a062cd09f8d89f85...0f9255e01c2351cc7d116c072cb317785dd33b33)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: b23be6858f96a0d210331ef540f7c184d41a2ba8
