@@ -1,0 +1,34 @@
+input:
+    job:
+        command: update
+        package-manager: npm_and_yarn
+        allowed-updates:
+            - update-type: all
+        experiments:
+            enable_cooldown_for_npm_and_yarn: true
+            record-ecosystem-versions: true
+        ignore-conditions:
+            - dependency-name: npm-package-json-lint
+              source: tests/smoke-npm-maintainer-spaces.yaml
+              version-requirement: '>10.2.1'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /npm/maintainer-spaces
+            commit: 9010a87bb1ebfac9e58f4178011ab43f76b6ae26
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: job_repo_not_found
+            error-details:
+                message: 'fatal: remote error: upload-pack: not our ref 9010a87bb1ebfac9e58f4178011ab43f76b6ae26'
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: unknown
