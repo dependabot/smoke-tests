@@ -130,9 +130,17 @@ jobs:
           # construction (the resolve step greps for it), so the first is safe.
           FIRST_TEST=$(echo "$TEST_LIST" | awk '{print $1}')
           PKG_MGR=$(grep 'package-manager:' "tests/smoke-${FIRST_TEST}.yaml" | head -1 | awk '{print $2}')
-          echo "Building image for package-manager: $PKG_MGR"
+
+          # Map package-manager names to dependabot-core build directory names
+          case "$PKG_MGR" in
+            pip) BUILD_ECO="python" ;;
+            submodules) BUILD_ECO="git_submodules" ;;
+            *) BUILD_ECO="$PKG_MGR" ;;
+          esac
+
+          echo "Building image for package-manager: $PKG_MGR (ecosystem: $BUILD_ECO)"
           cd dependabot-core
-          script/build "$PKG_MGR"
+          script/build "$BUILD_ECO"
           IMAGE=$(docker images --format '{{.Repository}}:{{.Tag}}' | grep 'dependabot-updater-' | grep ':latest$' | head -1)
           if [ -z "$IMAGE" ]; then
             echo "::error::No dependabot updater image found after building '$PKG_MGR'"
