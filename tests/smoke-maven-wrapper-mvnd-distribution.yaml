@@ -1,0 +1,30 @@
+input:
+    job:
+        command: update
+        package-manager: maven
+        allowed-updates:
+            - update-type: all
+        experiments:
+            maven_wrapper_updater: true
+        source:
+            provider: github
+            repo: yeikel/smoke-tests
+            directories:
+                - maven-wrapper/mvnd-distribution
+            commit: c6d811353b6522d1bdad35db2e395e959f2b56ab
+            hostname: github.com
+            api-endpoint: https://api.github.com
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies: []
+            dependency_files:
+                - /maven-wrapper/mvnd-distribution/pom.xml
+                - /maven-wrapper/mvnd-distribution/.mvn/wrapper/maven-wrapper.properties
+                - /maven-wrapper/mvnd-distribution/mvnw
+                - /maven-wrapper/mvnd-distribution/mvnw.cmd
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: c6d811353b6522d1bdad35db2e395e959f2b56ab
