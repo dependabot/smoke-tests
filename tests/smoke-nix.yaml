@@ -1,10 +1,15 @@
 input:
     job:
+        command: update
         package-manager: nix
         allowed-updates:
             - update-type: all
         experiments:
             enable_beta_ecosystems: true
+        ignore-conditions:
+            - dependency-name: flake-utils
+              source: result-nix.yaml
+              version-requirement: '>11707dc2f618dd54ca8739b309ec4fc024de578b'
         source:
             provider: github
             repo: dependabot/smoke-tests
