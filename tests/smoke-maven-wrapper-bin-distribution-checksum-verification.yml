@@ -18,7 +18,7 @@ input:
             repo: yeikel/smoke-tests
             directories:
                 - maven-wrapper/bin-distribution-checksum-verification
-            commit: 5b1e774e7a2fe86e6c31b253ae15fa6d9e5f224b
+            commit: 49b5d7b864f085ff0249e6fa19573604319f3e1a
             hostname: github.com
             api-endpoint: https://api.github.com
 output:
@@ -76,7 +76,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 5b1e774e7a2fe86e6c31b253ae15fa6d9e5f224b
+            base-commit-sha: 49b5d7b864f085ff0249e6fa19573604319f3e1a
             dependencies:
                 - name: org.apache.maven:apache-maven
                   previous-requirements:
@@ -541,7 +541,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 5b1e774e7a2fe86e6c31b253ae15fa6d9e5f224b
+            base-commit-sha: 49b5d7b864f085ff0249e6fa19573604319f3e1a
             dependencies:
                 - name: org.apache.maven.wrapper:maven-wrapper
                   previous-requirements:
@@ -983,4 +983,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 5b1e774e7a2fe86e6c31b253ae15fa6d9e5f224b
+            base-commit-sha: 49b5d7b864f085ff0249e6fa19573604319f3e1a
