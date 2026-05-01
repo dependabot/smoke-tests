@@ -1,0 +1,83 @@
+input:
+    job:
+        package-manager: docker
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: nginx
+              source: tests/smoke-docker-helm-with-bom.yaml
+              version-requirement: '>1.27.4'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /helm/with-bom/
+            commit: 501ac78512006564b93bc2627f1983540e8ea586
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: nginx
+                  requirements:
+                    - file: values.yaml
+                      groups: []
+                      requirement: null
+                      source:
+                        tag: 1.14.2
+                  version: 1.14.2
+            dependency_files:
+                - /helm/with-bom/values.yaml
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 501ac78512006564b93bc2627f1983540e8ea586
+            dependencies:
+                - name: nginx
+                  previous-requirements:
+                    - file: values.yaml
+                      groups: []
+                      requirement: null
+                      source:
+                        tag: 1.14.2
+                  previous-version: 1.14.2
+                  requirements:
+                    - file: values.yaml
+                      groups: []
+                      requirement: null
+                      source:
+                        tag: 1.27.4
+                  version: 1.27.4
+                  directory: /helm/with-bom
+            updated-dependency-files:
+                - content: |
+                    version: 2
+
+                    # this file starts with a byte-order-mark (BOM) and that must be maintained
+
+                    image:
+                      repository: nginx
+                      tag: 1.27.4
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /helm/with-bom
+                  name: values.yaml
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump nginx from 1.14.2 to 1.27.4 in /helm/with-bom
+            pr-body: |
+                Bumps nginx from 1.14.2 to 1.27.4.
+            commit-message: |-
+                Bump nginx from 1.14.2 to 1.27.4 in /helm/with-bom
+
+                Bumps nginx from 1.14.2 to 1.27.4.
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 501ac78512006564b93bc2627f1983540e8ea586
