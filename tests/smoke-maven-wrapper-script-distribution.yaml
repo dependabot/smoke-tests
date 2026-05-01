@@ -1,0 +1,958 @@
+input:
+    job:
+        command: update
+        package-manager: maven
+        allowed-updates:
+            - update-type: all
+        experiments:
+            maven_wrapper_updater: true
+        ignore-conditions:
+            - dependency-name: org.apache.maven:apache-maven
+              source: tests/smoke-maven-wrapper-script-distribution.yaml
+              version-requirement: '>3.9.15'
+            - dependency-name: org.apache.maven.wrapper:maven-wrapper
+              source: tests/smoke-maven-wrapper-script-distribution.yaml
+              version-requirement: '>3.3.4'
+        source:
+            provider: github
+            repo: yeikel/smoke-tests
+            directories:
+                - maven-wrapper/script-distribution
+            commit: 87ac42463ab2cd708cec48113ae1f2168a1cea39
+            hostname: github.com
+            api-endpoint: https://api.github.com
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: org.apache.maven:apache-maven
+                  requirements:
+                    - file: .mvn/wrapper/maven-wrapper.properties
+                      groups: []
+                      metadata:
+                        distribution_type: script
+                        distribution_version: 3.9.6
+                        include_debug_script: false
+                        packaging_type: pom
+                        wrapper_version: 3.3.2
+                      requirement: 3.9.6
+                      source:
+                        property: distributionUrl
+                        type: maven-distribution
+                        url: https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.6/apache-maven-3.9.6-bin.zip
+                    - file: .mvn/wrapper/maven-wrapper.properties
+                      groups: []
+                      requirement: 3.3.2
+                      source:
+                        property: wrapperUrl
+                        type: maven-distribution
+                        url: https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.3.2/maven-wrapper-3.3.2.jar
+                  version: 3.9.6
+                - name: org.apache.maven.wrapper:maven-wrapper
+                  requirements:
+                    - file: .mvn/wrapper/maven-wrapper.properties
+                      groups: []
+                      metadata:
+                        distribution_type: script
+                        distribution_version: 3.9.6
+                        include_debug_script: false
+                        packaging_type: pom
+                        wrapper_version: 3.3.2
+                      requirement: 3.3.2
+                      source:
+                        property: wrapperVersion
+                        type: maven-distribution
+                  version: 3.3.2
+            dependency_files:
+                - /maven-wrapper/script-distribution/pom.xml
+                - /maven-wrapper/script-distribution/.mvn/wrapper/maven-wrapper.properties
+                - /maven-wrapper/script-distribution/mvnw
+                - /maven-wrapper/script-distribution/mvnw.cmd
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 87ac42463ab2cd708cec48113ae1f2168a1cea39
+            dependencies:
+                - name: org.apache.maven:apache-maven
+                  previous-requirements:
+                    - file: .mvn/wrapper/maven-wrapper.properties
+                      groups: []
+                      metadata:
+                        distribution_type: script
+                        distribution_version: 3.9.6
+                        include_debug_script: false
+                        packaging_type: pom
+                        wrapper_version: 3.3.2
+                      requirement: 3.9.6
+                      source:
+                        property: distributionUrl
+                        type: maven-distribution
+                        url: https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.6/apache-maven-3.9.6-bin.zip
+                    - file: .mvn/wrapper/maven-wrapper.properties
+                      groups: []
+                      requirement: 3.3.2
+                      source:
+                        property: wrapperUrl
+                        type: maven-distribution
+                        url: https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.3.2/maven-wrapper-3.3.2.jar
+                  previous-version: 3.9.6
+                  requirements:
+                    - file: .mvn/wrapper/maven-wrapper.properties
+                      groups: []
+                      metadata:
+                        distribution_type: script
+                        distribution_version: 3.9.6
+                        include_debug_script: false
+                        packaging_type: pom
+                        wrapper_version: 3.3.2
+                      requirement: 3.9.15
+                      source:
+                        property: distributionUrl
+                        type: maven-distribution
+                        url: https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.6/apache-maven-3.9.6-bin.zip
+                    - file: .mvn/wrapper/maven-wrapper.properties
+                      groups: []
+                      requirement: 3.9.15
+                      source:
+                        property: wrapperUrl
+                        type: maven-distribution
+                        url: https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.3.2/maven-wrapper-3.3.2.jar
+                  version: 3.9.15
+                  directory: /maven-wrapper/script-distribution
+            updated-dependency-files:
+                - content: |
+                    # Licensed to the Apache Software Foundation (ASF) under one
+                    # or more contributor license agreements.  See the NOTICE file
+                    # distributed with this work for additional information
+                    # regarding copyright ownership.  The ASF licenses this file
+                    # to you under the Apache License, Version 2.0 (the
+                    # "License"); you may not use this file except in compliance
+                    # with the License.  You may obtain a copy of the License at
+                    #
+                    #   http://www.apache.org/licenses/LICENSE-2.0
+                    #
+                    # Unless required by applicable law or agreed to in writing,
+                    # software distributed under the License is distributed on an
+                    # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+                    # KIND, either express or implied.  See the License for the
+                    # specific language governing permissions and limitations
+                    # under the License.
+                    wrapperVersion=3.3.2
+                    distributionType=script
+                    distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.14/apache-maven-3.9.14-bin.zip
+                    wrapperUrl=https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.3.2/maven-wrapper-3.3.2.jar
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /maven-wrapper/script-distribution
+                  name: .mvn/wrapper/maven-wrapper.properties
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    #!/bin/sh
+                    # ----------------------------------------------------------------------------
+                    # Licensed to the Apache Software Foundation (ASF) under one
+                    # or more contributor license agreements.  See the NOTICE file
+                    # distributed with this work for additional information
+                    # regarding copyright ownership.  The ASF licenses this file
+                    # to you under the Apache License, Version 2.0 (the
+                    # "License"); you may not use this file except in compliance
+                    # with the License.  You may obtain a copy of the License at
+                    #
+                    #    http://www.apache.org/licenses/LICENSE-2.0
+                    #
+                    # Unless required by applicable law or agreed to in writing,
+                    # software distributed under the License is distributed on an
+                    # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+                    # KIND, either express or implied.  See the License for the
+                    # specific language governing permissions and limitations
+                    # under the License.
+                    # ----------------------------------------------------------------------------
+
+                    # ----------------------------------------------------------------------------
+                    # Apache Maven Wrapper startup batch script, version 3.3.2
+                    #
+                    # Required ENV vars:
+                    # ------------------
+                    #   JAVA_HOME - location of a JDK home dir
+                    #
+                    # Optional ENV vars
+                    # -----------------
+                    #   MAVEN_OPTS - parameters passed to the Java VM when running Maven
+                    #     e.g. to debug Maven itself, use
+                    #       set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
+                    #   MAVEN_SKIP_RC - flag to disable loading of mavenrc files
+                    # ----------------------------------------------------------------------------
+
+                    if [ -z "$MAVEN_SKIP_RC" ]; then
+
+                      if [ -f /usr/local/etc/mavenrc ]; then
+                        . /usr/local/etc/mavenrc
+                      fi
+
+                      if [ -f /etc/mavenrc ]; then
+                        . /etc/mavenrc
+                      fi
+
+                      if [ -f "$HOME/.mavenrc" ]; then
+                        . "$HOME/.mavenrc"
+                      fi
+
+                    fi
+
+                    # OS specific support.  $var _must_ be set to either true or false.
+                    cygwin=false
+                    darwin=false
+                    mingw=false
+                    case "$(uname)" in
+                    CYGWIN*) cygwin=true ;;
+                    MINGW*) mingw=true ;;
+                    Darwin*)
+                      darwin=true
+                      # Use /usr/libexec/java_home if available, otherwise fall back to /Library/Java/Home
+                      # See https://developer.apple.com/library/mac/qa/qa1170/_index.html
+                      if [ -z "$JAVA_HOME" ]; then
+                        if [ -x "/usr/libexec/java_home" ]; then
+                          JAVA_HOME="$(/usr/libexec/java_home)"
+                          export JAVA_HOME
+                        else
+                          JAVA_HOME="/Library/Java/Home"
+                          export JAVA_HOME
+                        fi
+                      fi
+                      ;;
+                    esac
+
+                    if [ -z "$JAVA_HOME" ]; then
+                      if [ -r /etc/gentoo-release ]; then
+                        JAVA_HOME=$(java-config --jre-home)
+                      fi
+                    fi
+
+                    # For Cygwin, ensure paths are in UNIX format before anything is touched
+                    if $cygwin; then
+                      [ -n "$JAVA_HOME" ] \
+                        && JAVA_HOME=$(cygpath --unix "$JAVA_HOME")
+                      [ -n "$CLASSPATH" ] \
+                        && CLASSPATH=$(cygpath --path --unix "$CLASSPATH")
+                    fi
+
+                    # For Mingw, ensure paths are in UNIX format before anything is touched
+                    if $mingw; then
+                      [ -n "$JAVA_HOME" ] && [ -d "$JAVA_HOME" ] \
+                        && JAVA_HOME="$(
+                          cd "$JAVA_HOME" || (
+                            echo "cannot cd into $JAVA_HOME." >&2
+                            exit 1
+                          )
+                          pwd
+                        )"
+                    fi
+
+                    if [ -z "$JAVA_HOME" ]; then
+                      javaExecutable="$(which javac)"
+                      if [ -n "$javaExecutable" ] && ! [ "$(expr "$javaExecutable" : '\([^ ]*\)')" = "no" ]; then
+                        # readlink(1) is not available as standard on Solaris 10.
+                        readLink=$(which readlink)
+                        if [ ! "$(expr "$readLink" : '\([^ ]*\)')" = "no" ]; then
+                          if $darwin; then
+                            javaHome="$(dirname "$javaExecutable")"
+                            javaExecutable="$(cd "$javaHome" && pwd -P)/javac"
+                          else
+                            javaExecutable="$(readlink -f "$javaExecutable")"
+                          fi
+                          javaHome="$(dirname "$javaExecutable")"
+                          javaHome=$(expr "$javaHome" : '\(.*\)/bin')
+                          JAVA_HOME="$javaHome"
+                          export JAVA_HOME
+                        fi
+                      fi
+                    fi
+
+                    if [ -z "$JAVACMD" ]; then
+                      if [ -n "$JAVA_HOME" ]; then
+                        if [ -x "$JAVA_HOME/jre/sh/java" ]; then
+                          # IBM's JDK on AIX uses strange locations for the executables
+                          JAVACMD="$JAVA_HOME/jre/sh/java"
+                        else
+                          JAVACMD="$JAVA_HOME/bin/java"
+                        fi
+                      else
+                        JAVACMD="$(
+                          \unset -f command 2>/dev/null
+                          \command -v java
+                        )"
+                      fi
+                    fi
+
+                    if [ ! -x "$JAVACMD" ]; then
+                      echo "Error: JAVA_HOME is not defined correctly." >&2
+                      echo "  We cannot execute $JAVACMD" >&2
+                      exit 1
+                    fi
+
+                    if [ -z "$JAVA_HOME" ]; then
+                      echo "Warning: JAVA_HOME environment variable is not set." >&2
+                    fi
+
+                    # traverses directory structure from process work directory to filesystem root
+                    # first directory with .mvn subdirectory is considered project base directory
+                    find_maven_basedir() {
+                      if [ -z "$1" ]; then
+                        echo "Path not specified to find_maven_basedir" >&2
+                        return 1
+                      fi
+
+                      basedir="$1"
+                      wdir="$1"
+                      while [ "$wdir" != '/' ]; do
+                        if [ -d "$wdir"/.mvn ]; then
+                          basedir=$wdir
+                          break
+                        fi
+                        # workaround for JBEAP-8937 (on Solaris 10/Sparc)
+                        if [ -d "${wdir}" ]; then
+                          wdir=$(
+                            cd "$wdir/.." || exit 1
+                            pwd
+                          )
+                        fi
+                        # end of workaround
+                      done
+                      printf '%s' "$(
+                        cd "$basedir" || exit 1
+                        pwd
+                      )"
+                    }
+
+                    # concatenates all lines of a file
+                    concat_lines() {
+                      if [ -f "$1" ]; then
+                        # Remove \r in case we run on Windows within Git Bash
+                        # and check out the repository with auto CRLF management
+                        # enabled. Otherwise, we may read lines that are delimited with
+                        # \r\n and produce $'-Xarg\r' rather than -Xarg due to word
+                        # splitting rules.
+                        tr -s '\r\n' ' ' <"$1"
+                      fi
+                    }
+
+                    log() {
+                      if [ "$MVNW_VERBOSE" = true ]; then
+                        printf '%s\n' "$1"
+                      fi
+                    }
+
+                    BASE_DIR=$(find_maven_basedir "$(dirname "$0")")
+                    if [ -z "$BASE_DIR" ]; then
+                      exit 1
+                    fi
+
+                    MAVEN_PROJECTBASEDIR=${MAVEN_BASEDIR:-"$BASE_DIR"}
+                    export MAVEN_PROJECTBASEDIR
+                    log "$MAVEN_PROJECTBASEDIR"
+
+                    ##########################################################################################
+                    # Extension to allow automatically downloading the maven-wrapper.jar from Maven-central
+                    # This allows using the maven wrapper in projects that prohibit checking in binary data.
+                    ##########################################################################################
+                    wrapperJarPath="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar"
+                    if [ -r "$wrapperJarPath" ]; then
+                      log "Found $wrapperJarPath"
+                    else
+                      log "Couldn't find $wrapperJarPath, downloading it ..."
+
+                      if [ -n "$MVNW_REPOURL" ]; then
+                        wrapperUrl="$MVNW_REPOURL/org/apache/maven/wrapper/maven-wrapper/3.3.2/maven-wrapper-3.3.2.jar"
+                      else
+                        wrapperUrl="https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.3.2/maven-wrapper-3.3.2.jar"
+                      fi
+                      while IFS="=" read -r key value; do
+                        # Remove '\r' from value to allow usage on windows as IFS does not consider '\r' as a separator ( considers space, tab, new line ('\n'), and custom '=' )
+                        safeValue=$(echo "$value" | tr -d '\r')
+                        case "$key" in wrapperUrl)
+                          wrapperUrl="$safeValue"
+                          break
+                          ;;
+                        esac
+                      done <"$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.properties"
+                      log "Downloading from: $wrapperUrl"
+
+                      if $cygwin; then
+                        wrapperJarPath=$(cygpath --path --windows "$wrapperJarPath")
+                      fi
+
+                      if command -v wget >/dev/null; then
+                        log "Found wget ... using wget"
+                        [ "$MVNW_VERBOSE" = true ] && QUIET="" || QUIET="--quiet"
+                        if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
+                          wget $QUIET "$wrapperUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
+                        else
+                          wget $QUIET --http-user="$MVNW_USERNAME" --http-password="$MVNW_PASSWORD" "$wrapperUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
+                        fi
+                      elif command -v curl >/dev/null; then
+                        log "Found curl ... using curl"
+                        [ "$MVNW_VERBOSE" = true ] && QUIET="" || QUIET="--silent"
+                        if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
+                          curl $QUIET -o "$wrapperJarPath" "$wrapperUrl" -f -L || rm -f "$wrapperJarPath"
+                        else
+                          curl $QUIET --user "$MVNW_USERNAME:$MVNW_PASSWORD" -o "$wrapperJarPath" "$wrapperUrl" -f -L || rm -f "$wrapperJarPath"
+                        fi
+                      else
+                        log "Falling back to using Java to download"
+                        javaSource="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/MavenWrapperDownloader.java"
+                        javaClass="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/MavenWrapperDownloader.class"
+                        # For Cygwin, switch paths to Windows format before running javac
+                        if $cygwin; then
+                          javaSource=$(cygpath --path --windows "$javaSource")
+                          javaClass=$(cygpath --path --windows "$javaClass")
+                        fi
+                        if [ -e "$javaSource" ]; then
+                          if [ ! -e "$javaClass" ]; then
+                            log " - Compiling MavenWrapperDownloader.java ..."
+                            ("$JAVA_HOME/bin/javac" "$javaSource")
+                          fi
+                          if [ -e "$javaClass" ]; then
+                            log " - Running MavenWrapperDownloader.java ..."
+                            ("$JAVA_HOME/bin/java" -cp .mvn/wrapper MavenWrapperDownloader "$wrapperUrl" "$wrapperJarPath") || rm -f "$wrapperJarPath"
+                          fi
+                        fi
+                      fi
+                    fi
+                    ##########################################################################################
+                    # End of extension
+                    ##########################################################################################
+
+                    # If specified, validate the SHA-256 sum of the Maven wrapper jar file
+                    wrapperSha256Sum=""
+                    while IFS="=" read -r key value; do
+                      case "$key" in wrapperSha256Sum)
+                        wrapperSha256Sum=$value
+                        break
+                        ;;
+                      esac
+                    done <"$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.properties"
+                    if [ -n "$wrapperSha256Sum" ]; then
+                      wrapperSha256Result=false
+                      if command -v sha256sum >/dev/null; then
+                        if echo "$wrapperSha256Sum  $wrapperJarPath" | sha256sum -c >/dev/null 2>&1; then
+                          wrapperSha256Result=true
+                        fi
+                      elif command -v shasum >/dev/null; then
+                        if echo "$wrapperSha256Sum  $wrapperJarPath" | shasum -a 256 -c >/dev/null 2>&1; then
+                          wrapperSha256Result=true
+                        fi
+                      else
+                        echo "Checksum validation was requested but neither 'sha256sum' or 'shasum' are available." >&2
+                        echo "Please install either command, or disable validation by removing 'wrapperSha256Sum' from your maven-wrapper.properties." >&2
+                        exit 1
+                      fi
+                      if [ $wrapperSha256Result = false ]; then
+                        echo "Error: Failed to validate Maven wrapper SHA-256, your Maven wrapper might be compromised." >&2
+                        echo "Investigate or delete $wrapperJarPath to attempt a clean download." >&2
+                        echo "If you updated your Maven version, you need to update the specified wrapperSha256Sum property." >&2
+                        exit 1
+                      fi
+                    fi
+
+                    MAVEN_OPTS="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/jvm.config") $MAVEN_OPTS"
+
+                    # For Cygwin, switch paths to Windows format before running java
+                    if $cygwin; then
+                      [ -n "$JAVA_HOME" ] \
+                        && JAVA_HOME=$(cygpath --path --windows "$JAVA_HOME")
+                      [ -n "$CLASSPATH" ] \
+                        && CLASSPATH=$(cygpath --path --windows "$CLASSPATH")
+                      [ -n "$MAVEN_PROJECTBASEDIR" ] \
+                        && MAVEN_PROJECTBASEDIR=$(cygpath --path --windows "$MAVEN_PROJECTBASEDIR")
+                    fi
+
+                    # Provide a "standardized" way to retrieve the CLI args that will
+                    # work with both Windows and non-Windows executions.
+                    MAVEN_CMD_LINE_ARGS="$MAVEN_CONFIG $*"
+                    export MAVEN_CMD_LINE_ARGS
+
+                    WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
+
+                    # shellcheck disable=SC2086 # safe args
+                    exec "$JAVACMD" \
+                      $MAVEN_OPTS \
+                      $MAVEN_DEBUG_OPTS \
+                      -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \
+                      "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
+                      ${WRAPPER_LAUNCHER} $MAVEN_CONFIG "$@"
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /maven-wrapper/script-distribution
+                  name: mvnw
+                  operation: update
+                  support_file: false
+                  type: file
+                  mode: "100755"
+                - content: "@REM ----------------------------------------------------------------------------\r\n@REM Licensed to the Apache Software Foundation (ASF) under one\r\n@REM or more contributor license agreements.  See the NOTICE file\r\n@REM distributed with this work for additional information\r\n@REM regarding copyright ownership.  The ASF licenses this file\r\n@REM to you under the Apache License, Version 2.0 (the\r\n@REM \"License\"); you may not use this file except in compliance\r\n@REM with the License.  You may obtain a copy of the License at\r\n@REM\r\n@REM    http://www.apache.org/licenses/LICENSE-2.0\r\n@REM\r\n@REM Unless required by applicable law or agreed to in writing,\r\n@REM software distributed under the License is distributed on an\r\n@REM \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY\r\n@REM KIND, either express or implied.  See the License for the\r\n@REM specific language governing permissions and limitations\r\n@REM under the License.\r\n@REM ----------------------------------------------------------------------------\r\n\r\n@REM ----------------------------------------------------------------------------\r\n@REM Apache Maven Wrapper startup batch script, version 3.3.2\r\n@REM\r\n@REM Required ENV vars:\r\n@REM JAVA_HOME - location of a JDK home dir\r\n@REM\r\n@REM Optional ENV vars\r\n@REM MAVEN_BATCH_ECHO - set to 'on' to enable the echoing of the batch commands\r\n@REM MAVEN_BATCH_PAUSE - set to 'on' to wait for a keystroke before ending\r\n@REM MAVEN_OPTS - parameters passed to the Java VM when running Maven\r\n@REM     e.g. to debug Maven itself, use\r\n@REM set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000\r\n@REM MAVEN_SKIP_RC - flag to disable loading of mavenrc files\r\n@REM ----------------------------------------------------------------------------\r\n\r\n@REM Begin all REM lines with '@' in case MAVEN_BATCH_ECHO is 'on'\r\n@echo off\r\n@REM set title of command window\r\ntitle %0\r\n@REM enable echoing by setting MAVEN_BATCH_ECHO to 'on'\r\n@if \"%MAVEN_BATCH_ECHO%\" == \"on\"  echo %MAVEN_BATCH_ECHO%\r\n\r\n@REM set %HOME% to equivalent of $HOME\r\nif \"%HOME%\" == \"\" (set \"HOME=%HOMEDRIVE%%HOMEPATH%\")\r\n\r\n@REM Execute a user defined script before this one\r\nif not \"%MAVEN_SKIP_RC%\" == \"\" goto skipRcPre\r\n@REM check for pre script, once with legacy .bat ending and once with .cmd ending\r\nif exist \"%USERPROFILE%\\mavenrc_pre.bat\" call \"%USERPROFILE%\\mavenrc_pre.bat\" %*\r\nif exist \"%USERPROFILE%\\mavenrc_pre.cmd\" call \"%USERPROFILE%\\mavenrc_pre.cmd\" %*\r\n:skipRcPre\r\n\r\n@setlocal\r\n\r\nset ERROR_CODE=0\r\n\r\n@REM To isolate internal variables from possible post scripts, we use another setlocal\r\n@setlocal\r\n\r\n@REM ==== START VALIDATION ====\r\nif not \"%JAVA_HOME%\" == \"\" goto OkJHome\r\n\r\necho. >&2\r\necho Error: JAVA_HOME not found in your environment. >&2\r\necho Please set the JAVA_HOME variable in your environment to match the >&2\r\necho location of your Java installation. >&2\r\necho. >&2\r\ngoto error\r\n\r\n:OkJHome\r\nif exist \"%JAVA_HOME%\\bin\\java.exe\" goto init\r\n\r\necho. >&2\r\necho Error: JAVA_HOME is set to an invalid directory. >&2\r\necho JAVA_HOME = \"%JAVA_HOME%\" >&2\r\necho Please set the JAVA_HOME variable in your environment to match the >&2\r\necho location of your Java installation. >&2\r\necho. >&2\r\ngoto error\r\n\r\n@REM ==== END VALIDATION ====\r\n\r\n:init\r\n\r\n@REM Find the project base dir, i.e. the directory that contains the folder \".mvn\".\r\n@REM Fallback to current working directory if not found.\r\n\r\nset MAVEN_PROJECTBASEDIR=%MAVEN_BASEDIR%\r\nIF NOT \"%MAVEN_PROJECTBASEDIR%\"==\"\" goto endDetectBaseDir\r\n\r\nset EXEC_DIR=%CD%\r\nset WDIR=%EXEC_DIR%\r\n:findBaseDir\r\nIF EXIST \"%WDIR%\"\\.mvn goto baseDirFound\r\ncd ..\r\nIF \"%WDIR%\"==\"%CD%\" goto baseDirNotFound\r\nset WDIR=%CD%\r\ngoto findBaseDir\r\n\r\n:baseDirFound\r\nset MAVEN_PROJECTBASEDIR=%WDIR%\r\ncd \"%EXEC_DIR%\"\r\ngoto endDetectBaseDir\r\n\r\n:baseDirNotFound\r\nset MAVEN_PROJECTBASEDIR=%EXEC_DIR%\r\ncd \"%EXEC_DIR%\"\r\n\r\n:endDetectBaseDir\r\n\r\nIF NOT EXIST \"%MAVEN_PROJECTBASEDIR%\\.mvn\\jvm.config\" goto endReadAdditionalConfig\r\n\r\n@setlocal EnableExtensions EnableDelayedExpansion\r\nfor /F \"usebackq delims=\" %%a in (\"%MAVEN_PROJECTBASEDIR%\\.mvn\\jvm.config\") do set JVM_CONFIG_MAVEN_PROPS=!JVM_CONFIG_MAVEN_PROPS! %%a\r\n@endlocal & set JVM_CONFIG_MAVEN_PROPS=%JVM_CONFIG_MAVEN_PROPS%\r\n\r\n:endReadAdditionalConfig\r\n\r\nSET MAVEN_JAVA_EXE=\"%JAVA_HOME%\\bin\\java.exe\"\r\nset WRAPPER_JAR=\"%MAVEN_PROJECTBASEDIR%\\.mvn\\wrapper\\maven-wrapper.jar\"\r\nset WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain\r\n\r\nset WRAPPER_URL=\"https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.3.2/maven-wrapper-3.3.2.jar\"\r\n\r\nFOR /F \"usebackq tokens=1,2 delims==\" %%A IN (\"%MAVEN_PROJECTBASEDIR%\\.mvn\\wrapper\\maven-wrapper.properties\") DO (\r\n    IF \"%%A\"==\"wrapperUrl\" SET WRAPPER_URL=%%B\r\n)\r\n\r\n@REM Extension to allow automatically downloading the maven-wrapper.jar from Maven-central\r\n@REM This allows using the maven wrapper in projects that prohibit checking in binary data.\r\nif exist %WRAPPER_JAR% (\r\n    if \"%MVNW_VERBOSE%\" == \"true\" (\r\n        echo Found %WRAPPER_JAR%\r\n    )\r\n) else (\r\n    if not \"%MVNW_REPOURL%\" == \"\" (\r\n        SET WRAPPER_URL=\"%MVNW_REPOURL%/org/apache/maven/wrapper/maven-wrapper/3.3.2/maven-wrapper-3.3.2.jar\"\r\n    )\r\n    if \"%MVNW_VERBOSE%\" == \"true\" (\r\n        echo Couldn't find %WRAPPER_JAR%, downloading it ...\r\n        echo Downloading from: %WRAPPER_URL%\r\n    )\r\n\r\n    powershell -Command \"&{\"^\r\n\t\t\"$webclient = new-object System.Net.WebClient;\"^\r\n\t\t\"if (-not ([string]::IsNullOrEmpty('%MVNW_USERNAME%') -and [string]::IsNullOrEmpty('%MVNW_PASSWORD%'))) {\"^\r\n\t\t\"$webclient.Credentials = new-object System.Net.NetworkCredential('%MVNW_USERNAME%', '%MVNW_PASSWORD%');\"^\r\n\t\t\"}\"^\r\n\t\t\"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $webclient.DownloadFile('%WRAPPER_URL%', '%WRAPPER_JAR%')\"^\r\n\t\t\"}\"\r\n    if \"%MVNW_VERBOSE%\" == \"true\" (\r\n        echo Finished downloading %WRAPPER_JAR%\r\n    )\r\n)\r\n@REM End of extension\r\n\r\n@REM If specified, validate the SHA-256 sum of the Maven wrapper jar file\r\nSET WRAPPER_SHA_256_SUM=\"\"\r\nFOR /F \"usebackq tokens=1,2 delims==\" %%A IN (\"%MAVEN_PROJECTBASEDIR%\\.mvn\\wrapper\\maven-wrapper.properties\") DO (\r\n    IF \"%%A\"==\"wrapperSha256Sum\" SET WRAPPER_SHA_256_SUM=%%B\r\n)\r\nIF NOT %WRAPPER_SHA_256_SUM%==\"\" (\r\n    powershell -Command \"&{\"^\r\n       \"Import-Module $PSHOME\\Modules\\Microsoft.PowerShell.Utility -Function Get-FileHash;\"^\r\n       \"$hash = (Get-FileHash \\\"%WRAPPER_JAR%\\\" -Algorithm SHA256).Hash.ToLower();\"^\r\n       \"If('%WRAPPER_SHA_256_SUM%' -ne $hash){\"^\r\n       \"  Write-Error 'Error: Failed to validate Maven wrapper SHA-256, your Maven wrapper might be compromised.';\"^\r\n       \"  Write-Error 'Investigate or delete %WRAPPER_JAR% to attempt a clean download.';\"^\r\n       \"  Write-Error 'If you updated your Maven version, you need to update the specified wrapperSha256Sum property.';\"^\r\n       \"  exit 1;\"^\r\n       \"}\"^\r\n       \"}\"\r\n    if ERRORLEVEL 1 goto error\r\n)\r\n\r\n@REM Provide a \"standardized\" way to retrieve the CLI args that will\r\n@REM work with both Windows and non-Windows executions.\r\nset MAVEN_CMD_LINE_ARGS=%*\r\n\r\n%MAVEN_JAVA_EXE% ^\r\n  %JVM_CONFIG_MAVEN_PROPS% ^\r\n  %MAVEN_OPTS% ^\r\n  %MAVEN_DEBUG_OPTS% ^\r\n  -classpath %WRAPPER_JAR% ^\r\n  \"-Dmaven.multiModuleProjectDirectory=%MAVEN_PROJECTBASEDIR%\" ^\r\n  %WRAPPER_LAUNCHER% %MAVEN_CONFIG% %*\r\nif ERRORLEVEL 1 goto error\r\ngoto end\r\n\r\n:error\r\nset ERROR_CODE=1\r\n\r\n:end\r\n@endlocal & set ERROR_CODE=%ERROR_CODE%\r\n\r\nif not \"%MAVEN_SKIP_RC%\"==\"\" goto skipRcPost\r\n@REM check for post script, once with legacy .bat ending and once with .cmd ending\r\nif exist \"%USERPROFILE%\\mavenrc_post.bat\" call \"%USERPROFILE%\\mavenrc_post.bat\"\r\nif exist \"%USERPROFILE%\\mavenrc_post.cmd\" call \"%USERPROFILE%\\mavenrc_post.cmd\"\r\n:skipRcPost\r\n\r\n@REM pause the script if MAVEN_BATCH_PAUSE is set to 'on'\r\nif \"%MAVEN_BATCH_PAUSE%\"==\"on\" pause\r\n\r\nif \"%MAVEN_TERMINATE_CMD%\"==\"on\" exit %ERROR_CODE%\r\n\r\ncmd /C exit /B %ERROR_CODE%\r\n"
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /maven-wrapper/script-distribution
+                  name: mvnw.cmd
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump org.apache.maven:apache-maven from 3.9.6 to 3.9.15 in /maven-wrapper/script-distribution
+            pr-body: |
+                Bumps org.apache.maven:apache-maven from 3.9.6 to 3.9.15.
+            commit-message: |-
+                Bump org.apache.maven:apache-maven in /maven-wrapper/script-distribution
+
+                Bumps org.apache.maven:apache-maven from 3.9.6 to 3.9.15.
+    - type: record_ecosystem_meta
+      expect:
+        data:
+            - ecosystem:
+                name: maven
+                package_manager:
+                    name: maven
+                    version: NOT-AVAILABLE
+                    raw_version: NOT-AVAILABLE
+                language:
+                    name: java
+                    version: NOT-AVAILABLE
+                    raw_version: NOT-AVAILABLE
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 87ac42463ab2cd708cec48113ae1f2168a1cea39
+            dependencies:
+                - name: org.apache.maven.wrapper:maven-wrapper
+                  previous-requirements:
+                    - file: .mvn/wrapper/maven-wrapper.properties
+                      groups: []
+                      metadata:
+                        distribution_type: script
+                        distribution_version: 3.9.6
+                        include_debug_script: false
+                        packaging_type: pom
+                        wrapper_version: 3.3.2
+                      requirement: 3.3.2
+                      source:
+                        property: wrapperVersion
+                        type: maven-distribution
+                  previous-version: 3.3.2
+                  requirements:
+                    - file: .mvn/wrapper/maven-wrapper.properties
+                      groups: []
+                      metadata:
+                        distribution_type: script
+                        distribution_version: 3.9.6
+                        include_debug_script: false
+                        packaging_type: pom
+                        wrapper_version: 3.3.2
+                      requirement: 3.3.4
+                      source:
+                        property: wrapperVersion
+                        type: maven-distribution
+                  version: 3.3.4
+                  directory: /maven-wrapper/script-distribution
+            updated-dependency-files:
+                - content: |
+                    # Licensed to the Apache Software Foundation (ASF) under one
+                    # or more contributor license agreements.  See the NOTICE file
+                    # distributed with this work for additional information
+                    # regarding copyright ownership.  The ASF licenses this file
+                    # to you under the Apache License, Version 2.0 (the
+                    # "License"); you may not use this file except in compliance
+                    # with the License.  You may obtain a copy of the License at
+                    #
+                    #   http://www.apache.org/licenses/LICENSE-2.0
+                    #
+                    # Unless required by applicable law or agreed to in writing,
+                    # software distributed under the License is distributed on an
+                    # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+                    # KIND, either express or implied.  See the License for the
+                    # specific language governing permissions and limitations
+                    # under the License.
+                    wrapperVersion=3.3.2
+                    distributionType=script
+                    distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.14/apache-maven-3.9.14-bin.zip
+                    wrapperUrl=https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.3.2/maven-wrapper-3.3.2.jar
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /maven-wrapper/script-distribution
+                  name: .mvn/wrapper/maven-wrapper.properties
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    #!/bin/sh
+                    # ----------------------------------------------------------------------------
+                    # Licensed to the Apache Software Foundation (ASF) under one
+                    # or more contributor license agreements.  See the NOTICE file
+                    # distributed with this work for additional information
+                    # regarding copyright ownership.  The ASF licenses this file
+                    # to you under the Apache License, Version 2.0 (the
+                    # "License"); you may not use this file except in compliance
+                    # with the License.  You may obtain a copy of the License at
+                    #
+                    #    http://www.apache.org/licenses/LICENSE-2.0
+                    #
+                    # Unless required by applicable law or agreed to in writing,
+                    # software distributed under the License is distributed on an
+                    # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+                    # KIND, either express or implied.  See the License for the
+                    # specific language governing permissions and limitations
+                    # under the License.
+                    # ----------------------------------------------------------------------------
+
+                    # ----------------------------------------------------------------------------
+                    # Apache Maven Wrapper startup batch script, version 3.3.2
+                    #
+                    # Required ENV vars:
+                    # ------------------
+                    #   JAVA_HOME - location of a JDK home dir
+                    #
+                    # Optional ENV vars
+                    # -----------------
+                    #   MAVEN_OPTS - parameters passed to the Java VM when running Maven
+                    #     e.g. to debug Maven itself, use
+                    #       set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
+                    #   MAVEN_SKIP_RC - flag to disable loading of mavenrc files
+                    # ----------------------------------------------------------------------------
+
+                    if [ -z "$MAVEN_SKIP_RC" ]; then
+
+                      if [ -f /usr/local/etc/mavenrc ]; then
+                        . /usr/local/etc/mavenrc
+                      fi
+
+                      if [ -f /etc/mavenrc ]; then
+                        . /etc/mavenrc
+                      fi
+
+                      if [ -f "$HOME/.mavenrc" ]; then
+                        . "$HOME/.mavenrc"
+                      fi
+
+                    fi
+
+                    # OS specific support.  $var _must_ be set to either true or false.
+                    cygwin=false
+                    darwin=false
+                    mingw=false
+                    case "$(uname)" in
+                    CYGWIN*) cygwin=true ;;
+                    MINGW*) mingw=true ;;
+                    Darwin*)
+                      darwin=true
+                      # Use /usr/libexec/java_home if available, otherwise fall back to /Library/Java/Home
+                      # See https://developer.apple.com/library/mac/qa/qa1170/_index.html
+                      if [ -z "$JAVA_HOME" ]; then
+                        if [ -x "/usr/libexec/java_home" ]; then
+                          JAVA_HOME="$(/usr/libexec/java_home)"
+                          export JAVA_HOME
+                        else
+                          JAVA_HOME="/Library/Java/Home"
+                          export JAVA_HOME
+                        fi
+                      fi
+                      ;;
+                    esac
+
+                    if [ -z "$JAVA_HOME" ]; then
+                      if [ -r /etc/gentoo-release ]; then
+                        JAVA_HOME=$(java-config --jre-home)
+                      fi
+                    fi
+
+                    # For Cygwin, ensure paths are in UNIX format before anything is touched
+                    if $cygwin; then
+                      [ -n "$JAVA_HOME" ] \
+                        && JAVA_HOME=$(cygpath --unix "$JAVA_HOME")
+                      [ -n "$CLASSPATH" ] \
+                        && CLASSPATH=$(cygpath --path --unix "$CLASSPATH")
+                    fi
+
+                    # For Mingw, ensure paths are in UNIX format before anything is touched
+                    if $mingw; then
+                      [ -n "$JAVA_HOME" ] && [ -d "$JAVA_HOME" ] \
+                        && JAVA_HOME="$(
+                          cd "$JAVA_HOME" || (
+                            echo "cannot cd into $JAVA_HOME." >&2
+                            exit 1
+                          )
+                          pwd
+                        )"
+                    fi
+
+                    if [ -z "$JAVA_HOME" ]; then
+                      javaExecutable="$(which javac)"
+                      if [ -n "$javaExecutable" ] && ! [ "$(expr "$javaExecutable" : '\([^ ]*\)')" = "no" ]; then
+                        # readlink(1) is not available as standard on Solaris 10.
+                        readLink=$(which readlink)
+                        if [ ! "$(expr "$readLink" : '\([^ ]*\)')" = "no" ]; then
+                          if $darwin; then
+                            javaHome="$(dirname "$javaExecutable")"
+                            javaExecutable="$(cd "$javaHome" && pwd -P)/javac"
+                          else
+                            javaExecutable="$(readlink -f "$javaExecutable")"
+                          fi
+                          javaHome="$(dirname "$javaExecutable")"
+                          javaHome=$(expr "$javaHome" : '\(.*\)/bin')
+                          JAVA_HOME="$javaHome"
+                          export JAVA_HOME
+                        fi
+                      fi
+                    fi
+
+                    if [ -z "$JAVACMD" ]; then
+                      if [ -n "$JAVA_HOME" ]; then
+                        if [ -x "$JAVA_HOME/jre/sh/java" ]; then
+                          # IBM's JDK on AIX uses strange locations for the executables
+                          JAVACMD="$JAVA_HOME/jre/sh/java"
+                        else
+                          JAVACMD="$JAVA_HOME/bin/java"
+                        fi
+                      else
+                        JAVACMD="$(
+                          \unset -f command 2>/dev/null
+                          \command -v java
+                        )"
+                      fi
+                    fi
+
+                    if [ ! -x "$JAVACMD" ]; then
+                      echo "Error: JAVA_HOME is not defined correctly." >&2
+                      echo "  We cannot execute $JAVACMD" >&2
+                      exit 1
+                    fi
+
+                    if [ -z "$JAVA_HOME" ]; then
+                      echo "Warning: JAVA_HOME environment variable is not set." >&2
+                    fi
+
+                    # traverses directory structure from process work directory to filesystem root
+                    # first directory with .mvn subdirectory is considered project base directory
+                    find_maven_basedir() {
+                      if [ -z "$1" ]; then
+                        echo "Path not specified to find_maven_basedir" >&2
+                        return 1
+                      fi
+
+                      basedir="$1"
+                      wdir="$1"
+                      while [ "$wdir" != '/' ]; do
+                        if [ -d "$wdir"/.mvn ]; then
+                          basedir=$wdir
+                          break
+                        fi
+                        # workaround for JBEAP-8937 (on Solaris 10/Sparc)
+                        if [ -d "${wdir}" ]; then
+                          wdir=$(
+                            cd "$wdir/.." || exit 1
+                            pwd
+                          )
+                        fi
+                        # end of workaround
+                      done
+                      printf '%s' "$(
+                        cd "$basedir" || exit 1
+                        pwd
+                      )"
+                    }
+
+                    # concatenates all lines of a file
+                    concat_lines() {
+                      if [ -f "$1" ]; then
+                        # Remove \r in case we run on Windows within Git Bash
+                        # and check out the repository with auto CRLF management
+                        # enabled. Otherwise, we may read lines that are delimited with
+                        # \r\n and produce $'-Xarg\r' rather than -Xarg due to word
+                        # splitting rules.
+                        tr -s '\r\n' ' ' <"$1"
+                      fi
+                    }
+
+                    log() {
+                      if [ "$MVNW_VERBOSE" = true ]; then
+                        printf '%s\n' "$1"
+                      fi
+                    }
+
+                    BASE_DIR=$(find_maven_basedir "$(dirname "$0")")
+                    if [ -z "$BASE_DIR" ]; then
+                      exit 1
+                    fi
+
+                    MAVEN_PROJECTBASEDIR=${MAVEN_BASEDIR:-"$BASE_DIR"}
+                    export MAVEN_PROJECTBASEDIR
+                    log "$MAVEN_PROJECTBASEDIR"
+
+                    ##########################################################################################
+                    # Extension to allow automatically downloading the maven-wrapper.jar from Maven-central
+                    # This allows using the maven wrapper in projects that prohibit checking in binary data.
+                    ##########################################################################################
+                    wrapperJarPath="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar"
+                    if [ -r "$wrapperJarPath" ]; then
+                      log "Found $wrapperJarPath"
+                    else
+                      log "Couldn't find $wrapperJarPath, downloading it ..."
+
+                      if [ -n "$MVNW_REPOURL" ]; then
+                        wrapperUrl="$MVNW_REPOURL/org/apache/maven/wrapper/maven-wrapper/3.3.2/maven-wrapper-3.3.2.jar"
+                      else
+                        wrapperUrl="https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.3.2/maven-wrapper-3.3.2.jar"
+                      fi
+                      while IFS="=" read -r key value; do
+                        # Remove '\r' from value to allow usage on windows as IFS does not consider '\r' as a separator ( considers space, tab, new line ('\n'), and custom '=' )
+                        safeValue=$(echo "$value" | tr -d '\r')
+                        case "$key" in wrapperUrl)
+                          wrapperUrl="$safeValue"
+                          break
+                          ;;
+                        esac
+                      done <"$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.properties"
+                      log "Downloading from: $wrapperUrl"
+
+                      if $cygwin; then
+                        wrapperJarPath=$(cygpath --path --windows "$wrapperJarPath")
+                      fi
+
+                      if command -v wget >/dev/null; then
+                        log "Found wget ... using wget"
+                        [ "$MVNW_VERBOSE" = true ] && QUIET="" || QUIET="--quiet"
+                        if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
+                          wget $QUIET "$wrapperUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
+                        else
+                          wget $QUIET --http-user="$MVNW_USERNAME" --http-password="$MVNW_PASSWORD" "$wrapperUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
+                        fi
+                      elif command -v curl >/dev/null; then
+                        log "Found curl ... using curl"
+                        [ "$MVNW_VERBOSE" = true ] && QUIET="" || QUIET="--silent"
+                        if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
+                          curl $QUIET -o "$wrapperJarPath" "$wrapperUrl" -f -L || rm -f "$wrapperJarPath"
+                        else
+                          curl $QUIET --user "$MVNW_USERNAME:$MVNW_PASSWORD" -o "$wrapperJarPath" "$wrapperUrl" -f -L || rm -f "$wrapperJarPath"
+                        fi
+                      else
+                        log "Falling back to using Java to download"
+                        javaSource="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/MavenWrapperDownloader.java"
+                        javaClass="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/MavenWrapperDownloader.class"
+                        # For Cygwin, switch paths to Windows format before running javac
+                        if $cygwin; then
+                          javaSource=$(cygpath --path --windows "$javaSource")
+                          javaClass=$(cygpath --path --windows "$javaClass")
+                        fi
+                        if [ -e "$javaSource" ]; then
+                          if [ ! -e "$javaClass" ]; then
+                            log " - Compiling MavenWrapperDownloader.java ..."
+                            ("$JAVA_HOME/bin/javac" "$javaSource")
+                          fi
+                          if [ -e "$javaClass" ]; then
+                            log " - Running MavenWrapperDownloader.java ..."
+                            ("$JAVA_HOME/bin/java" -cp .mvn/wrapper MavenWrapperDownloader "$wrapperUrl" "$wrapperJarPath") || rm -f "$wrapperJarPath"
+                          fi
+                        fi
+                      fi
+                    fi
+                    ##########################################################################################
+                    # End of extension
+                    ##########################################################################################
+
+                    # If specified, validate the SHA-256 sum of the Maven wrapper jar file
+                    wrapperSha256Sum=""
+                    while IFS="=" read -r key value; do
+                      case "$key" in wrapperSha256Sum)
+                        wrapperSha256Sum=$value
+                        break
+                        ;;
+                      esac
+                    done <"$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.properties"
+                    if [ -n "$wrapperSha256Sum" ]; then
+                      wrapperSha256Result=false
+                      if command -v sha256sum >/dev/null; then
+                        if echo "$wrapperSha256Sum  $wrapperJarPath" | sha256sum -c >/dev/null 2>&1; then
+                          wrapperSha256Result=true
+                        fi
+                      elif command -v shasum >/dev/null; then
+                        if echo "$wrapperSha256Sum  $wrapperJarPath" | shasum -a 256 -c >/dev/null 2>&1; then
+                          wrapperSha256Result=true
+                        fi
+                      else
+                        echo "Checksum validation was requested but neither 'sha256sum' or 'shasum' are available." >&2
+                        echo "Please install either command, or disable validation by removing 'wrapperSha256Sum' from your maven-wrapper.properties." >&2
+                        exit 1
+                      fi
+                      if [ $wrapperSha256Result = false ]; then
+                        echo "Error: Failed to validate Maven wrapper SHA-256, your Maven wrapper might be compromised." >&2
+                        echo "Investigate or delete $wrapperJarPath to attempt a clean download." >&2
+                        echo "If you updated your Maven version, you need to update the specified wrapperSha256Sum property." >&2
+                        exit 1
+                      fi
+                    fi
+
+                    MAVEN_OPTS="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/jvm.config") $MAVEN_OPTS"
+
+                    # For Cygwin, switch paths to Windows format before running java
+                    if $cygwin; then
+                      [ -n "$JAVA_HOME" ] \
+                        && JAVA_HOME=$(cygpath --path --windows "$JAVA_HOME")
+                      [ -n "$CLASSPATH" ] \
+                        && CLASSPATH=$(cygpath --path --windows "$CLASSPATH")
+                      [ -n "$MAVEN_PROJECTBASEDIR" ] \
+                        && MAVEN_PROJECTBASEDIR=$(cygpath --path --windows "$MAVEN_PROJECTBASEDIR")
+                    fi
+
+                    # Provide a "standardized" way to retrieve the CLI args that will
+                    # work with both Windows and non-Windows executions.
+                    MAVEN_CMD_LINE_ARGS="$MAVEN_CONFIG $*"
+                    export MAVEN_CMD_LINE_ARGS
+
+                    WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
+
+                    # shellcheck disable=SC2086 # safe args
+                    exec "$JAVACMD" \
+                      $MAVEN_OPTS \
+                      $MAVEN_DEBUG_OPTS \
+                      -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \
+                      "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
+                      ${WRAPPER_LAUNCHER} $MAVEN_CONFIG "$@"
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /maven-wrapper/script-distribution
+                  name: mvnw
+                  operation: update
+                  support_file: false
+                  type: file
+                  mode: "100755"
+                - content: "@REM ----------------------------------------------------------------------------\r\n@REM Licensed to the Apache Software Foundation (ASF) under one\r\n@REM or more contributor license agreements.  See the NOTICE file\r\n@REM distributed with this work for additional information\r\n@REM regarding copyright ownership.  The ASF licenses this file\r\n@REM to you under the Apache License, Version 2.0 (the\r\n@REM \"License\"); you may not use this file except in compliance\r\n@REM with the License.  You may obtain a copy of the License at\r\n@REM\r\n@REM    http://www.apache.org/licenses/LICENSE-2.0\r\n@REM\r\n@REM Unless required by applicable law or agreed to in writing,\r\n@REM software distributed under the License is distributed on an\r\n@REM \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY\r\n@REM KIND, either express or implied.  See the License for the\r\n@REM specific language governing permissions and limitations\r\n@REM under the License.\r\n@REM ----------------------------------------------------------------------------\r\n\r\n@REM ----------------------------------------------------------------------------\r\n@REM Apache Maven Wrapper startup batch script, version 3.3.2\r\n@REM\r\n@REM Required ENV vars:\r\n@REM JAVA_HOME - location of a JDK home dir\r\n@REM\r\n@REM Optional ENV vars\r\n@REM MAVEN_BATCH_ECHO - set to 'on' to enable the echoing of the batch commands\r\n@REM MAVEN_BATCH_PAUSE - set to 'on' to wait for a keystroke before ending\r\n@REM MAVEN_OPTS - parameters passed to the Java VM when running Maven\r\n@REM     e.g. to debug Maven itself, use\r\n@REM set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000\r\n@REM MAVEN_SKIP_RC - flag to disable loading of mavenrc files\r\n@REM ----------------------------------------------------------------------------\r\n\r\n@REM Begin all REM lines with '@' in case MAVEN_BATCH_ECHO is 'on'\r\n@echo off\r\n@REM set title of command window\r\ntitle %0\r\n@REM enable echoing by setting MAVEN_BATCH_ECHO to 'on'\r\n@if \"%MAVEN_BATCH_ECHO%\" == \"on\"  echo %MAVEN_BATCH_ECHO%\r\n\r\n@REM set %HOME% to equivalent of $HOME\r\nif \"%HOME%\" == \"\" (set \"HOME=%HOMEDRIVE%%HOMEPATH%\")\r\n\r\n@REM Execute a user defined script before this one\r\nif not \"%MAVEN_SKIP_RC%\" == \"\" goto skipRcPre\r\n@REM check for pre script, once with legacy .bat ending and once with .cmd ending\r\nif exist \"%USERPROFILE%\\mavenrc_pre.bat\" call \"%USERPROFILE%\\mavenrc_pre.bat\" %*\r\nif exist \"%USERPROFILE%\\mavenrc_pre.cmd\" call \"%USERPROFILE%\\mavenrc_pre.cmd\" %*\r\n:skipRcPre\r\n\r\n@setlocal\r\n\r\nset ERROR_CODE=0\r\n\r\n@REM To isolate internal variables from possible post scripts, we use another setlocal\r\n@setlocal\r\n\r\n@REM ==== START VALIDATION ====\r\nif not \"%JAVA_HOME%\" == \"\" goto OkJHome\r\n\r\necho. >&2\r\necho Error: JAVA_HOME not found in your environment. >&2\r\necho Please set the JAVA_HOME variable in your environment to match the >&2\r\necho location of your Java installation. >&2\r\necho. >&2\r\ngoto error\r\n\r\n:OkJHome\r\nif exist \"%JAVA_HOME%\\bin\\java.exe\" goto init\r\n\r\necho. >&2\r\necho Error: JAVA_HOME is set to an invalid directory. >&2\r\necho JAVA_HOME = \"%JAVA_HOME%\" >&2\r\necho Please set the JAVA_HOME variable in your environment to match the >&2\r\necho location of your Java installation. >&2\r\necho. >&2\r\ngoto error\r\n\r\n@REM ==== END VALIDATION ====\r\n\r\n:init\r\n\r\n@REM Find the project base dir, i.e. the directory that contains the folder \".mvn\".\r\n@REM Fallback to current working directory if not found.\r\n\r\nset MAVEN_PROJECTBASEDIR=%MAVEN_BASEDIR%\r\nIF NOT \"%MAVEN_PROJECTBASEDIR%\"==\"\" goto endDetectBaseDir\r\n\r\nset EXEC_DIR=%CD%\r\nset WDIR=%EXEC_DIR%\r\n:findBaseDir\r\nIF EXIST \"%WDIR%\"\\.mvn goto baseDirFound\r\ncd ..\r\nIF \"%WDIR%\"==\"%CD%\" goto baseDirNotFound\r\nset WDIR=%CD%\r\ngoto findBaseDir\r\n\r\n:baseDirFound\r\nset MAVEN_PROJECTBASEDIR=%WDIR%\r\ncd \"%EXEC_DIR%\"\r\ngoto endDetectBaseDir\r\n\r\n:baseDirNotFound\r\nset MAVEN_PROJECTBASEDIR=%EXEC_DIR%\r\ncd \"%EXEC_DIR%\"\r\n\r\n:endDetectBaseDir\r\n\r\nIF NOT EXIST \"%MAVEN_PROJECTBASEDIR%\\.mvn\\jvm.config\" goto endReadAdditionalConfig\r\n\r\n@setlocal EnableExtensions EnableDelayedExpansion\r\nfor /F \"usebackq delims=\" %%a in (\"%MAVEN_PROJECTBASEDIR%\\.mvn\\jvm.config\") do set JVM_CONFIG_MAVEN_PROPS=!JVM_CONFIG_MAVEN_PROPS! %%a\r\n@endlocal & set JVM_CONFIG_MAVEN_PROPS=%JVM_CONFIG_MAVEN_PROPS%\r\n\r\n:endReadAdditionalConfig\r\n\r\nSET MAVEN_JAVA_EXE=\"%JAVA_HOME%\\bin\\java.exe\"\r\nset WRAPPER_JAR=\"%MAVEN_PROJECTBASEDIR%\\.mvn\\wrapper\\maven-wrapper.jar\"\r\nset WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain\r\n\r\nset WRAPPER_URL=\"https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.3.2/maven-wrapper-3.3.2.jar\"\r\n\r\nFOR /F \"usebackq tokens=1,2 delims==\" %%A IN (\"%MAVEN_PROJECTBASEDIR%\\.mvn\\wrapper\\maven-wrapper.properties\") DO (\r\n    IF \"%%A\"==\"wrapperUrl\" SET WRAPPER_URL=%%B\r\n)\r\n\r\n@REM Extension to allow automatically downloading the maven-wrapper.jar from Maven-central\r\n@REM This allows using the maven wrapper in projects that prohibit checking in binary data.\r\nif exist %WRAPPER_JAR% (\r\n    if \"%MVNW_VERBOSE%\" == \"true\" (\r\n        echo Found %WRAPPER_JAR%\r\n    )\r\n) else (\r\n    if not \"%MVNW_REPOURL%\" == \"\" (\r\n        SET WRAPPER_URL=\"%MVNW_REPOURL%/org/apache/maven/wrapper/maven-wrapper/3.3.2/maven-wrapper-3.3.2.jar\"\r\n    )\r\n    if \"%MVNW_VERBOSE%\" == \"true\" (\r\n        echo Couldn't find %WRAPPER_JAR%, downloading it ...\r\n        echo Downloading from: %WRAPPER_URL%\r\n    )\r\n\r\n    powershell -Command \"&{\"^\r\n\t\t\"$webclient = new-object System.Net.WebClient;\"^\r\n\t\t\"if (-not ([string]::IsNullOrEmpty('%MVNW_USERNAME%') -and [string]::IsNullOrEmpty('%MVNW_PASSWORD%'))) {\"^\r\n\t\t\"$webclient.Credentials = new-object System.Net.NetworkCredential('%MVNW_USERNAME%', '%MVNW_PASSWORD%');\"^\r\n\t\t\"}\"^\r\n\t\t\"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $webclient.DownloadFile('%WRAPPER_URL%', '%WRAPPER_JAR%')\"^\r\n\t\t\"}\"\r\n    if \"%MVNW_VERBOSE%\" == \"true\" (\r\n        echo Finished downloading %WRAPPER_JAR%\r\n    )\r\n)\r\n@REM End of extension\r\n\r\n@REM If specified, validate the SHA-256 sum of the Maven wrapper jar file\r\nSET WRAPPER_SHA_256_SUM=\"\"\r\nFOR /F \"usebackq tokens=1,2 delims==\" %%A IN (\"%MAVEN_PROJECTBASEDIR%\\.mvn\\wrapper\\maven-wrapper.properties\") DO (\r\n    IF \"%%A\"==\"wrapperSha256Sum\" SET WRAPPER_SHA_256_SUM=%%B\r\n)\r\nIF NOT %WRAPPER_SHA_256_SUM%==\"\" (\r\n    powershell -Command \"&{\"^\r\n       \"Import-Module $PSHOME\\Modules\\Microsoft.PowerShell.Utility -Function Get-FileHash;\"^\r\n       \"$hash = (Get-FileHash \\\"%WRAPPER_JAR%\\\" -Algorithm SHA256).Hash.ToLower();\"^\r\n       \"If('%WRAPPER_SHA_256_SUM%' -ne $hash){\"^\r\n       \"  Write-Error 'Error: Failed to validate Maven wrapper SHA-256, your Maven wrapper might be compromised.';\"^\r\n       \"  Write-Error 'Investigate or delete %WRAPPER_JAR% to attempt a clean download.';\"^\r\n       \"  Write-Error 'If you updated your Maven version, you need to update the specified wrapperSha256Sum property.';\"^\r\n       \"  exit 1;\"^\r\n       \"}\"^\r\n       \"}\"\r\n    if ERRORLEVEL 1 goto error\r\n)\r\n\r\n@REM Provide a \"standardized\" way to retrieve the CLI args that will\r\n@REM work with both Windows and non-Windows executions.\r\nset MAVEN_CMD_LINE_ARGS=%*\r\n\r\n%MAVEN_JAVA_EXE% ^\r\n  %JVM_CONFIG_MAVEN_PROPS% ^\r\n  %MAVEN_OPTS% ^\r\n  %MAVEN_DEBUG_OPTS% ^\r\n  -classpath %WRAPPER_JAR% ^\r\n  \"-Dmaven.multiModuleProjectDirectory=%MAVEN_PROJECTBASEDIR%\" ^\r\n  %WRAPPER_LAUNCHER% %MAVEN_CONFIG% %*\r\nif ERRORLEVEL 1 goto error\r\ngoto end\r\n\r\n:error\r\nset ERROR_CODE=1\r\n\r\n:end\r\n@endlocal & set ERROR_CODE=%ERROR_CODE%\r\n\r\nif not \"%MAVEN_SKIP_RC%\"==\"\" goto skipRcPost\r\n@REM check for post script, once with legacy .bat ending and once with .cmd ending\r\nif exist \"%USERPROFILE%\\mavenrc_post.bat\" call \"%USERPROFILE%\\mavenrc_post.bat\"\r\nif exist \"%USERPROFILE%\\mavenrc_post.cmd\" call \"%USERPROFILE%\\mavenrc_post.cmd\"\r\n:skipRcPost\r\n\r\n@REM pause the script if MAVEN_BATCH_PAUSE is set to 'on'\r\nif \"%MAVEN_BATCH_PAUSE%\"==\"on\" pause\r\n\r\nif \"%MAVEN_TERMINATE_CMD%\"==\"on\" exit %ERROR_CODE%\r\n\r\ncmd /C exit /B %ERROR_CODE%\r\n"
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /maven-wrapper/script-distribution
+                  name: mvnw.cmd
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump org.apache.maven.wrapper:maven-wrapper from 3.3.2 to 3.3.4 in /maven-wrapper/script-distribution
+            pr-body: "Bumps [org.apache.maven.wrapper:maven-wrapper](https://github.com/apache/maven-wrapper) from 3.3.2 to 3.3.4.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/apache/maven-wrapper/releases\">org.apache.maven.wrapper:maven-wrapper's releases</a>.</em></p>\n<blockquote>\n<h2>3.3.4</h2>\n<!-- raw HTML omitted -->\n<h2>\U0001F41B Bug Fixes</h2>\n<ul>\n<li>Revert wrapper version removal (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/365\">#365</a>) <a href=\"https://github.com/breun\"><code>@​breun</code></a></li>\n</ul>\n<h2>\U0001F47B Maintenance</h2>\n<ul>\n<li>Ensure Path Traversal is fully addressed in MavenWrapperDownloader (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/363\">#363</a>) <a href=\"https://github.com/hazendaz\"><code>@​hazendaz</code></a></li>\n</ul>\n<h2>3.3.3</h2>\n<!-- raw HTML omitted -->\n<h2>:boom: Breaking changes</h2>\n<ul>\n<li>Remove wrapper lifecycle (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/357\">#357</a>) <a href=\"https://github.com/slawekjaranowski\"><code>@​slawekjaranowski</code></a></li>\n</ul>\n<h2>\U0001F680 New features and improvements</h2>\n<ul>\n<li>Fix Maven wrapper support for snapshot distributions (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/335\">#335</a>) <a href=\"https://github.com/gnodet\"><code>@​gnodet</code></a></li>\n</ul>\n<h2>\U0001F41B Bug Fixes</h2>\n<ul>\n<li><a href=\"https://issues.apache.org/jira/browse/MWRAPPER-143\">[MWRAPPER-143]</a> - The wrapperVersion property is not used in only-script mode (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/145\">#145</a>) <a href=\"https://github.com/bdemers\"><code>@​bdemers</code></a></li>\n<li>fix: Maven wrapper relative distributionUrl does not work (fixes <a href=\"https://redirect.github.com/apache/maven-wrapper/issues/272\">#272</a>) (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/107\">#107</a>) <a href=\"https://github.com/danishcake\"><code>@​danishcake</code></a></li>\n<li>Fix Windows Junction Link support in mvnw.cmd (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/143\">#143</a>) <a href=\"https://github.com/fp024\"><code>@​fp024</code></a></li>\n<li><a href=\"https://issues.apache.org/jira/browse/MWRAPPER-158\">[MWRAPPER-158]</a> - Remove incorrect license header (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/166\">#166</a>) <a href=\"https://github.com/lbruun\"><code>@​lbruun</code></a></li>\n<li><a href=\"https://issues.apache.org/jira/browse/MWRAPPER-161\">[MWRAPPER-161]</a> - Improve script directory detection when using sh mvnw (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/329\">#329</a>) <a href=\"https://github.com/ppkarwasz\"><code>@​ppkarwasz</code></a></li>\n<li><a href=\"https://issues.apache.org/jira/browse/MWRAPPER-162\">[MWRAPPER-162]</a> - Removed dead link was getting 404 (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/167\">#167</a>) <a href=\"https://github.com/montu376\"><code>@​montu376</code></a></li>\n<li><a href=\"https://issues.apache.org/jira/browse/MWRAPPER-159\">[MWRAPPER-159]</a> - Fix shellcheck in mvnw (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/168\">#168</a>) <a href=\"https://github.com/slawekjaranowski\"><code>@​slawekjaranowski</code></a></li>\n<li><a href=\"https://issues.apache.org/jira/browse/MWRAPPER-146\">[MWRAPPER-146]</a> - Bad substitution on Windows if MVNW_REPOURL is set on script-only (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/151\">#151</a>) <a href=\"https://github.com/jahk04\"><code>@​jahk04</code></a></li>\n<li><a href=\"https://issues.apache.org/jira/browse/MWRAPPER-147\">[MWRAPPER-147]</a> - mvnw.cmd fails to launch maven if username contains space (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/152\">#152</a>) <a href=\"https://github.com/sebthom\"><code>@​sebthom</code></a></li>\n<li><a href=\"https://issues.apache.org/jira/browse/MWRAPPER-150\">[MWRAPPER-150]</a> - Fails to validate checksums on MacOS Sequoia (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/155\">#155</a>) <a href=\"https://github.com/jon-signal\"><code>@​jon-signal</code></a></li>\n<li><a href=\"https://issues.apache.org/jira/browse/MWRAPPER-111\">[MWRAPPER-111]</a> - Trim whitespace when reading from properties file (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/158\">#158</a>) <a href=\"https://github.com/mhalbritter\"><code>@​mhalbritter</code></a></li>\n<li><a href=\"https://issues.apache.org/jira/browse/MWRAPPER-153\">[MWRAPPER-153]</a> - Fixed only-mvnw.cmd fails when FIPS mode is enabled on Windows hosts (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/157\">#157</a>) <a href=\"https://github.com/zbalkan\"><code>@​zbalkan</code></a></li>\n</ul>\n<h2>\U0001F4DD Documentation updates</h2>\n<ul>\n<li>Clarify usage of MAVEN_USER_HOME (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/359\">#359</a>) <a href=\"https://github.com/slawekjaranowski\"><code>@​slawekjaranowski</code></a></li>\n<li>site is now /tools/wrapper (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/336\">#336</a>) <a href=\"https://github.com/hboutemy\"><code>@​hboutemy</code></a></li>\n</ul>\n<h2>\U0001F47B Maintenance</h2>\n<ul>\n<li>Use invoker version from parent (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/356\">#356</a>) <a href=\"https://github.com/slawekjaranowski\"><code>@​slawekjaranowski</code></a></li>\n<li>Refresh download page (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/354\">#354</a>) <a href=\"https://github.com/slawekjaranowski\"><code>@​slawekjaranowski</code></a></li>\n<li>Update site descriptor to 2.0.0 (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/351\">#351</a>) <a href=\"https://github.com/slawekjaranowski\"><code>@​slawekjaranowski</code></a></li>\n<li>Enable prevent branch protection rules (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/348\">#348</a>) <a href=\"https://github.com/slawekjaranowski\"><code>@​slawekjaranowski</code></a></li>\n<li>Copy edit docs (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/344\">#344</a>) <a href=\"https://github.com/elharo\"><code>@​elharo</code></a></li>\n<li>Prefer <a href=\"https://github.com/Inject\"><code>@​Inject</code></a> (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/343\">#343</a>) <a href=\"https://github.com/elharo\"><code>@​elharo</code></a></li>\n<li>Bump shellcheck to 0.10.0 (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/333\">#333</a>) <a href=\"https://github.com/slachiewicz\"><code>@​slachiewicz</code></a></li>\n<li>Enable GitHub Issues (<a href=\"https://redirect.github.com/apache/maven-wrapper/pull/169\">#169</a>) <a href=\"https://github.com/slawekjaranowski\"><code>@​slawekjaranowski</code></a></li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/apache/maven-wrapper/commit/524486aff97d0748926a977665d5befb3251ff17\"><code>524486a</code></a> [maven-release-plugin] prepare release maven-wrapper-3.3.4</li>\n<li><a href=\"https://github.com/apache/maven-wrapper/commit/17c1ec9d1a3c6fa1c39c6d8fc48f4735f957ce27\"><code>17c1ec9</code></a> Revert wrapper version removal (<a href=\"https://redirect.github.com/apache/maven-wrapper/issues/365\">#365</a>)</li>\n<li><a href=\"https://github.com/apache/maven-wrapper/commit/366207fa0678f6549b109fb75152d2558766bf58\"><code>366207f</code></a> Ensure Path Traversal is fully addressed in MavenWrapperDownloader</li>\n<li><a href=\"https://github.com/apache/maven-wrapper/commit/086b1c9fa610d54674aecf8c97868bc57566304d\"><code>086b1c9</code></a> [maven-release-plugin] prepare for next development iteration</li>\n<li><a href=\"https://github.com/apache/maven-wrapper/commit/e2a0c81e6d5c8d0a65d152cbb4a2744bb35f5e49\"><code>e2a0c81</code></a> [maven-release-plugin] prepare release maven-wrapper-3.3.3</li>\n<li><a href=\"https://github.com/apache/maven-wrapper/commit/80952cd926da568000d99fe701cc86d935309d2f\"><code>80952cd</code></a> Clarify usage of MAVEN_USER_HOME</li>\n<li><a href=\"https://github.com/apache/maven-wrapper/commit/08e7200e6166aea41bcf520547ea9a266b7bf52c\"><code>08e7200</code></a> Remove wrapper lifecycle</li>\n<li><a href=\"https://github.com/apache/maven-wrapper/commit/36886faf9b74bfc27e23cf0a78084e39761aee52\"><code>36886fa</code></a> Support for snapshot distributions - fix (<a href=\"https://redirect.github.com/apache/maven-wrapper/issues/352\">#352</a>)</li>\n<li><a href=\"https://github.com/apache/maven-wrapper/commit/d02d84532a4626e326af5c2b744dade16bb60a98\"><code>d02d845</code></a> Use invoker version from parent</li>\n<li><a href=\"https://github.com/apache/maven-wrapper/commit/af7671b365fb850e8c35ea9797e818ed5c4a740a\"><code>af7671b</code></a> Bump mavenVersion from 3.9.6 to 3.9.11 (<a href=\"https://redirect.github.com/apache/maven-wrapper/issues/360\">#360</a>)</li>\n<li>Additional commits viewable in <a href=\"https://github.com/apache/maven-wrapper/compare/maven-wrapper-3.3.2...maven-wrapper-3.3.4\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
+            commit-message: |-
+                Bump org.apache.maven.wrapper:maven-wrapper
+
+                Bumps [org.apache.maven.wrapper:maven-wrapper](https://github.com/apache/maven-wrapper) from 3.3.2 to 3.3.4.
+                - [Release notes](https://github.com/apache/maven-wrapper/releases)
+                - [Commits](https://github.com/apache/maven-wrapper/compare/maven-wrapper-3.3.2...maven-wrapper-3.3.4)
+    - type: record_ecosystem_meta
+      expect:
+        data:
+            - ecosystem:
+                name: maven
+                package_manager:
+                    name: maven
+                    version: NOT-AVAILABLE
+                    raw_version: NOT-AVAILABLE
+                language:
+                    name: java
+                    version: NOT-AVAILABLE
+                    raw_version: NOT-AVAILABLE
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 87ac42463ab2cd708cec48113ae1f2168a1cea39
