@@ -39,7 +39,7 @@ jobs:
           LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: dependabot test -f=tests/smoke-${{ matrix.suite }}.yaml --cache=cache
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: cache-${{ matrix.suite }}
           path: cache/
