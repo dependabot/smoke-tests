@@ -14,13 +14,24 @@ input:
             - dependency-name: rsc.io/sampler
               source: tests/smoke-go-workspace.yaml
               version-requirement: '>1.99.99'
+            - dependency-name: github.com/fatih/color
+              source: tests/smoke-go-workspace.yaml
+              version-requirement: '>1.19.0'
+            - dependency-name: github.com/mattn/go-colorable
+              source: tests/smoke-go-workspace.yaml
+              version-requirement: '>0.1.14'
+            - dependency-name: github.com/mattn/go-isatty
+              source: tests/smoke-go-workspace.yaml
+              version-requirement: '>0.0.22'
+            - dependency-name: golang.org/x/sys
+              source: tests/smoke-go-workspace.yaml
+              version-requirement: '>0.43.0'
         source:
             provider: github
-            repo: casey-robertson-paypal/smoke-tests
+            repo: dependabot/smoke-tests
             directories:
                 - /go/workspace
-            branch: add-go-workspace-fixture
-            commit: 7aa17d2217e45cbcaa5cb9fc5bf9d0e6420ca01b
+            commit: 2662023d5d7b5e8810985edf9e271bdfb928cd32
             hostname: github.com
             api-endpoint: https://api.github.com
 output:
@@ -43,13 +54,34 @@ output:
                 - name: rsc.io/sampler
                   requirements: []
                   version: 1.3.0
+                - name: github.com/fatih/color
+                  requirements:
+                    - file: sub/go.mod
+                      groups: []
+                      requirement: v1.15.0
+                      source:
+                        source: github.com/fatih/color
+                        type: default
+                  version: 1.15.0
+                - name: github.com/mattn/go-colorable
+                  requirements: []
+                  version: 0.1.13
+                - name: github.com/mattn/go-isatty
+                  requirements: []
+                  version: 0.0.20
+                - name: golang.org/x/sys
+                  requirements: []
+                  version: 0.6.0
             dependency_files:
+                - /go/workspace/go.work
                 - /go/workspace/go.mod
                 - /go/workspace/go.sum
+                - /go/workspace/sub/go.mod
+                - /go/workspace/sub/go.sum
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 7aa17d2217e45cbcaa5cb9fc5bf9d0e6420ca01b
+            base-commit-sha: 2662023d5d7b5e8810985edf9e271bdfb928cd32
             dependencies:
                 - name: rsc.io/quote
                   previous-requirements:
@@ -123,7 +155,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 7aa17d2217e45cbcaa5cb9fc5bf9d0e6420ca01b
+            base-commit-sha: 2662023d5d7b5e8810985edf9e271bdfb928cd32
             dependencies:
                 - name: golang.org/x/text
                   previous-requirements: []
@@ -165,6 +197,25 @@ output:
                   operation: update
                   support_file: false
                   type: file
+                - content: |
+                    module github.com/dependabot/vgotest-workspace-sub
+
+                    go 1.25.0
+
+                    require github.com/fatih/color v1.15.0
+
+                    require (
+                    	github.com/mattn/go-colorable v0.1.13 // indirect
+                    	github.com/mattn/go-isatty v0.0.20 // indirect
+                    	golang.org/x/sys v0.6.0 // indirect
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: sub/go.mod
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump golang.org/x/text from 0.4.0 to 0.36.0 in /go/workspace
             pr-body: |
                 Bumps [golang.org/x/text](https://github.com/golang/text) from 0.4.0 to 0.36.0.
@@ -194,7 +245,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: 7aa17d2217e45cbcaa5cb9fc5bf9d0e6420ca01b
+            base-commit-sha: 2662023d5d7b5e8810985edf9e271bdfb928cd32
             dependencies:
                 - name: rsc.io/sampler
                   previous-requirements: []
@@ -254,7 +305,410 @@ output:
 
                 Bumps [rsc.io/sampler](https://github.com/rsc/sampler) from 1.3.0 to 1.99.99.
                 - [Commits](https://github.com/rsc/sampler/compare/v1.3.0...v1.99.99)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 2662023d5d7b5e8810985edf9e271bdfb928cd32
+            dependencies:
+                - name: github.com/fatih/color
+                  previous-requirements:
+                    - file: sub/go.mod
+                      groups: []
+                      requirement: v1.15.0
+                      source:
+                        source: github.com/fatih/color
+                        type: default
+                  previous-version: 1.15.0
+                  requirements:
+                    - file: sub/go.mod
+                      groups: []
+                      requirement: 1.19.0
+                      source:
+                        source: github.com/fatih/color
+                        type: default
+                  version: 1.19.0
+                  directory: /go/workspace
+            updated-dependency-files:
+                - content: |
+                    module github.com/dependabot/vgotest-workspace
+
+                    go 1.25.0
+
+                    require rsc.io/quote v1.5.0
+
+                    require (
+                    	golang.org/x/text v0.4.0 // indirect
+                    	rsc.io/sampler v1.3.0 // indirect
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: go.mod
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    module github.com/dependabot/vgotest-workspace-sub
+
+                    go 1.25.0
+
+                    require github.com/fatih/color v1.19.0
+
+                    require (
+                    	github.com/mattn/go-colorable v0.1.14 // indirect
+                    	github.com/mattn/go-isatty v0.0.20 // indirect
+                    	golang.org/x/sys v0.42.0 // indirect
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: sub/go.mod
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    github.com/fatih/color v1.19.0 h1:Zp3PiM21/9Ld6FzSKyL5c/BULoe/ONr9KlbYVOfG8+w=
+                    github.com/fatih/color v1.19.0/go.mod h1:zNk67I0ZUT1bEGsSGyCZYZNrHuTkJJB+r6Q9VuMi0LE=
+                    github.com/mattn/go-colorable v0.1.14 h1:9A9LHSqF/7dyVVX6g0U9cwm9pG3kP9gSzcuIPHPsaIE=
+                    github.com/mattn/go-colorable v0.1.14/go.mod h1:6LmQG8QLFO4G5z1gPvYEzlUgJ2wF+stgPZH1UqBm1s8=
+                    github.com/mattn/go-isatty v0.0.20 h1:xfD0iDuEKnDkl03q4limB+vH+GxLEtL/jb4xVJSWWEY=
+                    github.com/mattn/go-isatty v0.0.20/go.mod h1:W+V8PltTTMOvKvAeJH7IuucS94S2C6jfK/D7dTCTo3Y=
+                    golang.org/x/sys v0.6.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+                    golang.org/x/sys v0.42.0 h1:omrd2nAlyT5ESRdCLYdm3+fMfNFE/+Rf4bDIQImRJeo=
+                    golang.org/x/sys v0.42.0/go.mod h1:4GL1E5IUh+htKOUEOaiffhrAeqysfVGipDYzABqnCmw=
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: sub/go.sum
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump github.com/fatih/color from 1.15.0 to 1.19.0 in /go/workspace
+            pr-body: |
+                Bumps [github.com/fatih/color](https://github.com/fatih/color) from 1.15.0 to 1.19.0.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/fatih/color/releases">github.com/fatih/color's releases</a>.</em></p>
+                <blockquote>
+                <h2>v1.19.0</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Bump golang.org/x/sys from 0.25.0 to 0.28.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a>[bot] in <a href="https://redirect.github.com/fatih/color/pull/246">fatih/color#246</a></li>
+                <li>Fix for issue <a href="https://redirect.github.com/fatih/color/issues/230">#230</a> set/unsetwriter symmetric wrt color support detection by <a href="https://github.com/ataypamart"><code>@​ataypamart</code></a> in <a href="https://redirect.github.com/fatih/color/pull/243">fatih/color#243</a></li>
+                <li>chore: go mod cleanup by <a href="https://github.com/sashamelentyev"><code>@​sashamelentyev</code></a> in <a href="https://redirect.github.com/fatih/color/pull/244">fatih/color#244</a></li>
+                <li>Bump golang.org/x/sys from 0.28.0 to 0.30.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a>[bot] in <a href="https://redirect.github.com/fatih/color/pull/249">fatih/color#249</a></li>
+                <li>Bump github.com/mattn/go-colorable from 0.1.13 to 0.1.14 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a>[bot] in <a href="https://redirect.github.com/fatih/color/pull/248">fatih/color#248</a></li>
+                <li>Update CI and go deps by <a href="https://github.com/fatih"><code>@​fatih</code></a> in <a href="https://redirect.github.com/fatih/color/pull/254">fatih/color#254</a></li>
+                <li>Bump golang.org/x/sys from 0.31.0 to 0.37.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a>[bot] in <a href="https://redirect.github.com/fatih/color/pull/268">fatih/color#268</a></li>
+                <li>fix: include escape codes in byte counts from <code>Fprint</code>, <code>Fprintf</code> by <a href="https://github.com/qualidafial"><code>@​qualidafial</code></a> in <a href="https://redirect.github.com/fatih/color/pull/282">fatih/color#282</a></li>
+                <li>Bump golang.org/x/sys from 0.37.0 to 0.40.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a>[bot] in <a href="https://redirect.github.com/fatih/color/pull/277">fatih/color#277</a></li>
+                <li>fix: add nil check for os.Stdout to prevent panic on Windows services by <a href="https://github.com/majiayu000"><code>@​majiayu000</code></a> in <a href="https://redirect.github.com/fatih/color/pull/275">fatih/color#275</a></li>
+                <li>Bump dominikh/staticcheck-action from 1.3.1 to 1.4.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a>[bot] in <a href="https://redirect.github.com/fatih/color/pull/259">fatih/color#259</a></li>
+                <li>Bump actions/checkout from 4 to 6 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a>[bot] in <a href="https://redirect.github.com/fatih/color/pull/273">fatih/color#273</a></li>
+                <li>Optimize Color.Equals performance (O(n²) → O(n)) by <a href="https://github.com/UnSubble"><code>@​UnSubble</code></a> in <a href="https://redirect.github.com/fatih/color/pull/269">fatih/color#269</a></li>
+                <li>Bump actions/setup-go from 5 to 6 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a>[bot] in <a href="https://redirect.github.com/fatih/color/pull/266">fatih/color#266</a></li>
+                </ul>
+                <h2>New Contributors</h2>
+                <ul>
+                <li><a href="https://github.com/ataypamart"><code>@​ataypamart</code></a> made their first contribution in <a href="https://redirect.github.com/fatih/color/pull/243">fatih/color#243</a></li>
+                <li><a href="https://github.com/sashamelentyev"><code>@​sashamelentyev</code></a> made their first contribution in <a href="https://redirect.github.com/fatih/color/pull/244">fatih/color#244</a></li>
+                <li><a href="https://github.com/qualidafial"><code>@​qualidafial</code></a> made their first contribution in <a href="https://redirect.github.com/fatih/color/pull/282">fatih/color#282</a></li>
+                <li><a href="https://github.com/majiayu000"><code>@​majiayu000</code></a> made their first contribution in <a href="https://redirect.github.com/fatih/color/pull/275">fatih/color#275</a></li>
+                <li><a href="https://github.com/UnSubble"><code>@​UnSubble</code></a> made their first contribution in <a href="https://redirect.github.com/fatih/color/pull/269">fatih/color#269</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/fatih/color/compare/v1.18.0...v1.19.0">https://github.com/fatih/color/compare/v1.18.0...v1.19.0</a></p>
+                <h2>v1.18.0</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Add RGB API support by <a href="https://github.com/fatih"><code>@​fatih</code></a> in <a href="https://redirect.github.com/fatih/color/pull/225">fatih/color#225</a></li>
+                <li>Bump GitHub workflow actions by <a href="https://github.com/deining"><code>@​deining</code></a> in <a href="https://redirect.github.com/fatih/color/pull/235">fatih/color#235</a></li>
+                <li>Bump golang.org/x/sys from 0.18.0 to 0.24.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/fatih/color/pull/236">fatih/color#236</a></li>
+                <li>Bump golang.org/x/sys from 0.24.0 to 0.25.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/fatih/color/pull/237">fatih/color#237</a></li>
+                </ul>
+                <h2>New Contributors</h2>
+                <ul>
+                <li><a href="https://github.com/deining"><code>@​deining</code></a> made their first contribution in <a href="https://redirect.github.com/fatih/color/pull/235">fatih/color#235</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/fatih/color/compare/v1.17.0...v1.18.0">https://github.com/fatih/color/compare/v1.17.0...v1.18.0</a></p>
+                <h2>v1.17.0</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Fix multi-parameter println spacing by <a href="https://github.com/klauspost"><code>@​klauspost</code></a> in <a href="https://redirect.github.com/fatih/color/pull/228">fatih/color#228</a></li>
+                <li>ci: update Go and Staticcheck versions by <a href="https://github.com/fatih"><code>@​fatih</code></a> in <a href="https://redirect.github.com/fatih/color/pull/222">fatih/color#222</a></li>
+                <li>Bump golang.org/x/sys from 0.14.0 to 0.17.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/fatih/color/pull/221">fatih/color#221</a></li>
+                <li>Bump actions/setup-go from 4 to 5 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/fatih/color/pull/217">fatih/color#217</a></li>
+                <li>Bump golang.org/x/sys from 0.17.0 to 0.18.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/fatih/color/pull/224">fatih/color#224</a></li>
+                </ul>
+                <h2>New Contributors</h2>
+                <ul>
+                <li><a href="https://github.com/klauspost"><code>@​klauspost</code></a> made their first contribution in <a href="https://redirect.github.com/fatih/color/pull/228">fatih/color#228</a></li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/fatih/color/commit/ca25f6e17f118a5a259f3c2c0d395949d1103a5a"><code>ca25f6e</code></a> Merge pull request <a href="https://redirect.github.com/fatih/color/issues/266">#266</a> from fatih/dependabot/github_actions/actions/setup-go-6</li>
+                <li><a href="https://github.com/fatih/color/commit/120598440a16510564204450092d1e7925fad9ae"><code>1205984</code></a> Bump actions/setup-go from 5 to 6</li>
+                <li><a href="https://github.com/fatih/color/commit/5715c20323d8c79f60d4944831fcfa3b76cd5734"><code>5715c20</code></a> Merge pull request <a href="https://redirect.github.com/fatih/color/issues/269">#269</a> from UnSubble/main</li>
+                <li><a href="https://github.com/fatih/color/commit/2f6e2003760028129f34c4ad5c3728b904811d3c"><code>2f6e200</code></a> Merge branch 'main' into main</li>
+                <li><a href="https://github.com/fatih/color/commit/f72ec947d0c34504dfd08b0db68d89f37503fc90"><code>f72ec94</code></a> Merge pull request <a href="https://redirect.github.com/fatih/color/issues/273">#273</a> from fatih/dependabot/github_actions/actions/checkout-6</li>
+                <li><a href="https://github.com/fatih/color/commit/848e6330af5690fa24bb038d5330839a33f1f0e5"><code>848e633</code></a> Merge branch 'main' into main</li>
+                <li><a href="https://github.com/fatih/color/commit/4c2cd3443934693bd8892fc0f7bb5bbec8e3788a"><code>4c2cd34</code></a> Add tests</li>
+                <li><a href="https://github.com/fatih/color/commit/7f812f029c41eddd3ac7fbbdf6cc78e4b175944b"><code>7f812f0</code></a> Bump actions/checkout from 4 to 6</li>
+                <li><a href="https://github.com/fatih/color/commit/b7fc9f9557629556aff702751b5268cefcbafa15"><code>b7fc9f9</code></a> Merge pull request <a href="https://redirect.github.com/fatih/color/issues/259">#259</a> from fatih/dependabot/github_actions/dominikh/staticc...</li>
+                <li><a href="https://github.com/fatih/color/commit/239a88f715e8e35f40492da7a1e08f7173e78e05"><code>239a88f</code></a> Bump dominikh/staticcheck-action from 1.3.1 to 1.4.0</li>
+                <li>Additional commits viewable in <a href="https://github.com/fatih/color/compare/v1.15.0...v1.19.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump github.com/fatih/color from 1.15.0 to 1.19.0 in /go/workspace
+
+                Bumps [github.com/fatih/color](https://github.com/fatih/color) from 1.15.0 to 1.19.0.
+                - [Release notes](https://github.com/fatih/color/releases)
+                - [Commits](https://github.com/fatih/color/compare/v1.15.0...v1.19.0)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 2662023d5d7b5e8810985edf9e271bdfb928cd32
+            dependencies:
+                - name: github.com/mattn/go-colorable
+                  previous-requirements: []
+                  previous-version: 0.1.13
+                  requirements: []
+                  version: 0.1.14
+                  directory: /go/workspace
+            updated-dependency-files:
+                - content: |
+                    module github.com/dependabot/vgotest-workspace-sub
+
+                    go 1.21
+
+                    require github.com/fatih/color v1.15.0
+
+                    require (
+                    	github.com/mattn/go-colorable v0.1.14 // indirect
+                    	github.com/mattn/go-isatty v0.0.20 // indirect
+                    	golang.org/x/sys v0.29.0 // indirect
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: sub/go.mod
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    github.com/fatih/color v1.15.0 h1:kOqh6YHBtK8aywxGerMG2Eq3H6Qgoqeo13Bk2Mv/nBs=
+                    github.com/fatih/color v1.15.0/go.mod h1:0h5ZqXfHYED7Bhv2ZJamyIOUej9KtShiJESRwBDUSsw=
+                    github.com/mattn/go-colorable v0.1.14 h1:9A9LHSqF/7dyVVX6g0U9cwm9pG3kP9gSzcuIPHPsaIE=
+                    github.com/mattn/go-colorable v0.1.14/go.mod h1:6LmQG8QLFO4G5z1gPvYEzlUgJ2wF+stgPZH1UqBm1s8=
+                    github.com/mattn/go-isatty v0.0.20 h1:xfD0iDuEKnDkl03q4limB+vH+GxLEtL/jb4xVJSWWEY=
+                    github.com/mattn/go-isatty v0.0.20/go.mod h1:W+V8PltTTMOvKvAeJH7IuucS94S2C6jfK/D7dTCTo3Y=
+                    golang.org/x/sys v0.6.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+                    golang.org/x/sys v0.29.0 h1:TPYlXGxvx1MGTn2GiZDhnjPA9wZzZeGKHHmKhHYvgaU=
+                    golang.org/x/sys v0.29.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: sub/go.sum
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump github.com/mattn/go-colorable from 0.1.13 to 0.1.14 in /go/workspace
+            pr-body: |
+                Bumps [github.com/mattn/go-colorable](https://github.com/mattn/go-colorable) from 0.1.13 to 0.1.14.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/mattn/go-colorable/commit/1f71342c1ee78c126bcb69cd26ed8c2be7e016b3"><code>1f71342</code></a> update deps</li>
+                <li><a href="https://github.com/mattn/go-colorable/commit/4503567acadfc8967131e7708f241b77589eb28b"><code>4503567</code></a> Merge pull request <a href="https://redirect.github.com/mattn/go-colorable/issues/73">#73</a> from whereswaldon/patch-1</li>
+                <li><a href="https://github.com/mattn/go-colorable/commit/40e70a5010a4844b4c1030a31cebdd52b2e96589"><code>40e70a5</code></a> [Windows] harden system DLL loading</li>
+                <li><a href="https://github.com/mattn/go-colorable/commit/603fb50de6b0dcd39ea6d96d9dad3477465519a4"><code>603fb50</code></a> Merge pull request <a href="https://redirect.github.com/mattn/go-colorable/issues/71">#71</a> from hymkor/fork-20241118</li>
+                <li><a href="https://github.com/mattn/go-colorable/commit/664d917a3c0d89f11f7ded4642562bddb926a2b9"><code>664d917</code></a> Fix: ESC[E and ESC[F with no arguments did not move the cursor on the legacy ...</li>
+                <li><a href="https://github.com/mattn/go-colorable/commit/2b733b5d5ca7f3959b874da32dd775822a35a1a2"><code>2b733b5</code></a> Merge pull request <a href="https://redirect.github.com/mattn/go-colorable/issues/69">#69</a> from dolmen-go/merge-appengine-into-others</li>
+                <li><a href="https://github.com/mattn/go-colorable/commit/9473000136fc36f73d0784b0bc040888509a1fca"><code>9473000</code></a> Merge pull request <a href="https://redirect.github.com/mattn/go-colorable/issues/68">#68</a> from dolmen-go/do-not-expose-Windows-Writer</li>
+                <li><a href="https://github.com/mattn/go-colorable/commit/3cc8472a2a21fcdd78c18d6a718d3b0bec3f789f"><code>3cc8472</code></a> Merge pull request <a href="https://redirect.github.com/mattn/go-colorable/issues/67">#67</a> from dolmen-go/ci-go1.20</li>
+                <li><a href="https://github.com/mattn/go-colorable/commit/d9a68d594368e217e6261d4d830d0d64183466d6"><code>d9a68d5</code></a> Merge colorable_appengine.go into colorable_others.go</li>
+                <li><a href="https://github.com/mattn/go-colorable/commit/8e4a944b81b5e985b5a66e8e614c1755d1269747"><code>8e4a944</code></a> Windows: do not export Writer</li>
+                <li>Additional commits viewable in <a href="https://github.com/mattn/go-colorable/compare/v0.1.13...v0.1.14">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump github.com/mattn/go-colorable in /go/workspace
+
+                Bumps [github.com/mattn/go-colorable](https://github.com/mattn/go-colorable) from 0.1.13 to 0.1.14.
+                - [Commits](https://github.com/mattn/go-colorable/compare/v0.1.13...v0.1.14)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 2662023d5d7b5e8810985edf9e271bdfb928cd32
+            dependencies:
+                - name: github.com/mattn/go-isatty
+                  previous-requirements: []
+                  previous-version: 0.0.20
+                  requirements: []
+                  version: 0.0.22
+                  directory: /go/workspace
+            updated-dependency-files:
+                - content: |
+                    module github.com/dependabot/vgotest-workspace-sub
+
+                    go 1.21
+
+                    require github.com/fatih/color v1.15.0
+
+                    require (
+                    	github.com/mattn/go-colorable v0.1.13 // indirect
+                    	github.com/mattn/go-isatty v0.0.22 // indirect
+                    	golang.org/x/sys v0.28.0 // indirect
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: sub/go.mod
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    github.com/fatih/color v1.15.0 h1:kOqh6YHBtK8aywxGerMG2Eq3H6Qgoqeo13Bk2Mv/nBs=
+                    github.com/fatih/color v1.15.0/go.mod h1:0h5ZqXfHYED7Bhv2ZJamyIOUej9KtShiJESRwBDUSsw=
+                    github.com/mattn/go-colorable v0.1.13 h1:fFA4WZxdEF4tXPZVKMLwD8oUnCTTo08duU7wxecdEvA=
+                    github.com/mattn/go-colorable v0.1.13/go.mod h1:7S9/ev0klgBDR4GtXTXX8a3vIGJpMovkB8vQcUbaXHg=
+                    github.com/mattn/go-isatty v0.0.16/go.mod h1:kYGgaQfpe5nmfYZH+SKPsOc2e4SrIfOl2e/yFXSvRLM=
+                    github.com/mattn/go-isatty v0.0.22 h1:j8l17JJ9i6VGPUFUYoTUKPSgKe/83EYU2zBC7YNKMw4=
+                    github.com/mattn/go-isatty v0.0.22/go.mod h1:ZXfXG4SQHsB/w3ZeOYbR0PrPwLy+n6xiMrJlRFqopa4=
+                    golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+                    golang.org/x/sys v0.28.0 h1:Fksou7UEQUWlKvIdsqzJmUmCX3cZuD2+P3XyyzwMhlA=
+                    golang.org/x/sys v0.28.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: sub/go.sum
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump github.com/mattn/go-isatty from 0.0.20 to 0.0.22 in /go/workspace
+            pr-body: |
+                Bumps [github.com/mattn/go-isatty](https://github.com/mattn/go-isatty) from 0.0.20 to 0.0.22.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/mattn/go-isatty/commit/9a68506e239465d922dc18c0cd331c49b411fdb2"><code>9a68506</code></a> Fix isCygwinPipeName to accept Windows 7 trailing suffix (<a href="https://redirect.github.com/mattn/go-isatty/issues/90">#90</a>)</li>
+                <li><a href="https://github.com/mattn/go-isatty/commit/4237fb15069af3284b50e5d91bcdd5403e584605"><code>4237fb1</code></a> Update Go test matrix to current versions (1.24-1.26)</li>
+                <li><a href="https://github.com/mattn/go-isatty/commit/433c12b4c9fae46e4a42ac50d6d716325dc1dfba"><code>433c12b</code></a> Update GitHub Actions to latest versions</li>
+                <li><a href="https://github.com/mattn/go-isatty/commit/1cf5589a67b03170478da248b107c10185ec558c"><code>1cf5589</code></a> Add wasip1 and wasip2 to build constraints in isatty_others.go</li>
+                <li><a href="https://github.com/mattn/go-isatty/commit/1237245029e6b02f17caa944c946c6f51d384e8b"><code>1237245</code></a> Update dependencies: go 1.15 -&gt; 1.21, golang.org/x/sys v0.6.0 -&gt; v0.28.0</li>
+                <li><a href="https://github.com/mattn/go-isatty/commit/ac9c88d7970a4a6690f8560b6ff20b595beb4e34"><code>ac9c88d</code></a> Fix typo in comment: undocomented -&gt; undocumented</li>
+                <li><a href="https://github.com/mattn/go-isatty/commit/8b7124ee585ccf9c0b3b3246b7c6a27bce54ab6f"><code>8b7124e</code></a> Add availability check for NtQueryObject in init</li>
+                <li><a href="https://github.com/mattn/go-isatty/commit/08d031358be30f9ba82961c1971e22ae4a584f98"><code>08d0313</code></a> Fix isCygwinPipeName to reject names with extra trailing tokens</li>
+                <li>See full diff in <a href="https://github.com/mattn/go-isatty/compare/v0.0.20...v0.0.22">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump github.com/mattn/go-isatty from 0.0.20 to 0.0.22 in /go/workspace
+
+                Bumps [github.com/mattn/go-isatty](https://github.com/mattn/go-isatty) from 0.0.20 to 0.0.22.
+                - [Commits](https://github.com/mattn/go-isatty/compare/v0.0.20...v0.0.22)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 2662023d5d7b5e8810985edf9e271bdfb928cd32
+            dependencies:
+                - name: golang.org/x/sys
+                  previous-requirements: []
+                  previous-version: 0.6.0
+                  requirements: []
+                  version: 0.43.0
+                  directory: /go/workspace
+            updated-dependency-files:
+                - content: |
+                    module github.com/dependabot/vgotest-workspace
+
+                    go 1.25.0
+
+                    require rsc.io/quote v1.5.0
+
+                    require (
+                    	golang.org/x/text v0.4.0 // indirect
+                    	rsc.io/sampler v1.3.0 // indirect
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: go.mod
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    module github.com/dependabot/vgotest-workspace-sub
+
+                    go 1.25.0
+
+                    require github.com/fatih/color v1.15.0
+
+                    require (
+                    	github.com/mattn/go-colorable v0.1.13 // indirect
+                    	github.com/mattn/go-isatty v0.0.20 // indirect
+                    	golang.org/x/sys v0.43.0 // indirect
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: sub/go.mod
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    github.com/fatih/color v1.15.0 h1:kOqh6YHBtK8aywxGerMG2Eq3H6Qgoqeo13Bk2Mv/nBs=
+                    github.com/fatih/color v1.15.0/go.mod h1:0h5ZqXfHYED7Bhv2ZJamyIOUej9KtShiJESRwBDUSsw=
+                    github.com/mattn/go-colorable v0.1.13 h1:fFA4WZxdEF4tXPZVKMLwD8oUnCTTo08duU7wxecdEvA=
+                    github.com/mattn/go-colorable v0.1.13/go.mod h1:7S9/ev0klgBDR4GtXTXX8a3vIGJpMovkB8vQcUbaXHg=
+                    github.com/mattn/go-isatty v0.0.16/go.mod h1:kYGgaQfpe5nmfYZH+SKPsOc2e4SrIfOl2e/yFXSvRLM=
+                    github.com/mattn/go-isatty v0.0.20 h1:xfD0iDuEKnDkl03q4limB+vH+GxLEtL/jb4xVJSWWEY=
+                    github.com/mattn/go-isatty v0.0.20/go.mod h1:W+V8PltTTMOvKvAeJH7IuucS94S2C6jfK/D7dTCTo3Y=
+                    golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+                    golang.org/x/sys v0.6.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+                    golang.org/x/sys v0.43.0 h1:Rlag2XtaFTxp19wS8MXlJwTvoh8ArU6ezoyFsMyCTNI=
+                    golang.org/x/sys v0.43.0/go.mod h1:4GL1E5IUh+htKOUEOaiffhrAeqysfVGipDYzABqnCmw=
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: sub/go.sum
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump golang.org/x/sys from 0.6.0 to 0.43.0 in /go/workspace
+            pr-body: |
+                Bumps [golang.org/x/sys](https://github.com/golang/sys) from 0.6.0 to 0.43.0.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/golang/sys/commit/f33a730cd0c449cfd6f7106780c73052e96cc33d"><code>f33a730</code></a> windows: support nil security descriptor on GetNamedSecurityInfo</li>
+                <li><a href="https://github.com/golang/sys/commit/493d1725989a7a3f3582adfa68faf7207aec666b"><code>493d172</code></a> cpu: add runtime import in cpu_darwin_arm64_other.go</li>
+                <li><a href="https://github.com/golang/sys/commit/2c2be756b97dee6d15aba69839acfbd4e0f3ccc5"><code>2c2be75</code></a> windows: use syscall.SyscallN in Proc.Call</li>
+                <li><a href="https://github.com/golang/sys/commit/a76ec62d6c5389e4fe51c659ba926bf71e471a67"><code>a76ec62</code></a> cpu: roll back &quot;use IsProcessorFeaturePresent to calculate ARM64 on windows&quot;</li>
+                <li><a href="https://github.com/golang/sys/commit/eaaaaee1dc1aacededf4a89bc4544558f425d5f1"><code>eaaaaee</code></a> windows/registry: correct KeyInfo.ModTime calculation</li>
+                <li><a href="https://github.com/golang/sys/commit/942780bbc19517df4948a6dbc8c33d2228e5f905"><code>942780b</code></a> cpu: darwin/arm64 feature detection</li>
+                <li><a href="https://github.com/golang/sys/commit/acef38879efe90cf77ebc2b3dd49d4283ad7c6d6"><code>acef388</code></a> unix/linux: Prefixmsg and PrefixCacheinfo structs</li>
+                <li><a href="https://github.com/golang/sys/commit/3687fbd71652878ab091f7272b84537b63fe0b55"><code>3687fbd</code></a> cpu: better defaults on darwin ARM64</li>
+                <li><a href="https://github.com/golang/sys/commit/48062e9b9abf3dc7106bd8e3990ba8f47862022a"><code>48062e9</code></a> plan9: change Note to alias syscall.Note</li>
+                <li><a href="https://github.com/golang/sys/commit/4f23f804edb0e01ed41cebeafbc82374889eddee"><code>4f23f80</code></a> windows: change Signal to alias syscall.Signal</li>
+                <li>Additional commits viewable in <a href="https://github.com/golang/sys/compare/v0.6.0...v0.43.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump golang.org/x/sys from 0.6.0 to 0.43.0 in /go/workspace
+
+                Bumps [golang.org/x/sys](https://github.com/golang/sys) from 0.6.0 to 0.43.0.
+                - [Commits](https://github.com/golang/sys/compare/v0.6.0...v0.43.0)
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 7aa17d2217e45cbcaa5cb9fc5bf9d0e6420ca01b
+            base-commit-sha: 2662023d5d7b5e8810985edf9e271bdfb928cd32
