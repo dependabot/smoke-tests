@@ -1,0 +1,260 @@
+input:
+    job:
+        command: update
+        package-manager: go_modules
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: rsc.io/quote
+              source: tests/smoke-go-workspace.yaml
+              version-requirement: '>1.5.2'
+            - dependency-name: golang.org/x/text
+              source: tests/smoke-go-workspace.yaml
+              version-requirement: '>0.36.0'
+            - dependency-name: rsc.io/sampler
+              source: tests/smoke-go-workspace.yaml
+              version-requirement: '>1.99.99'
+        source:
+            provider: github
+            repo: casey-robertson-paypal/smoke-tests
+            directories:
+                - /go/workspace
+            branch: add-go-workspace-fixture
+            commit: 7aa17d2217e45cbcaa5cb9fc5bf9d0e6420ca01b
+            hostname: github.com
+            api-endpoint: https://api.github.com
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: rsc.io/quote
+                  requirements:
+                    - file: go.mod
+                      groups: []
+                      requirement: v1.5.0
+                      source:
+                        source: rsc.io/quote
+                        type: default
+                  version: 1.5.0
+                - name: golang.org/x/text
+                  requirements: []
+                  version: 0.4.0
+                - name: rsc.io/sampler
+                  requirements: []
+                  version: 1.3.0
+            dependency_files:
+                - /go/workspace/go.mod
+                - /go/workspace/go.sum
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 7aa17d2217e45cbcaa5cb9fc5bf9d0e6420ca01b
+            dependencies:
+                - name: rsc.io/quote
+                  previous-requirements:
+                    - file: go.mod
+                      groups: []
+                      requirement: v1.5.0
+                      source:
+                        source: rsc.io/quote
+                        type: default
+                  previous-version: 1.5.0
+                  requirements:
+                    - file: go.mod
+                      groups: []
+                      requirement: 1.5.2
+                      source:
+                        source: rsc.io/quote
+                        type: default
+                  version: 1.5.2
+                  directory: /go/workspace
+            updated-dependency-files:
+                - content: |
+                    module github.com/dependabot/vgotest-workspace
+
+                    go 1.21
+
+                    require rsc.io/quote v1.5.2
+
+                    require (
+                    	golang.org/x/text v0.4.0 // indirect
+                    	rsc.io/sampler v1.3.0 // indirect
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: go.mod
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
+                    golang.org/x/text v0.4.0 h1:BrVqGRd7+k1DiOgtnFvAkoQEWQvBc25ouMJM6429SFg=
+                    golang.org/x/text v0.4.0/go.mod h1:mrYo+phRRbMaCq/xk9113O4dZlRixOauAjOtrjsXDZ8=
+                    rsc.io/quote v1.5.2 h1:w5fcysjrx7yqtD/aO+QwRjYZOKnaM9Uh2b40tElTs3Y=
+                    rsc.io/quote v1.5.2/go.mod h1:LzX7hefJvL54yjefDEDHNONDjII0t9xZLPXsUe+TKr0=
+                    rsc.io/sampler v1.3.0 h1:7uVkIFmeBqHfdjD+gZwtXXI+RODJ2Wc4O7MPEh/QiW4=
+                    rsc.io/sampler v1.3.0/go.mod h1:T1hPZKmBbMNahiBKFy5HrXp6adAjACjK9JXDnKaTXpA=
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: go.sum
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump rsc.io/quote from 1.5.0 to 1.5.2 in /go/workspace
+            pr-body: |
+                Bumps [rsc.io/quote](https://github.com/rsc/quote) from 1.5.0 to 1.5.2.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rsc/quote/commit/c4d4236f92427c64bfbcf1cc3f8142ab18f30b22"><code>c4d4236</code></a> buggy: add buggy test</li>
+                <li><a href="https://github.com/rsc/quote/commit/23179ee8a569bb05d896ae05c6503ec69a19f99f"><code>23179ee</code></a> quote: fix test for new rsc.io/sampler</li>
+                <li>See full diff in <a href="https://github.com/rsc/quote/compare/v1.5.0...v1.5.2">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump rsc.io/quote from 1.5.0 to 1.5.2 in /go/workspace
+
+                Bumps [rsc.io/quote](https://github.com/rsc/quote) from 1.5.0 to 1.5.2.
+                - [Commits](https://github.com/rsc/quote/compare/v1.5.0...v1.5.2)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 7aa17d2217e45cbcaa5cb9fc5bf9d0e6420ca01b
+            dependencies:
+                - name: golang.org/x/text
+                  previous-requirements: []
+                  previous-version: 0.4.0
+                  requirements: []
+                  version: 0.36.0
+                  directory: /go/workspace
+            updated-dependency-files:
+                - content: |
+                    module github.com/dependabot/vgotest-workspace
+
+                    go 1.25.0
+
+                    require rsc.io/quote v1.5.0
+
+                    require (
+                    	golang.org/x/text v0.36.0 // indirect
+                    	rsc.io/sampler v1.3.0 // indirect
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: go.mod
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
+                    golang.org/x/text v0.36.0 h1:JfKh3XmcRPqZPKevfXVpI1wXPTqbkE5f7JA92a55Yxg=
+                    golang.org/x/text v0.36.0/go.mod h1:NIdBknypM8iqVmPiuco0Dh6P5Jcdk8lJL0CUebqK164=
+                    rsc.io/quote v1.5.0 h1:mVjf/WMWxfIw299sOl/O3EXn5qEaaJPMDHMsv7DBDlw=
+                    rsc.io/quote v1.5.0/go.mod h1:LzX7hefJvL54yjefDEDHNONDjII0t9xZLPXsUe+TKr0=
+                    rsc.io/sampler v1.3.0 h1:7uVkIFmeBqHfdjD+gZwtXXI+RODJ2Wc4O7MPEh/QiW4=
+                    rsc.io/sampler v1.3.0/go.mod h1:T1hPZKmBbMNahiBKFy5HrXp6adAjACjK9JXDnKaTXpA=
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: go.sum
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump golang.org/x/text from 0.4.0 to 0.36.0 in /go/workspace
+            pr-body: |
+                Bumps [golang.org/x/text](https://github.com/golang/text) from 0.4.0 to 0.36.0.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/golang/text/commit/8577a70117e110160c45f32af0e0df84eef844f7"><code>8577a70</code></a> go.mod: update golang.org/x dependencies</li>
+                <li><a href="https://github.com/golang/text/commit/7ca2c6d99153f6456168837916829c735c67d355"><code>7ca2c6d</code></a> go.mod: update golang.org/x dependencies</li>
+                <li><a href="https://github.com/golang/text/commit/73d1ba91404d0de47cb6a9b3fb52a31565ca4d25"><code>73d1ba9</code></a> all: upgrade go directive to at least 1.25.0 [generated]</li>
+                <li><a href="https://github.com/golang/text/commit/817fba9abd337b4d9097b10c61a540c74feaaeff"><code>817fba9</code></a> go.mod: update golang.org/x dependencies</li>
+                <li><a href="https://github.com/golang/text/commit/3264de9174be11be843825a6dae979beffb483a2"><code>3264de9</code></a> all: clean up old Go hacks</li>
+                <li><a href="https://github.com/golang/text/commit/74af29835a6da65bf18d985619fa645e04a01549"><code>74af298</code></a> all: fix tags in remaining Unicode tables</li>
+                <li><a href="https://github.com/golang/text/commit/117e03b3060d70a9f514eef78f07e5210cc44a4c"><code>117e03b</code></a> all: delete old Unicode tables</li>
+                <li><a href="https://github.com/golang/text/commit/9463ea4393e969a59c7a0af1b497b4361ff1dc52"><code>9463ea4</code></a> all: update to Unicode 17</li>
+                <li><a href="https://github.com/golang/text/commit/7278b25aaff94e106b7de0bfaaa4a1861d3b3c89"><code>7278b25</code></a> internal/export/idna: update for post-Unicode 10 idna changes</li>
+                <li><a href="https://github.com/golang/text/commit/f964ad80f9e4185588298009b5195d8ecfe34d1b"><code>f964ad8</code></a> internal/export/idna: delete old code</li>
+                <li>Additional commits viewable in <a href="https://github.com/golang/text/compare/v0.4.0...v0.36.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump golang.org/x/text from 0.4.0 to 0.36.0 in /go/workspace
+
+                Bumps [golang.org/x/text](https://github.com/golang/text) from 0.4.0 to 0.36.0.
+                - [Release notes](https://github.com/golang/text/releases)
+                - [Commits](https://github.com/golang/text/compare/v0.4.0...v0.36.0)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 7aa17d2217e45cbcaa5cb9fc5bf9d0e6420ca01b
+            dependencies:
+                - name: rsc.io/sampler
+                  previous-requirements: []
+                  previous-version: 1.3.0
+                  requirements: []
+                  version: 1.99.99
+                  directory: /go/workspace
+            updated-dependency-files:
+                - content: |
+                    module github.com/dependabot/vgotest-workspace
+
+                    go 1.21
+
+                    require rsc.io/quote v1.5.0
+
+                    require (
+                    	golang.org/x/text v0.4.0 // indirect
+                    	rsc.io/sampler v1.99.99 // indirect
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: go.mod
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
+                    golang.org/x/text v0.4.0 h1:BrVqGRd7+k1DiOgtnFvAkoQEWQvBc25ouMJM6429SFg=
+                    golang.org/x/text v0.4.0/go.mod h1:mrYo+phRRbMaCq/xk9113O4dZlRixOauAjOtrjsXDZ8=
+                    rsc.io/quote v1.5.0 h1:mVjf/WMWxfIw299sOl/O3EXn5qEaaJPMDHMsv7DBDlw=
+                    rsc.io/quote v1.5.0/go.mod h1:LzX7hefJvL54yjefDEDHNONDjII0t9xZLPXsUe+TKr0=
+                    rsc.io/sampler v1.3.0/go.mod h1:T1hPZKmBbMNahiBKFy5HrXp6adAjACjK9JXDnKaTXpA=
+                    rsc.io/sampler v1.99.99 h1:7i08f/p5TBU5joCPW3GjWG1ZFCmr28ybGqlXtelhEK8=
+                    rsc.io/sampler v1.99.99/go.mod h1:T1hPZKmBbMNahiBKFy5HrXp6adAjACjK9JXDnKaTXpA=
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: go.sum
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump rsc.io/sampler from 1.3.0 to 1.99.99 in /go/workspace
+            pr-body: |
+                Bumps [rsc.io/sampler](https://github.com/rsc/sampler) from 1.3.0 to 1.99.99.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rsc/sampler/commit/732a3c400797d8835f2af34a9561f155bef85435"><code>732a3c4</code></a> sampler: break Hello</li>
+                <li><a href="https://github.com/rsc/sampler/commit/c459d41bebff40e23f5a39caae33dbf154f129a9"><code>c459d41</code></a> sampler: fix</li>
+                <li>See full diff in <a href="https://github.com/rsc/sampler/compare/v1.3.0...v1.99.99">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump rsc.io/sampler from 1.3.0 to 1.99.99 in /go/workspace
+
+                Bumps [rsc.io/sampler](https://github.com/rsc/sampler) from 1.3.0 to 1.99.99.
+                - [Commits](https://github.com/rsc/sampler/compare/v1.3.0...v1.99.99)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 7aa17d2217e45cbcaa5cb9fc5bf9d0e6420ca01b
