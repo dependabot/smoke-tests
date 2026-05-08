@@ -34,6 +34,11 @@ input:
             commit: 2662023d5d7b5e8810985edf9e271bdfb928cd32
             hostname: github.com
             api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
 output:
     - type: update_dependency_list
       expect:
