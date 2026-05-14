@@ -1,0 +1,25 @@
+input:
+    job:
+        package-manager: sbt
+        allowed-updates:
+            - update-type: all
+        experiments:
+            enable-beta-ecosystems: true
+        ignore-conditions:
+            - dependency-name: org.typelevel:cats-core_2.13
+              source: tests/smoke-sbt.yaml
+              version-requirement: '>2.6.1'
+            - dependency-name: org.scalatest:scalatest_2.13
+              source: tests/smoke-sbt.yaml
+              version-requirement: '>3.2.12'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /sbt
+            commit: REPLACE_WITH_MERGE_COMMIT_SHA
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output: []
