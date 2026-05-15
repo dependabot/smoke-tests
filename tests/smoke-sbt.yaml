@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: sbt
         allowed-updates:
             - update-type: all
@@ -22,4 +23,259 @@ input:
           password: $LOCAL_GITHUB_ACCESS_TOKEN
           type: git_source
           username: x-access-token
-output: []
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: org.typelevel:cats-core_2.13
+                  requirements:
+                    - file: build.sbt
+                      groups: []
+                      metadata:
+                        packaging_type: cross-versioned
+                      requirement: 2.6.1
+                      source: null
+                  version: 2.6.1
+                - name: com.google.guava:guava
+                  requirements:
+                    - file: build.sbt
+                      groups: []
+                      requirement: 31.1-jre
+                      source: null
+                  version: 31.1-jre
+                - name: org.scalatest:scalatest_2.13
+                  requirements:
+                    - file: build.sbt
+                      groups: []
+                      metadata:
+                        packaging_type: cross-versioned
+                      requirement: 3.2.12
+                      source: null
+                  version: 3.2.12
+                - name: org.scala-sbt:sbt
+                  requirements:
+                    - file: project/build.properties
+                      groups: []
+                      metadata:
+                        property_source: build.properties
+                      requirement: 1.9.7
+                      source: null
+                  version: 1.9.7
+                - name: org.scala-lang:scala-library
+                  requirements:
+                    - file: build.sbt
+                      groups: []
+                      metadata:
+                        property_source: scalaVersion
+                      requirement: 2.13.12
+                      source: null
+                  version: 2.13.12
+            dependency_files:
+                - /sbt/build.sbt
+                - /sbt/project/build.properties
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 99337236e1b2c38341b8bd359069b6c0aaf94b0d
+            dependencies:
+                - name: com.google.guava:guava
+                  previous-requirements:
+                    - file: build.sbt
+                      groups: []
+                      requirement: 31.1-jre
+                      source: null
+                  previous-version: 31.1-jre
+                  requirements:
+                    - file: build.sbt
+                      groups: []
+                      requirement: 33.6.0-jre
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 33.6.0-jre
+                  directory: /sbt
+            updated-dependency-files:
+                - content: |
+                    scalaVersion := "2.13.12"
+
+                    libraryDependencies ++= Seq(
+                      "org.typelevel" %% "cats-core" % "2.6.1",
+                      "com.google.guava" % "guava" % "33.6.0-jre",
+                      "org.scalatest" %% "scalatest" % "3.2.12" % Test
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /sbt
+                  name: build.sbt
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump com.google.guava:guava from 31.1-jre to 33.6.0-jre in /sbt
+            pr-body: "Bumps [com.google.guava:guava](https://github.com/google/guava) from 31.1-jre to 33.6.0-jre.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/google/guava/releases\">com.google.guava:guava's releases</a>.</em></p>\n<blockquote>\n<h2>33.6.0</h2>\n<h3>Maven</h3>\n<pre lang=\"xml\"><code>&lt;dependency&gt;\r\n  &lt;groupId&gt;com.google.guava&lt;/groupId&gt;\r\n  &lt;artifactId&gt;guava&lt;/artifactId&gt;\r\n  &lt;version&gt;33.6.0-jre&lt;/version&gt;\r\n  &lt;!-- or, for Android: --&gt;\r\n  &lt;version&gt;33.6.0-android&lt;/version&gt;\r\n&lt;/dependency&gt;\r\n</code></pre>\n<h3>Jar files</h3>\n<ul>\n<li><a href=\"https://repo1.maven.org/maven2/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar\">33.6.0-jre.jar</a></li>\n<li><a href=\"https://repo1.maven.org/maven2/com/google/guava/guava/33.6.0-android/guava-33.6.0-android.jar\">33.6.0-android.jar</a></li>\n</ul>\n<p>Guava requires <a href=\"https://github.com/google/guava/wiki/UseGuavaInYourBuild#what-about-guavas-own-dependencies\">one runtime dependency</a>, which you can download here:</p>\n<ul>\n<li><a href=\"https://repo1.maven.org/maven2/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar\">failureaccess-1.0.3.jar</a></li>\n</ul>\n<h3>Javadoc</h3>\n<ul>\n<li><a href=\"https://guava.dev/releases/33.6.0-jre/api/docs/\">33.6.0-jre</a></li>\n<li><a href=\"https://guava.dev/releases/33.6.0-android/api/docs/\">33.6.0-android</a></li>\n</ul>\n<h3>JDiff</h3>\n<ul>\n<li><a href=\"https://guava.dev/releases/33.6.0-jre/api/diffs/\">33.6.0-jre vs. 33.5.0-jre</a></li>\n<li><a href=\"https://guava.dev/releases/33.6.0-android/api/diffs/\">33.6.0-android vs. 33.5.0-android</a></li>\n<li><a href=\"https://guava.dev/releases/33.6.0-android/api/androiddiffs/\">33.6.0-android vs. 33.6.0-jre</a></li>\n</ul>\n<h3>Changelog</h3>\n<ul>\n<li>Migrated some classes from <code>finalize()</code> to <code>PhantomReference</code> in preparation for <a href=\"https://openjdk.org/jeps/421\">the removal of finalization</a>. (786b619dd6, 7c6b17c, aeef90988d)</li>\n<li><code>cache</code>: Deprecated <code>CacheBuilder</code> APIs that use <code>TimeUnit</code> in favor of those that use <code>Duration</code>. (73f8b0bb84)</li>\n<li><code>collect</code>: Added <code>toImmutableSortedMap</code> collectors that use the natural comparator. (64d70b9f94)</li>\n<li><code>collect</code>: Changed <code>ConcurrentHashMultiset</code>, <code>ImmutableMap</code> and <code>TreeMultiset</code> deserialization to <a href=\"https://openjdk.org/jeps/500\">avoid mutating <code>final</code> fields</a>. In extremely unlikely scenarios in which an instance of that type contains an object that refers back to that instance, this could lead to <a href=\"https://docs.oracle.com/en/java/javase/26/docs/specs/serialization/input.html#the-readresolve-method:~:text=in%20cases%20where%20an%20object%20being%20serialized%20nominates%20a%20replacement%20object%20whose%20object%20graph%20has%20a%20reference%20to%20the%20original%20object\">a broken instance</a> that throws <code>NullPointerException</code> when used. (8240c7e596, 046468055f)</li>\n<li><code>graph</code>: Removed <code>@Beta</code> from all APIs in the package. (dae9566b73)</li>\n<li><code>graph</code>: Added support to <code>Graphs.transitiveClosure()</code> for different strategies for adding self-loops. (2e13df25b2)</li>\n<li><code>graph</code>: Added an <code>asNetwork()</code> view to <code>Graph</code> and <code>ValueGraph</code>. (909c593c61)</li>\n<li><code>hash</code>: Added <code>BloomFilter.serializedSize()</code>. (df9bcc251a)</li>\n<li><code>net</code>: Added <code>HttpHeaders.CDN_CACHE_CONTROL</code>. (75331b5030)</li>\n</ul>\n<h2>33.5.0</h2>\n<h3>Maven</h3>\n<pre lang=\"xml\"><code>&lt;dependency&gt;\r\n&lt;/tr&gt;&lt;/table&gt; \n</code></pre>\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li>See full diff in <a href=\"https://github.com/google/guava/commits\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
+            commit-message: |-
+                Bump com.google.guava:guava from 31.1-jre to 33.6.0-jre in /sbt
+
+                Bumps [com.google.guava:guava](https://github.com/google/guava) from 31.1-jre to 33.6.0-jre.
+                - [Release notes](https://github.com/google/guava/releases)
+                - [Commits](https://github.com/google/guava/commits)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 99337236e1b2c38341b8bd359069b6c0aaf94b0d
+            dependencies:
+                - name: org.scala-sbt:sbt
+                  previous-requirements:
+                    - file: project/build.properties
+                      groups: []
+                      metadata:
+                        property_source: build.properties
+                      requirement: 1.9.7
+                      source: null
+                  previous-version: 1.9.7
+                  requirements:
+                    - file: project/build.properties
+                      groups: []
+                      metadata:
+                        property_source: build.properties
+                      requirement: 1.12.11
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 1.12.11
+                  directory: /sbt
+            updated-dependency-files:
+                - content: |
+                    sbt.version=1.12.11
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /sbt
+                  name: project/build.properties
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump org.scala-sbt:sbt from 1.9.7 to 1.12.11 in /sbt
+            pr-body: "Bumps [org.scala-sbt:sbt](https://github.com/sbt/sbt) from 1.9.7 to 1.12.11.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/sbt/sbt/releases\">org.scala-sbt:sbt's releases</a>.</em></p>\n<blockquote>\n<h2>1.12.11</h2>\n<h2>bug fix</h2>\n<ul>\n<li>fix: Rollback eviction error in <code>Test</code> by <a href=\"https://github.com/eed3si9n\"><code>@​eed3si9n</code></a> in <a href=\"https://redirect.github.com/sbt/librarymanagement/pull/600\">sbt/librarymanagement#600</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/sbt/sbt/compare/v1.12.10...v1.12.11\">https://github.com/sbt/sbt/compare/v1.12.10...v1.12.11</a></p>\n<h2>1.12.10</h2>\n<h2>updates</h2>\n<ul>\n<li>deps: Update log4j to 2.25.4, which fixes CVE-2026-34477, CVE-2026-34478, CVE-2026-34479, CVE-2026-34480 by <a href=\"https://github.com/dancewithheart\"><code>@​dancewithheart</code></a> in <a href=\"https://redirect.github.com/sbt/sbt/pull/9086\">sbt/sbt#9086</a></li>\n<li>deps: Update Gigahorse to 0.9.4, which pulls in httpclient5 5.6.1 by <a href=\"https://github.com/eed3si9n\"><code>@​eed3si9n</code></a> in <a href=\"https://redirect.github.com/sbt/sbt/pull/9125\">sbt/sbt#9125</a></li>\n<li>deps: Update sbtn to 2.0.0-RC13 by <a href=\"https://github.com/eed3si9n\"><code>@​eed3si9n</code></a> in <a href=\"https://redirect.github.com/sbt/sbt/pull/9139\">sbt/sbt#9139</a></li>\n<li>Backport of eviction error in <code>Test</code> configuration by <a href=\"https://github.com/zainab-ali\"><code>@​zainab-ali</code></a> in <a href=\"https://redirect.github.com/sbt/sbt/pull/9102\">sbt/sbt#9102</a></li>\n</ul>\n<h2>\U0001F41B bug fixes</h2>\n<ul>\n<li>fix: Hide JDK warnings if JDK 26 or later by <a href=\"https://github.com/xuwei-k\"><code>@​xuwei-k</code></a> in <a href=\"https://redirect.github.com/sbt/sbt/pull/9068\">sbt/sbt#9068</a></li>\n<li>fix: Fixes managedScalaInstance false support by <a href=\"https://github.com/eed3si9n\"><code>@​eed3si9n</code></a> in <a href=\"https://redirect.github.com/sbt/sbt/pull/9121\">sbt/sbt#9121</a></li>\n</ul>\n<h2>behind the scenes</h2>\n<ul>\n<li>ci: dependency-submission branch set to 1.12.x by <a href=\"https://github.com/dancewithheart\"><code>@​dancewithheart</code></a> in <a href=\"https://redirect.github.com/sbt/sbt/pull/9088\">sbt/sbt#9088</a></li>\n</ul>\n<h2>new contributors</h2>\n<ul>\n<li><a href=\"https://github.com/dancewithheart\"><code>@​dancewithheart</code></a> made their first contribution in <a href=\"https://redirect.github.com/sbt/sbt/pull/9086\">sbt/sbt#9086</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/sbt/sbt/compare/v1.12.9...v1.12.10\">https://github.com/sbt/sbt/compare/v1.12.9...v1.12.10</a></p>\n<h2>1.12.9</h2>\n<h2>Updates</h2>\n<ul>\n<li>fix: Prefer local ScalaModuleInfo over global config by <a href=\"https://github.com/kitbellew\"><code>@​kitbellew</code></a> in <a href=\"https://redirect.github.com/coursier/sbt-coursier/pull/609\">coursier/sbt-coursier#609</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/sbt/sbt/compare/v1.12.8...v1.12.9\">https://github.com/sbt/sbt/compare/v1.12.8...v1.12.9</a></p>\n<h2>1.12.8</h2>\n<h2>updates</h2>\n<ul>\n<li>fix: Fixes the source dependency checkout directory by <a href=\"https://github.com/eed3si9n\"><code>@​eed3si9n</code></a> in <a href=\"https://redirect.github.com/sbt/sbt/pull/8974\">sbt/sbt#8974</a></li>\n</ul>\n<h2>behind the scenes</h2>\n<ul>\n<li>fix: Fixes test format by <a href=\"https://github.com/eed3si9n\"><code>@​eed3si9n</code></a> in <a href=\"https://redirect.github.com/sbt/sbt/pull/8969\">sbt/sbt#8969</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/sbt/sbt/compare/v1.12.7...v1.12.8\">https://github.com/sbt/sbt/compare/v1.12.7...v1.12.8</a></p>\n<h2>1.12.7</h2>\n<h3>CVE-2026-32948 Source dependency feature (via crafted VCS URL) leading to arbitrary code execution on Windows</h3>\n<p>sbt 1.12.7 fixes CVE-2026-32948 (<a href=\"https://github.com/sbt/sbt/security/advisories/GHSA-x4ff-q6h8-v7gw\">https://github.com/sbt/sbt/security/advisories/GHSA-x4ff-q6h8-v7gw</a>). Recently <a href=\"https://github.com/anatoliykmetyuk\"><code>@​anatoliykmetyuk</code></a> at Scala Center discovered a vulnerability in sbt's source dependency feature <code>ProjectRef(...)</code> and <code>RootProject(...)</code>. The URL for the version control system allows branch specification via the URL fragment, which is passed to Windows <code>cmd</code> shell. A malicious user can craft an URL that allows arbitrary code execution.</p>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/sbt/sbt/commit/f2d97b703e8262c81ac25472c231f13810822773\"><code>f2d97b7</code></a> sbt 1.12.11</li>\n<li><a href=\"https://github.com/sbt/sbt/commit/1843f386e6591c5535e80e8b915c4985e510796e\"><code>1843f38</code></a> [1.x] Bump to lm 1.12.2 (<a href=\"https://redirect.github.com/sbt/sbt/issues/9167\">#9167</a>)</li>\n<li><a href=\"https://github.com/sbt/sbt/commit/0f946cb961d2f786d68f8c8799831b84e0691cdd\"><code>0f946cb</code></a> sbt 1.12.10</li>\n<li><a href=\"https://github.com/sbt/sbt/commit/b41ca564f64f23a565dd7690c91e7d0206b82b48\"><code>b41ca56</code></a> [1.x] Bump sbtn to 2.0.0-RC13 (<a href=\"https://redirect.github.com/sbt/sbt/issues/9139\">#9139</a>)</li>\n<li><a href=\"https://github.com/sbt/sbt/commit/0a4bdae4649bf357e857ac791af883ed87de2a41\"><code>0a4bdae</code></a> Merge pull request <a href=\"https://redirect.github.com/sbt/sbt/issues/9128\">#9128</a> from eed3si9n/bport1/eviction-error</li>\n<li><a href=\"https://github.com/sbt/sbt/commit/62a20201de4fcfb8430f841b1a2c904e075e9989\"><code>62a2020</code></a> [1.x] Add Test configuration to evictionWarningOptions (<a href=\"https://redirect.github.com/sbt/sbt/issues/9102\">#9102</a>)</li>\n<li><a href=\"https://github.com/sbt/sbt/commit/6f1ce28dc12ee1f906c35e92bcbd6bfd895793b0\"><code>6f1ce28</code></a> lm 1.12.1</li>\n<li><a href=\"https://github.com/sbt/sbt/commit/764c9e13ba6d6ac8b60535393d6479f33c43cd0f\"><code>764c9e1</code></a> [1.x] deps: Gigahorse 0.9.4 (<a href=\"https://redirect.github.com/sbt/sbt/issues/9126\">#9126</a>)</li>\n<li><a href=\"https://github.com/sbt/sbt/commit/872db3d8172a94316616f7ce3b489c5017340ce6\"><code>872db3d</code></a> [1.x] fix: Fixes managedScalaInstance false support (<a href=\"https://redirect.github.com/sbt/sbt/issues/9121\">#9121</a>) (<a href=\"https://redirect.github.com/sbt/sbt/issues/9123\">#9123</a>)</li>\n<li><a href=\"https://github.com/sbt/sbt/commit/6723437f97ab2ca04210d8db2e1aa7d4cd4c40a9\"><code>6723437</code></a> [1.x] hide JDK warnings if JDK 26 or later (<a href=\"https://redirect.github.com/sbt/sbt/issues/9120\">#9120</a>)</li>\n<li>Additional commits viewable in <a href=\"https://github.com/sbt/sbt/compare/v1.9.7...v1.12.11\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
+            commit-message: |-
+                Bump org.scala-sbt:sbt from 1.9.7 to 1.12.11 in /sbt
+
+                Bumps [org.scala-sbt:sbt](https://github.com/sbt/sbt) from 1.9.7 to 1.12.11.
+                - [Release notes](https://github.com/sbt/sbt/releases)
+                - [Commits](https://github.com/sbt/sbt/compare/v1.9.7...v1.12.11)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 99337236e1b2c38341b8bd359069b6c0aaf94b0d
+            dependencies:
+                - name: org.scala-lang:scala-library
+                  previous-requirements:
+                    - file: build.sbt
+                      groups: []
+                      metadata:
+                        property_source: scalaVersion
+                      requirement: 2.13.12
+                      source: null
+                  previous-version: 2.13.12
+                  requirements:
+                    - file: build.sbt
+                      groups: []
+                      metadata:
+                        property_source: scalaVersion
+                      requirement: 3.8.3
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 3.8.3
+                  directory: /sbt
+            updated-dependency-files:
+                - content: |
+                    scalaVersion := "3.8.3"
+
+                    libraryDependencies ++= Seq(
+                      "org.typelevel" %% "cats-core" % "2.6.1",
+                      "com.google.guava" % "guava" % "31.1-jre",
+                      "org.scalatest" %% "scalatest" % "3.2.12" % Test
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /sbt
+                  name: build.sbt
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump org.scala-lang:scala-library from 2.13.12 to 3.8.3 in /sbt
+            pr-body: |
+                Bumps [org.scala-lang:scala-library](https://github.com/scala/scala3) from 2.13.12 to 3.8.3.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/scala/scala3/releases">org.scala-lang:scala-library's releases</a>.</em></p>
+                <blockquote>
+                <h2>3.8.3</h2>
+                <h1>Release highlights</h1>
+                <ul>
+                <li>Add support for local coverage on and off with <code>// $COVERAGE-OFF$</code> and <code>// $COVERAGE-ON$</code> <a href="https://redirect.github.com/scala/scala3/pull/24486">#24486</a></li>
+                <li>Deprecate for removal <code>-print-lines</code> compiler setting <a href="https://redirect.github.com/scala/scala3/pull/25330">#25330</a></li>
+                <li>Add safe mode capture checking extension <a href="https://redirect.github.com/scala/scala3/pull/25307">#25307</a></li>
+                <li>Port the Scala2 JVM backend optimizer <a href="https://redirect.github.com/scala/scala3/pull/25165">#25165</a></li>
+                </ul>
+                <h1>Other changes and fixes</h1>
+                <h2>Desugaring</h2>
+                <ul>
+                <li>Fix <a href="https://redirect.github.com/scala/scala3/issues/24997">#24997</a>: Avoid unnecessary CHECKCAST in untupled function parameters <a href="https://redirect.github.com/scala/scala3/pull/25085">#25085</a></li>
+                </ul>
+                <h2>Documentation</h2>
+                <ul>
+                <li>Fix little errors in the API documentation <a href="https://redirect.github.com/scala/scala3/pull/25241">#25241</a></li>
+                <li>CC Language Reference: Rename <code>cap</code> to <code>any/fresh</code> <a href="https://redirect.github.com/scala/scala3/pull/25057">#25057</a></li>
+                </ul>
+                <h2>Enums</h2>
+                <ul>
+                <li>Deprecate override class, improve checks <a href="https://redirect.github.com/scala/scala3/pull/24828">#24828</a></li>
+                <li>Fix Java enum forwarders to pull from companion on initialization  <a href="https://redirect.github.com/scala/scala3/pull/24361">#24361</a></li>
+                </ul>
+                <h2>Experimental: Capture Checking</h2>
+                <ul>
+                <li>Rename caps.cap to caps.any <a href="https://redirect.github.com/scala/scala3/pull/24923">#24923</a></li>
+                <li>Track global capabilities <a href="https://redirect.github.com/scala/scala3/pull/24883">#24883</a></li>
+                <li>Treat local mutable vars as capabilities <a href="https://redirect.github.com/scala/scala3/pull/24815">#24815</a></li>
+                <li>Fix Crashes when Capture-set Parameters Conflict with Terms <a href="https://redirect.github.com/scala/scala3/pull/25029">#25029</a></li>
+                <li>Replace &quot;cannot be included in&quot; by &quot;cannot flow into&quot; in error messages <a href="https://redirect.github.com/scala/scala3/pull/25155">#25155</a></li>
+                <li>CC: Add field captures to self-type constraints <a href="https://redirect.github.com/scala/scala3/pull/24984">#24984</a></li>
+                <li>Add uses clauses for templates <a href="https://redirect.github.com/scala/scala3/pull/24857">#24857</a></li>
+                <li>Drop special code paths for objects <a href="https://redirect.github.com/scala/scala3/pull/24881">#24881</a></li>
+                <li>Do not consider generated getters to be <code>update def</code> <a href="https://redirect.github.com/scala/scala3/pull/24906">#24906</a></li>
+                <li>Under cc, mark inferred type arguments to inline methods with an <code>@inferred</code> annotation <a href="https://redirect.github.com/scala/scala3/pull/25175">#25175</a></li>
+                <li>Handle call-by-name types in bad locations under cc <a href="https://redirect.github.com/scala/scala3/pull/25154">#25154</a></li>
+                <li>Fixes for global capabilities <a href="https://redirect.github.com/scala/scala3/pull/25123">#25123</a></li>
+                <li>Warn if reach capability in result will likely cause leakage <a href="https://redirect.github.com/scala/scala3/pull/24860">#24860</a></li>
+                <li>Make <code>&lt;fluid&gt;</code> decorations replace existing capture sets <a href="https://redirect.github.com/scala/scala3/pull/25012">#25012</a></li>
+                <li>Make TypeMaps in Setup work correctly for <code>fresh</code> <a href="https://redirect.github.com/scala/scala3/pull/24985">#24985</a></li>
+                <li>For a limited time, also recognize caps.cap <a href="https://redirect.github.com/scala/scala3/pull/25076">#25076</a></li>
+                <li>Fix closure typing <a href="https://redirect.github.com/scala/scala3/pull/25014">#25014</a></li>
+                <li>Map class capture sets via as-seen-from with prefix of created types <a href="https://redirect.github.com/scala/scala3/pull/24830">#24830</a></li>
+                <li>Drop SafeMode attribute in Tasty <a href="https://redirect.github.com/scala/scala3/pull/25357">#25357</a></li>
+                <li>Fix <a href="https://github.com/assumeSafe"><code>@​assumeSafe</code></a> addition in safe mode <a href="https://redirect.github.com/scala/scala3/pull/25364">#25364</a></li>
+                <li>Disallow <a href="https://github.com/assumeSafe"><code>@​assumeSafe</code></a> under safe mode <a href="https://redirect.github.com/scala/scala3/pull/25462">#25462</a></li>
+                </ul>
+                <h2>Experimental: Modularity</h2>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li>See full diff in <a href="https://github.com/scala/scala3/commits/3.8.3">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump org.scala-lang:scala-library from 2.13.12 to 3.8.3 in /sbt
+
+                Bumps [org.scala-lang:scala-library](https://github.com/scala/scala3) from 2.13.12 to 3.8.3.
+                - [Release notes](https://github.com/scala/scala3/releases)
+                - [Commits](https://github.com/scala/scala3/commits/3.8.3)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 99337236e1b2c38341b8bd359069b6c0aaf94b0d
