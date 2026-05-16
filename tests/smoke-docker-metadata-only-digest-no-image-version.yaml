@@ -1,0 +1,39 @@
+input:
+    job:
+        command: update
+        package-manager: docker
+        allowed-updates:
+            - update-type: all
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - docker/metadata/only-digest-no-image-version
+            commit: 99ab537d9d2501502eed5212c1d87aad54fb9c63
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: dependabot-fixtures/docker-with-source
+                  requirements:
+                    - file: Dockerfile
+                      groups: []
+                      requirement: null
+                      source:
+                        digest: 808293ec551b907583c4ae89ad62c2deed365887f55976650389de9837611e11
+                        registry: ghcr.io
+                  version: 808293ec551b907583c4ae89ad62c2deed365887f55976650389de9837611e11
+            dependency_files:
+                - /docker/metadata/only-digest-no-image-version/Dockerfile
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 99ab537d9d2501502eed5212c1d87aad54fb9c63
