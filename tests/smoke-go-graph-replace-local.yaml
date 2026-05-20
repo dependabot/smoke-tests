@@ -1,0 +1,41 @@
+input:
+    job:
+        command: graph
+        package-manager: go_modules
+        allowed-updates:
+            - update-type: all
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /go/graphs/replace-local
+            commit: 6c7557f98092fee58a96b9f4cb1a0ec7e2472cb1
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: create_dependency_submission
+      expect:
+        data:
+            version: 1
+            sha: 6c7557f98092fee58a96b9f4cb1a0ec7e2472cb1
+            ref: refs/heads/main
+            job:
+                correlator: dependabot-go_modules-go-graphs-replace-local
+                id: cli
+            detector:
+                name: dependabot
+                url: https://github.com/dependabot/dependabot-core
+                version: 0.377.0
+            manifests: {}
+            metadata:
+                scanned_manifest_path: golang::/go/graphs/replace-local
+                status: ok
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 6c7557f98092fee58a96b9f4cb1a0ec7e2472cb1
