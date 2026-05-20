@@ -47,8 +47,10 @@ jobs:
           fi
 
           # The base SHA is immutable, so the diff is stable even if the
-          # base branch advances during the run.
-          changed=$(git diff --name-only "$BASE_SHA...HEAD")
+          # base branch advances during the run. --diff-filter=ACMRT
+          # excludes deletions (D) so removed test YAMLs aren't queued for
+          # the matrix.
+          changed=$(git diff --name-only --diff-filter=ACMRT "$BASE_SHA...HEAD")
           echo "Changed files:"
           echo "$changed"
 
