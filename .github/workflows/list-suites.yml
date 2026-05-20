@@ -1,6 +1,14 @@
 name: List Suites
 on:  # yamllint disable-line rule:truthy
   workflow_call:
+    inputs:
+      base_ref:
+        description: >
+          If set, only emit suites affected by changes between this base ref
+          and HEAD. Unset (default) emits every suite in tests/.
+        required: false
+        type: string
+        default: ""
     outputs:
       suites:
         description: List of suites to run from the tests/ directory
@@ -10,9 +18,88 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Get workflow names
+        with:
+          # Need history so we can diff against the base ref.
+          fetch-depth: 0
+
+      - name: Compute suite list
         id: suites
+        env:
+          BASE_REF: ${{ inputs.base_ref }}
         run: |
-          echo "suite=$(ls tests | sed 's/^tests\///' | sed 's/smoke-//' | sed 's/.yaml$//' | jq -R | jq -sc)" >> $GITHUB_OUTPUT
+          set -euo pipefail
+
+          all_suites() {
+            ls tests | sed 's/^tests\///;s/smoke-//;s/\.yaml$//'
+          }
+
+          emit() {
+            # $1 is a newline-separated suite list (possibly empty).
+            local list
+            list=$(printf '%s\n' "$1" | sed '/^$/d' | sort -u | jq -R | jq -sc)
+            echo "Suites: $list"
+            echo "suite=$list" >> "$GITHUB_OUTPUT"
+          }
+
+          if [ -z "$BASE_REF" ]; then
+            emit "$(all_suites)"
+            exit 0
+          fi
+
+          git fetch --no-tags --depth=1 origin "$BASE_REF"
+          changed=$(git diff --name-only "origin/$BASE_REF...HEAD")
+          echo "Changed files:"
+          echo "$changed"
+
+          # Any change to shared infra forces a full run.
+          if echo "$changed" | grep -qE '^(script/|\.github/workflows/(smoke|list-suites)\.yml$)'; then
+            echo "Shared infra changed — running full suite."
+            emit "$(all_suites)"
+            exit 0
+          fi
+
+          # Build the affected suite set:
+          #   1. Direct edits to tests/smoke-<name>.yaml → <name>.
+          #   2. Edits under a top-level manifest dir → every test that
+          #      references that dir via `directory: /<topdir>` (exact or as
+          #      a path prefix). Tests that target the repo root
+          #      (`directory: /`) are also included whenever any manifest
+          #      dir changes, since they may be affected.
+          suites=""
+          manifest_changed=0
+          while IFS= read -r path; do
+            [ -z "$path" ] && continue
+            case "$path" in
+              tests/smoke-*.yaml)
+                name="${path#tests/smoke-}"
+                name="${name%.yaml}"
+                suites+="$name"$'\n'
+                ;;
+              */*)
+                topdir="${path%%/*}"
+                # Skip non-manifest top-level paths.
+                case "$topdir" in
+                  tests|script|.github|.devcontainer|.idea) continue ;;
+                esac
+                manifest_changed=1
+                # Match `directory: /<topdir>` exactly or as a path prefix
+                # (e.g. /bundler or /bundler/multi-dir/foo, but not /bundler2).
+                matches=$(grep -lE "directory: /${topdir}(/|$)" tests/smoke-*.yaml || true)
+                if [ -n "$matches" ]; then
+                  suites+=$(echo "$matches" | sed 's|tests/smoke-||;s|\.yaml$||')$'\n'
+                fi
+                ;;
+            esac
+          done <<<"$changed"
+
+          if [ "$manifest_changed" = "1" ]; then
+            # Tests with `directory: /` operate on the repo root.
+            root_matches=$(grep -lE 'directory: /$' tests/smoke-*.yaml || true)
+            if [ -n "$root_matches" ]; then
+              suites+=$(echo "$root_matches" | sed 's|tests/smoke-||;s|\.yaml$||')$'\n'
+            fi
+          fi
+
+          emit "$suites"
     outputs:
       suites: ${{ steps.suites.outputs.suite }}
