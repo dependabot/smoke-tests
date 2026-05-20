@@ -60,11 +60,15 @@ jobs:
 
           # Build the affected suite set:
           #   1. Direct edits to tests/smoke-<name>.yaml → <name>.
-          #   2. Edits under a top-level manifest dir → every test that
+          #   2. Edits under .github/workflows/ → every test using the
+          #      github_actions package-manager (e.g. smoke-actions), which
+          #      treats workflow files as its manifest.
+          #   3. Edits under a top-level manifest dir → every test that
           #      references that dir via `directory: /<topdir>` (exact or as
           #      a path prefix). Tests that target the repo root
-          #      (`directory: /`) are also included whenever any manifest
-          #      dir changes, since they may be affected.
+          #      (`directory: /` or `directory: /.`) are also included
+          #      whenever any manifest dir changes, since they may be
+          #      affected.
           suites=""
           manifest_changed=0
           while IFS= read -r path; do
@@ -74,6 +78,15 @@ jobs:
                 name="${path#tests/smoke-}"
                 name="${name%.yaml}"
                 suites+="$name"$'\n'
+                ;;
+              .github/workflows/*)
+                # Workflow files are themselves a manifest type exercised
+                # by github_actions suites (which scan the whole repo).
+                manifest_changed=1
+                actions_matches=$(grep -lE '^\s+package-manager: github_actions$' tests/smoke-*.yaml || true)
+                if [ -n "$actions_matches" ]; then
+                  suites+=$(echo "$actions_matches" | sed 's|tests/smoke-||;s|\.yaml$||')$'\n'
+                fi
                 ;;
               */*)
                 topdir="${path%%/*}"
@@ -93,8 +106,9 @@ jobs:
           done <<<"$changed"
 
           if [ "$manifest_changed" = "1" ]; then
-            # Tests with `directory: /` operate on the repo root.
-            root_matches=$(grep -lE 'directory: /$' tests/smoke-*.yaml || true)
+            # Tests with `directory: /` or `directory: /.` operate on the
+            # repo root, so any manifest-dir change may affect them.
+            root_matches=$(grep -lE 'directory: /\.?$' tests/smoke-*.yaml || true)
             if [ -n "$root_matches" ]; then
               suites+=$(echo "$root_matches" | sed 's|tests/smoke-||;s|\.yaml$||')$'\n'
             fi
