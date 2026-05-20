@@ -2,10 +2,10 @@ name: List Suites
 on:  # yamllint disable-line rule:truthy
   workflow_call:
     inputs:
-      base_ref:
+      base_sha:
         description: >
-          If set, only emit suites affected by changes between this base ref
-          and HEAD. Unset (default) emits every suite in tests/.
+          If set, only emit suites affected by changes between this base
+          commit SHA and HEAD. Unset (default) emits every suite in tests/.
         required: false
         type: string
         default: ""
@@ -19,13 +19,13 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          # Need history so we can diff against the base ref.
+          # Need history so we can diff against the base SHA.
           fetch-depth: 0
 
       - name: Compute suite list
         id: suites
         env:
-          BASE_REF: ${{ inputs.base_ref }}
+          BASE_SHA: ${{ inputs.base_sha }}
         run: |
           set -euo pipefail
 
@@ -41,13 +41,14 @@ jobs:
             echo "suite=$list" >> "$GITHUB_OUTPUT"
           }
 
-          if [ -z "$BASE_REF" ]; then
+          if [ -z "$BASE_SHA" ]; then
             emit "$(all_suites)"
             exit 0
           fi
 
-          git fetch --no-tags --depth=1 origin "$BASE_REF"
-          changed=$(git diff --name-only "origin/$BASE_REF...HEAD")
+          # The base SHA is immutable, so the diff is stable even if the
+          # base branch advances during the run.
+          changed=$(git diff --name-only "$BASE_SHA...HEAD")
           echo "Changed files:"
           echo "$changed"
 
@@ -58,87 +59,21 @@ jobs:
             exit 0
           fi
 
-          # Filter a newline-separated list of test yaml paths (on stdin)
-          # down to those whose source.repo is this repository. Tests that
-          # pull manifests from external repos (e.g.
-          # smoke-npm-yarn-berry-workspaces uses dsp-testing/...) are not
-          # affected by local file changes.
-          local_only() {
-            while IFS= read -r f; do
-              [ -z "$f" ] && continue
-              if grep -qE '^[[:space:]]+repo: dependabot/smoke-tests$' "$f"; then
-                echo "$f"
-              fi
-            done
-          }
-
-          # Build the affected suite set:
-          #   1. Direct edits to tests/smoke-<name>.yaml → <name>
-          #      (no source.repo filter — editing the YAML means you want
-          #      to test it regardless of where it pulls manifests from).
-          #   2. Edits under .github/workflows/ → every local test using the
-          #      github_actions package-manager (e.g. smoke-actions), which
-          #      treats workflow files as its manifest.
-          #   3. Edits under a top-level manifest dir → every local test that
-          #      references that dir via `directory: /<topdir>` (exact or as
-          #      a path prefix). Local tests that target the repo root
-          #      (`directory: /` or `directory: /.`) are also included
-          #      whenever any manifest changes, since they may be affected.
-          #   4. Edits to known root-level manifest files (e.g. .gitmodules
-          #      for the submodules ecosystem) flag a manifest change so
-          #      root-targeting tests are picked up.
+          # Build the affected suite set. Each test pins its source to a
+          # specific commit SHA, so manifest edits on this branch do not
+          # change what any test sees until someone regenerates the YAML
+          # and bumps the commit. That means the only PR change that can
+          # affect a test's outcome is an edit to its own YAML.
           suites=""
-          manifest_changed=0
           while IFS= read -r path; do
-            [ -z "$path" ] && continue
             case "$path" in
               tests/smoke-*.yaml)
                 name="${path#tests/smoke-}"
                 name="${name%.yaml}"
                 suites+="$name"$'\n'
                 ;;
-              .github/workflows/*)
-                # Workflow files are themselves a manifest type exercised
-                # by github_actions suites (which scan the whole repo).
-                manifest_changed=1
-                actions_matches=$(grep -lE '^[[:space:]]+package-manager: github_actions$' tests/smoke-*.yaml | local_only || true)
-                if [ -n "$actions_matches" ]; then
-                  suites+=$(echo "$actions_matches" | sed 's|tests/smoke-||;s|\.yaml$||')$'\n'
-                fi
-                ;;
-              */*)
-                topdir="${path%%/*}"
-                # Skip non-manifest top-level paths.
-                case "$topdir" in
-                  tests|script|.github|.devcontainer|.idea) continue ;;
-                esac
-                manifest_changed=1
-                # Match `directory: /<topdir>` exactly or as a path prefix
-                # (e.g. /bundler or /bundler/multi-dir/foo, but not /bundler2).
-                matches=$(grep -lE "directory: /${topdir}(/|$)" tests/smoke-*.yaml | local_only || true)
-                if [ -n "$matches" ]; then
-                  suites+=$(echo "$matches" | sed 's|tests/smoke-||;s|\.yaml$||')$'\n'
-                fi
-                ;;
-              *)
-                # Root-level files. Only known manifest files trigger a run;
-                # anything else (README.md, CODEOWNERS, .gitattributes, …)
-                # is ignored.
-                case "$path" in
-                  .gitmodules) manifest_changed=1 ;;
-                esac
-                ;;
             esac
           done <<<"$changed"
-
-          if [ "$manifest_changed" = "1" ]; then
-            # Local tests with `directory: /` or `directory: /.` operate on
-            # the repo root, so any manifest change may affect them.
-            root_matches=$(grep -lE 'directory: /\.?$' tests/smoke-*.yaml | local_only || true)
-            if [ -n "$root_matches" ]; then
-              suites+=$(echo "$root_matches" | sed 's|tests/smoke-||;s|\.yaml$||')$'\n'
-            fi
-          fi
 
           emit "$suites"
     outputs:

@@ -17,7 +17,7 @@ jobs:
     with:
       # On PRs, restrict the matrix to suites affected by the diff.
       # On schedule / workflow_dispatch, leave empty to run all suites.
-      base_ref: ${{ github.event_name == 'pull_request' && github.base_ref || '' }}
+      base_sha: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || '' }}
 
   smoke:
     runs-on: ubuntu-latest
