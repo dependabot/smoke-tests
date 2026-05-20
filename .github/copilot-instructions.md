@@ -10,9 +10,9 @@ Before running or regenerating any smoke tests, you must:
 
 1. **Install the Dependabot CLI** by running `go install github.com/dependabot/cli/cmd/dependabot@latest`. This installs the latest released version onto your `$PATH`. Requires Go to be installed.
 
-2. **Set up TLS certificates** by running `script/setup-tls.sh`. In sandboxed environments (GitHub Codespaces, GitHub Actions) a TLS-intercepting proxy re-signs all outbound HTTPS traffic with a mkcert CA. This script disables the runc shim's certificate bind mounts so the Dependabot CLI's containers keep their original cert stores. The helper scripts (`script/run-one.sh`, `script/regen.sh`) automatically detect the mkcert CA and pass `--proxy-cert` to the CLI.
+2. **Set up TLS certificates** by running `script/setup-tls.sh`. This is only needed in the Copilot coding agent's sandboxed environment, where a TLS-intercepting proxy re-signs all outbound HTTPS traffic with a mkcert CA. The script disables the runc shim's certificate bind mounts so the Dependabot CLI's containers keep their original cert stores, and is a no-op outside that environment (e.g. Codespaces, GitHub Actions, local machines). The helper scripts (`script/run-one.sh`, `script/regen.sh`) automatically detect the mkcert CA and pass `--proxy-cert` to the CLI.
 
-Both steps are required every time a new environment is created (e.g. a fresh Codespace or a new CI job).
+Both steps are required every time a new sandboxed environment is created.
 
 ## Running and Regenerating Tests
 
@@ -57,4 +57,4 @@ The `package-manager` field in test YAML uses internal Dependabot names, which d
 
 ## Troubleshooting TLS
 
-If you see errors like `Cannot handshake client`, `CAfile: none`, or `server certificate verification failed` when running smoke tests, make sure you have run both setup steps above. The `--proxy-cert` flag passes the mkcert CA to the Dependabot proxy so it can verify the infrastructure's MITM certificates on outbound connections.
+If you see errors like `Cannot handshake client`, `CAfile: none`, or `server certificate verification failed` when running smoke tests in the Copilot coding agent's sandboxed environment, make sure you have run `script/setup-tls.sh`. The `--proxy-cert` flag (passed automatically by the helper scripts) gives the mkcert CA to the Dependabot proxy so it can verify the infrastructure's MITM certificates on outbound connections.
