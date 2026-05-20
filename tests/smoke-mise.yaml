@@ -1,0 +1,77 @@
+input:
+    job:
+        command: update
+        package-manager: mise
+        allowed-updates:
+            - update-type: all
+        experiments:
+            enable_beta_ecosystems: true
+        ignore-conditions:
+            - dependency-name: helm
+              source: tests/smoke-mise.yaml
+              version-requirement: '>4.1.3'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /mise
+            commit: ee48cf95263f177b636b2e04200981ef35f4f14d
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: helm
+                  requirements:
+                    - file: mise.toml
+                      groups: []
+                      requirement: 3.17.3
+                      source: null
+                  version: 3.17.3
+            dependency_files:
+                - /mise/mise.toml
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: ee48cf95263f177b636b2e04200981ef35f4f14d
+            dependencies:
+                - name: helm
+                  previous-requirements:
+                    - file: mise.toml
+                      groups: []
+                      requirement: 3.17.3
+                      source: null
+                  previous-version: 3.17.3
+                  requirements:
+                    - file: mise.toml
+                      groups: []
+                      requirement: 4.1.3
+                      source: null
+                  version: 4.1.3
+                  directory: /mise
+            updated-dependency-files:
+                - content: |
+                    [tools]
+                    helm = "4.1.3"
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /mise
+                  name: mise.toml
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump helm from 3.17.3 to 4.1.3 in /mise
+            pr-body: |
+                Bumps helm from 3.17.3 to 4.1.3.
+            commit-message: |-
+                Bump helm from 3.17.3 to 4.1.3 in /mise
+
+                Bumps helm from 3.17.3 to 4.1.3.
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: ee48cf95263f177b636b2e04200981ef35f4f14d
