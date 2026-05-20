@@ -58,17 +58,35 @@ jobs:
             exit 0
           fi
 
+          # Filter a newline-separated list of test yaml paths (on stdin)
+          # down to those whose source.repo is this repository. Tests that
+          # pull manifests from external repos (e.g.
+          # smoke-npm-yarn-berry-workspaces uses dsp-testing/...) are not
+          # affected by local file changes.
+          local_only() {
+            while IFS= read -r f; do
+              [ -z "$f" ] && continue
+              if grep -qE '^[[:space:]]+repo: dependabot/smoke-tests$' "$f"; then
+                echo "$f"
+              fi
+            done
+          }
+
           # Build the affected suite set:
-          #   1. Direct edits to tests/smoke-<name>.yaml → <name>.
-          #   2. Edits under .github/workflows/ → every test using the
+          #   1. Direct edits to tests/smoke-<name>.yaml → <name>
+          #      (no source.repo filter — editing the YAML means you want
+          #      to test it regardless of where it pulls manifests from).
+          #   2. Edits under .github/workflows/ → every local test using the
           #      github_actions package-manager (e.g. smoke-actions), which
           #      treats workflow files as its manifest.
-          #   3. Edits under a top-level manifest dir → every test that
+          #   3. Edits under a top-level manifest dir → every local test that
           #      references that dir via `directory: /<topdir>` (exact or as
-          #      a path prefix). Tests that target the repo root
+          #      a path prefix). Local tests that target the repo root
           #      (`directory: /` or `directory: /.`) are also included
-          #      whenever any manifest dir changes, since they may be
-          #      affected.
+          #      whenever any manifest changes, since they may be affected.
+          #   4. Edits to known root-level manifest files (e.g. .gitmodules
+          #      for the submodules ecosystem) flag a manifest change so
+          #      root-targeting tests are picked up.
           suites=""
           manifest_changed=0
           while IFS= read -r path; do
@@ -83,7 +101,7 @@ jobs:
                 # Workflow files are themselves a manifest type exercised
                 # by github_actions suites (which scan the whole repo).
                 manifest_changed=1
-                actions_matches=$(grep -lE '^\s+package-manager: github_actions$' tests/smoke-*.yaml || true)
+                actions_matches=$(grep -lE '^[[:space:]]+package-manager: github_actions$' tests/smoke-*.yaml | local_only || true)
                 if [ -n "$actions_matches" ]; then
                   suites+=$(echo "$actions_matches" | sed 's|tests/smoke-||;s|\.yaml$||')$'\n'
                 fi
@@ -97,18 +115,26 @@ jobs:
                 manifest_changed=1
                 # Match `directory: /<topdir>` exactly or as a path prefix
                 # (e.g. /bundler or /bundler/multi-dir/foo, but not /bundler2).
-                matches=$(grep -lE "directory: /${topdir}(/|$)" tests/smoke-*.yaml || true)
+                matches=$(grep -lE "directory: /${topdir}(/|$)" tests/smoke-*.yaml | local_only || true)
                 if [ -n "$matches" ]; then
                   suites+=$(echo "$matches" | sed 's|tests/smoke-||;s|\.yaml$||')$'\n'
                 fi
+                ;;
+              *)
+                # Root-level files. Only known manifest files trigger a run;
+                # anything else (README.md, CODEOWNERS, .gitattributes, …)
+                # is ignored.
+                case "$path" in
+                  .gitmodules) manifest_changed=1 ;;
+                esac
                 ;;
             esac
           done <<<"$changed"
 
           if [ "$manifest_changed" = "1" ]; then
-            # Tests with `directory: /` or `directory: /.` operate on the
-            # repo root, so any manifest-dir change may affect them.
-            root_matches=$(grep -lE 'directory: /\.?$' tests/smoke-*.yaml || true)
+            # Local tests with `directory: /` or `directory: /.` operate on
+            # the repo root, so any manifest change may affect them.
+            root_matches=$(grep -lE 'directory: /\.?$' tests/smoke-*.yaml | local_only || true)
             if [ -n "$root_matches" ]; then
               suites+=$(echo "$root_matches" | sed 's|tests/smoke-||;s|\.yaml$||')$'\n'
             fi
