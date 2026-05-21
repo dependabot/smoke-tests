@@ -234,30 +234,6 @@ output:
                       source: null
                   version: 0.3.0
                   directory: /cargo/multi-dir/bar
-                - name: rand
-                  previous-requirements:
-                    - file: Cargo.toml
-                      groups:
-                        - dependencies
-                      requirement: null
-                      source:
-                        branch: null
-                        ref: 0.8.4
-                        type: git
-                        url: ssh://git@github.com/rust-random/rand.git
-                  previous-version: 8792268dfe57e49bb4518190bf4fe66176759a44
-                  requirements:
-                    - file: Cargo.toml
-                      groups:
-                        - dependencies
-                      requirement: null
-                      source:
-                        branch: null
-                        ref: 0.10.0
-                        type: git
-                        url: ssh://git@github.com/rust-random/rand.git
-                  version: acc5f246d3338ffea40aa0f25a46f84d6d19db8d
-                  directory: /cargo/multi-dir/bar
             updated-dependency-files:
                 - content: |
                     [package]
@@ -792,10 +768,10 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the cargo group across 2 directories with 3 updates
+            pr-title: Bump the cargo group across 2 directories with 2 updates
             pr-body: |
                 Bumps the cargo group with 2 updates in the /cargo/multi-dir/foo directory: [time](https://github.com/time-rs/time) and [regex](https://github.com/rust-lang/regex).
-                Bumps the cargo group with 2 updates in the /cargo/multi-dir/bar directory: [time](https://github.com/time-rs/time) and [rand](https://github.com/rust-random/rand).
+                Bumps the cargo group with 1 update in the /cargo/multi-dir/bar directory: [time](https://github.com/time-rs/time).
 
                 Updates `time` from 0.3.0-alpha-1 to 0.3.0
                 <details>
@@ -995,89 +971,11 @@ output:
                 </ul>
                 </details>
                 <br />
-
-                Updates `rand` from 0.8.4 to 0.10.0
-                <details>
-                <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/rust-random/rand/blob/master/CHANGELOG.md">rand's changelog</a>.</em></p>
-                <blockquote>
-                <h2>[0.10.0] - 2026-02-08</h2>
-                <h3>Changes</h3>
-                <ul>
-                <li>The dependency on <code>rand_chacha</code> has been replaced with a dependency on <code>chacha20</code>. This changes the implementation behind <code>StdRng</code>, but the output remains the same. There may be some API breakage when using the ChaCha-types directly as these are now the ones in <code>chacha20</code> instead of <code>rand_chacha</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1642">#1642</a>).</li>
-                <li>Rename fns <code>IndexedRandom::choose_multiple</code> -&gt; <code>sample</code>, <code>choose_multiple_array</code> -&gt; <code>sample_array</code>, <code>choose_multiple_weighted</code> -&gt; <code>sample_weighted</code>, struct <code>SliceChooseIter</code> -&gt; <code>IndexedSamples</code> and fns <code>IteratorRandom::choose_multiple</code> -&gt; <code>sample</code>, <code>choose_multiple_fill</code> -&gt; <code>sample_fill</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1632">#1632</a>)</li>
-                <li>Use Edition 2024 and MSRV 1.85 (<a href="https://redirect.github.com/rust-random/rand/issues/1653">#1653</a>)</li>
-                <li>Let <code>Fill</code> be implemented for element types, not sliceable types (<a href="https://redirect.github.com/rust-random/rand/issues/1652">#1652</a>)</li>
-                <li>Fix <code>OsError::raw_os_error</code> on UEFI targets by returning <code>Option&lt;usize&gt;</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1665">#1665</a>)</li>
-                <li>Replace fn <code>TryRngCore::read_adapter(..) -&gt; RngReadAdapter</code> with simpler struct <code>RngReader</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1669">#1669</a>)</li>
-                <li>Remove fns <code>SeedableRng::from_os_rng</code>, <code>try_from_os_rng</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1674">#1674</a>)</li>
-                <li>Remove <code>Clone</code> support for <code>StdRng</code>, <code>ReseedingRng</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1677">#1677</a>)</li>
-                <li>Use <code>postcard</code> instead of <code>bincode</code> to test the serde feature (<a href="https://redirect.github.com/rust-random/rand/issues/1693">#1693</a>)</li>
-                <li>Avoid excessive allocation in <code>IteratorRandom::sample</code> when <code>amount</code> is much larger than iterator size (<a href="https://redirect.github.com/rust-random/rand/issues/1695">#1695</a>)</li>
-                <li>Rename <code>os_rng</code> -&gt; <code>sys_rng</code>, <code>OsRng</code> -&gt; <code>SysRng</code>, <code>OsError</code> -&gt; <code>SysError</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1697">#1697</a>)</li>
-                <li>Rename <code>Rng</code> -&gt; <code>RngExt</code> as upstream <code>rand_core</code> has renamed <code>RngCore</code> -&gt; <code>Rng</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1717">#1717</a>)</li>
-                </ul>
-                <h3>Additions</h3>
-                <ul>
-                <li>Add fns <code>IndexedRandom::choose_iter</code>, <code>choose_weighted_iter</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1632">#1632</a>)</li>
-                <li>Pub export <code>Xoshiro128PlusPlus</code>, <code>Xoshiro256PlusPlus</code> prngs (<a href="https://redirect.github.com/rust-random/rand/issues/1649">#1649</a>)</li>
-                <li>Pub export <code>ChaCha8Rng</code>, <code>ChaCha12Rng</code>, <code>ChaCha20Rng</code> behind <code>chacha</code> feature (<a href="https://redirect.github.com/rust-random/rand/issues/1659">#1659</a>)</li>
-                <li>Fn <code>rand::make_rng() -&gt; R where R: SeedableRng</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1734">#1734</a>)</li>
-                </ul>
-                <h3>Removals</h3>
-                <ul>
-                <li>Removed <code>ReseedingRng</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1722">#1722</a>)</li>
-                <li>Removed unused feature &quot;nightly&quot; (<a href="https://redirect.github.com/rust-random/rand/issues/1732">#1732</a>)</li>
-                <li>Removed feature <code>small_rng</code> (<a href="https://redirect.github.com/rust-random/rand/issues/1732">#1732</a>)</li>
-                </ul>
-                <p><a href="https://redirect.github.com/rust-random/rand/issues/1632">#1632</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1632">rust-random/rand#1632</a>
-                <a href="https://redirect.github.com/rust-random/rand/issues/1642">#1642</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1642">rust-random/rand#1642</a>
-                <a href="https://redirect.github.com/rust-random/rand/issues/1649">#1649</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1649">rust-random/rand#1649</a>
-                <a href="https://redirect.github.com/rust-random/rand/issues/1652">#1652</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1652">rust-random/rand#1652</a>
-                <a href="https://redirect.github.com/rust-random/rand/issues/1653">#1653</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1653">rust-random/rand#1653</a>
-                <a href="https://redirect.github.com/rust-random/rand/issues/1659">#1659</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1659">rust-random/rand#1659</a>
-                <a href="https://redirect.github.com/rust-random/rand/issues/1665">#1665</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1665">rust-random/rand#1665</a>
-                <a href="https://redirect.github.com/rust-random/rand/issues/1669">#1669</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1669">rust-random/rand#1669</a>
-                <a href="https://redirect.github.com/rust-random/rand/issues/1674">#1674</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1674">rust-random/rand#1674</a>
-                <a href="https://redirect.github.com/rust-random/rand/issues/1677">#1677</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1677">rust-random/rand#1677</a>
-                <a href="https://redirect.github.com/rust-random/rand/issues/1693">#1693</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1693">rust-random/rand#1693</a>
-                <a href="https://redirect.github.com/rust-random/rand/issues/1695">#1695</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1695">rust-random/rand#1695</a>
-                <a href="https://redirect.github.com/rust-random/rand/issues/1697">#1697</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1697">rust-random/rand#1697</a>
-                <a href="https://redirect.github.com/rust-random/rand/issues/1717">#1717</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1717">rust-random/rand#1717</a>
-                <a href="https://redirect.github.com/rust-random/rand/issues/1722">#1722</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1722">rust-random/rand#1722</a>
-                <a href="https://redirect.github.com/rust-random/rand/issues/1732">#1732</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1732">rust-random/rand#1732</a>
-                <a href="https://redirect.github.com/rust-random/rand/issues/1734">#1734</a>: <a href="https://redirect.github.com/rust-random/rand/pull/1734">rust-random/rand#1734</a></p>
-                <h2>[0.9.2] - 2025-07-20</h2>
-                <h3>Deprecated</h3>
-                <ul>
-                <li>Deprecate <code>rand::rngs::mock</code> module and <code>StepRng</code> generator (<a href="https://redirect.github.com/rust-random/rand/issues/1634">#1634</a>)</li>
-                </ul>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/rust-random/rand/commit/acc5f246d3338ffea40aa0f25a46f84d6d19db8d"><code>acc5f24</code></a> Prepare v0.10.0 releases (<a href="https://redirect.github.com/rust-random/rand/issues/1729">#1729</a>)</li>
-                <li><a href="https://github.com/rust-random/rand/commit/95c51651c904ca8e77cdec5ebb6f218bb505f18f"><code>95c5165</code></a> Add fn rand::make_rng (<a href="https://redirect.github.com/rust-random/rand/issues/1734">#1734</a>)</li>
-                <li><a href="https://github.com/rust-random/rand/commit/146da581490e534332a6018c15d7765b4c16851e"><code>146da58</code></a> CHANGELOG: add PR links (<a href="https://redirect.github.com/rust-random/rand/issues/1738">#1738</a>)</li>
-                <li><a href="https://github.com/rust-random/rand/commit/8cacd6da6df9256d13d8ceb499310844227379fd"><code>8cacd6d</code></a> README tweaks (<a href="https://redirect.github.com/rust-random/rand/issues/1737">#1737</a>)</li>
-                <li><a href="https://github.com/rust-random/rand/commit/28e3df866fdf2a1892abce84a0832c1eb15511ef"><code>28e3df8</code></a> Update chacha20: use ChaChaCore directly; remove bytes_until_reseed field (<a href="https://redirect.github.com/rust-random/rand/issues/1">#1</a>...</li>
-                <li><a href="https://github.com/rust-random/rand/commit/03db3110d0224cf5c9ae7b4462e58f4dca4a5293"><code>03db311</code></a> Replace fn reseed_and_generate with try_to_reseed</li>
-                <li><a href="https://github.com/rust-random/rand/commit/b14483e6abd464c2745ed701cebf214a0f6fb374"><code>b14483e</code></a> Apply inline attr to fn generate</li>
-                <li><a href="https://github.com/rust-random/rand/commit/fda8f74872f759cf72514c84dec30033c04f60d1"><code>fda8f74</code></a> Remove bytes_until_reseed field</li>
-                <li><a href="https://github.com/rust-random/rand/commit/213bb3bd4270df73bdd4885c2bf5682dce73c03d"><code>213bb3b</code></a> Bump chacha20 to 0.10.0-rc.11</li>
-                <li><a href="https://github.com/rust-random/rand/commit/72afe1e973fcd83d840cf597888223072bbdb04c"><code>72afe1e</code></a> Minor tweaks; prepare v0.10.0-rc.9 (<a href="https://redirect.github.com/rust-random/rand/issues/1736">#1736</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/rust-random/rand/compare/8792268dfe57e49bb4518190bf4fe66176759a44...acc5f246d3338ffea40aa0f25a46f84d6d19db8d">compare view</a></li>
-                </ul>
-                </details>
-                <br />
             commit-message: |-
-                Bump the cargo group across 2 directories with 3 updates
+                Bump the cargo group across 2 directories with 2 updates
 
                 Bumps the cargo group with 2 updates in the /cargo/multi-dir/foo directory: [time](https://github.com/time-rs/time) and [regex](https://github.com/rust-lang/regex).
-                Bumps the cargo group with 2 updates in the /cargo/multi-dir/bar directory: [time](https://github.com/time-rs/time) and [rand](https://github.com/rust-random/rand).
+                Bumps the cargo group with 1 update in the /cargo/multi-dir/bar directory: [time](https://github.com/time-rs/time).
 
 
                 Updates `time` from 0.3.0-alpha-1 to 0.3.0
@@ -1094,11 +992,6 @@ output:
                 - [Release notes](https://github.com/time-rs/time/releases)
                 - [Changelog](https://github.com/time-rs/time/blob/main/CHANGELOG.md)
                 - [Commits](https://github.com/time-rs/time/compare/v0.3.0-alpha-1...v0.3.0)
-
-                Updates `rand` from 0.8.4 to 0.10.0
-                - [Release notes](https://github.com/rust-random/rand/releases)
-                - [Changelog](https://github.com/rust-random/rand/blob/master/CHANGELOG.md)
-                - [Commits](https://github.com/rust-random/rand/compare/8792268dfe57e49bb4518190bf4fe66176759a44...acc5f246d3338ffea40aa0f25a46f84d6d19db8d)
             dependency-group:
                 name: cargo
     - type: mark_as_processed
