@@ -6,6 +6,8 @@
     </picture>
 </h1>
 
+test PR do not merge
+
 This repo contains manifest files for various package managers
 and is used to perform end-to-end tests for Dependabot.
 
