@@ -1,6 +1,14 @@
 name: List Suites
 on:  # yamllint disable-line rule:truthy
   workflow_call:
+    inputs:
+      base_sha:
+        description: >
+          If set, only emit suites affected by changes between this base
+          commit SHA and HEAD. Unset (default) emits every suite in tests/.
+        required: false
+        type: string
+        default: ""
     outputs:
       suites:
         description: List of suites to run from the tests/ directory
@@ -10,9 +18,65 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Get workflow names
+        with:
+          # Need history so we can diff against the base SHA.
+          fetch-depth: 0
+
+      - name: Compute suite list
         id: suites
+        env:
+          BASE_SHA: ${{ inputs.base_sha }}
         run: |
-          echo "suite=$(ls tests | sed 's/^tests\///' | sed 's/smoke-//' | sed 's/.yaml$//' | jq -R | jq -sc)" >> $GITHUB_OUTPUT
+          set -euo pipefail
+
+          all_suites() {
+            ls tests | sed 's/^tests\///;s/smoke-//;s/\.yaml$//'
+          }
+
+          emit() {
+            # $1 is a newline-separated suite list (possibly empty).
+            local list
+            list=$(printf '%s\n' "$1" | sed '/^$/d' | sort -u | jq -R | jq -sc)
+            echo "Suites: $list"
+            echo "suite=$list" >> "$GITHUB_OUTPUT"
+          }
+
+          if [ -z "$BASE_SHA" ]; then
+            emit "$(all_suites)"
+            exit 0
+          fi
+
+          # The base SHA is immutable, so the diff is stable even if the
+          # base branch advances during the run. --diff-filter=ACMRT
+          # excludes deletions (D) so removed test YAMLs aren't queued for
+          # the matrix.
+          changed=$(git diff --name-only --diff-filter=ACMRT "$BASE_SHA...HEAD")
+          echo "Changed files:"
+          echo "$changed"
+
+          # Any change to shared infra forces a full run.
+          if echo "$changed" | grep -qE '^(script/|\.github/workflows/(smoke|list-suites)\.yml$)'; then
+            echo "Shared infra changed — running full suite."
+            emit "$(all_suites)"
+            exit 0
+          fi
+
+          # Build the affected suite set. Each test pins its source to a
+          # specific commit SHA, so manifest edits on this branch do not
+          # change what any test sees until someone regenerates the YAML
+          # and bumps the commit. That means the only PR change that can
+          # affect a test's outcome is an edit to its own YAML.
+          suites=""
+          while IFS= read -r path; do
+            case "$path" in
+              tests/smoke-*.yaml)
+                name="${path#tests/smoke-}"
+                name="${name%.yaml}"
+                suites+="$name"$'\n'
+                ;;
+            esac
+          done <<<"$changed"
+
+          emit "$suites"
     outputs:
       suites: ${{ steps.suites.outputs.suite }}
