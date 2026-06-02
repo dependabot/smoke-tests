@@ -17,7 +17,7 @@ input:
             repo: dependabot/smoke-tests
             directory: /go/gosum-reconciliation
             # UPDATE: set this to the commit SHA after pushing the fixture
-            commit: PLACEHOLDER_COMMIT_SHA
+            commit: bc28040833446dce78029264304eff0284a2c71f
             hostname: github.com
             api-endpoint: https://api.github.com
     credentials:
@@ -54,7 +54,7 @@ output:
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: PLACEHOLDER_COMMIT_SHA
+            base-commit-sha: bc28040833446dce78029264304eff0284a2c71f
             dependencies:
                 - name: rsc.io/quote
                   previous-requirements:
@@ -132,4 +132,4 @@ output:
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: PLACEHOLDER_COMMIT_SHA
+            base-commit-sha: bc28040833446dce78029264304eff0284a2c71f
