@@ -16,7 +16,6 @@ input:
             provider: github
             repo: dependabot/smoke-tests
             directory: /go/gosum-reconciliation
-            # UPDATE: set this to the commit SHA after pushing the fixture
             commit: bc28040833446dce78029264304eff0284a2c71f
             hostname: github.com
             api-endpoint: https://api.github.com
@@ -32,22 +31,34 @@ output:
             dependencies:
                 - name: github.com/fatih/color
                   requirements:
-                      - file: go.mod
-                        groups: []
-                        requirement: v1.7.0
-                        source:
-                            source: github.com/fatih/color
-                            type: default
+                    - file: go.mod
+                      groups: []
+                      requirement: v1.7.0
+                      source:
+                        source: github.com/fatih/color
+                        type: default
                   version: 1.7.0
                 - name: rsc.io/quote
                   requirements:
-                      - file: go.mod
-                        groups: []
-                        requirement: v1.4.0
-                        source:
-                            source: rsc.io/quote
-                            type: default
+                    - file: go.mod
+                      groups: []
+                      requirement: v1.4.0
+                      source:
+                        source: rsc.io/quote
+                        type: default
                   version: 1.4.0
+                - name: github.com/mattn/go-colorable
+                  requirements: []
+                  version: 0.1.15
+                - name: github.com/mattn/go-isatty
+                  requirements: []
+                  version: 0.0.22
+                - name: golang.org/x/sys
+                  requirements: []
+                  version: 0.29.0
+                - name: rsc.io/sampler
+                  requirements: []
+                  version: 1.0.0
             dependency_files:
                 - /go/gosum-reconciliation/go.mod
                 - /go/gosum-reconciliation/go.sum
@@ -58,77 +69,87 @@ output:
             dependencies:
                 - name: rsc.io/quote
                   previous-requirements:
-                      - file: go.mod
-                        groups: []
-                        requirement: v1.4.0
-                        source:
-                            source: rsc.io/quote
-                            type: default
-                  previous-version: "1.4.0"
+                    - file: go.mod
+                      groups: []
+                      requirement: v1.4.0
+                      source:
+                        source: rsc.io/quote
+                        type: default
+                  previous-version: 1.4.0
                   requirements:
-                      - file: go.mod
-                        groups: []
-                        requirement: "1.5.2"
-                        source:
-                            source: rsc.io/quote
-                            type: default
-                  version: "1.5.2"
+                    - file: go.mod
+                      groups: []
+                      requirement: 1.5.2
+                      source:
+                        source: rsc.io/quote
+                        type: default
+                  version: 1.5.2
                   directory: /go/gosum-reconciliation
             updated-dependency-files:
-                - content_encoding: utf-8
+                - content: |
+                    module github.com/dependabot/gosum-reconciliation-test
+
+                    go 1.25.0
+
+                    require (
+                    	github.com/fatih/color v1.7.0
+                    	rsc.io/quote v1.5.2
+                    )
+
+                    require (
+                    	github.com/mattn/go-colorable v0.1.15 // indirect
+                    	github.com/mattn/go-isatty v0.0.22 // indirect
+                    	golang.org/x/sys v0.29.0 // indirect
+                    	golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c // indirect
+                    	rsc.io/sampler v1.3.0 // indirect
+                    )
+                  content_encoding: utf-8
                   deleted: false
                   directory: /go/gosum-reconciliation
                   name: go.mod
                   operation: update
                   support_file: false
                   type: file
-                  content: |
-                      module github.com/dependabot/gosum-reconciliation-test
-
-                      go 1.25.0
-
-                      require (
-                      	github.com/fatih/color v1.7.0
-                      	rsc.io/quote v1.5.2
-                      )
-
-                      require (
-                      	github.com/mattn/go-colorable v0.1.15 // indirect
-                      	github.com/mattn/go-isatty v0.0.22 // indirect
-                      	golang.org/x/sys v0.29.0 // indirect
-                      	golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c // indirect
-                      	rsc.io/sampler v1.3.0 // indirect
-                      )
-                - content_encoding: utf-8
+                - content: |
+                    github.com/fatih/color v1.7.0 h1:DkWD4oS2D8LGGgTQ6IvwJJXSL5Vp2ffcQg58nFV38Ys=
+                    github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
+                    github.com/mattn/go-colorable v0.1.15 h1:+u9SLTRGnXv73cEsnsmoZBom+dMU88B2M0aDcWy0/jY=
+                    github.com/mattn/go-colorable v0.1.15/go.mod h1:6LmQG8QLFO4G5z1gPvYEzlUgJ2wF+stgPZH1UqBm1s8=
+                    github.com/mattn/go-isatty v0.0.22 h1:j8l17JJ9i6VGPUFUYoTUKPSgKe/83EYU2zBC7YNKMw4=
+                    github.com/mattn/go-isatty v0.0.22/go.mod h1:ZXfXG4SQHsB/w3ZeOYbR0PrPwLy+n6xiMrJlRFqopa4=
+                    golang.org/x/sys v0.29.0 h1:TPYlXGxvx1MGTn2GiZDhnjPA9wZzZeGKHHmKhHYvgaU=
+                    golang.org/x/sys v0.29.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
+                    golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c h1:qgOY6WgZOaTkIIMiVjBQcw93ERBE4m30iBm00nkL0i8=
+                    golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
+                    rsc.io/quote v1.5.2 h1:w5fcysjrx7yqtD/aO+QwRjYZOKnaM9Uh2b40tElTs3Y=
+                    rsc.io/quote v1.5.2/go.mod h1:LzX7hefJvL54yjefDEDHNONDjII0t9xZLPXsUe+TKr0=
+                    rsc.io/sampler v1.3.0 h1:7uVkIFmeBqHfdjD+gZwtXXI+RODJ2Wc4O7MPEh/QiW4=
+                    rsc.io/sampler v1.3.0/go.mod h1:T1hPZKmBbMNahiBKFy5HrXp6adAjACjK9JXDnKaTXpA=
+                  content_encoding: utf-8
                   deleted: false
                   directory: /go/gosum-reconciliation
                   name: go.sum
                   operation: update
                   support_file: false
                   type: file
-                  # Key assertion: /go.mod h1: entries for unchanged modules
-                  # (fatih/color, go-colorable, go-isatty, golang.org/x/sys)
-                  # must be preserved, not over-pruned.
-                  content: |
-                      github.com/fatih/color v1.7.0 h1:DkWD4oS2D8LGGgTQ6IvwJJXSL5Vp2ffcQg58nFV38Ys=
-                      github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
-                      github.com/mattn/go-colorable v0.1.15 h1:+u9SLTRGnXv73cEsnsmoZBom+dMU88B2M0aDcWy0/jY=
-                      github.com/mattn/go-colorable v0.1.15/go.mod h1:6LmQG8QLFO4G5z1gPvYEzlUgJ2wF+stgPZH1UqBm1s8=
-                      github.com/mattn/go-isatty v0.0.22 h1:j8l17JJ9i6VGPUFUYoTUKPSgKe/83EYU2zBC7YNKMw4=
-                      github.com/mattn/go-isatty v0.0.22/go.mod h1:ZXfXG4SQHsB/w3ZeOYbR0PrPwLy+n6xiMrJlRFqopa4=
-                      golang.org/x/sys v0.29.0 h1:TPYlXGxvx1MGTn2GiZDhnjPA9wZzZeGKHHmKhHYvgaU=
-                      golang.org/x/sys v0.29.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
-                      golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c h1:qgOY6WgZOaTkIIMiVjBQcw93ERBE4m30iBm00nkL0i8=
-                      golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
-                      rsc.io/quote v1.5.2 h1:w5fcysjrx7yqtD/aO+QwRjYZOKnaM9Uh2b40tElTs3Y=
-                      rsc.io/quote v1.5.2/go.mod h1:LzX7hefJvL54yjefDEDHNONDjII0t9xZLPXsUe+TKr0=
-                      rsc.io/sampler v1.3.0 h1:7uVkIFmeBqHfdjD+gZwtXXI+RODJ2Wc4O7MPEh/QiW4=
-                      rsc.io/sampler v1.3.0/go.mod h1:T1hPZKmBbMNahiBKFy5HrXp6adAjACjK9JXDnKaTXpA=
             pr-title: Bump rsc.io/quote from 1.4.0 to 1.5.2 in /go/gosum-reconciliation
+            pr-body: |
+                Bumps [rsc.io/quote](https://github.com/rsc/quote) from 1.4.0 to 1.5.2.
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/rsc/quote/commit/c4d4236f92427c64bfbcf1cc3f8142ab18f30b22"><code>c4d4236</code></a> buggy: add buggy test</li>
+                <li><a href="https://github.com/rsc/quote/commit/23179ee8a569bb05d896ae05c6503ec69a19f99f"><code>23179ee</code></a> quote: fix test for new rsc.io/sampler</li>
+                <li><a href="https://github.com/rsc/quote/commit/3ba1e30dc83bd52c990132b9dfb1688a9d22de13"><code>3ba1e30</code></a> quote: update rsc.io/sampler to v1.3.0</li>
+                <li>See full diff in <a href="https://github.com/rsc/quote/compare/v1.4.0...v1.5.2">compare view</a></li>
+                </ul>
+                </details>
+                <br />
             commit-message: |-
                 Bump rsc.io/quote from 1.4.0 to 1.5.2 in /go/gosum-reconciliation
 
                 Bumps [rsc.io/quote](https://github.com/rsc/quote) from 1.4.0 to 1.5.2.
+                - [Commits](https://github.com/rsc/quote/compare/v1.4.0...v1.5.2)
     - type: mark_as_processed
       expect:
         data:
