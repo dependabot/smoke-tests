@@ -1,0 +1,61 @@
+input:
+    job:
+        command: graph
+        package-manager: npm_and_yarn
+        allowed-updates:
+            - update-type: all
+        experiments:
+            enable_dependency_submission_poc: true
+        source:
+            provider: github
+            repo: dsp-testing/uv-dependency-grapher
+            directories:
+                - /
+            branch: smoke/multi-ecosystem
+            commit: acd3d940e7ac714251b447570efe8a6fcce6cbde
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: create_dependency_submission
+      expect:
+        data:
+            version: 1
+            sha: acd3d940e7ac714251b447570efe8a6fcce6cbde
+            ref: refs/heads/smoke/multi-ecosystem
+            job:
+                correlator: dependabot-npm_and_yarn
+                id: cli
+            detector:
+                name: dependabot
+                url: https://github.com/dependabot/dependabot-core
+                version: 0.371.0
+            manifests:
+                /package-lock.json:
+                    file:
+                        source_location: package-lock.json
+                    metadata:
+                        ecosystem: npm
+                    name: /package-lock.json
+                    resolved:
+                        pkg:npm/left-pad@1.3.0:
+                            dependencies: []
+                            package_url: pkg:npm/left-pad@1.3.0
+                            relationship: direct
+                            scope: runtime
+                        pkg:npm/lodash@4.18.1:
+                            dependencies: []
+                            package_url: pkg:npm/lodash@4.18.1
+                            relationship: direct
+                            scope: runtime
+            metadata:
+                scanned_manifest_path: npm::/
+                status: ok
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: acd3d940e7ac714251b447570efe8a6fcce6cbde

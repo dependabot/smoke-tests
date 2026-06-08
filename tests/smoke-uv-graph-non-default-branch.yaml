@@ -1,0 +1,192 @@
+input:
+    job:
+        command: graph
+        package-manager: uv
+        allowed-updates:
+            - update-type: all
+        experiments:
+            enable_dependency_submission_poc: true
+        source:
+            provider: github
+            repo: dsp-testing/uv-dependency-grapher
+            directories:
+                - /
+            branch: release-v1
+            commit: c18450a01ff9949a0290d11e060e59d62bec2317
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: create_dependency_submission
+      expect:
+        data:
+            version: 1
+            sha: c18450a01ff9949a0290d11e060e59d62bec2317
+            ref: refs/heads/release-v1
+            job:
+                correlator: dependabot-uv
+                id: cli
+            detector:
+                name: dependabot
+                url: https://github.com/dependabot/dependabot-core
+                version: 0.380.0
+            manifests:
+                /uv.lock:
+                    file:
+                        source_location: uv.lock
+                    metadata:
+                        blob_oid: 1d66372d5b9bb770ea9357ec0b5d66a40d6a7789
+                        ecosystem: pypi
+                    name: /uv.lock
+                    resolved:
+                        pkg:pypi/bcrypt@5.0.0:
+                            dependencies: []
+                            package_url: pkg:pypi/bcrypt@5.0.0
+                            relationship: direct
+                            scope: runtime
+                        pkg:pypi/blinker@1.9.0:
+                            dependencies: []
+                            package_url: pkg:pypi/blinker@1.9.0
+                            relationship: indirect
+                            scope: runtime
+                        pkg:pypi/certifi@2026.2.25:
+                            dependencies: []
+                            package_url: pkg:pypi/certifi@2026.2.25
+                            relationship: indirect
+                            scope: runtime
+                        pkg:pypi/charset-normalizer@3.4.4:
+                            dependencies: []
+                            package_url: pkg:pypi/charset-normalizer@3.4.4
+                            relationship: indirect
+                            scope: runtime
+                        pkg:pypi/click@8.3.1:
+                            dependencies:
+                                - pkg:pypi/colorama@0.4.6
+                            package_url: pkg:pypi/click@8.3.1
+                            relationship: indirect
+                            scope: runtime
+                        pkg:pypi/colorama@0.4.6:
+                            dependencies: []
+                            package_url: pkg:pypi/colorama@0.4.6
+                            relationship: indirect
+                            scope: runtime
+                        pkg:pypi/flask@3.1.3:
+                            dependencies:
+                                - pkg:pypi/blinker@1.9.0
+                                - pkg:pypi/click@8.3.1
+                                - pkg:pypi/itsdangerous@2.2.0
+                                - pkg:pypi/jinja2@3.1.6
+                                - pkg:pypi/markupsafe@3.0.3
+                                - pkg:pypi/werkzeug@3.1.6
+                            package_url: pkg:pypi/flask@3.1.3
+                            relationship: direct
+                            scope: runtime
+                        pkg:pypi/greenlet@3.3.2:
+                            dependencies: []
+                            package_url: pkg:pypi/greenlet@3.3.2
+                            relationship: indirect
+                            scope: runtime
+                        pkg:pypi/idna@3.11:
+                            dependencies: []
+                            package_url: pkg:pypi/idna@3.11
+                            relationship: indirect
+                            scope: runtime
+                        pkg:pypi/itsdangerous@2.2.0:
+                            dependencies: []
+                            package_url: pkg:pypi/itsdangerous@2.2.0
+                            relationship: indirect
+                            scope: runtime
+                        pkg:pypi/jinja2@3.1.6:
+                            dependencies:
+                                - pkg:pypi/markupsafe@3.0.3
+                            package_url: pkg:pypi/jinja2@3.1.6
+                            relationship: indirect
+                            scope: runtime
+                        pkg:pypi/markupsafe@3.0.3:
+                            dependencies: []
+                            package_url: pkg:pypi/markupsafe@3.0.3
+                            relationship: indirect
+                            scope: runtime
+                        pkg:pypi/multidict@6.7.1:
+                            dependencies:
+                                - pkg:pypi/typing-extensions@4.15.0
+                            package_url: pkg:pypi/multidict@6.7.1
+                            relationship: direct
+                            scope: runtime
+                        pkg:pypi/propcache@0.4.1:
+                            dependencies: []
+                            package_url: pkg:pypi/propcache@0.4.1
+                            relationship: indirect
+                            scope: runtime
+                        pkg:pypi/requests@2.32.5:
+                            dependencies:
+                                - pkg:pypi/certifi@2026.2.25
+                                - pkg:pypi/charset-normalizer@3.4.4
+                                - pkg:pypi/idna@3.11
+                                - pkg:pypi/urllib3@2.6.3
+                            package_url: pkg:pypi/requests@2.32.5
+                            relationship: direct
+                            scope: runtime
+                        pkg:pypi/ruff@0.15.4:
+                            dependencies: []
+                            package_url: pkg:pypi/ruff@0.15.4
+                            relationship: direct
+                            scope: development
+                        pkg:pypi/sqlalchemy@2.0.48:
+                            dependencies:
+                                - pkg:pypi/greenlet@3.3.2
+                                - pkg:pypi/typing-extensions@4.15.0
+                            package_url: pkg:pypi/sqlalchemy@2.0.48
+                            relationship: direct
+                            scope: runtime
+                        pkg:pypi/test@0.1.0:
+                            dependencies:
+                                - pkg:pypi/bcrypt@5.0.0
+                                - pkg:pypi/flask@3.1.3
+                                - pkg:pypi/multidict@6.7.1
+                                - pkg:pypi/requests@2.32.5
+                                - pkg:pypi/sqlalchemy@2.0.48
+                                - pkg:pypi/yarl@1.23.0
+                            package_url: pkg:pypi/test@0.1.0
+                            relationship: indirect
+                            scope: runtime
+                        pkg:pypi/ty@0.0.19:
+                            dependencies: []
+                            package_url: pkg:pypi/ty@0.0.19
+                            relationship: direct
+                            scope: development
+                        pkg:pypi/typing-extensions@4.15.0:
+                            dependencies: []
+                            package_url: pkg:pypi/typing-extensions@4.15.0
+                            relationship: indirect
+                            scope: runtime
+                        pkg:pypi/urllib3@2.6.3:
+                            dependencies: []
+                            package_url: pkg:pypi/urllib3@2.6.3
+                            relationship: indirect
+                            scope: runtime
+                        pkg:pypi/werkzeug@3.1.6:
+                            dependencies:
+                                - pkg:pypi/markupsafe@3.0.3
+                            package_url: pkg:pypi/werkzeug@3.1.6
+                            relationship: indirect
+                            scope: runtime
+                        pkg:pypi/yarl@1.23.0:
+                            dependencies:
+                                - pkg:pypi/idna@3.11
+                                - pkg:pypi/multidict@6.7.1
+                                - pkg:pypi/propcache@0.4.1
+                            package_url: pkg:pypi/yarl@1.23.0
+                            relationship: direct
+                            scope: runtime
+            metadata:
+                scanned_manifest_path: pypi::/
+                status: ok
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: c18450a01ff9949a0290d11e060e59d62bec2317
