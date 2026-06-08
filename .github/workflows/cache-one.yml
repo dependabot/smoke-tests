@@ -39,7 +39,7 @@ jobs:
           LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: dependabot test -f=tests/smoke-${{ inputs.package_manager }}.yaml --cache=cache
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: cache-${{ inputs.package_manager }}
           path: cache/
