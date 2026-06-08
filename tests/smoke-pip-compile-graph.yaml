@@ -1,0 +1,81 @@
+input:
+    job:
+        command: graph
+        package-manager: pip
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: django
+              source: tests/smoke-pip-compile-graph.yaml
+              version-requirement: '>3.2.14'
+            - dependency-name: numpy
+              source: tests/smoke-pip-compile-graph.yaml
+              version-requirement: '>1.23.0'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /pip-compile
+            commit: 8230ed21d3b924bb0bf183883b040e7195ce6902
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: create_dependency_submission
+      expect:
+        data:
+            version: 1
+            sha: 8230ed21d3b924bb0bf183883b040e7195ce6902
+            ref: refs/heads/main
+            job:
+                correlator: dependabot-pip-pip-compile
+                id: cli
+            detector:
+                name: dependabot
+                url: https://github.com/dependabot/dependabot-core
+                version: 0.380.0
+            manifests:
+                /pip-compile/requirements.txt:
+                    file:
+                        source_location: pip-compile/requirements.txt
+                    metadata:
+                        blob_oid: e7b848cd84e575287b9e2265242f110bbe1a1906
+                        ecosystem: pypi
+                    name: /pip-compile/requirements.txt
+                    resolved:
+                        pkg:pypi/asgiref@3.5.2:
+                            dependencies: []
+                            package_url: pkg:pypi/asgiref@3.5.2
+                            relationship: indirect
+                            scope: runtime
+                        pkg:pypi/django@3.2.14:
+                            dependencies: []
+                            package_url: pkg:pypi/django@3.2.14
+                            relationship: direct
+                            scope: runtime
+                        pkg:pypi/numpy@1.23.0:
+                            dependencies: []
+                            package_url: pkg:pypi/numpy@1.23.0
+                            relationship: direct
+                            scope: runtime
+                        pkg:pypi/pytz@2022.1:
+                            dependencies: []
+                            package_url: pkg:pypi/pytz@2022.1
+                            relationship: indirect
+                            scope: runtime
+                        pkg:pypi/sqlparse@0.4.2:
+                            dependencies: []
+                            package_url: pkg:pypi/sqlparse@0.4.2
+                            relationship: indirect
+                            scope: runtime
+            metadata:
+                scanned_manifest_path: pypi::/pip-compile
+                status: ok
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 8230ed21d3b924bb0bf183883b040e7195ce6902

@@ -1,0 +1,84 @@
+input:
+    job:
+        command: graph
+        package-manager: pip
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: django
+              source: tests/smoke-pip-graph.yaml
+              version-requirement: '>3.2.14'
+            - dependency-name: requests
+              source: tests/smoke-pip-graph.yaml
+              version-requirement: '>2.28.0'
+            - dependency-name: numpy
+              source: tests/smoke-pip-graph.yaml
+              version-requirement: '>1.23.0'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /pip
+            commit: 8230ed21d3b924bb0bf183883b040e7195ce6902
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: create_dependency_submission
+      expect:
+        data:
+            version: 1
+            sha: 8230ed21d3b924bb0bf183883b040e7195ce6902
+            ref: refs/heads/main
+            job:
+                correlator: dependabot-pip-pip
+                id: cli
+            detector:
+                name: dependabot
+                url: https://github.com/dependabot/dependabot-core
+                version: 0.380.0
+            manifests:
+                /pip/requirements.txt:
+                    file:
+                        source_location: pip/requirements.txt
+                    metadata:
+                        blob_oid: 749bad17894b9934fcab3fb593618b64c3910799
+                        ecosystem: pypi
+                    name: /pip/requirements.txt
+                    resolved:
+                        pkg:pypi/django:
+                            dependencies: []
+                            package_url: pkg:pypi/django
+                            relationship: direct
+                            scope: runtime
+                        pkg:pypi/numpy@1.23.0:
+                            dependencies: []
+                            package_url: pkg:pypi/numpy@1.23.0
+                            relationship: direct
+                            scope: runtime
+                        pkg:pypi/pytest:
+                            dependencies: []
+                            package_url: pkg:pypi/pytest
+                            relationship: direct
+                            scope: runtime
+                        pkg:pypi/pyyaml:
+                            dependencies: []
+                            package_url: pkg:pypi/pyyaml
+                            relationship: direct
+                            scope: runtime
+                        pkg:pypi/requests@2.28.0:
+                            dependencies: []
+                            package_url: pkg:pypi/requests@2.28.0
+                            relationship: direct
+                            scope: runtime
+            metadata:
+                scanned_manifest_path: pypi::/pip
+                status: ok
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 8230ed21d3b924bb0bf183883b040e7195ce6902
