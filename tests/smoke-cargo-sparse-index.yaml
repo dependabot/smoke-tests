@@ -7,15 +7,57 @@ input:
         dependencies:
             - dirs
         ignore-conditions:
+            - dependency-name: anyhow
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>1.0.102'
+            - dependency-name: clap
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>4.6.1'
+            - dependency-name: dirs
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>6.0.0'
+            - dependency-name: env_logger
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>0.11.10'
+            - dependency-name: flate2
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>1.1.9'
             - dependency-name: rand
-              source: /var/folders/jg/wkttzjmj0y1c3lb_5m5l2_r80000gn/T/tmp.0fRZ8rFmFi
+              source: tests/smoke-cargo-sparse-index.yaml
               version-requirement: '>0.10.1'
+            - dependency-name: reqwest
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>0.12.28'
+            - dependency-name: serde
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>1.0.228'
+            - dependency-name: serde_json
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>1.0.150'
+            - dependency-name: thiserror
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>2.0.18'
+            - dependency-name: tokio
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>1.52.3'
             - dependency-name: toml
-              source: /var/folders/jg/wkttzjmj0y1c3lb_5m5l2_r80000gn/T/tmp.0fRZ8rFmFi
+              source: tests/smoke-cargo-sparse-index.yaml
               version-requirement: '>1.1.2+spec-1.1.0'
+            - dependency-name: uuid
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>1.23.3'
+            - dependency-name: walkdir
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>2.5.0'
             - dependency-name: zip
-              source: /var/folders/jg/wkttzjmj0y1c3lb_5m5l2_r80000gn/T/tmp.0fRZ8rFmFi
+              source: tests/smoke-cargo-sparse-index.yaml
               version-requirement: '>8.6.0'
+            - dependency-name: regex
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>1.12.4'
+            - dependency-name: regex-syntax
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>0.8.11'
         source:
             provider: github
             repo: dependabot/smoke-tests
