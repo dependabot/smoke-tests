@@ -1,0 +1,22 @@
+input:
+    job:
+        command: update
+        package-manager: cargo
+        allowed-updates:
+            - update-type: all
+        dependencies:
+            - toml
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /cargo/sparse-index
+            commit: 16ddfc732aa503749216c5e9b1637c55628b05c8
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output: []
