@@ -1,0 +1,45 @@
+input:
+    job:
+        command: graph
+        package-manager: uv
+        allowed-updates:
+            - update-type: all
+        experiments:
+            enable_dependency_submission_poc: true
+        source:
+            provider: github
+            repo: dsp-testing/uv-dependency-grapher
+            directories:
+                - /
+            branch: release-npm-v1
+            commit: 9d073725ab3688b7d3fa4897c8a963d585bc6db7
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: create_dependency_submission
+      expect:
+        data:
+            version: 1
+            sha: 9d073725ab3688b7d3fa4897c8a963d585bc6db7
+            ref: refs/heads/release-npm-v1
+            job:
+                correlator: dependabot-uv
+                id: cli
+            detector:
+                name: dependabot
+                url: https://github.com/dependabot/dependabot-core
+                version: 0.381.0
+            manifests: {}
+            metadata:
+                reason: missing manifest files
+                scanned_manifest_path: pypi::/
+                status: skipped
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 9d073725ab3688b7d3fa4897c8a963d585bc6db7

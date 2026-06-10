@@ -1,0 +1,45 @@
+input:
+    job:
+        command: graph
+        package-manager: npm_and_yarn
+        allowed-updates:
+            - update-type: all
+        experiments:
+            enable_dependency_submission_poc: true
+        source:
+            provider: github
+            repo: dsp-testing/uv-dependency-grapher
+            directories:
+                - /
+            branch: release-v1
+            commit: c18450a01ff9949a0290d11e060e59d62bec2317
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: create_dependency_submission
+      expect:
+        data:
+            version: 1
+            sha: c18450a01ff9949a0290d11e060e59d62bec2317
+            ref: refs/heads/release-v1
+            job:
+                correlator: dependabot-npm_and_yarn
+                id: cli
+            detector:
+                name: dependabot
+                url: https://github.com/dependabot/dependabot-core
+                version: 0.371.0
+            manifests: {}
+            metadata:
+                reason: missing manifest files
+                scanned_manifest_path: npm::/
+                status: skipped
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: c18450a01ff9949a0290d11e060e59d62bec2317
