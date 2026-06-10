@@ -10,24 +10,9 @@ input:
             - dependency-name: anyhow
               source: tests/smoke-cargo-sparse-index.yaml
               version-requirement: '>1.0.102'
-            - dependency-name: clap
-              source: tests/smoke-cargo-sparse-index.yaml
-              version-requirement: '>4.6.1'
             - dependency-name: dirs
               source: tests/smoke-cargo-sparse-index.yaml
               version-requirement: '>6.0.0'
-            - dependency-name: env_logger
-              source: tests/smoke-cargo-sparse-index.yaml
-              version-requirement: '>0.11.10'
-            - dependency-name: flate2
-              source: tests/smoke-cargo-sparse-index.yaml
-              version-requirement: '>1.1.9'
-            - dependency-name: rand
-              source: tests/smoke-cargo-sparse-index.yaml
-              version-requirement: '>0.10.1'
-            - dependency-name: reqwest
-              source: tests/smoke-cargo-sparse-index.yaml
-              version-requirement: '>0.12.28'
             - dependency-name: serde
               source: tests/smoke-cargo-sparse-index.yaml
               version-requirement: '>1.0.228'
@@ -37,27 +22,18 @@ input:
             - dependency-name: thiserror
               source: tests/smoke-cargo-sparse-index.yaml
               version-requirement: '>2.0.18'
-            - dependency-name: tokio
-              source: tests/smoke-cargo-sparse-index.yaml
-              version-requirement: '>1.52.3'
             - dependency-name: toml
               source: tests/smoke-cargo-sparse-index.yaml
-              version-requirement: '>1.1.2+spec-1.1.0'
-            - dependency-name: uuid
-              source: tests/smoke-cargo-sparse-index.yaml
-              version-requirement: '>1.23.3'
+              version-requirement: '>0.8.23'
             - dependency-name: walkdir
               source: tests/smoke-cargo-sparse-index.yaml
               version-requirement: '>2.5.0'
-            - dependency-name: zip
-              source: tests/smoke-cargo-sparse-index.yaml
-              version-requirement: '>8.6.0'
         source:
             provider: github
             repo: dependabot/smoke-tests
             directories:
                 - /cargo/sparse-index
-            commit: 2fdebd641082ec2803e5a1196142e6a021374357
+            commit: 2a6e3bb6225fe881b41eaa111aeb89d76ad939e3
             hostname: github.com
             api-endpoint: https://api.github.com
     credentials:
