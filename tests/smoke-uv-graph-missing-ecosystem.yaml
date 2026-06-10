@@ -8,11 +8,10 @@ input:
             enable_dependency_submission_poc: true
         source:
             provider: github
-            repo: dsp-testing/uv-dependency-grapher
+            repo: dependabot/smoke-tests
             directories:
-                - /
-            branch: release-npm-v1
-            commit: 9d073725ab3688b7d3fa4897c8a963d585bc6db7
+                - /npm
+            commit: dbc36a39ec4cb4b7e8c45e06e8420364ff8d1230
             hostname: github.com
             api-endpoint: https://api.github.com
     credentials:
@@ -25,10 +24,10 @@ output:
       expect:
         data:
             version: 1
-            sha: 9d073725ab3688b7d3fa4897c8a963d585bc6db7
-            ref: refs/heads/release-npm-v1
+            sha: dbc36a39ec4cb4b7e8c45e06e8420364ff8d1230
+            ref: refs/heads/main
             job:
-                correlator: dependabot-uv
+                correlator: dependabot-uv-npm
                 id: cli
             detector:
                 name: dependabot
@@ -37,9 +36,9 @@ output:
             manifests: {}
             metadata:
                 reason: missing manifest files
-                scanned_manifest_path: pypi::/
+                scanned_manifest_path: pypi::/npm
                 status: skipped
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 9d073725ab3688b7d3fa4897c8a963d585bc6db7
+            base-commit-sha: dbc36a39ec4cb4b7e8c45e06e8420364ff8d1230
