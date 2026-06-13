@@ -1,0 +1,39 @@
+input:
+    job:
+        command: update
+        package-manager: docker
+        allowed-updates:
+            - update-type: all
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - docker/basic/only-digest/latest/
+            commit: 4464bf6535561ec44f5c729a1ab3f2610db0ffb5
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: dependabot/dependabot-updater
+                  requirements:
+                    - file: Dockerfile
+                      groups: []
+                      requirement: null
+                      source:
+                        digest: fb82831a055f7217d7935fc4cbc29ee900d1321565952edb870a755c4836468c
+                        registry: ghcr.io
+                  version: fb82831a055f7217d7935fc4cbc29ee900d1321565952edb870a755c4836468c
+            dependency_files:
+                - /docker/basic/only-digest/latest/Dockerfile
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 4464bf6535561ec44f5c729a1ab3f2610db0ffb5
