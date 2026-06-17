@@ -32,7 +32,7 @@ output:
             detector:
                 name: dependabot
                 url: https://github.com/dependabot/dependabot-core
-                version: 0.375.0
+                version: 0.382.0
             manifests:
                 /uv/uv.lock:
                     file:
@@ -128,6 +128,8 @@ output:
                             dependencies:
                                 - pkg:pypi/flask@3.1.3
                                 - pkg:pypi/requests@2.32.5
+                                - pkg:pypi/ruff@0.15.4
+                                - pkg:pypi/ty@0.0.20
                             package_url: pkg:pypi/uv@0.1.0
                             relationship: indirect
                             scope: runtime
