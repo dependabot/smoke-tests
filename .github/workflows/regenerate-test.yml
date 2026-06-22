@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Regenerate ${{ inputs.test || inputs.ecosystem }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Resolve test list
         id: tests
@@ -100,7 +100,7 @@ jobs:
       # dependabot-core's own smoke pipeline.
       - name: Checkout dependabot-core
         if: inputs.core-branch != '' || inputs.core-pr-number != ''
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: dependabot/dependabot-core
           path: dependabot-core
