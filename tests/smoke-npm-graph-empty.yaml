@@ -1,0 +1,53 @@
+input:
+    job:
+        command: graph
+        package-manager: npm_and_yarn
+        allowed-updates:
+            - update-type: all
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /npm/no-dependencies
+            commit: 3e73d6e82c53ccd0c0eb4cdd046cecf01acd240d
+            hostname: github.com
+            api-endpoint: https://api.github.com
+        reject-external-code: true
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+        - index-url: https://pypi.org/simple/
+          replaces-base: true
+          type: python_index
+output:
+    - type: create_dependency_submission
+      expect:
+        data:
+            version: 1
+            sha: 3e73d6e82c53ccd0c0eb4cdd046cecf01acd240d
+            ref: refs/heads/main
+            job:
+                correlator: dependabot-npm_and_yarn-npm-no-dependencies
+                id: cli
+            detector:
+                name: dependabot
+                url: https://github.com/dependabot/dependabot-core
+                version: 0.383.0
+            manifests:
+                /npm/no-dependencies/package-lock.json:
+                    file:
+                        source_location: npm/no-dependencies/package-lock.json
+                    metadata:
+                        blob_oid: bf20dc474a3b2fe505baa9e00b02c446f602a3e9
+                        ecosystem: npm
+                    name: /npm/no-dependencies/package-lock.json
+                    resolved: {}
+            metadata:
+                scanned_manifest_path: npm::/npm/no-dependencies
+                status: ok
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 3e73d6e82c53ccd0c0eb4cdd046cecf01acd240d
