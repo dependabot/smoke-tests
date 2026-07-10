@@ -5,27 +5,14 @@ input:
         allowed-updates:
             - update-type: all
         ignore-conditions:
-            - dependency-name: app-base
+            - dependency-name: metrics-server
               source: tests/smoke-helm.yaml
-              version-requirement: '>1.0.5'
-            - dependency-name: cron-base
-              source: tests/smoke-helm.yaml
-              version-requirement: '>2.0.0'
-            - dependency-name: db-base
-              source: tests/smoke-helm.yaml
-              version-requirement: '>1.5.0'
-            - dependency-name: web-base
-              source: tests/smoke-helm.yaml
-              version-requirement: '>1.2.9'
-            - dependency-name: api-base
-              source: tests/smoke-helm.yaml
-              version-requirement: '>2.5.0'
+              version-requirement: '>3.13.1'
         source:
             provider: github
-            repo: casey-robertson-paypal/dependabot-helm
-            directories:
-                - /consumer
-            commit: df9006be34a85f0780c5acb7680972e2027d526a
+            repo: dependabot/smoke-tests
+            directory: /helm
+            commit: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             hostname: github.com
             api-endpoint: https://api.github.com
     credentials:
@@ -38,7 +25,7 @@ output:
       expect:
         data:
             dependencies:
-                - name: app-base
+                - name: metrics-server
                   requirements:
                     - file: Chart.yaml
                       groups: []
@@ -46,61 +33,17 @@ output:
                         type: helm_chart
                       requirement: null
                       source:
-                        registry: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                        tag: ^1.0.0
-                  version: ^1.0.0
-                - name: cron-base
-                  requirements:
-                    - file: Chart.yaml
-                      groups: []
-                      metadata:
-                        type: helm_chart
-                      requirement: null
-                      source:
-                        registry: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                        tag: ^1.0.0
-                  version: ^1.0.0
-                - name: db-base
-                  requirements:
-                    - file: Chart.yaml
-                      groups: []
-                      metadata:
-                        type: helm_chart
-                      requirement: null
-                      source:
-                        registry: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                        tag: 1.0.0
-                  version: 1.0.0
-                - name: web-base
-                  requirements:
-                    - file: Chart.yaml
-                      groups: []
-                      metadata:
-                        type: helm_chart
-                      requirement: null
-                      source:
-                        registry: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                        tag: ~1.2.0
-                  version: ~1.2.0
-                - name: api-base
-                  requirements:
-                    - file: Chart.yaml
-                      groups: []
-                      metadata:
-                        type: helm_chart
-                      requirement: null
-                      source:
-                        registry: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                        tag: '>=1.0.0 <2.0.0'
-                  version: '>=1.0.0 <2.0.0'
+                        registry: https://kubernetes-sigs.github.io/metrics-server/
+                        tag: ^3.0.0
+                  version: ^3.0.0
             dependency_files:
-                - /consumer/Chart.yaml
+                - /helm/Chart.yaml
     - type: create_pull_request
       expect:
         data:
-            base-commit-sha: df9006be34a85f0780c5acb7680972e2027d526a
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
             dependencies:
-                - name: app-base
+                - name: metrics-server
                   previous-requirements:
                     - file: Chart.yaml
                       groups: []
@@ -108,314 +51,51 @@ output:
                         type: helm_chart
                       requirement: null
                       source:
-                        registry: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                        tag: ^1.0.0
-                  previous-version: ^1.0.0
+                        registry: https://kubernetes-sigs.github.io/metrics-server/
+                        tag: ^3.0.0
+                  previous-version: ^3.0.0
                   requirements:
                     - file: Chart.yaml
                       groups: []
                       metadata:
                         type: helm_chart
-                      requirement: ^1.0.5
+                      requirement: ^3.13.1
                       source:
-                        registry: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                        tag: ^1.0.0
-                  version: 1.0.5
-                  directory: /consumer
+                        registry: https://kubernetes-sigs.github.io/metrics-server/
+                        tag: ^3.0.0
+                  version: 3.13.1
+                  directory: /helm
             updated-dependency-files:
                 - content: |
                     apiVersion: v2
-                    name: consumer-service
-                    description: Consumes the producer charts via OCI with varied version constraints
+                    name: helm-smoke-consumer
+                    description: Smoke-test fixture for the helm versioning-strategy support
                     type: application
                     version: 0.1.0
                     dependencies:
-                      - name: app-base      # ^1.0.0, highest published 1.0.5 -> IN range
-                        version: ^1.0.5
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: cron-base     # ^1.0.0, highest published 2.0.0 -> OUT of range
-                        version: ^1.0.0
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: db-base       # exact pin, highest published 1.5.0
-                        version: 1.0.0
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: web-base      # tilde, highest published 1.2.9 -> IN range
-                        version: "~1.2.0"
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: api-base      # explicit range, highest published 2.5.0 -> OUT of range
-                        version: ">=1.0.0 <2.0.0"
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
+                      # PLACEHOLDER chart — a stable, actively-maintained, GitHub-hosted chart
+                      # (kubernetes-sigs/metrics-server) with plain semver versions, so the smoke
+                      # test depends on no contributor's personal repo/registry.
+                      # MAINTAINERS: please vet/replace with your preferred canonical test chart
+                      # and hosting before merge.
+                      - name: metrics-server
+                        version: ^3.13.1
+                        repository: https://kubernetes-sigs.github.io/metrics-server/
                   content_encoding: utf-8
                   deleted: false
-                  directory: /consumer
+                  directory: /helm
                   name: Chart.yaml
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump app-base from ^1.0.0 to 1.0.5 in /consumer
+            pr-title: Bump metrics-server from ^3.0.0 to 3.13.1 in /helm
             pr-body: |
-                Bumps app-base from ^1.0.0 to 1.0.5.
+                Bumps metrics-server from ^3.0.0 to 3.13.1.
             commit-message: |-
-                Bump app-base from ^1.0.0 to 1.0.5 in /consumer
+                Bump metrics-server from ^3.0.0 to 3.13.1 in /helm
 
-                Bumps app-base from ^1.0.0 to 1.0.5.
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: df9006be34a85f0780c5acb7680972e2027d526a
-            dependencies:
-                - name: cron-base
-                  previous-requirements:
-                    - file: Chart.yaml
-                      groups: []
-                      metadata:
-                        type: helm_chart
-                      requirement: null
-                      source:
-                        registry: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                        tag: ^1.0.0
-                  previous-version: ^1.0.0
-                  requirements:
-                    - file: Chart.yaml
-                      groups: []
-                      metadata:
-                        type: helm_chart
-                      requirement: ^2.0.0
-                      source:
-                        registry: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                        tag: ^1.0.0
-                  version: 2.0.0
-                  directory: /consumer
-            updated-dependency-files:
-                - content: |
-                    apiVersion: v2
-                    name: consumer-service
-                    description: Consumes the producer charts via OCI with varied version constraints
-                    type: application
-                    version: 0.1.0
-                    dependencies:
-                      - name: app-base      # ^1.0.0, highest published 1.0.5 -> IN range
-                        version: ^1.0.0
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: cron-base     # ^1.0.0, highest published 2.0.0 -> OUT of range
-                        version: ^2.0.0
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: db-base       # exact pin, highest published 1.5.0
-                        version: 1.0.0
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: web-base      # tilde, highest published 1.2.9 -> IN range
-                        version: "~1.2.0"
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: api-base      # explicit range, highest published 2.5.0 -> OUT of range
-                        version: ">=1.0.0 <2.0.0"
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /consumer
-                  name: Chart.yaml
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump cron-base from ^1.0.0 to 2.0.0 in /consumer
-            pr-body: |
-                Bumps cron-base from ^1.0.0 to 2.0.0.
-            commit-message: |-
-                Bump cron-base from ^1.0.0 to 2.0.0 in /consumer
-
-                Bumps cron-base from ^1.0.0 to 2.0.0.
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: df9006be34a85f0780c5acb7680972e2027d526a
-            dependencies:
-                - name: db-base
-                  previous-requirements:
-                    - file: Chart.yaml
-                      groups: []
-                      metadata:
-                        type: helm_chart
-                      requirement: null
-                      source:
-                        registry: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                        tag: 1.0.0
-                  previous-version: 1.0.0
-                  requirements:
-                    - file: Chart.yaml
-                      groups: []
-                      metadata:
-                        type: helm_chart
-                      requirement: 1.5.0
-                      source:
-                        registry: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                        tag: 1.0.0
-                  version: 1.5.0
-                  directory: /consumer
-            updated-dependency-files:
-                - content: |
-                    apiVersion: v2
-                    name: consumer-service
-                    description: Consumes the producer charts via OCI with varied version constraints
-                    type: application
-                    version: 0.1.0
-                    dependencies:
-                      - name: app-base      # ^1.0.0, highest published 1.0.5 -> IN range
-                        version: ^1.0.0
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: cron-base     # ^1.0.0, highest published 2.0.0 -> OUT of range
-                        version: ^1.0.0
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: db-base       # exact pin, highest published 1.5.0
-                        version: 1.5.0
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: web-base      # tilde, highest published 1.2.9 -> IN range
-                        version: "~1.2.0"
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: api-base      # explicit range, highest published 2.5.0 -> OUT of range
-                        version: ">=1.0.0 <2.0.0"
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /consumer
-                  name: Chart.yaml
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump db-base from 1.0.0 to 1.5.0 in /consumer
-            pr-body: |
-                Bumps db-base from 1.0.0 to 1.5.0.
-            commit-message: |-
-                Bump db-base from 1.0.0 to 1.5.0 in /consumer
-
-                Bumps db-base from 1.0.0 to 1.5.0.
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: df9006be34a85f0780c5acb7680972e2027d526a
-            dependencies:
-                - name: web-base
-                  previous-requirements:
-                    - file: Chart.yaml
-                      groups: []
-                      metadata:
-                        type: helm_chart
-                      requirement: null
-                      source:
-                        registry: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                        tag: ~1.2.0
-                  previous-version: ~1.2.0
-                  requirements:
-                    - file: Chart.yaml
-                      groups: []
-                      metadata:
-                        type: helm_chart
-                      requirement: ~1.2.9
-                      source:
-                        registry: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                        tag: ~1.2.0
-                  version: 1.2.9
-                  directory: /consumer
-            updated-dependency-files:
-                - content: |
-                    apiVersion: v2
-                    name: consumer-service
-                    description: Consumes the producer charts via OCI with varied version constraints
-                    type: application
-                    version: 0.1.0
-                    dependencies:
-                      - name: app-base      # ^1.0.0, highest published 1.0.5 -> IN range
-                        version: ^1.0.0
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: cron-base     # ^1.0.0, highest published 2.0.0 -> OUT of range
-                        version: ^1.0.0
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: db-base       # exact pin, highest published 1.5.0
-                        version: 1.0.0
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: web-base      # tilde, highest published 1.2.9 -> IN range
-                        version: "~1.2.9"
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: api-base      # explicit range, highest published 2.5.0 -> OUT of range
-                        version: ">=1.0.0 <2.0.0"
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /consumer
-                  name: Chart.yaml
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump web-base from ~1.2.0 to 1.2.9 in /consumer
-            pr-body: |
-                Bumps web-base from ~1.2.0 to 1.2.9.
-            commit-message: |-
-                Bump web-base from ~1.2.0 to 1.2.9 in /consumer
-
-                Bumps web-base from ~1.2.0 to 1.2.9.
-    - type: create_pull_request
-      expect:
-        data:
-            base-commit-sha: df9006be34a85f0780c5acb7680972e2027d526a
-            dependencies:
-                - name: api-base
-                  previous-requirements:
-                    - file: Chart.yaml
-                      groups: []
-                      metadata:
-                        type: helm_chart
-                      requirement: null
-                      source:
-                        registry: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                        tag: '>=1.0.0 <2.0.0'
-                  previous-version: '>=1.0.0 <2.0.0'
-                  requirements:
-                    - file: Chart.yaml
-                      groups: []
-                      metadata:
-                        type: helm_chart
-                      requirement: '>=1.0.0 <3.0.0'
-                      source:
-                        registry: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                        tag: '>=1.0.0 <2.0.0'
-                  version: 2.5.0
-                  directory: /consumer
-            updated-dependency-files:
-                - content: |
-                    apiVersion: v2
-                    name: consumer-service
-                    description: Consumes the producer charts via OCI with varied version constraints
-                    type: application
-                    version: 0.1.0
-                    dependencies:
-                      - name: app-base      # ^1.0.0, highest published 1.0.5 -> IN range
-                        version: ^1.0.0
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: cron-base     # ^1.0.0, highest published 2.0.0 -> OUT of range
-                        version: ^1.0.0
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: db-base       # exact pin, highest published 1.5.0
-                        version: 1.0.0
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: web-base      # tilde, highest published 1.2.9 -> IN range
-                        version: "~1.2.0"
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                      - name: api-base      # explicit range, highest published 2.5.0 -> OUT of range
-                        version: ">=1.0.0 <3.0.0"
-                        repository: oci://ghcr.io/casey-robertson-paypal/dependabot-helm
-                  content_encoding: utf-8
-                  deleted: false
-                  directory: /consumer
-                  name: Chart.yaml
-                  operation: update
-                  support_file: false
-                  type: file
-            pr-title: Bump api-base from >=1.0.0 <2.0.0 to 2.5.0 in /consumer
-            pr-body: |
-                Bumps api-base from >=1.0.0 <2.0.0 to 2.5.0.
-            commit-message: |-
-                Bump api-base from >=1.0.0 <2.0.0 to 2.5.0 in /consumer
-
-                Bumps api-base from >=1.0.0 <2.0.0 to 2.5.0.
+                Bumps metrics-server from ^3.0.0 to 3.13.1.
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: df9006be34a85f0780c5acb7680972e2027d526a
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
