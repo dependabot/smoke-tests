@@ -4,9 +4,11 @@ description: Smoke-test fixture for the helm versioning-strategy support
 type: application
 version: 0.1.0
 dependencies:
-  # PLACEHOLDER chart — a large, stable, Kubernetes-project-maintained chart so
-  # the smoke test does not depend on any contributor's personal repo/registry.
-  # Maintainers: please vet/replace with your preferred canonical test chart.
-  - name: ingress-nginx
-    version: "^4.0.0"
-    repository: https://kubernetes.github.io/ingress-nginx
+  # PLACEHOLDER chart — a stable, actively-maintained, GitHub-hosted chart
+  # (kubernetes-sigs/metrics-server) with plain semver versions, so the smoke
+  # test depends on no contributor's personal repo/registry.
+  # MAINTAINERS: please vet/replace with your preferred canonical test chart
+  # and hosting before merge.
+  - name: metrics-server
+    version: "^3.0.0"
+    repository: https://kubernetes-sigs.github.io/metrics-server/
