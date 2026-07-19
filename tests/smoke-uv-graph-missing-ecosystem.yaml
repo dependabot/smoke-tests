@@ -1,0 +1,44 @@
+input:
+    job:
+        command: graph
+        package-manager: uv
+        allowed-updates:
+            - update-type: all
+        experiments:
+            enable_dependency_submission_poc: true
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /npm
+            commit: dbc36a39ec4cb4b7e8c45e06e8420364ff8d1230
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: create_dependency_submission
+      expect:
+        data:
+            version: 1
+            sha: dbc36a39ec4cb4b7e8c45e06e8420364ff8d1230
+            ref: refs/heads/main
+            job:
+                correlator: dependabot-uv-npm
+                id: cli
+            detector:
+                name: dependabot
+                url: https://github.com/dependabot/dependabot-core
+                version: 0.381.0
+            manifests: {}
+            metadata:
+                reason: missing manifest files
+                scanned_manifest_path: pypi::/npm
+                status: skipped
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: dbc36a39ec4cb4b7e8c45e06e8420364ff8d1230
