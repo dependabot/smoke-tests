@@ -20,11 +20,11 @@ input:
               version-requirement: '>2.0.0'
         source:
             provider: github
-            repo: awittzb/smoke-tests
+            repo: dependabot/smoke-tests
             directories:
-                - /npm/multi-dir-scoped/foo
-                - /npm/multi-dir-scoped/bar
-            commit: 41f70bd5cc6132fa9d4da9ea1dba91b13b593c9b
+                - /npm/multi-dir/foo
+                - /npm/multi-dir/bar
+            commit: b430c0e13597246f5e81d6c4adab35602c1ddf3d
     credentials:
         - host: github.com
           password: $LOCAL_GITHUB_ACCESS_TOKEN
@@ -83,11 +83,11 @@ output:
                         url: https://registry.npmjs.org
                   version: 1.0.0
             dependency_files:
-                - /npm/multi-dir-scoped/foo/package.json
-                - /npm/multi-dir-scoped/foo/package-lock.json
-                - /npm/multi-dir-scoped/bar/package.json
-                - /npm/multi-dir-scoped/bar/package-lock.json
+                - /npm/multi-dir/foo/package.json
+                - /npm/multi-dir/foo/package-lock.json
+                - /npm/multi-dir/bar/package.json
+                - /npm/multi-dir/bar/package-lock.json
     - type: mark_as_processed
       expect:
         data:
-            base-commit-sha: 41f70bd5cc6132fa9d4da9ea1dba91b13b593c9b
+            base-commit-sha: b430c0e13597246f5e81d6c4adab35602c1ddf3d
