@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: vcpkg
         allowed-updates:
             - update-type: all
@@ -42,6 +43,13 @@ output:
                       requirement: '>=8.14.0'
                       source: null
                   version: 8.14.0
+                - name: ms-gsl
+                  requirements:
+                    - file: vcpkg.json
+                      groups: []
+                      requirement: null
+                      source: null
+                  version: 4.0.0#1
             dependency_files:
                 - /vcpkg/builtin-baseline/vcpkg.json
     - type: create_pull_request
