@@ -2,6 +2,9 @@ input:
     job:
         command: update
         package-manager: docker
+        cooldown:
+            exclude:
+                - "*"
         allowed-updates:
             - update-type: all
         dependency-groups:
