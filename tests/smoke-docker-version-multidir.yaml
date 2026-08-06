@@ -3,7 +3,8 @@ input:
         command: update
         package-manager: docker
         cooldown:
-            default-days: 0
+            exclude:
+                - "*"
         allowed-updates:
             - update-type: all
         dependency-groups:
