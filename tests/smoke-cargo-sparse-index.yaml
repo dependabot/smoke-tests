@@ -1,0 +1,201 @@
+input:
+    job:
+        command: update
+        package-manager: cargo
+        allowed-updates:
+            - update-type: all
+        dependencies:
+            - dirs
+        ignore-conditions:
+            - dependency-name: anyhow
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>1.0.102'
+            - dependency-name: dirs
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>6.0.0'
+            - dependency-name: serde
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>1.0.228'
+            - dependency-name: serde_json
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>1.0.150'
+            - dependency-name: thiserror
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>2.0.18'
+            - dependency-name: toml
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>0.8.23'
+            - dependency-name: walkdir
+              source: tests/smoke-cargo-sparse-index.yaml
+              version-requirement: '>2.5.0'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /cargo/sparse-index
+            commit: 03fb950f3601c197e5f5a05a1dff2e9a7ba71229
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: anyhow
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: =1.0.102
+                      source: null
+                  version: 1.0.102
+                - name: dirs
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: =6.0.0
+                      source: null
+                  version: 6.0.0
+                - name: serde
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: =1.0.228
+                      source: null
+                  version: 1.0.228
+                - name: serde_json
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: =1.0.150
+                      source: null
+                  version: 1.0.150
+                - name: thiserror
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: =2.0.18
+                      source: null
+                  version: 2.0.18
+                - name: toml
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: =0.8.23
+                      source: null
+                  version: 0.8.23
+                - name: walkdir
+                  requirements:
+                    - file: Cargo.toml
+                      groups:
+                        - dependencies
+                      requirement: =2.5.0
+                      source: null
+                  version: 2.5.0
+                - name: cfg-if
+                  requirements: []
+                  version: 1.0.4
+                - name: dirs-sys
+                  requirements: []
+                  version: 0.5.0
+                - name: equivalent
+                  requirements: []
+                  version: 1.0.2
+                - name: getrandom
+                  requirements: []
+                  version: 0.2.17
+                - name: hashbrown
+                  requirements: []
+                  version: 0.17.1
+                - name: indexmap
+                  requirements: []
+                  version: 2.14.0
+                - name: itoa
+                  requirements: []
+                  version: 1.0.18
+                - name: libc
+                  requirements: []
+                  version: 0.2.186
+                - name: libredox
+                  requirements: []
+                  version: 0.1.17
+                - name: memchr
+                  requirements: []
+                  version: 2.8.1
+                - name: option-ext
+                  requirements: []
+                  version: 0.2.0
+                - name: proc-macro2
+                  requirements: []
+                  version: 1.0.106
+                - name: quote
+                  requirements: []
+                  version: 1.0.45
+                - name: redox_users
+                  requirements: []
+                  version: 0.5.2
+                - name: same-file
+                  requirements: []
+                  version: 1.0.6
+                - name: serde_core
+                  requirements: []
+                  version: 1.0.228
+                - name: serde_derive
+                  requirements: []
+                  version: 1.0.228
+                - name: serde_spanned
+                  requirements: []
+                  version: 0.6.9
+                - name: syn
+                  requirements: []
+                  version: 2.0.117
+                - name: thiserror-impl
+                  requirements: []
+                  version: 2.0.18
+                - name: toml_datetime
+                  requirements: []
+                  version: 0.6.11
+                - name: toml_edit
+                  requirements: []
+                  version: 0.22.27
+                - name: toml_write
+                  requirements: []
+                  version: 0.1.2
+                - name: unicode-ident
+                  requirements: []
+                  version: 1.0.24
+                - name: wasi
+                  requirements: []
+                  version: 0.11.1+wasi-snapshot-preview1
+                - name: winapi-util
+                  requirements: []
+                  version: 0.1.11
+                - name: windows-link
+                  requirements: []
+                  version: 0.2.1
+                - name: windows-sys
+                  requirements: []
+                  version: 0.61.2
+                - name: winnow
+                  requirements: []
+                  version: 0.7.15
+                - name: zmij
+                  requirements: []
+                  version: 1.0.21
+            dependency_files:
+                - /cargo/sparse-index/Cargo.toml
+                - /cargo/sparse-index/Cargo.lock
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 03fb950f3601c197e5f5a05a1dff2e9a7ba71229

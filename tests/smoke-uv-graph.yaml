@@ -32,12 +32,13 @@ output:
             detector:
                 name: dependabot
                 url: https://github.com/dependabot/dependabot-core
-                version: 0.366.0
+                version: 0.382.0
             manifests:
                 /uv/uv.lock:
                     file:
                         source_location: uv/uv.lock
                     metadata:
+                        blob_oid: 1645be636d271856c2539e432c0c1aa47800e248
                         ecosystem: pypi
                     name: /uv/uv.lock
                     resolved:
@@ -127,6 +128,8 @@ output:
                             dependencies:
                                 - pkg:pypi/flask@3.1.3
                                 - pkg:pypi/requests@2.32.5
+                                - pkg:pypi/ruff@0.15.4
+                                - pkg:pypi/ty@0.0.20
                             package_url: pkg:pypi/uv@0.1.0
                             relationship: indirect
                             scope: runtime

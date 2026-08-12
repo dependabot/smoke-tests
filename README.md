@@ -71,6 +71,9 @@ The `script/regen.sh` script regenerates one or more smoke test files locally. I
 # Basic usage — regenerate with the released CLI
 script/regen.sh tests/smoke-bundler.yaml
 
+# Regenerate everything (e.g. after a breaking change in dependabot-core)
+script/regen.sh tests/smoke-*.yaml
+
 # Use a pre-built updater image
 script/regen.sh --updater-image my-image:latest tests/smoke-bundler.yaml
 

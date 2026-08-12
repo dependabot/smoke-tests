@@ -1,0 +1,61 @@
+input:
+    job:
+        command: graph
+        package-manager: go_modules
+        allowed-updates:
+            - update-type: all
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /go/graphs/private-packages-without-credentials
+            commit: 6c7557f98092fee58a96b9f4cb1a0ec7e2472cb1
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: record_update_job_warning
+      expect:
+        data:
+            warn-type: dependency_graph_incomplete
+            warn-title: dependency graph incomplete
+            warn-description: 'The dependency graph may be incomplete. The following git URLs could not be retrieved: github.com/dependabot/sekret-project'
+    - type: create_dependency_submission
+      expect:
+        data:
+            version: 1
+            sha: 6c7557f98092fee58a96b9f4cb1a0ec7e2472cb1
+            ref: refs/heads/main
+            job:
+                correlator: dependabot-go_modules-b643eab7160a61359bf52d40168d2deea7204e06d8e27384d7f27f461fc70bc1
+                id: cli
+            detector:
+                name: dependabot
+                url: https://github.com/dependabot/dependabot-core
+                version: 0.377.0
+            manifests:
+                /go/graphs/private-packages-without-credentials/go.mod:
+                    file:
+                        source_location: go/graphs/private-packages-without-credentials/go.mod
+                    metadata:
+                        blob_oid: e9cbb2d39390e5a370d1fe3a94437f16e539878f
+                        ecosystem: golang
+                    name: /go/graphs/private-packages-without-credentials/go.mod
+                    resolved:
+                        pkg:golang/github.com/dependabot/sekret-project@v0.1.0:
+                            dependencies: []
+                            package_url: pkg:golang/github.com/dependabot/sekret-project@v0.1.0
+                            relationship: direct
+                            scope: runtime
+            metadata:
+                reason: error fetching sub-dependencies
+                scanned_manifest_path: golang::/go/graphs/private-packages-without-credentials
+                status: degraded
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 6c7557f98092fee58a96b9f4cb1a0ec7e2472cb1

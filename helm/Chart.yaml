@@ -1,0 +1,14 @@
+apiVersion: v2
+name: helm-smoke-consumer
+description: Smoke-test fixture for the helm versioning-strategy support
+type: application
+version: 0.1.0
+dependencies:
+  # PLACEHOLDER chart — a stable, actively-maintained, GitHub-hosted chart
+  # (kubernetes-sigs/metrics-server) with plain semver versions, so the smoke
+  # test depends on no contributor's personal repo/registry.
+  # MAINTAINERS: please vet/replace with your preferred canonical test chart
+  # and hosting before merge.
+  - name: metrics-server
+    version: "^3.0.0"
+    repository: https://kubernetes-sigs.github.io/metrics-server/

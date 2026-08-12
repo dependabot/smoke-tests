@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: devcontainers
         allowed-updates:
             - update-type: all
@@ -126,7 +127,7 @@ output:
                   operation: update
                   support_file: false
                   type: file
-                - content: |-
+                - content: |
                     {
                       "features": {
                         "ghcr.io/codspace/versioning/bar:1": {
@@ -198,7 +199,7 @@ output:
                   operation: update
                   support_file: false
                   type: file
-                - content: |-
+                - content: |
                     {
                       "features": {
                         "ghcr.io/codspace/versioning/bar:1": {

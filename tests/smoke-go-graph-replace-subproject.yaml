@@ -1,0 +1,66 @@
+input:
+    job:
+        command: graph
+        package-manager: go_modules
+        allowed-updates:
+            - update-type: all
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /go/graphs/replace-subproject
+            commit: 6c7557f98092fee58a96b9f4cb1a0ec7e2472cb1
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: create_dependency_submission
+      expect:
+        data:
+            version: 1
+            sha: 6c7557f98092fee58a96b9f4cb1a0ec7e2472cb1
+            ref: refs/heads/main
+            job:
+                correlator: dependabot-go_modules-go-graphs-replace-subproject
+                id: cli
+            detector:
+                name: dependabot
+                url: https://github.com/dependabot/dependabot-core
+                version: 0.377.0
+            manifests:
+                /go/graphs/replace-subproject/go.mod:
+                    file:
+                        source_location: go/graphs/replace-subproject/go.mod
+                    metadata:
+                        blob_oid: 9a414f014ac3bd884bc4f545ceda32454b99545c
+                        ecosystem: golang
+                    name: /go/graphs/replace-subproject/go.mod
+                    resolved:
+                        pkg:golang/golang.org/x/text@v0.4.0:
+                            dependencies: []
+                            package_url: pkg:golang/golang.org/x/text@v0.4.0
+                            relationship: indirect
+                            scope: runtime
+                        pkg:golang/rsc.io/quote@v1.5.0:
+                            dependencies:
+                                - pkg:golang/rsc.io/sampler@v1.3.0
+                            package_url: pkg:golang/rsc.io/quote@v1.5.0
+                            relationship: direct
+                            scope: runtime
+                        pkg:golang/rsc.io/sampler@v1.3.0:
+                            dependencies:
+                                - pkg:golang/golang.org/x/text@v0.4.0
+                            package_url: pkg:golang/rsc.io/sampler@v1.3.0
+                            relationship: indirect
+                            scope: runtime
+            metadata:
+                scanned_manifest_path: golang::/go/graphs/replace-subproject
+                status: ok
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 6c7557f98092fee58a96b9f4cb1a0ec7e2472cb1

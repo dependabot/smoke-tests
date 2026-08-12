@@ -1,0 +1,101 @@
+input:
+    job:
+        command: update
+        package-manager: helm
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: metrics-server
+              source: tests/smoke-helm.yaml
+              version-requirement: '>3.13.1'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /helm
+            commit: d95de2b986bf2e9f14da019039b9ce0c18d76d1a
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: metrics-server
+                  requirements:
+                    - file: Chart.yaml
+                      groups: []
+                      metadata:
+                        type: helm_chart
+                      requirement: null
+                      source:
+                        registry: https://kubernetes-sigs.github.io/metrics-server/
+                        tag: ^3.0.0
+                  version: ^3.0.0
+            dependency_files:
+                - /helm/Chart.yaml
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: d95de2b986bf2e9f14da019039b9ce0c18d76d1a
+            dependencies:
+                - name: metrics-server
+                  previous-requirements:
+                    - file: Chart.yaml
+                      groups: []
+                      metadata:
+                        type: helm_chart
+                      requirement: null
+                      source:
+                        registry: https://kubernetes-sigs.github.io/metrics-server/
+                        tag: ^3.0.0
+                  previous-version: ^3.0.0
+                  requirements:
+                    - file: Chart.yaml
+                      groups: []
+                      metadata:
+                        type: helm_chart
+                      requirement: ^3.13.1
+                      source:
+                        registry: https://kubernetes-sigs.github.io/metrics-server/
+                        tag: ^3.0.0
+                  version: 3.13.1
+                  directory: /helm
+            updated-dependency-files:
+                - content: |
+                    apiVersion: v2
+                    name: helm-smoke-consumer
+                    description: Smoke-test fixture for the helm versioning-strategy support
+                    type: application
+                    version: 0.1.0
+                    dependencies:
+                      # PLACEHOLDER chart — a stable, actively-maintained, GitHub-hosted chart
+                      # (kubernetes-sigs/metrics-server) with plain semver versions, so the smoke
+                      # test depends on no contributor's personal repo/registry.
+                      # MAINTAINERS: please vet/replace with your preferred canonical test chart
+                      # and hosting before merge.
+                      - name: metrics-server
+                        version: ^3.13.1
+                        repository: https://kubernetes-sigs.github.io/metrics-server/
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /helm
+                  name: Chart.yaml
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump metrics-server from ^3.0.0 to 3.13.1 in /helm
+            pr-body: |
+                Bumps metrics-server from ^3.0.0 to 3.13.1.
+            commit-message: |-
+                Bump metrics-server from ^3.0.0 to 3.13.1 in /helm
+
+                Bumps metrics-server from ^3.0.0 to 3.13.1.
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: d95de2b986bf2e9f14da019039b9ce0c18d76d1a
