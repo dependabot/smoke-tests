@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: nuget
         allowed-updates:
             - update-type: all
@@ -87,6 +88,7 @@ output:
                         source_url: https://github.com/JamesNK/Newtonsoft.Json
                         type: nuget_repo
                   version: 13.0.1
+                  directory: /nuget/top-level-only
             updated-dependency-files:
                 - content: |-
                     <Project Sdk="Microsoft.NET.Sdk">

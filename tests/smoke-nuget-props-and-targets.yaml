@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: nuget
         allowed-updates:
             - update-type: all
@@ -72,6 +73,7 @@ output:
                         source_url: https://github.com/dotnet/roslyn-analyzers
                         type: nuget_repo
                   version: 3.3.4
+                  directory: /nuget/props-and-targets
             updated-dependency-files:
                 - content: |-
                     <!--
@@ -123,6 +125,7 @@ output:
                         source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
                   version: 6.8.0
+                  directory: /nuget/props-and-targets
             updated-dependency-files:
                 - content: |-
                     <!--

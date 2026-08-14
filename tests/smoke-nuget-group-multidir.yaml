@@ -96,6 +96,7 @@ output:
                         source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
                   version: 6.2.4
+                  directory: /nuget/multi-dir/foo
                 - name: NuGet.Versioning
                   previous-requirements:
                     - file: /nuget/multi-dir/bar/project.csproj
@@ -113,6 +114,7 @@ output:
                         source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
                   version: 6.2.4
+                  directory: /nuget/multi-dir/bar
             updated-dependency-files:
                 - content: |
                     <Project Sdk="Microsoft.NET.Sdk">
