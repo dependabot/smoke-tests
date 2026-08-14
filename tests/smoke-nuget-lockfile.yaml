@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: nuget
         allowed-updates:
             - update-type: all
@@ -708,6 +709,7 @@ output:
                         source_url: https://github.com/JamesNK/Newtonsoft.Json.Bson
                         type: nuget_repo
                   version: 1.0.2
+                  directory: /nuget/lock-file
             updated-dependency-files:
                 - content: |-
                     {

@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: nuget
         allowed-updates:
             - update-type: all
@@ -78,6 +79,7 @@ output:
                         source_url: https://github.com/dotnet/runtime
                         type: nuget_repo
                   version: 8.0.5
+                  directory: /nuget/sdk-replacement-packages
             updated-dependency-files:
                 - content: |
                     <Project Sdk="Microsoft.NET.Sdk">

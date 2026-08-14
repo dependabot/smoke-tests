@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: nuget
         allowed-updates:
             - update-type: all
@@ -68,6 +69,7 @@ output:
                         source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
                   version: 6.8.0
+                  directory: /nuget/dirs-proj
                 - name: NuGet.Versioning
                   previous-requirements:
                     - file: /nuget/dirs-proj/project2/project.csproj
@@ -85,6 +87,7 @@ output:
                         source_url: https://github.com/NuGet/NuGet.Client
                         type: nuget_repo
                   version: 6.8.0
+                  directory: /nuget/dirs-proj
             updated-dependency-files:
                 - content: |-
                     <Project Sdk="Microsoft.NET.Sdk">

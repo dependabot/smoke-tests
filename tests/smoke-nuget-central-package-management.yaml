@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: nuget
         allowed-updates:
             - update-type: all
@@ -60,6 +61,7 @@ output:
                         source_url: https://github.com/JamesNK/Newtonsoft.Json
                         type: nuget_repo
                   version: 13.0.3
+                  directory: /nuget/central-package-management
             updated-dependency-files:
                 - content: |-
                     <Project>
