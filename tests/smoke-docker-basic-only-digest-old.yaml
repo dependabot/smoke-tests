@@ -1,0 +1,82 @@
+input:
+    job:
+        command: update
+        package-manager: docker
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: dependabot/dependabot-updater
+              source: tests/smoke-docker-basic-only-digest-old.yaml
+              version-requirement: '>fb82831a055f7217d7935fc4cbc29ee900d1321565952edb870a755c4836468c'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - docker/basic/only-digest/old/
+            commit: 4464bf6535561ec44f5c729a1ab3f2610db0ffb5
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: dependabot/dependabot-updater
+                  requirements:
+                    - file: Dockerfile
+                      groups: []
+                      requirement: null
+                      source:
+                        digest: 2f1df3a9bf8f2a9b2244c338f3f5d434a35e4910302f483fe2030eeb7cc66bc7
+                        registry: ghcr.io
+                  version: 2f1df3a9bf8f2a9b2244c338f3f5d434a35e4910302f483fe2030eeb7cc66bc7
+            dependency_files:
+                - /docker/basic/only-digest/old/Dockerfile
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 4464bf6535561ec44f5c729a1ab3f2610db0ffb5
+            dependencies:
+                - name: dependabot/dependabot-updater
+                  previous-requirements:
+                    - file: Dockerfile
+                      groups: []
+                      requirement: null
+                      source:
+                        digest: 2f1df3a9bf8f2a9b2244c338f3f5d434a35e4910302f483fe2030eeb7cc66bc7
+                        registry: ghcr.io
+                  previous-version: 2f1df3a9bf8f2a9b2244c338f3f5d434a35e4910302f483fe2030eeb7cc66bc7
+                  requirements:
+                    - file: Dockerfile
+                      groups: []
+                      requirement: null
+                      source:
+                        digest: fb82831a055f7217d7935fc4cbc29ee900d1321565952edb870a755c4836468c
+                        registry: ghcr.io
+                  version: fb82831a055f7217d7935fc4cbc29ee900d1321565952edb870a755c4836468c
+                  directory: /docker/basic/only-digest/old
+            updated-dependency-files:
+                - content: FROM ghcr.io/dependabot/dependabot-updater@sha256:fb82831a055f7217d7935fc4cbc29ee900d1321565952edb870a755c4836468c
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /docker/basic/only-digest/old
+                  name: Dockerfile
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump dependabot/dependabot-updater from `2f1df3a` to `fb82831` in /docker/basic/only-digest/old
+            pr-body: |
+                Bumps dependabot/dependabot-updater from `2f1df3a` to `fb82831`.
+            commit-message: |-
+                Bump dependabot/dependabot-updater in /docker/basic/only-digest/old
+
+                Bumps dependabot/dependabot-updater from `2f1df3a` to `fb82831`.
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 4464bf6535561ec44f5c729a1ab3f2610db0ffb5
