@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: nuget
         allowed-updates:
             - update-type: all
@@ -197,6 +198,7 @@ output:
                         source_url: null
                         type: nuget_repo
                   version: 5.0.2
+                  directory: /nuget/sdk-implicit-deps
             updated-dependency-files:
                 - content: |-
                     <Project Sdk="Microsoft.NET.Sdk">

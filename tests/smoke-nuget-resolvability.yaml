@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: nuget
         allowed-updates:
             - update-type: all
@@ -265,6 +266,7 @@ output:
                         source_url: https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
                         type: nuget_repo
                   version: 7.0.0
+                  directory: /nuget/resolvability
             updated-dependency-files:
                 - content: |-
                     <Project>
@@ -311,6 +313,7 @@ output:
                         source_url: https://github.com/dotnet/aspnetcore
                         type: nuget_repo
                   version: 7.0.9
+                  directory: /nuget/resolvability
             updated-dependency-files:
                 - content: |-
                     <Project>
