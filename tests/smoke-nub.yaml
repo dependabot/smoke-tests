@@ -1,0 +1,16 @@
+input:
+    job:
+        package-manager: nub
+        allowed-updates:
+            - dependency-name: eslint-plugin-yml
+        source:
+            provider: github
+            repo: colinhacks/smoke-tests
+            directory: /nub/
+            commit: c153f279babc52427f216aacb96acf4592bd473a
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output: []
