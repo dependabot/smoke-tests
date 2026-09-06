@@ -1,0 +1,205 @@
+input:
+    job:
+        command: update
+        package-manager: kotlin_toolchain
+        allowed-updates:
+            - update-type: all
+        experiments:
+            enable-beta-ecosystems: true
+        ignore-conditions:
+            - dependency-name: org.jetbrains.kotlin:kotlin-cli
+              source: tests/smoke-kotlin-toolchain.yaml
+              version-requirement: '>0.12.0'
+            - dependency-name: com.squareup.okio:okio
+              source: tests/smoke-kotlin-toolchain.yaml
+              version-requirement: '>3.18.1'
+            - dependency-name: org.jetbrains.kotlinx:kotlinx-coroutines-core
+              source: tests/smoke-kotlin-toolchain.yaml
+              version-requirement: '>1.11.0'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /kotlin-toolchain
+            commit: 0a7b19dd649396adbf85fc798ac650c0c813625b
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: org.jetbrains.kotlin:kotlin-cli
+                  requirements:
+                    - file: kotlin
+                      groups:
+                        - toolchain
+                      metadata:
+                        kind: wrapper
+                        profile: "0.12"
+                        repository: https://packages.jetbrains.team/maven/p/amper/amper
+                      requirement: 0.12.0
+                      source:
+                        type: maven_repo
+                        url: https://packages.jetbrains.team/maven/p/amper/amper
+                    - file: kotlin.bat
+                      groups:
+                        - toolchain
+                      metadata:
+                        kind: wrapper
+                        profile: "0.12"
+                        repository: https://packages.jetbrains.team/maven/p/amper/amper
+                      requirement: 0.12.0
+                      source:
+                        type: maven_repo
+                        url: https://packages.jetbrains.team/maven/p/amper/amper
+                  version: 0.12.0
+                - name: com.squareup.okio:okio
+                  requirements:
+                    - file: module.yaml
+                      groups:
+                        - dependencies
+                      metadata:
+                        coordinate: com.squareup.okio:okio:3.17.0
+                        kind: yaml_value
+                        path:
+                            - dependencies
+                            - 0
+                        profile: "0.12"
+                        value: com.squareup.okio:okio:3.17.0
+                      requirement: 3.17.0
+                      source: null
+                  version: 3.17.0
+                - name: org.jetbrains.kotlinx:kotlinx-coroutines-core
+                  requirements:
+                    - file: module.yaml
+                      groups:
+                        - dependencies
+                      metadata:
+                        coordinate: org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0
+                        kind: yaml_value
+                        path:
+                            - dependencies
+                            - 1
+                        profile: "0.12"
+                        value: org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0
+                      requirement: 1.11.0
+                      source: null
+                  version: 1.11.0
+            dependency_files:
+                - /kotlin-toolchain/kotlin
+                - /kotlin-toolchain/kotlin.bat
+                - /kotlin-toolchain/module.yaml
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 0a7b19dd649396adbf85fc798ac650c0c813625b
+            dependencies:
+                - name: com.squareup.okio:okio
+                  previous-requirements:
+                    - file: module.yaml
+                      groups:
+                        - dependencies
+                      metadata:
+                        coordinate: com.squareup.okio:okio:3.17.0
+                        kind: yaml_value
+                        path:
+                            - dependencies
+                            - 0
+                        profile: "0.12"
+                        value: com.squareup.okio:okio:3.17.0
+                      requirement: 3.17.0
+                      source: null
+                  previous-version: 3.17.0
+                  requirements:
+                    - file: module.yaml
+                      groups:
+                        - dependencies
+                      metadata:
+                        coordinate: com.squareup.okio:okio:3.17.0
+                        kind: yaml_value
+                        path:
+                            - dependencies
+                            - 0
+                        profile: "0.12"
+                        value: com.squareup.okio:okio:3.17.0
+                      requirement: 3.18.1
+                      source: null
+                  version: 3.18.1
+                  directory: /kotlin-toolchain
+            updated-dependency-files:
+                - content: |
+                    product: jvm/app
+
+                    dependencies:
+                      - com.squareup.okio:okio:3.18.1
+                      - org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /kotlin-toolchain
+                  name: module.yaml
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump com.squareup.okio:okio from 3.17.0 to 3.18.1 in /kotlin-toolchain
+            pr-body: |
+                Bumps [com.squareup.okio:okio](https://github.com/lysine-dev/okio) from 3.17.0 to 3.18.1.
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/lysine-dev/okio/blob/main/CHANGELOG.md">com.squareup.okio:okio's changelog</a>.</em></p>
+                <blockquote>
+                <h2>Version 3.18.1</h2>
+                <p><em>2026-07-28</em></p>
+                <ul>
+                <li>Fix: Restore binary-compatibility with Okio 3.17.x for Kotlin/Native users. When we introduced
+                the new <code>base64()</code> function, we inadvertently changed the binary signature! Ugh! This is now
+                fixed and we've automated binary-compatibility checking for Kotlin/Native going forward.</li>
+                </ul>
+                <h2>Version 3.18.0</h2>
+                <p><em>2026-07-21</em></p>
+                <ul>
+                <li>Fix: Use wide character APIs to better support of non-UTF-8 filesystems on Windows.</li>
+                <li>Fix: Don't crash in <code>AssetFileSystem.exists()</code> when the underlying storage throws a
+                <code>FileNotFoundException</code>.</li>
+                <li>Fix: Load WASI paths relative to their <code>preopen</code>. The platform behavior recently changed in
+                NodeJS, causing our <code>WasiFileSystem</code> to be unable to access files!</li>
+                <li>New: Optionally ignore whitespace when decoding hexadecimal.</li>
+                <li>New: Optionally omit padding when encoding Base64.</li>
+                <li>New: <code>BufferedSource.readUInt()</code>, <code>BufferedSink.writeUInt()</code>, and similar functions for <code>UByte</code>,
+                <code>UShort</code> and <code>ULong</code>. Also add support for unsigned and little-endian.</li>
+                <li>New: <code>BufferedSink.utf8Appendable()</code>. Use this to adapt an Okio sink to an <code>Appendable</code>.</li>
+                <li>New: <code>Source.limit()</code> returns a wrapped source with a strict limit on how many bytes are
+                returned.</li>
+                <li>New: <code>ByteString.equals(other, constantTime)</code> for subtle defense against timing attacks.</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/lysine-dev/okio/commit/9f564fd76310120e35b4ffb94b62d6ab2a26207d"><code>9f564fd</code></a> Prepare for release 3.18.1.</li>
+                <li><a href="https://github.com/lysine-dev/okio/commit/531cf07b8ebe140d85448efd6ddff062c13ef317"><code>531cf07</code></a> Hide some accidentally public symbols (<a href="https://redirect.github.com/lysine-dev/okio/issues/1839">#1839</a>)</li>
+                <li><a href="https://github.com/lysine-dev/okio/commit/e7ef43d4d5bd421a51daee9d81ed742a702d0675"><code>e7ef43d</code></a> Update GitHub Actions for new secrets and branch (<a href="https://redirect.github.com/lysine-dev/okio/issues/1840">#1840</a>)</li>
+                <li><a href="https://github.com/lysine-dev/okio/commit/a6730de231a0747359e220eb4b5546a829510d3d"><code>a6730de</code></a> Start enforcing binary compatibility for Kotlin/Native (<a href="https://redirect.github.com/lysine-dev/okio/issues/1838">#1838</a>)</li>
+                <li><a href="https://github.com/lysine-dev/okio/commit/e75a7e9e7fe144ea74baf3e4acd4f2df0a0d0cc0"><code>e75a7e9</code></a> Update dependency com.android.tools.build:gradle to v9.3.1 (<a href="https://redirect.github.com/lysine-dev/okio/issues/1836">#1836</a>)</li>
+                <li><a href="https://github.com/lysine-dev/okio/commit/9d21d5cba334fce36d3316f421d7adcd3fb7ef93"><code>9d21d5c</code></a> Fix interchanged docs links for 1.x and 2.x API (<a href="https://redirect.github.com/lysine-dev/okio/issues/1835">#1835</a>)</li>
+                <li><a href="https://github.com/lysine-dev/okio/commit/bff1dffe5f90e9546b494d4693291a8f72cb07b4"><code>bff1dff</code></a> Track new docs locations from Dokka v2 (<a href="https://redirect.github.com/lysine-dev/okio/issues/1833">#1833</a>)</li>
+                <li><a href="https://github.com/lysine-dev/okio/commit/3b16d9b9dfe6b27ae198a00b7b6d45dc162cddcf"><code>3b16d9b</code></a> Grant write permission to the publish-website action (<a href="https://redirect.github.com/lysine-dev/okio/issues/1832">#1832</a>)</li>
+                <li><a href="https://github.com/lysine-dev/okio/commit/0ed6b03a1a001a1bfcdc18f6658c41500be21d1a"><code>0ed6b03</code></a> Fix dokka build (<a href="https://redirect.github.com/lysine-dev/okio/issues/1831">#1831</a>)</li>
+                <li><a href="https://github.com/lysine-dev/okio/commit/752d92e8bcb24643f12d97d812409f72766d6d06"><code>752d92e</code></a> Update build for new home (<a href="https://redirect.github.com/lysine-dev/okio/issues/1828">#1828</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/lysine-dev/okio/compare/parent-3.17.0...parent-3.18.1">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump com.squareup.okio:okio from 3.17.0 to 3.18.1 in /kotlin-toolchain
+
+                Bumps [com.squareup.okio:okio](https://github.com/lysine-dev/okio) from 3.17.0 to 3.18.1.
+                - [Changelog](https://github.com/lysine-dev/okio/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/lysine-dev/okio/compare/parent-3.17.0...parent-3.18.1)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 0a7b19dd649396adbf85fc798ac650c0c813625b
