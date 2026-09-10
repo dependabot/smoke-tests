@@ -1,0 +1,141 @@
+input:
+    job:
+        package-manager: nuget
+        allowed-updates:
+            - dependency-name: CS-Script.Core
+        experiments:
+            nuget_dependency_solver: true
+        ignore-conditions:
+            - dependency-name: CS-Script.Core
+              version-requirement: '>2.0.0'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /nuget/dependency-solver
+            branch: feature-DependencySolver
+            commit: a231bf1742104118162b79b4267f6d0cffe967c2
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: CS-Script.Core
+                  requirements:
+                    - file: /nuget/dependency-solver/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 1.3.1
+                      source: null
+                  version: 1.3.1
+                - name: Microsoft.CodeAnalysis.Analyzers
+                  requirements: []
+                  version: 2.9.6
+                - name: Microsoft.CodeAnalysis.Common
+                  requirements: []
+                  version: 3.4.0
+                - name: Microsoft.CodeAnalysis.CSharp
+                  requirements: []
+                  version: 3.4.0
+                - name: Microsoft.CodeAnalysis.CSharp.Scripting
+                  requirements: []
+                  version: 3.4.0
+                - name: Microsoft.CodeAnalysis.Scripting.Common
+                  requirements:
+                    - file: /nuget/dependency-solver/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 3.4.0
+                      source: null
+                  version: 3.4.0
+                - name: Microsoft.Extensions.DependencyModel
+                  requirements: []
+                  version: 3.1.2
+            dependency_files:
+                - /nuget/dependency-solver/project.csproj
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: a231bf1742104118162b79b4267f6d0cffe967c2
+            dependencies:
+                - name: CS-Script.Core
+                  previous-requirements:
+                    - file: /nuget/dependency-solver/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 1.3.1
+                      source: null
+                  previous-version: 1.3.1
+                  requirements:
+                    - file: /nuget/dependency-solver/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 2.0.0
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/cs-script.core/2.0.0/cs-script.core.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                  version: 2.0.0
+                  directory: /nuget/dependency-solver
+                - name: Microsoft.CodeAnalysis.Scripting.Common
+                  previous-requirements:
+                    - file: /nuget/dependency-solver/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 3.4.0
+                      source: null
+                  previous-version: 3.4.0
+                  requirements:
+                    - file: /nuget/dependency-solver/project.csproj
+                      groups:
+                        - dependencies
+                      requirement: 3.6.0
+                      source:
+                        nuspec_url: https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.scripting.common/3.6.0/microsoft.codeanalysis.scripting.common.nuspec
+                        source_url: null
+                        type: nuget_repo
+                        url: https://api.nuget.org/v3/index.json
+                  version: 3.6.0
+                  directory: /nuget/dependency-solver
+            updated-dependency-files:
+                - content: |
+                    <Project Sdk="Microsoft.NET.Sdk">
+                      <PropertyGroup>
+                        <TargetFramework>net8.0</TargetFramework>
+                      </PropertyGroup>
+                      <ItemGroup>
+                        <PackageReference Include="CS-Script.Core" Version="2.0.0" />
+                        <PackageReference Include="Microsoft.CodeAnalysis.Scripting.Common" Version="3.6.0" />
+                      </ItemGroup>
+                    </Project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /nuget/dependency-solver
+                  name: project.csproj
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump CS-Script.Core and Microsoft.CodeAnalysis.Scripting.Common in /nuget/dependency-solver
+            pr-body: "Bumps [CS-Script.Core](https://github.com/oleg-shilo/cs-script.core) and [Microsoft.CodeAnalysis.Scripting.Common](https://github.com/dotnet/roslyn). These dependencies needed to be updated together.\nUpdates `CS-Script.Core` from 1.3.1 to 2.0.0\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/oleg-shilo/cs-script.core/releases\">CS-Script.Core's releases</a>.</em></p>\n<blockquote>\n<h2>Release v2.0.0.0</h2>\n<h1>The first .NET5 release</h1>\n<p>This is the first CS-Script.Core release that targets .NET 5.\nThis build is to be re-versioned as v4.0.0.0 and published on <a href=\"https://github.com/oleg-shilo/cs-script\">https://github.com/oleg-shilo/cs-script</a> as &quot;CS-Script&quot;.</p>\n<p>After that the repository will be decommissioned and the product will be fully managed from <a href=\"https://github.com/oleg-shilo/cs-script\">https://github.com/oleg-shilo/cs-script</a></p>\n<hr />\n<h2>Deployment</h2>\n<p><em><strong>Ubuntu (terminal)</strong></em></p>\n<pre><code>repo=https://github.com/oleg-shilo/cs-script.core/releases/download/v2.0.0.0/; file=cs-script_2.0-0.deb; rm $file; wget $repo$file; sudo dpkg -i $file\n</code></pre>\n<p><em><strong>Windows (choco)</strong></em></p>\n<pre><code>choco install cs-script.core --version=2.0.0.0 \n</code></pre>\n<p><em><strong>Manual</strong></em>\nJust unpack the corresponding 7z file and start using the script engine executable <code>cscs</code>.\nIf you prefer you can build a shim exe <code>css</code> for an easy launch of the script engine process:</p>\n<pre><code>cscs -self-exe\n</code></pre>\n<p>The same shim/symbolic link is created if you are installing the CS-Script as a package.</p>\n<hr />\n<h2>Changes</h2>\n<h3>CLI</h3>\n<ul>\n<li>New commands:\n<ul>\n<li><code>-server</code> - for managing build server</li>\n<li><code>-vscode</code> - to open script in VSCode</li>\n<li><code>-vs</code> - to script project in Visual Studio</li>\n<li><code>-self-test</code> - for testing the engine on the target system</li>\n<li><code>-self-exe</code> - for building css launcher for manual deployment</li>\n<li><code>-engine:&lt;csc|dotnet&gt;</code></li>\n<li><code>-new:toplevel</code> - CLI parameter</li>\n<li><code>-profile</code> - for testing script loading performance</li>\n<li><code>-speed</code> - for compiler performance testing</li>\n</ul>\n</li>\n<li>Added css</li>\n<li>Added creation of <code>code.header</code> on first use of CLI command <code>-code</code></li>\n<li>Added complex (multi-file) commands support (e.g. css -self-test-run)</li>\n<li>Implemented build server</li>\n<li>Implemented hot-loading for csc engine.</li>\n<li>Normalized all \\n and \\r\\n CLI output by using Environment.NewLine</li>\n<li>Added reporting using of incompatible csc compiler for scripts requiring XAML compilation</li>\n</ul>\n<h3>CSScriptLib</h3>\n<ul>\n<li>Implemented //css_winapp for WinForm and WPF applications</li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/oleg-shilo/cs-script.core/commit/9a9169d1036834789e5a8e46aa5d1c7fadb4c954\"><code>9a9169d</code></a> Merge pull request <a href=\"https://redirect.github.com/oleg-shilo/cs-script.core/issues/19\">#19</a> from oleg-shilo/NET5_preview</li>\n<li><a href=\"https://github.com/oleg-shilo/cs-script.core/commit/14e7f17dfe3b8008b70bf4ea6be917371bb8b6e2\"><code>14e7f17</code></a> # Release v2.0.0.0</li>\n<li><a href=\"https://github.com/oleg-shilo/cs-script.core/commit/9a15acba87114cf6544020a462627945a5cf45b1\"><code>9a15acb</code></a> - Added CSScriptLib support for VB syntax</li>\n<li><a href=\"https://github.com/oleg-shilo/cs-script.core/commit/d4f0d35dfbdc293ba93c3c745a65c9368bfa5065\"><code>d4f0d35</code></a> - Added VB support</li>\n<li><a href=\"https://github.com/oleg-shilo/cs-script.core/commit/eb39154ef60893b6f9c61f975475c7c5196664e6\"><code>eb39154</code></a> - Published on Choco</li>\n<li><a href=\"https://github.com/oleg-shilo/cs-script.core/commit/e32e0901d1bcfc6bc7787af634da19698ef7a1e8\"><code>e32e090</code></a> # Release v1.4.5.0-NET5-RC5</li>\n<li><a href=\"https://github.com/oleg-shilo/cs-script.core/commit/064fc4f2cf1b006aa4978f6c1909f669431227a6\"><code>064fc4f</code></a> - Added <code>css -server:restart</code> CLI parameter</li>\n<li><a href=\"https://github.com/oleg-shilo/cs-script.core/commit/726580b83eb83fbe04c128a0f9f9bb9af21993da\"><code>726580b</code></a> - Fixed &quot;composite-commands&quot; on Linux</li>\n<li><a href=\"https://github.com/oleg-shilo/cs-script.core/commit/01ca9b99b9c6f0b5479db5f78bc1a99011ae2429\"><code>01ca9b9</code></a> - Addressed all compiler warnings</li>\n<li><a href=\"https://github.com/oleg-shilo/cs-script.core/commit/356ea91e4c06f64adb8c80ecd5a26662be616328\"><code>356ea91</code></a> # Release v1.4.5.0-NET5-RC5</li>\n<li>Additional commits viewable in <a href=\"https://github.com/oleg-shilo/cs-script.core/compare/v1.3.1...v2.0.0.0\">compare view</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `Microsoft.CodeAnalysis.Scripting.Common` from 3.4.0 to 3.6.0\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/dotnet/roslyn/releases\">Microsoft.CodeAnalysis.Scripting.Common's releases</a>.</em></p>\n<blockquote>\n<h2>.NET 5.0 Preview 2</h2>\n<p><a href=\"https://github.com/dotnet/core/blob/master/release-notes/5.0/preview/5.0.0-preview.2.md\">Release Notes</a>\n<a href=\"https://github.com/dotnet/core/blob/master/release-notes/5.0/preview/5.0.0-preview.2-install-instructions.md\">Install Instructions</a></p>\n<ul>\n<li><a href=\"https://github.com/dotnet/installer/releases/tag/v5.0.100-preview.2.20176.6\">Installer</a></li>\n<li><a href=\"https://github.com/dotnet/windowsdesktop/releases/tag/v5.0.0-preview.2.20160.6\">Windowsdesktop</a></li>\n<li><a href=\"https://github.com/dotnet/runtime/releases/tag/v5.0.0-preview.2.20160.6\">Runtime</a></li>\n<li><a href=\"https://github.com/dotnet/aspnetcore/releases/tag/v5.0.0-preview.2.20167.3\">Aspnetcore</a></li>\n<li><a href=\"https://github.com/dotnet/templating/releases/tag/v5.0.0-preview.2.20174.1\">templating</a></li>\n<li><a href=\"https://github.com/dotnet/sdk/releases/tag/v5.0.100-preview.2.20176.4\">SDK</a></li>\n<li><a href=\"https://github.com/dotnet/winforms/releases/tag/v5.0.0-preview.2.20155.3\">winforms</a></li>\n<li><a href=\"https://github.com/dotnet/wpf/releases/tag/v5.0.0-preview.2.20156.7\">WPF</a></li>\n<li><a href=\"https://github.com/dotnet/wcf/releases/tag/v1.2.0-preview1.20104.1\">WCF</a></li>\n<li><a href=\"https://github.com/dotnet/standard/releases/tag/v2.2.0-prerelease.19564.1\">standard</a></li>\n<li><a href=\"https://github.com/dotnet/blazor/releases/tag/v3.2.0-preview1.20067.1\">blazor</a></li>\n<li><a href=\"https://github.com/dotnet/aspnetcore-tooling/releases/tag/v5.0.0-preview.2.20160.3\">ASPNETCORE-Tooling</a></li>\n<li><a href=\"https://github.com/dotnet/efcore/releases/tag/v5.0.0-preview.2.20159.4\">EF Core</a></li>\n<li><a href=\"https://github.com/dotnet/extensions/releases/tag/v5.0.0-preview.2.20160.3\">Extensions</a></li>\n<li><a href=\"https://github.com/dotnet/roslyn/releases/tag/v3.6.0\">roslyn</a></li>\n<li><a href=\"https://github.com/dotnet/fsharp/releases/tag/v11.0.0\">fsharp </a></li>\n<li><a href=\"https://github.com/aspnet/websdk/releases/tag/v5.0.100-preview.2.20167.4\">WebSDK</a></li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li>See full diff in <a href=\"https://github.com/dotnet/roslyn/commits/v3.6.0\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
+            commit-message: |-
+                Bump CS-Script.Core and Microsoft.CodeAnalysis.Scripting.Common
+
+                Bumps [CS-Script.Core](https://github.com/oleg-shilo/cs-script.core) and [Microsoft.CodeAnalysis.Scripting.Common](https://github.com/dotnet/roslyn). These dependencies needed to be updated together.
+
+                Updates `CS-Script.Core` from 1.3.1 to 2.0.0
+                - [Release notes](https://github.com/oleg-shilo/cs-script.core/releases)
+                - [Commits](https://github.com/oleg-shilo/cs-script.core/compare/v1.3.1...v2.0.0.0)
+
+                Updates `Microsoft.CodeAnalysis.Scripting.Common` from 3.4.0 to 3.6.0
+                - [Release notes](https://github.com/dotnet/roslyn/releases)
+                - [Changelog](https://github.com/dotnet/roslyn/blob/main/docs/Breaking%20API%20Changes.md)
+                - [Commits](https://github.com/dotnet/roslyn/commits/v3.6.0)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: a231bf1742104118162b79b4267f6d0cffe967c2
