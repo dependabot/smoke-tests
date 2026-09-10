@@ -1,0 +1,223 @@
+input:
+    job:
+        command: update
+        package-manager: devbox
+        allowed-updates:
+            - update-type: all
+        experiments:
+            enable_beta_ecosystems: true
+        ignore-conditions:
+            - dependency-name: ripgrep
+              source: tests/smoke-devbox.yaml
+              version-requirement: '>14.1.1'
+        source:
+            provider: github
+            repo: andoniaf/smoke-tests
+            directory: /devbox
+            commit: f43e87bfcac9bb03233feaa4c95fca6cd648fd19
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: ripgrep
+                  requirements:
+                    - file: devbox.json
+                      groups: []
+                      requirement: 14.1.0
+                      source:
+                        type: nixhub
+                  version: 14.1.0
+            dependency_files:
+                - /devbox/devbox.json
+                - /devbox/devbox.lock
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: f43e87bfcac9bb03233feaa4c95fca6cd648fd19
+            dependencies:
+                - name: ripgrep
+                  previous-requirements:
+                    - file: devbox.json
+                      groups: []
+                      requirement: 14.1.0
+                      source:
+                        type: nixhub
+                  previous-version: 14.1.0
+                  requirements:
+                    - file: devbox.json
+                      groups: []
+                      requirement: 14.1.1
+                      source:
+                        type: nixhub
+                  version: 14.1.1
+                  directory: /devbox
+            updated-dependency-files:
+                - content: |
+                    {
+                      "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.5/.schema/devbox.schema.json",
+                      "packages": [
+                        "ripgrep@14.1.1"
+                      ]
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /devbox
+                  name: devbox.json
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    {
+                      "lockfile_version": "1",
+                      "packages": {
+                        "ripgrep@14.1.1": {
+                          "last_modified": "2025-10-07T08:41:47Z",
+                          "resolved": "github:NixOS/nixpkgs/bce5fe2bb998488d8e7e7856315f90496723793c#ripgrep",
+                          "source": "devbox-search",
+                          "version": "14.1.1",
+                          "systems": {
+                            "aarch64-darwin": {
+                              "outputs": [
+                                {
+                                  "name": "out",
+                                  "path": "/nix/store/jfkzxhxczh5gvac89vn7kchwi6d0vx8n-ripgrep-14.1.1",
+                                  "default": true
+                                }
+                              ],
+                              "store_path": "/nix/store/jfkzxhxczh5gvac89vn7kchwi6d0vx8n-ripgrep-14.1.1"
+                            },
+                            "aarch64-linux": {
+                              "outputs": [
+                                {
+                                  "name": "out",
+                                  "path": "/nix/store/f1y10yp76065wk25izd1vbmg2q2cqijz-ripgrep-14.1.1",
+                                  "default": true
+                                }
+                              ],
+                              "store_path": "/nix/store/f1y10yp76065wk25izd1vbmg2q2cqijz-ripgrep-14.1.1"
+                            },
+                            "x86_64-darwin": {
+                              "outputs": [
+                                {
+                                  "name": "out",
+                                  "path": "/nix/store/qadij7xd1hz865fv4kzyqwgks59pjb84-ripgrep-14.1.1",
+                                  "default": true
+                                }
+                              ],
+                              "store_path": "/nix/store/qadij7xd1hz865fv4kzyqwgks59pjb84-ripgrep-14.1.1"
+                            },
+                            "x86_64-linux": {
+                              "outputs": [
+                                {
+                                  "name": "out",
+                                  "path": "/nix/store/13gbxm9yy9vnzdal1czjjka9qmqj3y3d-ripgrep-14.1.1",
+                                  "default": true
+                                }
+                              ],
+                              "store_path": "/nix/store/13gbxm9yy9vnzdal1czjjka9qmqj3y3d-ripgrep-14.1.1"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /devbox
+                  name: devbox.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump ripgrep from 14.1.0 to 14.1.1 in /devbox
+            pr-body: |
+                Bumps [ripgrep](https://github.com/BurntSushi/ripgrep) from 14.1.0 to 14.1.1.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/BurntSushi/ripgrep/releases">ripgrep's releases</a>.</em></p>
+                <blockquote>
+                <h2>14.1.1</h2>
+                <p><a href="https://github.com/sponsors/BurntSushi/">Sponsorship is appreciated!</a></p>
+                <p>This is a minor release with a bug fix for a matching bug. In particular, a bug
+                was found that could cause ripgrep to ignore lines that should match. That is,
+                false negatives. It is difficult to characterize the specific set of regexes
+                in which this occurs as it requires multiple different optimization strategies
+                to collide and produce an incorrect result. But as one reported example, in
+                ripgrep, the regex <code>(?i:e.x|ex)</code> does not match <code>e-x</code> when it should. (This
+                bug is a result of an inner literal optimization performed in the <code>grep-regex</code>
+                crate and not in the <code>regex</code> crate.)</p>
+                <blockquote>
+                <p>In case you haven't heard of it before, ripgrep is a line-oriented search
+                tool that recursively searches the current directory for a regex pattern.
+                By default, ripgrep will respect gitignore rules and automatically skip
+                hidden files/directories and binary files.</p>
+                </blockquote>
+                <p>Bug fixes:</p>
+                <ul>
+                <li>[BUG <a href="https://redirect.github.com/BurntSushi/ripgrep/issues/2884">#2884</a>](<a href="https://redirect.github.com/BurntSushi/ripgrep/issues/2884">BurntSushi/ripgrep#2884</a>):
+                Fix bug where ripgrep could miss some matches that it should report.</li>
+                </ul>
+                <p>Miscellaneous:</p>
+                <ul>
+                <li>[MISC <a href="https://redirect.github.com/BurntSushi/ripgrep/issues/2748">#2748</a>](<a href="https://redirect.github.com/BurntSushi/ripgrep/issues/2748">BurntSushi/ripgrep#2748</a>):
+                Remove ripgrep's <code>simd-accel</code> feature because it was frequently broken.</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/BurntSushi/ripgrep/blob/master/CHANGELOG.md">ripgrep's changelog</a>.</em></p>
+                <blockquote>
+                <h1>14.1.1 (2024-09-08)</h1>
+                <p>This is a minor release with a bug fix for a matching bug. In particular, a bug
+                was found that could cause ripgrep to ignore lines that should match. That is,
+                false negatives. It is difficult to characterize the specific set of regexes
+                in which this occurs as it requires multiple different optimization strategies
+                to collide and produce an incorrect result. But as one reported example, in
+                ripgrep, the regex <code>(?i:e.x|ex)</code> does not match <code>e-x</code> when it should. (This
+                bug is a result of an inner literal optimization performed in the <code>grep-regex</code>
+                crate and not in the <code>regex</code> crate.)</p>
+                <p>Bug fixes:</p>
+                <ul>
+                <li>[BUG <a href="https://redirect.github.com/BurntSushi/ripgrep/issues/2884">#2884</a>](<a href="https://redirect.github.com/BurntSushi/ripgrep/issues/2884">BurntSushi/ripgrep#2884</a>):
+                Fix bug where ripgrep could miss some matches that it should report.</li>
+                </ul>
+                <p>Miscellaneous:</p>
+                <ul>
+                <li>[MISC <a href="https://redirect.github.com/BurntSushi/ripgrep/issues/2748">#2748</a>](<a href="https://redirect.github.com/BurntSushi/ripgrep/issues/2748">BurntSushi/ripgrep#2748</a>):
+                Remove ripgrep's <code>simd-accel</code> feature because it was frequently broken.</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/BurntSushi/ripgrep/commit/4649aa9700619f94cf9c66876e9549d83420e16c"><code>4649aa9</code></a> 14.1.1</li>
+                <li><a href="https://github.com/BurntSushi/ripgrep/commit/c009652e775be6b0f8682f72e059b79592fbc9c8"><code>c009652</code></a> changelog: 14.1.1</li>
+                <li><a href="https://github.com/BurntSushi/ripgrep/commit/b9f7a9ba2bede566a6a981c6a7a004836a8c4138"><code>b9f7a9b</code></a> deps: bump grep to 0.3.2</li>
+                <li><a href="https://github.com/BurntSushi/ripgrep/commit/a1960877cf699c77419b1965bcfa4de98767946f"><code>a196087</code></a> grep-0.3.2</li>
+                <li><a href="https://github.com/BurntSushi/ripgrep/commit/bb0925af9159d552af0bdbdafeea7d4271d575b9"><code>bb0925a</code></a> deps: bump grep-printer to 0.2.2</li>
+                <li><a href="https://github.com/BurntSushi/ripgrep/commit/be117dbafa6f7a550a4e5f1ba71bcc96b0a8c4e1"><code>be117db</code></a> grep-printer-0.2.2</li>
+                <li><a href="https://github.com/BurntSushi/ripgrep/commit/06dc13ad2d7543fb241743c44036db464ee3ff38"><code>06dc13a</code></a> deps: bump grep-searcher to 0.1.14</li>
+                <li><a href="https://github.com/BurntSushi/ripgrep/commit/c6c2e69b8f7b7289789c483da8b04dbd529f3c91"><code>c6c2e69</code></a> grep-searcher-0.1.14</li>
+                <li><a href="https://github.com/BurntSushi/ripgrep/commit/e67c868dddb75cad2a961d364bdf8a74514a2731"><code>e67c868</code></a> deps: bump grep-pcre2 to 0.1.8</li>
+                <li><a href="https://github.com/BurntSushi/ripgrep/commit/d33f2e2f70c4c7c4e262badb45d4c88ebbdcdbc5"><code>d33f2e2</code></a> grep-pcre2-0.1.8</li>
+                <li>Additional commits viewable in <a href="https://github.com/BurntSushi/ripgrep/compare/14.1.0...14.1.1">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump ripgrep from 14.1.0 to 14.1.1 in /devbox
+
+                Bumps [ripgrep](https://github.com/BurntSushi/ripgrep) from 14.1.0 to 14.1.1.
+                - [Release notes](https://github.com/BurntSushi/ripgrep/releases)
+                - [Changelog](https://github.com/BurntSushi/ripgrep/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/BurntSushi/ripgrep/compare/14.1.0...14.1.1)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: f43e87bfcac9bb03233feaa4c95fca6cd648fd19
