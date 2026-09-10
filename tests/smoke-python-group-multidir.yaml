@@ -88,6 +88,18 @@ output:
             dependency_files:
                 - /pip/multi-dir/foo/requirements.txt
                 - /pip/multi-dir/bar/requirements.txt
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: dependency_not_found
+            error-details:
+                source: 'Job dependencies not found in the dependency snapshot: Flask'
+    - type: record_update_job_error
+      expect:
+        data:
+            error-type: dependency_not_found
+            error-details:
+                source: 'Job dependencies not found in the dependency snapshot: Flask'
     - type: create_pull_request
       expect:
         data:
