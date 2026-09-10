@@ -1,0 +1,1 @@
+FROM ghcr.io/dependabot/dependabot-updater:v2.0.20230126130633
