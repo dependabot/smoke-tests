@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: rust_toolchain
         allowed-updates:
             - update-type: all
@@ -63,6 +64,10 @@ output:
                   type: file
             pr-title: Bump rust-toolchain from 1.82 to 1.86 in /rust-toolchain/major-minor
             pr-body: |
+                > [!WARNING]
+                > Cooldown could not be applied because no publication date was available from the registry.
+                >
+
                 Bumps [rust-toolchain](https://github.com/rust-lang/rust) from 1.82 to 1.86.
                 <details>
                 <summary>Release notes</summary>
@@ -121,45 +126,50 @@ output:
                 </details>
                 <details>
                 <summary>Changelog</summary>
-                <p><em>Sourced from <a href="https://github.com/rust-lang/rust/blob/master/RELEASES.md">rust-toolchain's changelog</a>.</em></p>
+                <p><em>Sourced from <a href="https://github.com/rust-lang/rust/blob/main/RELEASES.md">rust-toolchain's changelog</a>.</em></p>
                 <blockquote>
-                <h1>Version 1.88.0 (2025-06-26)</h1>
+                <h1>Version 1.98.1 (2026-09-03)</h1>
+                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                <ul>
+                <li><a href="https://redirect.github.com/rust-lang/rust/issues/161441">rustc: fix miscompilation in generating vtables</a></li>
+                </ul>
+                <h1>Version 1.98.0 (2026-08-20)</h1>
                 <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
                 <h2>Language</h2>
                 <ul>
-                <li><a href="https://redirect.github.com/rust-lang/rust/pull/132833">Stabilize <code>#![feature(let_chains)]</code> in the 2024 edition.</a>
-                This feature allows <code>&amp;&amp;</code>-chaining <code>let</code> statements inside <code>if</code> and <code>while</code>, allowing intermixture with boolean expressions. The patterns inside the <code>let</code> sub-expressions can be irrefutable or refutable.</li>
-                <li><a href="https://redirect.github.com/rust-lang/rust/pull/134213">Stabilize <code>#![feature(naked_functions)]</code>.</a>
-                Naked functions allow writing functions with no compiler-generated epilogue and prologue, allowing full control over the generated assembly for a particular function.</li>
-                <li><a href="https://redirect.github.com/rust-lang/rust/pull/138632">Stabilize <code>#![feature(cfg_boolean_literals)]</code>.</a>
-                This allows using boolean literals as <code>cfg</code> predicates, e.g. <code>#[cfg(true)]</code> and <code>#[cfg(false)]</code>.</li>
-                <li><a href="https://redirect.github.com/rust-lang/rust/pull/134273">Fully de-stabilize the <code>#[bench]</code> attribute</a>. Usage of <code>#[bench]</code> without <code>#![feature(custom_test_frameworks)]</code> already triggered a deny-by-default future-incompatibility lint since Rust 1.77, but will now become a hard error.</li>
-                <li><a href="https://redirect.github.com/rust-lang/rust/pull/123239">Add warn-by-default <code>dangerous_implicit_autorefs</code> lint against implicit autoref of raw pointer dereference.</a>
-                The lint <a href="https://redirect.github.com/rust-lang/rust/pull/141661">will be bumped to deny-by-default</a> in the next version of Rust.</li>
-                <li><a href="https://redirect.github.com/rust-lang/rust/pull/119220">Add <code>invalid_null_arguments</code> lint to prevent invalid usage of null pointers.</a>
-                This lint is uplifted from <code>clippy::invalid_null_ptr_usage</code>.</li>
-                <li><a href="https://redirect.github.com/rust-lang/rust/pull/138176">Change trait impl candidate preference for builtin impls and trivial where-clauses.</a></li>
-                <li><a href="https://redirect.github.com/rust-lang/rust/pull/139646">Check types of generic const parameter defaults</a></li>
-                </ul>
-                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-                <h2>Compiler</h2>
+                <li><a href="https://redirect.github.com/rust-lang/rust/pull/149219">Allow shortening lifetime of <code>&amp;mut</code> when unsize-coercing, even in an invariant position.</a> For example, you can now coerce a <code>Cell&lt;&amp;'long mut i32&gt;</code> to a <code>Cell&lt;&amp;'short mut dyn Send&gt;</code>. Such shortenings were already previously allowed when coercing a <code>&amp;mut</code> to a <code>&amp;</code>, or coercing a <code>&amp;</code> to a <code>&amp;</code>.</li>
+                <li><a href="https://redirect.github.com/rust-lang/rust/pull/155521">Add deny-by-default <code>invalid_runtime_symbol_definitions</code> lint and warn-by-default <code>suspicious_runtime_symbol_definitions</code> lint</a>
                 <ul>
-                <li><a href="https://redirect.github.com/rust-lang/rust/pull/136926">Stabilize <code>-Cdwarf-version</code> for selecting the version of DWARF debug information to generate.</a></li>
+                <li>The lints currently specifically targets <code>core</code> runtime symbols like <code>memcmp</code>, <code>memset</code>, <code>strlen</code>, ... and is planned to be expanded in the next few releases.</li>
+                </ul>
+                </li>
+                <li><a href="https://redirect.github.com/rust-lang/rust/pull/156379">Add warn-by-default <code>c_void_returns</code> lint to check <code>core::ffi::c_void</code> as a return type</a></li>
                 </ul>
                 <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
                 <h2>Platform Support</h2>
                 <ul>
-                <li><a href="https://blog.rust-lang.org/2025/05/26/demoting-i686-pc-windows-gnu/">Demote <code>i686-pc-windows-gnu</code> to Tier 2.</a></li>
+                <li><a href="https://redirect.github.com/rust-lang/rust/pull/144220">Add <code>powerpc64-unknown-linux-gnuelfv2</code> as Tier 3</a></li>
+                <li><a href="https://redirect.github.com/rust-lang/rust/pull/155722">Add <code>aarch64-unknown-linux-pauthtest</code> as Tier 3 target</a></li>
+                <li><a href="https://redirect.github.com/rust-lang/rust/pull/155763">Promote <code>thumbv7a-none-eabi</code> to Tier 2</a></li>
+                <li><a href="https://redirect.github.com/rust-lang/rust/pull/155763">Promote <code>thumbv7a-none-eabihf</code> to Tier 2</a></li>
+                <li><a href="https://redirect.github.com/rust-lang/rust/pull/155763">Promote <code>thumbv7r-none-eabi</code> to Tier 2</a></li>
+                <li><a href="https://redirect.github.com/rust-lang/rust/pull/155763">Promote <code>thumbv7r-none-eabihf</code> to Tier 2</a></li>
+                <li><a href="https://redirect.github.com/rust-lang/rust/pull/155763">Promote <code>thumbv8r-none-eabihf</code> to Tier 2</a></li>
                 </ul>
                 <p>Refer to Rust's <a href="https://doc.rust-lang.org/rustc/platform-support.html">platform support page</a>
                 for more information on Rust's tiered platform support.</p>
                 <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
                 <h2>Libraries</h2>
                 <ul>
-                <li><a href="https://redirect.github.com/rust-lang/rust/pull/136160">Remove backticks from <code>#[should_panic]</code> test failure message.</a></li>
-                <li><a href="https://redirect.github.com/rust-lang/rust/pull/139099">Guarantee that <code>[T; N]::from_fn</code> is generated in order of increasing indices.</a>, for those passing it a stateful closure.</li>
-                <li><a href="https://redirect.github.com/rust-lang/rust/pull/139224">The libtest flag <code>--nocapture</code> is deprecated in favor of the more consistent <code>--no-capture</code> flag.</a></li>
-                <li><a href="https://redirect.github.com/rust-lang/rust/pull/139483">Guarantee that <code>{float}::NAN</code> is a quiet NaN.</a></li>
+                <li><a href="https://redirect.github.com/rust-lang/rust/pull/146561">Change <code>Location&lt;'_&gt;</code> lifetime to <code>'static</code> in <code>Panic[Hook]Info</code></a></li>
+                <li><a href="https://redirect.github.com/rust-lang/rust/pull/155421">Document panic in <code>RangeInclusive::from(legacy::RangeInclusive)</code></a></li>
+                <li><a href="https://redirect.github.com/rust-lang/rust/pull/155750">Document that <code>ManuallyDrop</code>'s <code>Box</code> interaction has been fixed</a></li>
+                <li><a href="https://redirect.github.com/rust-lang/rust/issues/156908">Stabilize LoongArch CRC Intrinsics</a></li>
+                <li><a href="https://redirect.github.com/rust-lang/rust/issues/154645">The <code>derive</code> macro is available at <code>{core,std}::derive</code>.</a> This was previously <a href="https://redirect.github.com/rust-lang/rust/issues/159856">unintentionally stabilized in 1.96</a>, but is now <a href="https://redirect.github.com/rust-lang/rust/issues/154645">explicitly accepted</a> as a stabilized API.
+                <ul>
+                <li>Please note that the MSRV for <code>{core,std}::derive</code> will be 1.96, and not 1.98.</li>
+                </ul>
+                </li>
                 </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
@@ -187,8 +197,14 @@ output:
 
                 Bumps [rust-toolchain](https://github.com/rust-lang/rust) from 1.82 to 1.86.
                 - [Release notes](https://github.com/rust-lang/rust/releases)
-                - [Changelog](https://github.com/rust-lang/rust/blob/master/RELEASES.md)
+                - [Changelog](https://github.com/rust-lang/rust/blob/main/RELEASES.md)
                 - [Commits](https://github.com/rust-lang/rust/compare/1.82.0...1.86.0)
+    - type: record_update_job_warning
+      expect:
+        data:
+            warn-type: cooldown_date_unavailable
+            warn-title: Cooldown was not applied
+            warn-description: Cooldown could not be applied because no publication date was available from the registry.
     - type: mark_as_processed
       expect:
         data:
