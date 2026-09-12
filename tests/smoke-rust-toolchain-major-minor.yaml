@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: rust_toolchain
         allowed-updates:
             - update-type: all
@@ -63,6 +64,10 @@ output:
                   type: file
             pr-title: Bump rust-toolchain from 1.82 to 1.86 in /rust-toolchain/major-minor
             pr-body: |
+                > [!WARNING]
+                > Cooldown could not be applied because no publication date was available from the registry.
+                >
+
                 Bumps [rust-toolchain](https://github.com/rust-lang/rust) from 1.82 to 1.86.
                 <details>
                 <summary>Release notes</summary>
@@ -189,6 +194,12 @@ output:
                 - [Release notes](https://github.com/rust-lang/rust/releases)
                 - [Changelog](https://github.com/rust-lang/rust/blob/master/RELEASES.md)
                 - [Commits](https://github.com/rust-lang/rust/compare/1.82.0...1.86.0)
+    - type: record_update_job_warning
+      expect:
+        data:
+            warn-type: cooldown_date_unavailable
+            warn-title: Cooldown was not applied
+            warn-description: Cooldown could not be applied because no publication date was available from the registry.
     - type: mark_as_processed
       expect:
         data:

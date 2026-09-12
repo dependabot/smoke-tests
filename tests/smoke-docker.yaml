@@ -93,6 +93,12 @@ output:
                 Bump ubuntu from 17.04 to 22.04
 
                 Bumps ubuntu from 17.04 to 22.04.
+    - type: record_update_job_warning
+      expect:
+        data:
+            warn-type: cooldown_date_unavailable
+            warn-title: Cooldown was not applied
+            warn-description: Cooldown could not be applied because no publication date was available from the registry.
     - type: mark_as_processed
       expect:
         data:

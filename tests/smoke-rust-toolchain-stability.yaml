@@ -1,5 +1,6 @@
 input:
     job:
+        command: update
         package-manager: rust_toolchain
         allowed-updates:
             - update-type: all
@@ -16,18 +17,24 @@ input:
 output:
     - type: update_dependency_list
       expect:
-          data:
-              dependencies:
-                  - name: rust-toolchain
-                    requirements:
-                        - file: rust-toolchain.toml
-                          groups: []
-                          requirement: stable
-                          source: null
-                    version: stable
-              dependency_files:
-                  - /rust-toolchain/stability/rust-toolchain.toml
+        data:
+            dependencies:
+                - name: rust-toolchain
+                  requirements:
+                    - file: rust-toolchain.toml
+                      groups: []
+                      requirement: stable
+                      source: null
+                  version: stable
+            dependency_files:
+                - /rust-toolchain/stability/rust-toolchain.toml
+    - type: record_update_job_warning
+      expect:
+        data:
+            warn-type: cooldown_date_unavailable
+            warn-title: Cooldown was not applied
+            warn-description: Cooldown could not be applied because no publication date was available from the registry.
     - type: mark_as_processed
       expect:
-          data:
-              base-commit-sha: 95610869fd530ecf51e35a402fe681f1ca961b48
+        data:
+            base-commit-sha: 95610869fd530ecf51e35a402fe681f1ca961b48

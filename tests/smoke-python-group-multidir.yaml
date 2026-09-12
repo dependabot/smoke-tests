@@ -109,6 +109,22 @@ output:
                       source: null
                   version: 1.0.1
                   directory: /pip/multi-dir/foo
+                - name: flask
+                  previous-requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==2.0.0
+                      source: null
+                  previous-version: 2.0.0
+                  requirements:
+                    - file: requirements.txt
+                      groups:
+                        - dependencies
+                      requirement: ==2.0.1
+                      source: null
+                  version: 2.0.1
+                  directory: /pip/multi-dir/foo
                 - name: urllib3
                   previous-requirements:
                     - file: requirements.txt
@@ -144,7 +160,7 @@ output:
             updated-dependency-files:
                 - content: |
                     urllib3==1.0.1
-                    Flask[async]==2.0.0
+                    Flask[async]==2.0.1
                   content_encoding: utf-8
                   deleted: false
                   directory: /pip/multi-dir/foo
@@ -162,9 +178,9 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump the pip group across 2 directories with 2 updates
+            pr-title: Bump the pip group across 2 directories with 3 updates
             pr-body: |
-                Bumps the pip group with 1 update in the /pip/multi-dir/foo directory: [urllib3](https://github.com/urllib3/urllib3).
+                Bumps the pip group with 2 updates in the /pip/multi-dir/foo directory: [urllib3](https://github.com/urllib3/urllib3) and [flask](https://github.com/pallets/flask).
                 Bumps the pip group with 2 updates in the /pip/multi-dir/bar directory: [urllib3](https://github.com/urllib3/urllib3) and [numpy](https://github.com/numpy/numpy).
 
                 Updates `urllib3` from 1.0 to 1.0.1
@@ -186,6 +202,76 @@ output:
                 <li><a href="https://github.com/urllib3/urllib3/commit/231b75492c85692ec307fb9606dbaabff0a80754"><code>231b754</code></a> Added test which fails when double release bug exists.</li>
                 <li><a href="https://github.com/urllib3/urllib3/commit/9f7306fed618577ca89d0d355e8f51027aaeb54d"><code>9f7306f</code></a> Bug fix: Connection was double-released when preload_content=True.</li>
                 <li>See full diff in <a href="https://github.com/urllib3/urllib3/compare/1.0...1.0.1">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `flask` from 2.0.0 to 2.0.1
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/pallets/flask/releases">flask's releases</a>.</em></p>
+                <blockquote>
+                <h2>2.0.1</h2>
+                <ul>
+                <li>Changes: <a href="https://flask.palletsprojects.com/en/2.0.x/changes/#version-2-0-1">https://flask.palletsprojects.com/en/2.0.x/changes/#version-2-0-1</a></li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/pallets/flask/blob/main/CHANGES.rst">flask's changelog</a>.</em></p>
+                <blockquote>
+                <h2>Version 2.0.1</h2>
+                <p>Released 2021-05-21</p>
+                <ul>
+                <li>Re-add the <code>filename</code> parameter in <code>send_from_directory</code>. The
+                <code>filename</code> parameter has been renamed to <code>path</code>, the old name
+                is deprecated. :pr:<code>4019</code></li>
+                <li>Mark top-level names as exported so type checking understands
+                imports in user projects. :issue:<code>4024</code></li>
+                <li>Fix type annotation for <code>g</code> and inform mypy that it is a namespace
+                object that has arbitrary attributes. :issue:<code>4020</code></li>
+                <li>Fix some types that weren't available in Python 3.6.0. :issue:<code>4040</code></li>
+                <li>Improve typing for <code>send_file</code>, <code>send_from_directory</code>, and
+                <code>get_send_file_max_age</code>. :issue:<code>4044</code>, :pr:<code>4026</code></li>
+                <li>Show an error when a blueprint name contains a dot. The <code>.</code> has
+                special meaning, it is used to separate (nested) blueprint names and
+                the endpoint name. :issue:<code>4041</code></li>
+                <li>Combine URL prefixes when nesting blueprints that were created with
+                a <code>url_prefix</code> value. :issue:<code>4037</code></li>
+                <li>Revert a change to the order that URL matching was done. The
+                URL is again matched after the session is loaded, so the session is
+                available in custom URL converters. :issue:<code>4053</code></li>
+                <li>Re-add deprecated <code>Config.from_json</code>, which was accidentally
+                removed early. :issue:<code>4078</code></li>
+                <li>Improve typing for some functions using <code>Callable</code> in their type
+                signatures, focusing on decorator factories. :issue:<code>4060</code></li>
+                <li>Nested blueprints are registered with their dotted name. This allows
+                different blueprints with the same name to be nested at different
+                locations. :issue:<code>4069</code></li>
+                <li><code>register_blueprint</code> takes a <code>name</code> option to change the
+                (pre-dotted) name the blueprint is registered with. This allows the
+                same blueprint to be registered multiple times with unique names for
+                <code>url_for</code>. Registering the same blueprint with the same name
+                multiple times is deprecated. :issue:<code>1091</code></li>
+                <li>Improve typing for <code>stream_with_context</code>. :issue:<code>4052</code></li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/pallets/flask/commit/bc90801c2ada42d3cf112a3b5701bfdbb8b6211c"><code>bc90801</code></a> Merge pull request <a href="https://redirect.github.com/pallets/flask/issues/4091">#4091</a> from pallets/release-2.0.1</li>
+                <li><a href="https://github.com/pallets/flask/commit/fe2d744b530283094dd0a2ffa4a9d86f1029b2cd"><code>fe2d744</code></a> release version 2.0.1</li>
+                <li><a href="https://github.com/pallets/flask/commit/9f606a8cbb8755eaa4664ce7a4f892204f140410"><code>9f606a8</code></a> Merge pull request <a href="https://redirect.github.com/pallets/flask/issues/4090">#4090</a> from pallets/stream-type</li>
+                <li><a href="https://github.com/pallets/flask/commit/7ab934f6bc2380a322c77d92c0b6cfd10b7de991"><code>7ab934f</code></a> improve typing for <code>stream_with_context</code></li>
+                <li><a href="https://github.com/pallets/flask/commit/6b1c4e9769cbe72d6f5665a8081a98e5a671a8d8"><code>6b1c4e9</code></a> Merge pull request <a href="https://redirect.github.com/pallets/flask/issues/4087">#4087</a> from greyli/gitignore</li>
+                <li><a href="https://github.com/pallets/flask/commit/255461d8950fab51a44c84f33cfba1e4fb239a7d"><code>255461d</code></a> Merge pull request <a href="https://redirect.github.com/pallets/flask/issues/4074">#4074</a> from pgjones/bp</li>
+                <li><a href="https://github.com/pallets/flask/commit/3257b7574e7f010686a617197e0fb4596986f7f7"><code>3257b75</code></a> Fix blueprint renaming</li>
+                <li><a href="https://github.com/pallets/flask/commit/714b0a467acab54091d8aeb73403d808abfbcf5b"><code>714b0a4</code></a> Fix blueprint self registration</li>
+                <li><a href="https://github.com/pallets/flask/commit/9409be6e34e153bfdb0aac2c9eb7f60110109172"><code>9409be6</code></a> warn when registering same blueprint with same name</li>
+                <li><a href="https://github.com/pallets/flask/commit/63b306743fccdd52079034e82cbbeee182a4361d"><code>63b3067</code></a> changelog for blueprint registered name</li>
+                <li>Additional commits viewable in <a href="https://github.com/pallets/flask/compare/2.0.0...2.0.1">compare view</a></li>
                 </ul>
                 </details>
                 <br />
@@ -232,9 +318,9 @@ output:
                 </details>
                 <br />
             commit-message: |-
-                Bump the pip group across 2 directories with 2 updates
+                Bump the pip group across 2 directories with 3 updates
 
-                Bumps the pip group with 1 update in the /pip/multi-dir/foo directory: [urllib3](https://github.com/urllib3/urllib3).
+                Bumps the pip group with 2 updates in the /pip/multi-dir/foo directory: [urllib3](https://github.com/urllib3/urllib3) and [flask](https://github.com/pallets/flask).
                 Bumps the pip group with 2 updates in the /pip/multi-dir/bar directory: [urllib3](https://github.com/urllib3/urllib3) and [numpy](https://github.com/numpy/numpy).
 
 
@@ -242,6 +328,11 @@ output:
                 - [Release notes](https://github.com/urllib3/urllib3/releases)
                 - [Changelog](https://github.com/urllib3/urllib3/blob/main/CHANGES.rst)
                 - [Commits](https://github.com/urllib3/urllib3/compare/1.0...1.0.1)
+
+                Updates `flask` from 2.0.0 to 2.0.1
+                - [Release notes](https://github.com/pallets/flask/releases)
+                - [Changelog](https://github.com/pallets/flask/blob/main/CHANGES.rst)
+                - [Commits](https://github.com/pallets/flask/compare/2.0.0...2.0.1)
 
                 Updates `urllib3` from 1.0 to 1.0.1
                 - [Release notes](https://github.com/urllib3/urllib3/releases)
