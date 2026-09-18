@@ -51,12 +51,12 @@ output:
                       groups: []
                       requirement: null
                       source:
-                        tag: "22.04"
-                  version: "22.04"
+                        tag: "21.10"
+                  version: "21.10"
                   directory: /
             updated-dependency-files:
                 - content: |
-                    FROM ubuntu:22.04
+                    FROM ubuntu:21.10
 
                     ### SYSTEM DEPENDENCIES
 
@@ -82,23 +82,13 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump ubuntu from 17.04 to 22.04
+            pr-title: Bump ubuntu from 17.04 to 21.10
             pr-body: |
-                > [!WARNING]
-                > Cooldown could not be applied because no publication date was available from the registry.
-                >
-
-                Bumps ubuntu from 17.04 to 22.04.
+                Bumps ubuntu from 17.04 to 21.10.
             commit-message: |-
-                Bump ubuntu from 17.04 to 22.04
+                Bump ubuntu from 17.04 to 21.10
 
-                Bumps ubuntu from 17.04 to 22.04.
-    - type: record_update_job_warning
-      expect:
-        data:
-            warn-type: cooldown_date_unavailable
-            warn-title: Cooldown was not applied
-            warn-description: Cooldown could not be applied because no publication date was available from the registry.
+                Bumps ubuntu from 17.04 to 21.10.
     - type: mark_as_processed
       expect:
         data:
