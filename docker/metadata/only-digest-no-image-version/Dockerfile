@@ -1,0 +1,1 @@
+FROM ghcr.io/dependabot-fixtures/docker-with-source@sha256:808293ec551b907583c4ae89ad62c2deed365887f55976650389de9837611e11
