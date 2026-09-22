@@ -23,6 +23,23 @@ To further aid in reproducibility, the CLI can instruct the Proxy to enable cach
 
 If there are already cache files present, the Proxy will use them during the run instead of making a network call. Neat!
 
+### Signed artifact downloads
+
+The `npm-yarn-jenkins` suite updates TypeScript through Jenkins' public
+Artifactory npm registry. Its tarballs redirect to S3 URLs that sign the Host
+header. Yarn Berry needs the downloads to compute lockfile checksums, so a
+signature failure prevents the expected update instead of just appearing in logs.
+
+Run it without a preloaded HTTP cache when checking proxy regressions:
+
+```console
+dependabot test -f tests/smoke-npm-yarn-jenkins.yaml --proxy-image=<image>
+```
+
+Do not pass `--cache` or use `--with-cache` for this check. Replaying a cached
+success bypasses S3 signature verification. This live check requires Jenkins
+Artifactory and S3 to be reachable, but needs no registry credentials.
+
 ### Checking failures
 
 Sometimes a test will fail. To more easily check the difference, use the `-o` option to write the new outputs for an easy diff:
