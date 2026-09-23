@@ -1,0 +1,249 @@
+input:
+    job:
+        command: update
+        package-manager: powershell
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        experiments:
+            enable_beta_ecosystems: true
+        ignore-conditions:
+            - dependency-name: GitHub
+              source: tests/smoke-powershell.yaml
+              version-requirement: '>0.43.1'
+            - dependency-name: Pester
+              source: tests/smoke-powershell.yaml
+              version-requirement: '>6.1.0'
+            - dependency-name: Az
+              source: tests/smoke-powershell.yaml
+              version-requirement: '>16.2.0'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /powershell
+            commit: cc0cbe27e4ee3360d553578a56b1bcda4fba9b79
+        cooldown:
+            exclude:
+                - '*'
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: Az
+                  requirements:
+                    - file: PowerShellSmoke.psd1
+                      groups: []
+                      metadata:
+                        declaration_type: required_modules
+                        guid: null
+                        style: hashtable
+                        version_key: RequiredVersion
+                      requirement: = 16.1.0
+                      source: null
+                  version: 16.1.0
+                - name: Pester
+                  requirements:
+                    - file: Invoke-PowerShellSmoke.ps1
+                      groups: []
+                      metadata:
+                        declaration_type: requires_directive
+                        guid: null
+                        style: hashtable
+                        version_key: RequiredVersion
+                      requirement: = 6.0.1
+                      source: null
+                  version: 6.0.1
+                - name: GitHub
+                  requirements:
+                    - file: PowerShellSmoke.psm1
+                      groups: []
+                      metadata:
+                        declaration_type: using_module
+                        guid: null
+                        style: hashtable
+                        version_key: RequiredVersion
+                      requirement: = 0.43.0
+                      source: null
+                  version: 0.43.0
+            dependency_files:
+                - /powershell/PowerShellSmoke.psd1
+                - /powershell/Invoke-PowerShellSmoke.ps1
+                - /powershell/PowerShellSmoke.psm1
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: cc0cbe27e4ee3360d553578a56b1bcda4fba9b79
+            dependencies:
+                - name: Az
+                  previous-requirements:
+                    - file: PowerShellSmoke.psd1
+                      groups: []
+                      metadata:
+                        declaration_type: required_modules
+                        guid: null
+                        style: hashtable
+                        version_key: RequiredVersion
+                      requirement: = 16.1.0
+                      source: null
+                  previous-version: 16.1.0
+                  requirements:
+                    - file: PowerShellSmoke.psd1
+                      groups: []
+                      metadata:
+                        declaration_type: required_modules
+                        guid: null
+                        style: hashtable
+                        version_key: RequiredVersion
+                      requirement: = 16.2.0
+                      source:
+                        type: registry
+                        url: https://mcr.microsoft.com
+                  version: 16.2.0
+                  directory: /powershell
+            updated-dependency-files:
+                - content: |
+                    @{
+                        ModuleVersion = '1.0.0'
+                        GUID = '4d8cfeba-2a3b-4c6b-8f59-1c24f816da01'
+
+                        RequiredModules = @(
+                            @{ ModuleName = 'Az'; RequiredVersion = '16.2.0' }
+                        )
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /powershell
+                  name: PowerShellSmoke.psd1
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump Az from 16.1.0 to 16.2.0 in /powershell
+            pr-body: "Bumps [Az](https://github.com/Azure/azure-powershell) from 16.1.0 to 16.2.0.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/Azure/azure-powershell/releases\">Az's releases</a>.</em></p>\n<blockquote>\n<h2>Az 16.2.0</h2>\n<p>Gallery Module for Azure PowerShell: <a href=\"https://www.powershellgallery.com/packages/Az/16.2.0\">https://www.powershellgallery.com/packages/Az/16.2.0</a></p>\n<p>To install <code>Az</code> from the PowerShell Gallery, run the following command:</p>\n<pre><code>\r\nInstall-Module -Name Az -Repository PSGallery -Force\r\n<p></code></pre></p>\n<p>To update from an older version of <code>Az</code>, run the following command:</p>\n<pre><code>\r\nUpdate-Module -Name Az\r\n</code></pre>\n<h3>Docker images</h3>\n<ul>\n<li>mcr.microsoft.com/azure-powershell:latest</li>\n<li>mcr.microsoft.com/azure-powershell:alpine-3.23</li>\n<li>mcr.microsoft.com/azure-powershell:16.2.0-alpine-3.23</li>\n<li>mcr.microsoft.com/azure-powershell:debian-12</li>\n<li>mcr.microsoft.com/azure-powershell:16.2.0-debian-12</li>\n<li>mcr.microsoft.com/azure-powershell:azurelinux-3.0</li>\n<li>mcr.microsoft.com/azure-powershell:16.2.0-azurelinux-3.0</li>\n<li>mcr.microsoft.com/azure-powershell:azurelinux-3.0-arm64</li>\n<li>mcr.microsoft.com/azure-powershell:16.2.0-azurelinux-3.0-arm64</li>\n<li>mcr.microsoft.com/azure-powershell:ubuntu-24.04</li>\n<li>mcr.microsoft.com/azure-powershell:16.2.0-ubuntu-24.04</li>\n</ul>\n<h4>Release Notes</h4>\n<h2>16.2.0 - August 2026</h2>\n<h4>Az.Accounts 5.5.2</h4>\n<ul>\n<li>Upgraded 'Azure.Core' dependency from 1.56.0 to 1.57.0.</li>\n<li>Upgraded 'System.ClientModel' dependency from 1.12.0 to 1.13.0.</li>\n</ul>\n<h4>Az.Cdn 6.1.0</h4>\n<ul>\n<li>Upgraded API version to 2026-04-01-preview.</li>\n<li>Fixed CDN long-running operations that returned completed resource responses without a Location header.</li>\n</ul>\n<h4>Az.Compute 11.8.0</h4>\n<ul>\n<li>Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); 'Set-AzVMAEMExtension' now installs the new extension by default.</li>\n<li>Added 'New-AzInterconnectBlock', 'Get-AzInterconnectBlock', 'Update-AzInterconnectBlock', and 'Remove-AzInterconnectBlock' cmdlets to manage Microsoft.Compute/interconnectBlocks resources for high-performance artificial intelligence (AI) and machine learning (ML) workloads.</li>\n<li>Marked the '-EnableWAD', '-SkipStorage', and '-InstallNewExtension' parameters of 'Set-AzVMAEMExtension' as deprecated using breaking-change attributes. They will be removed in a future major release.</li>\n<li>Preserved CMD-special characters in 'Invoke-AzVMRunCommand' and 'Invoke-AzVmssVMRunCommand' parameter values for Windows PowerShell RunCommand execution. <a href=\"https://redirect.github.com/Azure/azure-powershell/issues/29880\">#29880</a></li>\n</ul>\n<h4>Az.CosmosDB 1.21.1</h4>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a href=\"https://github.com/Azure/azure-powershell/blob/main/ChangeLog.md\">Az's changelog</a>.</em></p>\n<blockquote>\n<h2>16.2.0 - August 2026</h2>\n<h4>Az.Accounts 5.5.2</h4>\n<ul>\n<li>Upgraded 'Azure.Core' dependency from 1.56.0 to 1.57.0.</li>\n<li>Upgraded 'System.ClientModel' dependency from 1.12.0 to 1.13.0.</li>\n</ul>\n<h4>Az.Cdn 6.1.0</h4>\n<ul>\n<li>Upgraded API version to 2026-04-01-preview.</li>\n<li>Fixed CDN long-running operations that returned completed resource responses without a Location header.</li>\n</ul>\n<h4>Az.Compute 11.8.0</h4>\n<ul>\n<li>Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); 'Set-AzVMAEMExtension' now installs the new extension by default.</li>\n<li>Added 'New-AzInterconnectBlock', 'Get-AzInterconnectBlock', 'Update-AzInterconnectBlock', and 'Remove-AzInterconnectBlock' cmdlets to manage Microsoft.Compute/interconnectBlocks resources for high-performance artificial intelligence (AI) and machine learning (ML) workloads.</li>\n<li>Marked the '-EnableWAD', '-SkipStorage', and '-InstallNewExtension' parameters of 'Set-AzVMAEMExtension' as deprecated using breaking-change attributes. They will be removed in a future major release.</li>\n<li>Preserved CMD-special characters in 'Invoke-AzVMRunCommand' and 'Invoke-AzVmssVMRunCommand' parameter values for Windows PowerShell RunCommand execution. <a href=\"https://redirect.github.com/Azure/azure-powershell/issues/29880\">#29880</a></li>\n</ul>\n<h4>Az.CosmosDB 1.21.1</h4>\n<ul>\n<li>Upgraded 'Azure.Security.KeyVault.Keys' to '4.10.0' to align with other modules.</li>\n</ul>\n<h4>Az.EventHub 5.6.0</h4>\n<ul>\n<li>Added parameter 'IPAddressType' to cmdlets 'New-AzEventHubNamespace' and 'Set-AzEventHubNamespace'</li>\n</ul>\n<h4>Az.FrontDoor 2.3.0</h4>\n<ul>\n<li>Added support for Front Door WAF managed rule exceptions.\n<ul>\n<li>Added 'ExceptionListException' to 'New-AzFrontDoorWafPolicy' and 'Update-AzFrontDoorWafPolicy'.</li>\n<li>Added helper cmdlets for WAF managed rule exception scopes.</li>\n</ul>\n</li>\n</ul>\n<h4>Az.Functions 5.0.1</h4>\n<ul>\n<li>Updated the Function App stacks parser to handle a runtime definition that does not include a 'FUNCTIONS_WORKER_RUNTIME' app setting. <a href=\"https://redirect.github.com/Azure/azure-powershell/issues/29630\">#29630</a></li>\n<li>Added support in 'New-AzFunctionApp' to create Go function apps hosted in Flex Consumption plans.</li>\n</ul>\n<h4>Az.KeyVault 6.6.0</h4>\n<ul>\n<li>Populated 'KeySize' in 'Get-AzKeyVaultKey' output for additional key types when available; previously only RSA keys had a size populated.</li>\n<li>Upgraded 'Azure.Security.KeyVault.Keys' dependency from '4.6.0-beta.1' to '4.10.0'.</li>\n</ul>\n<h4>Az.NetAppFiles 1.4.0</h4>\n<ul>\n<li>Added FileAccessLogs to 'Get-AzNetAppFilesCache' output.</li>\n<li>Added Breakthrough Mode support for Azure NetApp Files volumes:\n<ul>\n<li>Added '-BreakthroughMode' to 'New-AzNetAppFilesVolume' and 'New-AzNetAppFilesVolumeGroup'.</li>\n<li>Added 'BreakthroughMode' to volume output in 'Get-AzNetAppFilesVolume' and 'Get-AzNetAppFilesVolumeGroup'</li>\n</ul>\n</li>\n</ul>\n<h4>Az.Network 8.1.0</h4>\n<ul>\n<li>Added new cmdlets for ConnectionPolicy management under VirtualHub\n<ul>\n<li>'Get-AzConnectionPolicy': Retrieve one or all ConnectionPolicy resources under a VirtualHub</li>\n<li>'New-AzConnectionPolicy': Create a new ConnectionPolicy under a VirtualHub</li>\n<li>'Set-AzConnectionPolicy': Update an existing ConnectionPolicy under a VirtualHub</li>\n<li>'Remove-AzConnectionPolicy': Delete a ConnectionPolicy from a VirtualHub</li>\n</ul>\n</li>\n<li>Added Managed HSM support to Application Gateway SSL certificate cmdlets ('New-AzApplicationGatewaySslCertificate', 'Set-AzApplicationGatewaySslCertificate', 'Add-AzApplicationGatewaySslCertificate') with '-HsmKeyId' and '-HsmPublicCertData' parameters.</li>\n<li>Updated Virtual Network and Virtual Network Appliance cmdlets to use new properties.\n<ul>\n<li>'New-AzVirtualNetwork': Added '-SummarizedGatewayPrefix' parameter to specify summarized gateway prefixes advertised for the virtual network, and exposed 'SummarizedGatewayPrefixes' on the returned object.</li>\n<li>'New-AzVirtualNetworkAppliance': Added '-PrivateIPAddressVersion' parameter (IPv4, DualStack) to support dual-stack Virtual Network Appliances, and exposed 'PrivateIPAddressVersion' on the returned object.</li>\n</ul>\n</li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li>See full diff in <a href=\"https://github.com/Azure/azure-powershell/commits\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
+            commit-message: |-
+                Bump Az from 16.1.0 to 16.2.0 in /powershell
+
+                Bumps [Az](https://github.com/Azure/azure-powershell) from 16.1.0 to 16.2.0.
+                - [Release notes](https://github.com/Azure/azure-powershell/releases)
+                - [Changelog](https://github.com/Azure/azure-powershell/blob/main/ChangeLog.md)
+                - [Commits](https://github.com/Azure/azure-powershell/commits)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: cc0cbe27e4ee3360d553578a56b1bcda4fba9b79
+            dependencies:
+                - name: Pester
+                  previous-requirements:
+                    - file: Invoke-PowerShellSmoke.ps1
+                      groups: []
+                      metadata:
+                        declaration_type: requires_directive
+                        guid: null
+                        style: hashtable
+                        version_key: RequiredVersion
+                      requirement: = 6.0.1
+                      source: null
+                  previous-version: 6.0.1
+                  requirements:
+                    - file: Invoke-PowerShellSmoke.ps1
+                      groups: []
+                      metadata:
+                        declaration_type: requires_directive
+                        guid: null
+                        style: hashtable
+                        version_key: RequiredVersion
+                      requirement: = 6.1.0
+                      source:
+                        type: registry
+                        url: https://www.powershellgallery.com/api/v2
+                  version: 6.1.0
+                  directory: /powershell
+            updated-dependency-files:
+                - content: |
+                    #Requires -Modules @{ ModuleName = 'Pester'; RequiredVersion = '6.1.0' }
+
+                    $ErrorActionPreference = 'Stop'
+
+                    Write-Output 'PowerShell smoke test'
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /powershell
+                  name: Invoke-PowerShellSmoke.ps1
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump Pester from 6.0.1 to 6.1.0 in /powershell
+            pr-body: "Bumps [Pester](https://github.com/Pester/Pester) from 6.0.1 to 6.1.0.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/Pester/Pester/releases\">Pester's releases</a>.</em></p>\n<blockquote>\n<h2>6.1.0</h2>\n<h1>Pester 6.1.0</h1>\n<blockquote>\n<p>\U0001F64B Want to share feedback or report a bug? Open an <a href=\"https://github.com/pester/Pester/issues/new/choose\">issue</a>\nor start a <a href=\"https://github.com/pester/Pester/discussions\">discussion</a>.</p>\n</blockquote>\n<p>The new <code>Should-*</code> assertions are now open for extension: you can write your own typed assertion\nwith <code>New-ShouldAssertion</code> and it behaves exactly like a built-in one. Alongside that, this release\nadds two experimental features worth trying, global mocks and shuffled test order, and a large round\nof assertion, output, and mocking fixes.</p>\n<p>Pester 6 runs on <strong>Windows PowerShell 5.1</strong> and <strong>PowerShell 7.4+</strong>.</p>\n<ul>\n<li><a href=\"%5B#6%5D(https://redirect.github.com/Pester/Pester/issues/6).1.0-whats-new\">What's new?</a>\n<ul>\n<li><a href=\"%5B#6%5D(https://redirect.github.com/Pester/Pester/issues/6).1.0-write-your-own-should--assertions-with-new-shouldassertion\">Write your own <code>Should-*</code> assertions with <code>New-ShouldAssertion</code></a></li>\n<li><a href=\"%5B#6%5D(https://redirect.github.com/Pester/Pester/issues/6).1.0-sharper-assertions\">Sharper assertions</a></li>\n<li><a href=\"%5B#6%5D(https://redirect.github.com/Pester/Pester/issues/6).1.0-show-tags-in-the-console-output\">Show tags in the console output</a></li>\n<li><a href=\"%5B#6%5D(https://redirect.github.com/Pester/Pester/issues/6).1.0-skipped-data-driven-tests-get-real-names\">Skipped data-driven tests get real names</a></li>\n</ul>\n</li>\n<li><a href=\"%5B#6%5D(https://redirect.github.com/Pester/Pester/issues/6).1.0-experimental-features\">Experimental features</a>\n<ul>\n<li><a href=\"%5B#6%5D(https://redirect.github.com/Pester/Pester/issues/6).1.0-global-mocks\">Global mocks</a></li>\n<li><a href=\"%5B#6%5D(https://redirect.github.com/Pester/Pester/issues/6).1.0-shuffled-test-order\">Shuffled test order</a></li>\n<li><a href=\"%5B#6%5D(https://redirect.github.com/Pester/Pester/issues/6).1.0-parallel-runs-keep-getting-better\">Parallel runs keep getting better</a></li>\n</ul>\n</li>\n<li><a href=\"%5B#6%5D(https://redirect.github.com/Pester/Pester/issues/6).1.0-other-improvements-and-fixes\">Other improvements and fixes</a></li>\n<li><a href=\"%5B#6%5D(https://redirect.github.com/Pester/Pester/issues/6).1.0-thank-you\">Thank you</a></li>\n<li><a href=\"%5B#6%5D(https://redirect.github.com/Pester/Pester/issues/6).1.0-questions\">Questions?</a></li>\n</ul>\n<h2><!-- raw HTML omitted --><!-- raw HTML omitted -->What's new?</h2>\n<h3><!-- raw HTML omitted --><!-- raw HTML omitted -->Write your own <code>Should-*</code> assertions with <code>New-ShouldAssertion</code></h3>\n<p>The <code>Should-*</code> assertions in 6.0.0 were a closed set. Now you can author your own and it gets the same\nbuilding blocks a built-in assertion has: pipeline input collection, consistent value formatting, the\ndiagnostic hint when someone pipes a collection into a value assertion, and the shared failure path\nthat makes soft assertions and <code>-ParameterFilter</code> work.</p>\n<p>You call <code>New-ShouldAssertion</code> once at the top of your function, then use the object it returns. A\npassing result is implicit, you only call <code>Fail()</code> when the check does not hold, and the message\nsupports <code>&lt;expected&gt;</code>, <code>&lt;actual&gt;</code>, <code>&lt;because&gt;</code> and your own <code>&lt;key&gt;</code> tokens:</p>\n<pre lang=\"powershell\"><code>function Should-BeAwesome {\r\n    [CmdletBinding()]\r\n    param (\r\n        [Parameter(Position = 1, ValueFromPipeline)] $Actual,\r\n        [Parameter(Position = 0)]                    $Expected = 'Awesome',\r\n        [string] $Because\r\n    )\r\n<pre><code>$assert = New-ShouldAssertion -Caller $PSCmdlet -Actual $Actual -Buffer $Input\r\n$Actual = $assert.Actual()\n</code></pre>\n<p>&lt;/tr&gt;&lt;/table&gt;\n</code></pre></p>\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/pester/Pester/commit/829890dd30dd2b28fc64904910661d16aaf3c005\"><code>829890d</code></a> Branding to 6.1.0 (<a href=\"https://redirect.github.com/Pester/Pester/issues/2972\">#2972</a>)</li>\n<li><a href=\"https://github.com/pester/Pester/commit/f3e91491cc66123b4e8e437d6ccd46856a9bd3bf\"><code>f3e9149</code></a> Hint at unescaped wildcards on Should-Throw -ExceptionMessage (<a href=\"https://redirect.github.com/Pester/Pester/issues/2970\">#2970</a>)</li>\n<li><a href=\"https://github.com/pester/Pester/commit/e619aa0e23fed24aa270611bd504bf9fc56a3c57\"><code>e619aa0</code></a> Rename -NormalizeNewline to -NormalizeLineEnding on Should-BeString and Shoul...</li>\n<li><a href=\"https://github.com/pester/Pester/commit/ec8ca45bc782a055cf3c87bdb60a497f5a77536f\"><code>ec8ca45</code></a> Run release tests with -NonInteractive so a missing mandatory parameter fails...</li>\n<li><a href=\"https://github.com/pester/Pester/commit/691de5d980c9351950a32c250b2793314265bc53\"><code>691de5d</code></a> Evaluate skipped-test &lt;template&gt; names the same way a run test does (<a href=\"https://redirect.github.com/Pester/Pester/issues/2959\">#2959</a>)</li>\n<li><a href=\"https://github.com/pester/Pester/commit/6f8c5f9f1e85881aee41ce71e08ded4c220364d4\"><code>6f8c5f9</code></a> Hint that -ExpectedMessage uses wildcards when the message looks identical (#...</li>\n<li><a href=\"https://github.com/pester/Pester/commit/bf0e5fd4b8454dc493038963703cbd695ba12421\"><code>bf0e5fd</code></a> Bump prerelease to 6.1.0-rc1 (<a href=\"https://redirect.github.com/Pester/Pester/issues/2961\">#2961</a>)</li>\n<li><a href=\"https://github.com/pester/Pester/commit/e51d9d3bd650c899b61d320664e2c2f5fb122aae\"><code>e51d9d3</code></a> Fix <a href=\"https://redirect.github.com/Pester/Pester/issues/2953\">#2953</a>: fail open when a bound parameter's ToString throws in the mock fil...</li>\n<li><a href=\"https://github.com/pester/Pester/commit/a8932fe38e2404be5d4f1b558d9d9eb713cbeb0f\"><code>a8932fe</code></a> Expand data-backed &lt;template&gt; names for skipped tests (<a href=\"https://redirect.github.com/Pester/Pester/issues/2957\">#2957</a>)</li>\n<li><a href=\"https://github.com/pester/Pester/commit/e96683465a22fa6ed93f08686ba90233f27aa781\"><code>e966834</code></a> Add -NormalizeNewline to Should-BeString (<a href=\"https://redirect.github.com/Pester/Pester/issues/2954\">#2954</a>)</li>\n<li>Additional commits viewable in <a href=\"https://github.com/Pester/Pester/compare/6.0.1...6.1.0\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
+            commit-message: |-
+                Bump Pester from 6.0.1 to 6.1.0 in /powershell
+
+                Bumps [Pester](https://github.com/Pester/Pester) from 6.0.1 to 6.1.0.
+                - [Release notes](https://github.com/Pester/Pester/releases)
+                - [Changelog](https://github.com/pester/Pester/blob/main/docs/CHANGELOG.md)
+                - [Commits](https://github.com/Pester/Pester/compare/6.0.1...6.1.0)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: cc0cbe27e4ee3360d553578a56b1bcda4fba9b79
+            dependencies:
+                - name: GitHub
+                  previous-requirements:
+                    - file: PowerShellSmoke.psm1
+                      groups: []
+                      metadata:
+                        declaration_type: using_module
+                        guid: null
+                        style: hashtable
+                        version_key: RequiredVersion
+                      requirement: = 0.43.0
+                      source: null
+                  previous-version: 0.43.0
+                  requirements:
+                    - file: PowerShellSmoke.psm1
+                      groups: []
+                      metadata:
+                        declaration_type: using_module
+                        guid: null
+                        style: hashtable
+                        version_key: RequiredVersion
+                      requirement: = 0.43.1
+                      source:
+                        type: registry
+                        url: https://www.powershellgallery.com/api/v2
+                  version: 0.43.1
+                  directory: /powershell
+            updated-dependency-files:
+                - content: |
+                    using module @{ ModuleName = 'GitHub'; RequiredVersion = '0.43.1' }
+
+                    $ErrorActionPreference = 'Stop'
+
+                    function Get-PowerShellSmoke {
+                        'ok'
+                    }
+
+                    Export-ModuleMember -Function Get-PowerShellSmoke
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /powershell
+                  name: PowerShellSmoke.psm1
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump GitHub from 0.43.0 to 0.43.1 in /powershell
+            pr-body: "Bumps [GitHub](https://github.com/PSModule/GitHub) from 0.43.0 to 0.43.1.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/PSModule/GitHub/releases\">GitHub's releases</a>.</em></p>\n<blockquote>\n<h2>v0.43.1</h2>\n<h1>\U0001FA79 [Patch]: Defunct US status stamp removed (<a href=\"https://redirect.github.com/PSModule/GitHub/issues/581\">#581</a>)</h1>\n<p>GitHub has migrated its status infrastructure to a new service. The previous Statuspage-based API (<code>githubstatus.com/api</code>) allowed ad-hoc queries for status, incidents, maintenance, and components. The replacement is a web-based status page with a subscription model for updates — there is no longer a public REST API to query programmatically.</p>\n<p>The <code>US</code> stamp is the first endpoint to go offline (returning 404). Since the underlying service is being replaced entirely, this removal reflects the beginning of the deprecation of the old status API surface.</p>\n<ul>\n<li>Fixes <a href=\"https://redirect.github.com/PSModule/GitHub/issues/580\">#580</a></li>\n</ul>\n<h2>Removed: US status stamp</h2>\n<p>The <code>US</code> stamp (<code>https://us.githubstatus.com</code>) is removed from the module. GitHub has decommissioned this endpoint as part of moving to a new status service that uses subscriptions instead of an ad-hoc query API. The remaining stamps (<code>Public</code> and <code>Europe</code>) continue to function for now.</p>\n<p>Tab-completion for the <code>-Name</code> parameter on <code>Get-GitHubStatus</code>, <code>Get-GitHubScheduledMaintenance</code>, <code>Get-GitHubStatusComponent</code>, and <code>Get-GitHubStatusIncident</code> now offers only <code>Public</code> and <code>Europe</code>.</p>\n<pre lang=\"powershell\"><code># Before: 3 stamps (Public, Europe, US — US returns 404)\n# After:  2 stamps (Public, Europe)\nGet-GitHubStamp\n</code></pre>\n<h2>Technical Details</h2>\n<ul>\n<li>Removed <code>[GitHubStamp]::new('US', 'https://us.githubstatus.com')</code> from <code>src/variables/private/GitHub.ps1</code>.</li>\n<li>Status functions resolve stamps dynamically via <code>Get-GitHubStamp</code>, so no other code changes are needed.</li>\n<li>Parametrized tests iterate over <code>Get-GitHubStamp</code> output, so the 8 US test cases automatically disappear.</li>\n<li>The remaining <code>Public</code> and <code>Europe</code> stamps may also be retired once GitHub completes the migration to the new status service.</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/PSModule/GitHub/commit/88154b01a16b4afb8b8af0670e9b88e1cb4ac226\"><code>88154b0</code></a> \U0001FA79 [Patch]: Defunct US status stamp removed (<a href=\"https://redirect.github.com/PSModule/GitHub/issues/581\">#581</a>)</li>\n<li><a href=\"https://github.com/PSModule/GitHub/commit/21298a582177bc7d9d1a4f209b95f03a41c0903f\"><code>21298a5</code></a> ⬆️ [Dependency]: Update Process-PSModule to v5.4.6 (<a href=\"https://redirect.github.com/PSModule/GitHub/issues/576\">#576</a>)</li>\n<li><a href=\"https://github.com/PSModule/GitHub/commit/33bc295147ae5dae7e3df2b7010893b5656e3817\"><code>33bc295</code></a> ⚙️ [Maintenance]: Workflow reference pinned to immutable SHA (<a href=\"https://redirect.github.com/PSModule/GitHub/issues/575\">#575</a>)</li>\n<li>See full diff in <a href=\"https://github.com/PSModule/GitHub/compare/v0.43.0...v0.43.1\">compare view</a></li>\n</ul>\n</details>\n<br />\n"
+            commit-message: |-
+                Bump GitHub from 0.43.0 to 0.43.1 in /powershell
+
+                Bumps [GitHub](https://github.com/PSModule/GitHub) from 0.43.0 to 0.43.1.
+                - [Release notes](https://github.com/PSModule/GitHub/releases)
+                - [Commits](https://github.com/PSModule/GitHub/compare/v0.43.0...v0.43.1)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: cc0cbe27e4ee3360d553578a56b1bcda4fba9b79
