@@ -67,6 +67,8 @@ For convenience there's a `script/regen.sh` which will regenerate tests locally.
 
 With a clock-aware CLI, `input.recorded-at` fixes the replay clock, including native package-manager subprocesses. Preserve this timestamp when regenerating a recorded fixture.
 
+The clock does not freeze HTTP metadata. Preserve the matching proxy cache and check recording logs for rate-limit or metadata-fetch errors, even when the job succeeds. Use read-only credentials when authenticating the updater; do not capture rate-limit fallbacks as expected PR metadata.
+
 `dependabot test -o`, the workflow, and `script/regen.sh` do not add a timestamp to a legacy fixture. To migrate one, save its existing `input` mapping as `input.yml` (without the outer `input:` key or any `output`). Keep the source commit, ignore conditions, grouping, experiments, and credentials unchanged, then record with a new, empty cache directory:
 
 ```console
