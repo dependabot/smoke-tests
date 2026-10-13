@@ -1,0 +1,161 @@
+input:
+    job:
+        command: graph
+        package-manager: npm_and_yarn
+        allowed-updates:
+            - update-type: all
+        experiments:
+            enable_dependency_submission_poc: true
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /mixed-graph
+            commit: 4f1ba386693b8e09b8f3ca4e37e7ab6702a894ec
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: create_dependency_submission
+      expect:
+        data:
+            version: 1
+            sha: 4f1ba386693b8e09b8f3ca4e37e7ab6702a894ec
+            ref: refs/heads/main
+            job:
+                correlator: dependabot-npm_and_yarn-mixed-graph
+                id: cli
+            detector:
+                name: dependabot
+                url: https://github.com/dependabot/dependabot-core
+                version: 0.381.0
+            manifests:
+                /mixed-graph/package-lock.json:
+                    file:
+                        source_location: mixed-graph/package-lock.json
+                    metadata:
+                        blob_oid: 78d11b50dc10f6b07ccb8a4673472b61ced28eac
+                        ecosystem: npm
+                    name: /mixed-graph/package-lock.json
+                    resolved:
+                        pkg:npm/asynckit@0.4.0:
+                            dependencies: []
+                            package_url: pkg:npm/asynckit@0.4.0
+                            relationship: indirect
+                            scope: runtime
+                        pkg:npm/axios@0.27.2:
+                            dependencies:
+                                - pkg:npm/follow-redirects@1.15.2
+                                - pkg:npm/form-data@4.0.0
+                            package_url: pkg:npm/axios@0.27.2
+                            relationship: direct
+                            scope: runtime
+                        pkg:npm/combined-stream@1.0.8:
+                            dependencies:
+                                - pkg:npm/delayed-stream@1.0.0
+                            package_url: pkg:npm/combined-stream@1.0.8
+                            relationship: indirect
+                            scope: runtime
+                        pkg:npm/delayed-stream@1.0.0:
+                            dependencies: []
+                            package_url: pkg:npm/delayed-stream@1.0.0
+                            relationship: indirect
+                            scope: runtime
+                        pkg:npm/encoding@0.1.12:
+                            dependencies:
+                                - pkg:npm/iconv-lite@0.4.19
+                            package_url: pkg:npm/encoding@0.1.12
+                            relationship: indirect
+                            scope: runtime
+                        pkg:npm/es6-promise@3.3.1:
+                            dependencies: []
+                            package_url: pkg:npm/es6-promise@3.3.1
+                            relationship: indirect
+                            scope: runtime
+                        pkg:npm/etag@1.0.0:
+                            dependencies: []
+                            package_url: pkg:npm/etag@1.0.0
+                            relationship: direct
+                            scope: development
+                        pkg:npm/fetch-factory@0.0.1:
+                            dependencies:
+                                - pkg:npm/es6-promise@3.3.1
+                                - pkg:npm/isomorphic-fetch@2.2.1
+                                - pkg:npm/lodash@3.10.1
+                            package_url: pkg:npm/fetch-factory@0.0.1
+                            relationship: direct
+                            scope: runtime
+                        pkg:npm/follow-redirects@1.15.2:
+                            dependencies: []
+                            package_url: pkg:npm/follow-redirects@1.15.2
+                            relationship: indirect
+                            scope: runtime
+                        pkg:npm/form-data@4.0.0:
+                            dependencies:
+                                - pkg:npm/asynckit@0.4.0
+                                - pkg:npm/combined-stream@1.0.8
+                                - pkg:npm/mime-types@2.1.35
+                            package_url: pkg:npm/form-data@4.0.0
+                            relationship: indirect
+                            scope: runtime
+                        pkg:npm/iconv-lite@0.4.19:
+                            dependencies: []
+                            package_url: pkg:npm/iconv-lite@0.4.19
+                            relationship: indirect
+                            scope: runtime
+                        pkg:npm/is-stream@1.1.0:
+                            dependencies: []
+                            package_url: pkg:npm/is-stream@1.1.0
+                            relationship: indirect
+                            scope: runtime
+                        pkg:npm/isomorphic-fetch@2.2.1:
+                            dependencies:
+                                - pkg:npm/node-fetch@1.7.3
+                                - pkg:npm/whatwg-fetch@2.0.3
+                            package_url: pkg:npm/isomorphic-fetch@2.2.1
+                            relationship: indirect
+                            scope: runtime
+                        pkg:npm/lodash@3.10.1:
+                            dependencies: []
+                            package_url: pkg:npm/lodash@3.10.1
+                            relationship: indirect
+                            scope: runtime
+                        pkg:npm/lodash@4.17.15:
+                            dependencies: []
+                            package_url: pkg:npm/lodash@4.17.15
+                            relationship: direct
+                            scope: runtime
+                        pkg:npm/mime-db@1.52.0:
+                            dependencies: []
+                            package_url: pkg:npm/mime-db@1.52.0
+                            relationship: indirect
+                            scope: runtime
+                        pkg:npm/mime-types@2.1.35:
+                            dependencies:
+                                - pkg:npm/mime-db@1.52.0
+                            package_url: pkg:npm/mime-types@2.1.35
+                            relationship: indirect
+                            scope: runtime
+                        pkg:npm/node-fetch@1.7.3:
+                            dependencies:
+                                - pkg:npm/encoding@0.1.12
+                                - pkg:npm/is-stream@1.1.0
+                            package_url: pkg:npm/node-fetch@1.7.3
+                            relationship: indirect
+                            scope: runtime
+                        pkg:npm/whatwg-fetch@2.0.3:
+                            dependencies: []
+                            package_url: pkg:npm/whatwg-fetch@2.0.3
+                            relationship: indirect
+                            scope: runtime
+            metadata:
+                scanned_manifest_path: npm::/mixed-graph
+                status: ok
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 4f1ba386693b8e09b8f3ca4e37e7ab6702a894ec
