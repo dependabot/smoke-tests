@@ -32,6 +32,7 @@ input:
           password: $LOCAL_GITHUB_ACCESS_TOKEN
           type: git_source
           username: x-access-token
+    recorded-at: 2026-10-07T16:48:15.66Z
 output:
     - type: record_ecosystem_versions
       expect:
@@ -160,11 +161,11 @@ output:
                     - file: package.json
                       groups:
                         - dependencies
-                      requirement: 4.17.23
+                      requirement: 4.18.1
                       source:
                         type: registry
                         url: https://registry.npmjs.org
-                  version: 4.17.23
+                  version: 4.18.1
                   directory: /npm/semver
                 - name: follow-redirects
                   previous-requirements: []
@@ -204,7 +205,7 @@ output:
                       "dependencies": {
                         "axios": "0.27.1",
                         "fetch-factory": "0.2.1",
-                        "lodash": "4.17.23"
+                        "lodash": "4.18.1"
                       }
                     }
                   content_encoding: utf-8
@@ -228,7 +229,7 @@ output:
                           "dependencies": {
                             "axios": "0.27.1",
                             "fetch-factory": "0.2.1",
-                            "lodash": "4.17.23"
+                            "lodash": "4.18.1"
                           }
                         },
                         "node_modules/assertion-error": {
@@ -742,9 +743,9 @@ output:
                           }
                         },
                         "node_modules/lodash": {
-                          "version": "4.17.23",
-                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.23.tgz",
-                          "integrity": "sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==",
+                          "version": "4.18.1",
+                          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.18.1.tgz",
+                          "integrity": "sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==",
                           "license": "MIT"
                         },
                         "node_modules/math-intrinsics": {
@@ -989,7 +990,7 @@ output:
                 | Package | From | To |
                 | --- | --- | --- |
                 | fetch-factory | `0.0.1` | `0.2.1` |
-                | [lodash](https://github.com/lodash/lodash) | `4.16.6` | `4.17.23` |
+                | [lodash](https://github.com/lodash/lodash) | `4.16.6` | `4.18.1` |
                 | [follow-redirects](https://github.com/follow-redirects/follow-redirects) | `1.15.2` | `1.16.1` |
                 | [form-data](https://github.com/form-data/form-data) | `4.0.0` | `4.0.6` |
                 | [whatwg-fetch](https://github.com/github/fetch) | `3.6.17` | `3.6.20` |
@@ -1001,21 +1002,65 @@ output:
                 </details>
                 <br />
 
-                Updates `lodash` from 4.16.6 to 4.17.23
+                Updates `lodash` from 4.16.6 to 4.18.1
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/lodash/lodash/releases">lodash's releases</a>.</em></p>
+                <blockquote>
+                <h2>4.18.1</h2>
+                <h2>Bugs</h2>
+                <p>Fixes a <code>ReferenceError</code> issue in <code>lodash</code> <code>lodash-es</code> <code>lodash-amd</code> and <code>lodash.template</code> when using the <code>template</code> and <code>fromPairs</code> functions from the modular builds. See <a href="https://redirect.github.com/lodash/lodash/issues/6167#issuecomment-4165269769">lodash/lodash#6167</a></p>
+                <p>These defects were related to how lodash distributions are built from the main branch using <a href="https://github.com/lodash-archive/lodash-cli">https://github.com/lodash-archive/lodash-cli</a>. When internal dependencies change inside lodash functions, equivalent updates need to be made to a mapping in the lodash-cli. (hey, it was ahead of its time once upon a time!). We know this, but we missed it in the last release. It's the kind of thing that passes in CI, but fails bc the build is not the same thing you tested.</p>
+                <p>There is no diff on main for this, but you can see the diffs for each of the npm packages on their respective branches:</p>
+                <ul>
+                <li><code>lodash</code>: <a href="https://github.com/lodash/lodash/compare/4.18.0-npm...4.18.1-npm">https://github.com/lodash/lodash/compare/4.18.0-npm...4.18.1-npm</a></li>
+                <li><code>lodash-es</code>: <a href="https://github.com/lodash/lodash/compare/4.18.0-es...4.18.1-es">https://github.com/lodash/lodash/compare/4.18.0-es...4.18.1-es</a></li>
+                <li><code>lodash-amd</code>: <a href="https://github.com/lodash/lodash/compare/4.18.0-amd...4.18.1-amd">https://github.com/lodash/lodash/compare/4.18.0-amd...4.18.1-amd</a></li>
+                <li><code>lodash.template</code><a href="https://github.com/lodash/lodash/compare/4.18.0-npm-packages...4.18.1-npm-packages">https://github.com/lodash/lodash/compare/4.18.0-npm-packages...4.18.1-npm-packages</a></li>
+                </ul>
+                <h2>4.18.0</h2>
+                <h2>v4.18.0</h2>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/lodash/lodash/compare/4.17.23...4.18.0">https://github.com/lodash/lodash/compare/4.17.23...4.18.0</a></p>
+                <h3>Security</h3>
+                <p><strong><code>_.unset</code> / <code>_.omit</code></strong>: Fixed prototype pollution via <code>constructor</code>/<code>prototype</code> path traversal (<a href="https://github.com/lodash/lodash/security/advisories/GHSA-f23m-r3pf-42rh">GHSA-f23m-r3pf-42rh</a>, <a href="https://github.com/lodash/lodash/commit/fe8d32eda854377349a4f922ab7655c8e5df9a0b">fe8d32e</a>). Previously, array-wrapped path segments and primitive roots could bypass the existing guards, allowing deletion of properties from built-in prototypes. Now <code>constructor</code> and <code>prototype</code> are blocked unconditionally as non-terminal path keys, matching <code>baseSet</code>. Calls that previously returned <code>true</code> and deleted the property now return <code>false</code> and leave the target untouched.</p>
+                <p><strong><code>_.template</code></strong>: Fixed code injection via <code>imports</code> keys (<a href="https://github.com/lodash/lodash/security/advisories/GHSA-r5fr-rjxr-66jc">GHSA-r5fr-rjxr-66jc</a>, CVE-2026-4800, <a href="https://github.com/lodash/lodash/commit/879aaa93132d78c2f8d20c60279da9f8b21576d6">879aaa9</a>). Fixes an incomplete patch for CVE-2021-23337. The <code>variable</code> option was validated against <code>reForbiddenIdentifierChars</code> but <code>importsKeys</code> was left unguarded, allowing code injection via the same <code>Function()</code> constructor sink. <code>imports</code> keys containing forbidden identifier characters now throw <code>&quot;Invalid imports option passed into _.template&quot;</code>.</p>
+                <h3>Docs</h3>
+                <ul>
+                <li>Add security notice for <code>_.template</code> in threat model and API docs (<a href="https://redirect.github.com/lodash/lodash/pull/6099">#6099</a>)</li>
+                <li>Document <code>lower &gt; upper</code> behavior in <code>_.random</code> (<a href="https://redirect.github.com/lodash/lodash/pull/6115">#6115</a>)</li>
+                <li>Fix quotes in <code>_.compact</code> jsdoc (<a href="https://redirect.github.com/lodash/lodash/pull/6090">#6090</a>)</li>
+                </ul>
+                <h3><code>lodash.*</code> modular packages</h3>
+                <p><a href="https://redirect.github.com/lodash/lodash/pull/6157">Diff</a></p>
+                <p>We have also regenerated and published a select number of the <code>lodash.*</code> modular packages.</p>
+                <p>These modular packages had fallen out of sync significantly from the minor/patch updates to lodash. Specifically, we have brought the following packages up to parity w/ the latest lodash release because they have had CVEs on them in the past:</p>
+                <ul>
+                <li><a href="https://www.npmjs.com/package/lodash.orderby">lodash.orderby</a></li>
+                <li><a href="https://www.npmjs.com/package/lodash.tonumber">lodash.tonumber</a></li>
+                <li><a href="https://www.npmjs.com/package/lodash.trim">lodash.trim</a></li>
+                <li><a href="https://www.npmjs.com/package/lodash.trimend">lodash.trimend</a></li>
+                <li><a href="https://www.npmjs.com/package/lodash.sortedindexby">lodash.sortedindexby</a></li>
+                <li><a href="https://www.npmjs.com/package/lodash.zipobjectdeep">lodash.zipobjectdeep</a></li>
+                <li><a href="https://www.npmjs.com/package/lodash.unset">lodash.unset</a></li>
+                <li><a href="https://www.npmjs.com/package/lodash.omit">lodash.omit</a></li>
+                <li><a href="https://www.npmjs.com/package/lodash.template">lodash.template</a></li>
+                </ul>
+                </blockquote>
+                </details>
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li><a href="https://github.com/lodash/lodash/commit/dec55b7a3b382da075e2eac90089b4cd00a26cbb"><code>dec55b7</code></a> Bump main to v4.17.23 (<a href="https://redirect.github.com/lodash/lodash/issues/6088">#6088</a>)</li>
-                <li><a href="https://github.com/lodash/lodash/commit/19c9251b3631d7cf220b43bc757eb33f1084f117"><code>19c9251</code></a> fix: setCacheHas JSDoc return type should be boolean (<a href="https://redirect.github.com/lodash/lodash/issues/6071">#6071</a>)</li>
-                <li><a href="https://github.com/lodash/lodash/commit/b5e672995ae26929d111a6e94589f8d03fb8e578"><code>b5e6729</code></a> jsdoc: Add -0 and BigInt zeros to _.compact falsey values list (<a href="https://redirect.github.com/lodash/lodash/issues/6062">#6062</a>)</li>
-                <li><a href="https://github.com/lodash/lodash/commit/edadd452146f7e4bad4ea684e955708931d84d81"><code>edadd45</code></a> Prevent prototype pollution on baseUnset function</li>
-                <li><a href="https://github.com/lodash/lodash/commit/4879a7a7d0a4494b0e83c7fa21bcc9fc6e7f1a6d"><code>4879a7a</code></a> doc: fix autoLink function, conversion of source links (<a href="https://redirect.github.com/lodash/lodash/issues/6056">#6056</a>)</li>
-                <li><a href="https://github.com/lodash/lodash/commit/9648f692b0fc7c2f6a7a763d754377200126c2e8"><code>9648f69</code></a> chore: remove <code>yarn.lock</code> file (<a href="https://redirect.github.com/lodash/lodash/issues/6053">#6053</a>)</li>
-                <li><a href="https://github.com/lodash/lodash/commit/dfa407db0bf5b200f2c7a9e4f06830ceaf074be9"><code>dfa407d</code></a> ci: remove legacy configuration files (<a href="https://redirect.github.com/lodash/lodash/issues/6052">#6052</a>)</li>
-                <li><a href="https://github.com/lodash/lodash/commit/156e1965ae78b121a88f81178ab81632304e8d64"><code>156e196</code></a> feat: add renovate setup (<a href="https://redirect.github.com/lodash/lodash/issues/6039">#6039</a>)</li>
-                <li><a href="https://github.com/lodash/lodash/commit/933e1061b8c344d3fc742cdc400175d5ffc99bce"><code>933e106</code></a> ci: add pipeline for Bun (<a href="https://redirect.github.com/lodash/lodash/issues/6023">#6023</a>)</li>
-                <li><a href="https://github.com/lodash/lodash/commit/072a807ff7ad8ffc7c1d2c3097266e815d138e20"><code>072a807</code></a> docs: update links related to Open JS Foundation (<a href="https://redirect.github.com/lodash/lodash/issues/5968">#5968</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/lodash/lodash/compare/4.16.6...4.17.23">compare view</a></li>
+                <li><a href="https://github.com/lodash/lodash/commit/cb0b9b9212521c08e3eafe7c8cb0af1b42b6649e"><code>cb0b9b9</code></a> release(patch): bump main to 4.18.1 (<a href="https://redirect.github.com/lodash/lodash/issues/6177">#6177</a>)</li>
+                <li><a href="https://github.com/lodash/lodash/commit/75535f57883b7225adb96de1cfc1cd4169cfcb51"><code>75535f5</code></a> chore: prune stale advisory refs (<a href="https://redirect.github.com/lodash/lodash/issues/6170">#6170</a>)</li>
+                <li><a href="https://github.com/lodash/lodash/commit/62e91bc6a39c98d85b9ada8c44d40593deaf82a4"><code>62e91bc</code></a> docs: remove n_ Node.js &lt; 6 REPL note from README (<a href="https://redirect.github.com/lodash/lodash/issues/6165">#6165</a>)</li>
+                <li><a href="https://github.com/lodash/lodash/commit/59be2de61f8aa9461c7856533b51d31b7d8babc4"><code>59be2de</code></a> release(minor): bump to 4.18.0 (<a href="https://redirect.github.com/lodash/lodash/issues/6161">#6161</a>)</li>
+                <li><a href="https://github.com/lodash/lodash/commit/af634573030f979194871da7c68f79420992f53d"><code>af63457</code></a> fix: broken tests for _.template 879aaa9</li>
+                <li><a href="https://github.com/lodash/lodash/commit/1073a7693e1727e0cf3641e5f71f75ddcf8de7c0"><code>1073a76</code></a> fix: linting issues</li>
+                <li><a href="https://github.com/lodash/lodash/commit/879aaa93132d78c2f8d20c60279da9f8b21576d6"><code>879aaa9</code></a> fix: validate imports keys in _.template</li>
+                <li><a href="https://github.com/lodash/lodash/commit/fe8d32eda854377349a4f922ab7655c8e5df9a0b"><code>fe8d32e</code></a> fix: block prototype pollution in baseUnset via constructor/prototype traversal</li>
+                <li><a href="https://github.com/lodash/lodash/commit/18ba0a32f42fd02117f096b032f89c984173462d"><code>18ba0a3</code></a> refactor(fromPairs): use baseAssignValue for consistent assignment (<a href="https://redirect.github.com/lodash/lodash/issues/6153">#6153</a>)</li>
+                <li><a href="https://github.com/lodash/lodash/commit/b8190803d48d60b8c80ad45d39125f32fa618cb2"><code>b819080</code></a> ci: add dist sync validation workflow (<a href="https://redirect.github.com/lodash/lodash/issues/6137">#6137</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/lodash/lodash/compare/4.16.6...4.18.1">compare view</a></li>
                 </ul>
                 </details>
                 <br />
@@ -1024,74 +1069,34 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li>See full diff in <a href="https://github.com/follow-redirects/follow-redirects/commits">compare view</a></li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/46301256333c90b7faac7aa126effe72ec16d16e"><code>4630125</code></a> Release version 1.16.1 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/9865ca45490e4d0f7b6944870318408344570aff"><code>9865ca4</code></a> Support key/value header arrays.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/080a76d0e125b37bf81717368a61d5dc37aa56c8"><code>080a76d</code></a> Escape all RegExp modifiers.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/0c23a223067201c368035e82954c11eb2578a33b"><code>0c23a22</code></a> Release version 1.16.0 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/844c4d302ac963d29bdb5dc1754ec7df3d70d7f9"><code>844c4d3</code></a> Add sensitiveHeaders option.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/5e8b8d024e2c76f804a284258e585ecb49a575be"><code>5e8b8d0</code></a> ci: add Node.js 24.x to the CI matrix</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/7953e2255aa0b93602eed3804f3bc5e6923a03af"><code>7953e22</code></a> ci: upgrade GitHub Actions to use setup-node@v6 and checkout@v6</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/86dc1f86e4b56bcd642c78384d51f10f123aea75"><code>86dc1f8</code></a> Sanitizing input.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/21ef28a544c5e57f4c34b8476d75f2144609a1eb"><code>21ef28a</code></a> Release version 1.15.11 of the npm package.</li>
+                <li><a href="https://github.com/follow-redirects/follow-redirects/commit/7c88135da3bd0681a7e156ee66b16b2f6f98b480"><code>7c88135</code></a> Roll back tree shaking.</li>
+                <li>Additional commits viewable in <a href="https://github.com/follow-redirects/follow-redirects/compare/v1.15.2...v1.16.1">compare view</a></li>
                 </ul>
                 </details>
                 <br />
 
                 Updates `form-data` from 4.0.0 to 4.0.6
                 <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/form-data/form-data/releases">form-data's releases</a>.</em></p>
-                <blockquote>
-                <h2>v4.0.4</h2>
-                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.3...v4.0.4">v4.0.4</a> - 2025-07-16</h2>
-                <h3>Commits</h3>
-                <ul>
-                <li>[meta] add <code>auto-changelog</code> <a href="https://github.com/form-data/form-data/commit/811f68282fab0315209d0e2d1c44b6c32ea0d479"><code>811f682</code></a></li>
-                <li>[Tests] handle predict-v8-randomness failures in node &lt; 17 and node &gt; 23 <a href="https://github.com/form-data/form-data/commit/1d11a76434d101f22fdb26b8aef8615f28b98402"><code>1d11a76</code></a></li>
-                <li>[Fix] Switch to using <code>crypto</code> random for boundary values <a href="https://github.com/form-data/form-data/commit/3d1723080e6577a66f17f163ecd345a21d8d0fd0"><code>3d17230</code></a></li>
-                <li>[Tests] fix linting errors <a href="https://github.com/form-data/form-data/commit/5e340800b5f8914213e4e0378c084aae71cfd73a"><code>5e34080</code></a></li>
-                <li>[meta] actually ensure the readme backup isn’t published <a href="https://github.com/form-data/form-data/commit/316c82ba93fd4985af757b771b9a1f26d3b709ef"><code>316c82b</code></a></li>
-                <li>[Dev Deps] update <code>@ljharb/eslint-config</code> <a href="https://github.com/form-data/form-data/commit/58c25d76406a5b0dfdf54045cf252563f2bbda8d"><code>58c25d7</code></a></li>
-                <li>[meta] fix readme capitalization <a href="https://github.com/form-data/form-data/commit/2300ca19595b0ee96431e868fe2a40db79e41c61"><code>2300ca1</code></a></li>
-                </ul>
-                <h2>v4.0.3</h2>
-                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.2...v4.0.3">v4.0.3</a> - 2025-06-05</h2>
-                <h3>Fixed</h3>
-                <ul>
-                <li>[Fix] <code>append</code>: avoid a crash on nullish values <a href="https://redirect.github.com/form-data/form-data/issues/577"><code>[#577](https://github.com/form-data/form-data/issues/577)</code></a></li>
-                </ul>
-                <h3>Commits</h3>
-                <ul>
-                <li>[eslint] use a shared config <a href="https://github.com/form-data/form-data/commit/426ba9ac440f95d1998dac9a5cd8d738043b048f"><code>426ba9a</code></a></li>
-                <li>[eslint] fix some spacing issues <a href="https://github.com/form-data/form-data/commit/20941917f0e9487e68c564ebc3157e23609e2939"><code>2094191</code></a></li>
-                <li>[Refactor] use <code>hasown</code> <a href="https://github.com/form-data/form-data/commit/81ab41b46fdf34f5d89d7ff30b513b0925febfaa"><code>81ab41b</code></a></li>
-                <li>[Fix] validate boundary type in <code>setBoundary()</code> method <a href="https://github.com/form-data/form-data/commit/8d8e4693093519f7f18e3c597d1e8df8c493de9e"><code>8d8e469</code></a></li>
-                <li>[Tests] add tests to check the behavior of <code>getBoundary</code> with non-strings <a href="https://github.com/form-data/form-data/commit/837b8a1f7562bfb8bda74f3fc538adb7a5858995"><code>837b8a1</code></a></li>
-                <li>[Dev Deps] remove unused deps <a href="https://github.com/form-data/form-data/commit/870e4e665935e701bf983a051244ab928e62d58e"><code>870e4e6</code></a></li>
-                <li>[meta] remove local commit hooks <a href="https://github.com/form-data/form-data/commit/e6e83ccb545a5619ed6cd04f31d5c2f655eb633e"><code>e6e83cc</code></a></li>
-                <li>[Dev Deps] update <code>eslint</code> <a href="https://github.com/form-data/form-data/commit/4066fd6f65992b62fa324a6474a9292a4f88c916"><code>4066fd6</code></a></li>
-                <li>[meta] fix scripts to use prepublishOnly <a href="https://github.com/form-data/form-data/commit/c4bbb13c0ef669916657bc129341301b1d331d75"><code>c4bbb13</code></a></li>
-                </ul>
-                <h2>v4.0.2</h2>
-                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.1...v4.0.2">v4.0.2</a> - 2025-02-14</h2>
-                <h3>Merged</h3>
-                <ul>
-                <li>[Fix] set <code>Symbol.toStringTag</code> when available <a href="https://redirect.github.com/form-data/form-data/pull/573"><code>[#573](https://github.com/form-data/form-data/issues/573)</code></a></li>
-                <li>[Fix] set <code>Symbol.toStringTag</code> when available <a href="https://redirect.github.com/form-data/form-data/pull/573"><code>[#573](https://github.com/form-data/form-data/issues/573)</code></a></li>
-                <li>fix (npmignore): ignore temporary build files <a href="https://redirect.github.com/form-data/form-data/pull/532"><code>[#532](https://github.com/form-data/form-data/issues/532)</code></a></li>
-                <li>fix (npmignore): ignore temporary build files <a href="https://redirect.github.com/form-data/form-data/pull/532"><code>[#532](https://github.com/form-data/form-data/issues/532)</code></a></li>
-                </ul>
-                <h3>Fixed</h3>
-                <ul>
-                <li>[Fix] set <code>Symbol.toStringTag</code> when available (<a href="https://redirect.github.com/form-data/form-data/issues/573">#573</a>) <a href="https://redirect.github.com/form-data/form-data/issues/396"><code>[#396](https://github.com/form-data/form-data/issues/396)</code></a></li>
-                <li>[Fix] set <code>Symbol.toStringTag</code> when available (<a href="https://redirect.github.com/form-data/form-data/issues/573">#573</a>) <a href="https://redirect.github.com/form-data/form-data/issues/396"><code>[#396](https://github.com/form-data/form-data/issues/396)</code></a></li>
-                <li>[Fix] set <code>Symbol.toStringTag</code> when available <a href="https://redirect.github.com/form-data/form-data/issues/396"><code>[#396](https://github.com/form-data/form-data/issues/396)</code></a></li>
-                </ul>
-                <h3>Commits</h3>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
                 <summary>Changelog</summary>
                 <p><em>Sourced from <a href="https://github.com/form-data/form-data/blob/master/CHANGELOG.md">form-data's changelog</a>.</em></p>
                 <blockquote>
-                <h1>Changelog</h1>
-                <p>All notable changes to this project will be documented in this file.</p>
-                <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>
-                and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+                <h2><a href="https://github.com/form-data/form-data/compare/v4.0.5...v4.0.6">v4.0.6</a> - 2026-06-12</h2>
+                <h3>Commits</h3>
+                <ul>
+                <li>[Fix] escape CR, LF, and <code>&quot;</code> in field names and filenames <a href="https://github.com/form-data/form-data/commit/8dff42c6da654ed4e7ad4acb7f8ccd3831217c99"><code>8dff42c</code></a></li>
+                <li>[Dev Deps] update <code>@ljharb/eslint-config</code>, <code>auto-changelog</code>, <code>tape</code> <a href="https://github.com/form-data/form-data/commit/f31d21ef10bf46e46344c3ee4f99acbef6be43e1"><code>f31d21e</code></a></li>
+                <li>[Deps] update <code>hasown</code>, <code>mime-types</code> <a href="https://github.com/form-data/form-data/commit/92ae0eb5da94d6f01925d5f4fcffb2a1e50ed7cd"><code>92ae0eb</code></a></li>
+                <li>[Dev Deps] update <code>js-randomness-predictor</code> <a href="https://github.com/form-data/form-data/commit/67b0f65c2e0b065a511d42227d35e4d367644e97"><code>67b0f65</code></a></li>
+                </ul>
                 <h2><a href="https://github.com/form-data/form-data/compare/v4.0.4...v4.0.5">v4.0.5</a> - 2025-11-17</h2>
                 <h3>Commits</h3>
                 <ul>
@@ -1129,9 +1134,6 @@ output:
                 </ul>
                 <h2><a href="https://github.com/form-data/form-data/compare/v4.0.1...v4.0.2">v4.0.2</a> - 2025-02-14</h2>
                 <h3>Merged</h3>
-                <ul>
-                <li>[Fix] set <code>Symbol.toStringTag</code> when available <a href="https://redirect.github.com/form-data/form-data/pull/573"><code>[#573](https://github.com/form-data/form-data/issues/573)</code></a></li>
-                </ul>
                 <!-- raw HTML omitted -->
                 </blockquote>
                 <p>... (truncated)</p>
@@ -1139,8 +1141,26 @@ output:
                 <details>
                 <summary>Commits</summary>
                 <ul>
-                <li>See full diff in <a href="https://github.com/form-data/form-data/commits">compare view</a></li>
+                <li><a href="https://github.com/form-data/form-data/commit/64190db548c0179e37206858e39f27cf513e9435"><code>64190db</code></a> v4.0.6</li>
+                <li><a href="https://github.com/form-data/form-data/commit/92ae0eb5da94d6f01925d5f4fcffb2a1e50ed7cd"><code>92ae0eb</code></a> [Deps] update <code>hasown</code>, <code>mime-types</code></li>
+                <li><a href="https://github.com/form-data/form-data/commit/f31d21ef10bf46e46344c3ee4f99acbef6be43e1"><code>f31d21e</code></a> [Dev Deps] update <code>@ljharb/eslint-config</code>, <code>auto-changelog</code>, <code>tape</code></li>
+                <li><a href="https://github.com/form-data/form-data/commit/8dff42c6da654ed4e7ad4acb7f8ccd3831217c99"><code>8dff42c</code></a> [Fix] escape CR, LF, and <code>&quot;</code> in field names and filenames</li>
+                <li><a href="https://github.com/form-data/form-data/commit/67b0f65c2e0b065a511d42227d35e4d367644e97"><code>67b0f65</code></a> [Dev Deps] update <code>js-randomness-predictor</code></li>
+                <li><a href="https://github.com/form-data/form-data/commit/68ff7dda8834d6de095a7008cef0e03bc252ca98"><code>68ff7dd</code></a> v4.0.5</li>
+                <li><a href="https://github.com/form-data/form-data/commit/5822467f0ec21f6ad613c1c90856375e498793c7"><code>5822467</code></a> [Dev Deps] update <code>@ljharb/eslint-config</code>, <code>eslint</code></li>
+                <li><a href="https://github.com/form-data/form-data/commit/76d0dee43933b5e167f7f09e5d9cbbd1cf911aa7"><code>76d0dee</code></a> [Fix] set Symbol.toStringTag in the proper place</li>
+                <li><a href="https://github.com/form-data/form-data/commit/16e00765342106876f98a1c9703314006c9e937a"><code>16e0076</code></a> [Tests] Switch to newer v8 prediction library; enable node 24 testing</li>
+                <li><a href="https://github.com/form-data/form-data/commit/41996f5ac73a867046d48512cab62e64fc846dad"><code>41996f5</code></a> v4.0.4</li>
+                <li>Additional commits viewable in <a href="https://github.com/form-data/form-data/compare/v4.0.0...v4.0.6">compare view</a></li>
                 </ul>
+                </details>
+                <details>
+                <summary>Maintainer changes</summary>
+                <p>This version was pushed to npm by <a href="https://www.npmjs.com/~ljharb">ljharb</a>, a new releaser for form-data since your current version.</p>
+                </details>
+                <details>
+                <summary>Install script changes</summary>
+                <p>This version modifies <code>prepublish</code> script that runs during installation. Review the package contents before updating.</p>
                 </details>
                 <br />
 
@@ -1220,7 +1240,7 @@ output:
                 | Package | From | To |
                 | --- | --- | --- |
                 | fetch-factory | `0.0.1` | `0.2.1` |
-                | [lodash](https://github.com/lodash/lodash) | `4.16.6` | `4.17.23` |
+                | [lodash](https://github.com/lodash/lodash) | `4.16.6` | `4.18.1` |
                 | [follow-redirects](https://github.com/follow-redirects/follow-redirects) | `1.15.2` | `1.16.1` |
                 | [form-data](https://github.com/form-data/form-data) | `4.0.0` | `4.0.6` |
                 | [whatwg-fetch](https://github.com/github/fetch) | `3.6.17` | `3.6.20` |
@@ -1228,18 +1248,17 @@ output:
 
                 Updates `fetch-factory` from 0.0.1 to 0.2.1
 
-                Updates `lodash` from 4.16.6 to 4.17.23
+                Updates `lodash` from 4.16.6 to 4.18.1
                 - [Release notes](https://github.com/lodash/lodash/releases)
-                - [Commits](https://github.com/lodash/lodash/compare/4.16.6...4.17.23)
+                - [Commits](https://github.com/lodash/lodash/compare/4.16.6...4.18.1)
 
                 Updates `follow-redirects` from 1.15.2 to 1.16.1
                 - [Release notes](https://github.com/follow-redirects/follow-redirects/releases)
-                - [Commits](https://github.com/follow-redirects/follow-redirects/commits)
+                - [Commits](https://github.com/follow-redirects/follow-redirects/compare/v1.15.2...v1.16.1)
 
                 Updates `form-data` from 4.0.0 to 4.0.6
-                - [Release notes](https://github.com/form-data/form-data/releases)
                 - [Changelog](https://github.com/form-data/form-data/blob/master/CHANGELOG.md)
-                - [Commits](https://github.com/form-data/form-data/commits)
+                - [Commits](https://github.com/form-data/form-data/compare/v4.0.0...v4.0.6)
 
                 Updates `whatwg-fetch` from 3.6.17 to 3.6.20
                 - [Release notes](https://github.com/github/fetch/releases)
@@ -1266,11 +1285,11 @@ output:
                     - file: package.json
                       groups:
                         - dependencies
-                      requirement: 1.13.5
+                      requirement: 1.20.0
                       source:
                         type: registry
                         url: https://registry.npmjs.org
-                  version: 1.13.5
+                  version: 1.20.0
                   directory: /npm/semver
             updated-dependency-files:
                 - content: |
@@ -1290,7 +1309,7 @@ output:
                       },
                       "homepage": "https://github.com/dsp-testing/dependabot-all-updates-test",
                       "dependencies": {
-                        "axios": "1.13.5",
+                        "axios": "1.20.0",
                         "fetch-factory": "0.0.1",
                         "lodash": "4.16.6"
                       }
@@ -1314,9 +1333,21 @@ output:
                           "version": "1.0.0",
                           "license": "ISC",
                           "dependencies": {
-                            "axios": "1.13.5",
+                            "axios": "1.20.0",
                             "fetch-factory": "0.0.1",
                             "lodash": "4.16.6"
+                          }
+                        },
+                        "node_modules/agent-base": {
+                          "version": "6.0.2",
+                          "resolved": "https://registry.npmjs.org/agent-base/-/agent-base-6.0.2.tgz",
+                          "integrity": "sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "debug": "4"
+                          },
+                          "engines": {
+                            "node": ">= 6.0.0"
                           }
                         },
                         "node_modules/asynckit": {
@@ -1326,14 +1357,15 @@ output:
                           "license": "MIT"
                         },
                         "node_modules/axios": {
-                          "version": "1.13.5",
-                          "resolved": "https://registry.npmjs.org/axios/-/axios-1.13.5.tgz",
-                          "integrity": "sha512-cz4ur7Vb0xS4/KUN0tPWe44eqxrIu31me+fbang3ijiNscE129POzipJJA6zniq2C/Z6sJCjMimjS8Lc/GAs8Q==",
+                          "version": "1.20.0",
+                          "resolved": "https://registry.npmjs.org/axios/-/axios-1.20.0.tgz",
+                          "integrity": "sha512-r8aOh8j9cGKpgQAqpzrUHnSIc6a59Y3Xf/cv8sy1DrHCkZHzQGEuoq1tARk6qSyDdtQGSDgpb9kFlruzPvrgwg==",
                           "license": "MIT",
                           "dependencies": {
-                            "follow-redirects": "^1.15.11",
-                            "form-data": "^4.0.5",
-                            "proxy-from-env": "^1.1.0"
+                            "follow-redirects": "^1.16.0",
+                            "form-data": "^4.0.6",
+                            "https-proxy-agent": "^5.0.1",
+                            "proxy-from-env": "^2.1.0"
                           }
                         },
                         "node_modules/call-bind-apply-helpers": {
@@ -1359,6 +1391,23 @@ output:
                           },
                           "engines": {
                             "node": ">= 0.8"
+                          }
+                        },
+                        "node_modules/debug": {
+                          "version": "4.4.3",
+                          "resolved": "https://registry.npmjs.org/debug/-/debug-4.4.3.tgz",
+                          "integrity": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "ms": "^2.1.3"
+                          },
+                          "engines": {
+                            "node": ">=6.0"
+                          },
+                          "peerDependenciesMeta": {
+                            "supports-color": {
+                              "optional": true
+                            }
                           }
                         },
                         "node_modules/delayed-stream": {
@@ -1590,6 +1639,19 @@ output:
                             "node": ">= 0.4"
                           }
                         },
+                        "node_modules/https-proxy-agent": {
+                          "version": "5.0.1",
+                          "resolved": "https://registry.npmjs.org/https-proxy-agent/-/https-proxy-agent-5.0.1.tgz",
+                          "integrity": "sha512-dFcAjpTQFgoLMzC2VwU+C/CbS7uRL0lWmxDITmqm7C+7F0Odmj6s9l6alZc6AELXhrnggM2CeWSXHGOdX2YtwA==",
+                          "license": "MIT",
+                          "dependencies": {
+                            "agent-base": "6",
+                            "debug": "4"
+                          },
+                          "engines": {
+                            "node": ">= 6"
+                          }
+                        },
                         "node_modules/iconv-lite": {
                           "version": "0.6.3",
                           "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz",
@@ -1653,6 +1715,12 @@ output:
                             "node": ">= 0.6"
                           }
                         },
+                        "node_modules/ms": {
+                          "version": "2.1.3",
+                          "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz",
+                          "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==",
+                          "license": "MIT"
+                        },
                         "node_modules/node-fetch": {
                           "version": "1.7.3",
                           "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.7.3.tgz",
@@ -1663,10 +1731,13 @@ output:
                           }
                         },
                         "node_modules/proxy-from-env": {
-                          "version": "1.1.0",
-                          "resolved": "https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-1.1.0.tgz",
-                          "integrity": "sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==",
-                          "license": "MIT"
+                          "version": "2.1.0",
+                          "resolved": "https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-2.1.0.tgz",
+                          "integrity": "sha512-cJ+oHTW1VAEa8cJslgmUZrc+sjRKgAKl3Zyse6+PV38hZe/V6Z14TbCuXcan9F9ghlz4QrFr2c92TNF82UkYHA==",
+                          "license": "MIT",
+                          "engines": {
+                            "node": ">=10"
+                          }
                         },
                         "node_modules/safer-buffer": {
                           "version": "2.1.2",
@@ -1687,103 +1758,15 @@ output:
                   operation: update
                   support_file: false
                   type: file
-            pr-title: Bump axios from 0.27.1 to 1.13.5 in /npm/semver
-            pr-body: |
-                Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.13.5.
-                <details>
-                <summary>Release notes</summary>
-                <p><em>Sourced from <a href="https://github.com/axios/axios/releases">axios's releases</a>.</em></p>
-                <blockquote>
-                <h2>v1.13.5</h2>
-                <h2>Release 1.13.5</h2>
-                <h3>Highlights</h3>
-                <ul>
-                <li><strong>Security:</strong> Fixed a potential <strong>Denial of Service</strong> issue involving the <code>__proto__</code> key in <code>mergeConfig</code>. (PR <a href="https://redirect.github.com/axios/axios/pull/7369">#7369</a>)</li>
-                <li><strong>Bug fix:</strong> Resolved an issue where <code>AxiosError</code> could be missing the <code>status</code> field on and after <strong>v1.13.3</strong>. (PR <a href="https://redirect.github.com/axios/axios/pull/7368">#7368</a>)</li>
-                </ul>
-                <h3>Changes</h3>
-                <h4>Security</h4>
-                <ul>
-                <li>Fix Denial of Service via <code>__proto__</code> key in <code>mergeConfig</code>. (PR <a href="https://redirect.github.com/axios/axios/pull/7369">#7369</a>)</li>
-                </ul>
-                <h4>Fixes</h4>
-                <ul>
-                <li>Fix/5657. (PR <a href="https://redirect.github.com/axios/axios/pull/7313">#7313</a>)</li>
-                <li>Ensure <code>status</code> is present in <code>AxiosError</code> on and after v1.13.3. (PR <a href="https://redirect.github.com/axios/axios/pull/7368">#7368</a>)</li>
-                </ul>
-                <h4>Features / Improvements</h4>
-                <ul>
-                <li>Add input validation to <code>isAbsoluteURL</code>. (PR <a href="https://redirect.github.com/axios/axios/pull/7326">#7326</a>)</li>
-                <li>Refactor: bump minor package versions. (PR <a href="https://redirect.github.com/axios/axios/pull/7356">#7356</a>)</li>
-                </ul>
-                <h4>Documentation</h4>
-                <ul>
-                <li>Clarify object-check comment. (PR <a href="https://redirect.github.com/axios/axios/pull/7323">#7323</a>)</li>
-                <li>Fix deprecated <code>Buffer</code> constructor usage and README formatting. (PR <a href="https://redirect.github.com/axios/axios/pull/7371">#7371</a>)</li>
-                </ul>
-                <h4>CI / Maintenance</h4>
-                <ul>
-                <li>Chore: fix issues with YAML. (PR <a href="https://redirect.github.com/axios/axios/pull/7355">#7355</a>)</li>
-                <li>CI: update workflow YAMLs. (PR <a href="https://redirect.github.com/axios/axios/pull/7372">#7372</a>)</li>
-                <li>CI: fix run condition. (PR <a href="https://redirect.github.com/axios/axios/pull/7373">#7373</a>)</li>
-                <li>Dev deps: bump <code>karma-sourcemap-loader</code> from 0.3.8 to 0.4.0. (PR <a href="https://redirect.github.com/axios/axios/pull/7360">#7360</a>)</li>
-                <li>Chore(release): prepare release 1.13.5. (PR <a href="https://redirect.github.com/axios/axios/pull/7379">#7379</a>)</li>
-                </ul>
-                <h3>New Contributors</h3>
-                <ul>
-                <li><a href="https://github.com/sachin11063"><code>@​sachin11063</code></a> (first contribution — PR <a href="https://redirect.github.com/axios/axios/pull/7323">#7323</a>)</li>
-                <li><a href="https://github.com/asmitha-16"><code>@​asmitha-16</code></a> (first contribution — PR <a href="https://redirect.github.com/axios/axios/pull/7326">#7326</a>)</li>
-                </ul>
-                <p><strong>Full Changelog:</strong> <a href="https://github.com/axios/axios/compare/v1.13.4...v1.13.5">https://github.com/axios/axios/compare/v1.13.4...v1.13.5</a></p>
-                <h2>v1.13.4</h2>
-                <h2>Overview</h2>
-                <p>The release addresses issues discovered in v1.13.3 and includes significant CI/CD improvements.</p>
-                <p><strong>Full Changelog</strong>: <a href="https://github.com/axios/axios/compare/v1.13.3...v1.13.4">v1.13.3...v1.13.4</a></p>
-                <h2>What's New in v1.13.4</h2>
-                <h3>Bug Fixes</h3>
-                <ul>
-                <li><strong>fix: issues with version 1.13.3</strong> (<a href="https://redirect.github.com/axios/axios/issues/7352">#7352</a>) (<a href="https://github.com/axios/axios/commit/ee90dfc28abffbb61e24974b2bd3139a4a40ac76">ee90dfc</a>)
-                <ul>
-                <li>Fixed issues discovered in v1.13.3 release</li>
-                </ul>
-                </li>
-                </ul>
-                <!-- raw HTML omitted -->
-                </blockquote>
-                <p>... (truncated)</p>
-                </details>
-                <details>
-                <summary>Commits</summary>
-                <ul>
-                <li><a href="https://github.com/axios/axios/commit/29f75425f0c9f73021f5eedc869c176e30e05fe7"><code>29f7542</code></a> chore(release): prepare release 1.13.5 (<a href="https://redirect.github.com/axios/axios/issues/7379">#7379</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/431c3a361490a2e3d5ac5d9e08d66d4bb5f3cd2a"><code>431c3a3</code></a> ci: fix run condition (<a href="https://redirect.github.com/axios/axios/issues/7373">#7373</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/9ff3a78ad72ecd665a4b673686f1517d824284bf"><code>9ff3a78</code></a> ci: update ymls (<a href="https://redirect.github.com/axios/axios/issues/7372">#7372</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/265b71234c20fabbd6d691858c65a7e9c978659f"><code>265b712</code></a> docs: fix deprecated Buffer constructor and formatting issues in README (<a href="https://redirect.github.com/axios/axios/issues/7371">#7371</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/475e75a260668d227aec9f77735a49748c9041ff"><code>475e75a</code></a> feat: add input validation to isAbsoluteURL (<a href="https://redirect.github.com/axios/axios/issues/7326">#7326</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/28c721588c7a77e7503d0a434e016f852c597b57"><code>28c7215</code></a> fix: Denial of Service via <strong>proto</strong> Key in mergeConfig (<a href="https://redirect.github.com/axios/axios/issues/7369">#7369</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/04cf01969ed58f96920da032f340bfe4614aab90"><code>04cf019</code></a> docs: clarify object check comment (<a href="https://redirect.github.com/axios/axios/issues/7323">#7323</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/696fa753c5366afbd21859c294c64c9ff2b359ab"><code>696fa75</code></a> fix: status is missing in AxiosError on and after v1.13.3 (<a href="https://redirect.github.com/axios/axios/issues/7368">#7368</a>)</li>
-                <li><a href="https://github.com/axios/axios/commit/569f028a5878faaec8d7d138ba686aac407bda4c"><code>569f028</code></a> fix: added a option to choose between legacy and the new request/response int...</li>
-                <li><a href="https://github.com/axios/axios/commit/44b7c9f0c4900fd8784f18e871199402f07fc69f"><code>44b7c9f</code></a> chore(deps-dev): bump karma-sourcemap-loader (<a href="https://redirect.github.com/axios/axios/issues/7360">#7360</a>)</li>
-                <li>Additional commits viewable in <a href="https://github.com/axios/axios/compare/v0.27.1...v1.13.5">compare view</a></li>
-                </ul>
-                </details>
-                <details>
-                <summary>Maintainer changes</summary>
-                <p>This version was pushed to npm by <a href="https://www.npmjs.com/~GitHub%20Actions">GitHub Actions</a>, a new releaser for axios since your current version.</p>
-                </details>
-                <details>
-                <summary>Install script changes</summary>
-                <p>This version adds <code>prepare</code> script that runs during installation. Review the package contents before updating.</p>
-                </details>
-                <br />
+            pr-title: Bump axios from 0.27.1 to 1.20.0 in /npm/semver
+            pr-body: "Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.20.0.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/axios/axios/releases\">axios's releases</a>.</em></p>\n<blockquote>\n<h2>v1.20.0 — August 19, 2026</h2>\n<p>This release hardens runtime option handling, adds RFC 9110 status-code aliases, fixes Node.js and XHR reliability issues, and refreshes project tooling and documentation.</p>\n<h2>⚠️ Breaking Changes &amp; Deprecations</h2>\n<ul>\n<li>HTTP Status Naming: Added ContentTooLarge (413) and UnprocessableContent (422), while retaining PayloadTooLarge and UnprocessableEntity as backward-compatible deprecated aliases. (<a href=\"https://redirect.github.com/axios/axios/issues/11082\">#11082</a>)</li>\n</ul>\n<h2>\U0001F512 Security Fixes</h2>\n<ul>\n<li>Runtime Option Handling: Hardened behavioral configuration reads against shared and foreign prototype pollution and normalized unsafe interceptor replacement objects. This also clarifies Fetch redirect and custom implementation behavior, HTTP/2 DNS and proxy handling, CIDR-based NO_PROXY matching, and malformed data URI rejection; see the PR for documented compatibility effects. (<a href=\"https://redirect.github.com/axios/axios/issues/11141\">#11141</a>)</li>\n</ul>\n<h2>\U0001F41B Bug Fixes</h2>\n<ul>\n<li>Interceptor Lifecycle: Prevented unbounded handler-array growth by trimming trailing ejected interceptors without changing iteration semantics, and kept interceptor operations safe when the public handlers field is nullish. (<a href=\"https://redirect.github.com/axios/axios/issues/11087\">#11087</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11118\">#11118</a>)</li>\n<li>Request Error Preservation: Prevented custom Error.prepareStackTrace implementations that return non-string values from replacing the original request failure with an unrelated TypeError. (<a href=\"https://redirect.github.com/axios/axios/issues/11109\">#11109</a>)</li>\n<li>XHR Reliability: Navigation-canceled requests now reject with ECONNABORTED instead of resolving with status 0, while successful downloads flush their final progress callback during the live loadend dispatch. (<a href=\"https://redirect.github.com/axios/axios/issues/11094\">#11094</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11121\">#11121</a>)</li>\n<li>Node.js Socket Memory: Removed request-context retention from per-socket error listeners, preventing completed response data from being pinned for the lifetime of pooled keep-alive sockets. (<a href=\"https://redirect.github.com/axios/axios/issues/11091\">#11091</a>)</li>\n<li>Core Methods and HTTP Errors: Prevented structural method-header buckets from leaking into outgoing headers, standardized invalid DNS lookup and httpVersion failures as AxiosError.ERR_BAD_OPTION_VALUE, and corrected the timeoutErrorMessage merge strategy. (<a href=\"https://redirect.github.com/axios/axios/issues/11096\">#11096</a>)</li>\n</ul>\n<h2>\U0001F527 Maintenance &amp; Chores</h2>\n<ul>\n<li>Dependencies: Updated fast-uri, postcss, js-yaml, mocha, development-tooling groups, and GitHub Actions dependencies. (<a href=\"https://redirect.github.com/axios/axios/issues/11092\">#11092</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11098\">#11098</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11099\">#11099</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11106\">#11106</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11107\">#11107</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11122\">#11122</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11123\">#11123</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11126\">#11126</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11127\">#11127</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11133\">#11133</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11140\">#11140</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11143\">#11143</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11144\">#11144</a>)</li>\n<li>Documentation: Applied the v1.19.0 documentation updates, added the missing fs import to the README stream example, introduced localized global search, and repaired the interceptor test link. (<a href=\"https://redirect.github.com/axios/axios/issues/11101\">#11101</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11113\">#11113</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11097\">#11097</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11119\">#11119</a>)</li>\n<li>Sponsorship: Updated sponsorship links and data and added ScrapingBee as a sponsor. (<a href=\"https://redirect.github.com/axios/axios/issues/11124\">#11124</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11136\">#11136</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11137\">#11137</a>)</li>\n<li>CI and Release: Switched ESM smoke tests to locked dependencies and synchronized package and runtime version metadata for v1.20.0. (<a href=\"https://redirect.github.com/axios/axios/issues/11128\">#11128</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11152\">#11152</a>)</li>\n</ul>\n<h2>\U0001F31F New Contributors</h2>\n<p>We are thrilled to welcome our new contributors. Thank you for helping improve axios:</p>\n<ul>\n<li><a href=\"https://github.com/yens1\"><code>@​yens1</code></a> (<a href=\"https://redirect.github.com/axios/axios/issues/11109\">#11109</a>)</li>\n<li><a href=\"https://github.com/Sasireddy001\"><code>@​Sasireddy001</code></a> (<a href=\"https://redirect.github.com/axios/axios/issues/11113\">#11113</a>)</li>\n<li><a href=\"https://github.com/ari-token-security\"><code>@​ari-token-security</code></a> (<a href=\"https://redirect.github.com/axios/axios/issues/11094\">#11094</a>)</li>\n<li><a href=\"https://github.com/timothyokooboh\"><code>@​timothyokooboh</code></a> (<a href=\"https://redirect.github.com/axios/axios/issues/11097\">#11097</a>)</li>\n<li><a href=\"https://github.com/gi9439041-png\"><code>@​gi9439041-png</code></a> (<a href=\"https://redirect.github.com/axios/axios/issues/11119\">#11119</a>)</li>\n<li><a href=\"https://github.com/Hashim1999164\"><code>@​Hashim1999164</code></a> (<a href=\"https://redirect.github.com/axios/axios/issues/11082\">#11082</a>)</li>\n<li><a href=\"https://github.com/v-dev-cl\"><code>@​v-dev-cl</code></a> (<a href=\"https://redirect.github.com/axios/axios/issues/11091\">#11091</a>)</li>\n<li><a href=\"https://github.com/r0h1tb\"><code>@​r0h1tb</code></a> (<a href=\"https://redirect.github.com/axios/axios/issues/11118\">#11118</a>)</li>\n<li><a href=\"https://github.com/ostapondo\"><code>@​ostapondo</code></a> (<a href=\"https://redirect.github.com/axios/axios/issues/11121\">#11121</a>)</li>\n</ul>\n<p>Full Changelog (<a href=\"https://github.com/axios/axios/compare/v1.19.0...v1.20.0\">https://github.com/axios/axios/compare/v1.19.0...v1.20.0</a>)</p>\n<h2>v1.19.0 - July 22, 2026</h2>\n<p>This release raises the form-data security floor, adds configuration and type-system capabilities, and fixes NO_PROXY matching, interceptor errors, progress reporting, and serialization edge cases.</p>\n<h2>\U0001F512 Security Fixes</h2>\n<ul>\n<li>Multipart Form Data: Raised the form-data dependency floor to ^4.0.6, preventing fresh installations from resolving versions affected by the CRLF injection vulnerability GHSA-hmw2-7cc7-3qxx (<a href=\"https://github.com/advisories/GHSA-hmw2-7cc7-3qxx\">https://github.com/advisories/GHSA-hmw2-7cc7-3qxx</a>). (<a href=\"https://redirect.github.com/axios/axios/issues/11028\">#11028</a>)</li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a href=\"https://github.com/axios/axios/blob/v1.x/CHANGELOG.md\">axios's changelog</a>.</em></p>\n<blockquote>\n<h1>Changelog</h1>\n<h2>v1.19.0 — July 22, 2026</h2>\n<p>This release raises the form-data security floor, adds configuration and type-system capabilities, and fixes NO_PROXY matching, interceptor errors, progress reporting, and serialization edge cases.</p>\n<h2>\U0001F512 Security Fixes</h2>\n<ul>\n<li>Multipart Form Data: Raised the form-data dependency floor to ^4.0.6, preventing fresh installations from resolving versions affected by the CRLF injection vulnerability GHSA-hmw2-7cc7-3qxx (<a href=\"https://github.com/advisories/GHSA-hmw2-7cc7-3qxx\">https://github.com/advisories/GHSA-hmw2-7cc7-3qxx</a>). (<a href=\"https://redirect.github.com/axios/axios/issues/11028\">#11028</a>)</li>\n</ul>\n<h2>\U0001F680 New Features</h2>\n<ul>\n<li>Configuration Extensibility: Preserved own-enumerable symbol-keyed fields through mergeConfig and added a generic params type across public TypeScript declarations, responses, errors,\nadapters, and serializers. (<a href=\"https://redirect.github.com/axios/axios/issues/11043\">#11043</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11081\">#11081</a>)</li>\n<li>Header Parameter Parsing: Added the opt-in AxiosHeaders.parseParameters() parser for quote-aware, RFC-style HTTP parameter parsing while preserving legacy parsing behavior. (<a href=\"https://redirect.github.com/axios/axios/issues/11051\">#11051</a>)</li>\n<li>HTTP Status Codes: Added the missing Cloudflare 520 WebServerReturnsAnUnknownError status and matching ESM/CJS declarations. (<a href=\"https://redirect.github.com/axios/axios/issues/11067\">#11067</a>)</li>\n</ul>\n<h2>\U0001F41B Bug Fixes</h2>\n<ul>\n<li>\n<p>Form Data Conversion: Limited formDataToJSON path splitting to dot and bracket notation, preserving literal punctuation in keys, and removed browser-facing Buffer.from usage from toFormData to avoid unnecessary polyfills. (<a href=\"https://redirect.github.com/axios/axios/issues/11006\">#11006</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11018\">#11018</a>)</p>\n</li>\n<li>\n<p>Proxy Bypass: Canonicalized IPv4 shorthand, octal, and hexadecimal forms during NO_PROXY matching and honored * entries within comma- or space-separated bypass lists. (<a href=\"https://redirect.github.com/axios/axios/issues/11029\">#11029</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11053\">#11053</a>)</p>\n</li>\n<li>\n<p>Cancellation: Propagated already-aborted input signals immediately when composing abort signals. (<a href=\"https://redirect.github.com/axios/axios/issues/11035\">#11035</a>)</p>\n</li>\n<li>\n<p>Header Handling: Preserved empty first values for duplicate singleton headers and made AxiosHeaders#getSetCookie() consistently return arrays for present values. (<a href=\"https://redirect.github.com/axios/axios/issues/11036\">#11036</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11037\">#11037</a>)</p>\n</li>\n<li>\n<p>URL Handling: Included normalized, safely redacted offending URLs in malformed-protocol errors and removed repeated trailing slashes when combining base URLs. (<a href=\"https://redirect.github.com/axios/axios/issues/11008\">#11008</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11038\">#11038</a>)</p>\n</li>\n<li>\n<p>Progress Events: Clamped malformed negative progress values to zero and ensured final Node.js download progress events are delivered before streamed responses close. (<a href=\"https://redirect.github.com/axios/axios/issues/11039\">#11039</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11040\">#11040</a>)</p>\n</li>\n<li>\n<p>Error and JSON Serialization: Serialized Set values as arrays in JSON-compatible snapshots and synthesized useful AxiosError messages from otherwise-empty AggregateError instances. (<a href=\"https://redirect.github.com/axios/axios/issues/11044\">#11044</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11059\">#11059</a>)</p>\n</li>\n<li>\n<p>Content-Length Enforcement: Corrected base64 data: URL size estimation so maxContentLength is enforced consistently by the HTTP and Fetch adapters. (<a href=\"https://redirect.github.com/axios/axios/issues/11061\">#11061</a>)</p>\n</li>\n<li>\n<p>Synchronous Interceptors: Prevented requests from being dispatched after synchronous request interceptors fail unless their paired rejection handler resolves successfully. (<a href=\"https://redirect.github.com/axios/axios/issues/11071\">#11071</a>)</p>\n</li>\n</ul>\n<h2>\U0001F527 Maintenance &amp; Chores</h2>\n<ul>\n<li>Dependencies: Updated development and test tooling, the docs fixture's Axios version, and GitHub Actions integrations including Checkout, Setup Node, Setup Deno, and Zizmor. (<a href=\"https://redirect.github.com/axios/axios/issues/11031\">#11031</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11055\">#11055</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11056\">#11056</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11058\">#11058</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11079\">#11079</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11080\">#11080</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11088\">#11088</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11089\">#11089</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11090\">#11090</a>)</li>\n<li>Build Outputs: Limited sourcemap generation to published minified bundles, removing broken map references from non-minified builds. (<a href=\"https://redirect.github.com/axios/axios/issues/11054\">#11054</a>)</li>\n<li>Form Data Internals: Centralized FormData header handling and made the Node.js adapter tolerate getHeaders() returning undefined under the content-only policy. (<a href=\"https://redirect.github.com/axios/axios/issues/11062\">#11062</a>)</li>\n<li>Developer Experience: Ignored common local AI-tooling directories and fixed a constant-reassignment crash when the development sandbox serves its root path. (<a href=\"https://redirect.github.com/axios/axios/issues/11032\">#11032</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11073\">#11073</a>)</li>\n<li>Documentation: Updated sponsor information, clarified that baseURL is not a path-security boundary, scoped provenance claims to attested releases, and corrected the configuration-defaults documentation. (<a href=\"https://redirect.github.com/axios/axios/issues/11041\">#11041</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11068\">#11068</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11076\">#11076</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11078\">#11078</a>)</li>\n<li>Publishing: Simplified v1 publishing to use the npm version bundled with Node.js 26 and updated package metadata for the 1.19.0 release. (<a href=\"https://redirect.github.com/axios/axios/issues/11083\">#11083</a>, <a href=\"https://redirect.github.com/axios/axios/issues/11095\">#11095</a>)</li>\n</ul>\n<h2>\U0001F31F New Contributors</h2>\n<p>We are thrilled to welcome our new contributors. Thank you for helping improve Axios:</p>\n<ul>\n<li><a href=\"https://github.com/afonsojramos\"><code>@​afonsojramos</code></a> (<a href=\"https://redirect.github.com/axios/axios/issues/11028\">#11028</a>)</li>\n<li><a href=\"https://github.com/MahinAnowar\"><code>@​MahinAnowar</code></a> (<a href=\"https://redirect.github.com/axios/axios/issues/11006\">#11006</a>)</li>\n<li><a href=\"https://github.com/yassertawfik4\"><code>@​yassertawfik4</code></a> (<a href=\"https://redirect.github.com/axios/axios/issues/11024\">#11024</a>)</li>\n<li><a href=\"https://github.com/AnandSundar\"><code>@​AnandSundar</code></a> (<a href=\"https://redirect.github.com/axios/axios/issues/11029\">#11029</a>)</li>\n<li><a href=\"https://github.com/lin-hongkuan\"><code>@​lin-hongkuan</code></a> (<a href=\"https://redirect.github.com/axios/axios/issues/11035\">#11035</a>)</li>\n<li><a href=\"https://github.com/Wali007-lab\"><code>@​Wali007-lab</code></a> (<a href=\"https://redirect.github.com/axios/axios/issues/11054\">#11054</a>)</li>\n<li><a href=\"https://github.com/magicdawn\"><code>@​magicdawn</code></a> (<a href=\"https://redirect.github.com/axios/axios/issues/11043\">#11043</a>)</li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/axios/axios/commit/84a9f3b9a4f3244b8c8e818f557d64c7b964fb25\"><code>84a9f3b</code></a> chore(release): prepare release 1.20.0 (<a href=\"https://redirect.github.com/axios/axios/issues/11152\">#11152</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/e6824eec5fcf9da467a9792724396badc490c469\"><code>e6824ee</code></a> fix: core methodList, HTTP adapter errors, and add tests (<a href=\"https://redirect.github.com/axios/axios/issues/11096\">#11096</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/d8a919fd81403d59058c0e9dbefc540407dee83f\"><code>d8a919f</code></a> fix(xhr): flush final progress during the live loadend dispatch (<a href=\"https://redirect.github.com/axios/axios/issues/11121\">#11121</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/2d2a21af8a433089474a2149781799c93acbcf3c\"><code>2d2a21a</code></a> fix(interceptors): tolerate nullish handlers in syncHandlerEntries (<a href=\"https://redirect.github.com/axios/axios/issues/11118\">#11118</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/d19040bda7a8be2f82c3c6e1a5bc03917daee39a\"><code>d19040b</code></a> fix: harden runtime option handling (<a href=\"https://redirect.github.com/axios/axios/issues/11141\">#11141</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/e0a02dd16671deabe2b809334d4c2ebede29a233\"><code>e0a02dd</code></a> chore(deps): bump zizmorcore/zizmor-action from 0.6.1 to 0.6.2 in the github-...</li>\n<li><a href=\"https://github.com/axios/axios/commit/d10cb3aa3cda1d78721ddf96be590478df26cd81\"><code>d10cb3a</code></a> chore(deps-dev): bump the development_dependencies group with 4 updates (<a href=\"https://redirect.github.com/axios/axios/issues/11143\">#11143</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/2c94646eb7cb7ab9dcb2aefdb04ab1b040c28e16\"><code>2c94646</code></a> chore(deps): bump js-yaml and mocha in /tests/smoke/cjs (<a href=\"https://redirect.github.com/axios/axios/issues/11133\">#11133</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/76c12bce5a4fe9a45bef9a5bf2baaf599d7d382e\"><code>76c12bc</code></a> chore(deps-dev): bump js-yaml from 4.3.0 to 4.3.1 (<a href=\"https://redirect.github.com/axios/axios/issues/11140\">#11140</a>)</li>\n<li><a href=\"https://github.com/axios/axios/commit/ba98559a7f5a18e531b5762387e5957bd281af3d\"><code>ba98559</code></a> docs: add ScrapingBee sponsor (<a href=\"https://redirect.github.com/axios/axios/issues/11137\">#11137</a>)</li>\n<li>Additional commits viewable in <a href=\"https://github.com/axios/axios/compare/v0.27.1...v1.20.0\">compare view</a></li>\n</ul>\n</details>\n<details>\n<summary>Maintainer changes</summary>\n<p>This version was pushed to npm by <a href=\"https://www.npmjs.com/~GitHub%20Actions\">GitHub Actions</a>, a new releaser for axios since your current version.</p>\n</details>\n<details>\n<summary>Install script changes</summary>\n<p>This version adds <code>prepare</code> script that runs during installation. Review the package contents before updating.</p>\n</details>\n<br />\n"
             commit-message: |-
-                Bump axios from 0.27.1 to 1.13.5 in /npm/semver
+                Bump axios from 0.27.1 to 1.20.0 in /npm/semver
 
-                Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.13.5.
+                Bumps [axios](https://github.com/axios/axios) from 0.27.1 to 1.20.0.
                 - [Release notes](https://github.com/axios/axios/releases)
                 - [Changelog](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
-                - [Commits](https://github.com/axios/axios/compare/v0.27.1...v1.13.5)
+                - [Commits](https://github.com/axios/axios/compare/v0.27.1...v1.20.0)
     - type: mark_as_processed
       expect:
         data:
