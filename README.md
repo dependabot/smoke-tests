@@ -63,6 +63,22 @@ Where possible try to add additional ignore_conditions and allowed_updates so ev
 
 For convenience there's a `script/regen.sh` which will regenerate tests locally.
 
+#### Time-sensitive fixtures
+
+With a clock-aware CLI, `input.recorded-at` fixes the replay clock, including native package-manager subprocesses. Preserve this timestamp when regenerating a recorded fixture.
+
+The clock does not freeze HTTP metadata. Preserve the matching proxy cache and check recording logs for rate-limit or metadata-fetch errors, even when the job succeeds. Use read-only credentials when authenticating the updater; do not capture rate-limit fallbacks as expected PR metadata.
+
+`dependabot test -o`, the workflow, and `script/regen.sh` do not add a timestamp to a legacy fixture. To migrate one, save its existing `input` mapping as `input.yml` (without the outer `input:` key or any `output`). Keep the source commit, ignore conditions, grouping, experiments, and credentials unchanged, then record with a new, empty cache directory:
+
+```console
+dependabot update -f input.yml -o recorded.yml --cache fresh-cache
+dependabot test -f recorded.yml -o replayed.yml --cache fresh-cache
+cmp recorded.yml replayed.yml
+```
+
+Use the same CLI and updater image for recording and replay. Do not invent a historical timestamp or edit expected versions to hide a mismatch. Old caches can contain conflicting registry metadata; after reviewing the new recording, refresh that suite with **Cache One** using a CLI and updater that support it.
+
 #### `script/regen.sh` (local)
 
 The `script/regen.sh` script regenerates one or more smoke test files locally. It also supports building and using a custom updater image from a `dependabot-core` checkout or PR, which is useful for contributors who need to regenerate tests against unreleased core changes.
