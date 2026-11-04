@@ -221,6 +221,20 @@ output:
                   operation: update
                   support_file: false
                   type: file
+                - content: |
+                    go 1.25.0
+
+                    use (
+                    	.
+                    	./sub
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: go.work
+                  operation: update
+                  support_file: false
+                  type: file
             pr-title: Bump golang.org/x/text from 0.4.0 to 0.36.0 in /go/workspace
             pr-body: |
                 Bumps [golang.org/x/text](https://github.com/golang/text) from 0.4.0 to 0.36.0.
@@ -385,6 +399,20 @@ output:
                   deleted: false
                   directory: /go/workspace
                   name: sub/go.sum
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    go 1.25.0
+
+                    use (
+                    	.
+                    	./sub
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: go.work
                   operation: update
                   support_file: false
                   type: file
@@ -685,6 +713,20 @@ output:
                   deleted: false
                   directory: /go/workspace
                   name: sub/go.sum
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    go 1.25.0
+
+                    use (
+                    	.
+                    	./sub
+                    )
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /go/workspace
+                  name: go.work
                   operation: update
                   support_file: false
                   type: file
