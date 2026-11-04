@@ -1,0 +1,754 @@
+input:
+    job:
+        package-manager: npm_and_yarn
+        allowed-updates:
+            - update-type: all
+        experiments:
+            record-ecosystem-versions: true
+        ignore-conditions:
+            - dependency-name: fetch-factory
+              source: tests/smoke-yarn-multiple-dir.yaml
+              version-requirement: '>0.2.1'
+            - dependency-name: etag
+              source: tests/smoke-yarn-multiple-dir.yaml
+              version-requirement: '>1.8.1'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directory: /yarn/foo/src/bar
+            commit: 689859ec8625145882baf9dc1d407ece646392ae
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: record_ecosystem_versions
+      expect:
+        data:
+            ecosystem_versions:
+                package_managers:
+                    yarn: 1
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: fetch-factory
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: 0.0.1
+                      source:
+                        type: registry
+                        url: https://registry.yarnpkg.com
+                  version: 0.0.1
+                - name: etag
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - devDependencies
+                      requirement: 1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.yarnpkg.com
+                  version: 1.0.0
+                - name: encoding
+                  requirements: []
+                  version: 0.1.13
+                - name: es6-promise
+                  requirements: []
+                  version: 3.3.1
+                - name: iconv-lite
+                  requirements: []
+                  version: 0.6.3
+                - name: is-stream
+                  requirements: []
+                  version: 1.1.0
+                - name: isomorphic-fetch
+                  requirements: []
+                  version: 2.2.1
+                - name: lodash
+                  requirements: []
+                  version: 3.10.1
+                - name: node-fetch
+                  requirements: []
+                  version: 1.7.3
+                - name: safer-buffer
+                  requirements: []
+                  version: 2.1.2
+                - name: whatwg-fetch
+                  requirements: []
+                  version: 3.6.2
+            dependency_files:
+                - /yarn/foo/src/bar/package.json
+                - /yarn/foo/src/bar/yarn.lock
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 689859ec8625145882baf9dc1d407ece646392ae
+            dependencies:
+                - name: fetch-factory
+                  previous-requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: 0.0.1
+                      source:
+                        type: registry
+                        url: https://registry.yarnpkg.com
+                  previous-version: 0.0.1
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: 0.2.1
+                      source:
+                        type: registry
+                        url: https://registry.yarnpkg.com
+                  version: 0.2.1
+            updated-dependency-files:
+                - content: |
+                    {
+                      "name": "npm-test",
+                      "version": "1.0.0",
+                      "description": "",
+                      "main": "index.js",
+                      "repository": {
+                        "type": "git",
+                        "url": "git+https://github.com/dsp-testing/dependabot-all-updates-test.git"
+                      },
+                      "author": "",
+                      "license": "ISC",
+                      "bugs": {
+                        "url": "https://github.com/dsp-testing/dependabot-all-updates-test/issues"
+                      },
+                      "homepage": "https://github.com/dsp-testing/dependabot-all-updates-test",
+                      "dependencies": {
+                        "fetch-factory": "0.2.1"
+                      },
+                      "devDependencies": {
+                        "etag": "1.0.0"
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /yarn/foo/src/bar
+                  name: package.json
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    # THIS IS AN AUTOGENERATED FILE. DO NOT EDIT THIS FILE DIRECTLY.
+                    # yarn lockfile v1
+
+
+                    assertion-error@^1.0.1:
+                      version "1.1.0"
+                      resolved "https://registry.yarnpkg.com/assertion-error/-/assertion-error-1.1.0.tgz#e60b6b0e8f301bd97e5375215bda406c85118c0b"
+                      integrity sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==
+
+                    call-bind@^1.0.2:
+                      version "1.0.2"
+                      resolved "https://registry.yarnpkg.com/call-bind/-/call-bind-1.0.2.tgz#b1d4e89e688119c3c9a903ad30abb2f6a919be3c"
+                      integrity sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==
+                      dependencies:
+                        function-bind "^1.1.1"
+                        get-intrinsic "^1.0.2"
+
+                    "chai@>=1.9.2 <4.0.0":
+                      version "3.5.0"
+                      resolved "https://registry.yarnpkg.com/chai/-/chai-3.5.0.tgz#4d02637b067fe958bdbfdd3a40ec56fef7373247"
+                      integrity sha512-eRYY0vPS2a9zt5w5Z0aCeWbrXTEyvk7u/Xf71EzNObrjSCPgMm1Nku/D/u2tiqHBX5j40wWhj54YJLtgn8g55A==
+                      dependencies:
+                        assertion-error "^1.0.1"
+                        deep-eql "^0.1.3"
+                        type-detect "^1.0.0"
+
+                    debug@^1.0.4:
+                      version "1.0.5"
+                      resolved "https://registry.yarnpkg.com/debug/-/debug-1.0.5.tgz#f7241217430f99dec4c2b473eab92228e874c2ac"
+                      integrity sha512-SIKSrp4+XqcUaNWhwaPJbLFnvSXPsZ4xBdH2WRK0Xo++UzMC4eepYghGAVhVhOwmfq3kqowqJ5w45R3pmYZnuA==
+                      dependencies:
+                        ms "2.0.0"
+
+                    deep-eql@^0.1.3:
+                      version "0.1.3"
+                      resolved "https://registry.yarnpkg.com/deep-eql/-/deep-eql-0.1.3.tgz#ef558acab8de25206cd713906d74e56930eb69f2"
+                      integrity sha512-6sEotTRGBFiNcqVoeHwnfopbSpi5NbH1VWJmYCVkmxMmaVTT0bUTrNaGyBwhgP4MZL012W/mkzIn3Da+iDYweg==
+                      dependencies:
+                        type-detect "0.1.1"
+
+                    deep-equal@^1.0.0:
+                      version "1.1.1"
+                      resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-1.1.1.tgz#b5c98c942ceffaf7cb051e24e1434a25a2e6076a"
+                      integrity sha512-yd9c5AdiqVcR+JjcwUQb9DkhJc8ngNr0MahEBGvDiJw8puWab2yZlh+nkasOnZP+EGTAP6rRp2JzJhJZzvNF8g==
+                      dependencies:
+                        is-arguments "^1.0.4"
+                        is-date-object "^1.0.1"
+                        is-regex "^1.0.4"
+                        object-is "^1.0.1"
+                        object-keys "^1.1.1"
+                        regexp.prototype.flags "^1.2.0"
+
+                    define-properties@^1.1.3, define-properties@^1.2.0:
+                      version "1.2.0"
+                      resolved "https://registry.yarnpkg.com/define-properties/-/define-properties-1.2.0.tgz#52988570670c9eacedd8064f4a990f2405849bd5"
+                      integrity sha512-xvqAVKGfT1+UAvPwKTVw/njhdQ8ZhXK4lI0bCIuCMrp2up9nPnaDftrLtmpTazqd1o+UY4zgzU+avtMbDP+ldA==
+                      dependencies:
+                        has-property-descriptors "^1.0.0"
+                        object-keys "^1.1.1"
+
+                    encoding@^0.1.11:
+                      version "0.1.13"
+                      resolved "https://registry.yarnpkg.com/encoding/-/encoding-0.1.13.tgz#56574afdd791f54a8e9b2785c0582a2d26210fa9"
+                      integrity sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==
+                      dependencies:
+                        iconv-lite "^0.6.2"
+
+                    es6-promise@^3.0.2:
+                      version "3.3.1"
+                      resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-3.3.1.tgz#a08cdde84ccdbf34d027a1451bc91d4bcd28a613"
+                      integrity sha512-SOp9Phqvqn7jtEUxPWdWfWoLmyt2VaJ6MpvP9Comy1MceMXqE6bxvaTu4iaxpYYPzhny28Lc+M87/c2cPK6lDg==
+
+                    etag@1.0.0:
+                      version "1.0.0"
+                      resolved "https://registry.yarnpkg.com/etag/-/etag-1.0.0.tgz#db9f9610cc2bf22036d713012dff4aa7e0c96162"
+                      integrity sha512-IHsJ/pkALbMcdzbAC0hbN2dpoMFFQMP/TxEe8emE5cjanh9Lh053UdfeNyrlNW9vJaJWVoSk3mgo/MdOcNmtQQ==
+
+                    fetch-factory@0.2.1:
+                      version "0.2.1"
+                      resolved "https://registry.yarnpkg.com/fetch-factory/-/fetch-factory-0.2.1.tgz#a0562d635ad11156886885604518423ce6a43f2b"
+                      integrity sha512-sqt1ONiKIRec2E66VSBI6+vRQSTdpsfJc7ZF3T0N3MnG1q7thE0w6B8nGhiffLoqPF7yLcKY/y4CPjldBbT2wA==
+                      dependencies:
+                        es6-promise "^3.0.2"
+                        isomorphic-fetch "^2.1.1"
+                        lodash "^3.10.1"
+                        nock "^2.18.0"
+                        query-string "^2.4.1"
+                        url-pattern "^0.10.0"
+
+                    function-bind@^1.1.1:
+                      version "1.1.1"
+                      resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
+                      integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
+
+                    functions-have-names@^1.2.3:
+                      version "1.2.3"
+                      resolved "https://registry.yarnpkg.com/functions-have-names/-/functions-have-names-1.2.3.tgz#0404fe4ee2ba2f607f0e0ec3c80bae994133b834"
+                      integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
+
+                    get-intrinsic@^1.0.2, get-intrinsic@^1.1.1:
+                      version "1.2.1"
+                      resolved "https://registry.yarnpkg.com/get-intrinsic/-/get-intrinsic-1.2.1.tgz#d295644fed4505fc9cde952c37ee12b477a83d82"
+                      integrity sha512-2DcsyfABl+gVHEfCOaTrWgyt+tb6MSEGmKq+kI5HwLbIYgjgmMcV8KQ41uaKz1xxUcn9tJtgFbQUEVcEbd0FYw==
+                      dependencies:
+                        function-bind "^1.1.1"
+                        has "^1.0.3"
+                        has-proto "^1.0.1"
+                        has-symbols "^1.0.3"
+
+                    has-property-descriptors@^1.0.0:
+                      version "1.0.0"
+                      resolved "https://registry.yarnpkg.com/has-property-descriptors/-/has-property-descriptors-1.0.0.tgz#610708600606d36961ed04c196193b6a607fa861"
+                      integrity sha512-62DVLZGoiEBDHQyqG4w9xCuZ7eJEwNmJRWw2VY84Oedb7WFcA27fiEVe8oUQx9hAUJ4ekurquucTGwsyO1XGdQ==
+                      dependencies:
+                        get-intrinsic "^1.1.1"
+
+                    has-proto@^1.0.1:
+                      version "1.0.1"
+                      resolved "https://registry.yarnpkg.com/has-proto/-/has-proto-1.0.1.tgz#1885c1305538958aff469fef37937c22795408e0"
+                      integrity sha512-7qE+iP+O+bgF9clE5+UoBFzE65mlBiVj3tKCrlNQ0Ogwm0BjpT/gK4SlLYDMybDh5I3TCTKnPPa0oMG7JDYrhg==
+
+                    has-symbols@^1.0.2, has-symbols@^1.0.3:
+                      version "1.0.3"
+                      resolved "https://registry.yarnpkg.com/has-symbols/-/has-symbols-1.0.3.tgz#bb7b2c4349251dce87b125f7bdf874aa7c8b39f8"
+                      integrity sha512-l3LCuF6MgDNwTDKkdYGEihYjt5pRPbEg46rtlmnSPlUbgmB8LOIrKJbYYFBSbnPaJexMKtiPO8hmeRjRz2Td+A==
+
+                    has-tostringtag@^1.0.0:
+                      version "1.0.0"
+                      resolved "https://registry.yarnpkg.com/has-tostringtag/-/has-tostringtag-1.0.0.tgz#7e133818a7d394734f941e73c3d3f9291e658b25"
+                      integrity sha512-kFjcSNhnlGV1kyoGk7OXKSawH5JOb/LzUc5w9B02hOTO0dfFRjbHQKvg1d6cf3HbeUmtU9VbbV3qzZ2Teh97WQ==
+                      dependencies:
+                        has-symbols "^1.0.2"
+
+                    has@^1.0.3:
+                      version "1.0.3"
+                      resolved "https://registry.yarnpkg.com/has/-/has-1.0.3.tgz#722d7cbfc1f6aa8241f16dd814e011e1f41e8796"
+                      integrity sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
+                      dependencies:
+                        function-bind "^1.1.1"
+
+                    iconv-lite@^0.6.2:
+                      version "0.6.3"
+                      resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.6.3.tgz#a52f80bf38da1952eb5c681790719871a1a72501"
+                      integrity sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==
+                      dependencies:
+                        safer-buffer ">= 2.1.2 < 3.0.0"
+
+                    is-arguments@^1.0.4:
+                      version "1.1.1"
+                      resolved "https://registry.yarnpkg.com/is-arguments/-/is-arguments-1.1.1.tgz#15b3f88fda01f2a97fec84ca761a560f123efa9b"
+                      integrity sha512-8Q7EARjzEnKpt/PCD7e1cgUS0a6X8u5tdSiMqXhojOdoV9TsMsiO+9VLC5vAmO8N7/GmXn7yjR8qnA6bVAEzfA==
+                      dependencies:
+                        call-bind "^1.0.2"
+                        has-tostringtag "^1.0.0"
+
+                    is-date-object@^1.0.1:
+                      version "1.0.5"
+                      resolved "https://registry.yarnpkg.com/is-date-object/-/is-date-object-1.0.5.tgz#0841d5536e724c25597bf6ea62e1bd38298df31f"
+                      integrity sha512-9YQaSxsAiSwcvS33MBk3wTCVnWK+HhF8VZR2jRxehM16QcVOdHqPn4VPHmRK4lSr38n9JriurInLcP90xsYNfQ==
+                      dependencies:
+                        has-tostringtag "^1.0.0"
+
+                    is-regex@^1.0.4:
+                      version "1.1.4"
+                      resolved "https://registry.yarnpkg.com/is-regex/-/is-regex-1.1.4.tgz#eef5663cd59fa4c0ae339505323df6854bb15958"
+                      integrity sha512-kvRdxDsxZjhzUX07ZnLydzS1TU/TJlTUHHY4YLL87e37oUA49DfkLqgy+VjFocowy29cKvcSiu+kIv728jTTVg==
+                      dependencies:
+                        call-bind "^1.0.2"
+                        has-tostringtag "^1.0.0"
+
+                    is-stream@^1.0.1:
+                      version "1.1.0"
+                      resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
+                      integrity sha512-uQPm8kcs47jx38atAcWTVxyltQYoPT68y9aWYdV6yWXSyW8mzSat0TL6CiWdZeCdF3KrAvpVtnHbTv4RN+rqdQ==
+
+                    isomorphic-fetch@^2.1.1:
+                      version "2.2.1"
+                      resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
+                      integrity sha512-9c4TNAKYXM5PRyVcwUZrF3W09nQ+sO7+jydgs4ZGW9dhsLG2VOlISJABombdQqQRXCwuYG3sYV/puGf5rp0qmA==
+                      dependencies:
+                        node-fetch "^1.0.1"
+                        whatwg-fetch ">=0.10.0"
+
+                    lodash@2.4.1:
+                      version "2.4.1"
+                      resolved "https://registry.yarnpkg.com/lodash/-/lodash-2.4.1.tgz#5b7723034dda4d262e5a46fb2c58d7cc22f71420"
+                      integrity sha512-qa6QqjA9jJB4AYw+NpD2GI4dzHL6Mv0hL+By6iIul4Ce0C1refrjZJmcGvWdnLUwl4LIPtvzje3UQfGH+nCEsQ==
+
+                    lodash@^3.10.1:
+                      version "3.10.1"
+                      resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
+                      integrity sha512-9mDDwqVIma6OZX79ZlDACZl8sBm0TEnkf99zV3iMA4GzkIT/9hiqP5mY0HoT1iNLCrKc/R1HByV+yJfRWVJryQ==
+
+                    minimist@^1.2.6:
+                      version "1.2.8"
+                      resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.8.tgz#c1a464e7693302e082a075cee0c057741ac4772c"
+                      integrity sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==
+
+                    mkdirp@^0.5.0:
+                      version "0.5.6"
+                      resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.6.tgz#7def03d2432dcae4ba1d611445c48396062255f6"
+                      integrity sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==
+                      dependencies:
+                        minimist "^1.2.6"
+
+                    ms@2.0.0:
+                      version "2.0.0"
+                      resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
+                      integrity sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==
+
+                    nock@^2.18.0:
+                      version "2.18.2"
+                      resolved "https://registry.yarnpkg.com/nock/-/nock-2.18.2.tgz#a138aecbfe5d2a837be4397918abd239483ce40c"
+                      integrity sha512-g/+7KTdoMOUxH6HVKD7mmtlNe4K/OVEEiH/pyBG/TuRsHl0lrts894x72+LJFkQiGCkh/i05FEBwKnb15+WSVg==
+                      dependencies:
+                        chai ">=1.9.2 <4.0.0"
+                        debug "^1.0.4"
+                        deep-equal "^1.0.0"
+                        lodash "2.4.1"
+                        mkdirp "^0.5.0"
+                        propagate "0.3.x"
+
+                    node-fetch@^1.0.1:
+                      version "1.7.3"
+                      resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
+                      integrity sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==
+                      dependencies:
+                        encoding "^0.1.11"
+                        is-stream "^1.0.1"
+
+                    object-is@^1.0.1:
+                      version "1.1.5"
+                      resolved "https://registry.yarnpkg.com/object-is/-/object-is-1.1.5.tgz#b9deeaa5fc7f1846a0faecdceec138e5778f53ac"
+                      integrity sha512-3cyDsyHgtmi7I7DfSSI2LDp6SK2lwvtbg0p0R1e0RvTqF5ceGx+K2dfSjm1bKDMVCFEDAQvy+o8c6a7VujOddw==
+                      dependencies:
+                        call-bind "^1.0.2"
+                        define-properties "^1.1.3"
+
+                    object-keys@^1.1.1:
+                      version "1.1.1"
+                      resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.1.1.tgz#1c47f272df277f3b1daf061677d9c82e2322c60e"
+                      integrity sha512-NuAESUOUMrlIXOfHKzD6bpPu3tYt3xvjNdRIQ+FeT0lNb4K8WR70CaDxhuNguS2XG+GjkyMwOzsN5ZktImfhLA==
+
+                    propagate@0.3.x:
+                      version "0.3.1"
+                      resolved "https://registry.yarnpkg.com/propagate/-/propagate-0.3.1.tgz#e3a84404a7ece820dd6bbea9f6d924e3135ae09c"
+                      integrity sha512-GOc8Eoa3MWbN905b5l2PNNt1Pf+I/CF6uAPt3IGT+v9WExDE7WPT/kDfLe7vYXtG11KbTnBhTNfcoq9+umDrSw==
+
+                    query-string@^2.4.1:
+                      version "2.4.2"
+                      resolved "https://registry.yarnpkg.com/query-string/-/query-string-2.4.2.tgz#7db0666420804baa92ae9f268962855a76143dfb"
+                      integrity sha512-Y+OMYUuY7HxznI6WBN822fi/FMvnCTiuqd6KNcidPColOmMWPoV1RGYyyzObve1T/dD1i0ZgCCbO8ytu0ZUrkA==
+                      dependencies:
+                        strict-uri-encode "^1.0.0"
+
+                    regexp.prototype.flags@^1.2.0:
+                      version "1.5.0"
+                      resolved "https://registry.yarnpkg.com/regexp.prototype.flags/-/regexp.prototype.flags-1.5.0.tgz#fe7ce25e7e4cca8db37b6634c8a2c7009199b9cb"
+                      integrity sha512-0SutC3pNudRKgquxGoRGIz946MZVHqbNfPjBdxeOhBrdgDKlRoXmYLQN9xRbrR09ZXWeGAdPuif7egofn6v5LA==
+                      dependencies:
+                        call-bind "^1.0.2"
+                        define-properties "^1.2.0"
+                        functions-have-names "^1.2.3"
+
+                    "safer-buffer@>= 2.1.2 < 3.0.0":
+                      version "2.1.2"
+                      resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
+                      integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
+
+                    strict-uri-encode@^1.0.0:
+                      version "1.1.0"
+                      resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
+                      integrity sha512-R3f198pcvnB+5IpnBlRkphuE9n46WyVl8I39W/ZUTZLz4nqSP/oLYUrcnJrw462Ds8he4YKMov2efsTIw1BDGQ==
+
+                    type-detect@0.1.1:
+                      version "0.1.1"
+                      resolved "https://registry.yarnpkg.com/type-detect/-/type-detect-0.1.1.tgz#0ba5ec2a885640e470ea4e8505971900dac58822"
+                      integrity sha512-5rqszGVwYgBoDkIm2oUtvkfZMQ0vk29iDMU0W2qCa3rG0vPDNczCMT4hV/bLBgLg8k8ri6+u3Zbt+S/14eMzlA==
+
+                    type-detect@^1.0.0:
+                      version "1.0.0"
+                      resolved "https://registry.yarnpkg.com/type-detect/-/type-detect-1.0.0.tgz#762217cc06db258ec48908a1298e8b95121e8ea2"
+                      integrity sha512-f9Uv6ezcpvCQjJU0Zqbg+65qdcszv3qUQsZfjdRbWiZ7AMenrX1u0lNk9EoWWX6e1F+NULyg27mtdeZ5WhpljA==
+
+                    url-pattern@^0.10.0:
+                      version "0.10.2"
+                      resolved "https://registry.yarnpkg.com/url-pattern/-/url-pattern-0.10.2.tgz#e9f07104982b72312db4473dd86a527b580015da"
+                      integrity sha512-zv1iNlKB8XhUcHTaz68wdUwBWLQEji3AFbIKahCjxJftL6uOir1heHqM8EKymsgFWDO7ct8jRW/rMybOLo4OyQ==
+
+                    whatwg-fetch@>=0.10.0:
+                      version "3.6.2"
+                      resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.6.2.tgz#dced24f37f2624ed0281725d51d0e2e3fe677f8c"
+                      integrity sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /yarn/foo/src/bar
+                  name: yarn.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump fetch-factory from 0.0.1 to 0.2.1 in /yarn/foo/src/bar
+            pr-body: |
+                Bumps fetch-factory from 0.0.1 to 0.2.1.
+            commit-message: |-
+                Bump fetch-factory from 0.0.1 to 0.2.1 in /yarn/foo/src/bar
+
+                Bumps fetch-factory from 0.0.1 to 0.2.1.
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 689859ec8625145882baf9dc1d407ece646392ae
+            dependencies:
+                - name: etag
+                  previous-requirements:
+                    - file: package.json
+                      groups:
+                        - devDependencies
+                      requirement: 1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.yarnpkg.com
+                  previous-version: 1.0.0
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - devDependencies
+                      requirement: 1.8.1
+                      source:
+                        type: registry
+                        url: https://registry.yarnpkg.com
+                  version: 1.8.1
+            updated-dependency-files:
+                - content: |
+                    {
+                      "name": "npm-test",
+                      "version": "1.0.0",
+                      "description": "",
+                      "main": "index.js",
+                      "repository": {
+                        "type": "git",
+                        "url": "git+https://github.com/dsp-testing/dependabot-all-updates-test.git"
+                      },
+                      "author": "",
+                      "license": "ISC",
+                      "bugs": {
+                        "url": "https://github.com/dsp-testing/dependabot-all-updates-test/issues"
+                      },
+                      "homepage": "https://github.com/dsp-testing/dependabot-all-updates-test",
+                      "dependencies": {
+                        "fetch-factory": "0.0.1"
+                      },
+                      "devDependencies": {
+                        "etag": "1.8.1"
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /yarn/foo/src/bar
+                  name: package.json
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    # THIS IS AN AUTOGENERATED FILE. DO NOT EDIT THIS FILE DIRECTLY.
+                    # yarn lockfile v1
+
+
+                    encoding@^0.1.11:
+                      version "0.1.13"
+                      resolved "https://registry.yarnpkg.com/encoding/-/encoding-0.1.13.tgz#56574afdd791f54a8e9b2785c0582a2d26210fa9"
+                      integrity sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==
+                      dependencies:
+                        iconv-lite "^0.6.2"
+
+                    es6-promise@^3.0.2:
+                      version "3.3.1"
+                      resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-3.3.1.tgz#a08cdde84ccdbf34d027a1451bc91d4bcd28a613"
+                      integrity sha512-SOp9Phqvqn7jtEUxPWdWfWoLmyt2VaJ6MpvP9Comy1MceMXqE6bxvaTu4iaxpYYPzhny28Lc+M87/c2cPK6lDg==
+
+                    etag@1.8.1:
+                      version "1.8.1"
+                      resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
+                      integrity sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==
+
+                    fetch-factory@0.0.1:
+                      version "0.0.1"
+                      resolved "https://registry.yarnpkg.com/fetch-factory/-/fetch-factory-0.0.1.tgz#e0076059bdb31e3147c75b3b8c04133ba8c7e071"
+                      integrity sha512-gexRwqIhwzDJ2pJvL0UYfiZwW06/bdYWxAmswFFts7C87CF8i6liApihTk7TZFYMDcQjvvDIvyHv0q379z0aWA==
+                      dependencies:
+                        es6-promise "^3.0.2"
+                        isomorphic-fetch "^2.1.1"
+                        lodash "^3.10.1"
+
+                    iconv-lite@^0.6.2:
+                      version "0.6.3"
+                      resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.6.3.tgz#a52f80bf38da1952eb5c681790719871a1a72501"
+                      integrity sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==
+                      dependencies:
+                        safer-buffer ">= 2.1.2 < 3.0.0"
+
+                    is-stream@^1.0.1:
+                      version "1.1.0"
+                      resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
+                      integrity sha512-uQPm8kcs47jx38atAcWTVxyltQYoPT68y9aWYdV6yWXSyW8mzSat0TL6CiWdZeCdF3KrAvpVtnHbTv4RN+rqdQ==
+
+                    isomorphic-fetch@^2.1.1:
+                      version "2.2.1"
+                      resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
+                      integrity sha512-9c4TNAKYXM5PRyVcwUZrF3W09nQ+sO7+jydgs4ZGW9dhsLG2VOlISJABombdQqQRXCwuYG3sYV/puGf5rp0qmA==
+                      dependencies:
+                        node-fetch "^1.0.1"
+                        whatwg-fetch ">=0.10.0"
+
+                    lodash@^3.10.1:
+                      version "3.10.1"
+                      resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
+                      integrity sha512-9mDDwqVIma6OZX79ZlDACZl8sBm0TEnkf99zV3iMA4GzkIT/9hiqP5mY0HoT1iNLCrKc/R1HByV+yJfRWVJryQ==
+
+                    node-fetch@^1.0.1:
+                      version "1.7.3"
+                      resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
+                      integrity sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==
+                      dependencies:
+                        encoding "^0.1.11"
+                        is-stream "^1.0.1"
+
+                    "safer-buffer@>= 2.1.2 < 3.0.0":
+                      version "2.1.2"
+                      resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
+                      integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
+
+                    whatwg-fetch@>=0.10.0:
+                      version "3.6.2"
+                      resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.6.2.tgz#dced24f37f2624ed0281725d51d0e2e3fe677f8c"
+                      integrity sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /yarn/foo/src/bar
+                  name: yarn.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump etag from 1.0.0 to 1.8.1 in /yarn/foo/src/bar
+            pr-body: |
+                Bumps [etag](https://github.com/jshttp/etag) from 1.0.0 to 1.8.1.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/jshttp/etag/releases">etag's releases</a>.</em></p>
+                <blockquote>
+                <h2>1.8.1</h2>
+                <ul>
+                <li>perf: replace regular expression with substring</li>
+                </ul>
+                <h2>1.8.0</h2>
+                <ul>
+                <li>Use SHA1 instead of MD5 for ETag hashing
+                <ul>
+                <li>Improves performance for larger entities</li>
+                <li>Works with FIPS 140-2 OpenSSL configuration</li>
+                </ul>
+                </li>
+                </ul>
+                <h2>1.7.0</h2>
+                <ul>
+                <li>Always include entity length in ETags for hash length extensions</li>
+                <li>Generate non-Stats ETags using MD5 only (no longer CRC32)</li>
+                <li>Improve stat performance by removing hashing</li>
+                <li>Remove base64 padding in ETags to shorten</li>
+                <li>Use MD5 instead of MD4 in weak ETags over 1KB</li>
+                </ul>
+                <h2>1.6.0</h2>
+                <ul>
+                <li>Improve support for JXcore</li>
+                <li>Remove requirement of <code>atime</code> in the stats object</li>
+                <li>Support &quot;fake&quot; stats objects in environments without <code>fs</code></li>
+                </ul>
+                <h2>1.5.1</h2>
+                <ul>
+                <li>deps: crc@3.2.1
+                <ul>
+                <li>Minor fixes</li>
+                </ul>
+                </li>
+                </ul>
+                <h2>1.5.0</h2>
+                <ul>
+                <li>Improve string performance</li>
+                <li>Slightly improve speed for weak ETags over 1KB</li>
+                </ul>
+                <h2>1.4.0</h2>
+                <ul>
+                <li>Support &quot;fake&quot; stats objects</li>
+                <li>Support Node.js 0.6</li>
+                </ul>
+                <h2>1.3.1</h2>
+                <ul>
+                <li>Use the (new and improved) <code>crc</code> for crc32</li>
+                </ul>
+                <h2>1.3.0</h2>
+                <ul>
+                <li>Default strings to strong ETags</li>
+                <li>Improve speed for weak ETags over 1KB</li>
+                </ul>
+                <h2>1.2.1</h2>
+                <ul>
+                <li>Use the (much faster) <code>buffer-crc32</code> for crc32</li>
+                </ul>
+                <h2>1.2.0</h2>
+                <ul>
+                <li>Add support for file stat objects</li>
+                </ul>
+                <h2>1.1.0</h2>
+                <ul>
+                <li>Add fast-path for empty entity</li>
+                <li>Add weak ETag generation</li>
+                <li>Shrink size of generated ETags</li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/jshttp/etag/blob/master/HISTORY.md">etag's changelog</a>.</em></p>
+                <blockquote>
+                <h1>1.8.1 / 2017-09-12</h1>
+                <ul>
+                <li>perf: replace regular expression with substring</li>
+                </ul>
+                <h1>1.8.0 / 2017-02-18</h1>
+                <ul>
+                <li>Use SHA1 instead of MD5 for ETag hashing
+                <ul>
+                <li>Improves performance for larger entities</li>
+                <li>Works with FIPS 140-2 OpenSSL configuration</li>
+                </ul>
+                </li>
+                </ul>
+                <h1>1.7.0 / 2015-06-08</h1>
+                <ul>
+                <li>Always include entity length in ETags for hash length extensions</li>
+                <li>Generate non-Stats ETags using MD5 only (no longer CRC32)</li>
+                <li>Improve stat performance by removing hashing</li>
+                <li>Remove base64 padding in ETags to shorten</li>
+                <li>Use MD5 instead of MD4 in weak ETags over 1KB</li>
+                </ul>
+                <h1>1.6.0 / 2015-05-10</h1>
+                <ul>
+                <li>Improve support for JXcore</li>
+                <li>Remove requirement of <code>atime</code> in the stats object</li>
+                <li>Support &quot;fake&quot; stats objects in environments without <code>fs</code></li>
+                </ul>
+                <h1>1.5.1 / 2014-11-19</h1>
+                <ul>
+                <li>deps: crc@3.2.1
+                <ul>
+                <li>Minor fixes</li>
+                </ul>
+                </li>
+                </ul>
+                <h1>1.5.0 / 2014-10-14</h1>
+                <ul>
+                <li>Improve string performance</li>
+                <li>Slightly improve speed for weak ETags over 1KB</li>
+                </ul>
+                <h1>1.4.0 / 2014-09-21</h1>
+                <ul>
+                <li>Support &quot;fake&quot; stats objects</li>
+                <li>Support Node.js 0.6</li>
+                </ul>
+                <h1>1.3.1 / 2014-09-14</h1>
+                <ul>
+                <li>Use the (new and improved) <code>crc</code> for crc32</li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/jshttp/etag/commit/9b1e3e41df31cda4080833c187120b91a7ce8327"><code>9b1e3e4</code></a> 1.8.1</li>
+                <li><a href="https://github.com/jshttp/etag/commit/d1c5aab8e988d366d31c78e76ce4af9fe1719789"><code>d1c5aab</code></a> docs: update benchmark results</li>
+                <li><a href="https://github.com/jshttp/etag/commit/b9f0642256e63654287299d205bc6ced71b1a228"><code>b9f0642</code></a> perf: replace regular expression with substring</li>
+                <li><a href="https://github.com/jshttp/etag/commit/111d3dd44e7c01d823342b9e31b305b7aaa92bfc"><code>111d3dd</code></a> docs: update benchmark results</li>
+                <li><a href="https://github.com/jshttp/etag/commit/736be8e016ad75e46687ae81eb7cb12c5119642d"><code>736be8e</code></a> lint: apply standard 10 style</li>
+                <li><a href="https://github.com/jshttp/etag/commit/e9576b5a1454425a81f0b0d5016677fa3def0985"><code>e9576b5</code></a> bench: use safe-buffer module</li>
+                <li><a href="https://github.com/jshttp/etag/commit/53e8896e7c7449cccca307b836c324d0b11c09ca"><code>53e8896</code></a> tests: use safe-buffer module</li>
+                <li><a href="https://github.com/jshttp/etag/commit/15cdf1fb8dd6d2222fc15c1cbf39e5699d225c98"><code>15cdf1f</code></a> build: support Node.js 8.x</li>
+                <li><a href="https://github.com/jshttp/etag/commit/cda890a728c5b4c4e6bc462b5071530dda112975"><code>cda890a</code></a> build: Node.js@7.10</li>
+                <li><a href="https://github.com/jshttp/etag/commit/37d0e91f983018d4cc473fe2cdfbdc1e66906967"><code>37d0e91</code></a> build: seedrandom@2.4.3</li>
+                <li>Additional commits viewable in <a href="https://github.com/jshttp/etag/compare/v1.0.0...v1.8.1">compare view</a></li>
+                </ul>
+                </details>
+                <details>
+                <summary>Maintainer changes</summary>
+                <p>This version was pushed to npm by <a href="https://www.npmjs.com/~dougwilson">dougwilson</a>, a new releaser for etag since your current version.</p>
+                </details>
+                <br />
+            commit-message: |-
+                Bump etag from 1.0.0 to 1.8.1 in /yarn/foo/src/bar
+
+                Bumps [etag](https://github.com/jshttp/etag) from 1.0.0 to 1.8.1.
+                - [Release notes](https://github.com/jshttp/etag/releases)
+                - [Changelog](https://github.com/jshttp/etag/blob/master/HISTORY.md)
+                - [Commits](https://github.com/jshttp/etag/compare/v1.0.0...v1.8.1)
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 689859ec8625145882baf9dc1d407ece646392ae
