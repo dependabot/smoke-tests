@@ -26,6 +26,9 @@ output:
       expect:
         data:
             dependencies:
+                - name: mime
+                  requirements: []
+                  version: 1.2.0
                 - name: phoenix
                   requirements:
                     - file: mix.exs
@@ -33,6 +36,9 @@ output:
                       requirement: == 1.2.1
                       source: null
                   version: 1.2.1
+                - name: phoenix_pubsub
+                  requirements: []
+                  version: 1.0.2
                 - name: plug
                   requirements:
                     - file: mix.exs
@@ -40,9 +46,80 @@ output:
                       requirement: 1.3.0
                       source: null
                   version: 1.3.0
+                - name: poison
+                  requirements: []
+                  version: 2.2.0
             dependency_files:
                 - /mix.exs
                 - /mix.lock
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            dependencies:
+                - name: mime
+                  previous-requirements: []
+                  previous-version: 1.2.0
+                  requirements: []
+                  version: 1.6.0
+                  directory: /
+            updated-dependency-files:
+                - content: |
+                    %{"mime": {:hex, :mime, "1.6.0", "dabde576a497cef4bbdd60aceee8160e02a6c89250d6c0b29e56c0dfb00db3d2", [:mix], [], "hexpm", "31a1a8613f8321143dde1dafc36006a17d28d02bdfecb9e95a880fa7aabd19a7"},
+                      "phoenix": {:hex, :phoenix, "1.2.1", "6dc592249ab73c67575769765b66ad164ad25d83defa3492dc6ae269bd2a68ab", [:mix], [{:cowboy, "~> 1.0", [hex: :cowboy, repo: "hexpm", optional: true]}, {:phoenix_pubsub, "~> 1.0", [hex: :phoenix_pubsub, repo: "hexpm", optional: false]}, {:plug, "~> 1.1", [hex: :plug, repo: "hexpm", optional: false]}, {:poison, "~> 1.5 or ~> 2.0", [hex: :poison, repo: "hexpm", optional: false]}], "hexpm", "3bdd0166c46035e90ab2fce314f7b46e937a940efacbf71d973c54af9c891f38"},
+                      "phoenix_pubsub": {:hex, :phoenix_pubsub, "1.0.2", "bfa7fd52788b5eaa09cb51ff9fcad1d9edfeb68251add458523f839392f034c1", [:mix], [], "hexpm", "6f9193364c5de86b85e8d3a80294a134aecf6c5618adcbae668608749e00a7f7"},
+                      "plug": {:hex, :plug, "1.3.0", "6e2b01afc5db3fd011ca4a16efd9cb424528c157c30a44a0186bcc92c7b2e8f3", [:mix], [{:cowboy, "~> 1.0.1 or ~> 1.1", [hex: :cowboy, repo: "hexpm", optional: true]}, {:mime, "~> 1.0", [hex: :mime, repo: "hexpm", optional: false]}], "hexpm", "fd5244357e6d5651d3e1bc3582f5e29c29f5055f34194533100ececc2dfae2fd"},
+                      "poison": {:hex, :poison, "2.2.0", "4763b69a8a77bd77d26f477d196428b741261a761257ff1cf92753a0d4d24a63", [:mix], [], "hexpm", "519bc209e4433961284174c497c8524c001e285b79bdf80212b47a1f898084cc"}}
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: mix.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump mime from 1.2.0 to 1.6.0
+            pr-body: |
+                Bumps [mime](https://github.com/elixir-plug/mime) from 1.2.0 to 1.6.0.
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/elixir-plug/mime/blob/master/CHANGELOG.md">mime's changelog</a>.</em></p>
+                <blockquote>
+                <h2>v1.6.0</h2>
+                <ul>
+                <li>Deprecate MIME.valid?</li>
+                <li>Ignore media type params</li>
+                <li>Detect subtype suffix according to the spec</li>
+                </ul>
+                <h2>v1.5.0</h2>
+                <ul>
+                <li>Compare extensions in a case-insensitive way (see
+                <a href="https://redirect.github.com/elixir-plug/mime/issues/38">elixir-plug/mime#38</a>).</li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/elixir-plug/mime/commit/4cd565627ed45b283c3d7481b6f1c1412f7d2878"><code>4cd5656</code></a> Release v1.6.0</li>
+                <li><a href="https://github.com/elixir-plug/mime/commit/a1523bffa2cb25745d92b938f9104e9de0aa480e"><code>a1523bf</code></a> Ignore params and detect subtype suffix in extensions/1 (<a href="https://redirect.github.com/elixir-plug/mime/issues/45">#45</a>)</li>
+                <li><a href="https://github.com/elixir-plug/mime/commit/b9da4cb47d3994301c97eeba806f1a7e7787bd29"><code>b9da4cb</code></a> Update CI config (<a href="https://redirect.github.com/elixir-plug/mime/issues/44">#44</a>)</li>
+                <li><a href="https://github.com/elixir-plug/mime/commit/4a538c58ab73b8ef1400c29f330db0dc7606f04e"><code>4a538c5</code></a> Release v1.5.0</li>
+                <li><a href="https://github.com/elixir-plug/mime/commit/4336bc1365a103e5eae2ba1b4d28f1d354ff10ff"><code>4336bc1</code></a> Release v1.4.1</li>
+                <li><a href="https://github.com/elixir-plug/mime/commit/36ac39976f0fad64fa6b45f4dcb158f3329a4181"><code>36ac399</code></a> Add CI on GitHub Actions and stop using Travis CI (<a href="https://redirect.github.com/elixir-plug/mime/issues/41">#41</a>)</li>
+                <li><a href="https://github.com/elixir-plug/mime/commit/982dff19f0cfd7879d856f237212709e020529c6"><code>982dff1</code></a> Update (<a href="https://redirect.github.com/elixir-plug/mime/issues/40">#40</a>)</li>
+                <li><a href="https://github.com/elixir-plug/mime/commit/1af476abf9da04241bf15fa46a69097f6d3cdaed"><code>1af476a</code></a> Downcase extensions and mime types in extensions (<a href="https://redirect.github.com/elixir-plug/mime/issues/39">#39</a>)</li>
+                <li><a href="https://github.com/elixir-plug/mime/commit/389c953edb6c335b35976a77f305108b4754484d"><code>389c953</code></a> Release v1.4.0</li>
+                <li><a href="https://github.com/elixir-plug/mime/commit/e9e8bd158ed65333f2b5083d311c0f1b595acd2e"><code>e9e8bd1</code></a> Update mime.types: Sync with IANA as of  2020-04-22 (<a href="https://redirect.github.com/elixir-plug/mime/issues/36">#36</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/elixir-plug/mime/compare/v1.2.0...v1.6.0">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump mime from 1.2.0 to 1.6.0
+
+                Bumps [mime](https://github.com/elixir-plug/mime) from 1.2.0 to 1.6.0.
+                - [Changelog](https://github.com/elixir-plug/mime/blob/master/CHANGELOG.md)
+                - [Commits](https://github.com/elixir-plug/mime/compare/v1.2.0...v1.6.0)
     - type: create_pull_request
       expect:
         data:
@@ -140,6 +217,90 @@ output:
                 - [Release notes](https://github.com/phoenixframework/phoenix/releases)
                 - [Changelog](https://github.com/phoenixframework/phoenix/blob/v1.2.2/CHANGELOG.md)
                 - [Commits](https://github.com/phoenixframework/phoenix/compare/v1.2.1...v1.2.2)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 832e37c1a7a4ef89feb9dc7cfa06f62205191994
+            dependencies:
+                - name: phoenix_pubsub
+                  previous-requirements: []
+                  previous-version: 1.0.2
+                  requirements: []
+                  version: 1.1.2
+                  directory: /
+            updated-dependency-files:
+                - content: |
+                    %{"mime": {:hex, :mime, "1.2.0", "78adaa84832b3680de06f88f0997e3ead3b451a440d183d688085be2d709b534", [:mix], [], "hexpm", "b24d1d704209b760aeac161255c8031c5160de1a5cb7dd28bb84ef5bda2ba29e"},
+                      "phoenix": {:hex, :phoenix, "1.2.1", "6dc592249ab73c67575769765b66ad164ad25d83defa3492dc6ae269bd2a68ab", [:mix], [{:cowboy, "~> 1.0", [hex: :cowboy, repo: "hexpm", optional: true]}, {:phoenix_pubsub, "~> 1.0", [hex: :phoenix_pubsub, repo: "hexpm", optional: false]}, {:plug, "~> 1.1", [hex: :plug, repo: "hexpm", optional: false]}, {:poison, "~> 1.5 or ~> 2.0", [hex: :poison, repo: "hexpm", optional: false]}], "hexpm", "3bdd0166c46035e90ab2fce314f7b46e937a940efacbf71d973c54af9c891f38"},
+                      "phoenix_pubsub": {:hex, :phoenix_pubsub, "1.1.2", "496c303bdf1b2e98a9d26e89af5bba3ab487ba3a3735f74bf1f4064d2a845a3e", [:mix], [], "hexpm", "1f13f9f0f3e769a667a6b6828d29dec37497a082d195cc52dbef401a9b69bf38"},
+                      "plug": {:hex, :plug, "1.3.0", "6e2b01afc5db3fd011ca4a16efd9cb424528c157c30a44a0186bcc92c7b2e8f3", [:mix], [{:cowboy, "~> 1.0.1 or ~> 1.1", [hex: :cowboy, repo: "hexpm", optional: true]}, {:mime, "~> 1.0", [hex: :mime, repo: "hexpm", optional: false]}], "hexpm", "fd5244357e6d5651d3e1bc3582f5e29c29f5055f34194533100ececc2dfae2fd"},
+                      "poison": {:hex, :poison, "2.2.0", "4763b69a8a77bd77d26f477d196428b741261a761257ff1cf92753a0d4d24a63", [:mix], [], "hexpm", "519bc209e4433961284174c497c8524c001e285b79bdf80212b47a1f898084cc"}}
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: mix.lock
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump phoenix_pubsub from 1.0.2 to 1.1.2
+            pr-body: |
+                Bumps [phoenix_pubsub](https://github.com/phoenixframework/phoenix_pubsub) from 1.0.2 to 1.1.2.
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/phoenixframework/phoenix_pubsub/blob/v1.1.2/CHANGELOG.md">phoenix_pubsub's changelog</a>.</em></p>
+                <blockquote>
+                <h2>v1.1.2 (2019-02-23)</h2>
+                <ul>
+                <li>Bug fixes
+                <ul>
+                <li>Avoid warnings when running on Elixir v1.8</li>
+                </ul>
+                </li>
+                </ul>
+                <h2>v1.1.1 (2018-10-17)</h2>
+                <ul>
+                <li>Bug fixes
+                <ul>
+                <li>Fix issue causing empty deltas to be chosen for replication</li>
+                <li>Improve replication over netsplit</li>
+                </ul>
+                </li>
+                </ul>
+                <h2>v1.1.0 (2018-08-10)</h2>
+                <ul>
+                <li>Enhancements
+                <ul>
+                <li>Optimize Tracker CRDT operations for increased performance</li>
+                <li>Shard tracker internally to use pool of trackers for increased performance under load</li>
+                <li>[Tracker] Add <code>get_by_key/3</code> to lookup a single presence entry for a given topic and key</li>
+                </ul>
+                </li>
+                </ul>
+                </blockquote>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/phoenixframework/phoenix_pubsub/commit/49ec8315f2e52f63d1a6f9c8618f1d1877f31936"><code>49ec831</code></a> Release v1.1.2 with proper config</li>
+                <li><a href="https://github.com/phoenixframework/phoenix_pubsub/commit/795887f8aa8492123ed6d1287883d85e83c085f0"><code>795887f</code></a> Release v1.1.2</li>
+                <li><a href="https://github.com/phoenixframework/phoenix_pubsub/commit/316fdd8fd770c5c2744b0b2a9b9dc59952704ad6"><code>316fdd8</code></a> Don't use into with a non-empty list as this is deprecated in 1.8.0 (<a href="https://redirect.github.com/phoenixframework/phoenix_pubsub/issues/121">#121</a>)</li>
+                <li><a href="https://github.com/phoenixframework/phoenix_pubsub/commit/50c1da2edd441b7af53dc646c92eaee3725a94a2"><code>50c1da2</code></a> Fix documentation (DocTest) for Phoenix.PubSub (<a href="https://redirect.github.com/phoenixframework/phoenix_pubsub/issues/119">#119</a>)</li>
+                <li><a href="https://github.com/phoenixframework/phoenix_pubsub/commit/3f324a54848a37d4dae98954a4c70713c8df1d48"><code>3f324a5</code></a> Release 1.1.1</li>
+                <li><a href="https://github.com/phoenixframework/phoenix_pubsub/commit/16faa0f8330bab5050ee12a7be6f7b482698a424"><code>16faa0f</code></a> fix typo on docs of Phoenix.Tracker.Clock funcs (<a href="https://redirect.github.com/phoenixframework/phoenix_pubsub/issues/114">#114</a>)</li>
+                <li><a href="https://github.com/phoenixframework/phoenix_pubsub/commit/cc6d675269d304d2f8015be5d285e42631b421bf"><code>cc6d675</code></a> Improve replication over netsplit (<a href="https://redirect.github.com/phoenixframework/phoenix_pubsub/issues/111">#111</a>)</li>
+                <li><a href="https://github.com/phoenixframework/phoenix_pubsub/commit/e5f3641f8b8d076cce5810dd1deb6fc6f868bbf9"><code>e5f3641</code></a> Choose delta dominating on common set of replicas (<a href="https://redirect.github.com/phoenixframework/phoenix_pubsub/issues/109">#109</a>)</li>
+                <li><a href="https://github.com/phoenixframework/phoenix_pubsub/commit/ff03496d8649c750ffc10524bd4c7fc3ea7f61c2"><code>ff03496</code></a> Bump changelog</li>
+                <li><a href="https://github.com/phoenixframework/phoenix_pubsub/commit/568d38bf0e4c0f49fcab10b7ace924a98125a699"><code>568d38b</code></a> Merge branch 'distributed-owls-non-dominating-empty-range'</li>
+                <li>Additional commits viewable in <a href="https://github.com/phoenixframework/phoenix_pubsub/compare/v1.0.2...v1.1.2">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump phoenix_pubsub from 1.0.2 to 1.1.2
+
+                Bumps [phoenix_pubsub](https://github.com/phoenixframework/phoenix_pubsub) from 1.0.2 to 1.1.2.
+                - [Changelog](https://github.com/phoenixframework/phoenix_pubsub/blob/v1.1.2/CHANGELOG.md)
+                - [Commits](https://github.com/phoenixframework/phoenix_pubsub/compare/v1.0.2...v1.1.2)
     - type: create_pull_request
       expect:
         data:
