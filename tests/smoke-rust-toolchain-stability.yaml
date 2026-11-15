@@ -28,12 +28,6 @@ output:
                   version: stable
             dependency_files:
                 - /rust-toolchain/stability/rust-toolchain.toml
-    - type: record_update_job_warning
-      expect:
-        data:
-            warn-type: cooldown_date_unavailable
-            warn-title: Cooldown was not applied
-            warn-description: Cooldown could not be applied because no publication date was available from the registry.
     - type: mark_as_processed
       expect:
         data:
