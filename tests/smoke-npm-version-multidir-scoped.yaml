@@ -1,0 +1,93 @@
+input:
+    job:
+        command: update
+        package-manager: npm_and_yarn
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        experiments:
+            enable_cooldown_for_npm_and_yarn: true
+            enable_npmrc_credential_generation: true
+        ignore-conditions:
+            - dependency-name: '@dependabot/dummy-pkg-b'
+              source: tests/smoke-npm-version-multidir-scoped.yaml
+              version-requirement: '>1.2.0'
+            - dependency-name: left-pad
+              source: tests/smoke-npm-version-multidir-scoped.yaml
+              version-requirement: '>1.3.0'
+            - dependency-name: '@dependabot/dummy-pkg-a'
+              source: tests/smoke-npm-version-multidir-scoped.yaml
+              version-requirement: '>2.0.0'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - /npm/multi-dir/foo
+                - /npm/multi-dir/bar
+            commit: b430c0e13597246f5e81d6c4adab35602c1ddf3d
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+        - type: npm_registry
+          registry: npm.pkg.github.com
+          token: $LOCAL_GITHUB_ACCESS_TOKEN
+          scope: "@my-company"
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: '@dependabot/dummy-pkg-b'
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 1.0.0
+                - name: left-pad
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 1.0.0
+                - name: '@dependabot/dummy-pkg-a'
+                  requirements: []
+                  version: 1.1.0
+                - name: '@dependabot/dummy-pkg-a'
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 1.0.0
+                - name: left-pad
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^1.0.0
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 1.0.0
+            dependency_files:
+                - /npm/multi-dir/foo/package.json
+                - /npm/multi-dir/foo/package-lock.json
+                - /npm/multi-dir/bar/package.json
+                - /npm/multi-dir/bar/package-lock.json
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: b430c0e13597246f5e81d6c4adab35602c1ddf3d
