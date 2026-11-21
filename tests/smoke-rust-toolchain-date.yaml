@@ -64,10 +64,6 @@ output:
                   type: file
             pr-title: Bump rust-toolchain from stable-2024-10-17 to stable-2025-04-03 in /rust-toolchain/date
             pr-body: |
-                > [!WARNING]
-                > Cooldown could not be applied because no publication date was available from the registry.
-                >
-
                 Bumps [rust-toolchain](https://github.com/rust-lang/rust) from stable-2024-10-17 to stable-2025-04-03.
                 <details>
                 <summary>Commits</summary>
@@ -83,12 +79,6 @@ output:
                 - [Release notes](https://github.com/rust-lang/rust/releases)
                 - [Changelog](https://github.com/rust-lang/rust/blob/master/RELEASES.md)
                 - [Commits](https://github.com/rust-lang/rust/commits)
-    - type: record_update_job_warning
-      expect:
-        data:
-            warn-type: cooldown_date_unavailable
-            warn-title: Cooldown was not applied
-            warn-description: Cooldown could not be applied because no publication date was available from the registry.
     - type: mark_as_processed
       expect:
         data:
