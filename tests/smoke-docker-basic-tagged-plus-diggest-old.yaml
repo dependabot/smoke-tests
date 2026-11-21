@@ -1,0 +1,85 @@
+input:
+    job:
+        command: update
+        package-manager: docker
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: dependabot/dependabot-updater
+              source: tests/smoke-docker-basic-tagged-plus-diggest-old.yaml
+              version-requirement: '>v2.0.20230126175323'
+        source:
+            provider: github
+            repo: dependabot/smoke-tests
+            directories:
+                - docker/basic/tagged-plus-diggest/old/
+            commit: 4464bf6535561ec44f5c729a1ab3f2610db0ffb5
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: dependabot/dependabot-updater
+                  requirements:
+                    - file: tagged_plus_digest.Dockerfile
+                      groups: []
+                      requirement: null
+                      source:
+                        digest: 2f1df3a9bf8f2a9b2244c338f3f5d434a35e4910302f483fe2030eeb7cc66bc7
+                        registry: ghcr.io
+                        tag: v2.0.20230126130633
+                  version: v2.0.20230126130633
+            dependency_files:
+                - /docker/basic/tagged-plus-diggest/old/tagged_plus_digest.Dockerfile
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 4464bf6535561ec44f5c729a1ab3f2610db0ffb5
+            dependencies:
+                - name: dependabot/dependabot-updater
+                  previous-requirements:
+                    - file: tagged_plus_digest.Dockerfile
+                      groups: []
+                      requirement: null
+                      source:
+                        digest: 2f1df3a9bf8f2a9b2244c338f3f5d434a35e4910302f483fe2030eeb7cc66bc7
+                        registry: ghcr.io
+                        tag: v2.0.20230126130633
+                  previous-version: v2.0.20230126130633
+                  requirements:
+                    - file: tagged_plus_digest.Dockerfile
+                      groups: []
+                      requirement: null
+                      source:
+                        digest: fb82831a055f7217d7935fc4cbc29ee900d1321565952edb870a755c4836468c
+                        registry: ghcr.io
+                        tag: v2.0.20230126175323
+                  version: v2.0.20230126175323
+                  directory: /docker/basic/tagged-plus-diggest/old
+            updated-dependency-files:
+                - content: FROM ghcr.io/dependabot/dependabot-updater:v2.0.20230126175323@sha256:fb82831a055f7217d7935fc4cbc29ee900d1321565952edb870a755c4836468c
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /docker/basic/tagged-plus-diggest/old
+                  name: tagged_plus_digest.Dockerfile
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump dependabot/dependabot-updater from v2.0.20230126130633 to v2.0.20230126175323 in /docker/basic/tagged-plus-diggest/old
+            pr-body: |
+                Bumps dependabot/dependabot-updater from v2.0.20230126130633 to v2.0.20230126175323.
+            commit-message: |-
+                Bump dependabot/dependabot-updater
+
+                Bumps dependabot/dependabot-updater from v2.0.20230126130633 to v2.0.20230126175323.
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 4464bf6535561ec44f5c729a1ab3f2610db0ffb5
